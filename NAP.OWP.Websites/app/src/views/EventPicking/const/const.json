@@ -1,0 +1,34 @@
+{
+  "netCoreURL": "api-netcore/EventPicking",
+  "netFwURL": "api/EventPicking",
+  "getEventPicking": "get-event-picking",
+  "UPDATE_NO_OFFER_MATCH": "update-noOffer-match",
+  "MESSAGE":{
+    "CHECK_ALL":"Are you sure you want to select all of these matches?",
+    "UN_CHECK_ALL":"Are you sure you want to unselect all of these matches?"
+  },
+  "SELECT_GAME": [
+    {
+      "value": 1,
+      "label": "No Offer (x)"
+    },
+    {
+      "value": 0,
+      "label": "Offer"
+    }
+  ],
+  "FILTER_MATCH": [
+    {
+      "value": 0,
+      "label": "Gray"
+    },
+    {
+      "value": 1,
+      "label": "Red"
+    },
+    {
+      "value": 2,
+      "label": "White"
+    }
+  ]
+}

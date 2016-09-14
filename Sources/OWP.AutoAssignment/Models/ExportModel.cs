@@ -1,0 +1,124 @@
+﻿namespace OWP.AutoAssignment.Models
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Xml.Serialization;
+    using Fanex.NAP.OWP.Core.Extensions.XMLExtensions;
+
+    [Serializable]
+    [XMLName("Row")]
+    public class ExportModel
+    {
+        private string _time;
+        private string _otherTime;
+
+        [Column(ColumnName.No)]
+        public string MatchNo { get; set; }
+
+        [Column(ColumnName.MatchStatus)]
+        [XmlIgnore]
+        public string MatchStatus { get; set; }
+
+        [Column(ColumnName.InfositeId)]
+        public string InfoSiteMatchId { get; set; }
+
+        [Column(ColumnName.Time)]
+        [XMLName("KickOffTime")]
+        public string Time
+        {
+            get
+            {
+                return _time;
+            }
+
+            set
+            {
+                DateTime time;
+
+                _time = DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out time)
+                    ? time.ToString("hh:mm tt", CultureInfo.InvariantCulture) : value;
+            }
+        }
+
+        [Column(ColumnName.OtherTime)]
+        public string OtherTime
+        {
+            get
+            {
+                return _otherTime;
+            }
+
+            set
+            {
+                DateTime time;
+
+                _otherTime = DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out time)
+                    ? time.ToString("hh:mm tt", CultureInfo.InvariantCulture) : value;
+            }
+        }
+
+        [Column(ColumnName.MatchOffer)]
+        public string MatchOffer { get; set; }
+
+        [Column(ColumnName.League)]
+        public string LeagueName { get; set; }
+
+        [Column(ColumnName.Home)]
+        public string HomeName { get; set; }
+
+        [Column(ColumnName.Away)]
+        public string AwayName { get; set; }
+
+        [Column(ColumnName.Note)]
+        public IEnumerable<string> Notes { get; set; }
+
+        [Column(ColumnName.Round)]
+        public string Round { get; set; }
+
+        [Column(ColumnName.Division)]
+        public string OutSide { get; set; }
+
+        [Column(ColumnName.Remark)]
+        public string Remark { get; set; }
+
+        [Column(ColumnName.NoOfHDP)]
+        public string NoOfHDP { get; set; }
+
+        [XmlIgnore]
+        public AssignmentModel Assignments { get; set; }
+
+        [Column(ColumnName.Agent)]
+        public string Agent { get; set; }
+
+        [Column(ColumnName.TV)]
+        public string TVCode { get; set; }
+
+        [Column(ColumnName.Channel)]
+        public string Channel { get; set; }
+
+        [Column(ColumnName.WB)]
+        public string WatchBet { get; set; }
+
+        [Column(ColumnName.OtherProvider)]
+        public string OtherProvider { get; set; }
+
+        [Column(ColumnName.Provider)]
+        public string Provider { get; set; }
+
+        [Column(ColumnName.Phone)]
+        public string Phone { get; set; }
+
+        [Column(ColumnName.Web1)]
+        public string Website { get; set; }
+
+        [Column(ColumnName.Web2)]
+        public string Website2 { get; set; }
+
+        [Column(ColumnName.Web3)]
+        public string Website3 { get; set; }
+
+        [Column(ColumnName.Web4)]
+        public string Website4 { get; set; }
+    }
+}

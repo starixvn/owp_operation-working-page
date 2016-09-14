@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SonarQube - Nap-OWP Nexcel CSharp" ToolsVersion="14.0">
+  <Include Path="..\SonarQube\Nap-OWPCSharp.ruleset" Action="Default" />
+</RuleSet>

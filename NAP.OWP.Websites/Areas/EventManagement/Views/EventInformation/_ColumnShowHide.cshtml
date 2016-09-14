@@ -1,0 +1,29 @@
+﻿@using Fanex.NAP.OWP.EventManagement.Models.EventInfo
+@model IEnumerable<ColumnModel>
+
+<ul>
+    @foreach (ColumnModel column in Model.Where(x => !x.ParentColumnId.HasValue && !x.IsAlwayDisplay))
+    {
+        <li>
+            <a href="javascript:;">
+                <input type="checkbox" class="filled-in js-checkboxParent" id="col_@column.ColumnId" @(column.IsAlwayDisplay ? "disabled" : string.Empty)
+                       @(column.IsChecked ? "checked=checked" : string.Empty) data-index="@column.DisplayOrder" autocomplete="off" />
+                <label for="col_@column.ColumnId">@column.Text</label>
+            </a>
+            <ul>
+                @foreach (ColumnModel childColumn in Model.Where(x => x.ParentColumnId.HasValue && x.ParentColumnId.Value == column.ColumnId && !x.IsAlwayDisplay))
+                {
+                    <li>
+                        <a href="javascript:;">
+                            <input type="checkbox" class="filled-in js-checkboxChild" id="col_@childColumn.ColumnId"
+                                   data-parentid="@childColumn.ParentColumnId.Value" autocomplete="off"
+                                   @(childColumn.IsChecked ? "checked=checked" : string.Empty)
+                                   data-index="@childColumn.DisplayOrder" />
+                            <label for="col_@childColumn.ColumnId">@childColumn.Text</label>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+</ul>

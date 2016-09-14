@@ -1,0 +1,24 @@
+﻿@using Fanex.NAP.OWP.EventManagement.Models.EventInfo
+@model IEnumerable<FilterModel>
+
+@foreach (FilterModel item in Model.OrderByDescending(i => i.IsDefault))
+{
+    <li class="filter-item">
+        <p class="js-chooseFilter choose-filter" data-id="@item.FilterId" data-name="@item.Name">@item.Name</p>
+        <span class="icon-group">
+            <span data-id="@item.FilterId" class="js-setDefaultFilter @(item.IsDefault ? "selected" : string.Empty)">
+                <i class="mdi mdi-checkbox-marked-circle"></i>
+            </span>
+            @if (item.IsOwner)
+            {
+                <span data-id="@item.FilterId" class="js-deleteFilter label-remove">
+                    <i class="mdi mdi-delete"></i>
+                </span>
+                <span data-id="@item.FilterId" class="js-editFilter">
+                    <i class="mdi mdi-pencil"></i>
+                </span>
+            }
+        </span>
+        <div class="clearfix"></div>
+    </li>
+}

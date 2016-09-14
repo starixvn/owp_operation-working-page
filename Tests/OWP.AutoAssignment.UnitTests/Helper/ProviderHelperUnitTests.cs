@@ -1,0 +1,29 @@
+﻿using OWP.AutoAssignment.Helper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace OWP.AutoAssignment.UnitTests.Helper
+{
+    public class ProviderHelperUnitTests
+    {
+        [Theory]
+        [InlineData(new object[] { "ipsd", new int[] { 1 } })]
+        [InlineData(new object[] { "bg", new int[] { 1 } })]
+        [InlineData(new object[] { "rb2", new int[] { 2 } })]
+        [InlineData(new object[] { "rts", new int[] { 3 } })]
+        [InlineData(new object[] { "bet", new int[] { 4 } })]
+        [InlineData(new object[] { "abc", new int[] { 0 } })]
+        [InlineData(new object[] { "ipsd,bg,rb2,rts,bet", new int[] { 1,2,3,4 } })]
+        public void DetectIndexAndOrderProviderSpecial_ReturnProviderCorrect(string provider, int[] expected)
+        {
+            var actual = ProviderHelper.DetectIndexAndOrderProviderSpecial(provider);
+            Assert.Equal(expected, actual);
+        }
+
+
+    }
+}

@@ -1,0 +1,68 @@
+import React, { createRef } from 'react';
+import { AssignmentInfo } from '../type/TableType';
+import ContactInfo from './ContactInfo';
+import { UncontrolledTooltip } from 'reactstrap';
+import parse from 'html-react-parser';
+
+const OtherAssignment = (props: { assignment: AssignmentInfo[] }) => {
+  const { assignment } = props;
+  const getNoteOrUserName = (
+    note: string | null,
+    isCurrentUser: boolean,
+    userName: string
+  ) => {
+    const userNameText = () =>
+      `<span
+      className=${isCurrentUser ? 'badge-label my-assign' : 'assignee'}>
+      ${userName}
+    </span>`;
+    return note ? note.replace('#<user>', userNameText()) : '';
+  };
+  return (
+    <>
+      {assignment.map((x, index) => {
+        const refOther = createRef<HTMLSpanElement>();
+        const refContact = createRef<HTMLAnchorElement>();
+        return !x.IsCurrentUser && x.IsHasContactInfo ? (
+          <p key={`contact-${x.UserId}-${index}`}>
+            <span ref={refOther} className='assignee-other'>
+              <a
+                id={`contact-info-${x.UserId}`}
+                ref={refContact}
+                className='dropdown-button js-traderName'>
+                {parse(
+                  getNoteOrUserName(
+                    x.AssignmentNote,
+                    x.IsCurrentUser,
+                    x.Username
+                  )
+                )}
+              </a>
+              <ContactInfo target={refContact} assignment={x} />
+            </span>
+            <UncontrolledTooltip target={refOther}>
+              {parse(
+                getNoteOrUserName(x.AssignmentNote, x.IsCurrentUser, x.Username)
+              )}
+            </UncontrolledTooltip>
+          </p>
+        ) : (
+          <p key={`contact-${x.UserId}-${index}`}>
+            <span ref={refOther} className='assignee-other'>
+              {parse(
+                getNoteOrUserName(x.AssignmentNote, x.IsCurrentUser, x.Username)
+              )}
+            </span>
+            <UncontrolledTooltip target={refOther}>
+              {parse(
+                getNoteOrUserName(x.AssignmentNote, x.IsCurrentUser, x.Username)
+              )}
+            </UncontrolledTooltip>
+          </p>
+        );
+      })}
+    </>
+  );
+};
+
+export default OtherAssignment;

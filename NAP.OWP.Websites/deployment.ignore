@@ -1,0 +1,6 @@
+\\CodeAnalysis
+\\App_Data\\Files\\.*.xlsx
+packages.config
+package.json
+tsconfig.json
+tslint.json

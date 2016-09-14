@@ -1,0 +1,48 @@
+import React from 'react';
+import { Button } from 'reactstrap';
+import useStore from '../../app/store';
+import ToastrWrapper from '../../../components/ToastrWrapper';
+import shallow from 'zustand/shallow';
+
+const Command = () => {
+  const {
+    queryDataSource,
+    setPopupType,
+    filter: { status, round, category },
+    getPolicy
+  } = useStore(
+    state => ({
+      queryDataSource: state.queryDataSource,
+      setPopupType: state.setPopupType,
+      filter: state.filter,
+      getPolicy: state.getPolicy
+    }),
+    shallow
+  );
+
+  const handleSearch = async () => {
+    if (!status || !round || !category) {
+      return ToastrWrapper.showError(
+        'Please select at least one option for each filter'
+      );
+    }
+    return queryDataSource();
+  };
+
+  const policy = getPolicy();
+
+  return (
+    <div className='command'>
+      <Button className='btn-search' onClick={handleSearch}>
+        Search
+      </Button>
+      {policy.HasWrite && (
+        <Button onClick={() => setPopupType('add')} className='btn-add-league'>
+          Add New Setting
+        </Button>
+      )}
+    </div>
+  );
+};
+
+export default Command;

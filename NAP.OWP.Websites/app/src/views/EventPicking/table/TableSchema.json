@@ -1,0 +1,58 @@
+{
+  "DefaultTableStyle": {
+    "rowHeight": 100,
+    "rowHeightPlus": 120,
+    "widthResize": 150,
+    "width": 2000,
+    "minWidth": 880,
+    "filterOffset": 200,
+    "height": 750,
+    "maxHeight": 750,
+    "headerHeight": 50,
+    "initialWidth": 15
+  },
+  "No": {
+    "order": 1,
+    "isCheckBox": true,
+    "headerName": "No #",
+    "columnKey": "No"
+  },
+  "KOTime": {
+    "headerName": "KOTime",
+    "columnKey": "KOTime"
+  },
+  "League": {
+    "headerName": "League",
+    "columnKey": "League",
+    "isCanFilter": true
+  },
+  "Match": {
+    "headerName": "Match",
+    "columnKey": "Match",
+    "isCanFilter": true
+  },
+  "MaxBet": {
+    "headerName": "MaxBet(HDP)",
+    "columnKey": "MaxBet"
+  },
+  "IPTvStreaming": {
+    "headerName": "TV/IPTV",
+    "columnKey": "IPTvStreaming",
+    "isCanFilter": true
+  },
+  "Provider": {
+    "headerName": "Provider",
+    "columnKey": "Provider",
+    "isCanFilter": true
+  },
+  "Round": {
+    "headerName": "Round",
+    "columnKey": "Round",
+    "isCanFilter": true
+  },
+  "Remark": {
+    "headerName": "Remark",
+    "columnKey": "Remark",
+    "isCanFilter": true
+  }
+}

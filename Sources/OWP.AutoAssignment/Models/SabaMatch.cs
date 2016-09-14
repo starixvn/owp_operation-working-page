@@ -1,0 +1,15 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OWP.AutoAssignment.Models
+{
+    public class SabaMatch: CommonMatchSender
+    {
+        [JsonProperty("SABA_type")]
+        public int SabaType { get; set; }
+    }
+}

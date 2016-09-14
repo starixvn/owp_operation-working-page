@@ -1,0 +1,15 @@
+﻿namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
+{
+    using System;
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    public sealed class ColumnAttribute : Attribute
+    {
+        public ColumnAttribute(ColumnName name)
+        {
+            Name = name;
+        }
+
+        public ColumnName Name { get; }
+    }
+}

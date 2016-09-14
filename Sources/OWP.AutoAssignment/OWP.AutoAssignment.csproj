@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{62E0D7AA-7EAA-4944-AC7B-DE977B024775}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OWP.AutoAssignment</RootNamespace>
+    <AssemblyName>OWP.AutoAssignment</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>OWP.AutoAssignment.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>OWP.AutoAssignment.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Exclude the project from analysis -->
+    <SonarQubeExclude>True</SonarQubeExclude>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.1.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPPlus.5.1.2\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Epplus.Mapper, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Epplus.Mapper.1.0.0.13\lib\net461\Epplus.Mapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Data, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Data.4.2.2\lib\net461\Fanex.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Data.Repository, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Data.Repository.4.2.2\lib\net461\Fanex.Data.Repository.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Logging, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Logging.2.0.1\lib\net461\Fanex.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.NAP.Core.Client, Version=1.2.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.NAP.Core.Client.2.0.0.1\lib\net40\Fanex.NAP.Core.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.3.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IO.RecyclableMemoryStream.1.3.6\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Olympus.WebApi.Epplus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Olympus.WebApi.Epplus.1.0.0.3\lib\net461\Olympus.WebApi.Epplus.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SimpleInjector, Version=4.9.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.4.9.1\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiServicePublicController.native.cs" />
+    <Compile Include="AutoMapperProfile.native.cs" />
+    <Compile Include="Builder\RequestBuilder.cs" />
+    <Compile Include="Builder\SchedulingMatchBuilder.cs" />
+    <Compile Include="Builder\SchedulingUserBuilder.cs" />
+    <Compile Include="Constant\AutoAssignmentConst.cs" />
+    <Compile Include="Criteria\ApiRequestNewCriteria.cs" />
+    <Compile Include="Criteria\GetAutoUserResult.cs" />
+    <Compile Include="Criteria\GetLatestRequestCriteria.cs" />
+    <Compile Include="Criteria\GetRequestIsWaitingCriteria.cs" />
+    <Compile Include="Criteria\GetRequestsCriteria.cs" />
+    <Compile Include="Criteria\GetEventsCriteria.cs" />
+    <Compile Include="Criteria\GetTradersByDateCriteria.cs" />
+    <Compile Include="Criteria\RemoveRequestCriteria.cs" />
+    <Compile Include="Criteria\RequestStatusCriteria.cs" />
+    <Compile Include="Criteria\GetUsersCriteria.cs" />
+    <Compile Include="Criteria\CreateRequestCriteria.cs" />
+    <Compile Include="Criteria\UpdateStatusRequestCriteria.cs" />
+    <Compile Include="Enum\Provider.cs" />
+    <Compile Include="Enum\StatusRequest.cs" />
+    <Compile Include="Helper\EtPkHelper.cs" />
+    <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\BettypeHelper.cs" />
+    <Compile Include="Helper\ProviderHelper.cs" />
+    <Compile Include="Models\AutoTraderModel.cs" />
+    <Compile Include="Models\CommonMatchSender.cs" />
+    <Compile Include="Models\RealMatch.cs" />
+    <Compile Include="Models\SabaMatch.cs" />
+    <Compile Include="Models\TraderInfo.cs" />
+    <Compile Include="Models\RequestIsWaitingModel.cs" />
+    <Compile Include="Models\StatusRequestModel.cs" />
+    <Compile Include="Models\AIOAssignmentModel.cs" />
+    <Compile Include="Models\RequestModel.cs" />
+    <Compile Include="Models\RequestSender.cs" />
+    <Compile Include="Models\AssignmentModel.cs" />
+    <Compile Include="Models\AssignmentResult.cs" />
+    <Compile Include="Models\AutoAssignmentWriter.cs" />
+    <Compile Include="Models\CheckRequestModel.cs" />
+    <Compile Include="Models\CheckStatusResult.cs" />
+    <Compile Include="Models\ColumnAttribute.cs" />
+    <Compile Include="Models\ColumnName.cs" />
+    <Compile Include="Models\CreateRequestModel.cs" />
+    <Compile Include="Models\DataHolder.cs" />
+    <Compile Include="Models\DateAndRequestCellModel.cs" />
+    <Compile Include="Models\ExportModel.cs" />
+    <Compile Include="Models\FMAssignmentModel.cs" />
+    <Compile Include="Models\Handicap1stAssignmentModel.cs" />
+    <Compile Include="Models\HandicapAssignmentModel.cs" />
+    <Compile Include="Models\AutoAssigneeModel.cs" />
+    <Compile Include="Models\LASerializeModel.cs" />
+    <Compile Include="Models\MatchInfo.cs" />
+    <Compile Include="Models\OneXTwo1stAssignmentModel.cs" />
+    <Compile Include="Models\OneXTwoAssignmentModel.cs" />
+    <Compile Include="Models\OverUnder1stAssignmentModel.cs" />
+    <Compile Include="Models\OverUnderAssignmentModel.cs" />
+    <Compile Include="Models\SaveRequestModel.cs" />
+    <Compile Include="Models\SchedulingMatch.cs" />
+    <Compile Include="Models\SchedulingRequest.cs" />
+    <Compile Include="Models\SchedulingLAUser.cs" />
+    <Compile Include="Models\SchedulingWorkingShift.cs" />
+    <Compile Include="Models\Specific10MinsAssignmentModel.cs" />
+    <Compile Include="Models\Specific15MinsAssignmentModel.cs" />
+    <Compile Include="Models\SpecificXMinsAssignmentModel.cs" />
+    <Compile Include="Models\LAUserInfo.cs" />
+    <Compile Include="Models\UserWorkingShift.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="Criteria\SaveRequestCriteria.cs" />
+    <Compile Include="AutoAssignmentController.cs" />
+    <Compile Include="Properties\GlobalSuppression.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CreateRequestService.native.cs" />
+    <Compile Include="Services\ExportService.native.cs" />
+    <Compile Include="Services\GetRequestService.native.cs" />
+    <Compile Include="Services\SaveRequestService.cs" />
+    <Compile Include="SimpleInjectorRegistration.cs" />
+    <Compile Include="TraderVisualization\Builder\TimeLineColorBuilder.cs" />
+    <Compile Include="TraderVisualization\Builder\TimelineTextBuilder.cs" />
+    <Compile Include="TraderVisualization\Constants\TraderVisualizationConst.cs" />
+    <Compile Include="TraderVisualization\Constants\ExcelConst.cs" />
+    <Compile Include="TraderVisualization\Criteria\GetAutoAssignmentCriteria.cs" />
+    <Compile Include="TraderVisualization\Criteria\GetTraderByDateCriteria.cs" />
+    <Compile Include="TraderVisualization\Criteria\GetUserIdFromDb02Criteria.cs" />
+    <Compile Include="TraderVisualization\Criteria\GetUserIdFromNapUserCriteria.cs" />
+    <Compile Include="TraderVisualization\Factory\SingleMatchRuleFactory.cs" />
+    <Compile Include="TraderVisualization\Helper\TraderVisualizationHelper.cs" />
+    <Compile Include="TraderVisualization\Misc\SingleMatchRule.cs" />
+    <Compile Include="TraderVisualization\Models\AssignmentInfo.cs" />
+    <Compile Include="TraderVisualization\Models\TraderExport.cs" />
+    <Compile Include="TraderVisualization\Models\TraderInfo.cs" />
+    <Compile Include="TraderVisualization\Models\TraderTimeTable.cs" />
+    <Compile Include="TraderVisualization\Repository.cs" />
+    <Compile Include="TraderVisualization\Services\SingleAssignmentAnalyzerService.cs" />
+    <Compile Include="TraderVisualization\Services\LinkAssignmentAnalyzerService.cs" />
+    <Compile Include="TraderVisualization\Services\TraderCalculateService.cs" />
+    <Compile Include="TraderVisualization\Services\TraderExportService.cs" />
+    <Compile Include="Visualization\Criteria\GetAssignmentsCriteria.cs" />
+    <Compile Include="Visualization\Criteria\GetAutoAssignmentResultCriteria.cs" />
+    <Compile Include="Visualization\Criteria\GetCustInfoFromDB02Criteria.cs" />
+    <Compile Include="Visualization\Criteria\GetUserInfoFromNAPUserControlCriteria.cs" />
+    <Compile Include="Visualization\Criteria\GetUsersByDateCriteria.cs" />
+    <Compile Include="Visualization\Consts\VisualizationConst.cs" />
+    <Compile Include="Visualization\Enum\VisualizationEnum.native.cs" />
+    <Compile Include="Visualization\Factory\RuleFactory.native.cs" />
+    <Compile Include="Visualization\Helper\MatchHelper.cs" />
+    <Compile Include="Visualization\Helper\VisualizationHelper.cs" />
+    <Compile Include="Visualization\Misc\MainMatchRule.cs" />
+    <Compile Include="Visualization\Services\MultipleAndSingleMatchesCalculateService.cs" />
+    <Compile Include="Visualization\Misc\SpecialProductRule.cs" />
+    <Compile Include="Visualization\Models\AssignmentModel.cs" />
+    <Compile Include="Visualization\Models\ExcelVisualizationModel.cs" />
+    <Compile Include="Visualization\Models\Trader.cs" />
+    <Compile Include="Visualization\Repository.cs" />
+    <Compile Include="Visualization\Services\RealAssignmentCalculateService.cs" />
+    <Compile Include="Visualization\Services\TraderAnalyzerService.cs" />
+    <Compile Include="Visualization\Services\VisualizationCalculateService.cs" />
+    <Compile Include="Visualization\Services\VisualizationExportService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="OWP.AutoAssignment.ruleset" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fanex.NAP.OWP.Core\Fanex.NAP.OWP.Core.csproj">
+      <Project>{58eaf1c1-e20f-4d8a-899a-6f6aa09d5324}</Project>
+      <Name>Fanex.NAP.OWP.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Fanex.NAP.OWP.TaskScheduling\Fanex.NAP.OWP.TaskScheduling.csproj">
+      <Project>{C95BD80C-58E7-461D-A610-D75F759FE7E9}</Project>
+      <Name>Fanex.NAP.OWP.TaskScheduling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OWP\OWP.csproj">
+      <Project>{E7C83A3E-F124-4D2B-8EA7-80F9C7E0250B}</Project>
+      <Name>OWP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.44.0.52574\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.44.0.52574\analyzers\SonarAnalyzer.CFG.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.44.0.52574\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.44.0.52574\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

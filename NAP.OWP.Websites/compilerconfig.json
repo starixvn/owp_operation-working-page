@@ -1,0 +1,81 @@
+﻿[
+  {
+    "outputFile": "Content/Themes/main.css",
+    "inputFile": "src/scss/main.scss"
+  },
+  {
+    "outputFile": "Content/Libraries/Materialize/materialize.css",
+    "inputFile": "src/scss/vendors/materialize/materialize.scss"
+  },
+  {
+    "outputFile": "src/scss/css/EventInformation.css",
+    "inputFile": "src/scss/pages/EventInformation.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "src/pages/daily-working-shift/DailyWorkingShift.css",
+    "inputFile": "src/scss/pages/DailyWorkingShift.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "src/pages/weekly-working-shift/WorkingShift.css",
+    "inputFile": "src/scss/pages/WorkingShift.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "Areas/EventManagement/Resources/MaxBetManagement/MaxBetManagement.css",
+    "inputFile": "src/scss/pages/MaxBetManagement.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "Scripts/Site/navbar.js",
+    "inputFile": "src/js/components/navbar/navbar.js"
+  },
+  {
+    "outputFile": "Content/owp.search-autocomplete.css",
+    "inputFile": "src/scss/owp.search-autocomplete.scss"
+  },
+  {
+    "outputFile": "Areas/EventManagement/Resources/OddsCompiler/OddsCompiler.css",
+    "inputFile": "src/scss/pages/OddsCompiler.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "src/scss/css/TaskList.css",
+    "inputFile": "src/scss/pages/TaskList.scss"
+  },
+  {
+    "outputFile": "src/scss/components/_form-input.css",
+    "inputFile": "src/scss/components/_form-input.scss"
+  },
+  {
+    "outputFile": "src/scss/layout/_sideBar.css",
+    "inputFile": "src/scss/layout/_sideBar.scss"
+  },
+  {
+    "outputFile": "src/scss/layout/_navBar.css",
+    "inputFile": "src/scss/layout/_navBar.scss"
+  },
+  {
+    "outputFile": "src/scss/layout/_content.css",
+    "inputFile": "src/scss/layout/_content.scss"
+  },
+  {
+    "outputFile": "src/scss/fonts/montserrat/_style.css",
+    "inputFile": "src/scss/fonts/montserrat/_style.scss"
+  },
+  {
+    "outputFile": "src/scss/base/_typo.css",
+    "inputFile": "src/scss/base/_typo.scss"
+  }
+]

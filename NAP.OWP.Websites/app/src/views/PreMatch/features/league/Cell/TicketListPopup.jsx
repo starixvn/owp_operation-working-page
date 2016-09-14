@@ -1,0 +1,120 @@
+import PropTypes from 'prop-types';
+import React from 'react';
+import {
+  getTicketDetail,
+  openTicketPopup,
+  closeTicketPopup,
+  closePopup,
+  getModelByRowIndex,
+  getTicketSubTypes
+} from '../../../../Shared/chatBoardNew/chatBoardSlice';
+import {
+  changeErrorRecipient,
+  getSelectedRecipients,
+  setDefaultRecipients,
+  closeCreatePopup,
+  setSubTypeSelected
+} from '../../../../Shared/createTicketNew/createTicketBoardSliceNew';
+import store from '../../../app/store';
+import { useStableDispatch } from '../../../ImportPrematchHelperNative';
+import ToastsWrapper from '../../../../components/ToastrWrapper';
+import { getDetailSegmentUrlByEventType } from '../../../../Shared/TicketCenterPrematch/helper/helper';
+import { isEqual } from 'lodash';
+import {
+  EVENT_TYPE,
+  TICKET_TYPE
+} from '../../../../Shared/TicketCenterPrematch/const/const.json';
+import { backupGetIssueModel } from '../../signalR/signalRSlice';
+import { getRecipientDefaultByType } from '../../../../Shared/createTicketNew/Helper/HelperCreateTicket';
+import {
+  updatedIconIssueLeagueRow,
+  updatedIconIssueMatchRow
+} from '../shiftSlice/shiftSlice';
+import { ticketType } from '../../../const/const';
+import { useSelector } from 'react-redux';
+import TicketListPopupCommon from '../../../../Shared/ticketList/TicketListPopupCommon';
+
+const propTypes = {
+  rowIndex: PropTypes.number.isRequired,
+  ticketList: PropTypes.array.isRequired,
+  onCloseTicketList: PropTypes.func.isRequired,
+  dataSource: PropTypes.array
+};
+
+const { LEAGUE } = EVENT_TYPE;
+
+const TicketListPopup = props => {
+  const { ticketList, onCloseTicketList, dataSource, rowIndex } = props;
+  const model = dataSource[rowIndex];
+  const { PreMatchLeagueId, InfoSiteMatchId } = model;
+  const { HasWrite } = useSelector(state => state.policy).permission;
+  const stableDispatch = useStableDispatch();
+
+  const handleOpenMessage = async ticket => {
+    const { policy } = store.getState();
+    const { permission } = policy;
+    const { TicketId, EventType, IsRead } = ticket;
+
+    const requestDetailModel = {
+      ticketId: TicketId,
+      actorId: permission.ActorId,
+      detailSegmentUrl: getDetailSegmentUrlByEventType(EventType),
+      eventType: EventType
+    };
+    stableDispatch(closeTicketPopup());
+    stableDispatch(closeCreatePopup());
+    stableDispatch(changeErrorRecipient(false));
+    stableDispatch(getTicketSubTypes(TICKET_TYPE.EVENT_CHECKING));
+    if (!IsRead) {
+      isEqual(EventType, LEAGUE)
+        ? stableDispatch(
+          updatedIconIssueLeagueRow({ PreMatchLeagueId, TicketId })
+        )
+        : stableDispatch(
+          updatedIconIssueMatchRow({ InfoSiteMatchId, TicketId })
+        );
+    }
+    stableDispatch(backupGetIssueModel(requestDetailModel));
+
+    const actionResult = await stableDispatch(
+      getTicketDetail({
+        ...requestDetailModel,
+        isQueryMessageInLastTwoDay: true
+      })
+    );
+    if (getTicketDetail.rejected.match(actionResult)) {
+      ToastsWrapper.showError(actionResult.payload);
+    }
+  };
+  const handleOpenCreateTicket = () => {
+    stableDispatch(getModelByRowIndex(model));
+    stableDispatch(backupGetIssueModel(model));
+    stableDispatch(setSubTypeSelected(...[{ value: 0, label: '' }]));
+    stableDispatch(openTicketPopup());
+    stableDispatch(changeErrorRecipient(false));
+    stableDispatch(closePopup());
+    stableDispatch(closeCreatePopup());
+  };
+
+  const getRecipientByType = async () => {
+    const recipientSetting = await getRecipientDefaultByType(
+      ticketType.EVEN_CHECKING
+    );
+    stableDispatch(setDefaultRecipients(recipientSetting));
+    stableDispatch(getSelectedRecipients(recipientSetting));
+  };
+
+  return (
+    <TicketListPopupCommon
+      ticketList={ticketList}
+      HasWrite={HasWrite}
+      handleOpenCreateTicket={handleOpenCreateTicket}
+      getRecipientByType={getRecipientByType}
+      handleOpenMessage={handleOpenMessage}
+      onCloseTicketList={onCloseTicketList}
+    />
+  );
+};
+
+TicketListPopup.propTypes = propTypes;
+export default TicketListPopup;

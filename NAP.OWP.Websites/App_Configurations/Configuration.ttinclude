@@ -1,0 +1,488 @@
+<#@ import namespace="System" #>
+<#
+    var sites = new SiteInfo[]{
+        new SiteInfo
+        {
+            Environment = SiteEnvironment.DEV
+        },
+		new SiteInfo
+        {
+            Environment = SiteEnvironment.LOCAL
+        },
+        new SiteInfo
+        {
+            Environment = SiteEnvironment.LOCAL1
+        },
+		new SiteInfo
+        {
+            Environment = SiteEnvironment.LOCAL2
+        },
+		new SiteInfo
+        {
+            Environment = SiteEnvironment.LOCAL3
+        },
+		new SiteInfo
+        {
+            Environment = SiteEnvironment.UAT
+        },
+        new SiteInfo
+        {
+            Environment = SiteEnvironment.UAT1
+        },
+		new SiteInfo
+        {
+            Environment = SiteEnvironment.UAT2
+        },
+		new SiteInfo
+        {
+            Environment = SiteEnvironment.UAT3
+        },
+		new SiteInfo
+        {
+            Environment = SiteEnvironment.SIT
+        },
+        new SiteInfo
+        {
+            Environment = SiteEnvironment.PRO
+        },
+        new SiteInfo
+        {
+            Environment = SiteEnvironment.AWS
+        }
+    };
+#>
+<#+
+    enum SiteEnvironment
+    {
+        DEV,
+		LOCAL,		
+        LOCAL1,		
+		LOCAL2,	
+		LOCAL3,	
+		UAT,
+        UAT1,
+		UAT2,
+		UAT3,
+		SIT,
+        PRO,
+        AWS
+    }
+    class SiteInfo
+    {
+        public SiteEnvironment Environment { get; set; }
+
+        #region For Webconfig file
+
+        public string FanexDataPath
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                    case SiteEnvironment.AWS:
+                        return "LIVE";
+                    default:
+                        return "TEST";
+                }
+            }
+        }
+       
+        public string NapEnvironment
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                    case SiteEnvironment.AWS:
+                        return "LIVE";
+                    default:
+                        return "UAT";
+                }
+            }
+        }
+
+        public string NapSiteId
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                    case SiteEnvironment.AWS:
+                    case SiteEnvironment.UAT:
+					case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+					case SiteEnvironment.SIT:
+                        return "28";
+                    default:
+                        return "99";
+                }
+            }
+        }
+
+        public string NapEnableReCheckin
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                    case SiteEnvironment.AWS:
+                        return "false";
+                    default:
+                        return "false";
+                }
+            }
+        }
+
+        public string NapServiceUrls
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                        return "http://10.2.27.8:8788";
+                    case SiteEnvironment.AWS:
+                        return "http://vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com:8788";
+					case SiteEnvironment.UAT:
+                    case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+                        return "http://10.2.190.41:8788";
+					case SiteEnvironment.SIT:
+					    return "http://172.16.2.44:8788";
+                    default:
+                        return "http://nap_api_netcore.nexdev.net:8787";
+                }
+            }
+        }
+
+
+        public string ONEbookUMAddress
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                        return "http://10.2.27.8:7446/api";
+                    case SiteEnvironment.AWS:
+                        return "http://vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com:8889/api";
+					case SiteEnvironment.UAT:
+                    case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+                        return "http://10.2.190.41:7446/api";
+					case SiteEnvironment.SIT:
+					    return "http://172.16.2.44:7446/api";
+                    default:
+                        return "https://onebookum-dev.nexdev.net/api";
+                }
+            }
+        }
+
+        public string EnableCheckUM
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                    case SiteEnvironment.AWS:
+                        return "true";
+                    default:
+                        return "false";
+                }
+            }
+        }
+
+        public string DebugMode
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                        return "false";
+                    default:
+                        return "true";
+                }
+            }
+        }
+
+        public string ErrorMode
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+						return "On";                       				  
+                    default:
+                        return "Off";
+                }
+            }
+        }
+
+        public string StateConnectionString
+        {
+            get
+            {
+                switch(Environment)
+                {
+                    case SiteEnvironment.PRO:
+                        return "tcpip=10.2.27.8:42424";
+                    case SiteEnvironment.AWS:
+                        return "tcpip=vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com:43434";
+					case SiteEnvironment.UAT:
+                    case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+                        return "tcpip=10.2.190.41:42424";
+					case SiteEnvironment.SIT:
+                        return "tcpip=172.16.4.107:42424";
+                    default:
+                        return "tcpip=10.18.200.131:42424";
+                }
+            }
+        }
+
+		public string TRGS_ReportApiEndpoint
+        {
+            get
+            {
+                switch(Environment)
+                {
+					case SiteEnvironment.UAT:
+					case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+                    case SiteEnvironment.PRO:
+                        return "http://10.99.99.51:7724/TGRS";                   
+                    default:
+                        return "http://ha.nexdev.net:7724/TGRS";
+                }
+            }
+        }
+
+		public string SettingFile
+        {
+            get
+            {
+                switch(Environment)
+                {
+					case SiteEnvironment.LOCAL:
+					case SiteEnvironment.LOCAL1:
+					case SiteEnvironment.LOCAL2:
+					case SiteEnvironment.LOCAL3:
+						return "LOCAL";
+					case SiteEnvironment.UAT:
+					case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+						return "UAT";
+                    case SiteEnvironment.PRO:
+                        return "PRO";  
+                    case SiteEnvironment.AWS:
+                        return "AWS";  
+                    default:
+                        return "DEV";
+                }
+            }
+        }
+
+		public string PropagationAuth
+        {
+            get
+            {
+                switch(Environment)
+                {
+					case SiteEnvironment.LOCAL1:
+						return "/n1/Auth/Propagation";
+					case SiteEnvironment.LOCAL2:
+						return "/n2/Auth/Propagation";
+					case SiteEnvironment.LOCAL3:
+						return "/n3/Auth/Propagation";
+					case SiteEnvironment.UAT1:
+						return "/n1/Auth/Propagation";
+					case SiteEnvironment.UAT2:
+						return "/n2/Auth/Propagation";
+					case SiteEnvironment.UAT3:
+						return "/n3/Auth/Propagation";
+                    case SiteEnvironment.PRO:
+                        return "/n1/Auth/Propagation";  
+                    case SiteEnvironment.AWS:
+                        return "/n1/Auth/Propagation";  
+                    default:
+                        return "";
+                }
+            }
+        }
+
+		public string NetCoreRootUrl
+        {
+            get
+            {
+                switch(Environment)
+                {
+					case SiteEnvironment.DEV:
+						return "https://localhost:5001";
+					case SiteEnvironment.LOCAL1:
+						return "/n1";
+					case SiteEnvironment.LOCAL2:
+						return "/n2";
+					case SiteEnvironment.LOCAL3:
+						return "/n3";
+					case SiteEnvironment.UAT1:
+						return "/n1";
+					case SiteEnvironment.UAT2:
+						return "/n2";
+					case SiteEnvironment.UAT3:
+						return "/n3";
+                    case SiteEnvironment.PRO:
+                        return "/n1";  
+                    case SiteEnvironment.AWS:
+                        return "/n1";  
+                    default:
+                        return "";
+                }
+            }
+        }
+		
+        public string RabbitMQHosting
+        {
+            get
+            {
+                switch(Environment)
+                {
+					case SiteEnvironment.DEV:
+						return "localhost";
+					case SiteEnvironment.LOCAL1:
+					case SiteEnvironment.LOCAL2:
+					case SiteEnvironment.LOCAL3:
+						return "ha.nexdev.net";
+					case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+                        return "10.2.190.41";
+                    case SiteEnvironment.PRO:
+                        return "10.99.99.51";  
+                    case SiteEnvironment.AWS:
+                        return "vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com";
+                    default:
+                        return "";
+                }
+            }
+        }
+
+        public string RabbitMQVirtualHost
+        {
+            get
+            {
+                switch(Environment)
+                {
+					case SiteEnvironment.DEV:
+						return "/";
+					case SiteEnvironment.LOCAL1:
+					case SiteEnvironment.LOCAL2:
+					case SiteEnvironment.LOCAL3:
+					case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+                    case SiteEnvironment.PRO:
+                    case SiteEnvironment.AWS:
+                        return "/OWP";  
+                    default:
+                        return "";
+                }
+            }
+        }
+
+        public string RabbitMQUserName
+        {
+            get
+            {
+                switch(Environment)
+                {
+					case SiteEnvironment.DEV:
+						return "guest";
+					case SiteEnvironment.LOCAL1:
+					case SiteEnvironment.LOCAL2:
+					case SiteEnvironment.LOCAL3:
+					case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+                    case SiteEnvironment.PRO:
+                    case SiteEnvironment.AWS:
+                        return "owp";  
+                    default:
+                        return "";
+                }
+            }
+        }
+
+        public string RabbitMQPassword
+        {
+            get
+            {
+                switch(Environment)
+                {
+					case SiteEnvironment.DEV:
+						return "guest";
+					case SiteEnvironment.LOCAL1:
+					case SiteEnvironment.LOCAL2:
+					case SiteEnvironment.LOCAL3:
+					case SiteEnvironment.UAT1:
+					case SiteEnvironment.UAT2:
+					case SiteEnvironment.UAT3:
+                    case SiteEnvironment.PRO:
+                    case SiteEnvironment.AWS:
+                        return "1234aa";  
+                    default:
+                        return "";
+                }
+            }
+        }
+
+        public int RabbitMQPort
+        {
+            get
+            {
+                return 5672;
+            }
+        }
+
+        public string RabbitMQRequestQueue
+        {
+            get {
+                switch(Environment)
+                    {
+					    case SiteEnvironment.DEV:
+					    case SiteEnvironment.LOCAL1:
+                            return "OWP.Request.Queue";
+					    case SiteEnvironment.LOCAL2:
+                            return "OWP.Request.Queue.2";
+					    case SiteEnvironment.LOCAL3:
+                            return "OWP.Request.Queue.3";
+					    case SiteEnvironment.UAT1:
+                            return "OWP.Request.Queue";
+					    case SiteEnvironment.UAT2:
+                            return "OWP.Request.Queue.2";
+					    case SiteEnvironment.UAT3:
+                            return "OWP.Request.Queue.3";
+                        case SiteEnvironment.PRO:
+                        case SiteEnvironment.AWS:
+                            return "OWP.Request.Queue";
+                        default:
+                            return "";
+                    }
+                }
+        }
+
+        #endregion End for Webconfig file
+    }
+#>

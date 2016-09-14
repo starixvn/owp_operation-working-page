@@ -1,0 +1,110 @@
+﻿namespace Fanex.NAP.OWP.TaskScheduling.Service.Implement
+{
+
+    using global::OWP.Enumerations;
+    using global::OWP.EventAssignment.Models;
+    using global::OWP.Utils;
+    using Models.EventAssignment;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using EventModel = Models.EventAssignment.EventModel;
+
+    public interface EventAssignmentExportFilter
+    {
+        List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus);
+        List<EventModel> FilterEventModelByPermision(List<EventModel> events, EventAssignmentPermissionModel permission);
+        List<EventModel> FilterEventModelByUser(List<EventModel> events, string username);
+        List<EventModel> FilterMatchesByTimeRange(List<EventModel> matches);
+    }
+
+    public class EventAssignmentExportFilterImp : EventAssignmentExportFilter
+    {
+
+        public List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus)
+        {
+            events = FilterEventModelByUser(events, username);
+            events = FilterEventModelByPermision(events, permission);
+            events = FilterEventModelBySyncLiveStatus(events, liveStatus);
+
+            return events;
+        }
+
+        public static List<EventModel> FilterEventModelBySyncLiveStatus(List<EventModel> events, int liveStatus)
+        {
+            if (liveStatus == (int)SyncLiveFilter.All)
+            {
+                return events;
+            }
+
+            return liveStatus == (int)SyncLiveFilter.Live
+                ? events.Where(i => i.IsSyncLive).ToList()
+                : events.Where(i => !i.IsSyncLive).ToList();
+        }
+
+        public List<EventModel> FilterEventModelByPermision(List<EventModel> events, EventAssignmentPermissionModel permission)
+        {
+            if (!permission.FullTimeView.IsRead)
+            {
+                events = FilterMatchesByTimeRange(events);
+
+            }
+
+            if (!permission.LiveGameAssignment_FullBetTypes.IsRead)
+            {
+                events.ForEach(eventModel =>
+                               {
+                                   eventModel.Assignments.Handicap = new HandicapAssignmentModel();
+                                   eventModel.Assignments.Handicap1st = new Handicap1stAssignmentModel();
+                                   eventModel.Assignments.OverUnder = new OverUnderAssignmentModel();
+                                   eventModel.Assignments.OverUnder1st = new OverUnder1stAssignmentModel();
+                                   eventModel.Assignments.Specific10Mins = new Specific10MinsAssignmentModel();
+                                   eventModel.Assignments.Specific15Mins = new Specific15MinsAssignmentModel();
+                               });
+            }
+            return events;
+        }
+
+        public List<EventModel> FilterMatchesByTimeRange(List<EventModel> matches)
+        {
+            var dateTime = DateTime.Now.ToGmt8();
+            var timeRange = dateTime.TimeRangeOfDate();
+
+            return matches.Where(m => timeRange.CheckMatch(m.EventDateTime).IsMatchInTimeRange)
+                .ToList();
+        }
+
+        public List<EventModel> FilterEventModelByUser(List<EventModel> events, string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return events;
+            }
+
+            return events.Where(
+                e =>
+                    e.Assignments.OneXTwo.MainTrader == username
+                    || e.Assignments.OneXTwo.OtherTraders.Contains('#' + username)
+                    || e.Assignments.FM.MainTrader == username
+                    || e.Assignments.FM.OtherTraders.Contains('#' + username)
+                    || e.Assignments.AIO.MainTrader == username
+                    || e.Assignments.AIO.OtherTraders.Contains('#' + username)
+                    || e.Assignments.Handicap.MainTrader == username
+                    || e.Assignments.Handicap.OtherTraders.Contains('#' + username)
+                    || e.Assignments.Handicap1st.MainTrader == username
+                    || e.Assignments.Handicap1st.OtherTraders.Contains('#' + username)
+                    || e.Assignments.OverUnder.MainTrader == username
+                    || e.Assignments.OverUnder.OtherTraders.Contains('#' + username)
+                    || e.Assignments.OverUnder1st.MainTrader == username
+                    || e.Assignments.OverUnder1st.OtherTraders.Contains('#' + username)
+                    || e.Assignments.OneXTwo1st.MainTrader == username
+                    || e.Assignments.OneXTwo1st.OtherTraders.Contains('#' + username)
+                    || e.Assignments.Specific15Mins.MainTrader == username
+                    || e.Assignments.Specific15Mins.OtherTraders.Contains('#' + username)
+                    || e.Assignments.Specific10Mins.MainTrader == username
+                    || e.Assignments.Specific10Mins.OtherTraders.Contains('#' + username)
+                    || e.Assignments.LA2nd.MainTrader == username
+                    || e.Assignments.LA2nd.OtherTraders.Contains('#' + username)).ToList();
+        }
+    }
+}

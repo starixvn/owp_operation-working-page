@@ -1,0 +1,790 @@
+﻿@using OWP.Utils;
+@using OWP.Resources
+@using Fanex.NAP.OWP.Core.Helpers
+@using Fanex.NAP.OWP.TaskScheduling.Models.TaskListToday
+@using NPOI.SS.Formula.Functions
+@model TaskListModel
+
+@helper RenderContactInfo(Assignment assignment, string dropdownId)
+{
+    <ul id="@dropdownId" class="dropdown-content">
+        @if (!string.IsNullOrWhiteSpace(assignment.Skype))
+        {
+            var skypeChat = "skype:" + assignment.Skype + "?chat";
+            <li>
+                <a class="link-skype" href="@skypeChat">
+                    <i class="mdi mdi-skype icon-skype"></i>
+                    <span class="skype-value">@assignment.Skype</span>
+                </a>
+            </li>
+        }
+        @if (!string.IsNullOrWhiteSpace(assignment.Extension))
+        {
+            <li>
+                <a href="javascript:;">
+                    <i class="mdi mdi-deskphone icon-phone"></i>
+                    <span class="extension-value">@assignment.Extension</span>
+                </a>
+            </li>
+        }
+        @if (!string.IsNullOrWhiteSpace(assignment.Phone))
+        {
+            <li>
+                <a href="javascript:;">
+                    <i class="mdi mdi-cellphone-iphone icon-phone"></i>
+                    <span class="phone-value">@assignment.Phone</span>
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+@helper RenderAssignment(IEnumerable<Assignment> assignments)
+{
+    foreach (Assignment assignment in assignments)
+    {
+        <p>
+            @if (!assignment.IsCurrentUser && assignment.IsHasContactInfo)
+            {
+                var dropdownId = string.Format("dropdown{0}", Guid.NewGuid().ToString("N"));
+
+                @RenderUserNameHasContact(dropdownId, assignment.Username)
+
+                @RenderContactInfo(assignment, dropdownId)
+
+            }
+            else
+            {
+
+                @RenderUserNameNormal(assignment.Username, assignment.IsCurrentUser)
+
+            }
+        </p>
+    }
+}
+
+@helper RenderAssignmentOthers(IEnumerable<Assignment> assignments)
+{
+    foreach (Assignment assignment in assignments)
+    {
+        <p>
+            <span class="other-assignee">
+                @if (!assignment.IsCurrentUser && assignment.IsHasContactInfo)
+                {
+                    var dropdownId = string.Format("dropdown{0}", Guid.NewGuid().ToString("N"));
+
+                    @Html.Raw(assignment.AssignmentNote.ReplaceFirstOccurrence("#<user>", RenderUserNameHasContact(dropdownId, assignment.Username).ToString()))
+
+                    @RenderContactInfo(assignment, dropdownId)
+
+                }
+                else
+                {
+
+                    @Html.Raw(assignment.AssignmentNote.ReplaceFirstOccurrence("#<user>", RenderUserNameNormal(assignment.Username, assignment.IsCurrentUser).ToString()))
+
+                }
+            </span>
+        </p>
+    }
+}
+
+@helper RenderUserNameHasContact(string dropdownId, string userName)
+{
+    <span class="assignee">
+        <a class="dropdown-button" href="javascript:;" data-activates="@dropdownId">@userName</a>
+    </span>
+
+}
+
+@helper RenderUserNameNormal(string userName, bool isCurrentUser)
+{
+    <span class="@(isCurrentUser ? "badge-label my-assign" : "assignee")">@userName</span>
+
+}
+
+@helper RenderTradingPopup(int matchId, string dropdownId, bool isFantasy, int? minorBettypeId)
+{
+    <ul id="@dropdownId" class="dropdown-content">
+        @RenderLaControllerItem(matchId, dropdownId)
+        @RenderTradingItem(dropdownId)
+        @if (isFantasy)
+        {
+            @RenderFantasySubItem(matchId, dropdownId)
+        }
+        else
+        {
+            @RenderOtherMatchSubItem(matchId, dropdownId, minorBettypeId)
+        }
+    </ul>
+
+
+}
+
+@helper RenderTradingItem(string dropdownId)
+{
+    <li>
+        <span>Live Trading</span>
+    </li>
+}
+
+@helper RenderLaControllerItem(int matchId, string dropdownId)
+{
+    var laPageUrl = string.Format("http://live.oneops.net:805/Live/OddsControl.aspx?matchid={0}&type=s", matchId);
+    <li>
+        <a href=@laPageUrl
+           rel="noopener noreferrer"
+           target="_blank">LA Controller</a>
+    </li>
+}
+
+@helper RenderOtherMatchSubItem(int matchId, string dropdownId, int? minorBettypeId)
+{
+    var cornersMatchIds = new List<int> { -3, -4 };
+    var isCornersMatch = minorBettypeId.HasValue && cornersMatchIds.Contains(minorBettypeId.Value);
+    var tradingPageMlUrl = string.Format("http://live.oneops.net/TradingAutomation/MLRobotControl.aspx?MatchId={0}", matchId);
+    var tradingPageRt2Url = string.Format("http://live.oneops.net/RobotTrader2/RobotTraderController.aspx?MatchId={0}", matchId);
+    var tradingPageCornersRt3Url = string.Format("http://live.oneops.net/RobotTrader3/Robot3ChildMatchControl.aspx?MatchId={0}&rbtVer=7", matchId);
+    var tradingPageRt3Url = string.Format("http://live.oneops.net/RobotTrader3/RobotTrader3Control.aspx?MatchId={0}", matchId);
+    var tradingPageStmUrl = string.Format("http://live.oneops.net/FutsalRobot/FutsalRobotControl.aspx?MatchId={0}", matchId);
+    var tradingPageLsport = string.Format("http://live.oneops.net/TradingAutomation/MLRobotLSportControl.aspx?MatchId={0}", matchId);
+
+    var rt3Url = minorBettypeId.HasValue && minorBettypeId.Value == -3 ? tradingPageCornersRt3Url : tradingPageRt3Url;
+    if (!isCornersMatch)
+    {
+        <li>
+            <a href=@tradingPageMlUrl
+               rel="noopener noreferrer"
+               target="_blank">ML</a>
+        </li>
+    }
+
+    <li>
+        <a href=@tradingPageRt2Url
+           rel="noopener noreferrer"
+           target="_blank">RT2</a>
+    </li>
+    <li>
+        <a href=@rt3Url
+           rel="noopener noreferrer"
+           target="_blank">RT3</a>
+    </li>
+    if (!isCornersMatch)
+    {
+        <li>
+            <a href=@tradingPageStmUrl
+               rel="noopener noreferrer"
+               target="_blank">STM</a>
+        </li>
+    }
+    <li>
+        <a href=@tradingPageLsport
+           rel="noopener noreferrer"
+           target="_blank">Lsport</a>
+    </li>
+}
+
+@helper RenderFantasySubItem(int matchId, string dropdownId)
+{
+    var tradingPageUrl = string.Format("http://live.oneops.net/FantasyRobot/FantasyRobotControl.aspx?MatchId={0}", matchId);
+    <li>
+        <a href=@tradingPageUrl
+           rel="noopener noreferrer"
+           target="_blank">Fantasy</a>
+    </li>
+}
+
+@helper RenderIconCopy(MatchInfo matchInfo)
+{
+    var koTime = string.Format("K.O Time: {0}", DateTime.Today.Add(matchInfo.KickOffTime).ToString("hh:mm tt"));
+    var league = string.Format("League: {0}", matchInfo.League);
+    var match = string.Format("Match: {0} -vs- {1}", matchInfo.Home, matchInfo.Away);
+    var matchId = string.Format("Match ID: {0}", matchInfo.AdminSiteId.ToString() ?? string.Empty);
+    var ipTV =string.Format("TV/IPTV: {0}", matchInfo.IPTVCopy ?? string.Empty);
+    var provider = string.Format("Provider: {0}", matchInfo.Provider ?? string.Empty);
+    <button onclick="executeCopy( '@koTime', '@league', '@match','@matchId','@ipTV', '@provider' )" class="copy-btn btn btn-primary"><span class="icon-content_copy"></span></button>
+}
+
+@helper RenderIconTrading(string dropdownId, string className)
+{
+    <span class="assignee assignee-trader @className">
+        <a class="dropdown-button" href="javascript:;" data-activates="@dropdownId"><span class="icon-link"></span></a>
+    </span>
+}
+
+@helper RenderMatchColumn(MatchInfo matchInfo, string className)
+{
+    if (Model.HasDetailInformationPermission && matchInfo.IsAllowedToViewDetail)
+    {
+        <a class="match-link js-openModalLiveDetail" href="javascript:;" match-id="@matchInfo.OWPMatchId">
+            <p class="home-team">@matchInfo.Home</p>
+            <p class="away-team">@matchInfo.Away</p>
+        </a>
+        <p class="match-code">@matchInfo.MatchCode</p>
+        <div class="list-button">
+            @if (@matchInfo.AdminSiteId.HasValue && @matchInfo.AdminSiteId.Value > 0)
+            {
+                var dropdownId = string.Format("dropdown{0:N}", Guid.NewGuid());
+                @RenderIconTrading(dropdownId, className);
+                @RenderTradingPopup(@matchInfo.AdminSiteId.Value, dropdownId, @matchInfo.IsFantasy, @matchInfo.MinorBettypeId);
+            }
+            @RenderIconCopy(@matchInfo)
+        </div>
+    }
+    else
+    {
+        <a>
+            <p class="home-team">@matchInfo.Home</p>
+            <p class="away-team">@matchInfo.Away</p>
+        </a>
+        <p class="match-code">@matchInfo.MatchCode</p>
+    }
+}
+
+@helper RenderRemarkColumn(MatchInfo matchInfo)
+{
+    var remark = new StringBuilder();
+
+    if (!string.IsNullOrWhiteSpace(matchInfo.Remark))
+    {
+        remark.AppendFormat("<p>{0},</p>", Html.Encode(matchInfo.Remark));
+    }
+
+    if (!string.IsNullOrWhiteSpace(matchInfo.Round))
+    {
+        remark.AppendFormat(
+            "<p><b>Round</b>: {0}{1}</p>",
+            Html.Encode(matchInfo.Round),
+            !string.IsNullOrWhiteSpace(matchInfo.Division) || !string.IsNullOrWhiteSpace(matchInfo.Remark) ? "," : string.Empty);
+    }
+
+    if (!string.IsNullOrWhiteSpace(matchInfo.Division))
+    {
+        remark.AppendFormat(
+            "<p><b>Division</b>: {0}{1}</p>",
+            Html.Encode(matchInfo.Division),
+            !string.IsNullOrWhiteSpace(matchInfo.Remark) ? "" : string.Empty);
+    }
+
+    if (remark.Length > 0)
+    {
+        <div class="js-content-remark">
+            @Html.Raw(remark.ToString())
+        </div>
+    }
+}
+
+@helper RenderNoteColumn(MatchInfo matchInfo)
+{
+    if (matchInfo.TotalNotes > 0)
+    {
+        <div class="block-note">
+            <i class="icon mdi mdi-comment icon-note js-viewMatchNote tooltip-tipsy"
+               data-owpmatchid="@matchInfo.OWPMatchId" original-title="@ViewLang.Note"></i>
+            @if (matchInfo.IsHasNewNote)
+            {
+                <input class="js-newNote" type="checkbox" checked style="display: none;" data-matchid="@matchInfo.OWPMatchId" />
+                <div class="pulse-container">
+                    @*<svg class="pulse-svg" width="20px" height="20px" viewBox="0 0 50 50" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <circle class="circle first-circle" fill="#ff7779" cx="25" cy="25" r="25"></circle>
+                            <circle class="circle second-circle" fill="#ff7779" cx="25" cy="25" r="25"></circle>
+                            <circle class="circle third-circle" fill="#ff7779" cx="25" cy="25" r="25"></circle>
+                            <circle class="circle" fill="#ff7779" cx="25" cy="25" r="25"></circle>
+                        </svg>*@
+                    <div class="pulse-css"></div>
+                </div>
+            }
+        </div>
+        <div class="js-matchNotes" data-owpmatchid="@matchInfo.OWPMatchId" style="display: none;">
+            @foreach (var note in matchInfo.MatchNotes)
+            {
+                <p class="note-content" style="@(!note.IsViewed ? "font-weight: bold;" : string.Empty)">
+                    <span><span class="user">&#64;@note.Username </span><span>@note.Note</span></span>
+                    <span>(@note.LastUpdated.ToString("MM/dd/yyyy hh:mm tt"))</span>
+                </p>
+            }
+        </div>
+    }
+}
+
+@helper RenderTVColumn(MatchInfo matchInfo)
+{
+    if (!string.IsNullOrWhiteSpace(matchInfo.TelevisionToHtml))
+    {
+        <div class="js-content-tvcode">
+            @Html.Raw(matchInfo.TelevisionToHtml)
+        </div>
+    }
+
+    if (!string.IsNullOrWhiteSpace(matchInfo.Channel))
+    {
+        var dropdownId = string.Format("dropdown{0}", Guid.NewGuid().ToString("N"));
+        <div class="icon-bottom tv">
+            <span class="icon-channel has-info dropdown-button tooltip-tipsy"
+                  data-activates="@dropdownId" original-title="@ViewLang.Channel"></span>
+            <ul id="@dropdownId" class="dropdown-content">
+                <li><a href="javascript:;">@matchInfo.Channel</a></li>
+            </ul>
+        </div>
+    }
+}
+
+@helper RenderProviderColumn(MatchInfo matchInfo)
+{
+    <div class="js-content-provider">
+        @if (!string.IsNullOrWhiteSpace(matchInfo.Provider))
+        {
+            <p>@matchInfo.Provider</p>
+        }
+        @if (!string.IsNullOrWhiteSpace(matchInfo.WatchBet))
+        {
+            <p class="wb">@matchInfo.WatchBet</p>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(matchInfo.Phone))
+        {
+            <p class="phone"><i class="icon mdi mdi-phone"></i>@matchInfo.Phone</p>
+        }
+    </div>
+
+    if (!string.IsNullOrWhiteSpace(matchInfo.OtherProvider))
+    {
+        var dropdownId = string.Format("dropdown{0}", Guid.NewGuid().ToString("N"));
+        <div class="icon-bottom">
+            <i class="icon mdi mdi-format-list-bulleted icon-list-provider dropdown-button tooltip-tipsy"
+               data-activates="@dropdownId" original-title="@ViewLang.OtherProviderList"></i>
+            <ul id="@dropdownId" class="dropdown-content">
+
+                <li><a href="javascript:;">@matchInfo.OtherProvider</a></li>
+            </ul>
+        </div>
+    }
+}
+
+@helper RenderNoOfHDP(MatchInfo matchInfo)
+{
+    if (!string.IsNullOrEmpty(matchInfo.NoOfHDP))
+    {
+        <span class='badge-label badge-hdp-@matchInfo.NoOfHDPId'>@Html.Raw(matchInfo.NoOfHDP)</span>
+    }
+}
+
+@helper RenderMatchOffer(MatchInfo matchInfo)
+{
+    foreach (var matchOffer in matchInfo.MatchOffers)
+    {
+        <span class="badge-label match-offer">@matchOffer.MatchOfferValue</span>
+    }
+}
+
+@helper RenderMatchStatus(string matchStatus)
+{
+    switch (matchStatus)
+    {
+        case "Live":
+            <span class="badge-label live">@ViewLang.Live</span>
+            break;
+        case "In-play":
+            <span class="badge-label inplay">@ViewLang.InPlay</span>
+            break;
+        case "Completed":
+            <span class="badge-label completed">@ViewLang.Completed</span>
+            break;
+        case "Cancel":
+            <span class="badge-label cancelled">@ViewLang.Cancel</span>
+            break;
+        case "Postponed":
+            <span class="badge-label postponed">@ViewLang.Postponed</span>
+            break;
+        case "Suspended":
+            <span class="badge-label suspended">@ViewLang.Suspended</span>
+            break;
+        default:
+            <span class="badge-label live">@ViewLang.Live</span>
+            break;
+    }
+}
+
+@helper RenderIsReady(MatchInfo matchInfo)
+{
+
+    if (matchInfo.IsReady)
+    {
+        <i class="icon-success icon-green ft-22 tooltip-tipsy" original-title="Ready at @matchInfo.ReadyDateTime.ToString("hh:mm tt MMM dd, yyyy")"></i>
+    }
+
+    else
+    {
+        <div class="ready-checkbox">
+            <input type="checkbox" class="type-row filled-in checkbox" id="MatchReady-@matchInfo.OWPMatchId" data-matchid="@matchInfo.OWPMatchId">
+            <label for="MatchReady-@matchInfo.OWPMatchId"></label>
+        </div>
+    }
+}
+
+@helper RenderPesFifaIcon(MatchInfo matchInfo)
+{
+    if (matchInfo.IsPES)
+    {
+        <i class="icon-match icon-pes tooltip-tipsy" original-title="PES"></i>
+    }
+
+    if (matchInfo.IsFIFA)
+    {
+        <i class="icon-match icon-fifa tooltip-tipsy" original-title="FIFA"></i>
+    }
+}
+
+@if (Model.Matches.Any())
+{
+    int rowIndex = 1;
+    var dataLength = Model.Matches.Count();
+    var threeLastRow = new List<int>
+{
+        dataLength,
+        dataLength - 1,
+        dataLength - 2
+    };
+
+    var className = threeLastRow.Any(i => i == rowIndex)
+        ? "last-popup"
+        : null;
+    ;
+    foreach (MatchInfo matchInfo in Model.Matches)
+    {
+        var classMatchStatus = string.Empty;
+
+        switch (matchInfo.MatchStatus)
+        {
+            case "In-play":
+                classMatchStatus = "match-inplay";
+                break;
+            case "Cancel":
+            case "Postponed":
+                classMatchStatus = "match-cancelled";
+                break;
+            case "Suspended":
+                classMatchStatus = "match-suspended";
+                break;
+        }
+
+        var classIsMatchCompleted = matchInfo.IsCompletedMatch ? "main-completed" : string.Empty;
+        var classHideCompletedMatches = matchInfo.IsCompletedMatch && Model.IsHideCompletedMatches ? "hide" : string.Empty;
+        var fifaClass = matchInfo.IsFIFA ? "fifa" : "";
+        var pesClass = matchInfo.IsPES ? "pes" : "";
+        var fifaOrPesClass = fifaClass + pesClass;
+
+        var rowGroup = "row-group" + rowIndex;
+        var rowClass = string.Format("{0} {1} {2} {3} {4}", classMatchStatus, fifaOrPesClass, rowIndex % 2 == 0 ? "even" : "odd", classIsMatchCompleted, classHideCompletedMatches);
+
+        if (matchInfo.Rowspan == 2)
+        {
+            <tr class="@rowClass @rowGroup" data-row-group="@rowIndex">
+                <td rowspan="@matchInfo.Rowspan" class="center">
+                    @if (@matchInfo.MatchNo != string.Empty)
+                    {
+                        <span>@matchInfo.MatchNo</span><br />
+                    }
+                    @RenderMatchStatus(matchInfo.MatchStatus)
+                </td>
+                <td rowspan="@matchInfo.Rowspan" class="center">
+                    @Html.Raw(matchInfo.TimeToHtml)
+                    @RenderPesFifaIcon(matchInfo)
+                </td>
+                <td rowspan="@matchInfo.Rowspan">
+                    <p>@matchInfo.League</p>
+                    <p>
+                        @RenderNoOfHDP(matchInfo)
+                        @RenderMatchOffer(matchInfo)
+                    </p>
+                </td>
+                <td rowspan="@matchInfo.Rowspan">
+                    @RenderMatchColumn(matchInfo, className)
+                </td>
+                <td rowspan="@matchInfo.Rowspan" style="vertical-align: top;">
+                    <div class="js-container-remark">
+                        @RenderRemarkColumn(matchInfo)
+                    </div>
+                </td>
+                @if (Model.HasReadNotePermission)
+                {
+                    <td rowspan="@matchInfo.Rowspan" class="center">
+                        @RenderNoteColumn(matchInfo)
+                    </td>
+                }
+                <td class="bg-hdpou center">HDP</td>
+                <td class="bg-maxbet">
+                    @if (!string.IsNullOrWhiteSpace(@matchInfo.MatchSetting.Handicap.MaxbetSpreadToDisplay))
+                    {
+                        <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.Handicap.MaxbetSpreadToDisplay</span>
+                    }
+                </td>
+                <td>
+                    @RenderAssignment(matchInfo.Assignment.Handicap)
+                    @RenderAssignmentOthers(matchInfo.Assignment.HandicapOthers)
+                </td>
+                <td class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.Handicap1st.MaxbetSpreadToDisplay</span>
+                </td>
+                <td>
+                    @RenderAssignment(matchInfo.Assignment.Handicap1st)
+                    @RenderAssignmentOthers(matchInfo.Assignment.Handicap1stOthers)
+                </td>
+                <td class="bg1x2 center">FT1X2</td>
+                <td class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.OneXTwo.MaxbetSpreadToDisplay</span>
+                </td>
+                <td>
+                    @RenderAssignment(matchInfo.Assignment.OneXTwo)
+                    @RenderAssignmentOthers(matchInfo.Assignment.OneXTwoOthers)
+                </td>
+                <td rowspan="@matchInfo.Rowspan">
+                    @RenderAssignment(matchInfo.Assignment.LA)
+                    @RenderAssignmentOthers(matchInfo.Assignment.LAOthers)
+                </td>
+                <td rowspan="@matchInfo.Rowspan" class="js-dataTVIPTV" style="vertical-align: top;">
+                    <div class="dataTVIPTV-content">
+                        @RenderTVColumn(matchInfo)
+                    </div>
+                </td>
+                <td rowspan="@matchInfo.Rowspan" class="js-dataProvider" style="vertical-align: top;">
+                    <div class="dataProvider-content">
+                        @RenderProviderColumn(matchInfo)
+                    </div>
+                </td>
+                <td rowspan="@matchInfo.Rowspan" class="center">
+                    @RenderIsReady(matchInfo)
+                </td>
+            </tr>
+            <tr class="@rowClass @rowGroup" data-row-group="@rowIndex">
+                <td class="bg-hdpou center js-positionDisplayNotes" data-owpmatchid="@matchInfo.OWPMatchId">OU</td>
+                <td class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.OverUnder.MaxbetSpreadToDisplay</span>
+                </td>
+                <td>
+                    @RenderAssignment(matchInfo.Assignment.OverUnder)
+                    @RenderAssignmentOthers(matchInfo.Assignment.OverUnderOthers)
+                </td>
+                <td class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.OverUnder1st.MaxbetSpreadToDisplay</span>
+                </td>
+                <td>
+                    @RenderAssignment(matchInfo.Assignment.OverUnder1st)
+                    @RenderAssignmentOthers(matchInfo.Assignment.OverUnder1stOthers)
+                </td>
+                <td class="bg1x2 center">HT1X2</td>
+                <td class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.OneXTwo1st.MaxbetSpreadToDisplay</span>
+                </td>
+                <td>
+                    @RenderAssignment(matchInfo.Assignment.OneXTwo1st)
+                    @RenderAssignmentOthers(matchInfo.Assignment.OneXTwo1stOthers)
+                </td>
+            </tr>
+        }
+        else
+        {
+            var ouSpecificBetTypeGroupListModel = new List<OUSpecificBetTypeGroupListModel>
+{
+new OUSpecificBetTypeGroupListModel
+{
+IsMajorBetType = true,
+BetTypeName = "FM",
+MaxbetSpread = matchInfo.MatchSetting.FastMarket.MaxbetSpreadToDisplay,
+
+IsHasMaxbetSpread = matchInfo.MatchSetting.FastMarket.IsHasMaxbetSpread,
+MainAssignment = matchInfo.Assignment.FastMarket,
+OthersAssignment = matchInfo.Assignment.FastMarketOthers
+},
+new OUSpecificBetTypeGroupListModel
+{
+IsMajorBetType = true,
+BetTypeName = "AIO",
+MaxbetSpread = "",
+
+IsHasMaxbetSpread = false,
+MainAssignment = matchInfo.Assignment.AllInOne,
+OthersAssignment = matchInfo.Assignment.AllInOneOthers
+},
+new OUSpecificBetTypeGroupListModel
+{
+IsMajorBetType = false,
+BetTypeName = "15mins",
+MaxbetSpread = matchInfo.MatchSetting.Specific15Mins.MaxbetSpreadToDisplay,
+
+IsHasMaxbetSpread = matchInfo.MatchSetting.Specific15Mins.IsHasMaxbetSpread,
+MainAssignment = matchInfo.Assignment.Specific15Mins,
+OthersAssignment = matchInfo.Assignment.Specific15MinsOthers
+},
+new OUSpecificBetTypeGroupListModel
+{
+IsMajorBetType = false,
+BetTypeName = "10mins",
+MaxbetSpread = matchInfo.MatchSetting.Specific10Mins.MaxbetSpreadToDisplay,
+
+IsHasMaxbetSpread = matchInfo.MatchSetting.Specific10Mins.IsHasMaxbetSpread,
+MainAssignment = matchInfo.Assignment.Specific10Mins,
+OthersAssignment = matchInfo.Assignment.Specific10MinsOthers
+}
+}.Where(model => (model.MainAssignment.Any() || model.IsHasMaxbetSpread)).ToList();
+            var ouRowspan = ouSpecificBetTypeGroupListModel.Count();
+            <tr class="@rowClass @rowGroup" data-row-group="@rowIndex">
+                <td rowspan="@matchInfo.Rowspan" class="center">
+                    @if (@matchInfo.MatchNo != string.Empty)
+                    {
+                        <span>@matchInfo.MatchNo</span><br />
+                    }
+                    @RenderMatchStatus(matchInfo.MatchStatus)
+                </td>
+                <td rowspan="@matchInfo.Rowspan" class="center">
+                    @Html.Raw(matchInfo.TimeToHtml)
+                </td>
+                <td rowspan="@matchInfo.Rowspan">
+                    <p>@matchInfo.League</p>
+                    <p>
+                        @RenderNoOfHDP(matchInfo)
+                        @RenderMatchOffer(matchInfo)
+                    </p>
+                </td>
+                <td rowspan="@matchInfo.Rowspan">
+                    @RenderMatchColumn(matchInfo, className)
+                </td>
+                <td rowspan="@matchInfo.Rowspan" style="vertical-align: top;">
+                    <div class="js-container-remark">
+                        @RenderRemarkColumn(matchInfo)
+                    </div>
+                </td>
+                @if (Model.HasReadNotePermission)
+                {
+                    <td rowspan="@matchInfo.Rowspan" class="center">
+                        @RenderNoteColumn(matchInfo)
+                    </td>
+                }
+                <td rowspan="2" class="bg-hdpou center">HDP</td>
+                <td rowspan="2" class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.Handicap.MaxbetSpreadToDisplay</span>
+                </td>
+                <td rowspan="2">
+                    @RenderAssignment(matchInfo.Assignment.Handicap)
+                    @RenderAssignmentOthers(matchInfo.Assignment.HandicapOthers)
+                </td>
+                <td rowspan="2" class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.Handicap1st.MaxbetSpreadToDisplay</span>
+                </td>
+                <td rowspan="2">
+                    @RenderAssignment(matchInfo.Assignment.Handicap1st)
+                    @RenderAssignmentOthers(matchInfo.Assignment.Handicap1stOthers)
+                </td>
+                <td class="bg1x2 center"><span class="span-1x2">FT1X2</span></td>
+                <td class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.OneXTwo.MaxbetSpreadToDisplay</span>
+                </td>
+                <td>
+                    @RenderAssignment(matchInfo.Assignment.OneXTwo)
+                    @RenderAssignmentOthers(matchInfo.Assignment.OneXTwoOthers)
+                </td>
+                <td rowspan="@matchInfo.Rowspan">
+                    @RenderAssignment(matchInfo.Assignment.LA)
+                    @RenderAssignmentOthers(matchInfo.Assignment.LAOthers)
+                </td>
+                <td rowspan="@matchInfo.Rowspan" class="js-dataTVIPTV" style="vertical-align: top;">
+                    <div class="dataTVIPTV-content">
+                        @RenderTVColumn(matchInfo)
+                    </div>
+                </td>
+                <td rowspan="@matchInfo.Rowspan" class="js-dataProvider" style="vertical-align: top;">
+                    <div class="dataProvider-content">
+                        @RenderProviderColumn(matchInfo)
+                    </div>
+                </td>
+                <td rowspan="@matchInfo.Rowspan" class="center">
+                    @RenderIsReady(matchInfo)
+                </td>
+            </tr>
+            <tr class="@rowClass @rowGroup" data-row-group="@rowIndex">
+                <td class="bg1x2 center"><span class="span-1x2">HT1X2</span></td>
+                <td class="bg-maxbet">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.OneXTwo1st.MaxbetSpreadToDisplay</span>
+                </td>
+                <td>
+                    @RenderAssignment(matchInfo.Assignment.OneXTwo1st)
+                    @RenderAssignmentOthers(matchInfo.Assignment.OneXTwo1stOthers)
+                </td>
+            </tr>
+            <tr class="@rowClass @rowGroup" data-row-group="@rowIndex">
+                <td rowspan="@ouRowspan" class="bg-hdpou center js-positionDisplayNotes" data-owpmatchid="@matchInfo.OWPMatchId"><span class="span-hdpou"></span>OU</td>
+                <td rowspan="@ouRowspan" class="bg-maxbet js-dataMaxbetHDPOU">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.OverUnder.MaxbetSpreadToDisplay</span>
+                </td>
+                <td rowspan="@ouRowspan" class="js-dataFullTimeTrader">
+                    @RenderAssignment(matchInfo.Assignment.OverUnder)
+                    @RenderAssignmentOthers(matchInfo.Assignment.OverUnderOthers)
+                </td>
+                <td rowspan="@ouRowspan" class="bg-maxbet js-dataFirstHalfTrader">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@matchInfo.MatchSetting.OverUnder1st.MaxbetSpreadToDisplay</span>
+                </td>
+                <td rowspan="@ouRowspan" class="js-dataFirstHalfTrader">
+                    @RenderAssignment(matchInfo.Assignment.OverUnder1st)
+                    @RenderAssignmentOthers(matchInfo.Assignment.OverUnder1stOthers)
+                </td>
+                <td class='@(ouSpecificBetTypeGroupListModel[0].IsMajorBetType?"bg1x2":"bg-mins") center'>@ouSpecificBetTypeGroupListModel[0].BetTypeName</td>
+                <td class="bg-maxbet js-dataMaxbet1x2">
+                    <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@ouSpecificBetTypeGroupListModel[0].MaxbetSpread</span>
+                </td>
+                <td class="js-dataSpecialProduct">
+                    @RenderAssignment(@ouSpecificBetTypeGroupListModel[0].MainAssignment)
+                    @RenderAssignmentOthers(@ouSpecificBetTypeGroupListModel[0].OthersAssignment)
+                </td>
+            </tr>
+            for (var i = 1; i < ouSpecificBetTypeGroupListModel.Count(); i++)
+            {
+                <tr class="@rowClass @rowGroup" data-row-group="@rowIndex">
+                    <td class='@(ouSpecificBetTypeGroupListModel[i].IsMajorBetType?"bg1x2":"bg-mins") center'>@ouSpecificBetTypeGroupListModel[i].BetTypeName</td>
+                    <td class="bg-maxbet js-dataMaxbet1x2">
+                        <span class="maxbet tooltip-tipsy" original-title="Maxbet/Spread of MBC">@ouSpecificBetTypeGroupListModel[i].MaxbetSpread</span>
+                    </td>
+                    <td class="js-dataSpecialProduct">
+                        @RenderAssignment(ouSpecificBetTypeGroupListModel[i].MainAssignment)
+                        @RenderAssignmentOthers(@ouSpecificBetTypeGroupListModel[i].OthersAssignment)
+                    </td>
+                </tr>
+            }
+        }
+        <tr class="fake-data">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        rowIndex++;
+    }
+}
+else
+{
+    <tr><td colspan="18" class="center">@ViewLang.NoData</td></tr>
+}
+
+<style type="text/css">
+    .table-tasklist .icon-bottom .icon-channel {
+        background: url(@Url.Content("~/Content/Themes/images/channeldark.png")) no-repeat;
+    }
+
+    .table-tasklist .icon-bottom .icon-channel.has-info {
+        background-image: url(@Url.Content("~/Content/Themes/images/channelblue.png"));
+    }
+</style>

@@ -1,0 +1,240 @@
+﻿@using OWP.Models;
+@using OWP.Utils;
+@using OWP.Resources;
+
+@model OWP.UserManagement.Models.FilterViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = ViewLang.UserManagement;
+}
+
+@section css
+{
+    @Styles.Render("~/Styles/UserManagement")
+
+}
+
+<div class="body-content">
+
+@Html.Hidden("invalidFormatEmail", ViewLang.InvalidFormatEmail)
+<form class="filter user-management">
+
+    <div class="row margin-bottom-0">
+
+        <div class="input-field col input--m has-margin">
+            <div class="label">@ViewLang.User</div>
+            <input value="" name="user" type="text" placeholder="Account Name or Nick Name">
+        </div>
+
+        <div class="input-field col input--m has-margin">
+            <div class="label">@ViewLang.Role</div>
+            <select class="js-select" name="RoleId">
+                <option value="" selected>@ViewLang.All</option>
+                @foreach (var role in Model.Roles)
+                {
+                    <option value="@role.ResourceId">@role.Value</option>
+                }
+                <option value="0">None</option>
+            </select>
+        </div>
+
+        <div class="input-field col input--m has-margin">
+            <div class="label">@ViewLang.Section</div>
+            <select class="js-select" name="SectionId">
+                @if (Model.Permission.UserManagementAllSections.IsRead)
+                {
+                    <option value="" selected>@ViewLang.All</option>
+                }
+                @foreach (var item in Model.Sections)
+                {
+                    <option value="@item.ResourceId">@item.Value</option>
+                }
+                @if (Model.Permission.UserManagementAllSections.IsRead || !Model.Sections.Any())
+                {
+                    <option value="0">None</option>
+                }
+            </select>
+        </div>
+
+        <div class="input-field col input--m has-margin">
+            <div class="label">Department</div>
+            <select class="js-select" name="DepartmentId">
+                <option value="" selected>@ViewLang.All</option>
+                @foreach (var item in Model.Departments)
+                {
+                    <option value="@item.ResourceId">@item.Value</option>
+                }
+                <option value="0">None</option>
+            </select>
+        </div>
+
+        <div class="input-field col input--100 has-margin">
+            <div class="label">Category</div>
+            <select class="js-select" name="CategoryId">
+                <option value="" selected>@ViewLang.All</option>
+                @foreach (var item in Model.Categories)
+                {
+                    <option value="@item.ResourceId">@item.Value</option>
+                }
+                <option value="0">None</option>
+            </select>
+        </div>
+
+        <div class="input-field col input--100 has-margin">
+            <div class="label">Location</div>
+            <select class="js-select" name="LocationCode">
+                <option value="" selected>@ViewLang.All</option>
+                @foreach (var item in Model.LocationCodes)
+                {
+                    <option value="@item.Value">@item.Value</option>
+                }
+                <option value="None">None</option>
+            </select>
+        </div>
+
+
+        @Html.HiddenFor(model => model.PageIndex)
+        @Html.HiddenFor(model => model.PageSize)
+
+        <div class="button-block col input-field">
+            <a class="waves-effect waves-light btn btn-search js-btnSearch">@ViewLang.Search</a>
+            <a href="javascript:;;" class="waves-effect waves-light btn btn-excel" style="margin-bottom: 0" id="btnExportToExcel">Export Excel</a>
+        </div>
+    </div>
+</form>
+
+<div class="table">
+    @if (Model.Permission.UserManagementAllSections.IsHost)
+    {
+        <a class="waves-effect waves-light btn btn-sync js-btnSync">Sync User</a>
+    }
+    <div id="js-listUsers"></div>
+</div>
+
+@RazorHelper.Pagination()
+
+<div class="js-template" style="display: none">
+    <div class="js-divRoles">
+        <div class="select-wrapper-default">
+            <select class="js-RoleId browser-default">
+                @foreach (var role in Model.Roles)
+                {
+                    <option value="@role.ResourceId">@role.Value</option>
+                }
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="js-divSection">
+        <div class="select-wrapper-default">
+            <select class="js-SectionId browser-default">
+                @foreach (var item in Model.Sections)
+                {
+                    <option value="@item.ResourceId">@item.Value</option>
+                }
+                @if (Model.Permission.UserManagementAllSections.IsRead|| !Model.Sections.Any())
+                {
+                    <option value=""></option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="js-divDepartment">
+        <div class="select-wrapper-default">
+            <select class="js-DepartmentId browser-default">
+                @foreach (var item in Model.Departments)
+                {
+                    <option value="@item.ResourceId">@item.Value</option>
+                }
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="js-divCategory">
+        <div class="select-wrapper-default">
+            <select class="js-CategoryId browser-default">
+                @foreach (var item in Model.Categories)
+                {
+                    <option value="@item.ResourceId">@item.Value</option>
+                }
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="js-divLocationCode">
+        <div class="select-wrapper-default">
+            <select class="js-LocationCode browser-default">
+                @foreach (var item in Model.LocationCodes)
+                {
+                    var flagCode = UserHelper.GetFlagCodeFromLocationCode(item.Value);
+                    <option value="@item.Value" data-icon="/Content/Themes/fonts/flags/flags/@(flagCode).svg" class="left">@item.Value</option>
+                }
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="js-divPickup">
+        <div class="select-wrapper-default">
+            <select class="js-Pickup browser-default">
+                <option value="true" class="left">Yes</option>
+                <option value="false" class="left">No</option>
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="js-divUserGroup">
+        <div class="select-wrapper-default">
+            <select class="js-UserGroup browser-default">
+                <option value=""></option>
+                <optgroup label="CTI LA - Supervisor/Leader">
+                    @for (var i = 0; i <= 1; i++)
+                    {
+                        <option value="@Model.UserGroups[i].ResourceId" class="left">@Model.UserGroups[i].Value</option>
+                    }
+                </optgroup>
+                <optgroup label="CTI LA - Staff">
+                    @for (var i = 2; i <= 3; i++)
+                    {
+                        <option value="@Model.UserGroups[i].ResourceId" class="left">@Model.UserGroups[i].Value</option>
+                    }
+                </optgroup>
+                <optgroup label="SMS LA - Supervisor/Leader">
+                    @for (var i = 4; i <= 9; i++)
+                    {
+                        <option value="@Model.UserGroups[i].ResourceId" class="left">@Model.UserGroups[i].Value</option>
+                    }
+                </optgroup>
+                <optgroup label="SMS LA - Staff">
+                    @for (var i = 10; i <= 14; i++)
+                    {
+                        <option value="@Model.UserGroups[i].ResourceId" class="left">@Model.UserGroups[i].Value</option>
+                    }
+                </optgroup>
+                <optgroup label="Others">
+                    @for (var i = 15; i < Model.UserGroups.Count; i++)
+                    {
+                        <option value="@Model.UserGroups[i].ResourceId" class="left">@Model.UserGroups[i].Value</option>
+                    }
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    <div class="js-divIsSecondAccount">
+        <div class="select-wrapper-default">
+            <select class="js-IsSecondAccount browser-default">
+                <option value="true" class="left">Yes</option>
+                <option value="false" class="left">No</option>
+            </select>
+        </div>
+    </div>
+</div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/UserManagement")
+
+    <script>
+        var languageIds = '@string.Join(",", Model.Languages.Select(x => x.ResourceId))';
+        var languageTexts = '@string.Join(",", Model.Languages.Select(x => x.Value))';
+    </script>
+}

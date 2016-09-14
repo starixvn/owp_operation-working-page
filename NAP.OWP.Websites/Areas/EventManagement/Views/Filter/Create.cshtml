@@ -1,0 +1,68 @@
+﻿@using OWP.Resources
+@using Fanex.NAP.OWP.EventManagement.ViewModels.Filter
+@model CreatingFilterViewModel
+@{
+    Layout = null;
+    DateTime today = DateTime.Now,
+    tomorrow = today.AddDays(1),
+    yesterday = today.AddDays(-1);
+}
+
+<form class="filter js-advanceFilter">
+    @Html.Hidden("ToDay", today)
+    @Html.Hidden("Tomorrow", tomorrow)
+    @Html.Hidden("Yesterday", yesterday)
+
+    <div class="row filter-name">
+        @if (Model.Filter == null)
+        {
+            <span>@ViewLang.NewFilter</span>
+            <input id="editingFilterId" type="hidden" value="0" />
+        }
+        else
+        {
+            <span>@ViewLang.EditFilter - @Model.Filter.Name</span>
+            <input id="editingFilterId" type="hidden" value="@Model.Filter.FilterId" />
+        }
+    </div>
+
+    <div class="row more-condition">
+
+        <div class="input-field col input--m">
+            <a class="dropdown-button waves-effect waves-light btn btn-moreCondition" data-activates="js-moreFilter">
+                @ViewLang.MoreCondition
+            </a>
+
+            <ul id="js-moreFilter" class="dropdown-content js-moreFilter more-filter">
+                @foreach (var item in Model.Conditions)
+                {
+                    <li>
+                        <input type="checkbox" class="filled-in checkbox" id="filter_@item.FieldId" data-value="@item.FieldId"
+                               @(item.IsRequired ? "disabled" : "") @(item.IsHasValue ? "checked" : "") />
+                        <label for="filter_@item.FieldId">@item.Text</label>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <!---------------------------- Btn Config Column Table -------------------------------->
+        <!---------------------------- End Btn Config Column Table -------------------------------->
+    </div>
+
+    <div class="row margin-bottom-0 js-controlFilter control-filter">
+        @foreach (var field in Model.AddedField)
+        {
+            @Html.Partial("_AddConditionControl", field)
+        }
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row margin-bottom-0">
+        <div class="button-block col no-pad-top">
+            <a class="waves-effect waves-light btn btn-cancel" id="js-btnCancel">@ViewLang.Cancel</a>            
+            <a class="waves-effect waves-light btn btn-add" id="js-btnSaveFilter">@ViewLang.Save</a>
+            <a class="waves-effect waves-light btn btn-search" id="js-btnSearch">@ViewLang.Search</a>
+        </div>
+    </div>
+</form>

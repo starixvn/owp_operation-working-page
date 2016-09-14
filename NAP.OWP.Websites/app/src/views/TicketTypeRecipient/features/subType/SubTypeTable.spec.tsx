@@ -1,0 +1,41 @@
+import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
+import SubTypeTable from './SubTypeTable';
+import SubTypeRow from './SubTypeRow';
+
+jest.mock('./SubTypeRow', () => {
+  return jest.fn(() => null);
+});
+
+describe('SubTypeTable under test', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+  it('should render 2 rows', () => {
+    const subTypes = [
+      { typeId: 1, subtypeId: 0, subtypeName: 'sa1' },
+      { typeId: 1, subtypeId: 61, subtypeName: 'sa2' }
+    ];
+    const onUpdateSubType = jest.fn();
+    const props = {
+      subTypes,
+      onUpdateSubType
+    };
+
+    render(<SubTypeTable {...props} />);
+
+    expect(SubTypeRow).toBeCalledTimes(2);
+  });
+  it('should render 0 rows', () => {
+    const subTypes = [];
+    const onUpdateSubType = jest.fn();
+    const props = {
+      subTypes,
+      onUpdateSubType
+    };
+
+    render(<SubTypeTable {...props} />);
+
+    expect(SubTypeRow).toBeCalledTimes(0);
+  });
+});

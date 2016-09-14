@@ -1,0 +1,41 @@
+{
+  "DATE": "date",
+  "FILTER_MATCH": "filterMatch",
+  "SELECT_GAME": "selectGame",
+  "HAS_PROVIDER": "hasProvider",
+  "HAS_OTHER_PROVIDER": "hasOtherProvider",
+  "SELECT_GAME_OPTIONS": [
+    {
+      "value": 1,
+      "label": "No Offer (x)"
+    },
+    {
+      "value": 0,
+      "label": "Offer"
+    }
+  ],
+  "FILTER_MATCH_OPTIONS": [
+    {
+      "value": "Gray",
+      "label": "Gray"
+    },
+    {
+      "value": "Red",
+      "label": "Red"
+    },
+    {
+      "value": "White",
+      "label": "White"
+    }
+  ],
+  "HAS_PROVIDER_OPTIONS": [
+    {
+      "value": "yes",
+      "label": "Yes"
+    },
+    {
+      "value": "no",
+      "label": "No"
+    }
+  ]
+}

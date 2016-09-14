@@ -1,0 +1,167 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Areas/Administration/Resources/SystemConfiguration/SystemConfiguration.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="body-content">
+
+        <div class="row">
+            <div class="col">
+                <a class="waves-effect waves-light btn btn-add" href="#">
+                    <i class="mdi mdi-plus"></i>
+                    <span>Add</span>
+                </a>
+            </div>
+        </div>        
+        
+        <div class="table">
+            <table class="highlight striped">
+                <thead>
+                    <tr>
+                        <th class="center no-col">#</th>
+                        <th>Minor Bet Type</th>
+                        <th>Minor Match</th>
+                        <th>Active</th>
+                        <th class="action-col">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr class="editable">
+                        <td class="center">1</td>
+                        <td><input value="Specific 15 mins HDP" id="username" type="text" /></td>
+                        <td>
+                            <select class="js-select">
+                                <option value="1">Specific 15 mins</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="checkbox-item">
+                                <input type="checkbox" class="filled-in" id="check-1" checked />
+                                <label for="check-1"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="mdi mdi-check icon icon-check waves-effect waves-green"></i>
+                            <i class="mdi mdi-close icon icon-close waves-effect waves-red"></i>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="center">2</td>
+                        <td><input value="Specific 15 mins O/U" id="username" type="text" /></td>
+                        <td>
+                            <select class="js-select">
+                                <option value="1">Specific 15 mins</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="checkbox-item">
+                                <input type="checkbox" class="filled-in" id="check-2"/>
+                                <label for="check-2"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="mdi mdi-pencil icon icon-edit waves-effect waves-orange"></i>
+                            <i class="mdi mdi-delete icon icon-delete waves-effect waves-red"></i>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="center">3</td>
+                        <td><input value="No.of Corners HDP" id="username" type="text" /></td>
+                        <td>
+                            <select class="js-select">
+                                <option value="1">No.of Corners</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="checkbox-item">
+                                <input type="checkbox" class="filled-in" id="check-3"/>
+                                <label for="check-3"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="mdi mdi-pencil icon icon-edit waves-effect waves-orange"></i>
+                            <i class="mdi mdi-delete icon icon-delete waves-effect waves-red"></i>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="center">4</td>
+                        <td><input value="No.of Corners O/U" id="username" type="text" /></td>
+                        <td>
+                            <select class="js-select">
+                                <option value="1">No.of Corners</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="checkbox-item">
+                                <input type="checkbox" class="filled-in" id="check-4" />
+                                <label for="check-4"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="mdi mdi-pencil icon icon-edit waves-effect waves-orange"></i>
+                            <i class="mdi mdi-delete icon icon-delete waves-effect waves-red"></i>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="center">5</td>
+                        <td><input value="No.of Corners 1H HDP" id="username" type="text" /></td>
+                        <td>
+                            <select class="js-select">
+                                <option value="1">No.of Corners</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="checkbox-item">
+                                <input type="checkbox" class="filled-in" id="check-5" />
+                                <label for="check-5"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="mdi mdi-pencil icon icon-edit waves-effect waves-orange"></i>
+                            <i class="mdi mdi-delete icon icon-delete waves-effect waves-red"></i>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="pagination">
+                <div class="detailtext left">Showing <span>1</span> to <span>20</span> of <span>142</span> entries</div>
+                <ul class="border right">
+                    <li class="footable-page-arrow"><a data-page="prev" href="#prev"><i class="icon mdi mdi-chevron-left"></i></a></li>
+                    <li class="footable-page"><a data-page="0" href="#">1</a></li>
+                    <li class="footable-page"><a data-page="1" href="#">2</a></li>
+                    <li class="footable-page active"><a data-page="2" href="#">3</a></li>
+                    <li class="footable-page-arrow disabled"><a data-page="next" href="#next"><i class="icon mdi mdi-chevron-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

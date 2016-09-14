@@ -1,0 +1,264 @@
+﻿@using OWP.Resources
+@using Fanex.NAP.OWP.Core.Helpers
+@using Fanex.NAP.OWP.EventManagement.Enumerations
+@using Fanex.NAP.OWP.EventManagement.ViewModels.Filter
+
+@model AddConditionControlViewModel
+
+@{
+    var fieldId = Model.FieldId;
+    var moreThanValue = string.Empty;
+    var lessThanValue = string.Empty;
+    var likeValue = Model.Value ?? string.Empty;
+}
+
+@switch (fieldId)
+{
+    case (int)FilterFieldType.EventDate:
+        var dateValue = string.Empty;
+        var selectedOption = 0;
+
+        if (Model.EventDate != null)
+        {
+            dateValue = Model.EventDate.DateValue;
+            selectedOption = Model.EventDate.SelectedOption;
+        }
+
+        <div class="input-field col input--m has-margin">
+            <div class="label">@ViewLang.EventDate</div>
+
+            <select class="js-select js-eventDate" data-id="@fieldId" data-operator="@((int)FilterOperation.Equal)">
+                @foreach (RangeDate dateRange in (RangeDate[])Enum.GetValues(typeof(RangeDate)))
+                {
+                    var value = (int)dateRange;
+
+                    <option value="@value" data-id="@fieldId" data-operator="@((int)FilterOperation.Equal)">@HelperService.GetViewLangeByKey(dateRange.ToString())</option>
+                }
+            </select>
+            <input class="js-current-eventDate" type="hidden" value="@selectedOption">
+        </div>
+        <div class="input-field col calendar input--m has-margin" id="customDate">
+            <div class="label">@ViewLang.Date</div>
+
+            @Html.TextBox("Date", dateValue, new { @class = "js-calendar", @readonly = "readonly" })
+            <i class="mdi mdi-calendar icon-calendar"></i>
+        </div>
+        break;
+    case (int)FilterFieldType.KOTime:
+        if (Model.RangeValue != null)
+        {
+            moreThanValue = Model.RangeValue.Small;
+            lessThanValue = Model.RangeValue.Big;
+        }
+        <div class="input-field col time input--m has-margin condition" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.KickoffTime</div>
+            <div class="hour input--s">
+                <input class="js-time" name="value" id="KOTimeFrom" type="text" autocomplete="off"
+                       data-operator="@((int)FilterOperation.MoreThanAndEqual)" value="@moreThanValue" placeholder="From" />
+            </div>
+            <div class="hour input--s">
+                <input class="js-time" name="value" id="KOTimeTo" type="text" autocomplete="off"
+                       data-operator="@((int)FilterOperation.LessThanAndEqual)" value="@lessThanValue" placeholder="To" />
+            </div>
+        </div>
+        break;
+    case (int)FilterFieldType.League:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">League</div>
+            <div class="js-league">
+                <ul class="js-defaultItems" style="display:none">
+                    @if (Model.Leagues != null)
+                    {
+                        foreach (var league in Model.Leagues)
+                        {
+                            <li data-id="@league.LeagueId" data-value="@league.Name"></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <input name="value" id="leagueIds" type="text" style="display: none;" autocomplete="off"
+                   data-operator="@((int)FilterOperation.In)" value="" />
+        </div>
+        break;
+    case (int)FilterFieldType.Assignee:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">Assignee</div>
+            <div class="js-employee">
+                <ul class="js-defaultItems" style="display:none">
+                    @if (Model.Assignees != null)
+                    {
+                        foreach (var assignee in Model.Assignees)
+                        {
+                            <li data-id="@assignee.UserId" data-value="@assignee.Username"></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <input name="value" id="assigneeIds" type="text" autocomplete="off"
+                   data-operator="@((int)FilterOperation.In)" value="" style="display: none;" />
+        </div>
+        break;
+    case (int)FilterFieldType.MaxBet:
+        if (Model.RangeValue != null)
+        {
+            moreThanValue = Model.RangeValue.Small;
+            lessThanValue = Model.RangeValue.Big;
+        }
+        <div class="input-field col input--m time has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.MaxBet (k)</div>
+            <div class="hour input--s">
+                <input name="value" id="maxbetFrom" type="text" class="maxbet" autocomplete="off"
+                       data-operator="@((int)FilterOperation.MoreThanAndEqual)" value="@moreThanValue" placeholder="From" />
+            </div>
+            <div class="hour input--s">
+                <input name="value" id="maxbetTo" type="text" class="maxbet" autocomplete="off"
+                       data-operator="@((int)FilterOperation.LessThanAndEqual)" value="@lessThanValue" placeholder="To" />
+            </div>
+        </div>
+        break;
+    case (int)FilterFieldType.Spread:
+        if (Model.RangeValue != null)
+        {
+            moreThanValue = Model.RangeValue.Small;
+            lessThanValue = Model.RangeValue.Big;
+        }
+        <div class="input-field col time input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.Spread (%)</div>
+            <div class="hour input--s">
+                <input class="spread" name="value" id="spreadFrom" type="text" autocomplete="off"
+                       data-operator="@((int)FilterOperation.MoreThanAndEqual)" value="@moreThanValue" placeholder="From" />
+            </div>
+            <div class="hour input--s">
+                <input class="spread" name="value" type="text" id="spreadTo" autocomplete="off"
+                       data-operator="@((int)FilterOperation.LessThanAndEqual)" value="@lessThanValue" placeholder="To" />
+            </div>
+        </div>
+        break;
+    case (int)FilterFieldType.Phone:
+        <div class="input-field col input--m  has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.Phone</div>
+            <div class="input--m">
+                <input name="value" type="text" id="phone" autocomplete="off" data-operator="@((int)FilterOperation.Like)" value="@likeValue" />
+            </div>
+        </div>
+        break;
+    case (int)FilterFieldType.Channel:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.IPTV</div>
+            <div class="input--m">
+                <input name="value" type="text" id="channel" autocomplete="off" data-operator="@((int)FilterOperation.Like)" value="@likeValue" />
+            </div>
+        </div>
+        break;
+    case (int)FilterFieldType.WatchBet:
+        <div class="input-field col input--m  has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.WB</div>
+            <div class="input--m">
+                <input name="value" type="text" id="watchBet" autocomplete="off" data-operator="@((int)FilterOperation.Like)" value="@likeValue" />
+            </div>
+        </div>
+        break;
+    case (int)FilterFieldType.HomeTeam:
+        <div class="input-field col input--m  has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.Home</div>
+            <div class="input--m">
+                <input name="value" type="text" id="homeName" autocomplete="off" data-operator="@((int)FilterOperation.Like)" value="@likeValue" />
+            </div>
+        </div>
+        break;
+    case (int)FilterFieldType.AwayTeam:
+        <div class="input-field col input--m  has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.Away</div>
+            <div class="input--m">
+                <input name="value" type="text" id="awayName" autocomplete="off" data-operator="@((int)FilterOperation.Like)" value="@likeValue" />
+            </div>
+        </div>
+        break;
+    case (int)FilterFieldType.TV:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.TV</div>
+            <select class="js-tags js-tvCode" multiple="multiple" data-id="@fieldId" data-operator="@((int)FilterOperation.In)">
+                <option value="0" disabled selected>Choose @ViewLang.TV</option>
+                @foreach (var tivi in Model.Tivies)
+                {
+                    <option value="@tivi.TVId" @(tivi.IsSelected ? "selected" : "")>@tivi.TVCode</option>
+                }
+            </select>
+        </div>
+        break;
+    case (int)FilterFieldType.OtherProvider:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.OtherProvider</div>
+            <select class="js-select js-otherProvider" multiple="multiple" data-id="@fieldId" data-operator="@((int)FilterOperation.In)">
+                <option value="0" disabled selected>Choose @ViewLang.OtherProvider</option>
+                @foreach (var otherProvider in Model.OtherProviders)
+                {
+                    <option value="@otherProvider.OtherProviderId" @(otherProvider.IsSelected ? "selected" : "")>@otherProvider.OtherProviderName</option>
+                }
+            </select>
+        </div>
+        break;
+    case (int)FilterFieldType.Provider:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.Provider</div>
+            <select class="js-select js-provider" multiple="multiple" data-id="@fieldId" data-operator="@((int)FilterOperation.In)">
+                <option value="0" disabled selected>Choose @ViewLang.Provider</option>
+                @foreach (var provider in Model.Providers)
+                {
+                    <option value="@provider.ProviderId" @(provider.IsSelected ? "selected" : "")>@provider.ProviderName</option>
+                }
+            </select>
+        </div>
+        break;
+    case (int)FilterFieldType.Agent:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.Agent</div>
+            <select class="js-select js-agent" multiple="multiple" data-id="@fieldId" data-operator="@((int)FilterOperation.In)">
+                <option value="0" disabled selected>@ViewLang.ChooseAgent</option>
+                @foreach (var agent in Model.Agents)
+                {
+                    <option value="@agent.AgentId" @(agent.IsSelected ? "selected" : "")>@agent.AgentName</option>
+                }
+            </select>
+        </div>
+        break;
+case (int)FilterFieldType.MatchNumber:
+    <div class="input-field col input--m  has-margin" id="field_@fieldId" data-id="@fieldId">
+        <div class="label">@ViewLang.MatchNumber</div>
+        <div class="input--m">
+            <input name="value" type="text" id="matchNumber" autocomplete="off" data-operator="@((int)FilterOperation.Like)" value="@likeValue" />
+        </div>
+    </div>
+    break;
+case (int)FilterFieldType.Remark:
+    <div class="input-field col input--m  has-margin" id="field_@fieldId" data-id="@fieldId">
+        <div class="label">@ViewLang.Remark</div>
+        <div class="input--m">
+            <input name="value" type="text" id="remark" autocomplete="off" data-operator="@((int)FilterOperation.Like)" value="@likeValue" />
+        </div>
+    </div>
+        break;
+    case (int)FilterFieldType.AssigneeLocation:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.AssigneeLocation</div>
+
+            <select class="js-select js-assigneeLocation" data-id="@fieldId" data-operator="@((int)FilterOperation.Equal)">
+                <option value="-1" @((likeValue.Equals("-1") || likeValue.Equals(string.Empty)) ? "selected" : "")>@ViewLang.All</option>
+                <option value="2" @(likeValue.Equals("2") ? "selected" : "")>@ViewLang.GWI</option>
+                <option value="1" @(likeValue.Equals("1") ? "selected" : "")>@ViewLang.SMS</option>
+            </select>
+        </div>
+        break;
+    case (int)FilterFieldType.MatchStatus:
+        <div class="input-field col input--m has-margin" id="field_@fieldId" data-id="@fieldId">
+            <div class="label">@ViewLang.MatchStatus</div>
+            <select class="js-select js-matchstatus" multiple="multiple" data-id="@fieldId" data-operator="@((int)FilterOperation.In)">
+                <option value="0" disabled selected>@ViewLang.ChooseMatchStatus</option>
+                @foreach (var status in Model.MatchStatus)
+                {
+                    <option value="@status.ResourceId" @(status.IsSelected ? "selected" : "")>@status.Value</option>
+                }
+            </select>
+        </div>
+        break;
+}

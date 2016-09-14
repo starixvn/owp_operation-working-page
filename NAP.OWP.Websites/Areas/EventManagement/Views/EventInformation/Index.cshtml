@@ -1,0 +1,164 @@
+﻿@using Fanex.NAP.OWP.EventManagement.Models.EventInfo;
+@using Fanex.NAP.OWP.EventManagement.ViewModels.EventInfo;
+@using Fanex.NAP.OWP.EventManagement.Enumerations;
+@using OWP.Resources;
+@model EventInformationViewModel
+@using Fanex.NAP.OWP.Core.Configuration; @{ var baseHref = Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
+@{ var ticketPage = "MyTickets";}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = ViewLang.LiveGameList;
+}
+
+@section css
+{
+    @Styles.Render("~/Styles/EventInformation");
+    @Styles.Render("~/wwwroot/popup-container/static/css/main.css");
+
+    <style type="text/css">
+        .table-tasklist .icon-bottom .icon-channel {
+            background: url(@Url.Content("~/Content/Themes/images/channeldark.png")) no-repeat;
+        }
+
+        .table-tasklist .icon-bottom .icon-channel.has-info {
+            background-image: url(@Url.Content("~/Content/Themes/images/channelblue.png"));
+        }
+        .tickettable {
+            min-width: 400px !important
+        }
+    </style>
+}
+
+<div class="body-content">
+
+    <div class="cover-filter-live-game-list">
+
+        <form class="filter" autocomplete="off">
+            <div class="row margin-bottom-0">
+                <div class="input-field col">
+                    <div class="label">@ViewLang.Filter</div>
+
+                    <a class="dropdown-button waves-effect waves-light btn js-lableFilter btn-selectFilter" data-activates="js-filterDropdown">
+                        <span class="filter-name"> @(!string.IsNullOrEmpty(Model.FilterName) ? Model.FilterName : ViewLang.SelectFilter)</span>
+                    </a>
+                    <ul id="js-filterDropdown" class="dropdown-content filter-dropdown">
+                        @foreach (FilterModel item in Model.Filters)
+                        {
+                            <li class="filter-item">
+                                <p class="js-chooseFilter choose-filter" data-id="@item.FilterId" data-name="@item.Name">@item.Name</p>
+                                <span class="icon-group">
+                                    <span data-id="@item.FilterId" class="js-setDefaultFilter @(item.IsDefault ? "selected" : string.Empty)">
+                                        <i class="mdi mdi-checkbox-marked-circle"></i>
+                                    </span>
+                                    @if (item.IsOwner)
+                                    {
+                                        <span data-id="@item.FilterId" class="js-deleteFilter label-remove">
+                                            <i class="mdi mdi-delete"></i>
+                                        </span>
+                                        <span data-id="@item.FilterId" class="js-editFilter">
+                                            <i class="mdi mdi-pencil"></i>
+                                        </span>
+                                    }
+                                </span>
+                                <div class="clearfix"></div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                @Html.HiddenFor(model => model.FilterId)
+
+                <div class="col button-block">
+                    <a class="waves-effect waves-light btn btn-search js-btnApply">@ViewLang.Search</a>
+                    <a class="waves-effect waves-light btn btn-add js-advanceSearchButton">@ViewLang.AdvancedSearch</a>
+                    <a class="waves-effect waves-light btn js-btnUpdate" style="display:none">@ViewLang.Update</a>
+                </div>
+            </div>
+        </form>
+
+        <div class="right-filter" id="poup-content">
+            <div class="button-ticket">
+                <a target="_blank" href="@baseHref@ticketPage">Go to My Tickets</a>
+            </div>
+            <div class="checkbox"><input id="prematch-filter-issuse-message" type="checkbox" class="form-check-input form-check-input"><label class="form-check-label" for="prematch-filter-issuse-message">Show unread message only</label></div>
+
+            <div id="root"></div>
+
+        </div>
+
+    </div>
+
+    @RazorHelper.Pagination(50, 100, 200, 300, 1000)
+
+    <div class="table table-tasklist js-tableEventInformation" style="display:none"></div>
+
+    @RazorHelper.Pagination(50, 100, 200, 300, 1000)
+
+    <aside class="advanceSearch-block" id="js-advanceSearch"></aside>
+
+    <div id="js-modalConfirmSave" class="modal small modalConfirmSave">
+        <div class="modal-header">
+            <a href="javascript:;" class="modal-action modal-close waves-effect"><i class="mdi mdi-close"></i></a>
+        </div>
+
+        <div class="row modal-body">
+            <div class="input-field col s12 input--m">
+                <span class="info-label">Filter Name</span>
+                <div class="info-detail-item input-field">
+                    <input name="NameFilter" class="input-detail" autocomplete="off" />
+                </div>
+            </div>
+            @if (Model.IsCreatePublicFilter)
+            {
+                <div class="input-field col s12 input--m no-padding">
+                    <div class="info-detail-item input-field">
+                        @Html.MaterializeCheckBox("IsPublicFilter", "Is Public", new { @class = "filled-in" })
+                    </div>
+                </div>
+
+            }
+        </div>
+
+        <div class="modal-footer">
+            <div class="button-block">
+                <a href="javascript:;" class="modal-action modal-close waves-effect btn btn-cancel">@ViewLang.Cancel</a>
+                <a href="javascript:;" class="modal-action modal-close waves-effect btn btn-submit js-confirmSave">@ViewLang.Confirm</a>
+            </div>
+        </div>
+    </div>
+
+    @for (int i = 1; i <= 15; i++)
+    {
+        <div class="row dialog-search-live js-dialogSearchLive" data-column-id="@i" style="display: none;">
+            <input class="input-search js-inputSearchLive" data-column-id="@i" data-is-searching="0" data-old-value="" placeholder="Search...">
+            <a class="waves-effect waves-light btn btn-search js-btnSearchLive" data-column-id="@i">@ViewLang.Search</a>
+            <a class="waves-effect waves-light clear-all js-clearAllFilter">Clear All Filters</a>
+        </div>
+    }
+
+    <input type="hidden" value="@ViewLang.FromMaxBetMustBeLessThanOrEqualToMaxBet" id="errorMaxBet" />
+    <input type="hidden" value="@ViewLang.FromSpreadMustBeLessThanOrEqualToSpread" id="errorSpread" />
+    <input type="hidden" value="@ViewLang.FromKickOffTimeMustBeLessThanOrEqualToKickOffTime" id="errorKOTime" />
+    <input type="hidden" value="@ViewLang.EventInformation_MissingFilter" id="missingFilter" />
+</div>
+
+@section scripts
+{
+    <script>
+        var filterTypes = {
+            EventDate: @((int)FilterFieldType.EventDate),
+            SearchDisabled: @(Model.SearchDisabled.ToString().ToLower()),
+            League: @((int)FilterFieldType.League),
+            Assignee: @((int)FilterFieldType.Assignee),
+            MaxBet: @((int)FilterFieldType.MaxBet),
+            Spread: @((int)FilterFieldType.Spread)
+        };
+
+        var ticketPermission = {
+            isRead: @(Model.TicketPermission.IsRead.ToString().ToLower()),
+            isHost: @(Model.TicketPermission.IsHost.ToString().ToLower())
+        };
+
+    </script>
+    @Scripts.Render("~/Scripts/EventInformation")
+    @Scripts.Render("~/wwwroot/popup-container/static/js/main.js")
+}

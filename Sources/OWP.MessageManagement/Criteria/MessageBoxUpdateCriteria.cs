@@ -1,0 +1,17 @@
+﻿namespace OWP.MessageManagement.Criteria
+{
+    using Fanex.Data.Repository;
+
+    public class MessageBoxUpdateCriteria : CriteriaBase, INonQueryCommand
+    {
+        public int UserId { get; set; }
+
+        public int MessageId { get; set; }
+
+
+        public override string GetSettingKey() => "OWP_MessageUpdateReadStatus";
+
+
+        public override bool IsValid() => true;
+    }
+}

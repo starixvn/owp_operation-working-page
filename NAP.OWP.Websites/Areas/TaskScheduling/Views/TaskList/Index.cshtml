@@ -1,0 +1,110 @@
+﻿@using OWP.Resources;
+@model Fanex.NAP.OWP.TaskScheduling.Models.TaskListToday.TaskListModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = ViewLang.TaskListToday;
+}
+@section css{
+    @Styles.Render("~/TaskList")
+}
+
+<div class="body-content">
+    <div class="tabs">
+        @*------------------------- Tabs Header -------------------------*@
+        <div class="tabs-header">
+            <div class="border"></div>
+            <ul>
+                <li class="active"><a href="#tab-1" tab-id="1" id="tab-tasklist-today" data-active="true">@ViewLang.Today (@Model.Today)</a></li>
+                <li><a href="#tab-2" tab-id="2" id="tab-tasklist-yesterday" data-viewed="false">@ViewLang.Yesterday (@Model.Yesterday)</a></li>
+            </ul>
+        </div>
+
+        @*------------------------- Tabs Content -------------------------*@
+        <div class="tabs-content">
+            @*------------ Task list Today ------------*@
+            <div class="tab active" tab-id="1">
+                <div class="row">
+                    <div class="input-field col btn btn-refresh">
+                        <i id="iconRefresh" class="mdi mdi-refresh left icon-refresh waves-effect"></i>
+                        <select id="selectTime" class="js-select left">
+                            <option value="60">60s</option>
+                            <option value="90">90s</option>
+                            <option value="120">120s</option>
+                            <option value="-1">Not Refresh</option>
+                        </select>
+                    </div>
+                    <div class="input-field col-right">
+                        <input class="filled-in checkbox" id="hideCompletedMatchesCheckBox" name="hideCompletedMatchesCheckBox" type="checkbox" value="true" />
+                        <label for="hideCompletedMatchesCheckBox">Hide completed matches</label>
+                        @*<input name="hideCompletedMatchesCheckBox" type="hidden" value="false">*@
+                    </div>
+                </div>
+                <div class="table table-tasklist">
+                    <table class="table table-striped table-bordered today-event-table" data-plugin="floatThead">
+                        <thead>
+                            <tr>
+                                <th class="center no-col"><span>No#</span></th>
+                                <th class="center ko-col">KO @ViewLang.Time</th>
+                                <th class="league-col">@ViewLang.League</th>
+                                <th class="match-col">@ViewLang.Match</th>
+                                <th class="remarks-col">@ViewLang.Remark</th>
+                                @if (Model.HasReadNotePermission)
+                                {
+                                    <th class="note-col center">@ViewLang.Note</th>
+                                }
+                                <th colspan="2" class="maxbet-col">@ViewLang.MaxBet</th>
+                                <th>Full-time Trader</th>
+                                <th class="center" colspan="2">First-haft Trader</th>
+                                <th colspan="2" class="maxbet-col">@ViewLang.MaxBet</th>
+                                <th>@ViewLang.SpecialProduct</th>
+                                <th>@ViewLang.LiveAssistant</th>
+                                <th class="tv-col">TV/IPTV</th>
+                                <th class="provider-col">@ViewLang.Provider</th>
+                                <th class="center ready-col">Ready</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="todayEventTableBody" aria-relevant="all" aria-live="polite"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            @*------------ Task list Yesterday --------*@
+            <div class="tab" tab-id="2">
+                <div class="table table-tasklist">
+                    <table class="table table-striped table-bordered yesterday-event-table" data-plugin="floatThead">
+                        <thead>
+                            <tr>
+                                <th class="center no-col"><span>No#</span></th>
+                                <th class="center ko-col">KO @ViewLang.Time</th>
+                                <th class="league-col">@ViewLang.League</th>
+                                <th class="match-col">@ViewLang.Match</th>
+                                <th class="remarks-col">@ViewLang.Remark</th>
+                                @if (Model.HasReadNotePermission)
+                                {
+                                    <th class="note-col center">@ViewLang.Note</th>
+                                }
+                                <th colspan="2" class="maxbet-col">@ViewLang.MaxBet</th>
+                                <th>Full-time Trader</th>
+                                <th class="center" colspan="2">First-haft Trader</th>
+                                <th colspan="2" class="maxbet-col">@ViewLang.MaxBet</th>
+                                <th>@ViewLang.SpecialProduct</th>
+                                <th>@ViewLang.LiveAssistant</th>
+                                <th class="tv-col">TV/IPTV</th>
+                                <th class="provider-col">@ViewLang.Provider</th>
+                                <th class="center ready-col">Ready</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="yesterdayEventTableBody" aria-relevant="all" aria-live="polite"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="temp-text js-tempText" style="display:none">abc</p>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/scripts/task-list")
+}

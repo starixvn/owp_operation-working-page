@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B66D3F1-1177-4842-A1F9-705B4978F028}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OWP.WorkingShift</RootNamespace>
+    <AssemblyName>OWP.WorkingShift</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>OWP.WorkingShift.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>OWP.WorkingShift.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Exclude the project from analysis -->
+    <SonarQubeExclude>True</SonarQubeExclude>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Data, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Data.4.2.2\lib\net461\Fanex.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Data.Repository, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Data.Repository.4.2.2\lib\net461\Fanex.Data.Repository.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.NAP.Core.Client, Version=1.2.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.NAP.Core.Client.2.0.0.1\lib\net40\Fanex.NAP.Core.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SimpleInjector, Version=4.9.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SimpleInjector.4.9.1\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperProfile.native.cs" />
+    <Compile Include="Constants\WorkingShiftCodes.cs" />
+    <Compile Include="Controllers\WorkingShiftApiController.cs" />
+    <Compile Include="Controllers\WorkingShiftColorApiController.cs" />
+    <Compile Include="Controllers\WorkingShiftDefaultApiController.cs" />
+    <Compile Include="Controllers\WorkingShiftPublishApiController.cs" />
+    <Compile Include="Controllers\WorkingShiftOrderApiController.cs" />
+    <Compile Include="Controllers\WorkingShiftTimezoneApiController.cs" />
+    <Compile Include="Criteria\CopySingleShiftCriteria.cs" />
+    <Compile Include="Criteria\CopyWholeShiftsCriteria.cs" />
+    <Compile Include="Criteria\CopyWorkingShiftWeeklyPreviousCriteria.cs" />
+    <Compile Include="Criteria\DeleteWholeShiftsCriteria.cs" />
+    <Compile Include="Criteria\QueryWorkingShiftBySectionCriteria.cs" />
+    <Compile Include="Criteria\ValidateBeforeDeleteWorkingShiftColorCriteria.cs" />
+    <Compile Include="Criteria\DeleteWorkingShiftColorCriteria.cs" />
+    <Compile Include="Criteria\GetSectionWorkingShiftPublishByWeekCriteria.cs" />
+    <Compile Include="Criteria\GetAllWorkingShiftColorCriteria.cs" />
+    <Compile Include="Criteria\GetTimezoneSettingCriteria.cs" />
+    <Compile Include="Criteria\InsertWorkingShiftColorCriteria.cs" />
+    <Compile Include="Criteria\PublishWeeklyWorkingShiftCriteria.cs" />
+    <Compile Include="Criteria\RemoveSingleShiftCriteria.cs" />
+    <Compile Include="Criteria\UpdateDefaultShiftCriteria.cs" />
+    <Compile Include="Criteria\UpdateEmployeeWorkingShiftOrderCriteria.cs" />
+    <Compile Include="Criteria\UpdateWorkingShiftCodeCriteria.cs" />
+    <Compile Include="Criteria\UpdateWorkingShiftColorCriteria.cs" />
+    <Compile Include="Criteria\QueryWorkingShiftDefaultByUserCriteria.cs" />
+    <Compile Include="Criteria\QueryWorkingShiftByUserCriteria.cs" />
+    <Compile Include="Models\PublishWeeklyWorkingShiftModel.cs" />
+    <Compile Include="Models\CopySingleShiftModel .cs" />
+    <Compile Include="Models\CopyWholeShiftsModel.cs" />
+    <Compile Include="Models\CopyWorkingShiftWeeklyPreviousModel.cs" />
+    <Compile Include="Models\DeleteWholeShiftsModel.cs" />
+    <Compile Include="Models\QuickInsertWorkingShiftColorModel.cs" />
+    <Compile Include="Models\RemoveSingleShiftModel.cs" />
+    <Compile Include="Models\SectionPublishWorkingShiftModel.cs" />
+    <Compile Include="Models\TimezoneSettingModel.cs" />
+    <Compile Include="Models\TimezoneUpdateModel.cs" />
+    <Compile Include="Models\UpdateDefaultShiftModel.cs" />
+    <Compile Include="Models\UpdateEmployeeWorkingShiftOrderModel.cs" />
+    <Compile Include="Models\UpdateWorkingShiftCodeModel.cs" />
+    <Compile Include="Models\WorkingShiftColorModel.cs" />
+    <Compile Include="Models\WorkingShiftDefaultModel.cs" />
+    <Compile Include="Models\GroupWorkingShiftByUserModel.cs" />
+    <Compile Include="Models\WorkingShiftModel.cs" />
+    <Compile Include="Models\WorkingShiftPermission.cs" />
+    <Compile Include="Models\WorkingShiftQueryBySectionModel.cs" />
+    <Compile Include="Models\WorkingShiftQueryBySingleUserModel.cs" />
+    <Compile Include="Models\WorkingShiftQueryByUserModel.cs" />
+    <Compile Include="Properties\GlobalSuppression.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\WorkingShiftDefaultRepository.cs" />
+    <Compile Include="Repositories\WorkingShiftRepository.cs" />
+    <Compile Include="Repositories\WorkingShiftTimezoneSettingRepository.cs" />
+    <Compile Include="Repositories\WorkingShiftColorRepository.legacy.cs" />
+    <Compile Include="Repositories\WorkingShiftPublishRepository.cs" />
+    <Compile Include="Repositories\WorkingShiftOrderRepository.cs" />
+    <Compile Include="Services\ModelService.cs" />
+    <Compile Include="SimpleInjectorRegistration.native.cs" />
+    <Compile Include="Utils\WorkingShiftExtensionHelper.native.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="OWP.WorkingShift.ruleset" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fanex.NAP.OWP.Core\Fanex.NAP.OWP.Core.csproj">
+      <Project>{58eaf1c1-e20f-4d8a-899a-6f6aa09d5324}</Project>
+      <Name>Fanex.NAP.OWP.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OWP\OWP.csproj">
+      <Project>{E7C83A3E-F124-4D2B-8EA7-80F9C7E0250B}</Project>
+      <Name>OWP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.44.0.52574\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.44.0.52574\analyzers\SonarAnalyzer.CFG.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.44.0.52574\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.44.0.52574\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

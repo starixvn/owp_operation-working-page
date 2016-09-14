@@ -1,0 +1,54 @@
+﻿@model Fanex.NAP.OWP.TaskScheduling.ViewModels.EventPicking.EventPickingViewModel
+@using OWP.Enumerations
+@using OWP.Resources;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = ViewLang.EventPicking;
+    var eventDate = Model.Date.ToOWPDate();
+}
+
+@section css
+{
+    @Styles.Render("~/Styles/EventInformation")
+}
+
+<div class="body-content">
+    <form class="filter">
+
+        <div class="row margin-bottom-0 js-controlFilter control-filter">
+            <div class="input-field col calendar input--m has-margin">
+                <div class="label">@ViewLang.Date</div>
+                @Html.TextBox("Date", eventDate.ToOWPDateFormat(), new { @class = "js-calendar", @readonly = "readonly" })
+                <i class="mdi mdi-calendar icon-calendar"></i>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row margin-bottom-0">
+            <div class="button-block col no-pad-top">
+                @*<a class="waves-effect waves-light btn btn-search js-btnSearch">@ViewLang.Search</a>*@
+                <a class="waves-effect waves-light btn btn-search js-btnExcel">Export Excel</a>
+            </div>
+        </div>
+    </form>
+
+    <div class="table">
+        <div id="js-listEventPicking"></div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        var majorBettypes = {
+            Handicap: @((int)MajorBettype.Handicap),
+            OverUnder: @((int)MajorBettype.OverUnder),
+            OneXTwo: @((int)MajorBettype.OneXTwo),
+            Handicap1st: @((int)MajorBettype.Handicap1St),
+            OverUnder1st: @((int)MajorBettype.OverUnder1St),
+            OneXTwo1st: @((int)MajorBettype.OneXTwo1St),
+        };
+    </script>
+    @Scripts.Render("~/Scripts/EventPicking")
+}

@@ -1,0 +1,76 @@
+import { createSlice } from '@reduxjs/toolkit';
+import { REQUEST_STATUS } from '../../../Shared/Constants';
+import { getEventPickings } from './eventSliceThunkNative';
+import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
+import { updateEntities } from '../../helper/reducerHelper';
+import { TTableSlice, TFilterState } from '../../types/dataTableType';
+import {
+  addOrReplaceFilterState,
+  filterDataTable
+} from '../../../Shared/Utils';
+import filterByKeyword from '../filterByKeyword';
+const EventPickingTableSlice = createSlice({
+  name: 'EventPickingTableSlice',
+  initialState: {
+    entities: [],
+    entitiesOriginal: [],
+    isNoOfferAll: false,
+    filterState: [] as TFilterState[],
+    loading: REQUEST_STATUS.idle
+  } as TTableSlice,
+  reducers: {
+    filterBySearchKey: (state, action) => {
+      const { filterState } = state;
+      state.filterState = addOrReplaceFilterState(filterState, action.payload);
+      state.entities = filterDataTable(
+        state.entitiesOriginal,
+        state.filterState,
+        filterByKeyword
+      );
+      if (state.entities.length) {
+        state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
+      }
+    },
+    clearFilter: state => {
+      const { entitiesOriginal } = state;
+      state.filterState = [];
+      state.entities = entitiesOriginal;
+      if (state.entities.length) {
+        state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
+      }
+    }
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(updateNoOfferMatchThunk.fulfilled, (state, { payload }) => {
+        const noOfferMatch = payload;
+        updateEntities(state.entitiesOriginal, noOfferMatch);
+        updateEntities(state.entities, noOfferMatch);
+        if (state.entities.length) {
+          state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
+        }
+      })
+      .addCase(getEventPickings.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(getEventPickings.fulfilled, (state, { payload }) => {
+        state.loading = REQUEST_STATUS.idle;
+        state.entitiesOriginal = payload;
+        state.entities = filterDataTable(
+          state.entitiesOriginal,
+          state.filterState,
+          filterByKeyword
+        );
+        if (state.entities.length) {
+          state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
+        }
+      })
+      .addCase(getEventPickings.rejected, state => {
+        state.loading = REQUEST_STATUS.idle;
+      });
+  }
+});
+const { reducer, actions } = EventPickingTableSlice;
+const { filterBySearchKey, clearFilter } = actions;
+export { filterBySearchKey, clearFilter };
+export default reducer;

@@ -1,0 +1,25 @@
+﻿namespace Fanex.NAP.OWP.EventManagement.Criteria.Filter
+{
+    using Data.Repository;
+
+    public class InsertDefaultFilterCriteria : CriteriaBase
+    {
+        public int UserId { get; set; }
+
+        public int FilterId { get; set; }
+
+        public int ErrCode { get; set; }
+
+        public string ErrMsg { get; set; }
+
+        public override bool IsValid()
+        {
+            return UserId > 0 && FilterId > 0;
+        }
+
+        public override string GetSettingKey()
+        {
+            return "OWP_FilterDefaultInsert";
+        }
+    }
+}

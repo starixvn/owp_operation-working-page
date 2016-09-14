@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C95BD80C-58E7-461D-A610-D75F759FE7E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fanex.NAP.OWP.TaskScheduling</RootNamespace>
+    <AssemblyName>Fanex.NAP.OWP.TaskScheduling</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Fanex.NAP.OWP.TaskScheduling.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Fanex.NAP.OWP.TaskScheduling.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Exclude the project from analysis -->
+    <SonarQubeExclude>True</SonarQubeExclude>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.1.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.1.2\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Epplus.Mapper, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Epplus.Mapper.1.0.0.13\lib\net461\Epplus.Mapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Data, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Data.4.2.2\lib\net461\Fanex.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Data.DbSettingProviderExtension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Data.DbSettingProviderExtension.1.0.0.1\lib\net40\Fanex.Data.DbSettingProviderExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Data.Repository, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Data.Repository.4.2.2\lib\net461\Fanex.Data.Repository.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Logging, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Logging.2.0.1\lib\net461\Fanex.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.NAP.Core.Client, Version=1.2.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.NAP.Core.Client.2.0.0.1\lib\net40\Fanex.NAP.Core.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Olympus.InfositeClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Olympus.InfoSiteClient.2.1.0.13\lib\net461\Olympus.InfositeClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Olympus.WebApi.Epplus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Olympus.WebApi.Epplus.1.0.0.3\lib\net461\Olympus.WebApi.Epplus.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Builder\ColorBuilder.cs" />
+    <Compile Include="Builder\CoverageBuilder.cs" />
+    <Compile Include="Builder\LeagueHomeAwayBuilder.cs" />
+    <Compile Include="Builder\OtherProviderBuilder.cs" />
+    <Compile Include="Builder\ProviderBuilder.cs" />
+    <Compile Include="Builder\SpecialMatchBuilder.cs" />
+    <Compile Include="Builder\TVBuilder.cs" />
+    <Compile Include="Builder\WatchBetBuilder.cs" />
+    <Compile Include="Controllers\EventAssignmentController.cs" />
+    <Compile Include="Controllers\TaskListController.cs" />
+    <Compile Include="Controllers\EventPickingController.cs" />
+    <Compile Include="Converter\DateTimeConverter.cs" />
+    <Compile Include="Criteria\EventAssignment\GetLastUpdatedCriteria.cs" />
+    <Compile Include="Criteria\EventAssignment\GetNotifyMessagesCriteria.cs" />
+    <Compile Include="Criteria\EventAssignment\MatchGetAllCriteria.cs" />
+    <Compile Include="Criteria\EventPicking\GetBlackListCriteria.cs" />
+    <Compile Include="Criteria\EventPicking\GetEventInfoCriteria.cs" />
+    <Compile Include="Criteria\EventPicking\GetLeagueSettingCriteria.cs" />
+    <Compile Include="Criteria\EventPicking\GetTVListCriteria.cs" />
+    <Compile Include="Criteria\TaskListToday\GetTaskListTodayCriteria.cs" />
+    <Compile Include="Criteria\TaskListToday\UpdateMatchNoteViewCriteria.cs" />
+    <Compile Include="Criteria\TaskListToday\UpdateReadyTradeStatusCriteria.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="AutoMapperProfile.native.cs" />
+    <Compile Include="Misc\Constant.cs" />
+    <Compile Include="Misc\StringExtension.cs" />
+    <Compile Include="Misc\TruthRule.cs" />
+    <Compile Include="Models\EventAssignment\AssignmentUploadHistoryModel.cs" />
+    <Compile Include="Models\EventAssignment\ColumnStyle.cs" />
+    <Compile Include="Models\EventPicking\BlackList.cs" />
+    <Compile Include="Models\EventPicking\Condition.cs" />
+    <Compile Include="Models\EventAssignment\AIOAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\AssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\AssignmentWriter.cs" />
+    <Compile Include="Models\EventAssignment\BettypeAssignmentBaseModel.cs" />
+    <Compile Include="Models\EventAssignment\ColumnAttribute.cs" />
+    <Compile Include="Models\EventAssignment\ColumnName.cs" />
+    <Compile Include="Models\EventAssignment\DownLoadExportModel.cs" />
+    <Compile Include="Models\EventAssignment\EventModel.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Models\EventAssignment\FMAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\Handicap1stAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\HandicapAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\LA2ndAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\LAAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\MatchInfo.cs" />
+    <Compile Include="Models\EventAssignment\MatchMoney.cs" />
+    <Compile Include="Models\EventAssignment\MatchNote.cs" />
+    <Compile Include="Models\EventAssignment\MatchTrader.cs" />
+    <Compile Include="Models\EventAssignment\MessageUser.cs" />
+    <Compile Include="Models\EventAssignment\OneXTwo1stAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\OneXTwoAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\OtherAssignment.cs" />
+    <Compile Include="Models\EventAssignment\OverUnder1stAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\OverUnderAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\Specific10MinsAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\Specific15MinsAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\SpecificXMinsAssignmentModel.cs" />
+    <Compile Include="Models\EventAssignment\TraderAssignmentModel.cs" />
+    <Compile Include="Models\EventPicking\EventInfo.cs" />
+    <Compile Include="Models\EventPicking\LeagueSettingNewFormat.cs" />
+    <Compile Include="Models\EventPicking\LeagueSetting.cs" />
+    <Compile Include="Models\EventPicking\LeagueSettingCondition.cs" />
+    <Compile Include="Models\EventPicking\MatchExporting.cs" />
+    <Compile Include="Models\EventPicking\EventPickingModel.cs" />
+    <Compile Include="Models\EventPicking\MatchExportingNewFormat.cs" />
+    <Compile Include="Models\EventPicking\TruthTable.cs" />
+    <Compile Include="Models\EventPicking\TVList.cs" />
+    <Compile Include="Models\TaskListToday\Assignment.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Models\TaskListToday\AssignmentModel.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Models\TaskListToday\MainMatchInfo.cs" />
+    <Compile Include="Models\TaskListToday\MatchInfo.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Models\TaskListToday\MatchSetting.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Models\TaskListToday\MatchSettingModel.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Models\TaskListToday\OUSpecificBetTypeGroupListModel.cs" />
+    <Compile Include="Models\TaskListToday\TaskListModel.cs" />
+    <Compile Include="Repositories\Implement\EventAssignmentRepository.cs" />
+    <Compile Include="Repositories\Implement\LeagueSettingRepository.cs" />
+    <Compile Include="Repositories\Implement\TaskListTodayRepository.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Repositories\Interfaces\IEventAssignmentRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITaskListTodayRepository.cs" />
+    <Compile Include="Service\Implement\BuildEventInfoService.cs" />
+    <Compile Include="Service\Implement\EventAssignmentExportFilter.cs" />
+    <Compile Include="Service\Implement\EventAssignmentService.cs" />
+    <Compile Include="Service\Implement\EventPickingService.cs" />
+    <Compile Include="Service\Implement\ExcelService.cs" />
+    <Compile Include="Service\Implement\LeagueSettingNewFormatService.cs" />
+    <Compile Include="Service\Implement\LeagueSettingService.cs" />
+    <Compile Include="Service\Implement\LSTNoteMapperService.cs" />
+    <Compile Include="Service\Implement\OrderMatchService.cs" />
+    <Compile Include="Service\Implement\TaskListTodayService.cs" />
+    <Compile Include="Service\Interfaces\IEventAssignmentService.cs" />
+    <Compile Include="Service\Interfaces\ITaskListTodayService.cs" />
+    <Compile Include="TaskSchedulingAreaRegistration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="ViewModels\EventPicking\EventPickingViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fanex.NAP.OWP.Core\Fanex.NAP.OWP.Core.csproj">
+      <Project>{58eaf1c1-e20f-4d8a-899a-6f6aa09d5324}</Project>
+      <Name>Fanex.NAP.OWP.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fanex.NAP.OWP.Model\Fanex.NAP.OWP.Model.csproj">
+      <Project>{6826204e-49a1-467a-87e9-d16183c35277}</Project>
+      <Name>Fanex.NAP.OWP.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sources\OWP.EventAssignment\OWP.EventAssignment.csproj">
+      <Project>{8AA8D703-D72F-4154-972C-40F0482E0D99}</Project>
+      <Name>OWP.EventAssignment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sources\OWP\OWP.csproj">
+      <Project>{e7c83a3e-f124-4d2b-8ea7-80f9c7e0250b}</Project>
+      <Name>OWP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Fanex.NAP.OWP.TaskScheduling.ruleset" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Builder\CommonBuilder.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,79 @@
+﻿@using OWP.Resources;
+@using Fanex.NAP.OWP.Core.Helpers;
+@using OWP.Constants;
+@using OWP.Enumerations;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = ViewLang.RecommendOdds;
+    var isHost = (bool)ViewBag.IsHost;
+}
+
+@section css
+{
+    @Styles.Render("~/Styles/OddsCompiler")
+}
+<div class="body-content">
+    <input id="isHost" type="checkbox" @(isHost ? "checked" : string.Empty) style="display: none" />
+    <div class="filter">
+        <div class="row margin-bottom-0">
+            <div class="input-field col calendar input--m has-margin">
+                <div class="label">@ViewLang.Date</div>
+                @Html.TextBox("date", DateTime.Now.ToOWPDate().ToOWPDateFormat(), new { @readonly = "readonly" })
+                <i class="mdi mdi-calendar icon-calendar"></i>
+            </div>
+
+            <div class="input-field col input--l">
+                <div class="label">@ViewLang.League</div>
+                @Html.TextBox("league", string.Empty, new { @placeholder = ViewLang.League })
+            </div>
+            @Html.Hidden("pageIndex", PagingConstant.PageIndex)
+            @Html.Hidden("pageSize", PagingConstant.PageSize)
+            <div class="button-block col">
+                <a class="waves-effect waves-light btn btn-search js-btnSearch">@ViewLang.Search</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="table">
+        <div class="search-table input-field col input--m">
+            <input id="keyword" name="keyword" placeholder="Search in table" type="text" value="">
+            <i class="icon-search mdi mdi-magnify"></i>
+        </div>
+        <div id="js-odds"></div>
+    </div>
+
+    <div class="pagination js-pagination" style="display: none;">
+        <div class="detailtext left">Showing 1 to 10 of 100 entries</div>
+        <div class="right">
+            <div class="itemperpage">
+                <span>@ViewLang.Show</span>
+                <span class="input-itemPerPage">
+                    <select class="js-select js-itemperpageOption">
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="300">300</option>
+                        <option value="1000">1000</option>
+                    </select>
+                </span>
+                <span>entries</span>
+            </div>
+            <ul id="numberlist" class="pagination border"></ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        var majorBettypes = {
+            Handicap: @((int)MajorBettype.Handicap),
+            OverUnder: @((int)MajorBettype.OverUnder),
+            OneXTwo: @((int)MajorBettype.OneXTwo),
+            Handicap1st: @((int)MajorBettype.Handicap1St),
+            OverUnder1st: @((int)MajorBettype.OverUnder1St),
+            OneXTwo1st: @((int)MajorBettype.OneXTwo1St),
+        };
+    </script>
+    @Scripts.Render("~/Scripts/OddsCompiler")
+}
