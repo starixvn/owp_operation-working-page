@@ -162,7 +162,9 @@ const props: CellProps = {
       ],
       TicketInfos: [],
       KickOffTimeDisplay: '04:00 PM',
-      WatchBet: ''
+      WatchBet: '',
+      InfoSiteTime: '17:00:00',
+      InfoSiteTimeDisplay: '05:00 PM'
     }
   ],
   rowIndex: 0
@@ -172,6 +174,8 @@ describe('KOTimeCell under test', () => {
   it('Should render time', () => {
     render(<KOTimeCell {...props} />);
     const time = screen.getByText('04:00 PM');
+    const timeInfoSite = screen.getByText('05:00 PM');
+    expect(timeInfoSite).toBeInTheDocument();
     expect(time).toBeInTheDocument();
   });
 });

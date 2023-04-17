@@ -1,16 +1,29 @@
 import React, { useRef } from 'react';
 import { CellProps } from '../../../type/TableType';
 import { UncontrolledTooltip } from 'reactstrap';
+import { isEqual } from 'lodash';
 
 const KOTimeCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
   const ref = useRef(null);
-  const { KickOffTimeDisplay, OtherTime, IsPES, IsFIFA } = dataSource[rowIndex];
+  const { KickOffTimeDisplay, OtherTime, InfoSiteTimeDisplay, IsPES, IsFIFA } =
+    dataSource[rowIndex];
+
+  const conditionToShowInfoSiteTime =
+    !isEqual(KickOffTimeDisplay, InfoSiteTimeDisplay) &&
+    !isEqual(OtherTime, InfoSiteTimeDisplay);
   return (
     <div className='ko-time-cell'>
       <p>{KickOffTimeDisplay}</p>
       {OtherTime && (
         <p>
           <span className='badge-label other-time'>{OtherTime}</span>
+        </p>
+      )}
+      {conditionToShowInfoSiteTime && (
+        <p>
+          <span className='badge-label info-site-time'>
+            {InfoSiteTimeDisplay}
+          </span>
         </p>
       )}
       {IsPES && (

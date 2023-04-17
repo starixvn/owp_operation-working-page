@@ -170,6 +170,8 @@ interface MatchInfo {
   LengthProvider: number;
   RowSpan: number;
   KickOffTimeDisplay: string;
+  InfoSiteTime: string;
+  InfoSiteTimeDisplay: string;
 }
 interface FilterState {
   columnKey: string | undefined;

@@ -3,6 +3,7 @@
     using Fanex.Common.Extensions;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Web.Attribute;
+    using Fanex.NAP.OWP.Core.Extensions;
     using Models;
     using OWP.Constants;
     using Permission;
@@ -42,6 +43,9 @@
 
             var eventModels = await repository.Query(queryModel);
 
+            var parentIds = string.Join(",", eventModels.Select(x => x.ParentMatchId).Distinct());
+            var infoSiteTimeResult = await repository.GetInfoSiteTime(parentIds);
+
             await repository.DetectEventHasTicket(eventModels);
 
             if (queryModel.ShowUnreadMessage)
@@ -56,9 +60,11 @@
 
             foreach (var match in eventModels)
             {
+                var matchParent = infoSiteTimeResult.FirstOrDefault(x => x.ParentMatchId == match.ParentMatchId);
                 match.AdminSiteId = await getAdminSiteMatchIdService.GetAdminSiteMatchId(match.OWPMatchId,
                 match.ParentMatchId, match.MinorBettypeId);
-               
+                match.InfoSiteTime = matchParent?.KickOffTime;
+                match.InfoSiteTimeDisplay = matchParent?.KichOffTimeDisplay;
             }
 
             var permissionFullBetTypes = permission.LiveGameAssignment_FullBetTypes;

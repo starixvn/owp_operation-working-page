@@ -111,5 +111,9 @@
         public bool IsAllowedToViewDetail { get; set; }
 
         public string IPTVCopy { get; set; }
+
+        public TimeSpan? InfoSiteTime { get; set; }
+
+        public string InfoSiteTimeDisplay { get; set; }
     }
 }

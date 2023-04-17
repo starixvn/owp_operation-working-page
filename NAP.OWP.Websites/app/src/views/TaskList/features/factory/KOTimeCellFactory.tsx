@@ -5,6 +5,7 @@ import KOTimeYesterday from '../../yesterday/KOTimeYesterday';
 
 const KOTimeCellFactory = (props: CellProps) => {
   const { dataSource, rowIndex } = props;
+  console.log(dataSource);
   return dataSource.IsTodayEvent ? (
     <KOTimeToday dataSource={dataSource} rowIndex={rowIndex} />
   ) : (

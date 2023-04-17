@@ -89,6 +89,8 @@ interface DataSource extends KOTimeProps, PesOrFiFa {
   };
   HasTicket: boolean;
   IsRead: boolean;
+  InfoSiteTime: string;
+  InfoSiteTimeDisplay: string;
 }
 
 type ModelSpecialProduct = {
@@ -142,7 +144,7 @@ type OtherProductProps = {
 };
 
 type KOTimeCellProps = {
-  dataSource: KOTimeProps & PesOrFiFa;
+  dataSource: Required<Readonly<Partial<DataSource>>>;
   flagElement?: JSX.Element;
   eventDateElement?: JSX.Element;
   rowIndex: Readonly<number>;

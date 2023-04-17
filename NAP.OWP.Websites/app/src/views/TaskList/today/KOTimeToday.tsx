@@ -4,8 +4,7 @@ import FlagFactory from '../features/factory/FlagFactory';
 import KOTime from '../features/component/KOTime';
 
 const KOTimeToday = (props: KOTimeCellProps) => {
-  const { dataSource } = props;
-  const { rowIndex } = props;
+  const { dataSource, rowIndex } = props;
   const { IsFIFA, IsPES } = dataSource;
 
   const flagsProps: PesOrFiFa = {

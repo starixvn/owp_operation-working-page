@@ -29,8 +29,10 @@ namespace OWP.EventAssignment.Repositories
 
         Task<ResultDataObject> EditEvent(EditMatchViewModel model);
 
-
         Task DetectEventHasTicket(IList<EventModel> eventModels);
+
+        Task<IEnumerable<InfoSiteTimeModel>> GetInfoSiteTime(string ids);
+
     }
 
     public class RepositoryImp : Repository
@@ -698,6 +700,15 @@ namespace OWP.EventAssignment.Repositories
         private static IList<MatchOffer> GetMatchOffers(IList<MatchOffer> matchOffers, int owpMatchId)
         {
             return matchOffers.Where(x => x.OWPMatchId == owpMatchId).ToList();
+        }
+
+        public async Task<IEnumerable<InfoSiteTimeModel>> GetInfoSiteTime(string ids)
+        {
+            var criteria = new GetInfoSiteTimeCriteria
+            {
+                ParentMatchIds = ids
+            };
+            return await dynamicRepository.FetchAsync<InfoSiteTimeModel>(criteria);
         }
     }
 }

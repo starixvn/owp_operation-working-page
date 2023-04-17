@@ -1,8 +1,15 @@
 import React from 'react';
 import { CellProps } from '../../../type/TableType';
 import { UncontrolledTooltip } from 'reactstrap';
+import { isEqual } from 'lodash';
 const NoCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
   const { MatchNo, MatchStatus } = dataSource[rowIndex];
+
+  // const now = new Date();
+  // const hours = now.getHours();
+  // const minutes = now.getMinutes();
+  // const seconds = now.getSeconds();
+  // const curTime = hours + ':' + minutes + ':' + seconds;
 
   const renderIcon = () => {
     const classNames = {
@@ -41,6 +48,7 @@ const NoCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
 
   return (
     <div className='no-cell'>
+      {/* {conditionToShowAbsenceIcon && <h1>abc</h1>} */}
       {MatchNo && <span>{MatchNo}</span>}
       {renderIcon()}
     </div>

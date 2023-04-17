@@ -104,6 +104,7 @@
     <Compile Include="Criteria\EditMainMatchCriteria.cs" />
     <Compile Include="Criteria\AddMatchRecommendOddsCriteria.cs" />
     <Compile Include="Criteria\AddMatchSettingCriteria.cs" />
+    <Compile Include="Criteria\GetInfoSiteTimeCriteria.cs" />
     <Compile Include="Criteria\GetSpecialEventTemplateCriteria.cs" />
     <Compile Include="Criteria\AddMinorMatchCriteria.cs" />
     <Compile Include="Criteria\ValidateToEditEventCriteria.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Controllers\EventAssignmentController.native.cs" />
     <Compile Include="Models\EventAssignmentPermissionModel.cs" />
     <Compile Include="Models\HasTicketModel.cs" />
+    <Compile Include="Models\InfoSiteTimeModel.cs" />
     <Compile Include="Models\MatchOddViewModel.cs" />
     <Compile Include="Models\AddEventViewModel.cs" />
     <Compile Include="Models\EventModel.cs" />
