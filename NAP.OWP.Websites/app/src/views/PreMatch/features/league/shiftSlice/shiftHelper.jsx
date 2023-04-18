@@ -40,10 +40,8 @@ const mergeMatchesToLeagues = (matches, leagues, filterUnreadMessage) => {
     }
   });
   if (filterUnreadMessage) {
-    const {
-      PreMatchLeagueIds,
-      InfoSiteMatchId
-    } = getUnreadMessagePreMatchLeagueIds(matches, leagues);
+    const { PreMatchLeagueIds, InfoSiteMatchId } =
+      getUnreadMessagePreMatchLeagueIds(matches, leagues);
     return leaguesCloned.filter(
       e =>
         PreMatchLeagueIds.includes(e.PreMatchLeagueId) &&
@@ -67,8 +65,10 @@ const changeExpandStateOneLeague = (leagues, preMatchLeagueId, expandState) => {
 
 const sortLeaguesByColumnKey = (leagues, columnKey, orderType) => {
   const rowsValue = leagues.filter(row => row[columnKey]) || [];
-  const rowsValueNull = leagues.filter(row => !row[columnKey] && !row[`${columnKey}Hint`]) || [];
-  const rowsValueContainHint = leagues.filter(row => !row[columnKey] && row[`${columnKey}Hint`]) || [];
+  const rowsValueNull =
+    leagues.filter(row => !row[columnKey] && !row[`${columnKey}Hint`]) || [];
+  const rowsValueContainHint =
+    leagues.filter(row => !row[columnKey] && row[`${columnKey}Hint`]) || [];
   if (isEqual(orderType, 'ORDER_ASC')) {
     rowsValue.sort(compareValues(columnKey, 'asc'));
     rowsValueContainHint.sort(compareValues(`${columnKey}Hint`, 'asc'));
@@ -76,11 +76,7 @@ const sortLeaguesByColumnKey = (leagues, columnKey, orderType) => {
     rowsValue.sort(compareValues(columnKey, 'desc'));
     rowsValueContainHint.sort(compareValues(`${columnKey}Hint`, 'desc'));
   }
-  return [
-    ...rowsValueContainHint,
-    ...rowsValueNull,
-    ...rowsValue
-  ];
+  return [...rowsValueContainHint, ...rowsValueNull, ...rowsValue];
 };
 
 const changeOpenNoteStateAll = (array, openState) => {
@@ -132,16 +128,62 @@ const updateLeagueData = (leagues, entities, updatedLeagueIds, newLeague) => {
   updatedLeague[objectKey] = newValue;
   league[objectKey] = newValue;
 };
-const pasteCopied = (leagues, entities, updatedLeagueIds, pasteValue) => {
-  const {
-    rowIndex,
-    isTakeOver,
-    MainAssignee2,
-    MainAssignee1,
-    OtherAssignee1,
-    OtherAssignee2
-  } = pasteValue;
 
+const pasteMultipleValue = (
+  leagues,
+  entities,
+  updatedLeagueIds,
+  pasteValue
+) => {
+  const { rowIndex, isTakeOver, copiedValue, leagueIdEnd } = pasteValue;
+  const startIndex =
+    entities.findIndex(e => e.PreMatchLeagueId === leagueIdEnd) + 1;
+  debugger;
+  let copiedValueIndex = 0;
+  for (let index = startIndex; index <= rowIndex; index++) {
+    const { MainAssignee1, MainAssignee2, OtherAssignee1, OtherAssignee2 } =
+      copiedValue[copiedValueIndex];
+    if (isTakeOver) {
+      entities[index].HDPTakeOver = MainAssignee1;
+      //league.HDPTakeOver = MainAssignee1;
+
+      entities[index].OUTakeOver = MainAssignee2;
+      //league.OUTakeOver = MainAssignee2;
+
+      entities[index].OtherHDPTakeOver = OtherAssignee1;
+      //league.OtherHDPTakeOver = OtherAssignee1;
+
+      //league.OtherOUTakeOver = OtherAssignee2;
+      entities[index].OtherOUTakeOver = OtherAssignee2;
+    } else {
+      entities[index].HDP = MainAssignee1;
+      //league.HDP = MainAssignee1;
+
+      entities[index].OU = MainAssignee2;
+      //league.OU = MainAssignee2;
+
+      entities[index].OtherHDP = OtherAssignee1;
+      //league.OtherHDP = OtherAssignee1;
+
+      entities[index].OtherOU = OtherAssignee2;
+      //league.OtherOU = OtherAssignee2;
+    }
+    copiedValueIndex++;
+    if (copiedValueIndex === copiedValue.length) {
+      copiedValueIndex = 0;
+    }
+  }
+  debugger;
+};
+
+const pasteCopied = (leagues, entities, updatedLeagueIds, pasteValue) => {
+  const { rowIndex, isTakeOver, copiedValue } = pasteValue;
+
+  if (copiedValue.length > 1) {
+    return;
+  }
+  const { MainAssignee1, MainAssignee2, OtherAssignee1, OtherAssignee2 } =
+    copiedValue[0];
   const entity = entities[rowIndex];
   const league = leagues.find(l =>
     isEqual(l.PreMatchLeagueId, entity.PreMatchLeagueId)
@@ -202,7 +244,6 @@ const sortLeaguesByDefault = data => {
   return [...leaguesHasNotAssignee, ...sortedHasAssigneeLeagues];
 };
 
-
 export {
   getUnreadMessagePreMatchLeagueIds,
   mergeMatchesToLeagues,
@@ -213,5 +254,6 @@ export {
   changeOpenNoteStateOneMatch,
   updateLeagueData,
   pasteCopied,
+  pasteMultipleValue,
   sortLeaguesByDefault
 };
