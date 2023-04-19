@@ -2,6 +2,7 @@ import React from 'react';
 import { MatchStatuses } from '../../Shared/Constants';
 import { UncontrolledTooltip } from 'reactstrap';
 import { LinkIcon, LinkOffIcon } from 'mdi-react';
+import AbsencePersonIcon from '../../../assets/svg-element/AbsencePersonIcon';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
 
@@ -36,6 +37,7 @@ class MatchNoCell extends React.PureComponent {
     const event = data[rowIndex];
     return (
       <div className='match-no'>
+        {event.IsShowAbsenceIcon && <AbsencePersonIcon />}
         <span className='match-number'>{event.MatchNo}</span>
         <span id={`InfoSite${rowIndex}`} className='icon-validInfoSiteId'>
           {this.renderInfoSiteLinked(event)}

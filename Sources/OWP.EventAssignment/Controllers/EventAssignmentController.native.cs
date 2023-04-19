@@ -43,8 +43,8 @@
 
             var eventModels = await repository.Query(queryModel);
 
-            var parentIds = string.Join(",", eventModels.Select(x => x.ParentMatchId).Distinct());
-            var infoSiteTimeResult = await repository.GetInfoSiteTime(parentIds);
+            var infoSiteTimeResult = await repository.GetInfoSiteTime(eventModels);
+            var adminSiteInfo = await repository.GetAdminSiteInfo(eventModels);
 
             await repository.DetectEventHasTicket(eventModels);
 
@@ -60,11 +60,13 @@
 
             foreach (var match in eventModels)
             {
-                var matchParent = infoSiteTimeResult.FirstOrDefault(x => x.ParentMatchId == match.ParentMatchId);
+                var infoSite = infoSiteTimeResult.FirstOrDefault(x => x.ParentMatchId == match.ParentMatchId);
+                var adminSite = adminSiteInfo.FirstOrDefault(x => x.ParentMatchId == match.ParentMatchId);
                 match.AdminSiteId = await getAdminSiteMatchIdService.GetAdminSiteMatchId(match.OWPMatchId,
                 match.ParentMatchId, match.MinorBettypeId);
-                match.InfoSiteTime = matchParent?.KickOffTime;
-                match.InfoSiteTimeDisplay = matchParent?.KichOffTimeDisplay;
+                match.InfoSiteTime = infoSite?.KickOffTime;
+                match.InfoSiteTimeDisplay = infoSite?.KichOffTimeDisplay;
+                match.IsShowAbsenceIcon = adminSite?.IsShowAbsenceIcon ?? false;
             }
 
             var permissionFullBetTypes = permission.LiveGameAssignment_FullBetTypes;

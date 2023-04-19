@@ -172,6 +172,7 @@ interface MatchInfo {
   KickOffTimeDisplay: string;
   InfoSiteTime: string;
   InfoSiteTimeDisplay: string;
+  IsShowAbsenceIcon: boolean;
 }
 interface FilterState {
   columnKey: string | undefined;

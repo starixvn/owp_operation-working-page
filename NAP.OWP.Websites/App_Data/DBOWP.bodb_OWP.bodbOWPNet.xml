@@ -7,6 +7,7 @@
 		<Setting Key="OWP_RefResourceGetAll" SpName="OWP_RefResourceGetAll" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
 		<Setting Key="OWP_GetUserInfoById" SpName="OWP_GetUserInfoById" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
     <Setting Key="OWP_LiveGame_GetInfoSiteTime" SpName="OWP_LiveGame_GetInfoSiteTime" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
+    <Setting Key="OWP_LiveGame_GetAdminSiteInfo" SpName="OWP_LiveGame_GetAdminSiteInfo" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
   </Function>
 	<Function Name="Notification">
 		<Setting Key="OWP_GetNotificationQueue" SpName="OWP_GetNotificationQueue" DbName="DBOWP.bodb_OWP.bodbOWPNet" />

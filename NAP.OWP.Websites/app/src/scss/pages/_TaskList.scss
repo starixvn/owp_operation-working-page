@@ -429,7 +429,8 @@
 }
 // col no
 .no-cell {
-  text-align: center;
+  display: grid;
+  justify-items: center;
 }
 // col match
 .match-link {

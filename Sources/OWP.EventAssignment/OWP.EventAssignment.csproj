@@ -99,17 +99,20 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Const\EventAssignmentConst.cs" />
     <Compile Include="Criteria\DetectEventHasTicketCritetia.cs" />
     <Compile Include="Criteria\EditMainMatchToMinorMatchCriteria.cs" />
     <Compile Include="Criteria\EditMainMatchCriteria.cs" />
     <Compile Include="Criteria\AddMatchRecommendOddsCriteria.cs" />
     <Compile Include="Criteria\AddMatchSettingCriteria.cs" />
+    <Compile Include="Criteria\GetAdminSiteInfoCriteria.cs" />
     <Compile Include="Criteria\GetInfoSiteTimeCriteria.cs" />
     <Compile Include="Criteria\GetSpecialEventTemplateCriteria.cs" />
     <Compile Include="Criteria\AddMinorMatchCriteria.cs" />
     <Compile Include="Criteria\ValidateToEditEventCriteria.cs" />
     <Compile Include="Criteria\ValidateToAddEventCriteria.cs" />
     <Compile Include="Criteria\AddMainMatchCriteria.cs" />
+    <Compile Include="Models\AdminSiteInfoModel.cs" />
     <Compile Include="Models\EditMatchViewModel.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Controllers\EventAssignmentController.native.cs" />

@@ -91,6 +91,7 @@ interface DataSource extends KOTimeProps, PesOrFiFa {
   IsRead: boolean;
   InfoSiteTime: string;
   InfoSiteTimeDisplay: string;
+  IsShowAbsenceIcon: boolean;
 }
 
 type ModelSpecialProduct = {

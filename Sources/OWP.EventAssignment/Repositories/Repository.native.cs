@@ -9,11 +9,13 @@ namespace OWP.EventAssignment.Repositories
     using Fanex.NAP.OWP.Core.Extensions.XMLExtensions;
     using Models;
     using OWP.Enumerations;
+    using OWP.EventAssignment.Const;
     using OWP.Models;
     using OWP.Services;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using System.Xml.Linq;
     using Utils;
@@ -31,7 +33,10 @@ namespace OWP.EventAssignment.Repositories
 
         Task DetectEventHasTicket(IList<EventModel> eventModels);
 
-        Task<IEnumerable<InfoSiteTimeModel>> GetInfoSiteTime(string ids);
+        Task<IList<InfoSiteTimeModel>> GetInfoSiteTime(IList<EventModel> eventModels);
+
+        Task<IList<AdminSiteInfoModel>> GetAdminSiteInfo(IList<EventModel> eventModels);
+
 
     }
 
@@ -702,13 +707,28 @@ namespace OWP.EventAssignment.Repositories
             return matchOffers.Where(x => x.OWPMatchId == owpMatchId).ToList();
         }
 
-        public async Task<IEnumerable<InfoSiteTimeModel>> GetInfoSiteTime(string ids)
+        public async Task<IList<InfoSiteTimeModel>> GetInfoSiteTime(IList<EventModel> eventModels)
         {
+            var parentIds = string.Join(",", eventModels.Select(x => x.ParentMatchId).Distinct());
             var criteria = new GetInfoSiteTimeCriteria
             {
-                ParentMatchIds = ids
+                ParentMatchIds = parentIds
             };
-            return await dynamicRepository.FetchAsync<InfoSiteTimeModel>(criteria);
+            return (await dynamicRepository.FetchAsync<InfoSiteTimeModel>(criteria)).ToList();
+        }
+
+        public async Task<IList<AdminSiteInfoModel>> GetAdminSiteInfo(IList<EventModel> eventModels)
+        {
+            var parentMatchIds = string.Join(",", eventModels
+                .Where(y => !EventAssignmentConst.StatusNotOffered.Contains(y.MatchStatus))
+                .Select(x => x.ParentMatchId)
+                .Distinct());
+
+            var criteria = new GetAdminSiteInfoCriteria
+            {
+                ParentMatchIds = parentMatchIds
+            };
+            return (await dynamicRepository.FetchAsync<AdminSiteInfoModel>(criteria)).ToList();
         }
     }
 }
