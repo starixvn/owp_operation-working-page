@@ -5,8 +5,8 @@ const copySlice = createSlice({
   initialState: {
     isCopying: false,
     copiedValue: [],
-    leagueIdStart: null,
-    leagueIdEnd: null,
+    rowStart: null,
+    rowEnd: null,
     highlightedCell: {
       PreMatchLeagueId: [],
       isTakeOver: false
@@ -15,19 +15,26 @@ const copySlice = createSlice({
   reducers: {
     copyElement: {
       reducer: (state, action) => {
-        const { copiedValue, isCopying, leagueId } = action.payload;
+        const { copiedValue, isCopying, leagueIndex, rowIndex } =
+          action.payload;
         state.isCopying = isCopying;
-        state.copiedValue.push(copiedValue);
-        const { leagueIdStart, leagueIdEnd } = state;
-        if (!leagueIdStart) {
-          state.leagueIdStart = leagueId;
-          state.leagueIdEnd = leagueId;
+        state.copiedValue.push({
+          value: copiedValue,
+          rowIndex
+        });
+        state.copiedValue = state.copiedValue.sort(
+          (src, dest) => src.rowIndex - dest.rowIndex
+        );
+        const { rowStart, rowEnd } = state;
+        if (!rowStart) {
+          state.rowStart = leagueIndex;
+          state.rowEnd = leagueIndex;
         }
-        if (leagueId < leagueIdStart) {
-          state.leagueIdStart = leagueId;
+        if (leagueIndex < rowStart) {
+          state.rowStart = leagueIndex;
         }
-        if (leagueId > leagueIdEnd) {
-          state.leagueIdEnd = leagueId;
+        if (leagueIndex > rowEnd) {
+          state.rowEnd = leagueIndex;
         }
       }
     },
@@ -48,6 +55,8 @@ const copySlice = createSlice({
         state.highlightedCell.PreMatchLeagueId = [];
         state.highlightedCell.isTakeOver = false;
         state.copiedValue = [];
+        state.rowStart = [];
+        state.rowEnd = [];
         state.isCopying = false;
       }
     }

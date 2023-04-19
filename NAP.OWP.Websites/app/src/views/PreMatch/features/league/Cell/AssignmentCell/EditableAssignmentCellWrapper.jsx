@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditableAssignmentCell from './EditableAssignmentCell';
 import { buildClassNameAssignmentCell } from '../../../../helper/preMatchHelper';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, useStore } from 'react-redux';
 import { toast } from 'react-toastify';
 import { copyElement, highlightElement } from '../../../copy/copySlice';
 import {
@@ -20,15 +20,16 @@ const propTypes = {
 
 const EditableAssignmentCellWrapper = props => {
   const copyModel = useSelector(state => state.copy);
+  const store = useStore();
   const { dataSource, rowIndex, columnId } = props;
   const { highlightedCell, isCopying, ...rest } = copyModel;
-  const { PreMatchLeagueId, InfoSiteMatchId, LeagueName } =
+  const { LeagueId, PreMatchLeagueId, InfoSiteMatchId, LeagueName } =
     dataSource[rowIndex];
   const dispatch = useDispatch();
   console.log(rowIndex + '' + LeagueName);
   const handleCopy = e => {
     e.stopPropagation();
-
+    const { leagues } = store.getState().dayShift;
     if (e.ctrlKey) {
       dispatch(
         highlightElement({
@@ -40,7 +41,8 @@ const EditableAssignmentCellWrapper = props => {
       dispatch(
         copyElement({
           copiedValue: prepareValueCopy(dataSource[rowIndex], columnId),
-          leagueId: PreMatchLeagueId,
+          leagueIndex: leagues.findIndex(x => x.LeagueId === LeagueId),
+          rowIndex,
           isCopying: true
         })
       );
@@ -52,6 +54,7 @@ const EditableAssignmentCellWrapper = props => {
     const copyProp = {
       ...rest,
       rowIndex,
+      leagueIndex: leagues.findIndex(x => x.LeagueId === LeagueId),
       isTakeOver: isTakeOver(columnId)
     };
 

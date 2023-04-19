@@ -104,7 +104,6 @@ const handleUpdateSuccess = (state, action) => {
 
 const handleDeleteSuccess = (state, action) => {
   const data = action.data;
-  debugger;
   let specialProductDataSource = [];
   specialProductDataSource = state.specialProductDataSource.filter(
     x => x.ProductId !== data.productId

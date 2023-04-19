@@ -135,45 +135,61 @@ const pasteMultipleValue = (
   updatedLeagueIds,
   pasteValue
 ) => {
-  const { rowIndex, isTakeOver, copiedValue, leagueIdEnd } = pasteValue;
-  const startIndex =
-    entities.findIndex(e => e.PreMatchLeagueId === leagueIdEnd) + 1;
-  debugger;
+  const { leagueIndex, isTakeOver, copiedValue, rowEnd } = pasteValue;
+
   let copiedValueIndex = 0;
-  for (let index = startIndex; index <= rowIndex; index++) {
+  const leagueIds = [];
+  for (let index = rowEnd + 1; index <= leagueIndex; index++) {
     const { MainAssignee1, MainAssignee2, OtherAssignee1, OtherAssignee2 } =
-      copiedValue[copiedValueIndex];
+      copiedValue[copiedValueIndex].value;
+
     if (isTakeOver) {
-      entities[index].HDPTakeOver = MainAssignee1;
-      //league.HDPTakeOver = MainAssignee1;
+      leagueIds.push(leagues[index].LeagueId);
+      leagues[index].HDPTakeOver = MainAssignee1;
 
-      entities[index].OUTakeOver = MainAssignee2;
-      //league.OUTakeOver = MainAssignee2;
+      leagues[index].OUTakeOver = MainAssignee2;
 
-      entities[index].OtherHDPTakeOver = OtherAssignee1;
-      //league.OtherHDPTakeOver = OtherAssignee1;
+      leagues[index].OtherHDPTakeOver = OtherAssignee1;
 
-      //league.OtherOUTakeOver = OtherAssignee2;
-      entities[index].OtherOUTakeOver = OtherAssignee2;
+      leagues[index].OtherOUTakeOver = OtherAssignee2;
     } else {
-      entities[index].HDP = MainAssignee1;
-      //league.HDP = MainAssignee1;
+      leagueIds.push(leagues[index].LeagueId);
+      leagues[index].HDP = MainAssignee1;
 
-      entities[index].OU = MainAssignee2;
-      //league.OU = MainAssignee2;
+      leagues[index].OU = MainAssignee2;
 
-      entities[index].OtherHDP = OtherAssignee1;
-      //league.OtherHDP = OtherAssignee1;
+      leagues[index].OtherHDP = OtherAssignee1;
 
-      entities[index].OtherOU = OtherAssignee2;
-      //league.OtherOU = OtherAssignee2;
+      leagues[index].OtherOU = OtherAssignee2;
     }
     copiedValueIndex++;
     if (copiedValueIndex === copiedValue.length) {
       copiedValueIndex = 0;
     }
   }
-  debugger;
+  copiedValueIndex = 0;
+  leagueIds.forEach(leagueId => {
+    const { MainAssignee1, MainAssignee2, OtherAssignee1, OtherAssignee2 } =
+      copiedValue[copiedValueIndex].value;
+    const entity = entities.find(l => l.LeagueId === leagueId);
+    if (entity) {
+      copiedValueIndex++;
+      if (isTakeOver) {
+        entity.HDPTakeOver = MainAssignee1;
+        entity.OUTakeOver = MainAssignee2;
+        entity.OtherHDPTakeOver = OtherAssignee1;
+        league.OtherOUTakeOver = OtherAssignee2;
+      } else {
+        entity.HDP = MainAssignee1;
+        entity.OU = MainAssignee2;
+        entity.OtherHDP = OtherAssignee1;
+        entity.OtherOU = OtherAssignee2;
+      }
+      if (copiedValueIndex === copiedValue.length) {
+        copiedValueIndex = 0;
+      }
+    }
+  });
 };
 
 const pasteCopied = (leagues, entities, updatedLeagueIds, pasteValue) => {
@@ -183,7 +199,7 @@ const pasteCopied = (leagues, entities, updatedLeagueIds, pasteValue) => {
     return;
   }
   const { MainAssignee1, MainAssignee2, OtherAssignee1, OtherAssignee2 } =
-    copiedValue[0];
+    copiedValue[0].value;
   const entity = entities[rowIndex];
   const league = leagues.find(l =>
     isEqual(l.PreMatchLeagueId, entity.PreMatchLeagueId)
