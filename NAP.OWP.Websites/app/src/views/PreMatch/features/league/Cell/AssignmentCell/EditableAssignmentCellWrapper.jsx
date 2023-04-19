@@ -43,7 +43,8 @@ const EditableAssignmentCellWrapper = props => {
           copiedValue: prepareValueCopy(dataSource[rowIndex], columnId),
           leagueIndex: leagues.findIndex(x => x.LeagueId === LeagueId),
           rowIndex,
-          isCopying: true
+          isCopying: true,
+          isTakeOver: isTakeOver(columnId)
         })
       );
       toast.success(notificationContent('Press ESC to exit Copy assignment'), {

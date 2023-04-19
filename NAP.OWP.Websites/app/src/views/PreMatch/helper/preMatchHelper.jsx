@@ -43,7 +43,10 @@ const buildLastUpdate = props => {
   return lastUpdate;
 };
 
-const pipe = (...fns) => x => fns.reduce((y, func) => func(y), x);
+const pipe =
+  (...fns) =>
+  x =>
+    fns.reduce((y, func) => func(y), x);
 
 const buildHeaderTitle = (updateTime, updateBy) => {
   const builderPipe = pipe(buildLastUpdatedFormatter, buildLastUpdate);
