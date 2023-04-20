@@ -1,11 +1,12 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { shallow } from 'zustand/shallow';
 import useStore from '../../app/useStore';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
-import { numberElement } from './../../const/Const.json';
+import { numberElement, headerHeight } from './../../const/Const.json';
 
 const SuggestionTable = () => {
+  const [maxHeight, setMaxHeight] = useState(window.innerHeight - headerHeight);
   const tableRef = useRef<HTMLDivElement>(null);
   const { workScheduleInfo } = useStore(
     state => ({
@@ -13,6 +14,16 @@ const SuggestionTable = () => {
     }),
     shallow
   );
+
+  const handleResizeBrowser = () => {
+    const { innerHeight } = window;
+    setMaxHeight(innerHeight - headerHeight);
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener('resize', handleResizeBrowser);
+    return () => window.removeEventListener('resize', handleResizeBrowser);
+  }, []);
 
   useLayoutEffect(() => {
     if (tableRef.current) {
@@ -33,7 +44,7 @@ const SuggestionTable = () => {
 
   return (
     <div>
-      <div ref={tableRef} className='table-content'>
+      <div ref={tableRef} className='table-content' style={{ maxHeight }}>
         <table>
           <thead>
             <TableHeader

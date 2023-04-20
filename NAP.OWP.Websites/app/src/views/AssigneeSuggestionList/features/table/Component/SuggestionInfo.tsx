@@ -22,9 +22,9 @@ const SuggestionInfo = ({ workingShifts, title, isOpen = false }: Props) => {
               className='collapse'
               onClick={() => setOpenExpand(!isOpenExpand)}>
               {isOpenExpand ? (
-                <ArrowDownwardIcon fontSize='small' />
-              ) : (
                 <ArrowUpwardIcon fontSize='small' />
+              ) : (
+                <ArrowDownwardIcon fontSize='small' />
               )}
             </span>
           </span>

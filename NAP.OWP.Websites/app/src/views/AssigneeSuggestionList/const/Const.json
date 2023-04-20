@@ -198,5 +198,6 @@
   ],
   "startHour": 2,
   "startMinute": 0,
-  "numberElement": 2
+  "numberElement": 2,
+  "headerHeight": 150
 }
