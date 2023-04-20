@@ -84,6 +84,10 @@
 
         public TimeSpan? OtherTime { get; set; }
 
+        public TimeSpan? InfoSiteTime { get; set; }
+
+        public string InfoSiteTimeDisplay { get; set; }
+
         public string OtherTimeToDisplay => OtherTime.HasValue ? OtherTime.Value.ToKOTime() : string.Empty;
 
         public string MatchStatus { get; set; }

@@ -11,7 +11,7 @@ namespace OWP.EventAssignment.Models
 
         public TimeSpan KickOffTime { get; set; }
 
-        public string KichOffTimeDisplay => KickOffTime.ToOWPTimeFormat();
+        public string KickOffTimeDisplay => KickOffTime.ToOWPTimeFormat();
 
     }
 }

@@ -22,15 +22,13 @@ import isDeepEqual from 'lodash.isequal';
 import { v4 as uuidv4 } from 'uuid';
 import { BettypeId } from './constants/Column';
 import MarketCell from './MarketCell';
+import TimeOfMatch from '../Shared/LiveGameShared/TimeOfMatch';
 
 const identity = x => x;
 const deepMemoized = memoizeOne(identity, isDeepEqual);
 
-const {
-  convertThousandToK,
-  convertSpreadToPercent,
-  toLowerCaseForFilter
-} = Utils;
+const { convertThousandToK, convertSpreadToPercent, toLowerCaseForFilter } =
+  Utils;
 
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
@@ -154,11 +152,7 @@ class Table extends Component {
       isDisplayMBCSettings,
       overUnderSetting
     );
-    return (
-      <div className='maxbet-cell'>
-        {maxBetSpreadMBCCell}
-      </div>
-    );
+    return <div className='maxbet-cell'>{maxBetSpreadMBCCell}</div>;
   }
 
   isDisplayMBCSettings(handicapSetting, overUnderSetting) {
@@ -173,7 +167,8 @@ class Table extends Component {
     isDisplayMBCSettings,
     overUnderSetting
   ) {
-    const isHDPSpreadExisting = handicapSetting && handicapSetting.SpreadToDisplay;
+    const isHDPSpreadExisting =
+      handicapSetting && handicapSetting.SpreadToDisplay;
 
     return (
       <div>
@@ -184,9 +179,7 @@ class Table extends Component {
           )}
           {overUnderSetting && overUnderSetting.SpreadToDisplay && (
             <>
-              {isHDPSpreadExisting && (
-                <span>- </span>
-              )}
+              {isHDPSpreadExisting && <span>- </span>}
               {overUnderSetting.SpreadToDisplay}
             </>
           )}
@@ -497,19 +490,29 @@ class Table extends Component {
 
   renderKickOffTimeColumn(cellInfo) {
     const event = cellInfo.original;
+    const {
+      KickOffTimeToDisplay,
+      KickOffTime,
+      InfoSiteTimeDisplay,
+      InfoSiteTime,
+      OtherTimeToDisplay,
+      OtherTime,
+      index
+    } = event;
 
+    const propsTime = {
+      KickOffTimeDisplay: KickOffTimeToDisplay,
+      KickOffTime,
+      InfoSiteTimeDisplay,
+      InfoSiteTime,
+      OtherTimeDisplay: OtherTimeToDisplay,
+      OtherTime,
+      rowIndex: index
+    };
+    console.log(propsTime);
     return (
       <div className='kickoff-cell'>
-        <span className='time-cell'>
-          {event.KickOffTimeToDisplay}
-          {event.OtherTime ? (
-            <span className='badge-label other-time'>
-              {event.OtherTimeToDisplay}
-            </span>
-          ) : (
-            ''
-          )}
-        </span>
+        <TimeOfMatch {...propsTime} />
       </div>
     );
   }

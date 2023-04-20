@@ -65,7 +65,7 @@
                 match.AdminSiteId = await getAdminSiteMatchIdService.GetAdminSiteMatchId(match.OWPMatchId,
                 match.ParentMatchId, match.MinorBettypeId);
                 match.InfoSiteTime = infoSite?.KickOffTime;
-                match.InfoSiteTimeDisplay = infoSite?.KichOffTimeDisplay;
+                match.InfoSiteTimeDisplay = infoSite?.KickOffTimeDisplay;
                 match.IsShowAbsenceIcon = adminSite?.IsShowAbsenceIcon ?? false;
             }
 
