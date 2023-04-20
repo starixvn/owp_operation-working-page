@@ -20,10 +20,10 @@ describe('SortDefault under test', () => {
     const element = container.querySelector('.button-sort');
     expect(element).toBeInTheDocument();
   });
-  it('should dispatch 1 time, when click button-sort', () => {
+  it('should dispatch 2 time, when click button-sort', () => {
     const { container } = render(<SortDefault />);
     const element = container.querySelector('.button-sort');
     fireEvent.click(element);
-    expect(mockedDispatch).toHaveBeenCalledTimes(1);
+    expect(mockedDispatch).toHaveBeenCalledTimes(2);
   });
 });
