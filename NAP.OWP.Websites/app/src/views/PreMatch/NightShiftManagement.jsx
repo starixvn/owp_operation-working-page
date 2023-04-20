@@ -21,7 +21,7 @@ import { BUTTON_TYPE } from '../Shared/createTicketNew/const/const';
 
 const { PRE_MATCH } = BUTTON_TYPE;
 const { INDIVIDUAL } = RECIPIENT_TYPE;
-const NighShiftManagement = () => {
+const NightShiftManagement = () => {
   const modelEditor = useSelector(state => state.editor);
   const modelPermission = usePermission(FunctionKeys.NightShiftAssignment);
   const { permission } = modelPermission;
@@ -82,4 +82,4 @@ const NighShiftManagement = () => {
   );
 };
 
-export default NighShiftManagement;
+export default NightShiftManagement;

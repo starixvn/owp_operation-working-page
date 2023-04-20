@@ -56,7 +56,7 @@ const copySlice = createSlice({
         state.highlightedCell.PreMatchLeagueId.push(PreMatchLeagueId);
         state.isCopying = false;
         if (isTakeOver !== state.highlightedCell.isTakeOver) {
-          state.highlightedCell.PreMatchLeagueId = [];
+          state.highlightedCell.PreMatchLeagueId.length = 0;
           state.highlightedCell.PreMatchLeagueId.push(PreMatchLeagueId);
           state.highlightedCell.isTakeOverBefore =
             state.highlightedCell.isTakeOver;
@@ -66,8 +66,8 @@ const copySlice = createSlice({
     },
     resetCopyInfo: {
       reducer: state => {
-        state.highlightedCell.PreMatchLeagueId = [];
-        state.copiedValue = [];
+        state.highlightedCell.PreMatchLeagueId.length = 0;
+        state.copiedValue.length = 0;
         state.highlightedCell.isTakeOver = false;
         state.highlightedCell.isTakeOverBefore = false;
         state.rowStart = null;

@@ -23,10 +23,9 @@ const EditableAssignmentCellWrapper = props => {
   const store = useStore();
   const { dataSource, rowIndex, columnId } = props;
   const { highlightedCell, isCopying, ...rest } = copyModel;
-  const { LeagueId, PreMatchLeagueId, InfoSiteMatchId, LeagueName } =
-    dataSource[rowIndex];
+  const { LeagueId, PreMatchLeagueId, InfoSiteMatchId } = dataSource[rowIndex];
   const dispatch = useDispatch();
-  console.log(rowIndex + '' + LeagueName);
+
   const handleCopy = e => {
     e.stopPropagation();
     const { leagues } = store.getState().dayShift;
@@ -59,11 +58,11 @@ const EditableAssignmentCellWrapper = props => {
       isTakeOver: isTakeOver(columnId)
     };
 
-    if (isCopying && e.altKey) {
-      dispatch(pasteCopiedMultipleValue(copyProp));
-    } else if (isCopying && !e.ctrlKey) {
+    isCopying && e.altKey && dispatch(pasteCopiedMultipleValue(copyProp));
+    isCopying &&
+      !e.altKey &&
+      !e.ctrlKey &&
       dispatch(pasteCopiedValue(copyProp));
-    }
   };
 
   const isHighlight =
