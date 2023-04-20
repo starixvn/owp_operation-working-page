@@ -56,8 +56,12 @@ describe('Event under test', () => {
   });
   it('should render event from API', () => {
     setup();
+    const props = {
+      typeTicketText: 'Event Checking',
+      ticketType: 1
+    };
     Service.event.mockResolvedValue(fetchData);
-    const { container } = render(<InputEvent />);
+    const { container } = render(<InputEvent {...props} />);
     expect(container.querySelector('#tags-filled')).toBeInTheDocument();
   });
 });

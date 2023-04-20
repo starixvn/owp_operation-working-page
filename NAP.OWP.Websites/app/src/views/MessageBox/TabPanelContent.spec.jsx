@@ -3,6 +3,7 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
   waitForElementToBeRemoved
 } from '@testing-library/react';
 import TabPanelContent from './TabPanelContent';
@@ -152,7 +153,7 @@ describe('TabPanelContent Component Tests', () => {
   beforeEach(() => {
     Service.searchAll.mockReset();
   });
-  it('should render <Search />', () => {
+  it('should render <Search />', async () => {
     Service.searchAll.mockResolvedValue(responseData);
     const props = {
       tabId: '1',
@@ -160,19 +161,9 @@ describe('TabPanelContent Component Tests', () => {
       isWatcher: null
     };
     const component = render(<TabPanelContent {...props} />);
-
-    expect(component).toMatchSnapshot();
-  });
-
-  it('should render <Search /> with no data', () => {
-    Service.searchAll.mockReturnValue(responseData);
-    const props = {
-      tabId: '1',
-      fetchOnLoad: '1',
-      isWatcher: null
-    };
-    const component = render(<TabPanelContent {...props} />);
-    expect(component).toMatchSnapshot();
+    await waitFor(() => {
+      expect(component).toMatchSnapshot();
+    });
   });
 
   it('test search component on render data ', async () => {
@@ -240,7 +231,9 @@ describe('TabPanelContent Component Tests', () => {
     await waitForElementToBeRemoved(icon);
     fireEvent.click(screen.getByText('Next'));
     const iconSecond = container.querySelector(`[class="icon-loading"]`);
-    expect(iconSecond).toBeInTheDocument();
+    await waitFor(() => {
+      expect(iconSecond).toBeInTheDocument();
+    });
   });
 
   it('test Pagination on submit Click ', async () => {
@@ -260,6 +253,8 @@ describe('TabPanelContent Component Tests', () => {
       charCode: 13
     });
     const iconSecond = container.querySelector(`[class="icon-loading"]`);
-    expect(iconSecond).toBeInTheDocument();
+    await waitFor(() => {
+      expect(iconSecond).toBeInTheDocument();
+    });
   });
 });

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   render,
   screen,
   fireEvent,
-  waitForElementToBeRemoved
+  waitForElementToBeRemoved,
+  waitFor
 } from '@testing-library/react';
 import { useDispatch } from 'react-redux';
 import FilterTicketCenter from './FilterTicketCenter';
@@ -44,10 +45,10 @@ describe('test FilterTicketCenter', () => {
     jest.clearAllMocks();
   });
 
-  it('should render Loading', () => {
+  it('should render Loading', async () => {
     const { container } = render(<FilterTicketCenter {...props} />);
     const icon = container.querySelector(`[class="icon-loading"]`);
-    expect(icon).toBeInTheDocument();
+    await waitFor(() => expect(icon).toBeInTheDocument());
   });
 
   it('show list Filter ', async () => {
@@ -55,6 +56,7 @@ describe('test FilterTicketCenter', () => {
     const icon = container.querySelector(`[class="icon-loading"]`);
     expect(icon).toBeInTheDocument();
     await waitForElementToBeRemoved(icon);
+
     expect(screen.queryByText(/Event/i)).toBeInTheDocument();
     expect(screen.queryByText(/Ticket ID/i)).toBeInTheDocument();
     expect(screen.queryByText(/Ticket Type - Subtype/i)).toBeInTheDocument();

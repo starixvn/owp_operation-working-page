@@ -72,8 +72,7 @@ useSelector.mockImplementation(f =>
     }
   })
 );
-createRef.mockResolvedValue(ref);
-
+createRef.mockReturnValue(ref);
 describe('test InputMessage', () => {
   afterEach(() => {
     jest.clearAllMocks();

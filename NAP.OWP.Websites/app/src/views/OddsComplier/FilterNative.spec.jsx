@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import Filter from './FilterNative';
 import Service from '../ResourceManagement/Service';
 import Utils from '../Shared/Utils';
@@ -68,7 +68,9 @@ describe('Filter', () => {
   it('should open calendar when click on icon', () => {
     const { container } = render(<Filter {...defaultProps} />);
     const icon = container.querySelector('.icon-calendar');
-    fireEvent.click(icon);
+    waitFor(() => {
+      fireEvent.click(icon);
+    });
     expect(icon).toBeInTheDocument();
     expect(screen.getByText('Previous Month')).toBeInTheDocument();
   });
@@ -82,7 +84,9 @@ describe('Filter', () => {
     const { container } = render(<Filter {...defaultProps} />);
     const icon = container.querySelector('.button-export');
 
-    fireEvent.click(icon);
+    waitFor(() => {
+      fireEvent.click(icon);
+    });
 
     expect(icon).toBeInTheDocument();
     expect(onExport).toBeCalledTimes(1);
