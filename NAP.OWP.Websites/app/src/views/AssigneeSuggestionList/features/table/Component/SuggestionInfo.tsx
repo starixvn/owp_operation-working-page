@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UserWorkingSchedule } from '../../TypeNative';
 import TraderInfo from './TraderInfo';
 import WorkingShift from './WorkingShift';
-
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 type Props = {
   workingShifts: UserWorkingSchedule[] | null;
   title: string;
+  isOpen?: boolean;
 };
 
-const SuggestionInfo = ({ workingShifts, title }: Props) => {
+const SuggestionInfo = ({ workingShifts, title, isOpen = false }: Props) => {
+  const [isOpenExpand, setOpenExpand] = useState<boolean>(isOpen);
   return (
     <>
-      {workingShifts?.map((item, index) => (
-        <tr key={index}>
-          <TraderInfo userInfo={item.userInfo} index={index}></TraderInfo>
-          <WorkingShift data={item} index={index}></WorkingShift>
-        </tr>
-      ))}
+      <tr className='full-row'>
+        <td className='sticky-col'>
+          <span>
+            {title}
+            <span
+              className='collapse'
+              onClick={() => setOpenExpand(!isOpenExpand)}>
+              {isOpenExpand ? (
+                <ArrowDownwardIcon fontSize='small' />
+              ) : (
+                <ArrowUpwardIcon fontSize='small' />
+              )}
+            </span>
+          </span>
+        </td>
+        <td className='col-second' colSpan={39}></td>
+      </tr>
+      {isOpenExpand &&
+        workingShifts?.map((item, index) => (
+          <tr key={index}>
+            <TraderInfo userInfo={item.userInfo} index={index}></TraderInfo>
+            <WorkingShift data={item} index={index}></WorkingShift>
+          </tr>
+        ))}
     </>
   );
 };

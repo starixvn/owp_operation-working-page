@@ -10,7 +10,13 @@ const TableBody = ({ workingShifts }: Props) => (
   <>
     <SuggestionInfo
       workingShifts={workingShifts}
-      title='Assignee Suggestion(Available)'></SuggestionInfo>
+      title='Assignee Suggestion(Available)'
+      isOpen></SuggestionInfo>
+    <SuggestionInfo
+      workingShifts={workingShifts}
+      title='Assignee Suggestion(Partially available)'
+      isOpen></SuggestionInfo>
+    <SuggestionInfo workingShifts={workingShifts} title='Busy'></SuggestionInfo>
   </>
 );
 

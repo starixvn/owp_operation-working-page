@@ -4,16 +4,12 @@ import useStore from '../../app/useStore';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import { numberElement } from './../../const/Const.json';
-import { isEqual } from 'lodash';
-import { REQUEST_STATUS } from '../../../Shared/Constants';
-import Loading from '../../../components/Loading';
 
 const SuggestionTable = () => {
   const tableRef = useRef<HTMLDivElement>(null);
-  const { workScheduleInfo, loading } = useStore(
+  const { workScheduleInfo } = useStore(
     state => ({
-      workScheduleInfo: state.workScheduleInfo,
-      loading: state.loadingDataTable
+      workScheduleInfo: state.workScheduleInfo
     }),
     shallow
   );
@@ -33,11 +29,8 @@ const SuggestionTable = () => {
           currentTimeElement?.offsetWidth * numberElement;
       }
     }
-  });
+  }, []);
 
-  if (isEqual(loading, REQUEST_STATUS.pending)) {
-    return <Loading />;
-  }
   return (
     <div>
       <div ref={tableRef} className='table-content'>

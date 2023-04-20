@@ -277,8 +277,10 @@ span.explanation {
             line-height: 15px;
             span {
               display: flex;
+              align-items: center;
               svg {
                 margin-left: 4px;
+                margin-top: 8px;
               }
             }
           }
@@ -290,6 +292,7 @@ span.explanation {
     }
     .sticky-col {
       border-right: 0;
+      min-width: 430px;
     }
     .item {
       text-align: center;
@@ -298,6 +301,9 @@ span.explanation {
       align-items: center;
       justify-content: center;
       font-weight: 400;
+    }
+    .collapse {
+      cursor: pointer;
     }
   }
 

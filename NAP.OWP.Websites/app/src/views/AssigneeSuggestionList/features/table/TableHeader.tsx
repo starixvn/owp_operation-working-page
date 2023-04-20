@@ -13,9 +13,9 @@ const TableHeader = ({ filterDate, eventDate }: Props) => {
 
   return (
     <tr>
-      <th key='working-scheduler' className='working-scheduler-header'>
+      <th key='working-schedule' className='working-scheduler-header'>
         <span>
-          Working Scheduler - {getLocaleDateTime(filterDate, 'MMM DD, YYYY')}
+          Working Schedule - {getLocaleDateTime(filterDate, 'MMM DD, YYYY')}
         </span>
       </th>
       {timeLineColumn.map((x: TimeLine) => (
