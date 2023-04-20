@@ -2,6 +2,6 @@
 {
     public static class EventAssignmentConst
     {
-        public static readonly string[] StatusNotOffered = { "Cancel", "Suspended", "Postponed" };
+        public static readonly string[] StatusNotOffered = { "Cancel", "Suspended" };
     }
 }

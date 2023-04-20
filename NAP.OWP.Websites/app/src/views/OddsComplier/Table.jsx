@@ -509,7 +509,7 @@ class Table extends Component {
       OtherTime,
       rowIndex: index
     };
-    console.log(propsTime);
+
     return (
       <div className='kickoff-cell'>
         <TimeOfMatch {...propsTime} />
