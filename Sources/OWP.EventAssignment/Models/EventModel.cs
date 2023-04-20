@@ -116,6 +116,10 @@
 
         public string InfoSiteTimeDisplay { get; set; }
 
-        public bool IsShowAbsenceIcon { get; set; } = false;
+        public bool IsShowAbsenceIcon { get; set; }
+
+        public TimeSpan KickOffTimeStr { get; set; }
+
+        public TimeSpan? OtherTimeStr { get; set; }
     }
 }

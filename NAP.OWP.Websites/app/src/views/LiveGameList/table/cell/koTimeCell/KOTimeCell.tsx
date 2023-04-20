@@ -1,31 +1,34 @@
 import React, { useRef } from 'react';
 import { CellProps } from '../../../type/TableType';
 import { UncontrolledTooltip } from 'reactstrap';
-import { isEqual } from 'lodash';
+import TimeOfMatch from '../../../../Shared/LiveGameShared/TimeOfMatch';
 
 const KOTimeCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
   const ref = useRef(null);
-  const { KickOffTimeDisplay, OtherTime, InfoSiteTimeDisplay, IsPES, IsFIFA } =
-    dataSource[rowIndex];
+  const {
+    KickOffTimeDisplay,
+    KickOffTime,
+    OtherTimeDisplay,
+    OtherTime,
+    InfoSiteTimeDisplay,
+    InfoSiteTime,
+    IsPES,
+    IsFIFA
+  } = dataSource[rowIndex];
 
-  const conditionToShowInfoSiteTime =
-    !isEqual(KickOffTimeDisplay, InfoSiteTimeDisplay) &&
-    !isEqual(OtherTime, InfoSiteTimeDisplay);
+  const propsTime = {
+    KickOffTimeDisplay,
+    KickOffTime,
+    OtherTimeDisplay,
+    OtherTime,
+    InfoSiteTimeDisplay,
+    InfoSiteTime,
+    rowIndex
+  };
+
   return (
     <div className='ko-time-cell'>
-      <p>{KickOffTimeDisplay}</p>
-      {OtherTime && (
-        <p>
-          <span className='badge-label other-time'>{OtherTime}</span>
-        </p>
-      )}
-      {conditionToShowInfoSiteTime && (
-        <p>
-          <span className='badge-label info-site-time'>
-            {InfoSiteTimeDisplay}
-          </span>
-        </p>
-      )}
+      <TimeOfMatch {...propsTime} />
       {IsPES && (
         <>
           <i className='icon-match icon-pes' original-title='PES' ref={ref}></i>

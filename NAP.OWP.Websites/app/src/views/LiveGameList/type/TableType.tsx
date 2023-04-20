@@ -145,6 +145,7 @@ interface MatchInfo {
   OWPMatchId: number;
   OtherProvider: string | null;
   OtherTime: string | null;
+  OtherTimeDisplay: string | null;
   ParentMatchId: number | null;
   Phone: string;
   Provider: string | null;

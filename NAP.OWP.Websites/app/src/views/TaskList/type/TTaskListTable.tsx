@@ -1,10 +1,10 @@
 interface KOTimeProps {
   MatchNo: string;
   MatchStatus: string;
-  KickOffTime: Date;
+  KickOffTime: string;
   KickOffTimeDisplay: string;
-  OtherTime: Date;
-  OtherTimeDisplay: string;
+  OtherTime: string | null;
+  OtherTimeDisplay: string | null;
   EventDate: Date;
   EventDateDisplay: string;
 }
@@ -89,8 +89,8 @@ interface DataSource extends KOTimeProps, PesOrFiFa {
   };
   HasTicket: boolean;
   IsRead: boolean;
-  InfoSiteTime: string;
-  InfoSiteTimeDisplay: string;
+  InfoSiteTime: string | null;
+  InfoSiteTimeDisplay: string | null;
   IsShowAbsenceIcon: boolean;
 }
 

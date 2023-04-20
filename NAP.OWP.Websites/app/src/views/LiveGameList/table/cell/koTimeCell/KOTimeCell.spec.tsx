@@ -142,7 +142,8 @@ const props: CellProps = {
       NoOfHDPId: 11,
       OWPMatchId: 930265,
       OtherProvider: 'BG/BET/',
-      OtherTime: '02:00 AM',
+      OtherTime: '14:00:00',
+      OtherTimeDisplay: '02:00 AM',
       ParentMatchId: 930265,
       Phone: '',
       Provider: 'BET/Refer SBO/SB/ISN',
@@ -164,7 +165,8 @@ const props: CellProps = {
       KickOffTimeDisplay: '04:00 PM',
       WatchBet: '',
       InfoSiteTime: '17:00:00',
-      InfoSiteTimeDisplay: '05:00 PM'
+      InfoSiteTimeDisplay: '05:00 PM',
+      IsShowAbsenceIcon: false
     }
   ],
   rowIndex: 0

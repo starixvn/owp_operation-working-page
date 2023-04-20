@@ -1,32 +1,33 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { KOTimeCellProps } from '../../type/TTaskListTable';
-import { isEqual } from 'lodash';
+import TimeOfMatch from '../../../Shared/LiveGameShared/TimeOfMatch';
 
 const KOTime = (props: KOTimeCellProps) => {
-  const { flagElement, eventDateElement, dataSource } = props;
-  const { KickOffTimeDisplay, InfoSiteTimeDisplay, OtherTimeDisplay } =
-    dataSource;
+  const { flagElement, eventDateElement, dataSource, rowIndex } = props;
+  const {
+    KickOffTimeDisplay,
+    KickOffTime,
+    InfoSiteTimeDisplay,
+    InfoSiteTime,
+    OtherTimeDisplay,
+    OtherTime
+  } = dataSource;
 
-  const conditionToShowInfoSiteTime =
-    !isEqual(KickOffTimeDisplay, InfoSiteTimeDisplay) &&
-    !isEqual(OtherTimeDisplay, InfoSiteTimeDisplay);
+  const propsTime = {
+    KickOffTimeDisplay,
+    KickOffTime,
+    InfoSiteTimeDisplay,
+    InfoSiteTime,
+    OtherTimeDisplay,
+    OtherTime,
+    rowIndex
+  };
+
   return (
     <>
       <div className='ko-time-cell'>
         {eventDateElement}
-        <p>{KickOffTimeDisplay}</p>
-        {OtherTimeDisplay && (
-          <p>
-            <span className='badge-label other-time'>{OtherTimeDisplay}</span>
-          </p>
-        )}
-        {conditionToShowInfoSiteTime && (
-          <p>
-            <span className='badge-label info-site-time'>
-              {InfoSiteTimeDisplay}
-            </span>
-          </p>
-        )}
+        <TimeOfMatch {...propsTime} />
         {flagElement}
       </div>
     </>

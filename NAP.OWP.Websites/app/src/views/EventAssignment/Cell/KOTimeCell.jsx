@@ -1,26 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isEqual } from 'lodash';
-
+import TimeOfMatch from '../../Shared/LiveGameShared/TimeOfMatch';
 class KOTimeCell extends React.PureComponent {
   render() {
     const { data, rowIndex } = this.props;
-    const { OtherTime, KickOffTime, InfoSiteTimeDisplay } = data[rowIndex];
-    const conditionToShowInfoSiteTime =
-      !isEqual(KickOffTime, InfoSiteTimeDisplay) &&
-      !isEqual(OtherTime, InfoSiteTimeDisplay);
+    const {
+      OtherTime,
+      OtherTimeStr,
+      KickOffTime,
+      KickOffTimeStr,
+      InfoSiteTime,
+      InfoSiteTimeDisplay
+    } = data[rowIndex];
+    const propsTime = {
+      KickOffTimeDisplay: KickOffTime,
+      KickOffTime: KickOffTimeStr,
+      InfoSiteTimeDisplay,
+      InfoSiteTime,
+      OtherTimeDisplay: OtherTime,
+      OtherTime: OtherTimeStr,
+      rowIndex
+    };
     return (
       <div className='kickoff-cell'>
         <span className='time-cell'>
-          {KickOffTime}
-          {OtherTime && (
-            <span className='badge-label other-time'>{OtherTime}</span>
-          )}
-          {conditionToShowInfoSiteTime && (
-            <span className='badge-label info-site-time'>
-              {InfoSiteTimeDisplay}
-            </span>
-          )}
+          <TimeOfMatch {...propsTime} />
         </span>
       </div>
     );
