@@ -10,7 +10,8 @@ import {
   pasteCopied,
   pasteMultipleValue,
   sortLeaguesByColumnKey,
-  sortLeaguesByDefault
+  sortLeaguesByDefault,
+  clearState
 } from './shiftHelper';
 import {
   restoreDeletedLeague,
@@ -123,21 +124,10 @@ const shiftSlice = createSlice({
       }
     },
     clearStateDayShift: {
-      reducer: state => {
-        state.prematchIdUpdated.length = 0;
-        state.prematchIdDeleted.length = 0;
-        state.sortState = {};
-      }
+      reducer: state => clearState(state)
     },
     clearStateNightShift: {
-      reducer: state => {
-        state.prematchIdUpdated.length = 0;
-        state.prematchIdDeleted.length = 0;
-        state.sortState = {};
-        state.entities = [];
-        state.matches = [];
-        state.leagues = [];
-      }
+      reducer: state => clearState(state)
     },
     restore: {
       reducer: (state, action) => {

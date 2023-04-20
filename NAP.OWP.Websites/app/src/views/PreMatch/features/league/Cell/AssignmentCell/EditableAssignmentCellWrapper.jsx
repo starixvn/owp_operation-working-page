@@ -53,6 +53,7 @@ const EditableAssignmentCellWrapper = props => {
     }
     const copyProp = {
       ...rest,
+      highlightedCell,
       rowIndex,
       leagueIndex: leagues.findIndex(x => x.LeagueId === LeagueId),
       isTakeOver: isTakeOver(columnId)

@@ -199,6 +199,11 @@ const pasteMultipleValue = (
   pasteValue
 ) => {
   const leagueIds = [];
+  const { highlightedCell } = pasteValue;
+
+  if (!isEqual(highlightedCell.isTakeOver, pasteValue.isTakeOver)) {
+    return;
+  }
   updateLeagues(leagues, pasteValue, leagueIds);
   updateEntity(entities, pasteValue, leagueIds, updatedLeagueIds);
 };
@@ -271,6 +276,12 @@ const sortLeaguesByDefault = data => {
   return [...leaguesHasNotAssignee, ...sortedHasAssigneeLeagues];
 };
 
+const clearState = state => {
+  state.prematchIdUpdated.length = 0;
+  state.prematchIdDeleted.length = 0;
+  state.sortState = {};
+};
+
 export {
   getUnreadMessagePreMatchLeagueIds,
   mergeMatchesToLeagues,
@@ -282,5 +293,6 @@ export {
   updateLeagueData,
   pasteCopied,
   pasteMultipleValue,
-  sortLeaguesByDefault
+  sortLeaguesByDefault,
+  clearState
 };
