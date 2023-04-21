@@ -178,7 +178,7 @@ const updateEntity = (entities, pasteValue, leagueIds, updatedLeagueIds) => {
         entity.HDPTakeOver = MainAssignee1;
         entity.OUTakeOver = MainAssignee2;
         entity.OtherHDPTakeOver = OtherAssignee1;
-        league.OtherOUTakeOver = OtherAssignee2;
+        entity.OtherOUTakeOver = OtherAssignee2;
       } else {
         entity.HDP = MainAssignee1;
         entity.OU = MainAssignee2;
