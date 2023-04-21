@@ -52,13 +52,12 @@ const SuggestionTable = () => {
               eventDate={workScheduleInfo.matchInfo.koTime}></TableHeader>
           </thead>
           <tbody>
-            <TableBody
-              workingShifts={workScheduleInfo.workingSchedules}></TableBody>
+            <TableBody workingShifts={workScheduleInfo}></TableBody>
           </tbody>
         </table>
       </div>
       <span className='total-record'>
-        Total records: {workScheduleInfo.workingSchedules.length}
+        Total records: {workScheduleInfo.fullyAvailable.length}
       </span>
     </div>
   );

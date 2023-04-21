@@ -89,7 +89,9 @@ type UserWorkingSchedule = {
 
 type TAssigneeSuggestion = {
   matchInfo: TMatchInfo;
-  workingSchedules: UserWorkingSchedule[];
+  fullyAvailable: UserWorkingSchedule[];
+  partiallyAvailable: UserWorkingSchedule[];
+  busy: UserWorkingSchedule[];
 };
 
 type TColorExplain = {
