@@ -272,3 +272,14 @@
     max-height: 36px;
   }
 }
+
+.Toastify__toast-container--top-right{
+  .Toastify__toast{
+    top: 0;
+    height: auto;
+    &:after{
+      opacity: 0;
+      display: none;
+    }
+  }
+}
