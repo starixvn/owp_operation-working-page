@@ -4,9 +4,11 @@ import { getLocaleDateTime } from '../../../Shared/DateTime/dateTimeHelper';
 import useStore from '../../app/useStore';
 
 const Header = () => {
-  const { matchInfo } = useStore(
+  const {
+    workScheduleInfo: { matchInfo }
+  } = useStore(
     state => ({
-      matchInfo: state.workScheduleInfo.matchInfo
+      workScheduleInfo: state.workScheduleInfo
     }),
     shallow
   );
@@ -21,7 +23,7 @@ const Header = () => {
   } = matchInfo;
   return (
     <div className='match-info'>
-      {matchInfo.leagueName && (
+      {leagueName && (
         <>
           <b>
             #{matchNo} {leagueName} | {homeName} -vs- {awayName}

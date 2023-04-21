@@ -15,12 +15,12 @@ const SuggestionInfo = ({ workingShifts, title, isOpen = false }: Props) => {
   return (
     <>
       <tr className='full-row'>
-        <td className='sticky-col'>
+        <td
+          className='sticky-col collapse-col'
+          onClick={() => setOpenExpand(!isOpenExpand)}>
           <span>
             {title}
-            <span
-              className='collapse'
-              onClick={() => setOpenExpand(!isOpenExpand)}>
+            <span className='collapse'>
               {isOpenExpand ? (
                 <ArrowUpwardIcon fontSize='small' />
               ) : (

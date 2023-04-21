@@ -3,18 +3,17 @@ import { shallow } from 'zustand/shallow';
 import useStore from '../../app/useStore';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 const ColorExplain = () => {
-  const { colorInfo, queryColorInfo } = useStore(
+  const { colorExplainInfo, queryColorExplain } = useStore(
     state => ({
-      loading: state.loadingColorExplain,
-      colorInfo: state.colorExplainInfo,
-      queryColorInfo: state.queryColorExplain
+      colorExplainInfo: state.colorExplainInfo,
+      queryColorExplain: state.queryColorExplain
     }),
     shallow
   );
   const [display, setDisplay] = useState(false);
 
   const renderColorExplain = () => {
-    return colorInfo.map(c => (
+    return colorExplainInfo.map(c => (
       <li
         key={c.label}
         style={{
@@ -27,7 +26,7 @@ const ColorExplain = () => {
   };
 
   const showHideColorExplain = () => {
-    !display && !colorInfo.length && queryColorInfo();
+    !display && !colorExplainInfo.length && queryColorExplain();
     setDisplay(!display);
   };
 

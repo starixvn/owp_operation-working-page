@@ -302,11 +302,10 @@ span.explanation {
       justify-content: center;
       font-weight: 400;
     }
-    .collapse {
-      cursor: pointer;
-    }
   }
-
+  .collapse-col {
+    cursor: pointer;
+  }
   th,
   td {
     height: 30px;
