@@ -1,4 +1,6 @@
-﻿namespace OWP.EventAssignment.Controllers
+﻿using OWP.EventAssignment.Const;
+
+namespace OWP.EventAssignment.Controllers
 {
     using Fanex.Common.Extensions;
     using Fanex.NAP.Core.Business;
@@ -66,7 +68,7 @@
                 match.ParentMatchId, match.MinorBettypeId);
                 match.InfoSiteTime = infoSite?.KickOffTime;
                 match.InfoSiteTimeDisplay = infoSite?.KickOffTimeDisplay;
-                match.IsShowAbsenceIcon = adminSite?.IsShowAbsenceIcon ?? false;
+                match.IsShowAbsenceIcon = !EventAssignmentConst.StatusNotOffered.Contains(match.MatchStatus) && (adminSite?.IsShowAbsenceIcon ?? false);
             }
 
             var permissionFullBetTypes = permission.LiveGameAssignment_FullBetTypes;

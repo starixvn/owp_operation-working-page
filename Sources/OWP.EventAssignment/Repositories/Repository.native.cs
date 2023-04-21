@@ -721,10 +721,7 @@ namespace OWP.EventAssignment.Repositories
 
         public async Task<IList<AdminSiteInfoModel>> GetAdminSiteInfo(IList<EventModel> eventModels)
         {
-            var parentMatchIds = string.Join(",", eventModels
-                .Where(y => !EventAssignmentConst.StatusNotOffered.Contains(y.MatchStatus))
-                .Select(x => x.ParentMatchId)
-                .Distinct());
+            var parentMatchIds = string.Join(",", eventModels.Select(x => x.ParentMatchId).Distinct());
 
             var criteria = new GetAdminSiteInfoCriteria
             {

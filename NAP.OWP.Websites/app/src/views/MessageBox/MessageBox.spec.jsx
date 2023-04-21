@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import MessageBox from './MessageBox';
 import AuthorizeService from '../Authorize/Service';
 
@@ -10,8 +10,9 @@ describe('MessageBox Component Tests', () => {
     const policy = { HasRead: true, HasWrite: false };
     AuthorizeService.authorize.mockResolvedValue(policy);
     const component = render(<MessageBox />);
-
-    expect(component).toMatchSnapshot();
+    waitFor(() => {
+      expect(component).toMatchSnapshot();
+    });
   });
 
   it('show only tab Assignee if not have permisson Read', () => {

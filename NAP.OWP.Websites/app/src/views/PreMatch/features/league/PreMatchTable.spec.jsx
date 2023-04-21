@@ -9,19 +9,19 @@ jest.mock('../../app/store');
 jest.mock('fixed-data-table-2');
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
-  useDispatch: jest.fn(),
+  useDispatch: jest.fn()
 }));
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useState: jest.fn(),
-  createRef: jest.fn(),
+  createRef: jest.fn()
 }));
 jest.mock('./ColumnsFactory');
 jest.mock('./PrematchTableHelper.jsx');
-
+const mockClickRef = jest.fn();
 const mockDispatch = jest.fn();
 const setState = jest.fn();
-const ref = { current: { value: 'Hello' } };
+const ref = { current: { value: 'Hello', click: mockClickRef } };
 const mockCallBack = jest.fn();
 const calculateRowHightMock = jest.fn();
 const calculateTableWidthMock = jest.fn();
@@ -52,7 +52,7 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: true,
           PreMatchNoteId: 117,
-          isExpand: false,
+          isExpand: false
         },
         {
           No: 2,
@@ -77,7 +77,7 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: false,
           PreMatchNoteId: null,
-          isExpand: false,
+          isExpand: false
         },
         {
           No: 3,
@@ -102,7 +102,7 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: false,
           PreMatchNoteId: null,
-          isExpand: false,
+          isExpand: false
         },
         {
           No: 4,
@@ -127,7 +127,7 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: false,
           PreMatchNoteId: null,
-          isExpand: false,
+          isExpand: false
         },
         {
           No: 5,
@@ -153,8 +153,8 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: false,
           PreMatchNoteId: null,
-          isExpand: false,
-        },
+          isExpand: false
+        }
       ],
       leagues: [
         {
@@ -180,7 +180,7 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: true,
           PreMatchNoteId: 117,
-          isExpand: false,
+          isExpand: false
         },
         {
           No: 2,
@@ -205,7 +205,7 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: false,
           PreMatchNoteId: null,
-          isExpand: false,
+          isExpand: false
         },
         {
           No: 3,
@@ -230,7 +230,7 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: false,
           PreMatchNoteId: null,
-          isExpand: false,
+          isExpand: false
         },
         {
           No: 4,
@@ -255,7 +255,7 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: false,
           PreMatchNoteId: null,
-          isExpand: false,
+          isExpand: false
         },
         {
           No: 5,
@@ -281,14 +281,14 @@ const setup = status => {
           PreMatchIssueId: null,
           HasNotes: false,
           PreMatchNoteId: null,
-          isExpand: false,
-        },
+          isExpand: false
+        }
       ],
-      loading: status,
+      loading: status
     },
     filter: {
-      filterDate: new Date(),
-    },
+      filterDate: new Date()
+    }
   };
 
   useSelector.mockImplementation(selectorFn => selectorFn({ ...state }));
@@ -300,26 +300,26 @@ const createProps = () => {
     color: 'none',
     onOrder: { mockCallBack },
     sortState: {
-      columnKey: 'No',
+      columnKey: 'No'
     },
     height: 750,
     isEditing: false,
-    containerWidth: 1700,
+    containerWidth: 1700
   };
 };
 const { ResizeObserver } = window;
+createRef.mockReturnValue(ref);
 describe('PreMatchTable under test', () => {
   beforeEach(() => {
     useState.mockImplementation(init => [init, setState]);
     useDispatch.mockReturnValue(mockDispatch);
-    createRef.mockReturnValue(ref);
     ColumnsFactory.mockReturnValue([]);
     calculateTableWidth.mockReturnValue(calculateTableWidthMock);
     delete window.ResizeObserver;
     window.ResizeObserver = jest.fn().mockImplementation(() => ({
       observe: jest.fn(),
       unobserve: jest.fn(),
-      disconnect: jest.fn(),
+      disconnect: jest.fn()
     }));
   });
   afterEach(() => {

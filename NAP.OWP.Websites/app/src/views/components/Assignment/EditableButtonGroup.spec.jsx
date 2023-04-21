@@ -4,14 +4,22 @@ import EditableTextSuggestion from './EditableTextSuggestion';
 import EditableTextMention from './EditableTextMention';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import '@testing-library/jest-dom';
-
+const middleWares = [];
+const mockStore = configureStore(middleWares);
 EditableTextSuggestion.displayName = 'EditableTextSuggestion';
 EditableTextMention.displayName = 'EditableTextMention';
 const event = jest.fn();
 const onSaved = jest.fn();
 const onDeleted = jest.fn();
-
+const store = mockStore({
+  tableReducer: {
+    filterDate: 'abc'
+  }
+});
+const Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
 describe('EditableButtonGroup Component Tests', () => {
   it('test onClickButtonPlus event change MainTrade ', async () => {
     const props = {
@@ -26,7 +34,7 @@ describe('EditableButtonGroup Component Tests', () => {
         AssignmentType: 2,
         UserId: 0,
         Username: null,
-        AssignmentNote: 'kane',
+        AssignmentNote: 'kane'
       },
       others: [],
       data: {},
@@ -36,10 +44,14 @@ describe('EditableButtonGroup Component Tests', () => {
       event: event,
       onSaved: onSaved,
       onDeleted: onDeleted,
-      matchId: 2468,
+      matchId: 2468
     };
 
-    const { container } = render(<EditableButtonGroup {...props} />);
+    const { container } = render(
+      <Wrapper>
+        <EditableButtonGroup {...props} />
+      </Wrapper>
+    );
     const findButtonAdd = container.getElementsByClassName('btn-add');
     const element = screen.getByRole('button');
     await userEvent.click(element);
@@ -61,14 +73,14 @@ describe('EditableButtonGroup Component Tests', () => {
         AssignmentType: 2,
         UserId: 8,
         Username: null,
-        AssignmentNote: 'kane',
+        AssignmentNote: 'kane'
       },
       others: [
         {
           AssignmentId: 123,
           AssignmentNote: 'abc',
-          AssignmentType: 2,
-        },
+          AssignmentType: 2
+        }
       ],
       data: {},
       rowIndex: null,
@@ -77,10 +89,14 @@ describe('EditableButtonGroup Component Tests', () => {
       event,
       onSaved,
       onDeleted,
-      matchId: 2468,
+      matchId: 2468
     };
 
-    const { container } = render(<EditableButtonGroup {...props} />);
+    const { container } = render(
+      <Wrapper>
+        <EditableButtonGroup {...props} />
+      </Wrapper>
+    );
     const mentionElement = container.querySelector('.list-edit-mentions');
     expect(mentionElement).toBeInTheDocument();
   });

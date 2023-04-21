@@ -1,6 +1,17 @@
 import React from 'react';
 import TableAssignment from './TableAssignment';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { render } from '@testing-library/react';
+const middleWares = [];
+const mockStore = configureStore(middleWares);
+
+const store = mockStore({
+  tableReducer: {
+    filterDate: 'abc'
+  }
+});
+const Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
 
 describe('TableAssignment', () => {
   const policy = { HasRead: false, HasWrite: false };
@@ -40,11 +51,11 @@ describe('TableAssignment', () => {
           Name: 'OU',
           MaxBetFT: {
             MaxBet: '10K',
-            Spread: '12%',
+            Spread: '12%'
           },
           MaxBetHT: {
             MaxBet: '10K',
-            Spread: '12%',
+            Spread: '12%'
           },
           FT: {
             main: {},
@@ -75,7 +86,11 @@ describe('TableAssignment', () => {
       policy,
       dataSource
     };
-    const { container } = render(<TableAssignment {...props} />);
+    const { container } = render(
+      <Wrapper>
+        <TableAssignment {...props} />
+      </Wrapper>
+    );
     expect(container.firstChild).toMatchSnapshot();
   });
 });

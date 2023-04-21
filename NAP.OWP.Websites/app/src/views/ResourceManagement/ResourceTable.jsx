@@ -29,13 +29,20 @@ class ResourceTable extends Component {
       rows: this.props.dataSource
     };
   }
-
-  // eslint-disable-next-line no-warning-comments
-  // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(nextProps) {
-    if (this.props.dataSource !== nextProps.dataSource) {
-      this.setState({ rows: nextProps.dataSource });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { isLoading, isCreating, isEditing, editingIndex, valueText } =
+      prevState;
+    if (nextProps.dataSource !== prevState.dataSource) {
+      return {
+        isLoading,
+        isCreating,
+        isEditing,
+        editingIndex,
+        valueText,
+        rows: nextProps.dataSource
+      };
     }
+    return null;
   }
 
   onEdit(index) {
