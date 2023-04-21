@@ -26,89 +26,87 @@ const propTypes = {
   isNightShift: PropTypes.bool
 };
 
-const PreMatchTable = React.forwardRef(
-  ({ isEditing, isNightShift }) => {
-    const model = useSelector(state => state.dayShift);
-    const filter = useSelector(state => state.filter);
-    const tableKey = model.tableKey;
-    const data = model.entities;
-    const dataLength = data.length;
-    const tableRef = React.createRef();
-    const dispatch = useStableDispatch();
+const PreMatchTable = ({ isEditing, isNightShift }) => {
+  const model = useSelector(state => state.dayShift);
+  const filter = useSelector(state => state.filter);
+  const tableKey = model.tableKey;
+  const data = model.entities;
+  const dataLength = data.length;
+  const tableRef = React.createRef();
+  const dispatch = useStableDispatch();
 
-    useEffect(() => {
-      const handleEscKey = event => {
-        if (isEqual(event.keyCode, 27)) {
-          dispatch(resetCopyInfo());
-        }
-      };
-      document.addEventListener('keydown', handleEscKey);
-      return () => document.removeEventListener('keydown', handleEscKey);
-    }, [dispatch]);
-
-    const handleShowNote = () => {
-      // eslint-disable-next-line no-warning-comments
-      // eslint-disable-next-line react/no-find-dom-node
-      const tableElement = ReactDOM.findDOMNode(tableRef.current);
-      NotePopupTableCss(tableElement, true);
+  useEffect(() => {
+    const handleEscKey = event => {
+      if (isEqual(event.keyCode, 27)) {
+        dispatch(resetCopyInfo());
+      }
     };
+    document.addEventListener('keydown', handleEscKey);
+    return () => document.removeEventListener('keydown', handleEscKey);
+  }, [dispatch]);
 
-    const submitIsToday =
-      getMMDDYYYYStringFromDateTime(filter.filterDate) === getMMDDYYYYStringFromDateTime(new Date());
+  const handleShowNote = () => {
+    // eslint-disable-next-line no-warning-comments
+    // eslint-disable-next-line react/no-find-dom-node
+    const tableElement = ReactDOM.findDOMNode(tableRef.current);
+    NotePopupTableCss(tableElement, true);
+  };
 
-    const newProps = {
-      isEditing,
-      sortState: model.sortState,
-      handleShowNote,
-      handleShowTicket: handleShowNote,
-      isRedirect: submitIsToday,
-      isNightShift
-    };
+  const submitIsToday =
+    getMMDDYYYYStringFromDateTime(filter.filterDate) ===
+    getMMDDYYYYStringFromDateTime(new Date());
 
-    const getRowHeight = index => calculateRowHeight(data[index], isEditing);
+  const newProps = {
+    isEditing,
+    sortState: model.sortState,
+    handleShowNote,
+    handleShowTicket: handleShowNote,
+    isRedirect: submitIsToday,
+    isNightShift
+  };
 
-    const rowClassNameGetter = index => {
-      const classNames = [];
-      dataLength > 7 &&
-        index > dataLength - 6 &&
-        classNames.push('is-last-row');
+  const getRowHeight = index => calculateRowHeight(data[index], isEditing);
 
-      return classNames.join(' ');
-    };
-    const width = window.innerWidth > 680 ? window.innerWidth - 110 : window.innerWidth;
-    const columnWidth = useMemo(
-      () => calculateColumnWidth(isEditing, width),
-      [isEditing, width]
-    );
+  const rowClassNameGetter = index => {
+    const classNames = [];
+    dataLength > 7 && index > dataLength - 6 && classNames.push('is-last-row');
 
-    const tableWidth = width > 1700 ? calculateTableWidth(columnWidth) : width;
+    return classNames.join(' ');
+  };
+  const width =
+    window.innerWidth > 680 ? window.innerWidth - 110 : window.innerWidth;
+  const columnWidth = useMemo(
+    () => calculateColumnWidth(isEditing, width),
+    [isEditing, width]
+  );
 
-    const tableHeight = window.innerHeight - 200;
+  const tableWidth = width > 1700 ? calculateTableWidth(columnWidth) : width;
 
-    if (isEqual(model.loading, REQUEST_STATUS.pending)) {
-      return <Loading />;
-    }
+  const tableHeight = window.innerHeight - 200;
 
-    return (
-      <div className='table'>
-        <Table
-          ref={tableRef}
-          rowHeight={rowHeight}
-          rowsCount={dataLength}
-          key={tableKey}
-          rowHeightGetter={getRowHeight}
-          width={tableWidth}
-          height={tableHeight}
-          maxHeight={tableHeight}
-          rowClassNameGetter={rowClassNameGetter}
-          headerHeight={headerHeight}>
-          {ColumnsFactory(data, newProps, columnWidth)}
-        </Table>
-        <div className='total'>Total Leagues: {model.leagues.length}</div>
-      </div>
-    );
+  if (isEqual(model.loading, REQUEST_STATUS.pending)) {
+    return <Loading />;
   }
-);
+
+  return (
+    <div className='table'>
+      <Table
+        ref={tableRef}
+        rowHeight={rowHeight}
+        rowsCount={dataLength}
+        key={tableKey}
+        rowHeightGetter={getRowHeight}
+        width={tableWidth}
+        height={tableHeight}
+        maxHeight={tableHeight}
+        rowClassNameGetter={rowClassNameGetter}
+        headerHeight={headerHeight}>
+        {ColumnsFactory(data, newProps, columnWidth)}
+      </Table>
+      <div className='total'>Total Leagues: {model.leagues.length}</div>
+    </div>
+  );
+};
 
 PreMatchTable.propTypes = propTypes;
 PreMatchTable.displayName = 'PreMatchTable';

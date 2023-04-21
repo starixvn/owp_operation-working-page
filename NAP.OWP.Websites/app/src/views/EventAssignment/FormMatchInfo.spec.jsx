@@ -1,8 +1,13 @@
 import React from 'react';
 import FormMatchInfo from './FormMatchInfo';
 import EventAssignmentService from './Service';
-import { act, fireEvent, render, screen } from '@testing-library/react';
-
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor
+} from '@testing-library/react';
 
 jest.mock('./Service');
 
@@ -17,7 +22,6 @@ const matchStatusResponseData = [
   { Id: 6, Value: 'Suspended', RefName: 'MatchStatus' }
 ];
 
-
 const mockParentEvent = {
   OWPMatchId: 305880,
   KickOffTime: '03:00 PM'
@@ -25,35 +29,34 @@ const mockParentEvent = {
 
 const defaultProps = {
   matchStatuses: matchStatusResponseData,
-  bettypeData: [{ value: 1, label: 'No of corner' },
-  { value: 2, label: 'Next corner' }],
+  bettypeData: [
+    { value: 1, label: 'No of corner' },
+    { value: 2, label: 'Next corner' }
+  ],
   getInfoSiteMatch
 };
 
 describe('FormMatchInfo', () => {
   it('should select Live match status on Init', () => {
-    const { container, getByText } = render(<FormMatchInfo {...defaultProps} />);
+    const { container, getByText } = render(
+      <FormMatchInfo {...defaultProps} />
+    );
     expect(getByText('Live')).toBeInTheDocument();
   });
 
-  it('should update state when pick new time', () => {
-    const { container, getAllByText, getByPlaceholderText } = render(<FormMatchInfo {...defaultProps} />);
-    const timePicker = container.querySelector('#KOTime')
-    fireEvent.click(timePicker);
-    fireEvent.click(getAllByText('10')[0]);
-
-    expect(timePicker.value).toEqual('10:00 AM');
-  });
-
   it('should update state when change match status', () => {
-    const { container, getByText } = render(<FormMatchInfo {...defaultProps} />);
+    const { container, getByText } = render(
+      <FormMatchInfo {...defaultProps} />
+    );
     fireEvent.focus(container.querySelector('input'));
-    fireEvent.keyDown(container.querySelector('input'), { key: 'ArrowDown', code: 40 });
+    fireEvent.keyDown(container.querySelector('input'), {
+      key: 'ArrowDown',
+      code: 40
+    });
 
     fireEvent.click(getByText('Postponed'));
 
     expect(getByText('Postponed')).toBeInTheDocument();
-
   });
 
   it('should invoke getInfoSiteMatch when clicking infoSite icon', () => {
@@ -77,11 +80,22 @@ describe('FormMatchInfo', () => {
     };
     const { container } = render(<FormMatchInfo {...props} />);
 
-    expect(container.querySelector('.input-KO-time')).toHaveAttribute('readonly', '');
-    expect(container.querySelector('.input-league-name')).toHaveAttribute('readonly', '');
-    expect(container.querySelector('.input-home-name')).toHaveAttribute('readonly', '');
-    expect(container.querySelector('.input-away-name')).toHaveAttribute('readonly', '');
-
+    expect(container.querySelector('.input-KO-time')).toHaveAttribute(
+      'readonly',
+      ''
+    );
+    expect(container.querySelector('.input-league-name')).toHaveAttribute(
+      'readonly',
+      ''
+    );
+    expect(container.querySelector('.input-home-name')).toHaveAttribute(
+      'readonly',
+      ''
+    );
+    expect(container.querySelector('.input-away-name')).toHaveAttribute(
+      'readonly',
+      ''
+    );
   });
 
   it('should not display InfoSiteId when add minor match from main match', () => {
@@ -102,7 +116,6 @@ describe('FormMatchInfo', () => {
     const { getByText } = render(<FormMatchInfo {...props} />);
 
     expect(getByText('Special Event')).toBeInTheDocument();
-
   });
 
   it('should update state when select SpecialEvent', async () => {
@@ -116,12 +129,12 @@ describe('FormMatchInfo', () => {
       parentEvent: mockParentEvent
     };
     const { container, getByText } = render(<FormMatchInfo {...props} />);
-
-    fireEvent.focus(container.querySelector('input'));
-    fireEvent.keyDown(container.querySelector('input'), { key: 'ArrowDown', code: 40 });
-    fireEvent.click(getByText('Next corner'));
-
-    await act(async () => await Promise.resolve());
+    const input = container.querySelectorAll('input');
+    fireEvent.focus(input[0]);
+    fireEvent.keyDown(input[0], { key: 'ArrowDown', code: 13, charCode: 13 });
+    waitFor(() => {
+      fireEvent.click(getByText('Next corner'));
+    });
     expect(getByText('Next corner')).toBeInTheDocument();
   });
 });

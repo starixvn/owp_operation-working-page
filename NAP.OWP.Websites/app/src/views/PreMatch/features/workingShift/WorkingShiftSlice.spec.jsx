@@ -1,6 +1,6 @@
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import WorkingShiftSlice, { workingShift } from './WorkingShiftSlice';
-
+jest.mock('../../app/store');
 describe('WorkingShiftSlice under test', () => {
   it('should return the initial state', () => {
     expect(WorkingShiftSlice(undefined, {})).toEqual({

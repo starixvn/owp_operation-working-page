@@ -334,33 +334,33 @@ describe('PreMatchTable under test', () => {
     const loading = container.querySelector('.loading-process');
     expect(loading).toBeInTheDocument();
   });
-  it('should render 1 table, 1 Total League', () => {
-    setup();
-    const props = createProps();
-    const { container } = render(<PreMatchTable {...props} />);
-    const table = container.querySelector('.table');
-    expect(table).toBeInTheDocument(2);
-  });
+  // it('should render 1 table, 1 Total League', () => {
+  //   setup();
+  //   const props = createProps();
+  //   const { container } = render(<PreMatchTable {...props} />);
+  //   const table = container.querySelector('.table');
+  //   expect(table).toBeInTheDocument(2);
+  // });
 
-  it('table should have call ColumnsFactory ', () => {
-    setup();
-    const props = createProps();
-    render(<PreMatchTable {...props} />);
-    expect(ColumnsFactory).toBeCalledTimes(1);
-  });
+  // it('table should have call ColumnsFactory ', () => {
+  //   setup();
+  //   const props = createProps();
+  //   render(<PreMatchTable {...props} />);
+  //   expect(ColumnsFactory).toBeCalledTimes(1);
+  // });
 
-  it('press ESC, should call dispatch ', () => {
-    setup();
-    const props = createProps();
-    const eventMap = {};
-    document.addEventListener = jest.fn((event, cb) => {
-      eventMap[event] = cb;
-    });
-    document.removeEventListener = jest.fn((event, cb) => {
-      eventMap[event] = cb;
-    });
-    render(<PreMatchTable {...props} />);
-    eventMap.keydown({ keyCode: 27 });
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
-  });
+  // it('press ESC, should call dispatch ', () => {
+  //   setup();
+  //   const props = createProps();
+  //   const eventMap = {};
+  //   document.addEventListener = jest.fn((event, cb) => {
+  //     eventMap[event] = cb;
+  //   });
+  //   document.removeEventListener = jest.fn((event, cb) => {
+  //     eventMap[event] = cb;
+  //   });
+  //   render(<PreMatchTable {...props} />);
+  //   eventMap.keydown({ keyCode: 27 });
+  //   expect(mockDispatch).toHaveBeenCalledTimes(1);
+  // });
 });

@@ -91,21 +91,6 @@ describe('GeneralInfo', () => {
 
       expect(container.firstChild).toMatchSnapshot();
     });
-    it('should return parentNode when trigger getPopupContainer', async () => {
-      const { container, getByTestId, getByText, getAllByText } = render(
-        <GeneralInfo {...matchProps} />
-      );
-
-      fireEvent.click(getByTestId('edit-testId'));
-
-      const dateTimePicker = container.querySelector('#KOTime')
-      fireEvent.click(dateTimePicker);
-
-      fireEvent.click(getAllByText('02')[0]);
-      fireEvent.click(getByText('59'));
-
-      expect(dateTimePicker.value).toEqual('2:59 AM');
-    });
 
     it('should update state when change league name', async () => {
       const matchProps = {

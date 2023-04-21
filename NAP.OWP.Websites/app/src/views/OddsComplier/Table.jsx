@@ -113,21 +113,21 @@ class Table extends Component {
       <div className='websites'>
         {map(websites, (website, index) => {
           const key = `website_${index}_${this.state.key}`;
-          return website ? (
-            <React.Fragment key={key}>
-              <a
-                id={key}
-                className='website'
-                href={website}
-                target='_blank'
-                rel='noopener noreferrer'>
-                <span data-tip={website} data-for={key}>
-                  [{index + 1}]
-                </span>
-              </a>
-            </React.Fragment>
-          ) : (
-            <></>
+          return (
+            website && (
+              <React.Fragment key={key}>
+                <a
+                  id={key}
+                  className='website'
+                  href={website}
+                  target='_blank'
+                  rel='noopener noreferrer'>
+                  <span data-tip={website} data-for={key}>
+                    [{index + 1}]
+                  </span>
+                </a>
+              </React.Fragment>
+            )
           );
         })}
       </div>
