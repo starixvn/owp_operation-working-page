@@ -19,7 +19,7 @@ const LeagueGroup = () => {
       updateExpressionFilter(ACTION_LEAGUEGROUP_FILTER.UPDATE, { select })
     );
   };
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   useEffect(() => {
     stableDispatch(queryData(MaxbetConst.leagueGroupUrl, QUERY_LEAGUEGROUP));
   }, [stableDispatch]);

@@ -33,7 +33,7 @@ const TVList = ({ onClose }) => {
     }
   };
 
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   useEffect(() => {
     const postModel = {
       apiKey: MaxbetConst.maxbetGetTVListAPIKey

@@ -11,7 +11,7 @@ const DropDownFilter = ({ productId }) => {
     MaxbetConst.numberRowsSpecialProducOption[0].value
   );
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   useEffect(() => {
     stableDispatch(

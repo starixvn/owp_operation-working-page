@@ -7,15 +7,15 @@ import {
 import { updateFilterDate } from '../filter/filterSlice';
 import { updateStartTimeOriginal } from '../header/headerSlice';
 import { URLNIGHTSHIFT } from '../../const/const';
-import { getMMDDYYYYStringFromDateTime, getHourAndMinutes } from '../../../Shared/DateTime/dateTimeHelper';
+import {
+  getMMDDYYYYStringFromDateTime,
+  getHourAndMinutes
+} from '../../../Shared/DateTime/dateTimeHelper';
 import Spinner from '../../../components/Spinner';
 import { buildStartTimeQueryModel } from '../../helper/preMatchHelper';
 import { backupFilterModel } from '../signalR/signalRSlice';
 import { post } from '../../ImportPrematchHelperNative';
-import {
-  getDisableRef,
-  getValueRef
-} from '../../../Shared/Utils';
+import { getDisableRef, getValueRef } from '../../../Shared/Utils';
 import useAssignToMe from './useAssignToMe';
 import FilterPrematchFactory from './FilterPrematchFactory';
 import ToastrWrapper from '../../../components/ToastrWrapper';
@@ -29,7 +29,7 @@ const ViewFilterNighShift = () => {
   const model = useSelector(state => state.filter);
 
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   const empKeyLocalStore = `${policy.permission.Username}-isFilterMe-night`;
 
@@ -42,9 +42,7 @@ const ViewFilterNighShift = () => {
   const handleSubmit = async selectedDate => {
     const selectedDateFormatted = getMMDDYYYYStringFromDateTime(selectedDate);
 
-    const startTimeQueryModel = buildStartTimeQueryModel(
-      selectedDateFormatted
-    );
+    const startTimeQueryModel = buildStartTimeQueryModel(selectedDateFormatted);
     Spinner.show();
     const startTimeRespond = await post(startTimeQueryModel);
     Spinner.hide();

@@ -18,7 +18,7 @@ const MaxbetManagement = () => {
   const [navigationId, setNavigationId] = useState(MaxbetConst.maxbetInfo.id);
   const maxbetUrl = buildMaxbetUrl();
   const model = useSelector(selectPolicy);
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   useEffect(() => {
     stableDispatch(queryPolicy());
   }, [stableDispatch]);

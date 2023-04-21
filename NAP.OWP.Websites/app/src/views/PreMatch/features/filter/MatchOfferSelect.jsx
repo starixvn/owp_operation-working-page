@@ -7,7 +7,7 @@ import { updateFilterMatchOffers } from '../filter/filterSlice';
 
 const MatchOfferSelect = () => {
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   const [selected, setSelected] = useState(MATCH_OFFER);
 
@@ -16,9 +16,12 @@ const MatchOfferSelect = () => {
     stableDispatch(updateFilterMatchOffers(newMatchOffer.map(x => x.value)));
   };
 
-  useEffect(() => () => {
-    stableDispatch(updateFilterMatchOffers(selected.map(x => x.value)));
-  }, []);
+  useEffect(
+    () => () => {
+      stableDispatch(updateFilterMatchOffers(selected.map(x => x.value)));
+    },
+    []
+  );
 
   return (
     <div className='multi-select-dropdown'>

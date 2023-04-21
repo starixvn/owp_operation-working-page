@@ -12,7 +12,7 @@ import { buildQuerySimpleApi } from '../../Shared/Constants';
 const SpecialProduct = () => {
   const dispatch = useDispatch();
   const selector = useSelector(selectSpecialProductData);
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   const store = useStore();
   const { policyData } = store.getState().policyReducer;
   const hasWrite = policyData.generalPolicy.HasWrite;

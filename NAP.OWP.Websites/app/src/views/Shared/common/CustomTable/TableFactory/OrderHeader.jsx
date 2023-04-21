@@ -12,7 +12,7 @@ const propTypes = {
 const OrderHeader = headerModel => {
   const { columnKey, headerName, sortState, sortFunc } = headerModel;
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   const handleOrder = orderType => {
     const postModel = {

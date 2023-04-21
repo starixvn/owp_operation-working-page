@@ -9,7 +9,7 @@ import { REQUEST_STATUS } from '../../../Shared/Constants';
 
 const WorkingShift = () => {
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   const model = useSelector(state => state.workingShift);
   const filterDate = useSelector(state => state.filter.filterDate);
 

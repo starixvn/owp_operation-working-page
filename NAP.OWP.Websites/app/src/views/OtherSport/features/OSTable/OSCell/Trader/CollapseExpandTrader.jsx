@@ -1,7 +1,10 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import CollapseExpandCell from '../../../../../Shared/common/CustomTable/commonCell/collapseExpandCell/CollapseExpandCell';
-import { collapse, expand } from '../../../../../Shared/common/CustomTable/commonCell/collapseExpandCell/collapseExpandConst.json';
+import {
+  collapse,
+  expand
+} from '../../../../../Shared/common/CustomTable/commonCell/collapseExpandCell/collapseExpandConst.json';
 import { useDispatch } from 'react-redux';
 import { collapseRow, expandRow } from '../../OSTableSlice/reducer';
 
@@ -13,18 +16,11 @@ const propTypes = {
 };
 
 const CollapseExpandTrader = props => {
-  const {
-    collapseExpandRowState,
-    dataSource,
-    rowIndex
-  } = props;
+  const { collapseExpandRowState, dataSource, rowIndex } = props;
   const { osMatchId } = dataSource[rowIndex];
-  const {
-    columnKey,
-    rowHasModeCollapse
-  } = collapseExpandRowState;
+  const { columnKey, rowHasModeCollapse } = collapseExpandRowState;
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   const onCollapse = () => {
     const postModel = {
@@ -53,9 +49,7 @@ const CollapseExpandTrader = props => {
     onCollapse,
     onExpand
   };
-  return (
-    <CollapseExpandCell {...collapseExpandProp} />
-  );
+  return <CollapseExpandCell {...collapseExpandProp} />;
 };
 
 CollapseExpandTrader.propTypes = propTypes;

@@ -28,13 +28,9 @@ const TableLeagueDetail = () => {
   const { policyData } = store.getState().policyReducer;
   const hasWriteGeneral = hasWriteOnPageMaxbetGeneral(policyData);
   const hasWriteOnCondition = policyData.conditionPolicy.HasWrite;
-  const {
-    rowHeight,
-    maxHeight,
-    headerHeight,
-    groupHeaderHeight
-  } = MaxbetConst.tableMaxbetGeneralInfo;
-  const stableDispatch = useCallback(dispatch, []);
+  const { rowHeight, maxHeight, headerHeight, groupHeaderHeight } =
+    MaxbetConst.tableMaxbetGeneralInfo;
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   useEffect(() => {
     stableDispatch(
       postData(
@@ -62,7 +58,8 @@ const TableLeagueDetail = () => {
   if (modelLeague.leagueDetailPending) {
     return <Loading />;
   }
-  const widthTable = window.innerWidth > 680 ? window.innerWidth - 110 : window.innerWidth;
+  const widthTable =
+    window.innerWidth > 680 ? window.innerWidth - 110 : window.innerWidth;
 
   return (
     <div className='table'>

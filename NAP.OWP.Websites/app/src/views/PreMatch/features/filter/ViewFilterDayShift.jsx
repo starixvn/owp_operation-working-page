@@ -5,10 +5,7 @@ import { updateFilterEmployer, updateFilterDate } from '../filter/filterSlice';
 import { URLDAYSHIFT } from '../../const/const';
 import { getMMDDYYYYStringFromDateTime } from '../../../Shared/DateTime/dateTimeHelper';
 import { backupFilterModel } from '../signalR/signalRSlice';
-import {
-  getDisableRef,
-  getValueRef
-} from '../../../Shared/Utils';
+import { getDisableRef, getValueRef } from '../../../Shared/Utils';
 import useAssignToMe from './useAssignToMe';
 import FilterPrematchFactory from './FilterPrematchFactory';
 import ToastrWrapper from '../../../components/ToastrWrapper';
@@ -21,7 +18,7 @@ const ViewFilterDayShift = () => {
   const model = useSelector(state => state.filter);
 
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   const empKeyLocalStore = `${policy.permission.Username}-isFilterMe-day`;
 

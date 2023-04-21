@@ -2,7 +2,10 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import CollapseExpandCell from '../commonCell/collapseExpandCell/CollapseExpandCell';
-import { collapse, expand } from '../commonCell/collapseExpandCell/collapseExpandConst.json';
+import {
+  collapse,
+  expand
+} from '../commonCell/collapseExpandCell/collapseExpandConst.json';
 
 const propTypes = {
   columnKey: PropTypes.string.isRequired,
@@ -21,7 +24,7 @@ const CollapseExpandHeader = headerModel => {
     collapseExpandAllRowState
   } = headerModel;
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   const onCollapse = () => {
     const postModel = {
