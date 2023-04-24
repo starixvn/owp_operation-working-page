@@ -4,6 +4,7 @@ import useStore from '../../app/useStore';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import { numberElement, headerHeight } from './../../const/Const.json';
+import { getTotalRecords } from '../helper/AssigneeSuggestionHelper';
 
 const SuggestionTable = () => {
   const [maxHeight, setMaxHeight] = useState(window.innerHeight - headerHeight);
@@ -57,7 +58,7 @@ const SuggestionTable = () => {
         </table>
       </div>
       <span className='total-record'>
-        Total records: {workScheduleInfo.fullyAvailable.length}
+        Total records: {getTotalRecords(workScheduleInfo)}
       </span>
     </div>
   );
