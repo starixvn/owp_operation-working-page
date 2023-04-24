@@ -496,7 +496,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-b3789968.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-3db81be5.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-fa83ce2a.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
@@ -1965,7 +1965,7 @@
     <Content Include="wwwroot\live-detail\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\server-6be11992.css" />
-    <Content Include="wwwroot\live-detail\assets\js\main-20cc441a.js" />
+    <Content Include="wwwroot\live-detail\assets\js\main-2bb34b07.js" />
     <Content Include="wwwroot\live-detail\favicon.ico" />
     <Content Include="wwwroot\live-detail\server.html" />
     <Content Include="wwwroot\live-game-list\assets\ext\icon-search-4037a8fe.svg" />
@@ -2750,10 +2750,6 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\event-assignment\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-ea568b68.ttf" />
@@ -2843,6 +2839,10 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\event-assignment\server.cshtml" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
