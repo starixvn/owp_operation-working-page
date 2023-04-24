@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table, UncontrolledTooltip } from 'reactstrap';
-import EditableButtonGroup from '../../components/Assignment/EditableButtonGroup';
+import EditableButtonGroupForLiveDetail from '../../components/Assignment/EditableButtonGroupForLiveDetail';
 import { isNil } from 'lodash';
 
 const propTypes = {
@@ -54,9 +54,8 @@ class TableAssignment extends React.Component {
         <tr
           key={'assignmentRow_' + key}
           data-group={item.Group}
-          onMouseEnter={
-            event =>
-              this.changeBackgroundTableRow(event, '#FFEFD5')
+          onMouseEnter={event =>
+            this.changeBackgroundTableRow(event, '#FFEFD5')
           }
           onMouseLeave={event => this.changeBackgroundTableRow(event, null)}>
           <td className='bettype-name'>{entity.Name}</td>
@@ -79,7 +78,7 @@ class TableAssignment extends React.Component {
             )}
           </td>
           <td>
-            <EditableButtonGroup
+            <EditableButtonGroupForLiveDetail
               policy={policy}
               main={entity.FT.main}
               others={entity.FT.others}
@@ -88,7 +87,7 @@ class TableAssignment extends React.Component {
             />{' '}
           </td>
           <td>
-            <EditableButtonGroup
+            <EditableButtonGroupForLiveDetail
               policy={policy}
               main={entity.HT.main}
               others={entity.HT.others}
@@ -98,7 +97,7 @@ class TableAssignment extends React.Component {
           </td>
           {key === 0 && (
             <td rowSpan={item.TotalRows}>
-              <EditableButtonGroup
+              <EditableButtonGroupForLiveDetail
                 policy={policy}
                 main={entity.LA.main}
                 others={entity.LA.others}
