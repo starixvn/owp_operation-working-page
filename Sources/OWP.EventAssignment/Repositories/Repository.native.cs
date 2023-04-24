@@ -33,11 +33,11 @@ namespace OWP.EventAssignment.Repositories
 
         Task DetectEventHasTicket(IList<EventModel> eventModels);
 
-        Task<IList<InfoSiteTimeModel>> GetInfoSiteTime(IList<EventModel> eventModels);
+        Task<IList<InfoSiteTimeModel>> GetInfoSiteTime(string ids);
 
-        Task<IList<AdminSiteInfoModel>> GetAdminSiteInfo(IList<EventModel> eventModels);
+        Task<IList<AdminSiteOddsModel>> GetAdminSiteInfo();
 
-
+        Task<IList<AdminSiteIdModel>> GetAdminSiteMatchId(string ids);
     }
 
     public class RepositoryImp : Repository
@@ -709,25 +709,28 @@ namespace OWP.EventAssignment.Repositories
             return matchOffers.Where(x => x.OWPMatchId == owpMatchId).ToList();
         }
 
-        public async Task<IList<InfoSiteTimeModel>> GetInfoSiteTime(IList<EventModel> eventModels)
+        public async Task<IList<InfoSiteTimeModel>> GetInfoSiteTime(string ids)
         {
-            var parentIds = string.Join(",", eventModels.Select(x => x.ParentMatchId).Distinct());
             var criteria = new GetInfoSiteTimeCriteria
             {
-                ParentMatchIds = parentIds
+                ParentMatchIds = ids
             };
             return (await dynamicRepository.FetchAsync<InfoSiteTimeModel>(criteria)).ToList();
         }
 
-        public async Task<IList<AdminSiteInfoModel>> GetAdminSiteInfo(IList<EventModel> eventModels)
+        public async Task<IList<AdminSiteOddsModel>> GetAdminSiteInfo()
         {
-            var parentMatchIds = string.Join(",", eventModels.Select(x => x.ParentMatchId).Distinct());
+            var criteria = new GetAdminSiteInfoCriteria();
+            return (await dynamicRepository.FetchAsync<AdminSiteOddsModel>(criteria)).ToList();
+        }
 
-            var criteria = new GetAdminSiteInfoCriteria
+        public async Task<IList<AdminSiteIdModel>> GetAdminSiteMatchId(string ids)
+        {
+            var criteria = new GetAdminSiteIdByOwpMatchIdCriteria
             {
-                ParentMatchIds = parentMatchIds
+                ParentMatchIds = ids
             };
-            return (await dynamicRepository.FetchAsync<AdminSiteInfoModel>(criteria)).ToList();
+            return (await dynamicRepository.FetchAsync<AdminSiteIdModel>(criteria)).ToList();
         }
     }
 }

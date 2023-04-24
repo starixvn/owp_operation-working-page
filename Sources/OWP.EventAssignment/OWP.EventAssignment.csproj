@@ -105,6 +105,7 @@
     <Compile Include="Criteria\EditMainMatchCriteria.cs" />
     <Compile Include="Criteria\AddMatchRecommendOddsCriteria.cs" />
     <Compile Include="Criteria\AddMatchSettingCriteria.cs" />
+    <Compile Include="Criteria\GetAdminSiteIdByOwpMatchIdCriteria.cs" />
     <Compile Include="Criteria\GetAdminSiteInfoCriteria.cs" />
     <Compile Include="Criteria\GetInfoSiteTimeCriteria.cs" />
     <Compile Include="Criteria\GetSpecialEventTemplateCriteria.cs" />
@@ -112,7 +113,9 @@
     <Compile Include="Criteria\ValidateToEditEventCriteria.cs" />
     <Compile Include="Criteria\ValidateToAddEventCriteria.cs" />
     <Compile Include="Criteria\AddMainMatchCriteria.cs" />
-    <Compile Include="Models\AdminSiteInfoModel.cs" />
+    <Compile Include="Models\AdminSiteIdModel.cs" />
+    <Compile Include="Models\AdminSiteMatchInfoModel.cs" />
+    <Compile Include="Models\AdminSiteOddsModel.cs" />
     <Compile Include="Models\EditMatchViewModel.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Controllers\EventAssignmentController.native.cs" />

@@ -1,9 +1,11 @@
 ﻿namespace OWP.EventAssignment.Models
 {
-    public class AdminSiteInfoModel
+    public class AdminSiteIdModel
     {
         public int ParentMatchId { get; set; }
 
-        public bool IsShowAbsenceIcon { get; set; }
+        public int AdminSiteMatchId { get; set; }
+
     }
 }
+
