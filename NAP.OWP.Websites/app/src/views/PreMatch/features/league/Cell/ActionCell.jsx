@@ -22,12 +22,8 @@ const propTypes = {
 
 const ActionCell = props => {
   const { rowIndex, dataSource } = props;
-  const {
-    PreMatchLeagueId,
-    LeagueName,
-    InfoSiteMatchId,
-    MatchOffer
-  } = dataSource[rowIndex];
+  const { PreMatchLeagueId, LeagueName, InfoSiteMatchId, MatchOffer } =
+    dataSource[rowIndex];
   const copyModel = useSelector(state => state.copy);
   const { highlightedCell } = copyModel;
   const stableDispatch = useStableDispatch();
@@ -52,7 +48,7 @@ const ActionCell = props => {
             preMatchLeagueId: PreMatchLeagueId
           })
         );
-        isEqual(highlightedCell.PreMatchLeagueId, PreMatchLeagueId) &&
+        highlightedCell.PreMatchLeagueId.some(id => PreMatchLeagueId === id) &&
           stableDispatch(resetCopyInfo());
       }
     } else {

@@ -40,10 +40,8 @@ const mergeMatchesToLeagues = (matches, leagues, filterUnreadMessage) => {
     }
   });
   if (filterUnreadMessage) {
-    const {
-      PreMatchLeagueIds,
-      InfoSiteMatchId
-    } = getUnreadMessagePreMatchLeagueIds(matches, leagues);
+    const { PreMatchLeagueIds, InfoSiteMatchId } =
+      getUnreadMessagePreMatchLeagueIds(matches, leagues);
     return leaguesCloned.filter(
       e =>
         PreMatchLeagueIds.includes(e.PreMatchLeagueId) &&
@@ -67,8 +65,10 @@ const changeExpandStateOneLeague = (leagues, preMatchLeagueId, expandState) => {
 
 const sortLeaguesByColumnKey = (leagues, columnKey, orderType) => {
   const rowsValue = leagues.filter(row => row[columnKey]) || [];
-  const rowsValueNull = leagues.filter(row => !row[columnKey] && !row[`${columnKey}Hint`]) || [];
-  const rowsValueContainHint = leagues.filter(row => !row[columnKey] && row[`${columnKey}Hint`]) || [];
+  const rowsValueNull =
+    leagues.filter(row => !row[columnKey] && !row[`${columnKey}Hint`]) || [];
+  const rowsValueContainHint =
+    leagues.filter(row => !row[columnKey] && row[`${columnKey}Hint`]) || [];
   if (isEqual(orderType, 'ORDER_ASC')) {
     rowsValue.sort(compareValues(columnKey, 'asc'));
     rowsValueContainHint.sort(compareValues(`${columnKey}Hint`, 'asc'));
@@ -76,11 +76,7 @@ const sortLeaguesByColumnKey = (leagues, columnKey, orderType) => {
     rowsValue.sort(compareValues(columnKey, 'desc'));
     rowsValueContainHint.sort(compareValues(`${columnKey}Hint`, 'desc'));
   }
-  return [
-    ...rowsValueContainHint,
-    ...rowsValueNull,
-    ...rowsValue
-  ];
+  return [...rowsValueContainHint, ...rowsValueNull, ...rowsValue];
 };
 
 const changeOpenNoteStateAll = (array, openState) => {
@@ -132,16 +128,94 @@ const updateLeagueData = (leagues, entities, updatedLeagueIds, newLeague) => {
   updatedLeague[objectKey] = newValue;
   league[objectKey] = newValue;
 };
-const pasteCopied = (leagues, entities, updatedLeagueIds, pasteValue) => {
-  const {
-    rowIndex,
-    isTakeOver,
-    MainAssignee2,
-    MainAssignee1,
-    OtherAssignee1,
-    OtherAssignee2
-  } = pasteValue;
 
+const updateLeagues = (leagues, pasteValue, leagueIds) => {
+  const { leagueIndex, isTakeOver, copiedValue, rowEnd } = pasteValue;
+
+  let copiedValueIndex = 0;
+  for (let index = rowEnd + 1; index <= leagueIndex; index++) {
+    const { MainAssignee1, MainAssignee2, OtherAssignee1, OtherAssignee2 } =
+      copiedValue[copiedValueIndex].value;
+
+    const league = leagues[index];
+    const { LeagueId } = league;
+    leagueIds.push(LeagueId);
+    if (isTakeOver) {
+      league.HDPTakeOver = MainAssignee1;
+      league.OUTakeOver = MainAssignee2;
+      league.OtherHDPTakeOver = OtherAssignee1;
+      league.OtherOUTakeOver = OtherAssignee2;
+    } else {
+      league.HDP = MainAssignee1;
+      league.OU = MainAssignee2;
+      league.OtherHDP = OtherAssignee1;
+      league.OtherOU = OtherAssignee2;
+    }
+    copiedValueIndex++;
+    if (isEqual(copiedValueIndex, copiedValue.length)) {
+      copiedValueIndex = 0;
+    }
+  }
+};
+
+const updateEntity = (entities, pasteValue, leagueIds, updatedLeagueIds) => {
+  const { isTakeOver, copiedValue } = pasteValue;
+  let copiedValueIndex = 0;
+  leagueIds.forEach(leagueId => {
+    const { MainAssignee1, MainAssignee2, OtherAssignee1, OtherAssignee2 } =
+      copiedValue[copiedValueIndex].value;
+    const entity = entities.find(l => l.LeagueId === leagueId);
+
+    const isExistsIdInPreMatchIdUpdated = updatedLeagueIds.some(id =>
+      isEqual(id, entity.PreMatchLeagueId)
+    );
+    !isExistsIdInPreMatchIdUpdated &&
+      updatedLeagueIds.push(entity.PreMatchLeagueId);
+
+    if (entity) {
+      copiedValueIndex++;
+      if (isTakeOver) {
+        entity.HDPTakeOver = MainAssignee1;
+        entity.OUTakeOver = MainAssignee2;
+        entity.OtherHDPTakeOver = OtherAssignee1;
+        entity.OtherOUTakeOver = OtherAssignee2;
+      } else {
+        entity.HDP = MainAssignee1;
+        entity.OU = MainAssignee2;
+        entity.OtherHDP = OtherAssignee1;
+        entity.OtherOU = OtherAssignee2;
+      }
+      if (isEqual(copiedValueIndex, copiedValue.length)) {
+        copiedValueIndex = 0;
+      }
+    }
+  });
+};
+
+const pasteMultipleValue = (
+  leagues,
+  entities,
+  updatedLeagueIds,
+  pasteValue
+) => {
+  const leagueIds = [];
+  const { highlightedCell } = pasteValue;
+
+  if (!isEqual(highlightedCell.isTakeOver, pasteValue.isTakeOver)) {
+    return;
+  }
+  updateLeagues(leagues, pasteValue, leagueIds);
+  updateEntity(entities, pasteValue, leagueIds, updatedLeagueIds);
+};
+
+const pasteCopied = (leagues, entities, updatedLeagueIds, pasteValue) => {
+  const { rowIndex, isTakeOver, copiedValue } = pasteValue;
+
+  if (copiedValue.length > 1) {
+    return;
+  }
+  const { MainAssignee1, MainAssignee2, OtherAssignee1, OtherAssignee2 } =
+    copiedValue[0].value;
   const entity = entities[rowIndex];
   const league = leagues.find(l =>
     isEqual(l.PreMatchLeagueId, entity.PreMatchLeagueId)
@@ -202,6 +276,11 @@ const sortLeaguesByDefault = data => {
   return [...leaguesHasNotAssignee, ...sortedHasAssigneeLeagues];
 };
 
+const clearState = state => {
+  state.prematchIdUpdated.length = 0;
+  state.prematchIdDeleted.length = 0;
+  state.sortState = {};
+};
 
 export {
   getUnreadMessagePreMatchLeagueIds,
@@ -213,5 +292,7 @@ export {
   changeOpenNoteStateOneMatch,
   updateLeagueData,
   pasteCopied,
-  sortLeaguesByDefault
+  pasteMultipleValue,
+  sortLeaguesByDefault,
+  clearState
 };

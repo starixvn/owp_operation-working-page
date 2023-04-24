@@ -1,17 +1,8 @@
 import React, { useState, createRef } from 'react';
-import { fireEvent, render, waitFor } from '@testing-library/react';
-import NighShiftManagement from './NighShiftManagement';
-import { useDispatch, useSelector, useStore } from 'react-redux';
-import Loading from '../components/Loading';
+import { render, waitFor } from '@testing-library/react';
+import NightShiftManagement from './NightShiftManagement';
+import { useDispatch, useSelector } from 'react-redux';
 import usePermission from '../Shared/customHook/usePermission';
-import HeaderNightShift from './features/header/HeaderNightShift';
-import PreMatchTable from './features/league/PreMatchTable';
-import EditFilterNightShift from './features/filter/EditFilterNightShift';
-import ViewFilterNighShift from './features/filter/ViewFilterNighShift';
-import EditComponent from './features/edit/EditComponent';
-import WorkingShiftComponent from './features/workingShift/WorkingShiftComponent';
-import NightShiftSaver from './features/save/NightShiftSaver';
-import TicketDetailBoard from './features/traderChatBoard/ViewCreateTicketBoard';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
@@ -316,7 +307,7 @@ const setup = (status, mockPermission, isEditMode = false) => {
       loading: false
     },
     copy: {
-      highlightedCell: ''
+      highlightedCell: { PreMatchLeagueId: [9966] }
     }
   };
   useState.mockImplementation(init => [init, setState]);
@@ -331,7 +322,7 @@ const setup = (status, mockPermission, isEditMode = false) => {
 };
 const { ResizeObserver } = window;
 
-describe('NighShiftManagement under test', () => {
+describe('NightShiftManagement under test', () => {
   beforeEach(() => {
     //@ts-ignore
     delete window.ResizeObserver;
@@ -345,14 +336,14 @@ describe('NighShiftManagement under test', () => {
     window.ResizeObserver = ResizeObserver;
     jest.restoreAllMocks();
   });
-  it('when waiting query data, should show Loanding', () => {
+  it('when waiting query data, should show Loading', () => {
     const mockPermission = {
       Username: 'sa',
       HasRead: true,
       HasWrite: true
     };
     setup('pending', mockPermission);
-    const { container } = render(<NighShiftManagement />);
+    const { container } = render(<NightShiftManagement />);
     const loading = container.querySelector('.loading-process');
     expect(loading).toBeInTheDocument();
   });
@@ -364,7 +355,7 @@ describe('NighShiftManagement under test', () => {
       HasWrite: true
     };
     setup('idle', mockPermission);
-    const { container } = render(<NighShiftManagement />);
+    const { container } = render(<NightShiftManagement />);
 
     const blockFilter = container.querySelector('.block-filter');
 
@@ -378,7 +369,7 @@ describe('NighShiftManagement under test', () => {
       HasWrite: true
     };
     setup('idle', mockPermission, true);
-    const { container } = render(<NighShiftManagement />);
+    const { container } = render(<NightShiftManagement />);
 
     const blockFilter = container.querySelector('.block-button ');
 

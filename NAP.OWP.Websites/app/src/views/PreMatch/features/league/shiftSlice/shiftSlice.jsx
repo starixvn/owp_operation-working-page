@@ -8,8 +8,10 @@ import {
   changeOpenNoteStateOneLeague,
   updateLeagueData,
   pasteCopied,
+  pasteMultipleValue,
   sortLeaguesByColumnKey,
-  sortLeaguesByDefault
+  sortLeaguesByDefault,
+  clearState
 } from './shiftHelper';
 import {
   restoreDeletedLeague,
@@ -111,22 +113,21 @@ const shiftSlice = createSlice({
         );
       }
     },
-    clearStateDayShift: {
-      reducer: state => {
-        state.prematchIdUpdated.length = 0;
-        state.prematchIdDeleted.length = 0;
-        state.sortState = {};
+    pasteCopiedMultipleValue: {
+      reducer: (state, action) => {
+        pasteMultipleValue(
+          state.leagues,
+          state.entities,
+          state.prematchIdUpdated,
+          action.payload
+        );
       }
     },
+    clearStateDayShift: {
+      reducer: state => clearState(state)
+    },
     clearStateNightShift: {
-      reducer: state => {
-        state.prematchIdUpdated.length = 0;
-        state.prematchIdDeleted.length = 0;
-        state.sortState = {};
-        state.entities = [];
-        state.matches = [];
-        state.leagues = [];
-      }
+      reducer: state => clearState(state)
     },
     restore: {
       reducer: (state, action) => {
@@ -366,20 +367,50 @@ const shiftSlice = createSlice({
       }
     }
   },
-  extraReducers: builder=>{
-    builder.addCase(getShiftByDateAndEmployee.pending,(state, action) => {
-      const { loading } = state;
-      if (isEqual(loading, REQUEST_STATUS.idle)) {
-        state.loading = REQUEST_STATUS.pending;
-        state.currentRequestId = action.meta.requestId;
-      }
-    })
-    .addCase(getShiftByDateAndEmployee.fulfilled,(state, action) => {
-      const { requestId } = action.meta;
-      if (
-        isEqual(state.loading, REQUEST_STATUS.pending) &&
-        isEqual(state.currentRequestId, requestId)
-      ) {
+  extraReducers: builder => {
+    builder
+      .addCase(getShiftByDateAndEmployee.pending, (state, action) => {
+        const { loading } = state;
+        if (isEqual(loading, REQUEST_STATUS.idle)) {
+          state.loading = REQUEST_STATUS.pending;
+          state.currentRequestId = action.meta.requestId;
+        }
+      })
+      .addCase(getShiftByDateAndEmployee.fulfilled, (state, action) => {
+        const { requestId } = action.meta;
+        if (
+          isEqual(state.loading, REQUEST_STATUS.pending) &&
+          isEqual(state.currentRequestId, requestId)
+        ) {
+          state.loading = REQUEST_STATUS.idle;
+          state.entities.length = 0;
+          const { InfoSiteMatches, PreMatchLeagues } = action.payload;
+
+          state.leagues = [...[], ...PreMatchLeagues];
+          state.matches = [...[], ...InfoSiteMatches];
+
+          changeExpandStateAllLeague(state.leagues, state.isShowUnreadMessage);
+
+          state.entities = mergeMatchesToLeagues(
+            state.matches,
+            state.leagues,
+            state.isShowUnreadMessage
+          );
+          state.currentRequestId = null;
+        }
+      })
+      .addCase(getShiftByDateAndEmployee.rejected, (state, action) => {
+        const { requestId } = action.meta;
+        if (
+          isEqual(state.loading, REQUEST_STATUS.pending) &&
+          isEqual(state.currentRequestId, requestId)
+        ) {
+          state.loading = REQUEST_STATUS.idle;
+          state.error = action.error;
+          state.currentRequestId = null;
+        }
+      })
+      .addCase(getShiftByDateAndEmployeeWhenChat.fulfilled, (state, action) => {
         state.loading = REQUEST_STATUS.idle;
         state.entities.length = 0;
         const { InfoSiteMatches, PreMatchLeagues } = action.payload;
@@ -395,66 +426,38 @@ const shiftSlice = createSlice({
           state.isShowUnreadMessage
         );
         state.currentRequestId = null;
-      }
-    }).addCase(getShiftByDateAndEmployee.rejected,(state, action) => {
-      const { requestId } = action.meta;
-      if (
-        isEqual(state.loading, REQUEST_STATUS.pending) &&
-        isEqual(state.currentRequestId, requestId)
-      ) {
-        state.loading = REQUEST_STATUS.idle;
-        state.error = action.error;
-        state.currentRequestId = null;
-      }
-    })
-    .addCase(getShiftByDateAndEmployeeWhenChat.fulfilled, (state, action) => {
-      state.loading = REQUEST_STATUS.idle;
-      state.entities.length = 0;
-      const { InfoSiteMatches, PreMatchLeagues } = action.payload;
-
-      state.leagues = [...[], ...PreMatchLeagues];
-      state.matches = [...[], ...InfoSiteMatches];
-
-      changeExpandStateAllLeague(state.leagues, state.isShowUnreadMessage);
-
-      state.entities = mergeMatchesToLeagues(
-        state.matches,
-        state.leagues,
-        state.isShowUnreadMessage
-      );
-      state.currentRequestId = null;
-    })
-    .addCase(restoreDeletedLeague.pending, state => {
-      const { loading } = state;
-      if (isEqual(loading, REQUEST_STATUS.idle)) {
-        state.loading = REQUEST_STATUS.pending;
-      }
-    })
-    .addCase(restoreDeletedLeague.fulfilled, (state, action) => {
-      if (isEqual(state.loading, REQUEST_STATUS.pending)) {
-        state.loading = REQUEST_STATUS.idle;
-        if (action.payload) {
-          const { InfoSiteMatches, PreMatchLeagues } = action.payload;
-          PreMatchLeagues[0].No = state.leagues.length + 1;
-          state.leagues.push(PreMatchLeagues[0]);
-          state.matches.push(...InfoSiteMatches);
-          state.entities = mergeMatchesToLeagues(
-            state.matches,
-            state.leagues,
-            state.isShowUnreadMessage
-          );
+      })
+      .addCase(restoreDeletedLeague.pending, state => {
+        const { loading } = state;
+        if (isEqual(loading, REQUEST_STATUS.idle)) {
+          state.loading = REQUEST_STATUS.pending;
         }
-      }
-    })
-    .addCase(restoreDeletedLeague.rejected, (state, action) => {
-      if (isEqual(state.loading, REQUEST_STATUS.pending)) {
-        state.loading = REQUEST_STATUS.idle;
-        state.error = action.error;
-      }
-    })
-    .addCase(getAssignedLeagueId.fulfilled, (state, action) => {
-      state.assignedLeagueId = action.payload;
-    });
+      })
+      .addCase(restoreDeletedLeague.fulfilled, (state, action) => {
+        if (isEqual(state.loading, REQUEST_STATUS.pending)) {
+          state.loading = REQUEST_STATUS.idle;
+          if (action.payload) {
+            const { InfoSiteMatches, PreMatchLeagues } = action.payload;
+            PreMatchLeagues[0].No = state.leagues.length + 1;
+            state.leagues.push(PreMatchLeagues[0]);
+            state.matches.push(...InfoSiteMatches);
+            state.entities = mergeMatchesToLeagues(
+              state.matches,
+              state.leagues,
+              state.isShowUnreadMessage
+            );
+          }
+        }
+      })
+      .addCase(restoreDeletedLeague.rejected, (state, action) => {
+        if (isEqual(state.loading, REQUEST_STATUS.pending)) {
+          state.loading = REQUEST_STATUS.idle;
+          state.error = action.error;
+        }
+      })
+      .addCase(getAssignedLeagueId.fulfilled, (state, action) => {
+        state.assignedLeagueId = action.payload;
+      });
   }
 });
 
@@ -462,6 +465,7 @@ const { actions, reducer } = shiftSlice;
 const {
   sortByColumnKey,
   pasteCopiedValue,
+  pasteCopiedMultipleValue,
   deleteRow,
   updatePrematch,
   restore,
@@ -492,6 +496,7 @@ export {
   getShiftByDateAndEmployeeWhenChat,
   sortByColumnKey,
   pasteCopiedValue,
+  pasteCopiedMultipleValue,
   deleteRow,
   updatePrematch,
   clearStateDayShift,

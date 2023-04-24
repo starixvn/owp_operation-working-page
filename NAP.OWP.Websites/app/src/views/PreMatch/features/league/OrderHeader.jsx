@@ -8,6 +8,7 @@ import ToastrWrapper from '../../../components/ToastrWrapper';
 import { get } from '../../ImportPrematchHelperNative';
 import { URLQUERYASSIGNEDLEAGUEID } from '../../const/const';
 import { buildGoToTradingPageLink } from '../../helper/preMatchHelper';
+import { resetCopyInfo } from '../copy/copySlice';
 
 const OrderHeader = headerModel => {
   const {
@@ -39,6 +40,7 @@ const OrderHeader = headerModel => {
       orderType: orderSelection,
       tableKey: nanoid()
     };
+    stableDispatch(resetCopyInfo());
     stableDispatch(sortByColumnKey(postModel));
   };
 
