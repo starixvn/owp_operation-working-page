@@ -24,7 +24,7 @@ const TableHeader = ({ filterDate, eventDate }: Props) => {
           className={
             currentTimeLine?.id === x.id ? 'current-timeline' : 'timeline'
           }>
-          <span>{x.title} </span>
+          <span style={{ color: x.color }}>{x.title} </span>
         </th>
       ))}
     </tr>

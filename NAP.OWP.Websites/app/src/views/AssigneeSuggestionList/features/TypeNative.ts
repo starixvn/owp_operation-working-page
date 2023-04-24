@@ -39,6 +39,7 @@ type TimeLine = {
   title: string;
   id: string;
   width?: number;
+  color?: string;
 };
 type TableCell = {
   index: number;
