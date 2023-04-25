@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { shallow } from 'zustand/shallow';
 import useStore from '../../app/useStore';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -11,6 +11,7 @@ const ColorExplain = () => {
     shallow
   );
   const [display, setDisplay] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const renderColorExplain = () => {
     return colorExplainInfo.map(c => (
@@ -30,8 +31,28 @@ const ColorExplain = () => {
     setDisplay(!display);
   };
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        display &&
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
+        setDisplay(!display);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [wrapperRef, display]);
+
   return (
-    <div className='color__explain_info' onClick={showHideColorExplain}>
+    <div
+      className='color__explain_info'
+      ref={wrapperRef}
+      onClick={showHideColorExplain}>
       <span className='info'>
         <InfoOutlinedIcon />
       </span>

@@ -2,17 +2,20 @@ import React from 'react';
 import { TableCell } from '../../TypeNative';
 import { MessageIcon } from 'mdi-react';
 import { Icon, Tooltip } from '@mui/material';
+import { ExplainBusy } from '../../../const/Const.json';
 
 const ExplainCell = ({ value }: TableCell) => {
   return (
-    <div>
-      <Tooltip
-        title={<span className='explanation'>{value}</span>}
-        placement='right-end'>
-        <Icon>
-          <MessageIcon size={15} className='tool-tip' />
-        </Icon>
-      </Tooltip>
+    <div className='explanation'>
+      {value !== ExplainBusy && (
+        <Tooltip
+          title={<span className='explanation-text'>{value}</span>}
+          placement='right-end'>
+          <Icon>
+            <MessageIcon size={15} className='tool-tip' />
+          </Icon>
+        </Tooltip>
+      )}
     </div>
   );
 };

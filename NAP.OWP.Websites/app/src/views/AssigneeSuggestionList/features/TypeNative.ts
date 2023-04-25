@@ -27,6 +27,7 @@ type UserInfo = {
   maxMultipleGames: string;
   explanation: string;
   levelLabel: string;
+  shiftCode: string;
 };
 
 type AssignmentCell = {

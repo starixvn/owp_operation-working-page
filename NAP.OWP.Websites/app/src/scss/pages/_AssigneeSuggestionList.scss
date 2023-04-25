@@ -179,8 +179,8 @@ div.rt-tr:has(span.expand-section) {
     }
   }
 }
-span.explanation {
-  font-size: 13px;
+.explanation-text {
+  font-size: 13px !important;
 }
 
 .rthfc .rt-td.rthfc-td-fixed-left-last {
@@ -292,7 +292,7 @@ span.explanation {
     }
     .sticky-col {
       border-right: 0;
-      min-width: 430px;
+      min-width: 436px;
     }
     .item {
       text-align: center;
@@ -347,20 +347,23 @@ th:first-child,
       }
     }
     .shift-cell {
-      width: 100px;
+      width: 126px;
+      display: flex;
+      min-width: 126px;
     }
     .trader,
     .trader-management {
       // justify-content: flex-end;
       width: 120px;
+      min-width: 120px;
       span {
         display: flex;
         align-items: center;
       }
     }
     .main-bet-type {
-      width: 70px;
-      max-width: 70px;
+      width: 69px;
+      min-width: 69px;
     }
     .main-bet-type span {
       display: inline-block;
@@ -369,16 +372,22 @@ th:first-child,
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    .level,
+    .level {
+      width: 35px;
+      align-items: center;
+      min-width: 35px;
+    }
     .multiple-game {
       width: 60px;
       align-items: center;
+      min-width: 60px;
     }
   }
 }
 .current-timeline {
+  background-color: #4878a9 !important;
   span {
-    color: #e90335 !important;
+    color: #fff !important;
   }
 }
 
@@ -386,7 +395,7 @@ th:first-child,
 .color__explain_info {
   position: absolute;
   right: 10px;
-  top: 60px;
+  top: 66px;
   z-index: 4;
   .info {
     margin-bottom: 4px;
@@ -411,4 +420,14 @@ th:first-child,
       padding: 2px 5px;
     }
   }
+}
+.explanation {
+  min-width: 26px;
+}
+.shift-code {
+  font-size: 9px;
+  font-style: italic;
+  font-family: monospace;
+  margin-bottom: 7px;
+  font-weight: 600;
 }
