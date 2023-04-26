@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Header from './Header';
-import useStore from '../../app/useStore';
+import useStore from '../../app/useStoreNative';
 
-jest.mock('../../app/useStore');
+jest.mock('../../app/useStoreNative');
 
 describe('Header component', () => {
   test('renders header with correct match info', () => {

@@ -4,7 +4,7 @@ import Header from './features/header/Header';
 import ColorExplain from './features/colorExplain/ColorExplain';
 import SuggestionTable from './features/table/SuggestionTable';
 import { shallow } from 'zustand/shallow';
-import useStore from './app/useStore';
+import useStore from './app/useStoreNative';
 import { isEqual } from 'lodash';
 import { REQUEST_STATUS } from '../Shared/Constants';
 import Loading from '../components/Loading';

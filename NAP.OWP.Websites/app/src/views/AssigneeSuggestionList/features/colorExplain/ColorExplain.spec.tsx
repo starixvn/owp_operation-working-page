@@ -1,9 +1,9 @@
 import React from 'react';
-import useStore from '../../app/useStore';
+import useStore from '../../app/useStoreNative';
 import ColorExplain from './ColorExplain';
 import { render, screen, fireEvent } from '@testing-library/react';
 
-jest.mock('../../app/useStore');
+jest.mock('../../app/useStoreNative');
 
 describe('ColorExplain', () => {
   test('renders color info on click', async () => {

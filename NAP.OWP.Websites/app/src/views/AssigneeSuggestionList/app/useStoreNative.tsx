@@ -3,9 +3,9 @@ import {
   TQueryWorkScheduleInfo,
   TQueryColorExplainInfo
 } from '../features/TypeNative';
-import crateTableSlice from './createTableSlice';
+import crateTableSlice from './createTableSliceNative';
 
-import createColorExplainSlice from './createColorExplainSlice';
+import createColorExplainSlice from './createColorExplainSliceNative';
 
 export default create<TQueryWorkScheduleInfo & TQueryColorExplainInfo>()(
   (...a) => ({

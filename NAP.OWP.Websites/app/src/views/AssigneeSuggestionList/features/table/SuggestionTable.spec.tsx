@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import useStore from '../../app/useStore';
+import useStore from '../../app/useStoreNative';
 import SuggestionTable from './SuggestionTable';
 
-jest.mock('../../app/useStore', () => jest.fn());
+jest.mock('../../app/useStoreNative', () => jest.fn());
 
 describe('SuggestionTable', () => {
   beforeEach(() => {
@@ -29,6 +29,8 @@ describe('SuggestionTable', () => {
             }
           }
         ],
+        partiallyAvailable: [],
+        busy: [],
         matchInfo: {
           filterDate: '2023-04-20',
           koTime: '10:00'

@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { shallow } from 'zustand/shallow';
-import useStore from '../../app/useStore';
+import useStore from '../../app/useStoreNative';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import { numberElement, headerHeight } from './../../const/Const.json';

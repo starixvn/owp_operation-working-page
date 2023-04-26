@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Layout from '../views/Layout';
-import AssigneeSuggestionList from './../views/AssigneeSuggestionList/AssigneeSuggestionList';
+import AssigneeSuggestionList from './../views/AssigneeSuggestionList/AssigneeSuggestionListNative';
 import '../scss/pages/_AssigneeSuggestionList.scss';
 
 const container = document.getElementById('root');

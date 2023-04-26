@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'zustand/shallow';
 import { getLocaleDateTime } from '../../../Shared/DateTime/dateTimeHelper';
-import useStore from '../../app/useStore';
+import useStore from '../../app/useStoreNative';
 
 const Header = () => {
   const {
