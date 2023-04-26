@@ -292,7 +292,7 @@ div.rt-tr:has(span.expand-section) {
     }
     .sticky-col {
       border-right: 0;
-      min-width: 436px;
+      min-width: 460px;
     }
     .item {
       text-align: center;
@@ -347,9 +347,8 @@ th:first-child,
       }
     }
     .shift-cell {
-      width: 126px;
-      display: flex;
-      min-width: 126px;
+      width: 147px;
+      min-width: 147px;
     }
     .trader,
     .trader-management {
@@ -378,9 +377,9 @@ th:first-child,
       min-width: 35px;
     }
     .multiple-game {
-      width: 60px;
+      width: 63px;
       align-items: center;
-      min-width: 60px;
+      min-width: 63px;
     }
   }
 }

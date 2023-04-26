@@ -6,9 +6,10 @@ type Props = TableCell & {
 
 const ShiftCell = ({ value, shiftCode }: Props) => {
   return (
-    <div className='shift-cell '>
-      <span>{value}</span>
-      <span className='shift-code'> &nbsp;{shiftCode}</span>
+    <div className='shift-cell'>
+      <span>
+        {value} {shiftCode && <span>({shiftCode})</span>}
+      </span>
     </div>
   );
 };
