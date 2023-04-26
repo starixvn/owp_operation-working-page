@@ -1,6 +1,4 @@
-﻿using OWP.EventAssignment.Const;
-
-namespace OWP.EventAssignment.Controllers
+﻿namespace OWP.EventAssignment.Controllers
 {
     using Fanex.Common.Extensions;
     using Fanex.NAP.Core.Business;
@@ -15,6 +13,7 @@ namespace OWP.EventAssignment.Controllers
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Http;
+    using Const;
 
     [RoutePrefix("api/event-assignment")]
     public class EventAssignmentController : ApiController
@@ -49,7 +48,11 @@ namespace OWP.EventAssignment.Controllers
             var adminSiteIdsWithOwpMatches = await repository.GetAdminSiteMatchId(parentMatchIds);
             var adminSitesIdsOdds = await repository.GetAdminSiteInfo();
 
-            var adminSiteMatchInfo = adminSiteIdsWithOwpMatches.Join(adminSitesIdsOdds,
+            var adminSiteInfo = adminSitesIdsOdds.GroupBy(x => x.AdminSiteMatchId)
+                .Where(g => g.All(x => x.OddsStatus != EventAssignmentConst.EventStatusRunning))
+                .Select(g => g.First(x => x.OddsStatus != EventAssignmentConst.EventStatusRunning)).ToList();
+
+            var adminSiteMatchInfo = adminSiteIdsWithOwpMatches.Join(adminSiteInfo,
                     l1 => l1.AdminSiteMatchId,
                     l2 => l2.AdminSiteMatchId,
                     (l1, l2) => new { l1, l2 })
