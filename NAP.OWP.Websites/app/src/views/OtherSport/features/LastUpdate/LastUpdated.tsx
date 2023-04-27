@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Loading from '../../../components/Loading';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { isEqual } from 'lodash';
-import { formatTime } from '../../../Shared/DateTime/dateTimeHelper';
+import { formatTimeOsLastUpdate } from '../../../Shared/DateTime/dateTimeHelper';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import getLastUpdateThunkNative from './getLastUpdateThunkNative';
 
@@ -35,7 +35,7 @@ const LastUpdated = (): JSX.Element => {
 
   return (
     <div className='last-update'>
-      Last Updated at {formatTime(date, 'minute', 'LLL')} (GMT+8) by {username}
+      Last Updated at {formatTimeOsLastUpdate(date)} (GMT+8) by {username}
     </div>
   );
 };
