@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import Notification from './Notification';
 import MessageService from '../Message/Service';
 import AuthorizeService from '../Authorize/Service';
@@ -73,7 +73,9 @@ describe('Notification Component', () => {
     const { container } = render(<Notification />);
 
     const badgeButton = container.querySelector('.icon-notification');
-    fireEvent.click(badgeButton);
+    waitFor(() => {
+      fireEvent.click(badgeButton);
+    });
 
     expect(mockComponentDidMount).toBeCalledTimes(1);
 

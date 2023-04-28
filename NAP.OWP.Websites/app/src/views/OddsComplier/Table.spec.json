@@ -69,6 +69,11 @@
     "Specific10Mins": [],
     "LA": [],
     "FM": [],
-    "AIO": []
+    "AIO": [],
+    "KickOffTimeToDisplay": "5:00 PM",
+    "InfoSiteTimeDisplay" : "5:00 PM",
+      "InfoSiteTime": "5:00 PM",
+      "OtherTimeToDisplay": "5:00 PM",
+      "OtherTime":  "5:00 PM"
   }
 ]

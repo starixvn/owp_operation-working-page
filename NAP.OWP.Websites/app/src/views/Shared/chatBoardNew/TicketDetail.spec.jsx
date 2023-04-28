@@ -29,6 +29,7 @@ useSelector.mockImplementation(f =>
   f({
     chatBoard: {
       ticketDetail: {
+        koTime: new Date(),
         ticketId: 0,
         ticketTypeId: '',
         ticketTypeName: '',

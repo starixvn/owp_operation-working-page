@@ -1,10 +1,10 @@
 interface KOTimeProps {
   MatchNo: string;
   MatchStatus: string;
-  KickOffTime: Date;
+  KickOffTime: string;
   KickOffTimeDisplay: string;
-  OtherTime: Date;
-  OtherTimeDisplay: string;
+  OtherTime: string | null;
+  OtherTimeDisplay: string | null;
   EventDate: Date;
   EventDateDisplay: string;
 }
@@ -89,6 +89,9 @@ interface DataSource extends KOTimeProps, PesOrFiFa {
   };
   HasTicket: boolean;
   IsRead: boolean;
+  InfoSiteTime: string | null;
+  InfoSiteTimeDisplay: string | null;
+  IsShowAbsenceIcon: boolean;
 }
 
 type ModelSpecialProduct = {
@@ -142,7 +145,7 @@ type OtherProductProps = {
 };
 
 type KOTimeCellProps = {
-  dataSource: KOTimeProps & PesOrFiFa;
+  dataSource: Required<Readonly<Partial<DataSource>>>;
   flagElement?: JSX.Element;
   eventDateElement?: JSX.Element;
   rowIndex: Readonly<number>;

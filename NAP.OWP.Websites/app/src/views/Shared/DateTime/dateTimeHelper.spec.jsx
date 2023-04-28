@@ -6,7 +6,8 @@ import {
   buildFilterDate,
   convertFrom24hTo12h,
   addDays,
-  buildDateString
+  buildDateString,
+  formatTimeOsLastUpdate
 } from './DateTimeHelper';
 
 describe('DateTimeHelper', () => {
@@ -85,5 +86,9 @@ describe('DateTimeHelper', () => {
     expect(JSON.stringify(timeFormat12h)).toEqual(
       JSON.stringify('10:12:59 PM')
     );
+  });
+  it('Should formatTimeOsLastUpdate', () => {
+    const timeFormat12h = formatTimeOsLastUpdate('2023-04-05T10:43:39.467624Z');
+    expect(timeFormat12h).toEqual('April 05, 2023 10:43 AM');
   });
 });

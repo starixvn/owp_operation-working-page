@@ -1,19 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import TimeOfMatch from '../../Shared/LiveGameShared/TimeOfMatch';
 class KOTimeCell extends React.PureComponent {
   render() {
     const { data, rowIndex } = this.props;
-    const { OtherTime } = data[rowIndex];
+    const {
+      OtherTime,
+      OtherTimeStr,
+      KickOffTime,
+      KickOffTimeStr,
+      InfoSiteTime,
+      InfoSiteTimeDisplay
+    } = data[rowIndex];
+    const propsTime = {
+      KickOffTimeDisplay: KickOffTime,
+      KickOffTime: KickOffTimeStr,
+      InfoSiteTimeDisplay,
+      InfoSiteTime,
+      OtherTimeDisplay: OtherTime,
+      OtherTime: OtherTimeStr,
+      rowIndex
+    };
     return (
       <div className='kickoff-cell'>
         <span className='time-cell'>
-          {data[rowIndex].KickOffTime}
-          {OtherTime ? (
-            <span className='badge-label other-time'>{OtherTime}</span>
-          ) : (
-            ''
-          )}
+          <TimeOfMatch {...propsTime} />
         </span>
       </div>
     );

@@ -22,12 +22,13 @@ const recipientByCreatorId = {
   recipientNickname: 'sa_nick'
 };
 const handleBuildModel = jest.fn();
-const setup = (isEventChecking, valueEvent, valueSearch) => {
+const setup = (isEventChecking, valueEvent, valueSearch, typeTicketText) => {
   const initialState = {
     createTicketBoard: {
       isEventChecking,
       valueEvent,
-      valueSearch
+      valueSearch,
+      typeTicketText
     }
   };
   useSelector.mockImplementation(selectorFn => selectorFn(initialState));
@@ -35,7 +36,7 @@ const setup = (isEventChecking, valueEvent, valueSearch) => {
 
 describe('CreateTicketEventChecking under test', () => {
   it('Should render popup', async () => {
-    setup(true, valueEvent, 'sad');
+    setup(true, valueEvent, 'sad', 'Event Checking');
 
     const { container } = render(
       <CreateTicketEventChecking

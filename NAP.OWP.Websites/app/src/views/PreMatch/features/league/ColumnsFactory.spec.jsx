@@ -29,6 +29,8 @@ describe('ColumnsFactory under test', () => {
       }
     ];
     const columnWidth = {
+      Action: 100,
+      No: 100,
       League: 100,
       HDP: 100,
       Issues: 100,
@@ -74,6 +76,8 @@ describe('ColumnsFactory under test', () => {
       }
     ];
     const columnWidth = {
+      Action: 100,
+      No: 100,
       League: 100,
       HDP: 100,
       Issues: 100,

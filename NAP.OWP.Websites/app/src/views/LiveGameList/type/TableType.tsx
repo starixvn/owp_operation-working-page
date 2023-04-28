@@ -145,6 +145,7 @@ interface MatchInfo {
   OWPMatchId: number;
   OtherProvider: string | null;
   OtherTime: string | null;
+  OtherTimeDisplay: string | null;
   ParentMatchId: number | null;
   Phone: string;
   Provider: string | null;
@@ -170,6 +171,9 @@ interface MatchInfo {
   LengthProvider: number;
   RowSpan: number;
   KickOffTimeDisplay: string;
+  InfoSiteTime: string;
+  InfoSiteTimeDisplay: string;
+  IsShowAbsenceIcon: boolean;
 }
 interface FilterState {
   columnKey: string | undefined;

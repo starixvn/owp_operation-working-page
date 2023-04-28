@@ -1,8 +1,9 @@
 import React from 'react';
 import { CellProps } from '../../../type/TableType';
 import { UncontrolledTooltip } from 'reactstrap';
+import AbsencePersonIcon from '../../../../../assets/svg-element/AbsencePersonIcon';
 const NoCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
-  const { MatchNo, MatchStatus } = dataSource[rowIndex];
+  const { MatchNo, MatchStatus, IsShowAbsenceIcon } = dataSource[rowIndex];
 
   const renderIcon = () => {
     const classNames = {
@@ -41,6 +42,7 @@ const NoCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
 
   return (
     <div className='no-cell'>
+      {IsShowAbsenceIcon && <AbsencePersonIcon />}
       {MatchNo && <span>{MatchNo}</span>}
       {renderIcon()}
     </div>

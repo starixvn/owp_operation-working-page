@@ -3,6 +3,7 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
   waitForElementToBeRemoved
 } from '@testing-library/react';
 import Service from './Service';
@@ -25,27 +26,31 @@ describe('EventAssignment', () => {
     AuthorizeService.authorize.mockResolvedValue(policy);
     Service.query.mockResolvedValue(events);
     Service.exportExcel.mockResolvedValue('url');
-    ResourceManagementService.getByRefName.mockResolvedValue([
-      [
-        { RefName: 'MatchStatus', Id: 4, Value: 'Cancel' },
-        { RefName: 'MatchStatus', Id: 3, Value: 'Completed' },
-        { RefName: 'MatchStatus', Id: 2, Value: 'In-play' },
-        { RefName: 'MatchStatus', Id: 1, Value: 'Live' },
-        { RefName: 'MatchStatus', Id: 5, Value: 'Postponed' },
-        { RefName: 'MatchStatus', Id: 6, Value: 'Suspended' }
-      ]
-    ]);
-    Utils.isYesterdayOrAfterForAssignment.mockReturnValue(true);
-    Utils.buildMatchStatusOption.mockReturnValue([
-      { label: 'In-play', value: 2 },
-      { label: 'Live', value: 1 }
-    ]);
-    Utils.buildSelectedMatchStatus.mockReturnValue([1, 2]);
+    waitFor(() => {
+      ResourceManagementService.getByRefName.mockResolvedValue([
+        [
+          { RefName: 'MatchStatus', Id: 4, Value: 'Cancel' },
+          { RefName: 'MatchStatus', Id: 3, Value: 'Completed' },
+          { RefName: 'MatchStatus', Id: 2, Value: 'In-play' },
+          { RefName: 'MatchStatus', Id: 1, Value: 'Live' },
+          { RefName: 'MatchStatus', Id: 5, Value: 'Postponed' },
+          { RefName: 'MatchStatus', Id: 6, Value: 'Suspended' }
+        ]
+      ]);
+      Utils.isYesterdayOrAfterForAssignment.mockReturnValue(true);
+      Utils.buildMatchStatusOption.mockReturnValue([
+        { label: 'In-play', value: 2 },
+        { label: 'Live', value: 1 }
+      ]);
+      Utils.buildSelectedMatchStatus.mockReturnValue([1, 2]);
+    });
   });
 
   it('should match snapshot on init', () => {
     const { container } = render(<OddsCompiler />);
-    expect(container).toMatchSnapshot();
+    waitFor(() => {
+      expect(container).toMatchSnapshot();
+    });
   });
 
   it('when click Submit btn ,should call Utils, Service', async () => {

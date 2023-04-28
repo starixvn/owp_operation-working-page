@@ -28,7 +28,7 @@ describe('filterSlice under test', () => {
       };
 
       const expectState = {
-        filterDate: new Date(),
+        filterDate: new Date(2023, 22, 10),
         loading: REQUEST_STATUS.idle,
         currentRequestId: undefined,
         error: null
@@ -36,7 +36,7 @@ describe('filterSlice under test', () => {
 
       const action = {
         type: updateFilterDate.type,
-        payload: { selectedDate: new Date() }
+        payload: { selectedDate: new Date(2023, 22, 10) }
       };
 
       const state = filterSlice(initialState, action);

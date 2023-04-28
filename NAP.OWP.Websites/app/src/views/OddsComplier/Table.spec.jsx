@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import UserService from '../Shared/User/UserService';
 import Table from './Table';
 import events from './Table.spec.json';
@@ -45,7 +45,9 @@ describe('Table component', () => {
       UserName: 'sa',
       NickName: 'superman'
     };
-    UserService.getInfoByUserId.mockResolvedValue(user);
+    waitFor(() => {
+      UserService.getInfoByUserId.mockResolvedValue(user);
+    });
   });
   afterEach(() => {
     props.updateDataSource.mockReset();

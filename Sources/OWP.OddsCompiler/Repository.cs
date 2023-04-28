@@ -16,6 +16,7 @@
     using OWP.Models;
     using Services;
     using Utils;
+    using static Dapper.SqlMapper;
 
     public interface Repository
     {
@@ -86,7 +87,26 @@
                 match.MatchOddsRow = GetMatchOddRow(match.OWPMatchId, matchOdds);
             }
 
+            await BuildInfoSiteTime(matches);
             return matches;
+        }
+
+        public async Task BuildInfoSiteTime(List<MatchInfoModel> matches)
+        {
+            var parentMatchIds = string.Join(",", matches.Select(x => x.ParentMatchId).Distinct());
+            var criteria = new GetInfoSiteTimeCriteria
+            {
+                ParentMatchIds = parentMatchIds
+            };
+
+            var result = (await dynamicRepository.FetchAsync<InfoSiteTimeModel>(criteria)).ToList();
+
+            foreach (var match in matches)
+            {
+                var infoSite = result.FirstOrDefault(x => x.ParentMatchId == match.ParentMatchId);
+                match.InfoSiteTime = infoSite?.KickOffTime;
+                match.InfoSiteTimeDisplay = infoSite?.KickOffTimeDisplay;
+            }
         }
 
         public async Task<ResultDataObject> InsertOdds(InsertOddsModel model)

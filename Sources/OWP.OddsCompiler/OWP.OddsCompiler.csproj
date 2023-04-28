@@ -149,6 +149,7 @@
     <Compile Include="AutoMapperProfile.native.cs" />
     <Compile Include="Controllers\OddsCompilerApiController.cs" />
     <Compile Include="Criteria\DeleteOddsCompilerCriteria.cs" />
+    <Compile Include="Criteria\GetInfoSiteTimeCriteria.cs" />
     <Compile Include="Criteria\GetOddsCompilerCriteria.cs" />
     <Compile Include="Criteria\GetUsersSendNotificationCriteria.cs" />
     <Compile Include="Criteria\InsertOddsCompilerCriteria.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Models\ExcelFileInfo.cs" />
     <Compile Include="Models\ExcelModel.cs" />
     <Compile Include="Models\ExcelReportModel.cs" />
+    <Compile Include="Models\InfoSiteTimeModel.cs" />
     <Compile Include="Models\MarketNotificationModel.cs" />
     <Compile Include="Models\MarketUpdateModel.cs" />
     <Compile Include="Models\MartketSendNotificationModel.cs" />

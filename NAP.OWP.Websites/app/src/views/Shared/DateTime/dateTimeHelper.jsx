@@ -1,5 +1,8 @@
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
 dayjs.extend(localizedFormat);
 
 const buildTimeRangeForFromDate = fromDate => {
@@ -93,10 +96,14 @@ const formatTime = (value, startOf, formatOutput) => {
   if (!value) {
     return null;
   }
-  return dayjs(value)
-    .startOf(startOf)
-    .format(formatOutput);
+  return dayjs(value).startOf(startOf).format(formatOutput);
 };
+
+const formatTimeOsLastUpdate = dateStr => {
+  console.log(typeof dateStr);
+  return dayjs.utc(dateStr).format('MMMM DD, YYYY hh:mm A');
+};
+
 const addDays = (date, days) => {
   const result = new Date(date);
   result.setDate(result.getDate() + days);
@@ -127,19 +134,21 @@ const buildDefaultFilterDate = () => {
 const buildDefaultLGLFilterDate = () => {
   const currentDate = getCurrentDateGmtPlus8();
   return currentDate.getHours() < 11
-    ? dayjs(currentDate)
-      .add(-1, 'days')
-      .toDate()
+    ? dayjs(currentDate).add(-1, 'days').toDate()
     : currentDate;
 };
 
 const getMMDDYYYYStringFromDateTime = source => dayjs(source).format('L');
 
-const getLocaleDateTime = (source, format = 'L') => dayjs(source).format(format);
+const getLocaleDateTime = (source, format = 'L') =>
+  dayjs(source).format(format);
 
 const getDayjsFromTime = time => {
   const hourAndMinutes = getHourAndMinutes(time).split(':');
-  const { hour, minute } = { hour: hourAndMinutes[0], minute: hourAndMinutes[1] };
+  const { hour, minute } = {
+    hour: hourAndMinutes[0],
+    minute: hourAndMinutes[1]
+  };
   return dayjs(new Date()).hour(hour).minute(minute);
 };
 
@@ -160,5 +169,6 @@ export {
   buildDefaultLGLFilterDate,
   getMMDDYYYYStringFromDateTime,
   getLocaleDateTime,
-  getDayjsFromTime
+  getDayjsFromTime,
+  formatTimeOsLastUpdate
 };

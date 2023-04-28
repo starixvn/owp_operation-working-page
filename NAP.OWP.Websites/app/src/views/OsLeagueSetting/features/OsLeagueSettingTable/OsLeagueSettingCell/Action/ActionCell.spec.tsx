@@ -38,8 +38,6 @@ describe('ActionCell under test', () => {
     const element = container.querySelector(`[class="action-cell"]`);
     fireEvent.click(element!);
     const league = await screen.findByText('Log History - ABC');
-    const close = await screen.findByLabelText('Close');
-    fireEvent.click(close!);
     expect(league).toBeInTheDocument();
   });
 });

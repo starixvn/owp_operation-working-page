@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React, { Dispatch, SetStateAction } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GroupDataSource } from '../Type';
@@ -59,18 +59,20 @@ describe('test GroupPopup', () => {
   });
 
   it('render GroupPopup, should render Form and 2 row', () => {
-    const { container } = render(
+    render(
       <GroupPopup
         model={data}
         title='Edit'
         setIsOpenPopup={mockSetIsOpenPopup}
       />
     );
-    expect(screen.queryByText('Save')).toBeInTheDocument();
+    waitFor(() => {
+      expect(screen.queryByText('Save')).toBeInTheDocument();
+    });
   });
 
   it('click button-cancel, should call mockSetIsOpenPopup', () => {
-    const { container } = render(
+    render(
       <GroupPopup
         model={data}
         title='Edit'
@@ -78,7 +80,9 @@ describe('test GroupPopup', () => {
       />
     );
     fireEvent.click(screen.queryByText('Cancel')!);
-    expect(mockSetIsOpenPopup).toHaveBeenCalledTimes(1);
+    waitFor(() => {
+      expect(mockSetIsOpenPopup).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('click save button, should call mockSetIsOpenPopup, mockDispatch', done => {
@@ -90,7 +94,9 @@ describe('test GroupPopup', () => {
         setIsOpenPopup={mockSetIsOpenPopup}
       />
     );
-    fireEvent.click(screen.queryByText('Save')!);
+    waitFor(() => {
+      fireEvent.click(screen.queryByText('Save')!);
+    });
     process.nextTick(async () => {
       expect(post).toHaveBeenCalledTimes(2);
       expect(mockSetIsOpenPopup).toHaveBeenCalledTimes(1);

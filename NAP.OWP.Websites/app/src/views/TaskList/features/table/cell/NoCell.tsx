@@ -1,9 +1,10 @@
 import React from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 import { CellProps } from '../../../type/TTaskListTable';
+import AbsencePersonIcon from '../../../../../assets/svg-element/AbsencePersonIcon';
 
 const NoCell = ({ rowIndex, dataSource }: CellProps) => {
-  const { MatchNo, MatchStatus } = dataSource;
+  const { MatchNo, MatchStatus, IsShowAbsenceIcon } = dataSource;
   const renderIcon = () => {
     const classNames: { [key: string]: string } = {
       'Live': 'live',
@@ -41,6 +42,7 @@ const NoCell = ({ rowIndex, dataSource }: CellProps) => {
 
   return (
     <div className='no-cell'>
+      {IsShowAbsenceIcon && <AbsencePersonIcon />}
       {MatchNo && <span>{MatchNo}</span>}
       {renderIcon()}
     </div>

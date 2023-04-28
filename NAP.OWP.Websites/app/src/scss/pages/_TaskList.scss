@@ -230,6 +230,9 @@
   &.other-time {
     background: #ea1b21;
   }
+  &.info-site-time{
+    background: #21a6e4;
+  }
 
   &.badge-hdp-1 {
     background: #8a34bd;
@@ -426,7 +429,8 @@
 }
 // col no
 .no-cell {
-  text-align: center;
+  display: grid;
+  justify-items: center;
 }
 // col match
 .match-link {
