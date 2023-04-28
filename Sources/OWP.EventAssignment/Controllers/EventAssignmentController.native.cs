@@ -77,7 +77,7 @@
             foreach (var match in eventModels)
             {
                 var infoSite = infoSiteTimeResult.FirstOrDefault(x => x.ParentMatchId == match.ParentMatchId);
-                var isShowAbsenceIcon = adminSiteMatchInfo.Any(x => x.ParentMatchId == match.ParentMatchId);
+                var isShowAbsenceIcon = adminSiteMatchInfo.Any(x => x.ParentMatchId == match.OWPMatchId);
                 match.AdminSiteId = await getAdminSiteMatchIdService.GetAdminSiteMatchId(match.OWPMatchId,
                 match.ParentMatchId, match.MinorBettypeId);
                 match.InfoSiteTime = infoSite?.KickOffTime;
