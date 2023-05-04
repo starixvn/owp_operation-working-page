@@ -1,9 +1,9 @@
 import React from 'react';
 import { getEventPickings } from '../table/eventPickingTableSlice/eventSliceThunkNative';
 import store from '../app/store';
-import { useAppDispatch } from '../app/hooks';
+import useStableDispatch from '../../Shared/customHook/useStableDispatch';
 const Command = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useStableDispatch();
 
   const handleSearch = () => {
     const { filter } = store.getState();
