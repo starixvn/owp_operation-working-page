@@ -6,7 +6,7 @@ import MultipleSelection from '../shared/MultipleSelection';
 import { simpleApiKey, localStoreKey, filter, optionValueNone } from '../../osLeague.json';
 import { joinKey } from '../../Utils';
 import useStore from '../../app/store';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 
 const { roundOption } = localStoreKey;
 const { round } = simpleApiKey;

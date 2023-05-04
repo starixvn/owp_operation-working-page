@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditableButtonBase from './EditableButtonBase';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  filterDate: PropTypes.string
+};
 
 class EditableButtonGroup extends Component {
   constructor(props) {
@@ -15,6 +20,8 @@ class EditableButtonGroup extends Component {
     return <EditableButtonBase {...propsNew} />;
   }
 }
+
+EditableButtonGroup.propTypes = propTypes;
 
 const mapStateToProps = state => ({
   filterDate: state.tableReducer.filterDate

@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import { OsLeagueState, TPolicy } from '../typing/osLeagueStateType';
 import produce from 'immer';
 import { mountStoreDevtool } from 'simple-zustand-devtools';

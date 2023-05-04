@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import useStore from '../../app/store';
 import { TSettingPopup } from '../../typing/settingPopup';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 
 const SettingPopup = (props: TSettingPopup) => {

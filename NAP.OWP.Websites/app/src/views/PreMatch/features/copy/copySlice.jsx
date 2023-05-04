@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { compareValues } from './copyHelper';
 
 const copySlice = createSlice({
   name: 'copy',
@@ -31,9 +32,7 @@ const copySlice = createSlice({
             value: copiedValue,
             rowIndex
           });
-          state.copiedValue = state.copiedValue.sort(
-            (src, dest) => src.rowIndex - dest.rowIndex
-          );
+          state.copiedValue = state.copiedValue.sort(compareValues);
         } else {
           copyInfo.value = copiedValue;
         }

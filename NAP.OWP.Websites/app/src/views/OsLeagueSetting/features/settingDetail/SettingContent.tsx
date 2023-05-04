@@ -23,7 +23,7 @@ import { ISettingDetail } from '../../typing/settingDetailType';
 import BetTypeCheckBox from './BetTypeCheckBox';
 import { IBettypeType } from '../../typing/bettypeType';
 import Round from './Round';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 
 const SettingContent = (props: ISettingDetail) => {
   const { setSettingInfo, getPolicy } = useStore(

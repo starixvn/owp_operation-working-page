@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import { Recipient, SubType } from '../../features/TypeNative';
 import axios from 'axios';
 

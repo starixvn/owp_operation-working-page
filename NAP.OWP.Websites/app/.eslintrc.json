@@ -15,6 +15,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "no-useless-constructor": 0,
     "multiline-ternary": 0,
     "semi": [2, "always"],
     "no-warning-comments": [

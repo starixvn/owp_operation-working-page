@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useStore from './app/store';
 import FilterManagementNative from './features/filter/FilterManagementNative';
 import OsLeagueSettingTable from './features/OsLeagueSettingTable/OsLeagueSettingTable';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 import Loading from '../components/Loading';
 import getPermission from '../Shared/permission/getPermission';
 import { functionKey } from './osLeague.json';

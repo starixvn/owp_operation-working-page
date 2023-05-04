@@ -99,10 +99,8 @@ const formatTime = (value, startOf, formatOutput) => {
   return dayjs(value).startOf(startOf).format(formatOutput);
 };
 
-const formatTimeOsLastUpdate = dateStr => {
-  console.log(typeof dateStr);
-  return dayjs.utc(dateStr).format('MMMM DD, YYYY hh:mm A');
-};
+const formatTimeOsLastUpdate = dateStr =>
+  dayjs.utc(dateStr).format('MMMM DD, YYYY hh:mm A');
 
 const addDays = (date, days) => {
   const result = new Date(date);
