@@ -35,7 +35,7 @@ exports[`GeneralInfo Main match should render FlagWrapper 1`] = `
       >
         K.O:
         <div
-          class="ant-picker css-dev-only-do-not-override-1vtf12y input-field"
+          class="ant-picker css-dev-only-do-not-override-htwhyh input-field"
         >
           <div
             class="ant-picker-input"

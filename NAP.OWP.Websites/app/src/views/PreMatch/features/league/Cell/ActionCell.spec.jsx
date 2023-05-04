@@ -39,7 +39,7 @@ const setup = (isContainsAssignment = true, toastrWrapperValue = true) => {
         OU: ''
       },
       highlightedCell: {
-        PreMatchLeagueId: 1,
+        PreMatchLeagueId: [1],
         rowId: 1,
         isTakeOver: false
       }

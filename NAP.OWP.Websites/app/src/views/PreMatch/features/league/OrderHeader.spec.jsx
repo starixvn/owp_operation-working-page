@@ -78,7 +78,7 @@ describe('OrderHeader under test', () => {
     const { container } = render(<OrderHeader {...props} />);
     const input = container.querySelector('.sort-icon');
     fireEvent.click(input);
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    expect(mockDispatch).toHaveBeenCalledTimes(2);
   });
   it('when click cell, should Dispatch 1 action , ', () => {
     setup(true);
@@ -86,7 +86,7 @@ describe('OrderHeader under test', () => {
     const { container } = render(<OrderHeader {...props} />);
     const input = container.querySelector('.sort-icon');
     fireEvent.click(input);
-    expect(mockDispatch).toHaveBeenCalledTimes(2);
+    expect(mockDispatch).toHaveBeenCalledTimes(4);
   });
 
   it('should render sort-icon, highlight state sorting  if column is sorting ORDER_DESC', () => {

@@ -255,10 +255,16 @@ describe('shiftHelper under test', () => {
     const newLeague = {
       rowIndex: 0,
       isTakeOver: true,
-      MainAssignee1: 'Esther',
-      MainAssignee2: 'Jack',
-      OtherAssignee1: 'Mira',
-      OtherAssignee2: 'Carlos'
+      copiedValue: [
+        {
+          value: {
+            MainAssignee1: 'Esther',
+            MainAssignee2: 'Jack',
+            OtherAssignee1: 'Mira',
+            OtherAssignee2: 'Carlos'
+          }
+        }
+      ]
     };
     const leagues = [
       { PreMatchLeagueId: 98, HDP: 'esther' },
