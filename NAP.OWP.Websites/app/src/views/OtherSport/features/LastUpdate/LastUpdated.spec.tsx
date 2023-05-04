@@ -1,17 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import '@testing-library/jest-dom';
 import LastUpdated from './LastUpdated';
 
-jest.mock('react-redux', () => ({
-  useSelector: jest.fn(),
-  useDispatch: jest.fn()
-}));
+jest.mock('../../app/hooks');
 
 const mockedDispatch = jest.fn();
 const setUp = () => {
-  (useDispatch as jest.Mock).mockReturnValue(mockedDispatch);
+  (useAppDispatch as jest.Mock).mockReturnValue(mockedDispatch);
 };
 
 describe('test for LastUpdated component', () => {
@@ -22,7 +19,7 @@ describe('test for LastUpdated component', () => {
   });
 
   it('render correct loading', () => {
-    (useSelector as jest.Mock).mockImplementation(selectorFn =>
+    (useAppSelector as jest.Mock).mockImplementation(selectorFn =>
       selectorFn({
         lastUpdate: {
           loading: 'pending',
@@ -39,7 +36,7 @@ describe('test for LastUpdated component', () => {
   });
 
   it('render correct with date and username', () => {
-    (useSelector as jest.Mock).mockImplementation(selectorFn =>
+    (useAppSelector as jest.Mock).mockImplementation(selectorFn =>
       selectorFn({
         lastUpdate: {
           loading: 'succeeded',
@@ -54,7 +51,7 @@ describe('test for LastUpdated component', () => {
 
     expect(container.querySelector('.last-update')).toBeInTheDocument();
     expect(container.querySelector('.last-update')?.textContent).toEqual(
-      'Last Updated at January 1, 2021 1:00 AM (GMT+8) by sa'
+      'Last Updated at January 01, 2021 01:00 AM (GMT+8) by sa'
     );
   });
 });
