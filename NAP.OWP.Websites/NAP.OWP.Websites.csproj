@@ -2699,7 +2699,7 @@
     <Content Include="wwwroot\recipient-group\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\recipient-group\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\recipient-group\assets\ext\server-8bf915a1.css" />
-    <Content Include="wwwroot\recipient-group\assets\js\main-162d9bd8.js" />
+    <Content Include="wwwroot\recipient-group\assets\js\main-dc00569f.js" />
     <Content Include="wwwroot\recipient-group\favicon.ico" />
     <Content Include="wwwroot\recipient-group\server.html" />
     <Content Include="wwwroot\resource-management\assets\ext\icon-search-4037a8fe.svg" />
@@ -2734,7 +2734,7 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\server-14dc4129.css" />
-    <Content Include="wwwroot\ticket-type-recipient\assets\js\main-90758d1c.js" />
+    <Content Include="wwwroot\ticket-type-recipient\assets\js\main-99055737.js" />
     <Content Include="wwwroot\ticket-type-recipient\favicon.ico" />
     <Content Include="wwwroot\ticket-type-recipient\server.html" />
     <Content Include="wwwroot\web.config" />
@@ -2771,10 +2771,6 @@
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\overtime-report\server.cshtml" />
     <Content Include="wwwroot\popup-container\server.cshtml" />
-    <Content Include="wwwroot\recipient-group\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\recipient-group\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\recipient-group\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\recipient-group\server.cshtml" />
     <Content Include="wwwroot\resource-management\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\resource-management\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\resource-management\assets\ext\OWP-ea568b68.ttf" />
@@ -2843,14 +2839,18 @@
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-center\server.cshtml" />
-    <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\recipient-group\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\recipient-group\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\recipient-group\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\recipient-group\server.cshtml" />
+    <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

@@ -40,7 +40,8 @@ const RecipientSuggestion = (data: PropsType) => {
   useEffect(() => {
     post(postModel).then(
       response => {
-        const result: TicketSettingRecipient[] = response.data as TicketSettingRecipient[];
+        const result: TicketSettingRecipient[] =
+          response.data as TicketSettingRecipient[];
         const sortedRecipient = orderBy(
           result,
           ['recipientType', 'recipientName'],
@@ -108,7 +109,11 @@ const RecipientSuggestion = (data: PropsType) => {
             className='input-field'
             onChange={onChange}
             autoComplete='off'
-            placeholder='Add by individual, group or section'
+            placeholder={
+              data.isIncludeSection
+                ? 'Add by individual, group or section'
+                : 'Add by individual'
+            }
           />
         </div>
       </div>
