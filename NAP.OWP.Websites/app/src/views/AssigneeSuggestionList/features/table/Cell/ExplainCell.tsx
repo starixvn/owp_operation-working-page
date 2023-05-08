@@ -2,12 +2,11 @@ import React from 'react';
 import { TableCell } from '../../TypeNative';
 import { MessageIcon } from 'mdi-react';
 import { Icon, Tooltip } from '@mui/material';
-import { ExplainBusy } from '../../../const/Const.json';
 
 const ExplainCell = ({ value }: TableCell) => {
   return (
     <div className='explanation'>
-      {value !== ExplainBusy && (
+      {value  && (
         <Tooltip
           title={<span className='explanation-text'>{value}</span>}
           placement='right-end'>

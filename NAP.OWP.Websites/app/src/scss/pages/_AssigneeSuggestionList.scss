@@ -292,7 +292,7 @@ div.rt-tr:has(span.expand-section) {
     }
     .sticky-col {
       border-right: 0;
-      min-width: 460px;
+      min-width: 480px;
     }
     .item {
       text-align: center;
@@ -372,9 +372,9 @@ th:first-child,
       text-overflow: ellipsis;
     }
     .level {
-      width: 35px;
+      width: 55px;
       align-items: center;
-      min-width: 35px;
+      min-width: 55px;
     }
     .multiple-game {
       width: 63px;

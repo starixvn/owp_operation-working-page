@@ -226,6 +226,5 @@
   "numberElement": 2,
   "headerHeight": 150,
   "netCoreURL": "api-netcore/AssigneeSuggestion",
-  "netFwURL": "api/AssigneeSuggestion",
-  "ExplainBusy": "busy"
+  "netFwURL": "api/AssigneeSuggestion"
 }
