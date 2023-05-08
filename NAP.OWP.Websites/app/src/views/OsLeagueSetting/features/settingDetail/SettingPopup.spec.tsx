@@ -26,14 +26,12 @@ describe('SettingPopup', () => {
   it('handle onclick Add', () => {
     render(<SettingPopup {...props} />);
     const button = screen.queryByText(/Add/i);
-    screen.debug();
     fireEvent.click(button!);
     expect(mockOnSave).toHaveBeenCalled();
   });
   it('handle onclick Cancel', () => {
     render(<SettingPopup {...props} />);
     const button = screen.queryByText(/Cancel/i);
-    screen.debug();
     fireEvent.click(button!);
     expect(mockSetPopupType).toHaveBeenCalled();
   });
