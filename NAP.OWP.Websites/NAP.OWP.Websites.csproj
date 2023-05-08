@@ -2715,10 +2715,10 @@
     <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\task-list\assets\ext\server-34d4568f.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-10aa5680.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-cf83a58f.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-ddb4068f.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-e7bd8e68.js" />
+    <Content Include="wwwroot\task-list\assets\js\main-94680fbe.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-cf629357.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-21eee543.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-9c40b4ca.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
@@ -2839,10 +2839,6 @@
     <Content Include="wwwroot\provider-arrangement\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\provider-arrangement\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\provider-arrangement\server.cshtml" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\task-list\server.cshtml" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
@@ -2851,6 +2847,10 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\task-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

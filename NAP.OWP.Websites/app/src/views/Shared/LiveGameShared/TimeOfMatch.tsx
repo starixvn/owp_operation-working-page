@@ -49,7 +49,7 @@ const TimeOfMatch = (props: typeProps) => {
     }
   ];
   timeArray.sort((a, b) =>
-    a.time === null ? 1 : b.time === null ? -1 : a.time.localeCompare(b.time)
+    (a.time === null || a.time === undefined) ? 1 : (b.time === null || b.time === undefined) ? -1 : a.time.localeCompare(b.time)
   );
   return (
     <>
