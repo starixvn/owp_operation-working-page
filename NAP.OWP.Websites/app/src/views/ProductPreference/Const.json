@@ -1,4 +1,7 @@
 {
+  "SECTION_ID_LIVE_ASSISTANT_PH": 30,
+  "SECTION_ID_LIVE_ASSISTANT_VN": 2,
+  "SECTION_LIVE_TRADING_ID": 3,
   "FILTER_KEY": {
     "ROLE_ID": "RoleId",
     "SECTION_ID": "SectionId",
@@ -14,7 +17,6 @@
     "multipleGames": "MultipleGamesId",
     "assignmentRemark": "AssignmentRemark"
   },
-  "SECTION_LIVE_TRADING_ID": 3,
   "defaultTableStyle": {
     "rowHeight": 50,
     "filterOffset": 160,
