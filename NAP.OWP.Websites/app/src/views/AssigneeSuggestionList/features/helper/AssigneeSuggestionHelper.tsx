@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { timeLineColumn, startHour, startMinute } from '../../const/Const.json';
-import { TAssigneeSuggestion } from '../TypeNative';
+import { TAssigneeSuggestion, UserWorkingSchedule } from '../TypeNative';
+
 const getCurrentTimeLine = (filterDate: Date, koTime: Date) => {
   const currentDate = dayjs(koTime);
   const timeStartDefault = dayjs(filterDate)
@@ -17,4 +18,21 @@ const getTotalRecords = ({
 }: TAssigneeSuggestion) =>
   fullyAvailable.length + partiallyAvailable.length + busy.length;
 
-export { getCurrentTimeLine, getTotalRecords };
+const searchAssignee = (assignees: UserWorkingSchedule[], keyword: string) =>
+  assignees.filter(x =>
+    x.userInfo?.username.toLowerCase().includes(keyword.toLowerCase().trim())
+  );
+
+const SearchAssigneeByKeyword = (
+  data: TAssigneeSuggestion,
+  keyword: string
+) => {
+  return {
+    ...data,
+    fullyAvailable: searchAssignee(data.fullyAvailable, keyword),
+    partiallyAvailable: searchAssignee(data.partiallyAvailable, keyword),
+    busy: searchAssignee(data.busy, keyword)
+  };
+};
+
+export { getCurrentTimeLine, getTotalRecords, SearchAssigneeByKeyword };

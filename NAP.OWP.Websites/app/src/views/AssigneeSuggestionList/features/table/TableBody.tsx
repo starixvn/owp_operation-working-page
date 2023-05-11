@@ -13,12 +13,14 @@ const TableBody = ({
     <SuggestionInfo
       workingShifts={fullyAvailable}
       title='Assignee Suggestion (Available)'
-      isOpen></SuggestionInfo>
+      isOpen
+    />
     <SuggestionInfo
       workingShifts={partiallyAvailable}
       title='Assignee Suggestion (Partially available)'
-      isOpen></SuggestionInfo>
-    <SuggestionInfo workingShifts={busy} title='Busy'></SuggestionInfo>
+      isOpen
+    />
+    <SuggestionInfo workingShifts={busy} title='Busy' />
   </>
 );
 
