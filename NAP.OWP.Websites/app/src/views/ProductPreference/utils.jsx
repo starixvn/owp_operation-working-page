@@ -1,8 +1,5 @@
-import {
-  rootUrl
-} from './Const.json';
+import { rootUrl } from './Const.json';
 import queryString from 'query-string';
-
 
 const buildQueryDropdownOptionUrl = () =>
   process.env.NODE_ENV === 'development'
@@ -46,15 +43,35 @@ const buildDropdownOptionFromResponse = response => {
   const { data } = response;
 
   const locationOption = buildDropdownOptionLocation(data.locationOption);
-  const sectionOption = convertRefResourceResponseToDropdownOption(data.sectionOption);
-  const roleOption = convertRefResourceResponseToDropdownOption(data.roleOption);
-  const multipleMaxGamesOption = convertRefResourceResponseToDropdownOption(data.multipleMaxGamesOption);
-  const levelOptionDefault = convertRefResourceResponseToDropdownOption(data.levelOption.levelOptionDefault);
-  const levelOptionLiveAssistant = convertRefResourceResponseToDropdownOption(data.levelOption.levelOptionLiveAssistant);
-  const levelOptionLiveTrading = convertRefResourceResponseToDropdownOption(data.levelOption.levelOptionLiveTrading);
-  const mainBettypeOptionDefault = convertRefResourceResponseToDropdownOption(data.mainBettypeOption.mainBettypeOptionDefault);
-  const mainBettypeOptionLiveTrading = convertRefResourceResponseToDropdownOption(data.mainBettypeOption.mainBettypeOptionLiveTrading);
-  const mainBettypeOptionLiveAssistant = convertRefResourceResponseToDropdownOption(data.mainBettypeOption.mainBettypeOptionLiveAssistant);
+  const sectionOption = convertRefResourceResponseToDropdownOption(
+    data.sectionOption
+  );
+  const roleOption = convertRefResourceResponseToDropdownOption(
+    data.roleOption
+  );
+  const multipleMaxGamesOption = convertRefResourceResponseToDropdownOption(
+    data.multipleMaxGamesOption
+  );
+  const levelOptionDefault = convertRefResourceResponseToDropdownOption(
+    data.levelOption.levelOptionDefault
+  );
+  const levelOptionLiveAssistant = convertRefResourceResponseToDropdownOption(
+    data.levelOption.levelOptionLiveAssistant
+  );
+  const levelOptionLiveTrading = convertRefResourceResponseToDropdownOption(
+    data.levelOption.levelOptionLiveTrading
+  );
+  const mainBettypeOptionDefault = convertRefResourceResponseToDropdownOption(
+    data.mainBettypeOption.mainBettypeOptionDefault
+  );
+  const mainBettypeOptionLiveTrading =
+    convertRefResourceResponseToDropdownOption(
+      data.mainBettypeOption.mainBettypeOptionLiveTrading
+    );
+  const mainBettypeOptionLiveAssistant =
+    convertRefResourceResponseToDropdownOption(
+      data.mainBettypeOption.mainBettypeOptionLiveAssistant
+    );
   return {
     locationOption,
     sectionOption,
@@ -68,6 +85,10 @@ const buildDropdownOptionFromResponse = response => {
     mainBettypeOptionLiveAssistant
   };
 };
+
+const compareTwoNumberArray = (arraySrc, arrayDest) =>
+  arraySrc.length === arrayDest.length &&
+  arraySrc.every((element, index) => element === arrayDest[index]);
 
 const buildRoleOptionsFromResponseData = data => {
   const options = convertRefResourceResponseToDropdownOption(data);
@@ -106,5 +127,6 @@ export {
   buildUpdateProductUrl,
   getValueIsSelectedFromDropdown,
   buildPostModelWhenUpdateUserInfo,
-  buildLastUpdateUrl
+  buildLastUpdateUrl,
+  compareTwoNumberArray
 };
