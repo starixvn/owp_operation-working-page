@@ -1,7 +1,10 @@
 import { any } from 'prop-types';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import reducer from './ticketTypeSlice';
-import { getTicketTypeRecipients, saveTicketTypeRecipients } from './ticketTypeThunkNative';
+import {
+  getTicketTypeRecipients,
+  saveTicketTypeRecipients
+} from './ticketTypeThunkNative';
 import { TicketTypeRecipientDataSource } from './TypeNative';
 
 type stateType = {
@@ -44,7 +47,8 @@ describe('ticketTypeSlice under test', () => {
             recipientId: 1,
             recipientType: 1,
             recipientName: 'sa',
-            recipientNickname: 'sa_nick'
+            recipientNickname: 'sa_nick',
+            subtypeName: 'Sub1'
           }
         ],
         subtypes: []

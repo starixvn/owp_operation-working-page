@@ -1,54 +1,78 @@
-import React, { useState } from 'react';
-import { SubType } from '../TypeNative';
-import SubTypeInput from './SubTypeInput';
-import SubTypeTable from './SubTypeTable';
+import React from 'react';
+import { Subtype } from '../TypeNative';
+import SubtypeInput from './SubTypeInput';
+import SubtypeTable from './SubTypeTable';
 import update from 'immutability-helper';
 import { uniqueId } from 'lodash';
 import useStore from '../../app/zustand/ticketTypeStore';
+import { validateDuplicateSubtype } from '../../helper/validateDuplicateSubType';
+import ToastrWrapper from '../../../components/ToastrWrapper';
 
 type Prop = {
-  subTypesDefault: Array<SubType>,
-  ticketTypeId: number
+  ticketTypeId: number;
 };
 
 const SubTypeManagement = (props: Prop) => {
-  const [subTypes, setSubtypes] = useState(props.subTypesDefault || []);
+  const subtypes = useStore(state => state.subtypes);
   const storeSubtypeExternal = useStore(state => state.setSubtypes);
-
-  const handleAddNew = (subType: SubType) => {
-    const newSubTypes = update(subTypes, {
-      $push: [{
-        ...subType,
-        typeId: props.ticketTypeId
-      }]
+  const setSubtypeSelected = useStore(state => state.setSubtypeSelected);
+  const recipient = useStore(state => state.recipients);
+  const storeRecipientExternal = useStore(state => state.setRecipients);
+  const handleAddNew = (subtype: Subtype) => {
+    const newSubtypes = update(subtypes, {
+      $push: [
+        {
+          ...subtype,
+          typeId: props.ticketTypeId
+        }
+      ]
     });
-    setSubtypes(newSubTypes);
-    storeSubtypeExternal(newSubTypes);
+    storeSubtypeExternal(newSubtypes);
   };
 
-  const handleUpdateSubType = (value: string, index: number) => {
-    const newSubTypes = update(subTypes, {
-      [index]: {
-        subtypeName: {
-          $set: value
+  const handleUpdateSubtype = (value: string, index: number) => {
+    if (validateDuplicateSubtype(value, subtypes)) {
+      const newSubtypes = update(subtypes, {
+        [index]: {
+          subtypeName: {
+            $set: value
+          }
         }
-      }
-    });
-    setSubtypes(newSubTypes);
-    storeSubtypeExternal(newSubTypes);
+      });
+      storeSubtypeExternal(newSubtypes);
+      const assignRecipient = [...recipient];
+      const updatedAssignRecipient = assignRecipient.map(element => {
+        if (element.subtypeName === subtypes[index].subtypeName) {
+          return {
+            ...element,
+            subtypeName: value
+          };
+        }
+        return element;
+      });
+      storeRecipientExternal(updatedAssignRecipient);
+    } else {
+      ToastrWrapper.showError(
+        `A subtype with this name <b>${value}</b> already exists. Please try again!`
+      );
+    }
+  };
+
+  const handleSelectAnotherSubtype = (subtype: Subtype) => {
+    setSubtypeSelected(subtype);
   };
 
   return (
     <>
-      <SubTypeInput
-        onAddNew={handleAddNew} />
-      <SubTypeTable
+      <SubtypeInput onAddNew={handleAddNew} subtypes={subtypes} />
+      <SubtypeTable
         key={uniqueId()}
-        subTypes={subTypes}
-        onUpdateSubType={handleUpdateSubType} />
+        handleSelectAnotherSubtype={handleSelectAnotherSubtype}
+        subtypes={subtypes}
+        onUpdateSubtype={handleUpdateSubtype}
+      />
     </>
   );
 };
-
 
 export default SubTypeManagement;

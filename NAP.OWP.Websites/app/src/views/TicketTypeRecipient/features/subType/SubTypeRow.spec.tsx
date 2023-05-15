@@ -2,16 +2,16 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import SubTypeRow from './SubTypeRow';
 
-const onUpdateSubType = jest.fn();
+const onUpdateSubtype = jest.fn();
 
-describe('SubTypeRow under test', () => {
-  it('should render SubTypeRow', () => {
+describe('subtypeRow under test', () => {
+  it('should render subtypeRow', () => {
     const index = 0;
     const subtypeName = 'sa';
     const props = {
       subtypeName,
       index,
-      onUpdateSubType
+      onUpdateSubtype
     };
     const { container } = render(
       <SubTypeRow subtypeId={23} typeId={1} {...props} />
@@ -24,6 +24,6 @@ describe('SubTypeRow under test', () => {
     expect(divElement!).toBeInTheDocument();
     fireEvent.change(input!, { target: { value: '' } });
     expect(screen.getByText('This field is required')).toBeInTheDocument();
-    expect(onUpdateSubType).toBeCalled();
+    expect(onUpdateSubtype).toBeCalled();
   });
 });

@@ -3,7 +3,7 @@ import React from 'react';
 import SubTypeTable from './SubTypeTable';
 import SubTypeRow from './SubTypeRow';
 
-jest.mock('./SubTypeRow', () => {
+jest.mock('./subtypeRow', () => {
   return jest.fn(() => null);
 });
 
@@ -12,14 +12,16 @@ describe('SubTypeTable under test', () => {
     jest.clearAllMocks();
   });
   it('should render 2 rows', () => {
-    const subTypes = [
+    const subtypes = [
       { typeId: 1, subtypeId: 0, subtypeName: 'sa1' },
       { typeId: 1, subtypeId: 61, subtypeName: 'sa2' }
     ];
-    const onUpdateSubType = jest.fn();
+    const onUpdateSubtype = jest.fn();
+    const handleSelectAnotherSubtype = jest.fn();
     const props = {
-      subTypes,
-      onUpdateSubType
+      subtypes,
+      onUpdateSubtype,
+      handleSelectAnotherSubtype
     };
 
     render(<SubTypeTable {...props} />);
@@ -27,11 +29,13 @@ describe('SubTypeTable under test', () => {
     expect(SubTypeRow).toBeCalledTimes(2);
   });
   it('should render 0 rows', () => {
-    const subTypes = [];
-    const onUpdateSubType = jest.fn();
+    const subtypes = [];
+    const onUpdateSubtype = jest.fn();
+    const handleSelectAnotherSubtype = jest.fn();
     const props = {
-      subTypes,
-      onUpdateSubType
+      subtypes,
+      onUpdateSubtype,
+      handleSelectAnotherSubtype
     };
 
     render(<SubTypeTable {...props} />);

@@ -39,6 +39,7 @@
   tr {
     th,
     td {
+      cursor: pointer;
       border-collapse: collapse;
       border: 1px solid #c8ced3;
       padding: 6px;
@@ -275,4 +276,8 @@ b {
 td .groups-suggestion {
   margin-left: 4px;
   margin-right: 4px;
+}
+
+.active-subtype-row{
+  background-color: #1e88e5;
 }

@@ -4,7 +4,8 @@ import React from 'react';
 import SubTypeInput from './SubTypeInput';
 
 const props = {
-  onAddNew: jest.fn()
+  onAddNew: jest.fn(),
+  subtypes: [{ subtypeId: 85, typeId: 1, subtypeName: 'Sub1' }]
 };
 
 describe('EditRecipientPopup under test', () => {

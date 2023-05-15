@@ -1,38 +1,55 @@
 import React from 'react';
-import { SubType } from '../TypeNative';
-import SubTypeRow from './SubTypeRow';
+import { Subtype } from '../TypeNative';
+import SubtypeRow from './SubTypeRow';
+import useStore from '../../app/zustand/ticketTypeStore';
 
 type Props = {
-  subTypes: Array<SubType>,
-  onUpdateSubType: (value: string, index: number) => void
+  subtypes: Array<Subtype>;
+  onUpdateSubtype: (value: string, index: number) => void;
+  handleSelectAnotherSubtype: (subtypeId: Subtype) => void;
 };
 
 const SubTypeTable = (props: Props) => {
-  const { subTypes, onUpdateSubType } = props;
+  const { subtypes, onUpdateSubtype, handleSelectAnotherSubtype } = props;
+  const subtypeSelected = useStore(state => state.subtypeSelected);
 
-  const renderRows = (subtypes: Array<SubType>) => {
+  const handleOnclickSubtype = (subtype: Subtype) => {
+    subtypeSelected.subtypeName !== subtype.subtypeName &&
+      handleSelectAnotherSubtype(subtype);
+  };
+
+  const renderRows = (subtypes: Array<Subtype>) => {
     return subtypes.map((subtype, index) => {
       const key = index;
-      return <tr key={key}>
-        <td>
-          <SubTypeRow
-            {...subtype}
-            onUpdateSubType={onUpdateSubType}
-            index={index} />
-        </td>
-      </tr>;
+      return (
+        <tr key={key}>
+          <td
+            className={`${
+              subtypeSelected.subtypeName === subtype.subtypeName
+                ? 'active-subtype-row'
+                : ''
+            }`}
+            onClick={() => handleOnclickSubtype(subtype)}>
+            <SubtypeRow
+              {...subtype}
+              onUpdateSubtype={onUpdateSubtype}
+              index={index}
+            />
+          </td>
+        </tr>
+      );
     });
   };
 
   const renderBody = () => {
-    if (!subTypes.length) {
+    if (!subtypes.length) {
       return (
         <tr>
           <td>There is no data</td>
         </tr>
       );
     } else {
-      return renderRows(subTypes);
+      return renderRows(subtypes);
     }
   };
 
@@ -41,7 +58,7 @@ const SubTypeTable = (props: Props) => {
       <table className='recipient-table'>
         <thead>
           <tr>
-            <th className='col-subType'>Subtype</th>
+            <th className='col-subtype'>subtype</th>
           </tr>
         </thead>
         <tbody>{renderBody()}</tbody>
@@ -49,6 +66,5 @@ const SubTypeTable = (props: Props) => {
     </div>
   );
 };
-
 
 export default SubTypeTable;

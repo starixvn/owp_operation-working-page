@@ -7,23 +7,24 @@ type TicketType = {
 
 interface Child {
   parentId: number;
-  subTypeId: number;
-  subTypeName: string;
+  subtypeId: number;
+  subtypeName: string;
 }
 
-interface SubType {
+interface Subtype {
   subtypeId: number;
   typeId: number;
   subtypeName: string;
 }
 interface Recipient extends TicketSettingRecipient {
   ticketTypeRecipientId: number;
+  subtypeName: string;
 }
 
 type TicketTypeRecipientDataSource = {
   ticketType: TicketType;
   recipients: Array<Recipient>;
-  subtypes: Array<SubType>;
+  subtypes: Array<Subtype>;
 };
 
 type CellModel = {
@@ -36,6 +37,6 @@ export {
   TicketTypeRecipientDataSource,
   Recipient,
   TicketType,
-  SubType,
+  Subtype,
   Child
 };
