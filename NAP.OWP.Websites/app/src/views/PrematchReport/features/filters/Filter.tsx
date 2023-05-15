@@ -45,7 +45,7 @@ const Filter = () => {
   const handleExport = () => {
     const url = buildRequestURL(exportRematchReport);
     const formattedFromDate = dayjs(fromDate).format('YYYY-MM-DD');
-    const formattedToDateFormatted = dayjs(fromDate).format('YYYY-MM-DD');
+    const formattedToDateFormatted = dayjs(toDate).format('YYYY-MM-DD');
     window.location.href = `${url}?FromDate=${formattedFromDate}&ToDate=${formattedToDateFormatted}&KeyWord=${trader}`;
   };
 
