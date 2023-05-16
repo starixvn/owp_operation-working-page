@@ -9,22 +9,11 @@ import {
   changeErrorOther,
   changeErrorRecipient,
   selectedEvent,
-  setTypeTicketText,
-  setDefaultRecipients,
-  setSubTypeSelected
+  setTypeTicketText
 } from './createTicketBoardSliceNew';
-import { getRecipientDefaultByType } from './Helper/HelperCreateTicket';
 import { closePopup } from '../chatBoardNew/chatBoardSlice';
-import { TICKET_TYPE } from '../TicketCenterPrematch/const/const.json';
 import { BUTTON_TYPE } from './const/const';
 import PropTypes from 'prop-types';
-
-const {
-  TICKET_SUPPORT,
-  GROUP_CHAT,
-  EVENT_CHECKING,
-  LIVE_INCIDENT
-} = TICKET_TYPE;
 
 const { LIVE_GAME, PRE_MATCH, MY_TICKET } = BUTTON_TYPE;
 
@@ -41,13 +30,6 @@ const CreateTicketButton = props => {
 
   const dispatch = useStableDispatch();
 
-  const handleDispatchRecipientDefault = async ticketType => {
-    const recipientSetting = await getRecipientDefaultByType(ticketType);
-    dispatch(setDefaultRecipients(recipientSetting));
-    dispatch(getSelectedRecipients(recipientSetting));
-    dispatch(setSubTypeSelected(...[{ value: 0, label: '' }]));
-  };
-
   return (
     <div className='btn-block-add-new'>
       <div className='dropdown-list'>
@@ -63,7 +45,6 @@ const CreateTicketButton = props => {
                 dispatch(getSelectedRecipients([]));
                 dispatch(changeErrorInput(false));
                 dispatch(changeErrorRecipient(false));
-                handleDispatchRecipientDefault(EVENT_CHECKING);
               }}>
               Event Checking
             </li>
@@ -78,7 +59,6 @@ const CreateTicketButton = props => {
               dispatch(getSelectedRecipients([]));
               dispatch(changeErrorOther(false));
               dispatch(changeErrorRecipient(false));
-              handleDispatchRecipientDefault(GROUP_CHAT);
             }}>
             Group Chat
           </li>
@@ -92,7 +72,6 @@ const CreateTicketButton = props => {
               dispatch(getSelectedRecipients([]));
               dispatch(changeErrorOther(false));
               dispatch(changeErrorRecipient(false));
-              handleDispatchRecipientDefault(TICKET_SUPPORT);
             }}>
             Ticket Support
           </li>
@@ -106,7 +85,6 @@ const CreateTicketButton = props => {
                 dispatch(getSelectedRecipients([]));
                 dispatch(changeErrorInput(false));
                 dispatch(changeErrorRecipient(false));
-                handleDispatchRecipientDefault(LIVE_INCIDENT);
               }}>
               Live Incident
             </li>

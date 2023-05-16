@@ -1,5 +1,5 @@
 import {
-  getRecipientDefaultByType,
+  getRecipientDefaultBySubType,
   getSubTypeByType,
   saveFileToBackEnd
 } from './HelperCreateTicket';
@@ -30,8 +30,8 @@ const responseDataSubType = {
 };
 describe('Helper under test', () => {
   it('getRecipientDefaultByType', async () => {
-    Service.recipientByType.mockResolvedValue(recipient);
-    const result = await getRecipientDefaultByType(1);
+    Service.recipientBySubType.mockResolvedValue(recipient);
+    const result = await getRecipientDefaultBySubType(1);
     expect(result).toEqual(recipient.data);
   });
   it('getSubTypeByType', async () => {

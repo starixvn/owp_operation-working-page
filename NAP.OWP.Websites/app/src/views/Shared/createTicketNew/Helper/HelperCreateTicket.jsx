@@ -33,8 +33,8 @@ const formatRecipientModel = (recipients, recipientByCreator) => {
   return reformatted;
 };
 
-const getRecipientDefaultByType = async ticketTypeId => {
-  const recipientByType = await Service.recipientByType(ticketTypeId);
+const getRecipientDefaultBySubType = async ticketTypeId => {
+  const recipientByType = await Service.recipientBySubType(ticketTypeId);
   return recipientByType.data;
 };
 
@@ -60,7 +60,7 @@ const saveFileToBackEnd = async files => {
 export {
   informResult,
   formatRecipientModel,
-  getRecipientDefaultByType,
+  getRecipientDefaultBySubType,
   saveFileToBackEnd,
   getSubTypeByType
 };

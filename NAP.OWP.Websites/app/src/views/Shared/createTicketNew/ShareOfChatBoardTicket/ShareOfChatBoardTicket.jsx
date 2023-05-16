@@ -12,7 +12,10 @@ import {
   getSelectedRecipients,
   setSubTypeSelected
 } from '../createTicketBoardSliceNew';
-import { getSubTypeByType } from '../Helper/HelperCreateTicket';
+import {
+  getSubTypeByType,
+  getRecipientDefaultBySubType
+} from '../Helper/HelperCreateTicket';
 
 const propTypes = {
   handleOnSubmit: PropTypes.func,
@@ -38,10 +41,10 @@ const ShareOfChatBoardTicket = props => {
   };
   const dispatch = useStableDispatch();
   const [subTypeOption, setSubTypeOption] = useState([]);
+  const [recipientBySubTypes, setRecipientBySubTypes] = useState([]);
   const { errorRecipient, subTypeSelected } = useSelector(
     state => state.createTicketBoard
   );
-  const { defaultRecipients } = useSelector(state => state.createTicketBoard);
 
   useEffect(() => {
     (async () => {
@@ -53,8 +56,16 @@ const ShareOfChatBoardTicket = props => {
         })
       );
       setSubTypeOption([...option, { value: 0, label: '' }]);
+      dispatch(setSubTypeSelected(...[{ value: 0, label: '' }]));
     })();
   }, [ticketType]);
+
+  const handleChangeSubType = async select => {
+    dispatch(setSubTypeSelected(select));
+    const recipient = await getRecipientDefaultBySubType(select.value);
+    console.log(recipient);
+    setRecipientBySubTypes(recipient);
+  };
 
   return (
     <>
@@ -70,7 +81,7 @@ const ShareOfChatBoardTicket = props => {
               classNamePrefix='input-field-select'
               placeholder=''
               value={subTypeSelected}
-              onChange={select => dispatch(setSubTypeSelected(select))}
+              onChange={select => handleChangeSubType(select)}
               options={subTypeOption}
             />
           </div>
@@ -84,7 +95,7 @@ const ShareOfChatBoardTicket = props => {
         </div>
         <div className='right-form'>
           <RecipientsSelect
-            defaultValue={defaultRecipients || []}
+            defaultValue={recipientBySubTypes || []}
             onChange={value => dispatch(getSelectedRecipients(value))}
             errorSubmit={errorRecipient}
             onChangeErrorSubmit={value => dispatch(changeErrorRecipient(value))}
