@@ -21,7 +21,11 @@ const OrderableCell = props => {
   };
 
   return (
-    <div className={color} onClick={handleOnClickOrder}>
+    <div
+      style={{
+        backgroundColor: color
+      }}
+      onClick={handleOnClickOrder}>
       <span>{columnName}</span>
       <span className={`sort-icon ${orderType}`} />
     </div>

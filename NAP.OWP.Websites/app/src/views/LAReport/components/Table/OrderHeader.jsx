@@ -4,6 +4,7 @@ import OrderableCell from '../common/OrderableCell';
 import { useDispatch } from 'react-redux';
 import { order } from '../../actions/action';
 import { isEqual } from 'lodash';
+import { COLUMN_ID_HIGHLIGHT } from '../../constants/reportConst';
 
 const propTypes = {
   columnId: PropTypes.string.isRequired,
@@ -23,8 +24,12 @@ const OrderHeader = headerModel => {
     };
     stableDispatch(order(postModel));
   };
+  console.log(columnId);
+  const color = COLUMN_ID_HIGHLIGHT.some(i => isEqual(columnId, i))
+    ? '#fbe79e'
+    : '';
   const props = {
-    color: '',
+    color,
     columnName,
     orderType: isEqual(columnId, rest.columnId) ? rest.orderType : '',
     onOrder: handleOrder
