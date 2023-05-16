@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
+import { ORDER_ASC, ORDER_DESC, KOTime } from '../TableSchema.json';
 import {
   FilterState,
   ISortState,
@@ -7,11 +8,12 @@ import {
   PopupState,
   RefreshModel
 } from '../../type/TableType';
-import { filterData } from '../LiveGameListTableHelper';
+import { filterData, sortDataAsc, sortDataDesc } from '../LiveGameListTableHelper';
 import { getEvents } from './tableThunk';
 import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
 import { addOrReplaceFilterState } from '../../../Shared/Utils';
-import { KOTime } from '../TableSchema.json';
+import { isEqual } from 'lodash';
+
 const tableSlice = createSlice({
   name: 'EventInformation',
   initialState: {
@@ -38,6 +40,9 @@ const tableSlice = createSlice({
       state.entities = filterData(entitiesOriginal)(
         state.isShowUnReadTicketOnly
       )(filterState);
+      const { orderType } = state.sortState;
+      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
+      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
     },
     filterBySearchKey: (state, action) => {
       const { entitiesOriginal, filterState, isShowUnReadTicketOnly } = state;
@@ -45,11 +50,17 @@ const tableSlice = createSlice({
       state.entities = filterData(entitiesOriginal)(isShowUnReadTicketOnly)(
         state.filterState
       );
+      const { orderType } = state.sortState;
+      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
+      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
     },
     clearFilter: state => {
       const { entitiesOriginal } = state;
       state.filterState = [];
       state.entities = entitiesOriginal;
+      const { orderType } = state.sortState;
+      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
+      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
     },
     setUserId: (state, action) => {
       state.userId = action.payload;
@@ -80,6 +91,12 @@ const tableSlice = createSlice({
     },
     setRefreshModel: (state, action) => {
       state.refreshModel = action.payload;
+    },
+    sortFunc: (state, action) => {
+      state.sortState = action.payload;
+      const { orderType } = action.payload;
+      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
+      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
     }
   },
 
@@ -91,6 +108,9 @@ const tableSlice = createSlice({
       const { filterState, isShowUnReadTicketOnly } = state;
       state.entitiesOriginal = payload;
       state.entities = filterData(payload)(isShowUnReadTicketOnly)(filterState);
+      const { orderType } = state.sortState;
+      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
+      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
     }).addCase(getEvents.rejected, state => {
       state.loading = REQUEST_STATUS.idle;
     });
@@ -107,7 +127,8 @@ const {
   filterByUnReadTicket,
   openPopupDetail,
   setRefreshModel,
-  closePopupDetail
+  closePopupDetail,
+  sortFunc
 } = actions;
 export {
   filterBySearchKey,
@@ -118,6 +139,7 @@ export {
   filterByUnReadTicket,
   openPopupDetail,
   setRefreshModel,
-  closePopupDetail
+  closePopupDetail,
+  sortFunc
 };
 export default reducer;

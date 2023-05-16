@@ -258,4 +258,8 @@ const filterData = (entities: MatchInfo[]) => (
     filterDataTable(data, filters, filterDataTableByCriteria);
 };
 
-export { buildColumnKOTime, selectTable, filterData, calculateRowHeight, buildColorRowTable };
+const sortDataAsc = (entities: MatchInfo[]) => entities.sort((src, dest) => new Date(src.EventDateTime).getTime() - new Date(dest.EventDateTime).getTime() || src.MatchNo.localeCompare(dest.MatchNo));
+
+const sortDataDesc = (entities: MatchInfo[]) => entities.sort((src, dest) => new Date(dest.EventDateTime).getTime() - new Date(src.EventDateTime).getTime() || dest.MatchNo.localeCompare(src.MatchNo));
+
+export { buildColumnKOTime, selectTable, filterData, calculateRowHeight, buildColorRowTable, sortDataAsc, sortDataDesc };
