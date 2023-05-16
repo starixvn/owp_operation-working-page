@@ -100,9 +100,25 @@
             text-align: left;
             display: flex;
             align-items: center;
+            .col-total{
+              &:after{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: #fbe79e;
+              }
+              *{
+                position: relative;
+                z-index: 10;
+              }
+            }
             &.css-ibpw1q {
               background-color: #f1f1f1 !important;
               text-align: center;
+              z-index: 20;
             }
             &:nth-child(3) {
               background-color: #f1f1f1 !important;

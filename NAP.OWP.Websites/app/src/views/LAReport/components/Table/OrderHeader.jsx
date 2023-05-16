@@ -25,11 +25,11 @@ const OrderHeader = headerModel => {
     stableDispatch(order(postModel));
   };
   console.log(columnId);
-  const color = COLUMN_ID_HIGHLIGHT.some(i => isEqual(columnId, i))
-    ? '#fbe79e'
+  const columnTotal = COLUMN_ID_HIGHLIGHT.some(i => isEqual(columnId, i))
+    ? 'col-total'
     : '';
   const props = {
-    color,
+    columnTotal,
     columnName,
     orderType: isEqual(columnId, rest.columnId) ? rest.orderType : '',
     onOrder: handleOrder

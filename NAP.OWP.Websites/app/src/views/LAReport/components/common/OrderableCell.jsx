@@ -7,11 +7,11 @@ const propTypes = {
   columnName: PropTypes.string.isRequired,
   onOrder: PropTypes.func.isRequired,
   orderType: PropTypes.string,
-  color: PropTypes.string
+  columnTotal: PropTypes.string
 };
 
 const OrderableCell = props => {
-  const { columnName, color, orderType, onOrder } = props;
+  const { columnName, columnTotal, orderType, onOrder } = props;
 
   const handleOnClickOrder = () => {
     const orderSelection = isEqual(orderType, FilterConst.ORDER_ASC)
@@ -19,12 +19,9 @@ const OrderableCell = props => {
       : FilterConst.ORDER_ASC;
     onOrder(orderSelection);
   };
-
   return (
     <div
-      style={{
-        backgroundColor: color
-      }}
+      className={columnTotal}
       onClick={handleOnClickOrder}>
       <span>{columnName}</span>
       <span className={`sort-icon ${orderType}`} />
