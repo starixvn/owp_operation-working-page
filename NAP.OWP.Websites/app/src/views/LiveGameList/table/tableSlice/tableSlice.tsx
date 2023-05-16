@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import {
   FilterState,
+  ISortState,
   MatchInfo,
   PopupState,
   RefreshModel
@@ -10,7 +11,7 @@ import { filterData } from '../LiveGameListTableHelper';
 import { getEvents } from './tableThunk';
 import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
 import { addOrReplaceFilterState } from '../../../Shared/Utils';
-
+import { KOTime } from '../TableSchema.json';
 const tableSlice = createSlice({
   name: 'EventInformation',
   initialState: {
@@ -24,6 +25,10 @@ const tableSlice = createSlice({
       isOpen: false
     } as PopupState,
     filterState: [] as FilterState[],
+    sortState: {
+      columnKey: KOTime.columnKey,
+      orderType: ''
+    } as ISortState,
     refreshModel: {} as RefreshModel
   },
   reducers: {
