@@ -305,6 +305,47 @@
 .ko-time-cell {
   text-align: center;
 }
+.sort-icon {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  &.ORDER_ASC {
+    &:before {
+      border-color: transparent transparent #4b595c transparent;
+    }
+  }
+  &.ORDER_DESC {
+    &:after {
+      border-color: #4b595c transparent transparent transparent;
+    }
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 0;
+    border-style: solid;
+    top: 0;
+    border-color: transparent transparent #93a9aa transparent;
+    border-width: 0 3px 5px 3px;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 0;
+    border-style: solid;
+    bottom: 0;
+    border-color: #93a9aa transparent transparent transparent;
+    border-width: 5px 3px 0 3px;
+  }
+}
 // league cell
 
 .badge-label {
