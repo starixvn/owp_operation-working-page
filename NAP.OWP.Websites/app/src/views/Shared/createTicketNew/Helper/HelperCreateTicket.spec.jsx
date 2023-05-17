@@ -29,11 +29,6 @@ const responseDataSubType = {
   ]
 };
 describe('Helper under test', () => {
-  it('getRecipientDefaultByType', async () => {
-    Service.recipientBySubType.mockResolvedValue(recipient);
-    const result = await getRecipientDefaultBySubType(1);
-    expect(result).toEqual(recipient.data);
-  });
   it('getSubTypeByType', async () => {
     Service.getSubType.mockResolvedValue(responseDataSubType);
     const result = await getSubTypeByType(1);

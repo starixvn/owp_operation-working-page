@@ -16,7 +16,6 @@ import {
 } from '../../../../Shared/createTicketNew/createTicketBoardSliceNew';
 import useStableDispatch from '../../../../Shared/customHook/useStableDispatch';
 import { backupGetIssueModel } from '../../signalR/signalRSlice';
-import { getRecipientDefaultByType } from '../../../../Shared/createTicketNew/Helper/HelperCreateTicket';
 import { ticketType } from '../../../const/const';
 
 const propTypes = {
@@ -41,16 +40,7 @@ const IconCreateMessage = props => {
     dispatch(changeErrorRecipient(false));
     dispatch(closePopup());
     dispatch(closeCreatePopup());
-
     dispatch(setSubTypeSelected([...[{ value: 0, label: '' }]]));
-  };
-
-  const getRecipientByType = async () => {
-    const recipientSetting = await getRecipientDefaultByType(
-      ticketType.EVEN_CHECKING
-    );
-    dispatch(setDefaultRecipients(recipientSetting));
-    dispatch(getSelectedRecipients(recipientSetting));
   };
 
   if (!hasWrite) {
@@ -60,7 +50,6 @@ const IconCreateMessage = props => {
   return (
     <PlusCircleIcon
       onClick={() => {
-        getRecipientByType();
         handleOpenCreateTicket();
       }}
       className='icon-plus'

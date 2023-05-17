@@ -20,8 +20,9 @@ const EditRecipient = () => {
   );
 
   const handleAddRecipient = (recipient: Recipient) => {
-    recipient.subtypeName = subtypeSelected.subtypeName;
-    const newRecipients = [...recipients, recipient];
+    let assignRecipient = { ...recipient };
+    assignRecipient.subtypeName = subtypeSelected.subtypeName;
+    const newRecipients = [...recipients, assignRecipient];
     storeRecipientExternal(newRecipients);
   };
 
@@ -33,7 +34,9 @@ const EditRecipient = () => {
   };
 
   const isRecipientEqual = (a: Recipient, b: Recipient) =>
-    a.recipientId === b.recipientId && a.recipientType === b.recipientType;
+    a.recipientId === b.recipientId &&
+    a.recipientType === b.recipientType &&
+    a.subtypeName === b.subtypeName;
 
   return (
     <>
