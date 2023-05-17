@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { shallow } from 'zustand/shallow';
-import useStore from '../../app/useStore';
-import { isEqual } from 'lodash';
-import { REQUEST_STATUS } from '../../../Shared/Constants';
-import Loading from '../../../components/Loading';
+import useStore from '../../app/useStoreNative';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 const ColorExplain = () => {
-  const { loading, colorInfo, queryColorInfo } = useStore(state => ({
-    loading: state.loadingColorExplain,
-    colorInfo: state.colorExplainInfo,
-    queryColorInfo: state.queryColorExplain
-  }), shallow);
+  const { colorExplainInfo, queryColorExplain } = useStore(
+    state => ({
+      colorExplainInfo: state.colorExplainInfo,
+      queryColorExplain: state.queryColorExplain
+    }),
+    shallow
+  );
   const [display, setDisplay] = useState(false);
-
-
-  if (isEqual(loading, REQUEST_STATUS.pending)) {
-    return <Loading />;
-  }
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const renderColorExplain = () => {
-    return colorInfo.map(c =>
+    return colorExplainInfo.map(c => (
       <li
         key={c.label}
         style={{
@@ -28,24 +23,40 @@ const ColorExplain = () => {
         }}>
         {c.label}
       </li>
-    );
+    ));
   };
 
   const showHideColorExplain = () => {
-    !display && !colorInfo.length && queryColorInfo();
+    !display && !colorExplainInfo.length && queryColorExplain();
     setDisplay(!display);
   };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        display &&
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
+        setDisplay(!display);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [wrapperRef, display]);
 
   return (
     <div
       className='color__explain_info'
+      ref={wrapperRef}
       onClick={showHideColorExplain}>
-      <span className='info'><InfoOutlinedIcon  /></span>
-      <ul>
-        {
-        display && renderColorExplain()
-        }
-      </ul>
+      <span className='info'>
+        <InfoOutlinedIcon />
+      </span>
+      <ul>{display && renderColorExplain()}</ul>
     </div>
   );
 };

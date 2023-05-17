@@ -1,22 +1,30 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { shallow } from 'zustand/shallow';
-import useStore from '../../app/useStore';
+import useStore from '../../app/useStoreNative';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
-import { numberElement } from './../../const/Const.json';
-import { isEqual } from 'lodash';
-import { REQUEST_STATUS } from '../../../Shared/Constants';
-import Loading from '../../../components/Loading';
+import { numberElement, headerHeight } from './../../const/Const.json';
+import { getTotalRecords } from '../helper/AssigneeSuggestionHelper';
 
 const SuggestionTable = () => {
+  const [maxHeight, setMaxHeight] = useState(window.innerHeight - headerHeight);
   const tableRef = useRef<HTMLDivElement>(null);
-  const { workScheduleInfo, loading } = useStore(
+  const { workScheduleInfo } = useStore(
     state => ({
-      workScheduleInfo: state.workScheduleInfo,
-      loading: state.loadingDataTable
+      workScheduleInfo: state.workScheduleInfo
     }),
     shallow
   );
+
+  const handleResizeBrowser = () => {
+    const { innerHeight } = window;
+    setMaxHeight(innerHeight - headerHeight);
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener('resize', handleResizeBrowser);
+    return () => window.removeEventListener('resize', handleResizeBrowser);
+  }, []);
 
   useLayoutEffect(() => {
     if (tableRef.current) {
@@ -33,14 +41,11 @@ const SuggestionTable = () => {
           currentTimeElement?.offsetWidth * numberElement;
       }
     }
-  });
+  }, []);
 
-  if (isEqual(loading, REQUEST_STATUS.pending)) {
-    return <Loading />;
-  }
   return (
     <div>
-      <div ref={tableRef} className='table-content'>
+      <div ref={tableRef} className='table-content' style={{ maxHeight }}>
         <table>
           <thead>
             <TableHeader
@@ -48,13 +53,12 @@ const SuggestionTable = () => {
               eventDate={workScheduleInfo.matchInfo.koTime}></TableHeader>
           </thead>
           <tbody>
-            <TableBody
-              workingShifts={workScheduleInfo.workingSchedules}></TableBody>
+            <TableBody workingShifts={workScheduleInfo}></TableBody>
           </tbody>
         </table>
       </div>
       <span className='total-record'>
-        Total records: {workScheduleInfo.workingSchedules.length}
+        Total records: {getTotalRecords(workScheduleInfo)}
       </span>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { TableCell } from '../../TypeNative';
 
 type Props = TableCell & {

@@ -1,12 +1,14 @@
 import React from 'react';
 import { shallow } from 'zustand/shallow';
 import { getLocaleDateTime } from '../../../Shared/DateTime/dateTimeHelper';
-import useStore from '../../app/useStore';
+import useStore from '../../app/useStoreNative';
 
 const Header = () => {
-  const { matchInfo } = useStore(
+  const {
+    workScheduleInfo: { matchInfo }
+  } = useStore(
     state => ({
-      matchInfo: state.workScheduleInfo.matchInfo
+      workScheduleInfo: state.workScheduleInfo
     }),
     shallow
   );
@@ -21,7 +23,7 @@ const Header = () => {
   } = matchInfo;
   return (
     <div className='match-info'>
-      {matchInfo.leagueName && (
+      {leagueName && (
         <>
           <b>
             #{matchNo} {leagueName} | {homeName} -vs- {awayName}
@@ -29,7 +31,7 @@ const Header = () => {
           &nbsp;
           <span className='time'>
             Event Date: {getLocaleDateTime(koTime, 'MMM DD, YYYY hh:mm A')}
-            <span className='maxbet-string'> {maxbetHDPInString}</span>
+            &nbsp; <span className='maxbet-string'> {maxbetHDPInString}</span>
           </span>
           &nbsp;
           <span className='bet-type'>{bettypeName}</span>

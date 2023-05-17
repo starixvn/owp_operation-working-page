@@ -18,7 +18,9 @@ const crateTableSlice: StateCreator<
   loadingDataTable: REQUEST_STATUS.pending,
   workScheduleInfo: {
     matchInfo: {} as TMatchInfo,
-    workingSchedules: [] as UserWorkingSchedule
+    fullyAvailable: [] as UserWorkingSchedule[],
+    partiallyAvailable: [] as UserWorkingSchedule[],
+    busy: [] as UserWorkingSchedule[]
   } as TAssigneeSuggestion,
   queryDataTable: async ({ matchId, betTypeId, filterDate }) => {
     set({ loadingDataTable: REQUEST_STATUS.pending });
@@ -26,8 +28,8 @@ const crateTableSlice: StateCreator<
     const response = await axios.get(url, {
       params: {
         owpMatchId: matchId,
-        betTypeId: betTypeId,
-        filterDate: filterDate
+        betTypeId,
+        filterDate
       }
     });
     set({

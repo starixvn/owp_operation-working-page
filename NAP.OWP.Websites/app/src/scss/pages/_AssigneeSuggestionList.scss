@@ -179,8 +179,8 @@ div.rt-tr:has(span.expand-section) {
     }
   }
 }
-span.explanation {
-  font-size: medium;
+.explanation-text {
+  font-size: 13px !important;
 }
 
 .rthfc .rt-td.rthfc-td-fixed-left-last {
@@ -238,7 +238,7 @@ span.explanation {
           box-shadow: inset 0 -1px 0 #c8ced3;
           border-bottom: 0;
           &.working-scheduler-header {
-            z-index: 20;
+            z-index: 4;
           }
           &:first-child {
             span {
@@ -277,8 +277,10 @@ span.explanation {
             line-height: 15px;
             span {
               display: flex;
+              align-items: center;
               svg {
                 margin-left: 4px;
+                margin-top: 8px;
               }
             }
           }
@@ -290,6 +292,7 @@ span.explanation {
     }
     .sticky-col {
       border-right: 0;
+      min-width: 480px;
     }
     .item {
       text-align: center;
@@ -300,7 +303,9 @@ span.explanation {
       font-weight: 400;
     }
   }
-
+  .collapse-col {
+    cursor: pointer;
+  }
   th,
   td {
     height: 30px;
@@ -342,20 +347,22 @@ th:first-child,
       }
     }
     .shift-cell {
-      width: 100px;
+      width: 147px;
+      min-width: 147px;
     }
     .trader,
     .trader-management {
       // justify-content: flex-end;
       width: 120px;
+      min-width: 120px;
       span {
         display: flex;
         align-items: center;
       }
     }
     .main-bet-type {
-      width: 70px;
-      max-width: 70px;
+      width: 69px;
+      min-width: 69px;
     }
     .main-bet-type span {
       display: inline-block;
@@ -364,16 +371,22 @@ th:first-child,
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    .level,
-    .multiple-game {
-      width: 60px;
+    .level {
+      width: 55px;
       align-items: center;
+      min-width: 55px;
+    }
+    .multiple-game {
+      width: 63px;
+      align-items: center;
+      min-width: 63px;
     }
   }
 }
 .current-timeline {
+  background-color: #4878a9 !important;
   span {
-    color: #1e88e5 !important;
+    color: #fff !important;
   }
 }
 
@@ -381,8 +394,8 @@ th:first-child,
 .color__explain_info {
   position: absolute;
   right: 10px;
-  top: 60px;
-  z-index: 10;
+  top: 66px;
+  z-index: 4;
   .info {
     margin-bottom: 4px;
     display: block;
@@ -406,4 +419,14 @@ th:first-child,
       padding: 2px 5px;
     }
   }
+}
+.explanation {
+  min-width: 26px;
+}
+.shift-code {
+  font-size: 9px;
+  font-style: italic;
+  font-family: monospace;
+  margin-bottom: 7px;
+  font-weight: 600;
 }

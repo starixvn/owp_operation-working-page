@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { timeLineColumn, startHour, startMinute } from '../../const/Const.json';
+import { TAssigneeSuggestion } from '../TypeNative';
 const getCurrentTimeLine = (filterDate: Date, koTime: Date) => {
   const currentDate = dayjs(koTime);
   const timeStartDefault = dayjs(filterDate)
@@ -9,4 +10,11 @@ const getCurrentTimeLine = (filterDate: Date, koTime: Date) => {
   return timeLineColumn.find(x => x.timeRange === hourDiff);
 };
 
-export { getCurrentTimeLine };
+const getTotalRecords = ({
+  fullyAvailable,
+  partiallyAvailable,
+  busy
+}: TAssigneeSuggestion) =>
+  fullyAvailable.length + partiallyAvailable.length + busy.length;
+
+export { getCurrentTimeLine, getTotalRecords };

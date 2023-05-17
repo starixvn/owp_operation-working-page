@@ -16,7 +16,10 @@ const TraderInfo = ({ index, userInfo }: Props) => {
   return (
     <td className='traderInfo sticky-col'>
       <div className='col-trader'>
-        <ShiftCell index={index} value={userInfo?.shift}></ShiftCell>
+        <ShiftCell
+          index={index}
+          value={userInfo?.shift}
+          shiftCode={userInfo?.shiftCode}></ShiftCell>
         <TraderCell
           index={index}
           value={userInfo?.username}

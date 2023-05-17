@@ -1,14 +1,20 @@
 import React from 'react';
 import { TableCell } from '../../TypeNative';
 import { MessageIcon } from 'mdi-react';
-import { Icon } from '@mui/material';
+import { Icon, Tooltip } from '@mui/material';
 
 const ExplainCell = ({ value }: TableCell) => {
   return (
-    <div>
-      <Icon>
-        <MessageIcon size={15} className='tool-tip' />
-      </Icon>
+    <div className='explanation'>
+      {value  && (
+        <Tooltip
+          title={<span className='explanation-text'>{value}</span>}
+          placement='right-end'>
+          <Icon>
+            <MessageIcon size={15} className='tool-tip' />
+          </Icon>
+        </Tooltip>
+      )}
     </div>
   );
 };

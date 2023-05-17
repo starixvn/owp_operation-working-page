@@ -27,6 +27,7 @@ type UserInfo = {
   maxMultipleGames: string;
   explanation: string;
   levelLabel: string;
+  shiftCode: string;
 };
 
 type AssignmentCell = {
@@ -39,6 +40,7 @@ type TimeLine = {
   title: string;
   id: string;
   width?: number;
+  color?: string;
 };
 type TableCell = {
   index: number;
@@ -89,7 +91,9 @@ type UserWorkingSchedule = {
 
 type TAssigneeSuggestion = {
   matchInfo: TMatchInfo;
-  workingSchedules: UserWorkingSchedule[];
+  fullyAvailable: UserWorkingSchedule[];
+  partiallyAvailable: UserWorkingSchedule[];
+  busy: UserWorkingSchedule[];
 };
 
 type TColorExplain = {
