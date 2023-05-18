@@ -26,14 +26,13 @@ const buildNoOfferMainMatchInfoStepTwo = (
 
   isNoOffer && dataSource
     .filter(element => element.infoSiteMatchId === infoSiteMatchId)
-    .map(element => {
+    .forEach(element => {
       matchNoOffer.push({
         isNoOffer: true,
         infoSiteMatchId: element.infoSiteMatchId,
         childMatchId: element.childMatchId
       });
     });
-
   return props;
 };
 

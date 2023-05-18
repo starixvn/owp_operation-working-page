@@ -4,7 +4,7 @@ import SettingContent from '../settingDetail/SettingContent';
 import SettingPopup from '../settingDetail/SettingPopup';
 import useStore from '../../app/store';
 import Status from '../settingDetail/Status';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 import { isEqual } from 'lodash';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import Loading from '../../../components/Loading';

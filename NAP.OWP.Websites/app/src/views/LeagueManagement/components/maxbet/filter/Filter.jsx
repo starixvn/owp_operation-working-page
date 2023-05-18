@@ -20,13 +20,13 @@ const Filter = ({ displayMaxbetGeneralTable }) => {
   const dispatch = useDispatch();
   const stableDispatch = useCallback(dispatch, []);
   const stableStore = useCallback(store, []);
-  const statebaleDisplayMaxbetGeneralTable = useCallback(
+  const stableDisplayMaxbetGeneralTable = useCallback(
     displayMaxbetGeneralTable,
     []
   );
   const handleSearch = useCallback(() => {
     const state = stableStore.getState();
-    statebaleDisplayMaxbetGeneralTable();
+    stableDisplayMaxbetGeneralTable();
     const model = buildModelFilter(state);
     const extraModel = {
       displayOldLeague: state.displayOldLeagueReducer.displayOldLeague,
@@ -41,11 +41,11 @@ const Filter = ({ displayMaxbetGeneralTable }) => {
         QUERY_MAXBETGENARAL_INFO
       )
     );
-  }, [statebaleDisplayMaxbetGeneralTable, stableDispatch, stableStore]);
+  }, [stableDisplayMaxbetGeneralTable, stableDispatch, stableStore]);
 
   useEffect(() => {
-    const displayTable = stableStore.getState().maxbetGeneralReducer
-      .displayMaxbetGeneralTable;
+    const displayTable =
+      stableStore.getState().maxbetGeneralReducer.displayMaxbetGeneralTable;
     displayTable && handleSearch();
   }, [handleSearch, stableStore]);
 

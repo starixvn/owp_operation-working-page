@@ -1,5 +1,5 @@
 import axios from 'axios';
-import create from 'zustand';
+import { create } from 'zustand';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
 import getPermission from '../../../../Shared/permission/getPermission';
 import {

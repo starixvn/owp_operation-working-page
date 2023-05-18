@@ -29,6 +29,7 @@ class ResourceTable extends Component {
       rows: this.props.dataSource
     };
   }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     const { isLoading, isCreating, isEditing, editingIndex, valueText } =
       prevState;

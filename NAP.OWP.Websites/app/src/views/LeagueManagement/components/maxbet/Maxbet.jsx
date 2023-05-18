@@ -22,7 +22,7 @@ const Maxbet = () => {
     dispatch(
       queryMatchOfferLists(MaxbetConst.getMatchOffers, QUERY_MATCH_OFFER)
     );
-  }, []);
+  }, [dispatch]);
 
   const handleDisplayTVList = value => {
     setModel({

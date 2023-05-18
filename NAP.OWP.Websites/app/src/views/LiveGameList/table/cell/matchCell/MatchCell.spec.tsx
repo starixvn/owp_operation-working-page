@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import MatchCell from './MatchCell';
 import { CellProps } from '../../../type/TableType';
 import { useDispatch } from 'react-redux';
@@ -11,7 +11,11 @@ jest.mock('react-redux', () => ({
 }));
 
 (useDispatch as jest.Mock).mockReturnValue(mockDispatch);
-
+declare global {
+  interface Window {
+    executeCopy: jest.Mock;
+  }
+}
 const props: CellProps = {
   dataSource: [
     {
@@ -190,7 +194,12 @@ const props: CellProps = {
         }
       ],
       TicketInfos: [],
-      WatchBet: ''
+      WatchBet: '',
+      OtherTimeDisplay: '2:00 PM',
+      KickOffTimeDisplay: '4:00 PM',
+      InfoSiteTime: '16:00:00',
+      InfoSiteTimeDisplay: '4:00 PM',
+      IsShowAbsenceIcon: false
     }
   ],
   rowIndex: 0
@@ -204,5 +213,12 @@ describe('MatchCell under test', () => {
     const adminSiteId = container.querySelector('.button-link-trader');
     expect(matchCode).toBeInTheDocument();
     expect(adminSiteId).toBeInTheDocument();
+  });
+  it('Should handle copy', () => {
+    window.executeCopy = jest.fn();
+    const { container } = render(<MatchCell {...props} />);
+    const button = container.querySelector('.btn-copy-content');
+    fireEvent.click(button!);
+    expect(window.executeCopy).toHaveBeenCalled();
   });
 });

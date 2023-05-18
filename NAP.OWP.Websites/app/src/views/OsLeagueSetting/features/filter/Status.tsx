@@ -4,7 +4,7 @@ import MultipleSelection from '../shared/MultipleSelection';
 import useStore from '../../app/store';
 import { joinKey } from '../../Utils';
 import { statusOptions, filter } from '../../osLeague.json';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 
 const Status = () => {
   const { setFilter } = useStore(

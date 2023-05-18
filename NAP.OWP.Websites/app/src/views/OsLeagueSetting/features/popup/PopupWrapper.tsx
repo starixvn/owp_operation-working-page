@@ -3,7 +3,7 @@ import AddSetting from '../add/AddSetting';
 import EditSetting from '../edit/EditSetting';
 import useStore from '../../app/store';
 import { popup } from '../../osLeague.json';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 
 const PopupWrapper = () => {
   const { popupType } = useStore(state => (

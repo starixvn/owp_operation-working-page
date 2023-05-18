@@ -18,7 +18,7 @@ const TeamInfo = (props: IPropsTeamInfo): JSX.Element => {
 
   const model = useSelector<ITeamInfo, ITeamInfo>(selectTeamInfo);
 
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   useEffect(() => {
     const postModel = {
       apiKey: MaxbetConst.teamInfoAPIKey,

@@ -53,7 +53,7 @@ const Condition = ({ leagueSettingId, onClose }) => {
       </>
     );
   };
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   useEffect(() => {
     stableDispatch(
       queryDataWithParams(

@@ -24,7 +24,7 @@ const ProviderArrangementTable = () => {
         } as ProviderData;
       });
       dispatch(setProviders(newData));
-    }, []);
+    }, [dispatch]);
 
   if (isLoading) {
     return <Loading />;

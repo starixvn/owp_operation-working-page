@@ -1,13 +1,26 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { render } from '@testing-library/react';
 import AssignmentCellFactory from './AssignmentCellFactory';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
-  useDispatch: jest.fn()
+  useDispatch: jest.fn(),
+  useStore: jest.fn()
 }));
-
+const store = {
+  dayShift: {
+    leagues: [
+      {
+        LeagueId: 1
+      }
+    ]
+  }
+};
+const mockStore = {
+  getState: () => store
+};
+useStore.mockReturnValue(mockStore);
 const mockDispatch = jest.fn();
 useDispatch.mockReturnValue(mockDispatch);
 useSelector.mockImplementation(selectorFn =>
@@ -19,7 +32,7 @@ useSelector.mockImplementation(selectorFn =>
         OU: ''
       },
       highlightedCell: {
-        PreMatchLeagueId: 1,
+        PreMatchLeagueId: [1],
         rowId: 1,
         isTakeOver: false
       }

@@ -38,9 +38,10 @@ const confirmPopup = async message =>
 const validateFTHDP = async props => {
   const { maxbet, existedIndex, rowIndex, dispatch } = props;
   const setFocus = () => {
-    const cell = document.getElementsByClassName('table')[0].lastElementChild
-      .firstElementChild.lastElementChild.children[rowIndex].firstElementChild
-      .children[0].firstElementChild.children[0];
+    const cell =
+      document.getElementsByClassName('table')[0].lastElementChild
+        .firstElementChild.lastElementChild.children[rowIndex].firstElementChild
+        .children[0].firstElementChild.children[0];
     cell.focus();
   };
 
@@ -90,9 +91,10 @@ const validateCanSubmit = async props => {
 const handleKeyDown = (e, props) => {
   if (isEqual(e.key, 'Tab') && isEqual(props.propKey, 'Maxbet_FTHDP')) {
     e.preventDefault();
-    const cell = document.getElementsByClassName('table')[0].lastElementChild
-      .firstElementChild.lastElementChild.children[props.rowIndex]
-      .firstElementChild.children[0].firstElementChild.children[0];
+    const cell =
+      document.getElementsByClassName('table')[0].lastElementChild
+        .firstElementChild.lastElementChild.children[props.rowIndex]
+        .firstElementChild.children[0].firstElementChild.children[0];
     cell.blur();
   }
 };
@@ -105,7 +107,7 @@ const MaxbetCell = props => {
   const { policyData } = store.getState().policyReducer;
   const hasWrite = policyData.generalPolicy.HasWrite;
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   const input = React.createRef(props.value);
 
   const handlePostData = maxbet => {
@@ -166,10 +168,10 @@ const MaxbetCell = props => {
         'MB FT.HDP has already existed. Please insert another value!'
       );
       window.requestAnimationFrame(() => {
-        const cell = document.getElementsByClassName('table')[0]
-          .lastElementChild.firstElementChild.lastElementChild.children[
-          props.rowIndex
-        ].firstElementChild.children[0].firstElementChild.children[0];
+        const cell =
+          document.getElementsByClassName('table')[0].lastElementChild
+            .firstElementChild.lastElementChild.children[props.rowIndex]
+            .firstElementChild.children[0].firstElementChild.children[0];
         cell.focus();
       });
     })();

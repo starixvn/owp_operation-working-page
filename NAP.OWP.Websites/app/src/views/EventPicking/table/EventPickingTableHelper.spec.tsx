@@ -1,4 +1,4 @@
-import { selectTable } from './EventPickingTableHelper';
+import { selectTable, passColorRowTable } from './EventPickingTableHelper';
 
 describe('selectTable under unit test', () => {
   it('create correct columnSchema', () => {
@@ -69,5 +69,21 @@ describe('selectTable under unit test', () => {
     ];
     const table = selectTable(1000);
     expect(table.columnSchema).toEqual(columnSchema);
+  });
+
+  it('passColorRowTable is null should return empty', () => {
+    const dataSource = null;
+    const result = passColorRowTable(dataSource);
+
+    expect(result).toEqual('');
+  });
+
+  it('passColorRowTable is not null should return color', () => {
+    const dataSource = {
+      rowColor: 'red'
+    };
+    const result = passColorRowTable(dataSource);
+
+    expect(result).toEqual('red-row');
   });
 });

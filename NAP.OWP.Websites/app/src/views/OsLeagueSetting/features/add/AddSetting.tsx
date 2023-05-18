@@ -3,7 +3,7 @@ import LeagueContent from '../settingDetail/LeagueContent';
 import LeagueName from '../settingDetail/LeagueName';
 import SettingPopup from '../settingDetail/SettingPopup';
 import useStore from '../../app/store';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 import { ILeagueContent } from '../../typing/type';
 import SettingContent from '../settingDetail/SettingContent';
 import { addSetting } from '../../osLeague.json';

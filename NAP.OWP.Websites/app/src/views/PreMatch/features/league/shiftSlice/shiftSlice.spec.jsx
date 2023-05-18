@@ -464,10 +464,16 @@ describe('shiftSlice under test', () => {
         payload: {
           rowIndex: 0,
           isTakeOver: false,
-          MainAssignee1: 'Esther',
-          MainAssignee2: 'Jack',
-          OtherAssignee1: 'Mira',
-          OtherAssignee2: 'Carlos'
+          copiedValue: [
+            {
+              value: {
+                MainAssignee1: 'Esther',
+                MainAssignee2: 'Jack',
+                OtherAssignee1: 'Mira',
+                OtherAssignee2: 'Carlos'
+              }
+            }
+          ]
         }
       };
 
@@ -532,10 +538,16 @@ describe('shiftSlice under test', () => {
         payload: {
           rowIndex: 0,
           isTakeOver: false,
-          MainAssignee1: 'Esther',
-          MainAssignee2: 'Jack',
-          OtherAssignee1: 'Mira',
-          OtherAssignee2: 'Carlos'
+          copiedValue: [
+            {
+              value: {
+                MainAssignee1: 'Esther',
+                MainAssignee2: 'Jack',
+                OtherAssignee1: 'Mira',
+                OtherAssignee2: 'Carlos'
+              }
+            }
+          ]
         }
       };
 
@@ -600,10 +612,16 @@ describe('shiftSlice under test', () => {
         payload: {
           rowIndex: 0,
           isTakeOver: true,
-          MainAssignee1: 'Esther',
-          MainAssignee2: 'Jack',
-          OtherAssignee1: 'Mira',
-          OtherAssignee2: 'Carlos'
+          copiedValue: [
+            {
+              value: {
+                MainAssignee1: 'Esther',
+                MainAssignee2: 'Jack',
+                OtherAssignee1: 'Mira',
+                OtherAssignee2: 'Carlos'
+              }
+            }
+          ]
         }
       };
 
@@ -673,11 +691,20 @@ describe('shiftSlice under test', () => {
       };
 
       const expectState = {
-        entities: [],
+        entities: [
+          {
+            LeagueName: 'PremierLeague',
+            PreMatchLeagueId: 4
+          }
+        ],
         loading: REQUEST_STATUS.idle,
         prematchIdUpdated: [],
         prematchIdDeleted: [],
-        leagues: [],
+        leagues: [
+          {
+            PreMatchLeagueId: 4
+          }
+        ],
         matches: [],
         sortState: {}
       };

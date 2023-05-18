@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import store from '../../app/store';
 import { Input } from 'reactstrap';
-import { useAppDispatch } from '../../app/hooks';
+import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
 import {
   buildNoOfferChildMatchInfo,
@@ -17,12 +17,12 @@ const propTypes = {
 const NoCell = props => {
   const { permission } = store.getState().pagePolicy;
   const { rowIndex, dataSource } = props;
-  const { isNoOffer, infoSiteMatchId, isChildMatch, childMatchId } = dataSource[rowIndex];
+  const { isNoOffer, infoSiteMatchId, isChildMatch, childMatchId } =
+    dataSource[rowIndex];
 
-  const dispatch = useAppDispatch();
+  const dispatch = useStableDispatch();
 
   const handleSelectedChanged = async event => {
-
     const value = event.target.checked;
     const matchNoOffer = [];
 
@@ -46,7 +46,6 @@ const NoCell = props => {
       });
 
     await dispatch(updateNoOfferMatchThunk(matchNoOffer));
-
   };
 
   return (

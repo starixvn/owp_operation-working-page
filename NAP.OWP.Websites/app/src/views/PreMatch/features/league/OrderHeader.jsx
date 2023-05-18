@@ -21,7 +21,7 @@ const OrderHeader = headerModel => {
     isNightShift
   } = headerModel;
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   const orderType = isEqual(columnKey, sortState.columnKey)
     ? sortState.orderType

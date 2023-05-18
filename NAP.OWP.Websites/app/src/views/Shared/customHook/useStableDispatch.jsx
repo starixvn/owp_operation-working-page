@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 
 const useStableDispatch = () => {
   const dispatch = useDispatch();
-  return useCallback(dispatch, []);
+  return useCallback(dispatch, [dispatch]);
 };
 
 export default useStableDispatch;

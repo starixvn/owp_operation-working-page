@@ -7,7 +7,7 @@ import { setBackStep, setResetValidationResult, uploadEventThunk, submitEventThu
 import { BackButton, SubmitButton } from './Button';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import { noEventWarningMessage, noRecommendWarningMessage, toastOptions } from '../../Const';
-import { MessageResponse } from '../../typeNative';
+import { MessageResponse } from '../../TypeNative';
 
 const ROW_OFFSET = 2;
 
@@ -39,7 +39,7 @@ const Review = () => {
         ToastrWrapper.showInfo(submitResponse.message);
       }
     }
-  }, [submitResponse, isSuccessful]);
+  }, [submitResponse, isSuccessful, dispatch]);
 
   const submitAssignment = async () => {
     if (recordCount > 0) {

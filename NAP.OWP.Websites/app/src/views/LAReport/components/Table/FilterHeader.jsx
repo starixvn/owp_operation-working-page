@@ -12,7 +12,7 @@ const propTypes = {
 
 const FilterHeader = ({ columnId, columnName }) => {
   const dispatch = useDispatch();
-  const stableDispatch = useCallback(dispatch, []);
+  const stableDispatch = useCallback(dispatch, [dispatch]);
   const model = useSelector(reportSelector);
 
   const handleSearch = data => {

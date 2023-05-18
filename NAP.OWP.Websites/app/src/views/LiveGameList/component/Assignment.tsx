@@ -1,4 +1,4 @@
-import React, { createRef, Fragment } from 'react';
+import React, { createRef } from 'react';
 import { AssignmentInfo } from '../type/TableType';
 import ContactInfo from './ContactInfo';
 

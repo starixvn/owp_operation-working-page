@@ -7,22 +7,27 @@ import copySlice, {
 describe('copySlice under test', () => {
   it('should return the initial state', () => {
     expect(copySlice(undefined, {})).toEqual({
-      isCopying: false,
-      copiedValue: {},
+      copiedValue: [],
       highlightedCell: {
-        rowId: null,
-        isTakeOver: false
-      }
+        PreMatchLeagueId: [],
+        isTakeOver: false,
+        isTakeOverBefore: false
+      },
+      isCopying: false,
+      rowEnd: null,
+      rowStart: null
     });
   });
   describe('copyElement under test', () => {
     it('should handle update state isCopying, copiedValue', () => {
       const initialState = {
         isCopying: false,
-        copiedValue: {
-          HDP: '',
-          OU: ''
-        },
+        copiedValue: [
+          {
+            HDP: '',
+            OU: ''
+          }
+        ],
         highlightedCell: {
           rowId: null,
           isTakeOver: false
@@ -31,26 +36,35 @@ describe('copySlice under test', () => {
 
       const expectState = {
         isCopying: true,
-        copiedValue: {
-          HDP: 'starix14',
-          OU: 'starix16'
-        },
+        copiedValue: [
+          {
+            HDP: '',
+            OU: '',
+            value: [
+              {
+                HDP: 'starix14',
+                OU: 'starix16'
+              }
+            ]
+          }
+        ],
         highlightedCell: {
           rowId: null,
           isTakeOver: false
-        }
+        },
+        rowStart: undefined,
+        rowEnd: undefined
       };
 
       const action = {
         type: copyElement.type,
         payload: {
-          copiedValue: { HDP: 'starix14', OU: 'starix16' },
+          copiedValue: [{ HDP: 'starix14', OU: 'starix16' }],
           isCopying: true
         }
       };
 
       const state = copySlice(initialState, action);
-
       expect(state).toEqual(expectState);
     });
   });
@@ -59,11 +73,14 @@ describe('copySlice under test', () => {
     it('should handle highlightElement reducer', () => {
       const initialState = {
         isCopying: false,
-        copiedValue: {
-          HDP: 'starix14',
-          OU: 'starix16'
-        },
+        copiedValue: [
+          {
+            HDP: 'starix14',
+            OU: 'starix16'
+          }
+        ],
         highlightedCell: {
+          PreMatchLeagueId: [],
           rowId: null,
           isTakeOver: false
         }
@@ -71,13 +88,18 @@ describe('copySlice under test', () => {
 
       const expectState = {
         isCopying: false,
-        copiedValue: {
-          HDP: 'starix14',
-          OU: 'starix16'
-        },
+        copiedValue: [
+          {
+            HDP: 'starix14',
+            OU: 'starix16'
+          }
+        ],
         highlightedCell: {
+          PreMatchLeagueId: [undefined],
           rowId: 1,
-          isTakeOver: true
+          rowId: null,
+          isTakeOver: undefined,
+          isTakeOverBefore: false
         }
       };
 
@@ -92,7 +114,6 @@ describe('copySlice under test', () => {
       };
 
       const state = copySlice(initialState, action);
-
       expect(state).toEqual(expectState);
     });
   });
@@ -101,23 +122,28 @@ describe('copySlice under test', () => {
     it('should handle reset reducer', () => {
       const initialState = {
         isCopying: false,
-        copiedValue: {
-          HDP: '',
-          OU: ''
-        },
+        copiedValue: [
+          {
+            HDP: '',
+            OU: ''
+          }
+        ],
         highlightedCell: {
           isTakeOver: false,
-          PreMatchLeagueId: 1
+          PreMatchLeagueId: [1]
         }
       };
 
       const expectState = {
         isCopying: false,
-        copiedValue: {},
+        copiedValue: [],
         highlightedCell: {
           isTakeOver: false,
-          PreMatchLeagueId: null
-        }
+          PreMatchLeagueId: [],
+          isTakeOverBefore: false
+        },
+        rowEnd: null,
+        rowStart: null
       };
 
       const action = {
@@ -125,7 +151,6 @@ describe('copySlice under test', () => {
       };
 
       const state = copySlice(initialState, action);
-
       expect(state).toEqual(expectState);
     });
   });

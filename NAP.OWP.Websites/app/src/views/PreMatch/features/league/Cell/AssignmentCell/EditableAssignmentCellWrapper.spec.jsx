@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, useStore } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
 import EditableAssignmentCellWrapper from './EditableAssignmentCellWrapper';
 import axios from 'axios';
@@ -11,12 +11,26 @@ jest.mock('axios');
 jest.mock('./AssignmentHelper.jsx');
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
-  useDispatch: jest.fn()
+  useDispatch: jest.fn(),
+  useStore: jest.fn()
 }));
 
 const mockedDispatch = jest.fn();
 useDispatch.mockReturnValue(mockedDispatch);
+const store = {
+  dayShift: {
+    leagues: [
+      {
+        LeagueId: 1
+      }
+    ]
+  }
+};
 
+const mockStore = {
+  getState: () => store
+};
+useStore.mockReturnValue(mockStore);
 const setUp = props => {
   useSelector.mockImplementation(selectorFn => selectorFn({ ...props }));
 };
@@ -38,7 +52,7 @@ describe('EditableAssignmentCellWrapper under test', () => {
     setUp({
       copy: {
         highlightedCell: {
-          PreMatchLeagueId: 4,
+          PreMatchLeagueId: [4],
           isTakeOver: true,
           isCopying: true
         },
@@ -58,7 +72,8 @@ describe('EditableAssignmentCellWrapper under test', () => {
       dataSource: [
         {
           PreMatchLeagueId: 4,
-          InfoSiteMatchId: undefined
+          InfoSiteMatchId: undefined,
+          LeagueId: 1
         }
       ],
       isEditing: true
@@ -69,7 +84,20 @@ describe('EditableAssignmentCellWrapper under test', () => {
     fireEvent.click(leagueCell);
     expect(mockedDispatch).toHaveBeenCalledTimes(1);
     expect(mockedDispatch).toBeCalledWith({
-      payload: { HDP: 'sa', OU: 'sa', isTakeOver: false, rowIndex: 0 },
+      payload: {
+        copiedValue: {
+          HDP: 'sa',
+          OU: 'sa'
+        },
+        highlightedCell: {
+          PreMatchLeagueId: [4],
+          isTakeOver: true,
+          isCopying: true
+        },
+        isTakeOver: false,
+        leagueIndex: 0,
+        rowIndex: 0
+      },
       type: 'dayShift/pasteCopiedValue'
     });
   });
@@ -78,7 +106,7 @@ describe('EditableAssignmentCellWrapper under test', () => {
     setUp({
       copy: {
         highlightedCell: {
-          PreMatchLeagueId: 4,
+          PreMatchLeagueId: [4],
           isTakeOver: true,
           isCopying: true
         },
@@ -114,7 +142,7 @@ describe('EditableAssignmentCellWrapper under test', () => {
     setUp({
       copy: {
         highlightedCell: {
-          PreMatchLeagueId: 4,
+          PreMatchLeagueId: [4],
           isTakeOver: true,
           isCopying: true
         },
