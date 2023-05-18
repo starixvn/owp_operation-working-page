@@ -4,7 +4,7 @@ import {
   changeErrorRecipient,
   changeErrorOther,
   otherSubject,
-  getSelectedRecipients,
+  setSelectedRecipients,
   changeErrorTextField
 } from './createTicketBoardSliceNew';
 import { urlRequestOther, urlRequestSupport } from './const/const';
@@ -91,7 +91,7 @@ const CreateTicketBoardOther = props => {
       informResult(result);
       handleOnClose();
       dispatch(otherSubject(''));
-      dispatch(getSelectedRecipients([]));
+      dispatch(setSelectedRecipients([]));
       Spinner.hide();
     }
   };

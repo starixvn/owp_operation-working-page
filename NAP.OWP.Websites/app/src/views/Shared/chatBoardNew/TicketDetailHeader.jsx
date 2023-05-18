@@ -47,11 +47,11 @@ const TicketDetailHeader = ({
 
 TicketDetailHeader.propTypes = {
   ticketId: PropTypes.number.isRequired,
-  subject: PropTypes.string.isRequired,
-  homeName: PropTypes.string.isRequired,
-  awayName: PropTypes.string.isRequired,
-  owpLeagueName: PropTypes.string.isRequired,
-  koTime: PropTypes.instanceOf(Date).isRequired
+  subject: PropTypes.string,
+  homeName: PropTypes.string,
+  awayName: PropTypes.string,
+  owpLeagueName: PropTypes.string,
+  koTime: PropTypes.instanceOf(Date)
 };
 
 export default TicketDetailHeader;

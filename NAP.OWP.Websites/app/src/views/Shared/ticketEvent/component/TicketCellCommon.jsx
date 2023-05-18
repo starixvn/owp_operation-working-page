@@ -10,14 +10,8 @@ import {
 import {
   changeErrorRecipient,
   closeCreatePopup,
-  getSelectedRecipients,
-  openPopupCreateTicketInLGA,
-  setDefaultRecipients,
-  setSubTypeSelected
+  openPopupCreateTicketInLGA
 } from '../../createTicketNew/createTicketBoardSliceNew';
-import { TICKET_TYPE } from '../../TicketCenterPrematch/helper/helper';
-
-const { LIVE_INCIDENT } = TICKET_TYPE;
 
 const propTypes = {
   dataSource: PropTypes.any,

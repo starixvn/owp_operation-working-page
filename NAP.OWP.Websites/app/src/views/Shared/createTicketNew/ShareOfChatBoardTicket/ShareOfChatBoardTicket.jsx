@@ -9,7 +9,7 @@ import useStableDispatch from '../../customHook/useStableDispatch';
 import Select from 'react-select';
 import {
   changeErrorRecipient,
-  getSelectedRecipients,
+  setSelectedRecipients,
   setSubTypeSelected
 } from '../createTicketBoardSliceNew';
 import {
@@ -63,8 +63,8 @@ const ShareOfChatBoardTicket = props => {
   const handleChangeSubType = async select => {
     dispatch(setSubTypeSelected(select));
     const recipient = await getRecipientDefaultBySubType(select.value);
-    console.log(recipient);
     setRecipientBySubTypes(recipient);
+    dispatch(setSelectedRecipients(recipient));
   };
 
   return (
@@ -96,7 +96,7 @@ const ShareOfChatBoardTicket = props => {
         <div className='right-form'>
           <RecipientsSelect
             defaultValue={recipientBySubTypes || []}
-            onChange={value => dispatch(getSelectedRecipients(value))}
+            onChange={value => dispatch(setSelectedRecipients(value))}
             errorSubmit={errorRecipient}
             onChangeErrorSubmit={value => dispatch(changeErrorRecipient(value))}
           />

@@ -10,8 +10,6 @@ import {
 } from '../../../../Shared/chatBoardNew/chatBoardSlice';
 import {
   changeErrorRecipient,
-  getSelectedRecipients,
-  setDefaultRecipients,
   closeCreatePopup,
   setSubTypeSelected
 } from '../../../../Shared/createTicketNew/createTicketBoardSliceNew';

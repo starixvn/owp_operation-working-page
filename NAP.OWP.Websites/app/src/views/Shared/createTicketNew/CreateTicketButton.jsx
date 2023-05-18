@@ -4,7 +4,7 @@ import {
   openPopupEventChecking,
   openPopupLiveIncident,
   openPopupOthers,
-  getSelectedRecipients,
+  setSelectedRecipients,
   changeErrorInput,
   changeErrorOther,
   changeErrorRecipient,
@@ -42,7 +42,7 @@ const CreateTicketButton = props => {
                 dispatch(setTypeTicketText('Event Checking'));
                 dispatch(closePopup());
                 dispatch(openPopupEventChecking());
-                dispatch(getSelectedRecipients([]));
+                dispatch(setSelectedRecipients([]));
                 dispatch(changeErrorInput(false));
                 dispatch(changeErrorRecipient(false));
               }}>
@@ -56,7 +56,7 @@ const CreateTicketButton = props => {
               dispatch(closePopup());
               dispatch(openPopupOthers());
               dispatch(selectedEvent(null));
-              dispatch(getSelectedRecipients([]));
+              dispatch(setSelectedRecipients([]));
               dispatch(changeErrorOther(false));
               dispatch(changeErrorRecipient(false));
             }}>
@@ -69,7 +69,7 @@ const CreateTicketButton = props => {
               dispatch(closePopup());
               dispatch(openPopupOthers());
               dispatch(selectedEvent(null));
-              dispatch(getSelectedRecipients([]));
+              dispatch(setSelectedRecipients([]));
               dispatch(changeErrorOther(false));
               dispatch(changeErrorRecipient(false));
             }}>
@@ -82,7 +82,7 @@ const CreateTicketButton = props => {
                 dispatch(setTypeTicketText('Live Incident'));
                 dispatch(closePopup());
                 dispatch(openPopupLiveIncident());
-                dispatch(getSelectedRecipients([]));
+                dispatch(setSelectedRecipients([]));
                 dispatch(changeErrorInput(false));
                 dispatch(changeErrorRecipient(false));
               }}>

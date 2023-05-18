@@ -70,7 +70,7 @@ const createTicketBoardSliceNew = createSlice({
         state.errorTextField = action.payload;
       }
     },
-    getSelectedRecipients: {
+    setSelectedRecipients: {
       reducer: (state, action) => {
         state.selectedRecipients = action.payload;
       }
@@ -163,7 +163,7 @@ const {
   changeErrorInput,
   changeErrorRecipient,
   changeErrorOther,
-  getSelectedRecipients,
+  setSelectedRecipients,
   changeErrorTextField,
   setEventChecking,
   setRecipientAssigned,
@@ -188,7 +188,7 @@ export {
   changeErrorInput,
   changeErrorRecipient,
   changeErrorOther,
-  getSelectedRecipients,
+  setSelectedRecipients,
   changeErrorTextField,
   setEventChecking,
   setRecipientAssigned,

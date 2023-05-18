@@ -10,9 +10,7 @@ import {
 import {
   changeErrorRecipient,
   closeCreatePopup,
-  setDefaultRecipients,
-  setSubTypeSelected,
-  getSelectedRecipients
+  setSubTypeSelected
 } from '../../../../Shared/createTicketNew/createTicketBoardSliceNew';
 import useStableDispatch from '../../../../Shared/customHook/useStableDispatch';
 import { backupGetIssueModel } from '../../signalR/signalRSlice';

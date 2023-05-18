@@ -9,7 +9,7 @@ import Service from './Service';
 import Spinner from '../../components/Spinner';
 import {
   changeErrorRecipient,
-  getSelectedRecipients,
+  setSelectedRecipients,
   closePopupCreateTicketInLGA
 } from './createTicketBoardSliceNew';
 import {
@@ -31,11 +31,8 @@ const CreateTicketLGAView = props => {
   const dispatch = useStableDispatch();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const { modelByRowIndex } = useSelector(state => state.chatBoard);
-  const {
-    selectedRecipients,
-    subTypeSelected,
-    isOpenCreateTicketInLGA
-  } = useSelector(state => state.createTicketBoard);
+  const { selectedRecipients, subTypeSelected, isOpenCreateTicketInLGA } =
+    useSelector(state => state.createTicketBoard);
 
   const { OWPMatchId, League, Home, Away, EventDateTime } = modelByRowIndex;
   const renderHeader = () => (
@@ -73,7 +70,7 @@ const CreateTicketLGAView = props => {
       const result = await post(newAddModel);
       informResult(result);
       handleOnClose();
-      dispatch(getSelectedRecipients([]));
+      dispatch(setSelectedRecipients([]));
       Spinner.hide();
     }
   };
