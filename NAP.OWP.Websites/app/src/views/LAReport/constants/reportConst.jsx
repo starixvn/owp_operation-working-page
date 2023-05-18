@@ -19,7 +19,14 @@ const fixedColumnLA = {
 
 const ORDER_ASC = 'ORDER_ASC';
 const ORDER_DESC = 'ORDER_DESC';
-
+const COLUMN_ID_HIGHLIGHT = [
+  'TotalMatches',
+  'TotalMultiMatches',
+  'TotalSingleMatches',
+  'TotalSpecialProducts',
+  'TotalMixedProduct',
+  'TotalESoccer'
+];
 const unfixedColumnLA = [
   {
     order: 1,
@@ -124,4 +131,4 @@ const FilterConst = {
   dateRange
 };
 
-export { TableConst, FilterConst };
+export { TableConst, FilterConst, COLUMN_ID_HIGHLIGHT };
