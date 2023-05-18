@@ -2835,10 +2835,6 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
@@ -2847,6 +2843,10 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
