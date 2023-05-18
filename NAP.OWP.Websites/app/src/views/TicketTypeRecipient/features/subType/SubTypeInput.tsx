@@ -12,6 +12,10 @@ const SubTypeInput = (props: Prop) => {
   const [value, setValue] = useState<string>('');
 
   const handleSubmit = () => {
+    value && handleAddNewSubType();
+  };
+
+  const handleAddNewSubType = () => {
     if (validateDuplicateSubtype(value, subtypes)) {
       onAddNew({
         subtypeId: 0,

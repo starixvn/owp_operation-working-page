@@ -2733,8 +2733,8 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\ticket-type-recipient\assets\ext\server-cde1309c.css" />
-    <Content Include="wwwroot\ticket-type-recipient\assets\js\main-62fd0f0f.js" />
+    <Content Include="wwwroot\ticket-type-recipient\assets\ext\server-118e6a8a.css" />
+    <Content Include="wwwroot\ticket-type-recipient\assets\js\main-bb3da0b2.js" />
     <Content Include="wwwroot\ticket-type-recipient\favicon.ico" />
     <Content Include="wwwroot\ticket-type-recipient\server.html" />
     <Content Include="wwwroot\web.config" />
