@@ -43,7 +43,6 @@ describe('noOfferSingleMatchPipeline', () => {
     };
 
     const result = buildNoOfferChildMatchInfo(props);
-    console.log(result);
     const expected = [
       { childMatchId: null, infoSiteMatchId: 123, isNoOffer: false },
       { childMatchId: 111, infoSiteMatchId: 123, isNoOffer: false }

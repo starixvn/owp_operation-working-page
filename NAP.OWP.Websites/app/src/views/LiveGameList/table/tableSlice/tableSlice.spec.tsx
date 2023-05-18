@@ -16,6 +16,7 @@ import reducer, {
   setRefreshModel,
   closePopupDetail
 } from './tableSlice';
+import { ORDER_ASC, ORDER_DESC, KOTime } from '../TableSchema.json';
 import { getEvents } from './tableThunk';
 import { fakeEntities } from './tableSliceConst';
 describe('tableSlice', () => {
@@ -29,6 +30,10 @@ describe('tableSlice', () => {
       matchId: undefined,
       isOpen: false
     } as PopupState,
+    sortState: {
+      columnKey: KOTime.columnKey,
+      orderType: '',
+    },
     filterState: [] as FilterState[],
     refreshModel: {} as RefreshModel
   };
