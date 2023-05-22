@@ -41,8 +41,12 @@ const tableSlice = createSlice({
         state.isShowUnReadTicketOnly
       )(filterState);
       const { orderType } = state.sortState;
-      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
-      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
+      if (isEqual(orderType, ORDER_ASC)) {
+        state.entities = sortDataAsc(state.entities);
+      }
+      if (isEqual(orderType, ORDER_DESC)) {
+        state.entities = sortDataDesc(state.entities);
+      }
     },
     filterBySearchKey: (state, action) => {
       const { entitiesOriginal, filterState, isShowUnReadTicketOnly } = state;
@@ -51,16 +55,24 @@ const tableSlice = createSlice({
         state.filterState
       );
       const { orderType } = state.sortState;
-      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
-      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
+      if (isEqual(orderType, ORDER_ASC)) {
+        state.entities = sortDataAsc(state.entities);
+      }
+      if (isEqual(orderType, ORDER_DESC)) {
+        state.entities = sortDataDesc(state.entities);
+      }
     },
     clearFilter: state => {
       const { entitiesOriginal } = state;
       state.filterState = [];
       state.entities = entitiesOriginal;
       const { orderType } = state.sortState;
-      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
-      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
+      if (isEqual(orderType, ORDER_ASC)) {
+        state.entities = sortDataAsc(state.entities);
+      }
+      if (isEqual(orderType, ORDER_DESC)) {
+        state.entities = sortDataDesc(state.entities);
+      }
     },
     setUserId: (state, action) => {
       state.userId = action.payload;
@@ -95,8 +107,12 @@ const tableSlice = createSlice({
     sortFunc: (state, action) => {
       state.sortState = action.payload;
       const { orderType } = action.payload;
-      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
-      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
+      if (isEqual(orderType, ORDER_ASC)) {
+        state.entities = sortDataAsc(state.entities);
+      }
+      if (isEqual(orderType, ORDER_DESC)) {
+        state.entities = sortDataDesc(state.entities);
+      }
     }
   },
 
@@ -109,8 +125,12 @@ const tableSlice = createSlice({
       state.entitiesOriginal = payload;
       state.entities = filterData(payload)(isShowUnReadTicketOnly)(filterState);
       const { orderType } = state.sortState;
-      isEqual(orderType, ORDER_ASC) && sortDataAsc(state.entities);
-      isEqual(orderType, ORDER_DESC) && sortDataDesc(state.entities);
+      if (isEqual(orderType, ORDER_ASC)) {
+        state.entities = sortDataAsc(state.entities);
+      }
+      if (isEqual(orderType, ORDER_DESC)) {
+        state.entities = sortDataDesc(state.entities);
+      }
     }).addCase(getEvents.rejected, state => {
       state.loading = REQUEST_STATUS.idle;
     });
