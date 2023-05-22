@@ -11,6 +11,11 @@ type Column = {
   columnKey: string;
   size: number;
   isCanFilter?: boolean;
+  isCanSort?: boolean;
+  sortState?: {
+    columnKey: Required<string>,
+    oderType: string
+  }
 };
 
 type ColumnSchema = {
@@ -187,6 +192,12 @@ interface RefreshModel {
   filterDate: Date;
   statusId: string;
 }
+
+interface ISortState {
+  columnKey: Required<string>,
+  orderType: string
+}
+
 export {
   Column,
   ColumnSchema,
@@ -200,5 +211,6 @@ export {
   FilterState,
   AssignmentModel,
   PopupState,
-  RefreshModel
+  RefreshModel,
+  ISortState
 };

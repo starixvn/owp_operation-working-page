@@ -1972,8 +1972,8 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\live-game-list\assets\ext\server-b00efcd2.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-21f80e96.js" />
+    <Content Include="wwwroot\live-game-list\assets\ext\server-bd78f46b.css" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-8e5e0b2f.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -2795,10 +2795,6 @@
     <Content Include="wwwroot\league-management\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\league-management\server.cshtml" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\live-game-list\server.cshtml" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-ea568b68.ttf" />
@@ -2847,6 +2843,10 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\live-game-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

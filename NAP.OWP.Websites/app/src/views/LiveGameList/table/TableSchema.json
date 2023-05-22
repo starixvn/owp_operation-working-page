@@ -20,7 +20,12 @@
     "headerName": "KOTime",
     "columnKey": "KOTime",
     "isCanFilter": false,
-    "size": 0.04
+    "isCanSort": true,
+    "sortState": {
+      "columnKey": "KOTime",
+      "oderType":""
+    },
+    "size": 0.1
   },
   "League": {
     "headerName": "League",
@@ -83,5 +88,7 @@
     "size": 0.06
   },
   "netCoreURL": "api-netcore/LiveGameList",
-  "netFwURL": "api/LiveGameList"
+  "netFwURL": "api/LiveGameList",
+  "ORDER_ASC":"ORDER_ASC",
+  "ORDER_DESC" : "ORDER_DESC"
 }

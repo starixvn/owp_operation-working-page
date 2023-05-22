@@ -52,6 +52,15 @@ const buildColumn = (width: number, column: Column) => {
   };
 };
 
+const buildColumnKOTime = (width: number, column: Column) => {
+  const { isCanSort, sortState } = column;
+  return {
+    ...buildColumn(width, column),
+    isCanSort,
+    sortState
+  };
+};
+
 const calculateRowOfColumn = (
   length: number,
   widthPercent: number,
@@ -119,7 +128,7 @@ const selectTable = (widthWindow: number) => {
   return {
     columnSchema: [
       buildColumn(width * No.size, No),
-      buildColumn(width * KOTime.size, KOTime),
+      buildColumnKOTime(width * KOTime.size, KOTime),
       buildColumn(width * League.size, League),
       buildColumn(width * Match.size, Match),
       buildColumn(width * Ticket.size, Ticket),
@@ -249,4 +258,8 @@ const filterData = (entities: MatchInfo[]) => (
     filterDataTable(data, filters, filterDataTableByCriteria);
 };
 
-export { selectTable, filterData, calculateRowHeight, buildColorRowTable };
+const sortDataAsc = (entities: MatchInfo[]) => [...entities].sort((src, dest) => new Date(src.EventDateTime).getTime() - new Date(dest.EventDateTime).getTime() || src.MatchNo.localeCompare(dest.MatchNo));
+
+const sortDataDesc = (entities: MatchInfo[]) => [...entities].sort((src, dest) => new Date(dest.EventDateTime).getTime() - new Date(src.EventDateTime).getTime() || dest.MatchNo.localeCompare(src.MatchNo));
+
+export { buildColumnKOTime, selectTable, filterData, calculateRowHeight, buildColorRowTable, sortDataAsc, sortDataDesc };

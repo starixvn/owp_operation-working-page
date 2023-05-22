@@ -15,125 +15,124 @@ const propTypes = {
   config: PropTypes.object.isRequired
 };
 
-const CustomTable = React.forwardRef(
-  ({ model, config }, ref) => {
-    const {
-      columnSchema,
-      dynamicCell,
-      sortFunc,
-      filterFunc,
-      clearFilterFunc,
-      tableStyle,
-      tableWidth,
-      onCalculateRowHeight,
-      onRowClassNameGetter,
-      collapseAllRowFunc,
-      expandAllRowFunc,
-      onCheckChange
-    } = config;
-    const tableRef = React.createRef();
-    const { rowHeight, headerHeight, defaultHeight, filterOffset } = tableStyle;
-    const {
+const CustomTable = React.forwardRef(({ model, config }, ref) => {
+  const {
+    columnSchema,
+    dynamicCell,
+    sortFunc,
+    filterFunc,
+    clearFilterFunc,
+    tableStyle,
+    tableWidth,
+    onCalculateRowHeight,
+    onRowClassNameGetter,
+    collapseAllRowFunc,
+    expandAllRowFunc,
+    onCheckChange
+  } = config;
+  const tableRef = React.createRef();
+  const { rowHeight, headerHeight, defaultHeight, filterOffset } = tableStyle;
+  const {
+    sortState,
+    filterState,
+    isChecked,
+    canCheck,
+    collapseExpandAllRowState,
+    collapseExpandRowState
+  } = model;
+
+  columnSchema.map(item =>
+    Object.assign(item, {
       sortState,
-      filterState,
       isChecked,
       canCheck,
+      filterState,
       collapseExpandAllRowState,
       collapseExpandRowState
-    } = model;
+    })
+  );
+  const handleShowTicket = show => {
+    // eslint-disable-next-line no-warning-comments
+    // eslint-disable-next-line react/no-find-dom-node
+    const tableElement = ReactDOM.findDOMNode(tableRef.current);
+    NotePopupTableCss(tableElement, show);
+  };
 
-    columnSchema.map(item =>
-      Object.assign(item, {
-        sortState,
-        isChecked,
-        canCheck,
-        filterState,
-        collapseExpandAllRowState,
-        collapseExpandRowState
-      })
-    );
-    const handleShowTicket = show => {
-      // eslint-disable-next-line no-warning-comments
-      // eslint-disable-next-line react/no-find-dom-node
-      const tableElement = ReactDOM.findDOMNode(tableRef.current);
-      NotePopupTableCss(tableElement, show);
-    };
+  const handleShowDropdownListOption = show => {
+    // eslint-disable-next-line no-warning-comments
+    // eslint-disable-next-line react/no-find-dom-node
+    const tableElement = ReactDOM.findDOMNode(tableRef.current);
+    NotePopupTableCss(tableElement, show);
+  };
 
-    const handleShowDropdownListOption = show => {
-      // eslint-disable-next-line no-warning-comments
-      // eslint-disable-next-line react/no-find-dom-node
-      const tableElement = ReactDOM.findDOMNode(tableRef.current);
-      NotePopupTableCss(tableElement, show);
-    };
+  const newProps = {
+    dataSource: model.entities,
+    columnSchema,
+    dynamicCell,
+    sortFunc,
+    sortState,
+    filterFunc,
+    clearFilterFunc,
+    collapseAllRowFunc,
+    expandAllRowFunc,
+    handleShowTicket,
+    onShowDropdownListOption: handleShowDropdownListOption,
+    onCheckChange
+  };
 
-    const newProps = {
-      dataSource: model.entities,
-      columnSchema,
-      dynamicCell,
-      sortFunc,
-      filterFunc,
-      clearFilterFunc,
-      collapseAllRowFunc,
-      expandAllRowFunc,
-      handleShowTicket,
-      onShowDropdownListOption: handleShowDropdownListOption,
-      onCheckChange
-    };
+  const { loading, entities } = model;
+  const dataLength = entities.length || 0;
 
-    const { loading, entities } = model;
-    const dataLength = entities.length || 0;
+  const width = window.innerWidth - 110;
+  const widthInfo = {
+    containerWidth: width,
+    width: tableWidth(columnSchema)
+  };
 
-    const width = window.innerWidth - 110;
-    const widthInfo = {
-      containerWidth: width,
-      width: tableWidth(columnSchema)
-    };
+  const height = window.innerHeight - 200;
+  const heightInfo = {
+    containerHeight: height,
+    defaultHeight,
+    filterOffset
+  };
 
-    const height = window.innerHeight - 200;
-    const heightInfo = {
-      containerHeight: height,
-      defaultHeight,
-      filterOffset
-    };
+  const { actualWidth, actualHeight } = calculateTableDimension(
+    widthInfo,
+    heightInfo
+  );
 
-    const { actualWidth, actualHeight } = calculateTableDimension(
-      widthInfo,
-      heightInfo
-    );
+  const handleCalculateActualHeight = index => {
+    return isEqual(typeof onCalculateRowHeight, 'undefined')
+      ? rowHeight
+      : onCalculateRowHeight(index);
+  };
+  const handleRowClassNameGetter = index => {
+    return isEqual(typeof onRowClassNameGetter, 'undefined')
+      ? ''
+      : onRowClassNameGetter(index, entities);
+  };
 
-    const handleCalculateActualHeight = index => {
-      return isEqual(typeof onCalculateRowHeight, 'undefined')
-        ? rowHeight
-        : onCalculateRowHeight(index);
-    };
-    const handleRowClassNameGetter = index => {
-      return isEqual(typeof onRowClassNameGetter, 'undefined')
-        ? ''
-        : onRowClassNameGetter(index, entities);
-    };
-
-    return (
-      <div className='table' ref={ref}>
-        {isEqual(loading, REQUEST_STATUS.pending) && <Loading />}
-        <Table
-          ref={tableRef}
-          rowHeight={rowHeight}
-          rowHeightGetter={handleCalculateActualHeight}
-          rowClassNameGetter={handleRowClassNameGetter}
-          bufferRowCount={20}
-          rowsCount={dataLength}
-          width={actualWidth}
-          height={actualHeight}
-          headerHeight={headerHeight}>
-          {ColumnsFactory(newProps)}
-        </Table>
-        <div className='total'>
-          <b>Total records: {dataLength}</b>
-        </div>
+  return (
+    <div className='table' ref={ref}>
+      {isEqual(loading, REQUEST_STATUS.pending) && <Loading />}
+      <Table
+        ref={tableRef}
+        rowHeight={rowHeight}
+        rowHeightGetter={handleCalculateActualHeight}
+        rowClassNameGetter={handleRowClassNameGetter}
+        bufferRowCount={20}
+        rowsCount={dataLength}
+        width={actualWidth}
+        height={actualHeight}
+        headerHeight={headerHeight}>
+        {ColumnsFactory(newProps)}
+      </Table>
+      <div className='total'>
+        <b>Total records: {dataLength}</b>
       </div>
-    );
-  }
-);
+    </div>
+  );
+});
 
 CustomTable.propTypes = propTypes;
 CustomTable.displayName = 'CustomTable';

@@ -8,6 +8,7 @@ import {
 import { DefaultTableStyle } from './TableSchema.json';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/storeNative';
+import { sortFunc } from './tableSlice/tableSlice';
 
 const getTableSchema = () => {
   const { innerWidth } = window;
@@ -25,7 +26,8 @@ const LiveGameListTable = () => {
         window.innerWidth - DefaultTableStyle.widthResize
       ),
     onRowClassNameGetter: (index: number) =>
-      buildColorRowTable(model.entities[index])
+      buildColorRowTable(model.entities[index]),
+    sortFunc
   };
 
   const handleResizeBrowser = () => {
