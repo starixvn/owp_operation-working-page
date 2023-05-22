@@ -1,27 +1,38 @@
 import React, { useState } from 'react';
-import { SubType } from '../TypeNative';
-
+import { Subtype } from '../TypeNative';
+import { validateDuplicateSubtype } from '../../helper/validateDuplicateSubType';
+import ToastrWrapper from '../../../components/ToastrWrapper';
 type Prop = {
-  onAddNew: (subType: SubType) => void;
+  onAddNew: (subtype: Subtype) => void;
+  subtypes: Subtype[];
 };
 
 const SubTypeInput = (props: Prop) => {
-  const { onAddNew } = props;
+  const { onAddNew, subtypes } = props;
   const [value, setValue] = useState<string>('');
 
   const handleSubmit = () => {
-    value &&
+    value && handleAddNewSubType();
+  };
+
+  const handleAddNewSubType = () => {
+    if (validateDuplicateSubtype(value, subtypes)) {
       onAddNew({
         subtypeId: 0,
         typeId: 0,
         subtypeName: value
       });
-    setValue('');
+      setValue('');
+    } else {
+      ToastrWrapper.showError(
+        `A subtype with this name <b>${value}</b> already exists. Please try again!`
+      );
+    }
   };
 
   return (
     <div className='new-subtype'>
-      <label>Subtype:</label>
+      <label>subtype:</label>
       <input
         className='subtype-text-input'
         type='text'

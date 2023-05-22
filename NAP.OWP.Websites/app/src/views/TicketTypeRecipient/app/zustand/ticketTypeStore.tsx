@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Recipient, SubType } from '../../features/TypeNative';
+import { Recipient, Subtype } from '../../features/TypeNative';
 import axios from 'axios';
 
 import {
@@ -9,28 +9,40 @@ import {
 } from '../../Const.json';
 
 type ticketTypeState = {
-  recipients: Array<Recipient>,
-  subtypes: Array<SubType>,
-  setRecipient: (recipients: Array<Recipient>) => void,
-  setSubtypes: (subtypes: Array<SubType>) => void,
-  saveData: (ticketTypeId: Required<number>) => Promise<boolean>
+  subtypeSelected: Subtype;
+  subtypes: Array<Subtype>;
+  recipients: Array<Recipient>;
+  setSubtypeSelected: (subtypeSelected: Subtype) => void;
+  setRecipients: (recipient: Array<Recipient>) => void;
+  setSubtypes: (subtypes: Array<Subtype>) => void;
+  saveData: (ticketTypeId: Required<number>) => Promise<boolean>;
 };
 
 const useStore = create<ticketTypeState>((set, get) => ({
-  recipients: [],
+  subtypeSelected: {
+    subtypeId: 0,
+    subtypeName: '',
+    typeId: 0
+  },
   subtypes: [],
-  setRecipient: (recipients: Array<Recipient>) => set({
-    recipients
-  }),
-  setSubtypes: (subtypes: Array<SubType>) => set({
-    subtypes
-  }),
+  recipients: [],
+  setSubtypeSelected: (subtypeSelected: Subtype) =>
+    set({
+      subtypeSelected
+    }),
+  setRecipients: (recipients: Array<Recipient>) =>
+    set({
+      recipients
+    }),
+  setSubtypes: (subtypes: Array<Subtype>) =>
+    set({
+      subtypes
+    }),
   saveData: async (ticketTypeId: Required<number>): Promise<boolean> => {
     const url =
       process.env.NODE_ENV === 'development'
         ? `${netCoreURL}/${saveTicketTypeRecipientsRoute}`
         : `${window.netCoreRootUrl}/${netFwURL}/${saveTicketTypeRecipientsRoute}`;
-
 
     const { recipients, subtypes } = get();
 
@@ -44,9 +56,7 @@ const useStore = create<ticketTypeState>((set, get) => ({
     };
     await axios.post(url, postModel);
     return true;
-  },
+  }
 }));
 
 export default useStore;
-
-

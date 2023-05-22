@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import usePermission from '../../../Shared/customHook/usePermission';
@@ -9,7 +9,7 @@ import { functionKey } from '../../Const.json';
 import Loading from '../../../components/Loading';
 import {
   Recipient,
-  SubType,
+  Subtype,
   TicketTypeRecipientDataSource
 } from '../TypeNative';
 import { RootState } from '../../app/storeNative';
@@ -33,25 +33,50 @@ const TicketTypeRecipientTable = () => {
     return <Loading />;
   }
 
-  const renderTable = () =>
-    ticketTypeRecipient.entities.map(
-      (entity: TicketTypeRecipientDataSource) => (
-        <tr key={entity.ticketType.typeId}>
-          <td>{entity.ticketType.typeName}</td>
-          <td className='subtype'>{renderSubType(entity.subtypes)}</td>
-          <td>{renderRecipients(entity.recipients)}</td>
-          <td>
-            <ActionWrapper {...entity} />
-          </td>
-        </tr>
-      )
+  const renderTableRow = (entity: TicketTypeRecipientDataSource) => {
+    const subtypesLength = entity.subtypes.length;
+    return (
+      <tr key={entity.ticketType.typeId}>
+        <td rowSpan={subtypesLength > 0 ? subtypesLength : 1}>
+          {entity.ticketType.typeName}
+        </td>
+        <td className='subtype'>{entity.subtypes[0]?.subtypeName}</td>
+        <td>
+          {renderRecipients(entity.recipients, entity.subtypes[0]?.subtypeName)}
+        </td>
+        <td rowSpan={subtypesLength > 0 ? subtypesLength : 1}>
+          <ActionWrapper {...entity} />
+        </td>
+      </tr>
     );
+  };
 
-  const renderRecipients = (recipients: Recipient[]) =>
-    recipients.map(recipient => recipient.recipientName).join(', ');
+  const renderSubtypeRows = (subtypes: Subtype[], recipients: Recipient[]) => {
+    return subtypes.slice(1).map(subtype => (
+      <tr key={subtype.subtypeId}>
+        <td className='subtype'>{subtype.subtypeName}</td>
+        <td>{renderRecipients(recipients, subtype.subtypeName)}</td>
+      </tr>
+    ));
+  };
 
-  const renderSubType = (subtypes: SubType[]) =>
-    subtypes.map(subtype => subtype.subtypeName).join(', ');
+  const renderTable = () => {
+    return ticketTypeRecipient.entities.map(entity => (
+      <Fragment key={entity.ticketType.typeId}>
+        {renderTableRow(entity)}
+        {entity.subtypes.length >= 2 &&
+          renderSubtypeRows(entity.subtypes, entity.recipients)}
+      </Fragment>
+    ));
+  };
+
+  const renderRecipients = (recipients: Recipient[], subtypeName: string) => {
+    return recipients
+      .filter(item => item.subtypeName === subtypeName)
+      .map(recipient => recipient.recipientName)
+      .join(', ');
+  };
+
   return (
     <table className='ticket-recipient-table'>
       <thead>

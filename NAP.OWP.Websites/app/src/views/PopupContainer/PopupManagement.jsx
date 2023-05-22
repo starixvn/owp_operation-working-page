@@ -12,9 +12,7 @@ import { useStableDispatch } from '../TicketCenter/ImportTicketCenterHelperNativ
 import {
   changeErrorRecipient,
   closeCreatePopup,
-  getSelectedRecipients,
   openPopupCreateTicketInLGA,
-  setDefaultRecipients,
   setSubTypeSelected
 } from '../Shared/createTicketNew/createTicketBoardSliceNew';
 import {
@@ -24,7 +22,6 @@ import {
 } from '../Shared/chatBoardNew/chatBoardThunkNative';
 import { RECIPIENT_TYPE, DETAIL_URl, INCIDENT_TYPE } from './const.json';
 import ToastrWrapper from '../components/ToastrWrapper';
-import { getRecipientDefaultByType } from '../Shared/createTicketNew/Helper/HelperCreateTicket';
 import { closePopup } from '../Shared/chatBoardNew/chatBoardSlice';
 import { onClickIssueModel } from './signalR/signalRSlice';
 import { buildPermissionDetailLink } from './helper/commonHelper';
@@ -49,9 +46,6 @@ const PopupManagement = () => {
   };
 
   const handleOpenCreateTicketByMatchId = async data => {
-    const recipientSetting = await getRecipientDefaultByType(INCIDENT_TYPE.ID);
-    stableDispatch(setDefaultRecipients(recipientSetting));
-    stableDispatch(getSelectedRecipients(recipientSetting));
     stableDispatch(getModelByRowIndex(data));
     stableDispatch(closePopup());
     stableDispatch(closeCreatePopup());

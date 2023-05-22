@@ -4,7 +4,7 @@ import {
   changeErrorRecipient,
   changeErrorInput,
   selectedEvent,
-  getSelectedRecipients
+  setSelectedRecipients
 } from './createTicketBoardSliceNew';
 import Spinner from '../../components/Spinner';
 import { post } from '../Service/Service';
@@ -83,7 +83,7 @@ const CreateTicketBoardEvent = props => {
       informResult(result);
       handleOnClose();
       dispatch(selectedEvent(null));
-      dispatch(getSelectedRecipients([]));
+      dispatch(setSelectedRecipients([]));
       Spinner.hide();
     }
   };

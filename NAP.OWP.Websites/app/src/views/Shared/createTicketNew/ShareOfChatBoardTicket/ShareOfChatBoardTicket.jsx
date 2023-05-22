@@ -9,10 +9,13 @@ import useStableDispatch from '../../customHook/useStableDispatch';
 import Select from 'react-select';
 import {
   changeErrorRecipient,
-  getSelectedRecipients,
+  setSelectedRecipients,
   setSubTypeSelected
 } from '../createTicketBoardSliceNew';
-import { getSubTypeByType } from '../Helper/HelperCreateTicket';
+import {
+  getSubTypeByType,
+  getRecipientDefaultBySubType
+} from '../Helper/HelperCreateTicket';
 
 const propTypes = {
   handleOnSubmit: PropTypes.func,
@@ -38,10 +41,10 @@ const ShareOfChatBoardTicket = props => {
   };
   const dispatch = useStableDispatch();
   const [subTypeOption, setSubTypeOption] = useState([]);
+  const [recipientBySubTypes, setRecipientBySubTypes] = useState([]);
   const { errorRecipient, subTypeSelected } = useSelector(
     state => state.createTicketBoard
   );
-  const { defaultRecipients } = useSelector(state => state.createTicketBoard);
 
   useEffect(() => {
     (async () => {
@@ -53,8 +56,16 @@ const ShareOfChatBoardTicket = props => {
         })
       );
       setSubTypeOption([...option, { value: 0, label: '' }]);
+      dispatch(setSubTypeSelected(...[{ value: 0, label: '' }]));
     })();
   }, [ticketType]);
+
+  const handleChangeSubType = async select => {
+    dispatch(setSubTypeSelected(select));
+    const recipient = await getRecipientDefaultBySubType(select.value);
+    setRecipientBySubTypes(recipient);
+    dispatch(setSelectedRecipients(recipient));
+  };
 
   return (
     <>
@@ -70,7 +81,7 @@ const ShareOfChatBoardTicket = props => {
               classNamePrefix='input-field-select'
               placeholder=''
               value={subTypeSelected}
-              onChange={select => dispatch(setSubTypeSelected(select))}
+              onChange={select => handleChangeSubType(select)}
               options={subTypeOption}
             />
           </div>
@@ -84,8 +95,8 @@ const ShareOfChatBoardTicket = props => {
         </div>
         <div className='right-form'>
           <RecipientsSelect
-            defaultValue={defaultRecipients || []}
-            onChange={value => dispatch(getSelectedRecipients(value))}
+            defaultValue={recipientBySubTypes || []}
+            onChange={value => dispatch(setSelectedRecipients(value))}
             errorSubmit={errorRecipient}
             onChangeErrorSubmit={value => dispatch(changeErrorRecipient(value))}
           />

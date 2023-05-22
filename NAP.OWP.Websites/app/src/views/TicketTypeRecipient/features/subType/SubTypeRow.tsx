@@ -1,25 +1,19 @@
 import { isEqual } from 'lodash';
 import React, { useState } from 'react';
-import { SubType } from '../TypeNative';
+import { Subtype } from '../TypeNative';
 
 type Prop = {
   index: number;
-  onUpdateSubType: (value: Required<string>, index: number) => void
-} & SubType;
-
+  onUpdateSubtype: (value: Required<string>, index: number) => void;
+} & Subtype;
 
 const SubTypeRow = (props: Prop) => {
-  const {
-    subtypeName,
-    index,
-    onUpdateSubType
-  } = props;
+  const { subtypeName, index, onUpdateSubtype } = props;
 
   const [value, setValue] = useState(subtypeName);
 
   const handleBlur = () => {
-    !isEqual(value, subtypeName) &&
-      onUpdateSubType(value, index);
+    !isEqual(value, subtypeName) && onUpdateSubtype(value, index);
   };
 
   return (
@@ -32,8 +26,7 @@ const SubTypeRow = (props: Prop) => {
         onBlur={handleBlur}
         onChange={e => setValue(e.target.value)}
       />
-      {!value && <span
-        className='subtype-error'>This field is required</span>}
+      {!value && <span className='subtype-error'>This field is required</span>}
     </div>
   );
 };

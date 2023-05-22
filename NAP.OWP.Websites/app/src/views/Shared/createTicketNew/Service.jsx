@@ -27,9 +27,9 @@ const recipient = async keyword => {
   return result;
 };
 
-const recipientByType = async ticketTypeId => {
+const recipientBySubType = async subTypeId => {
   const getModel = {
-    ticketTypeId,
+    subTypeId,
     apiKey: 'ticket-center-get-default-recipient'
   };
   return await Axios.post(urlGetRecipient, getModel);
@@ -60,7 +60,7 @@ const queryAssigneesByOwpMatchId = async model => {
 
 const Service = {
   recipient,
-  recipientByType,
+  recipientBySubType,
   event,
   getSubType,
   queryAssigneesByOwpMatchId

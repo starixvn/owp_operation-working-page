@@ -71,6 +71,11 @@ describe('TicketTypeRecipientTable under test', () => {
                   subtypeId: 1,
                   typeId: 1,
                   subtypeName: 'Liam'
+                },
+                {
+                  subtypeId: 2,
+                  typeId: 2,
+                  subtypeName: 'Liam2'
                 }
               ],
               recipients: [
@@ -79,7 +84,8 @@ describe('TicketTypeRecipientTable under test', () => {
                   recipientId: 1,
                   recipientType: 1,
                   recipientName: 'sa',
-                  recipientNickname: 'sa_nickname'
+                  recipientNickname: 'sa_nickname',
+                  subtypeName: 'Liam'
                 }
               ]
             }

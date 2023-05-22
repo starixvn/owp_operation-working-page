@@ -7,7 +7,7 @@ import createTicketBoardSlice, {
   includeSuggestion,
   selectedEvent,
   otherSubject,
-  getSelectedRecipients,
+  setSelectedRecipients,
   changeErrorInput,
   changeErrorRecipient,
   changeErrorOther,
@@ -136,7 +136,7 @@ describe('createTicketBoardSlice under test', () => {
       selectedRecipients: []
     };
     const action = {
-      type: getSelectedRecipients.type,
+      type: setSelectedRecipients.type,
       payload: [
         {
           ticketTypeRecipientId: 1,

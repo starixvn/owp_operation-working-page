@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RecipientTable from './RecipientTable';
 import { Recipient } from '../TypeNative';
 import RecipientSuggestion from '../../../Shared/TicketSetting/RecipientSuggestion/RecipientSuggestion';
@@ -6,21 +6,23 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../app/storeNative';
 import { Permission } from '../../../Shared/TicketSetting/TypeNative';
 import useStore from '../../app/zustand/ticketTypeStore';
+import { getRecipientBySubtypeName } from '../../helper/getRecipientBySubTypeName';
 
-interface PropsType {
-  recipientsDefault: Array<Recipient>;
-}
-
-const EditRecipient = (props: PropsType) => {
-  const { recipientsDefault } = props;
-  const [recipients, setRecipients] = useState(recipientsDefault);
+const EditRecipient = () => {
   const permission = useSelector((state: RootState) => state.policy.permission);
   const siteId = (permission as Permission).SiteId;
-  const storeRecipientExternal = useStore(state => state.setRecipient);
+  const recipients = useStore(state => state.recipients);
+  const subtypeSelected = useStore(state => state.subtypeSelected);
+  const storeRecipientExternal = useStore(state => state.setRecipients);
+  const recipientBySubtypes = getRecipientBySubtypeName(
+    recipients,
+    subtypeSelected.subtypeName
+  );
 
   const handleAddRecipient = (recipient: Recipient) => {
-    const newRecipients = [...recipients, recipient];
-    setRecipients(newRecipients);
+    let assignRecipient = { ...recipient };
+    assignRecipient.subtypeName = subtypeSelected.subtypeName;
+    const newRecipients = [...recipients, assignRecipient];
     storeRecipientExternal(newRecipients);
   };
 
@@ -28,17 +30,18 @@ const EditRecipient = (props: PropsType) => {
     const newRecipients = recipients.filter(
       x => !isRecipientEqual(x, recipient)
     );
-    setRecipients(newRecipients);
     storeRecipientExternal(newRecipients);
   };
 
   const isRecipientEqual = (a: Recipient, b: Recipient) =>
-    a.recipientId === b.recipientId && a.recipientType === b.recipientType;
+    a.recipientId === b.recipientId &&
+    a.recipientType === b.recipientType &&
+    a.subtypeName === b.subtypeName;
 
   return (
     <>
       <RecipientSuggestion
-        currentRecipients={recipients}
+        currentRecipients={recipientBySubtypes}
         isIncludeGroup
         isIncludeSection
         siteId={siteId}
@@ -46,7 +49,7 @@ const EditRecipient = (props: PropsType) => {
       />
       <div className='tableFixHead'>
         <RecipientTable
-          recipients={recipients}
+          recipients={recipientBySubtypes}
           handleDeleteRecipient={handleDeleteRecipient}
         />
       </div>

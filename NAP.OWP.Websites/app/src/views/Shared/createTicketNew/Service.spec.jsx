@@ -36,7 +36,7 @@ describe('service test', () => {
 
   it('return response data when query recipient is called', async () => {
     axios.post.mockResolvedValue(responseRecipientByType);
-    const actual = await Service.recipientByType(1);
+    const actual = await Service.recipientBySubType(1);
     expect(actual).toEqual(responseRecipientByType);
   });
   it('return response data when query event is called', async () => {

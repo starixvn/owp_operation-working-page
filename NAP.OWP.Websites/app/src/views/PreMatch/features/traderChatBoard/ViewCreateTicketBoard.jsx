@@ -10,7 +10,7 @@ import Spinner from '../../../components/Spinner';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import {
   changeErrorRecipient,
-  getSelectedRecipients
+  setSelectedRecipients
 } from '../../../Shared/createTicketNew/createTicketBoardSliceNew';
 import {
   formatRecipientModel,
@@ -45,12 +45,8 @@ const informResult = result => {
 const ViewCreateTicketBoard = props => {
   const dispatch = useStableDispatch();
   const [selectedFiles, setSelectedFiles] = useState([]);
-  const {
-    selectedRecipients,
-    modelByRowIndex,
-    creatorInfo,
-    subTypeSelected
-  } = props;
+  const { selectedRecipients, modelByRowIndex, creatorInfo, subTypeSelected } =
+    props;
   const { InfoSiteMatchId, PreMatchLeagueId, LeagueId } = modelByRowIndex;
   const renderHeader = () => (
     <span className='close-chat-board-popup' onClick={handleOnClose} />
@@ -107,7 +103,7 @@ const ViewCreateTicketBoard = props => {
       const result = await post(newAddModel);
       informResult(result);
       handleOnClose();
-      dispatch(getSelectedRecipients([]));
+      dispatch(setSelectedRecipients([]));
       Spinner.hide();
     }
   };

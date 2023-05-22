@@ -10,15 +10,8 @@ import {
 import {
   changeErrorRecipient,
   closeCreatePopup,
-  getSelectedRecipients,
-  openPopupCreateTicketInLGA,
-  setDefaultRecipients,
-  setSubTypeSelected
+  openPopupCreateTicketInLGA
 } from '../../createTicketNew/createTicketBoardSliceNew';
-import { getRecipientDefaultByType } from '../../createTicketNew/Helper/HelperCreateTicket';
-import { TICKET_TYPE } from '../../TicketCenterPrematch/helper/helper';
-
-const { LIVE_INCIDENT } = TICKET_TYPE;
 
 const propTypes = {
   dataSource: PropTypes.any,
@@ -35,19 +28,11 @@ const TicketCellCommon = props => {
     stableDispatch(closeCreatePopup());
   };
 
-  const getRecipientByType = async () => {
-    const recipientSetting = await getRecipientDefaultByType(LIVE_INCIDENT);
-    stableDispatch(setDefaultRecipients(recipientSetting));
-    stableDispatch(getSelectedRecipients(recipientSetting));
-    stableDispatch(setSubTypeSelected([...[{ value: 0, label: '' }]]));
-  };
-
   const handleOpenCreateTicket = () => {
     closeAnotherPopup();
     stableDispatch(getModelByRowIndex(dataSource[rowIndex]));
     stableDispatch(openPopupCreateTicketInLGA());
     stableDispatch(changeErrorRecipient(false));
-    getRecipientByType();
   };
 
   return (

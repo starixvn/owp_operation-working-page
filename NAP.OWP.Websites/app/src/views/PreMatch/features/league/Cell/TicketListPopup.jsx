@@ -10,8 +10,6 @@ import {
 } from '../../../../Shared/chatBoardNew/chatBoardSlice';
 import {
   changeErrorRecipient,
-  getSelectedRecipients,
-  setDefaultRecipients,
   closeCreatePopup,
   setSubTypeSelected
 } from '../../../../Shared/createTicketNew/createTicketBoardSliceNew';
@@ -25,7 +23,6 @@ import {
   TICKET_TYPE
 } from '../../../../Shared/TicketCenterPrematch/const/const.json';
 import { backupGetIssueModel } from '../../signalR/signalRSlice';
-import { getRecipientDefaultByType } from '../../../../Shared/createTicketNew/Helper/HelperCreateTicket';
 import {
   updatedIconIssueLeagueRow,
   updatedIconIssueMatchRow
@@ -68,11 +65,11 @@ const TicketListPopup = props => {
     if (!IsRead) {
       isEqual(EventType, LEAGUE)
         ? stableDispatch(
-          updatedIconIssueLeagueRow({ PreMatchLeagueId, TicketId })
-        )
+            updatedIconIssueLeagueRow({ PreMatchLeagueId, TicketId })
+          )
         : stableDispatch(
-          updatedIconIssueMatchRow({ InfoSiteMatchId, TicketId })
-        );
+            updatedIconIssueMatchRow({ InfoSiteMatchId, TicketId })
+          );
     }
     stableDispatch(backupGetIssueModel(requestDetailModel));
 
@@ -96,20 +93,11 @@ const TicketListPopup = props => {
     stableDispatch(closeCreatePopup());
   };
 
-  const getRecipientByType = async () => {
-    const recipientSetting = await getRecipientDefaultByType(
-      ticketType.EVEN_CHECKING
-    );
-    stableDispatch(setDefaultRecipients(recipientSetting));
-    stableDispatch(getSelectedRecipients(recipientSetting));
-  };
-
   return (
     <TicketListPopupCommon
       ticketList={ticketList}
       HasWrite={HasWrite}
       handleOpenCreateTicket={handleOpenCreateTicket}
-      getRecipientByType={getRecipientByType}
       handleOpenMessage={handleOpenMessage}
       onCloseTicketList={onCloseTicketList}
     />

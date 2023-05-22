@@ -17,21 +17,24 @@ const recipients: Recipient[] = [
     recipientName: 'sa',
     recipientNickname: '',
     recipientType: TicketTypeRecipientEnum.User,
-    ticketTypeRecipientId: 1
+    ticketTypeRecipientId: 1,
+    subtypeName: 'sub1'
   },
   {
     recipientId: 2,
     recipientName: 'sa2',
     recipientNickname: '',
     recipientType: TicketTypeRecipientEnum.User,
-    ticketTypeRecipientId: 2
+    ticketTypeRecipientId: 2,
+    subtypeName: 'sub1'
   },
   {
     recipientId: 1,
     recipientName: 'LST',
     recipientNickname: '',
     recipientType: TicketTypeRecipientEnum.Group,
-    ticketTypeRecipientId: 3
+    ticketTypeRecipientId: 3,
+    subtypeName: 'sub1'
   }
 ];
 

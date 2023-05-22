@@ -2,7 +2,6 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import CreateTicketHandler from './CreateTicketHandler';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipientDefaultByType } from '../../createTicketNew/Helper/HelperCreateTicket';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
@@ -55,9 +54,6 @@ const recipientData = {
   ]
 };
 describe('TicketList under test', () => {
-  beforeEach(() => {
-    getRecipientDefaultByType.mockResolvedValue(recipientData);
-  });
   const props = {
     handleOpenCreateTicket: mockFunction
   };
