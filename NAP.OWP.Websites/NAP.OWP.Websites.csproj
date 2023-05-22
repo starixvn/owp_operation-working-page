@@ -1949,8 +1949,8 @@
     <Content Include="wwwroot\la-report\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\la-report\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\la-report\assets\ext\server-ae9d4e09.css" />
-    <Content Include="wwwroot\la-report\assets\js\main-16d28c55.js" />
+    <Content Include="wwwroot\la-report\assets\ext\server-b71008cf.css" />
+    <Content Include="wwwroot\la-report\assets\js\main-ec7ed105.js" />
     <Content Include="wwwroot\la-report\favicon.ico" />
     <Content Include="wwwroot\la-report\server.html" />
     <Content Include="wwwroot\league-management\assets\ext\icon-search-4037a8fe.svg" />
@@ -1972,8 +1972,8 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\live-game-list\assets\ext\server-b00efcd2.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-2f26bef4.js" />
+    <Content Include="wwwroot\live-game-list\assets\ext\server-8b7f8434.css" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-0aba8a9e.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -2786,10 +2786,6 @@
     <Content Include="wwwroot\event-picking\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
-    <Content Include="wwwroot\la-report\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\la-report\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\la-report\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\la-report\server.cshtml" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-ea568b68.ttf" />
@@ -2826,10 +2822,6 @@
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\event-assignment\server.cshtml" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\live-game-list\server.cshtml" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
@@ -2847,6 +2839,14 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
+    <Content Include="wwwroot\la-report\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\la-report\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\la-report\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\la-report\server.cshtml" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\live-game-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
