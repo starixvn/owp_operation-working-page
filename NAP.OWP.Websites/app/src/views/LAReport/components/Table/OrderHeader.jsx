@@ -24,7 +24,6 @@ const OrderHeader = headerModel => {
     };
     stableDispatch(order(postModel));
   };
-  console.log(columnId);
   const columnTotal = COLUMN_ID_HIGHLIGHT.some(i => isEqual(columnId, i))
     ? 'col-total'
     : '';
