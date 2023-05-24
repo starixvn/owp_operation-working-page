@@ -183,7 +183,10 @@
     .message-row {
       padding-bottom: 8px;
       padding-top: 7px;
-
+      word-break: break-all;
+      a{
+        display: inline-block;
+      }
       + .message-row {
         border-top: 1px solid #e0e0e0;
       }
@@ -1262,6 +1265,10 @@
     padding-bottom: 8px;
     padding-top: 7px;
     position: relative;
+    word-break: break-all;
+    a{
+      display: inline-block;
+    }
     + .message-row {
       border-top: 1px solid #e0e0e0;
     }
