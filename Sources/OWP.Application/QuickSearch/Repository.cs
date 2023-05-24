@@ -99,7 +99,7 @@ namespace OWP.Application.QuickSearch
             {
                 UserId = session.UserId,
                 SearchKeywords = model.SearchKeywords,
-                IsNumericKeywords = model.IsNumericKeywords,
+                IsNumericKeywords = model.IsNumericKeywords && int.TryParse(model.SearchKeywords, out _),
                 IsFullTimeView = model.QueryFullTime,
                 IsTimeRange = model.QueryTimeRange
             };
