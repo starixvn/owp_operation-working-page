@@ -1,11 +1,11 @@
-@import "../abstracts/variables";
+@import '../abstracts/variables';
 
 .message-box {
   margin: 1rem;
   padding: 1rem;
   border-radius: 3px;
   background: #fff;
-  box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 2px 0 rgba(0,0,0,.12);
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
 }
 
 .search-group {
@@ -77,13 +77,14 @@
   .icon {
     flex-basis: 2.5rem;
     max-width: 2.5rem;
-    height: 2.5rem;
+    height: 2.5rem !important;
     line-height: 1.7;
     margin-right: 10px;
-    align-items:center;
+    align-items: center;
     text-align: center;
     border-radius: 50%;
-      background:#34b8df;
+    background: #34b8df;
+    font-size: inherit !important;
 
     .mdi-icon {
       color: #fff;
@@ -117,7 +118,7 @@
     flex-grow: 1;
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
-    max-width: 100%
+    max-width: 100%;
   }
 }
 
@@ -167,7 +168,7 @@
   }
 
   .page-link {
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     line-height: 1.5;
     color: #333;
 
@@ -202,13 +203,13 @@
   }
 }
 // message no pages number
-.message-list + .paging-group{
+.message-list + .paging-group {
   padding: 20px 0 4px;
-  .pagination{
+  .pagination {
     width: 100%;
     position: relative;
     justify-content: center;
-    .page-size{
+    .page-size {
       position: absolute;
       top: 0;
       right: 0;
@@ -216,31 +217,30 @@
     }
   }
 }
-.paging-move-btn{
-  button{
-    border: 1px solid #1E88E5;
+.paging-move-btn {
+  button {
+    border: 1px solid #1e88e5;
     border-radius: 2px;
     font-size: 12px;
-    color: #1E88E5;
+    color: #1e88e5;
     background-color: transparent;
     appearance: none;
     margin: 0 5px;
     padding: 3px 19px;
     outline: none;
-    &[disabled]{
-      opacity: .3;
+    &[disabled] {
+      opacity: 0.3;
       background-color: transparent;
-      &:hover{
+      &:hover {
         background-color: transparent;
         box-shadow: none;
-        color: #1E88E5;
+        color: #1e88e5;
       }
     }
-    &:hover{
-      background-color: #1E88E5;
+    &:hover {
+      background-color: #1e88e5;
       color: #ffffff;
       box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.1);
-      
     }
   }
 }
