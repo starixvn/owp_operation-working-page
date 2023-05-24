@@ -47,15 +47,12 @@ const FilterHeader = props => {
   const [selectedFromDate, setSelectedFromDate] = useState(defaultFromDate);
   const [selectedToDate, setSelectedToDate] = useState(defaultToDate);
   const [selectedSports, setSelectedSports] = useState(defaultSports);
-  const [selectedOfferLives, setSelectedOfferLives] = useState(
-    defaultOfferLives
-  );
-  const [selectedMatchStatuses, setSelectedMatchStatuses] = useState(
-    defaultMatchStatuses
-  );
-  const [selectedLinkedMatches, setSelectedLinkedMatches] = useState(
-    defaultLinkedMatches
-  );
+  const [selectedOfferLives, setSelectedOfferLives] =
+    useState(defaultOfferLives);
+  const [selectedMatchStatuses, setSelectedMatchStatuses] =
+    useState(defaultMatchStatuses);
+  const [selectedLinkedMatches, setSelectedLinkedMatches] =
+    useState(defaultLinkedMatches);
 
   const empRef = useRef();
 
@@ -111,7 +108,17 @@ const FilterHeader = props => {
     const offerLives = selectedOfferLives.map(x => x.value).join(',');
     const matchStatuses = selectedMatchStatuses.map(x => x.value).join(',');
     const linkedMatches = selectedLinkedMatches.map(x => x.value).join(',');
-
+    if (
+      !selectedMatchStatuses.length ||
+      !selectedSports.length ||
+      !selectedOfferLives.length ||
+      !selectedLinkedMatches.length
+    ) {
+      ToastrWrapper.showError(
+        'Please select at least one option for sport, offer live, match status and linked match'
+      );
+      return;
+    }
     const url =
       process.env.NODE_ENV === 'development'
         ? `${OtherSport.rootUrl}${OtherSport.download}`
