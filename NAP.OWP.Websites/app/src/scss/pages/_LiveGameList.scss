@@ -9,6 +9,10 @@
 .public_fixedDataTable_topShadow {
   z-index: 0;
 }
+.live-game-list-header-header{
+  position: relative;
+  z-index: 20;
+}
 .filter-control {
   flex: 0 1;
   display: flex;
