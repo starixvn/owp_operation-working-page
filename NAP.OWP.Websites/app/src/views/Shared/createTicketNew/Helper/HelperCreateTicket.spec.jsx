@@ -1,5 +1,5 @@
 import {
-  getRecipientDefaultBySubType,
+  filterResult,
   getSubTypeByType,
   saveFileToBackEnd
 } from './HelperCreateTicket';
@@ -39,5 +39,38 @@ describe('Helper under test', () => {
     Axios.post.mockResolvedValue({ data: 1 });
     const result = await saveFileToBackEnd(file);
     expect(result).toEqual(1);
+  });
+  it('should return sorted result by league name and event datetime', () => {
+    const value = [
+      {
+        eventInfoViewModel: { leagueName: 'B', eventDateTimeGmt8: '2023-01-01' }
+      },
+      {
+        eventInfoViewModel: { leagueName: 'C', eventDateTimeGmt8: '2022-01-01' }
+      },
+      {
+        eventInfoViewModel: { leagueName: 'A', eventDateTimeGmt8: '2022-12-31' }
+      }
+    ];
+
+    const expectedResult = [
+      { leagueName: 'A', eventDateTimeGmt8: '2022-12-31' },
+      { leagueName: 'B', eventDateTimeGmt8: '2023-01-01' },
+      { leagueName: 'C', eventDateTimeGmt8: '2022-01-01' }
+    ];
+
+    const result = filterResult(value);
+
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('should return empty array when input value is empty', () => {
+    const value = [];
+
+    const expectedResult = [];
+
+    const result = filterResult(value);
+
+    expect(result).toEqual(expectedResult);
   });
 });

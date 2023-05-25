@@ -18,8 +18,8 @@ const SubTypeTable = (props: Props) => {
       handleSelectAnotherSubtype(subtype);
   };
 
-  const renderRows = (subtypes: Array<Subtype>) => {
-    return subtypes.map((subtype, index) => {
+  const renderRows = (subtypeList: Array<Subtype>) => {
+    return subtypeList.map((subtype, index) => {
       const key = index;
       return (
         <tr key={key}>

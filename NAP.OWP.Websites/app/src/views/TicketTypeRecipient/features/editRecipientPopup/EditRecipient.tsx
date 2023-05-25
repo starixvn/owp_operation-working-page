@@ -20,7 +20,7 @@ const EditRecipient = () => {
   );
 
   const handleAddRecipient = (recipient: Recipient) => {
-    let assignRecipient = { ...recipient };
+    const assignRecipient = { ...recipient };
     assignRecipient.subtypeName = subtypeSelected.subtypeName;
     const newRecipients = [...recipients, assignRecipient];
     storeRecipientExternal(newRecipients);

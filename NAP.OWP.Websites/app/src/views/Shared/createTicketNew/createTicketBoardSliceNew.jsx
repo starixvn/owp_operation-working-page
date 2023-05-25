@@ -143,6 +143,8 @@ const createTicketBoardSliceNew = createSlice({
     openPopupCreateTicketInLGA: {
       reducer: state => {
         state.isOpenCreateTicketInLGA = true;
+        state.errorRecipient = false;
+        state.subTypeSelected = [{ value: 0, label: '' }];
       }
     }
   }
@@ -150,8 +152,6 @@ const createTicketBoardSliceNew = createSlice({
 
 const { actions, reducer } = createTicketBoardSliceNew;
 const {
-  openPopupNewAdd,
-  closePopupNewAdd,
   closeCreatePopup,
   openPopupEventChecking,
   openPopupLiveIncident,
@@ -174,8 +174,6 @@ const {
 } = actions;
 
 export {
-  openPopupNewAdd,
-  closePopupNewAdd,
   closeCreatePopup,
   openPopupEventChecking,
   openPopupLiveIncident,

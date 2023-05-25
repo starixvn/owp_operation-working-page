@@ -5,7 +5,7 @@ import { REQUEST_STATUS } from '../../../Shared/Constants';
 import usePermission from '../../../Shared/customHook/usePermission';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import { getTicketTypeRecipients } from '../ticketTypeThunkNative';
-import { functionKey } from '../../Const.json';
+import { functionKey, checkLengthSubTypes } from '../../Const.json';
 import Loading from '../../../components/Loading';
 import {
   Recipient,
@@ -64,7 +64,7 @@ const TicketTypeRecipientTable = () => {
     return ticketTypeRecipient.entities.map(entity => (
       <Fragment key={entity.ticketType.typeId}>
         {renderTableRow(entity)}
-        {entity.subtypes.length >= 2 &&
+        {entity.subtypes.length >= checkLengthSubTypes &&
           renderSubtypeRows(entity.subtypes, entity.recipients)}
       </Fragment>
     ));
