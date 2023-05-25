@@ -56,11 +56,23 @@ const saveFileToBackEnd = async files => {
   const fileId = response.data;
   return fileId;
 };
+const filterResult = value => {
+  const event = value.map(x => x.eventInfoViewModel);
+  const result = event.reduce((a, b) => a.concat(b), []);
+  result.sort(
+    (a, b) =>
+      a.leagueName.localeCompare(b.leagueName) ||
+      new Date(a.eventDateTimeGmt8).getTime() -
+        new Date(b.eventDateTimeGmt8).getTime()
+  );
+  return result;
+};
 
 export {
   informResult,
   formatRecipientModel,
   getRecipientDefaultBySubType,
   saveFileToBackEnd,
-  getSubTypeByType
+  getSubTypeByType,
+  filterResult
 };

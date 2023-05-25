@@ -6,12 +6,12 @@ import { formatTime } from '../../DateTime/dateTimeHelper';
 import { useSelector } from 'react-redux';
 import useStableDispatch from '../../customHook/useStableDispatch';
 import {
-  includeSuggestion,
   selectedEvent,
   changeErrorInput,
   setEventChecking,
   setRecipientAssigned
 } from '../createTicketBoardSliceNew';
+import { filterResult } from '../Helper/HelperCreateTicket';
 import Service from '../Service';
 import { isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
@@ -23,11 +23,10 @@ const propTypes = {
 const Event = props => {
   const { typeTicketText, ticketType } = props;
   const dispatch = useStableDispatch();
-  const inputText = useSelector(state => state.createTicketBoard).valueSearch;
-
   const { errorInput, eventChecking } = useSelector(
     state => state.createTicketBoard
   );
+  const [inputText, setInputText] = useState('');
   const [options, setOptions] = useState([]);
   const [open, setOpen] = useState(false);
   const [eventOption, setEventOption] = useState([]);
@@ -43,24 +42,27 @@ const Event = props => {
     dispatch(selectedEvent(value));
     dispatch(changeErrorInput(false));
   };
-  const filterResult = value => {
-    const event = value.map(x => x.eventInfoViewModel);
-    const result = event.reduce((a, b) => a.concat(b), []);
-    result.sort(
-      (a, b) =>
-        a.leagueName.localeCompare(b.leagueName) ||
-        new Date(a.eventDateTimeGmt8).getTime() -
-          new Date(b.eventDateTimeGmt8).getTime()
-    );
-    return result;
-  };
+
   const handleSearch = event => {
     if (!event.target.value) {
-      dispatch(includeSuggestion('undefined'));
       setEventOption([]);
       return;
     }
-    dispatch(includeSuggestion(event.target.value));
+    setInputText(event.target.value);
+  };
+
+  const getSearchEventOptions = async (value, type) => {
+    if (value.length >= 2) {
+      const result = await Service.event(value, type);
+      dispatch(setEventChecking(result.data));
+      const optionResult = filterResult(result.data);
+      setOptions(optionResult);
+      setOpen(true);
+    } else {
+      dispatch(setEventChecking([]));
+      setOptions([]);
+      setOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -71,27 +73,9 @@ const Event = props => {
   }, [eventOption]);
 
   useEffect(() => {
-    const doGetEvents = async () => {
-      const result = await Service.event(inputText, ticketType);
-      dispatch(setEventChecking(result.data));
-      if (result.data) {
-        const optionResult = filterResult(result.data);
-        setOptions(optionResult);
-      } else {
-        setOptions([]);
-        setOpen(false);
-      }
-    };
-    if (inputText === 'undefined') {
-      return;
-    }
-    if (inputText.length >= 2) {
-      doGetEvents();
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  }, [dispatch, inputText, ticketType]);
+    getSearchEventOptions(inputText, ticketType);
+  }, [inputText, ticketType]);
+
   return (
     <>
       <div className='header-popup'>

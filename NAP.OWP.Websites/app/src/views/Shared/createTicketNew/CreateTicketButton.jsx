@@ -4,11 +4,6 @@ import {
   openPopupEventChecking,
   openPopupLiveIncident,
   openPopupOthers,
-  setSelectedRecipients,
-  changeErrorInput,
-  changeErrorOther,
-  changeErrorRecipient,
-  selectedEvent,
   setTypeTicketText
 } from './createTicketBoardSliceNew';
 import { closePopup } from '../chatBoardNew/chatBoardSlice';
@@ -42,9 +37,6 @@ const CreateTicketButton = props => {
                 dispatch(setTypeTicketText('Event Checking'));
                 dispatch(closePopup());
                 dispatch(openPopupEventChecking());
-                dispatch(setSelectedRecipients([]));
-                dispatch(changeErrorInput(false));
-                dispatch(changeErrorRecipient(false));
               }}>
               Event Checking
             </li>
@@ -55,10 +47,6 @@ const CreateTicketButton = props => {
               dispatch(setTypeTicketText('Group Chat'));
               dispatch(closePopup());
               dispatch(openPopupOthers());
-              dispatch(selectedEvent(null));
-              dispatch(setSelectedRecipients([]));
-              dispatch(changeErrorOther(false));
-              dispatch(changeErrorRecipient(false));
             }}>
             Group Chat
           </li>
@@ -68,10 +56,6 @@ const CreateTicketButton = props => {
               dispatch(setTypeTicketText('Ticket Support'));
               dispatch(closePopup());
               dispatch(openPopupOthers());
-              dispatch(selectedEvent(null));
-              dispatch(setSelectedRecipients([]));
-              dispatch(changeErrorOther(false));
-              dispatch(changeErrorRecipient(false));
             }}>
             Ticket Support
           </li>
@@ -82,9 +66,6 @@ const CreateTicketButton = props => {
                 dispatch(setTypeTicketText('Live Incident'));
                 dispatch(closePopup());
                 dispatch(openPopupLiveIncident());
-                dispatch(setSelectedRecipients([]));
-                dispatch(changeErrorInput(false));
-                dispatch(changeErrorRecipient(false));
               }}>
               Live Incident
             </li>

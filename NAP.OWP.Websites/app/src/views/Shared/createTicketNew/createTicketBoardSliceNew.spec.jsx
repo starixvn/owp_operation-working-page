@@ -26,7 +26,6 @@ describe('createTicketBoardSlice under test', () => {
       isOpenPopup: false,
       isEventChecking: false,
       isOthers: false,
-      valueSearch: '',
       valueEvent: null,
       valueOther: '',
       selectedRecipients: [],
@@ -183,20 +182,7 @@ describe('createTicketBoardSlice under test', () => {
 
     expect(state).toEqual(expectEventCheckingState);
   });
-  it('should handle searchValue', () => {
-    const initialState = {
-      valueSearch: ''
-    };
-    const action = {
-      type: includeSuggestion.type,
-      payload: 'johnny'
-    };
-    const expectState = {
-      valueSearch: 'johnny'
-    };
-    const state = createTicketBoardSlice(initialState, action);
-    expect(state).toEqual(expectState);
-  });
+
   it('should handle change other error', () => {
     const initialState = {
       errorOther: false

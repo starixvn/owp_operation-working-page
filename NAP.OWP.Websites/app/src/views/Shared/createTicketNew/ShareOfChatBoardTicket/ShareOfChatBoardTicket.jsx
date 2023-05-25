@@ -56,7 +56,6 @@ const ShareOfChatBoardTicket = props => {
         })
       );
       setSubTypeOption([...option, { value: 0, label: '' }]);
-      dispatch(setSubTypeSelected(...[{ value: 0, label: '' }]));
     })();
   }, [ticketType]);
 

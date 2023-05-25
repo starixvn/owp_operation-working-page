@@ -6,9 +6,8 @@ import { otherSubject, changeErrorOther } from '../createTicketBoardSliceNew';
 
 const Other = () => {
   const dispatch = useStableDispatch();
-  const { errorOther, errorTextField, typeTicketText } = useSelector(
-    state => state.createTicketBoard
-  );
+  const { errorOther, errorTextField, typeTicketText, valueOther } =
+    useSelector(state => state.createTicketBoard);
   const handleOnChangeSubject = event => {
     dispatch(otherSubject(event.target.value));
     dispatch(changeErrorOther(false));
@@ -34,7 +33,8 @@ const Other = () => {
             error={errorOther}
             margin='normal'
             onChange={handleOnChangeSubject}
-            variant="standard"
+            variant='standard'
+            value={valueOther}
           />
         </div>
       </div>
