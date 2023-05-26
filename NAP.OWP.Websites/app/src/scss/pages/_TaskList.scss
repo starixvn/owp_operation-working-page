@@ -230,7 +230,7 @@
   &.other-time {
     background: #ea1b21;
   }
-  &.info-site-time{
+  &.info-site-time {
     background: #21a6e4;
   }
 
@@ -1128,4 +1128,10 @@ button.toast-close-button {
   -webkit-animation: spin 4s linear infinite;
   -moz-animation: spin 4s linear infinite;
   animation: spin 4s linear infinite;
+}
+.line-message {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
