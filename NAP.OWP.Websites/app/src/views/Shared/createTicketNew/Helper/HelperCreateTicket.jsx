@@ -58,14 +58,7 @@ const saveFileToBackEnd = async files => {
 };
 const filterResult = value => {
   const event = value.map(x => x.eventInfoViewModel);
-  const result = event.reduce((a, b) => a.concat(b), []);
-  result.sort(
-    (a, b) =>
-      a.leagueName.localeCompare(b.leagueName) ||
-      new Date(a.eventDateTimeGmt8).getTime() -
-        new Date(b.eventDateTimeGmt8).getTime()
-  );
-  return result;
+  return event.reduce((a, b) => a.concat(b), []);
 };
 
 export {

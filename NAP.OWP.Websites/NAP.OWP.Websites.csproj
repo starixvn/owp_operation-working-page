@@ -2726,7 +2726,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-a8b5872f.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-1ca3675b.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-9d98a43a.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />
