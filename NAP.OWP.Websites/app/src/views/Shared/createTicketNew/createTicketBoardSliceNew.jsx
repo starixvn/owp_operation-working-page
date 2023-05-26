@@ -145,6 +145,7 @@ const createTicketBoardSliceNew = createSlice({
         state.isOpenCreateTicketInLGA = true;
         state.errorRecipient = false;
         state.subTypeSelected = [{ value: 0, label: '' }];
+        state.selectedRecipients = [];
       }
     }
   }
