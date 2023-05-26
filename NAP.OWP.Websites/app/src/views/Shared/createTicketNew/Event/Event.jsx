@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import Badge from '@mui/material/Badge';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -13,7 +13,7 @@ import {
 } from '../createTicketBoardSliceNew';
 import { filterResult } from '../Helper/HelperCreateTicket';
 import Service from '../Service';
-import { isEmpty } from 'lodash';
+import { isEmpty, debounce } from 'lodash';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -26,7 +26,6 @@ const Event = props => {
   const { errorInput, eventChecking } = useSelector(
     state => state.createTicketBoard
   );
-  const [inputText, setInputText] = useState('');
   const [options, setOptions] = useState([]);
   const [open, setOpen] = useState(false);
   const [eventOption, setEventOption] = useState([]);
@@ -46,14 +45,18 @@ const Event = props => {
   const handleSearch = event => {
     if (!event.target.value) {
       setEventOption([]);
-      return;
+    } else {
+      debounceSearchEventOptions(event.target.value);
     }
-    setInputText(event.target.value);
   };
+  const debounceSearchEventOptions = useCallback(
+    debounce(nextValue => getSearchEventOptions(nextValue), 600),
+    []
+  );
 
-  const getSearchEventOptions = async (value, type) => {
+  const getSearchEventOptions = async value => {
     if (value.length >= 2) {
-      const result = await Service.event(value, type);
+      const result = await Service.event(value, ticketType);
       dispatch(setEventChecking(result.data));
       const optionResult = filterResult(result.data);
       setOptions(optionResult);
@@ -71,10 +74,6 @@ const Event = props => {
       setOpen(false);
     }
   }, [eventOption]);
-
-  useEffect(() => {
-    getSearchEventOptions(inputText, ticketType);
-  }, [inputText, ticketType]);
 
   return (
     <>
@@ -101,7 +100,7 @@ const Event = props => {
               onInputChange={handleSearch}
               onClose={() => setOpen(false)}
               onOpen={() => {
-                if (inputText.length >= 2 && !isEmpty(options[0])) {
+                if (!isEmpty(options[0])) {
                   setOpen(true);
                 }
               }}
