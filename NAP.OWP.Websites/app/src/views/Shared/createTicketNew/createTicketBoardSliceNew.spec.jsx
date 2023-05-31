@@ -1,10 +1,7 @@
 import createTicketBoardSlice, {
-  openPopupNewAdd,
-  closePopupNewAdd,
   closeCreatePopup,
   openPopupEventChecking,
   openPopupOthers,
-  includeSuggestion,
   selectedEvent,
   otherSubject,
   setSelectedRecipients,
@@ -12,21 +9,19 @@ import createTicketBoardSlice, {
   changeErrorRecipient,
   changeErrorOther,
   changeErrorTextField,
-  setRecipientPreMatch,
   setEventChecking,
   setTypeTicketText,
   setSubTypeOption,
-  setSubTypeSelected
+  setSubTypeSelected,
+  openPopupLiveIncident
 } from './createTicketBoardSliceNew';
 
 describe('createTicketBoardSlice under test', () => {
   it('should return initial state', () => {
     expect(createTicketBoardSlice(undefined, {})).toEqual({
-      isOpenCreateInPreMatch: false,
       isOpenPopup: false,
       isEventChecking: false,
       isOthers: false,
-      valueSearch: '',
       valueEvent: null,
       valueOther: '',
       selectedRecipients: [],
@@ -163,12 +158,22 @@ describe('createTicketBoardSlice under test', () => {
   });
   it('should handle open event checking popup', () => {
     const initialState = {
+      subTypeSelected: [],
+      errorInput: true,
+      errorRecipient: true,
+      valueEvent: null,
+      selectedRecipients: [],
       isOpenPopup: false,
       isEventChecking: false,
       isOthers: false,
       isLiveIncident: false
     };
     const expectEventCheckingState = {
+      subTypeSelected: [{ value: 0, label: '' }],
+      errorInput: false,
+      errorRecipient: false,
+      valueEvent: null,
+      selectedRecipients: [],
       isOpenPopup: true,
       isEventChecking: true,
       isOthers: false,
@@ -183,20 +188,40 @@ describe('createTicketBoardSlice under test', () => {
 
     expect(state).toEqual(expectEventCheckingState);
   });
-  it('should handle searchValue', () => {
+
+  it('should handle open event live incident popup', () => {
     const initialState = {
-      valueSearch: ''
+      subTypeSelected: [],
+      errorInput: true,
+      errorRecipient: true,
+      valueEvent: null,
+      selectedRecipients: [],
+      isOpenPopup: false,
+      isEventChecking: false,
+      isOthers: false,
+      isLiveIncident: false
     };
+    const expectEventCheckingState = {
+      subTypeSelected: [{ value: 0, label: '' }],
+      errorInput: false,
+      errorRecipient: false,
+      valueEvent: null,
+      selectedRecipients: [],
+      isOpenPopup: true,
+      isEventChecking: false,
+      isOthers: false,
+      isLiveIncident: true
+    };
+
     const action = {
-      type: includeSuggestion.type,
-      payload: 'johnny'
+      type: openPopupLiveIncident.type
     };
-    const expectState = {
-      valueSearch: 'johnny'
-    };
+
     const state = createTicketBoardSlice(initialState, action);
-    expect(state).toEqual(expectState);
+
+    expect(state).toEqual(expectEventCheckingState);
   });
+
   it('should handle change other error', () => {
     const initialState = {
       errorOther: false
@@ -287,14 +312,26 @@ describe('createTicketBoardSlice under test', () => {
   });
   it('should handle open others popup', () => {
     const initialState = {
+      subTypeSelected: [],
+      errorOther: false,
+      errorRecipient: false,
+      valueOther: '',
+      selectedRecipients: [],
       isOpenPopup: false,
       isEventChecking: false,
-      isOthers: false
+      isOthers: false,
+      isLiveIncident: false
     };
     const expectOthersState = {
+      subTypeSelected: [{ value: 0, label: '' }],
+      errorOther: false,
+      errorRecipient: false,
+      valueOther: '',
+      selectedRecipients: [],
       isOpenPopup: true,
       isEventChecking: false,
-      isOthers: true
+      isOthers: true,
+      isLiveIncident: false
     };
     const action = {
       type: openPopupOthers.type
@@ -320,36 +357,7 @@ describe('createTicketBoardSlice under test', () => {
 
     expect(state).toEqual(expectOthersState);
   });
-  it('should handle open create ticket of pre-match', () => {
-    const initialState = {
-      isOpenCreateInPreMatch: false
-    };
-    const expectOthersState = {
-      isOpenCreateInPreMatch: true
-    };
-    const action = {
-      type: openPopupNewAdd.type
-    };
 
-    const state = createTicketBoardSlice(initialState, action);
-
-    expect(state).toEqual(expectOthersState);
-  });
-  it('should handle close create ticket of pre-match', () => {
-    const initialState = {
-      isOpenCreateInPreMatch: true
-    };
-    const expectOthersState = {
-      isOpenCreateInPreMatch: false
-    };
-    const action = {
-      type: closePopupNewAdd.type
-    };
-
-    const state = createTicketBoardSlice(initialState, action);
-
-    expect(state).toEqual(expectOthersState);
-  });
   it('should handle close popup', () => {
     const initialState = {
       isOpenPopup: true,

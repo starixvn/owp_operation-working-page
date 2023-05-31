@@ -12,8 +12,7 @@ import { useStableDispatch } from '../TicketCenter/ImportTicketCenterHelperNativ
 import {
   changeErrorRecipient,
   closeCreatePopup,
-  openPopupCreateTicketInLGA,
-  setSubTypeSelected
+  openPopupCreateTicketInLGA
 } from '../Shared/createTicketNew/createTicketBoardSliceNew';
 import {
   getModelByRowIndex,
@@ -50,8 +49,6 @@ const PopupManagement = () => {
     stableDispatch(closePopup());
     stableDispatch(closeCreatePopup());
     stableDispatch(openPopupCreateTicketInLGA());
-    stableDispatch(changeErrorRecipient(false));
-    stableDispatch(setSubTypeSelected([...[{ value: 0, label: '' }]]));
   };
 
   const handleOpenMessage = async data => {

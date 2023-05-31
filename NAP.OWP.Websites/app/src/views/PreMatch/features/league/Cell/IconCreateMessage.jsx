@@ -14,7 +14,6 @@ import {
 } from '../../../../Shared/createTicketNew/createTicketBoardSliceNew';
 import useStableDispatch from '../../../../Shared/customHook/useStableDispatch';
 import { backupGetIssueModel } from '../../signalR/signalRSlice';
-import { ticketType } from '../../../const/const';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -34,10 +33,10 @@ const IconCreateMessage = props => {
     };
     dispatch(getModelByRowIndex(model));
     dispatch(backupGetIssueModel(model));
-    dispatch(openTicketPopup());
-    dispatch(changeErrorRecipient(false));
     dispatch(closePopup());
     dispatch(closeCreatePopup());
+    dispatch(openTicketPopup());
+    dispatch(changeErrorRecipient(false));
     dispatch(setSubTypeSelected([...[{ value: 0, label: '' }]]));
   };
 

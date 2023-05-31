@@ -4,12 +4,10 @@ const createTicketBoardSliceNew = createSlice({
   name: 'createTicketBoardNew',
   initialState: {
     isOpenCreateTicketInLGA: false,
-    isOpenCreateInPreMatch: false,
     isOpenPopup: false,
     isEventChecking: false,
     isLiveIncident: false,
     isOthers: false,
-    valueSearch: '',
     valueEvent: null,
     valueOther: '',
     selectedRecipients: [],
@@ -43,16 +41,6 @@ const createTicketBoardSliceNew = createSlice({
     setTypeTicketText: {
       reducer: (state, action) => {
         state.typeTicketText = action.payload;
-      }
-    },
-    closePopupNewAdd: {
-      reducer: state => {
-        state.isOpenCreateInPreMatch = false;
-      }
-    },
-    openPopupNewAdd: {
-      reducer: state => {
-        state.isOpenCreateInPreMatch = true;
       }
     },
     setRecipientAssigned: {
@@ -100,11 +88,6 @@ const createTicketBoardSliceNew = createSlice({
         state.valueEvent = action.payload;
       }
     },
-    includeSuggestion: {
-      reducer: (state, action) => {
-        state.valueSearch = `${action.payload}`;
-      }
-    },
     closeCreatePopup: {
       reducer: state => {
         state.isOpenPopup = false;
@@ -115,6 +98,11 @@ const createTicketBoardSliceNew = createSlice({
     },
     openPopupEventChecking: {
       reducer: state => {
+        state.subTypeSelected = [{ value: 0, label: '' }];
+        state.errorInput = false;
+        state.errorRecipient = false;
+        state.valueEvent = null;
+        state.selectedRecipients = [];
         state.isOpenPopup = true;
         state.isEventChecking = true;
         state.isLiveIncident = false;
@@ -123,6 +111,11 @@ const createTicketBoardSliceNew = createSlice({
     },
     openPopupLiveIncident: {
       reducer: state => {
+        state.subTypeSelected = [{ value: 0, label: '' }];
+        state.errorInput = false;
+        state.errorRecipient = false;
+        state.valueEvent = null;
+        state.selectedRecipients = [];
         state.isOpenPopup = true;
         state.isLiveIncident = true;
         state.isEventChecking = false;
@@ -131,9 +124,15 @@ const createTicketBoardSliceNew = createSlice({
     },
     openPopupOthers: {
       reducer: state => {
+        state.subTypeSelected = [{ value: 0, label: '' }];
+        state.selectedRecipients = [];
+        state.errorOther = false;
+        state.errorRecipient = false;
+        state.valueOther = '';
         state.isOpenPopup = true;
         state.isOthers = true;
         state.isEventChecking = false;
+        state.isLiveIncident = false;
       }
     },
     closePopupCreateTicketInLGA: {
@@ -144,6 +143,9 @@ const createTicketBoardSliceNew = createSlice({
     openPopupCreateTicketInLGA: {
       reducer: state => {
         state.isOpenCreateTicketInLGA = true;
+        state.errorRecipient = false;
+        state.subTypeSelected = [{ value: 0, label: '' }];
+        state.selectedRecipients = [];
       }
     }
   }
@@ -151,13 +153,10 @@ const createTicketBoardSliceNew = createSlice({
 
 const { actions, reducer } = createTicketBoardSliceNew;
 const {
-  openPopupNewAdd,
-  closePopupNewAdd,
   closeCreatePopup,
   openPopupEventChecking,
   openPopupLiveIncident,
   openPopupOthers,
-  includeSuggestion,
   selectedEvent,
   otherSubject,
   changeErrorInput,
@@ -176,13 +175,10 @@ const {
 } = actions;
 
 export {
-  openPopupNewAdd,
-  closePopupNewAdd,
   closeCreatePopup,
   openPopupEventChecking,
   openPopupLiveIncident,
   openPopupOthers,
-  includeSuggestion,
   selectedEvent,
   otherSubject,
   changeErrorInput,

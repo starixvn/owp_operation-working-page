@@ -27,7 +27,6 @@ import {
   updatedIconIssueLeagueRow,
   updatedIconIssueMatchRow
 } from '../shiftSlice/shiftSlice';
-import { ticketType } from '../../../const/const';
 import { useSelector } from 'react-redux';
 import TicketListPopupCommon from '../../../../Shared/ticketList/TicketListPopupCommon';
 
@@ -86,11 +85,11 @@ const TicketListPopup = props => {
   const handleOpenCreateTicket = () => {
     stableDispatch(getModelByRowIndex(model));
     stableDispatch(backupGetIssueModel(model));
-    stableDispatch(setSubTypeSelected(...[{ value: 0, label: '' }]));
-    stableDispatch(openTicketPopup());
-    stableDispatch(changeErrorRecipient(false));
     stableDispatch(closePopup());
     stableDispatch(closeCreatePopup());
+    stableDispatch(openTicketPopup());
+    stableDispatch(setSubTypeSelected(...[{ value: 0, label: '' }]));
+    stableDispatch(changeErrorRecipient(false));
   };
 
   return (

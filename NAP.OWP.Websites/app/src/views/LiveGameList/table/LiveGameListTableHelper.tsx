@@ -155,12 +155,7 @@ const searchCommonInfo = (
   keyword: string
 ) =>
   source.filter(x =>
-    keys.some(i =>
-      x[i]
-        ?.toString()
-        .toLowerCase()
-        .includes(keyword.trim())
-    )
+    keys.some(i => x[i]?.toString().toLowerCase().includes(keyword.trim()))
   );
 
 const searchTraderInfo = (
@@ -250,16 +245,38 @@ const filterIssueByUnreadMessageValue = (
   isShowUnreadMessOnly: boolean
 ) => entities.filter(d => !d.IsRead || !isShowUnreadMessOnly);
 
-const filterData = (entities: MatchInfo[]) => (
-  isShowUnreadMessOnly: boolean
-) => {
-  const data = filterIssueByUnreadMessageValue(entities, isShowUnreadMessOnly);
-  return (filters: FilterState[]) =>
-    filterDataTable(data, filters, filterDataTableByCriteria);
+const filterData =
+  (entities: MatchInfo[]) => (isShowUnreadMessOnly: boolean) => {
+    const data = filterIssueByUnreadMessageValue(
+      entities,
+      isShowUnreadMessOnly
+    );
+    return (filters: FilterState[]) =>
+      filterDataTable(data, filters, filterDataTableByCriteria);
+  };
+
+const sortDataAsc = (entities: MatchInfo[]) =>
+  [...entities].sort(
+    (src, dest) =>
+      new Date(src.EventDateTime).getTime() -
+        new Date(dest.EventDateTime).getTime() ||
+      src.MatchNo.localeCompare(dest.MatchNo)
+  );
+
+const sortDataDesc = (entities: MatchInfo[]) =>
+  [...entities].sort(
+    (src, dest) =>
+      new Date(dest.EventDateTime).getTime() -
+        new Date(src.EventDateTime).getTime() ||
+      dest.MatchNo.localeCompare(src.MatchNo)
+  );
+
+export {
+  buildColumnKOTime,
+  selectTable,
+  filterData,
+  calculateRowHeight,
+  buildColorRowTable,
+  sortDataAsc,
+  sortDataDesc
 };
-
-const sortDataAsc = (entities: MatchInfo[]) => [...entities].sort((src, dest) => new Date(src.EventDateTime).getTime() - new Date(dest.EventDateTime).getTime() || src.MatchNo.localeCompare(dest.MatchNo));
-
-const sortDataDesc = (entities: MatchInfo[]) => [...entities].sort((src, dest) => new Date(dest.EventDateTime).getTime() - new Date(src.EventDateTime).getTime() || dest.MatchNo.localeCompare(src.MatchNo));
-
-export { buildColumnKOTime, selectTable, filterData, calculateRowHeight, buildColorRowTable, sortDataAsc, sortDataDesc };

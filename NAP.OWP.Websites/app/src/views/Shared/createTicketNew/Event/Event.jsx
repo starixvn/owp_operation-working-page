@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import Badge from '@mui/material/Badge';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -6,14 +6,14 @@ import { formatTime } from '../../DateTime/dateTimeHelper';
 import { useSelector } from 'react-redux';
 import useStableDispatch from '../../customHook/useStableDispatch';
 import {
-  includeSuggestion,
   selectedEvent,
   changeErrorInput,
   setEventChecking,
   setRecipientAssigned
 } from '../createTicketBoardSliceNew';
+import { filterResult } from '../Helper/HelperCreateTicket';
 import Service from '../Service';
-import { isEmpty } from 'lodash';
+import { isEmpty, debounce } from 'lodash';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -23,8 +23,6 @@ const propTypes = {
 const Event = props => {
   const { typeTicketText, ticketType } = props;
   const dispatch = useStableDispatch();
-  const inputText = useSelector(state => state.createTicketBoard).valueSearch;
-
   const { errorInput, eventChecking } = useSelector(
     state => state.createTicketBoard
   );
@@ -43,24 +41,31 @@ const Event = props => {
     dispatch(selectedEvent(value));
     dispatch(changeErrorInput(false));
   };
-  const filterResult = value => {
-    const event = value.map(x => x.eventInfoViewModel);
-    const result = event.reduce((a, b) => a.concat(b), []);
-    result.sort(
-      (a, b) =>
-        a.leagueName.localeCompare(b.leagueName) ||
-        new Date(a.eventDateTimeGmt8).getTime() -
-          new Date(b.eventDateTimeGmt8).getTime()
-    );
-    return result;
-  };
+
   const handleSearch = event => {
     if (!event.target.value) {
-      dispatch(includeSuggestion('undefined'));
       setEventOption([]);
-      return;
+    } else {
+      debounceSearchEventOptions(event.target.value);
     }
-    dispatch(includeSuggestion(event.target.value));
+  };
+  const debounceSearchEventOptions = useCallback(
+    debounce(nextValue => getSearchEventOptions(nextValue), 600),
+    []
+  );
+
+  const getSearchEventOptions = async value => {
+    if (value.length >= 2) {
+      const result = await Service.event(value, ticketType);
+      dispatch(setEventChecking(result.data));
+      const optionResult = filterResult(result.data);
+      setOptions(optionResult);
+      setOpen(true);
+    } else {
+      dispatch(setEventChecking([]));
+      setOptions([]);
+      setOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -70,28 +75,6 @@ const Event = props => {
     }
   }, [eventOption]);
 
-  useEffect(() => {
-    const doGetEvents = async () => {
-      const result = await Service.event(inputText, ticketType);
-      dispatch(setEventChecking(result.data));
-      if (result.data) {
-        const optionResult = filterResult(result.data);
-        setOptions(optionResult);
-      } else {
-        setOptions([]);
-        setOpen(false);
-      }
-    };
-    if (inputText === 'undefined') {
-      return;
-    }
-    if (inputText.length >= 2) {
-      doGetEvents();
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  }, [dispatch, inputText, ticketType]);
   return (
     <>
       <div className='header-popup'>
@@ -117,7 +100,7 @@ const Event = props => {
               onInputChange={handleSearch}
               onClose={() => setOpen(false)}
               onOpen={() => {
-                if (inputText.length >= 2 && !isEmpty(options[0])) {
+                if (!isEmpty(options[0])) {
                   setOpen(true);
                 }
               }}

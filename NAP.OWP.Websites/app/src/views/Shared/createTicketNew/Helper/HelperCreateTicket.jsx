@@ -56,11 +56,16 @@ const saveFileToBackEnd = async files => {
   const fileId = response.data;
   return fileId;
 };
+const filterResult = value => {
+  const event = value.map(x => x.eventInfoViewModel);
+  return event.reduce((a, b) => a.concat(b), []);
+};
 
 export {
   informResult,
   formatRecipientModel,
   getRecipientDefaultBySubType,
   saveFileToBackEnd,
-  getSubTypeByType
+  getSubTypeByType,
+  filterResult
 };

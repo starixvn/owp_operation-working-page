@@ -8,7 +8,6 @@ import {
   getModelByRowIndex
 } from '../../chatBoardNew/chatBoardSlice';
 import {
-  changeErrorRecipient,
   closeCreatePopup,
   openPopupCreateTicketInLGA
 } from '../../createTicketNew/createTicketBoardSliceNew';
@@ -32,7 +31,6 @@ const TicketCellCommon = props => {
     closeAnotherPopup();
     stableDispatch(getModelByRowIndex(dataSource[rowIndex]));
     stableDispatch(openPopupCreateTicketInLGA());
-    stableDispatch(changeErrorRecipient(false));
   };
 
   return (
