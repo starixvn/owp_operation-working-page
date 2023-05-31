@@ -32,7 +32,7 @@ const copySlice = createSlice({
             value: copiedValue,
             rowIndex
           });
-          state.copiedValue = state.copiedValue.sort(compareValues);
+          state.copiedValue = [...state.copiedValue].sort(compareValues);
         } else {
           copyInfo.value = copiedValue;
         }
