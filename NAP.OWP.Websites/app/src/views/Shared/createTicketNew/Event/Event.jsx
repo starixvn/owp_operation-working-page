@@ -35,7 +35,8 @@ const Event = props => {
       const assignee = eventChecking.findIndex(
         x => x.eventInfoViewModel[0].owpLeagueId === value.owpLeagueId
       );
-      dispatch(setRecipientAssigned(eventChecking[assignee].userViewModel));
+      eventChecking[assignee] &&
+        dispatch(setRecipientAssigned(eventChecking[assignee].userViewModel));
     }
     setEventOption(value);
     dispatch(selectedEvent(value));
