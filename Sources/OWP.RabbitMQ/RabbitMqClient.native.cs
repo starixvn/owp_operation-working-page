@@ -49,11 +49,13 @@ namespace OWP.RabbitMQ
 
         public void PublishRequestMessage(RequestBaseModel message)
         {
+            const int EXPIRATION_TIME = 1000 * 60 * 30;
             var json = JsonConvert.SerializeObject(message);
             var messageBytes = Encoding.UTF8.GetBytes(json);
 
             var props = channel.CreateBasicProperties();
             props.Type = message.RoutingKey;
+            props.Expiration = EXPIRATION_TIME.ToString();
 
             channel.BasicPublish(
                 exchange: string.Empty,
