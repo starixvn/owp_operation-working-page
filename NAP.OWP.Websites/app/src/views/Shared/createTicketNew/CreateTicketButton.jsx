@@ -70,6 +70,15 @@ const CreateTicketButton = props => {
               Live Incident
             </li>
           )}
+          <li
+            className='button-work-log'
+            onClick={() => {
+              dispatch(setTypeTicketText('Live Incident'));
+              dispatch(closePopup());
+              dispatch(openPopupLiveIncident());
+            }}>
+            Log Work
+          </li>
         </div>
       </div>
     </div>
