@@ -251,6 +251,9 @@
         transition: background 0.2s ease;
         background: #eee;
         color: #a2a2a2;
+        .mdi-icon {;
+            margin: 0;
+          }
       }
 
       .mdi-icon {
