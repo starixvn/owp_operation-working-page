@@ -17,3 +17,9 @@ export const PES_FLAG_21 = {
   condition: 'PES 21',
   rootPath: 'wwwroot/images/Flags/PES21'
 };
+
+export const FIFA_FLAG_23 = {
+  type: 'FIFA 23',
+  condition: 'FIFA 23',
+  rootPath: 'wwwroot/images/Flags/FIFA23'
+};
