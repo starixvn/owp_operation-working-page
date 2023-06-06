@@ -3,10 +3,12 @@ import {
   FIFA_FLAG,
   PES_FLAG,
   PES_FLAG_21,
+  FIFA_FLAG_23,
   SABA
 } from './FlagStore/FlagsCondition';
 import { PES_IMAGE_STORE } from './FlagStore/PES';
 import { PES_21_IMAGE_STORE } from './FlagStore/PES21';
+import { FIFA_23_IMAGE_STORE } from './FlagStore/FIFA23';
 
 export const getFlagFromStore = props => {
   const { flagName, flagNameLibrary, flagURL } = props;
@@ -39,6 +41,12 @@ export const flagFactory = props => {
         flagName,
         flagNameLibrary: PES_21_IMAGE_STORE,
         flagURL: PES_FLAG_21.rootPath
+      });
+    case 'FIFA 23':
+      return getFlagFromStore({
+        flagName,
+        flagNameLibrary: FIFA_23_IMAGE_STORE,
+        flagURL: FIFA_FLAG_23.rootPath
       });
     default:
       return null;
@@ -99,6 +107,11 @@ export const checkLeague = props => {
     ...PES_FLAG
   });
 
+  const fifa23 = testRegex({
+    leagueName,
+    ...FIFA_FLAG_23
+  });
+
   if (isSABA && pes && fifa) {
     return { isHaveFlag: null, flagInfo: null };
   }
@@ -114,6 +127,11 @@ export const checkLeague = props => {
   if (isSABA && fifa) {
     return { isHaveFlag: true, flagInfo: PES_FLAG.type };
   }
+
+  if (isSABA && fifa23) {
+    return { isHaveFlag: true, flagInfo: FIFA_FLAG_23.type };
+  }
+
   return { isHaveFlag: null, flagInfo: null };
 };
 

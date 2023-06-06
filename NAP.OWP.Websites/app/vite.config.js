@@ -61,6 +61,11 @@ export default defineConfig({
         target: netFwUrl,
         secure: false,
         changeOrigin: true
+      },
+      '/wwwroot': {
+        target: netFwUrl,
+        secure: false,
+        changeOrigin: true
       }
     },
     port: 3000
