@@ -20,8 +20,8 @@
     position: absolute;
     width: 14px;
     height: 14px;
-    top: 10px;
-    right: 25px;
+    top: 15px;
+    right: 15px;
     cursor: pointer;
 
     &:after {
@@ -118,6 +118,10 @@
   .chatBoard-Header {
     font-size: 15px;
     padding-right: 22px;
+    .close-chat-board-popup{
+      top: 5px;
+      right: -5px;
+    }
     > * {
       margin-bottom: 5px;
     }
@@ -846,6 +850,7 @@
 
 // form create ticket
 .header-popup {
+  padding-right: 10px;
   h1 {
     font-style: normal;
     font-weight: 700;
