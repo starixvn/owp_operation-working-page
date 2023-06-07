@@ -24,7 +24,7 @@ const ValidationSuccess = ({ totalRow, onClose }) => {
         ToastrWrapper.show({
           position: 'top',
           showConfirmButton: false,
-          timer: 50000,
+          timer: 2000,
           html: `<span class="os__upload--success">${message}</span>`
         });
         dispatch(resetResponse());
