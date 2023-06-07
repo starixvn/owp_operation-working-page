@@ -21,7 +21,12 @@ const ValidationSuccess = ({ totalRow, onClose }) => {
   useEffect(() => {
     (async () => {
       if (message) {
-        await ToastrWrapper.showInfo(message);
+        ToastrWrapper.show({
+          position: 'top',
+          showConfirmButton: false,
+          timer: 2000,
+          html: `<span class="os__upload--success">${message}</span>`
+        });
         dispatch(resetResponse());
         onClose();
       }

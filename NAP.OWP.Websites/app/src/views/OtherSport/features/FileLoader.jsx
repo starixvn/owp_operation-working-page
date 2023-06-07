@@ -24,11 +24,10 @@ const FileLoader = props => {
   const [TextInput, setTextInput] = useState('Drag your file here');
 
   const defaultFromDate = getCurrentDateGmtPlus8();
-  const defaultToDate = addDays(defaultFromDate, 1);
   const minDate = addDays(defaultFromDate, -1);
   const maxDate = addDays(minDate, dateRange);
   const [selectedFromDate, setSelectedFromDate] = useState(defaultFromDate);
-  const [selectedToDate, setSelectedToDate] = useState(defaultToDate);
+  const [selectedToDate, setSelectedToDate] = useState(defaultFromDate);
   const { onFileChange } = props;
 
   const handleOnChange = async event => {

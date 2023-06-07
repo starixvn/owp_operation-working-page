@@ -31,7 +31,8 @@ const WizardWrapper = ({ onClose }) => {
   const { fromDate, toDate } = useSelector(state => state.fileLoader);
   const dateNow = getCurrentDateGmtPlus8();
   const yesterday = buildDateString(addDays(dateNow, -1));
-  const handlefileChange = fileInfo => {
+
+  const handleFileChange = fileInfo => {
     file = fileInfo;
   };
 
@@ -76,7 +77,7 @@ const WizardWrapper = ({ onClose }) => {
   const wizardContent = [
     {
       validate: fileInfoIsValid,
-      component: <LazyFileLoader onFileChange={handlefileChange} />
+      component: <LazyFileLoader onFileChange={handleFileChange} />
     },
     {
       validate: validateFileContent,
@@ -97,7 +98,7 @@ const WizardWrapper = ({ onClose }) => {
     );
   };
 
-  const handleStepchange = nextStep => {
+  const handleStepChange = nextStep => {
     const canNext = wizardContent[nextStep].validate();
     if (canNext) {
       wizardContent[nextStep + 1].validate();
@@ -120,7 +121,7 @@ const WizardWrapper = ({ onClose }) => {
         defaultStep={0}
         onRenderContent={renderContentWizard}
         onClose={onClose}
-        onStepChange={handleStepchange}
+        onStepChange={handleStepChange}
         onSubmit={handleSubmit}
         onCanNext={currentStep => currentStep < totalStep - 2}
         onCanBack={currentStep =>
