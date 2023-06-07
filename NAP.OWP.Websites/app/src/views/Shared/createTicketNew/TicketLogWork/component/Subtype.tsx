@@ -8,7 +8,7 @@ type Props = {
 
 const Subtype = ({ options, handleChangeSubType, selected }: Props) => {
   return (
-    <div className='form-createTicket'>
+    <div className='form-createTicket subtype'>
       <div className='left-form'>
         <label className='label' htmlFor='subject'>
           SubType:

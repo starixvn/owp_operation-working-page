@@ -44,6 +44,8 @@ const TicketLogWorkCreator = () => {
   return (
     <div className='chat-board-popup' id='create-ticket-other-popup'>
       <Header ticketHeader='Log Work' />
+      <div className='log-work'>
+      <div className='subtype-status'>
       <Subtype
         options={subTypeOption}
         handleChangeSubType={value =>
@@ -56,6 +58,7 @@ const TicketLogWorkCreator = () => {
         selected={statusSelected}
         handleOnChange={value => setStatusSelected(value as StatusOption)}
       />
+      </div>
       <Subject
         errorValue={errorSubject}
         subjectValue={subject}
@@ -76,6 +79,7 @@ const TicketLogWorkCreator = () => {
         handleOnClosePopup={handleOnClosePopup}
         handleSubmit={handleOnSubmit}
       />
+      </div>
     </div>
   );
 };

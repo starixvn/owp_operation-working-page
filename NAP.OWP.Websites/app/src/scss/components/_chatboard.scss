@@ -1436,3 +1436,25 @@
     }
   }
 }
+// log work 
+.subtype-status{
+  display: flex;
+  justify-content: space-between;
+  .subtype{
+    width: 68%;
+    .subtype-input{
+      width: 100%;
+    }
+  }
+  .status{
+    align-items: center;
+  }
+  .input-field-select__control{
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 0;
+  }
+  .input-field-select__indicator-separator{
+    opacity: 0;
+  }
+}

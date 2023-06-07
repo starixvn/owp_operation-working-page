@@ -9,13 +9,13 @@ type Props = {
 
 const Status = ({ options, selected, handleOnChange }: Props) => {
   return (
-    <div className='form-createTicket'>
+    <div className='form-createTicket status'>
       <label>
         Status:<span className='required'>*</span>
       </label>
       <br />
       <div className='select'>
-        <Select options={options} value={selected} onChange={handleOnChange} />
+        <Select classNamePrefix='input-field-select' options={options} value={selected} onChange={handleOnChange} />
       </div>
     </div>
   );
