@@ -1979,7 +1979,6 @@
     <Content Include="wwwroot\images\Flags\PES\Zob Ahan %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\PES\Zulte Waregem %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\PES\Zurich %28V%29.jpg" />
-    <Content Include="wwwroot\live-detail\assets\js\main-04b107d1.js" />
     <Content Include="wwwroot\la-report\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\la-report\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\la-report\assets\ext\logo_text-c3062a52.svg" />
@@ -2000,7 +1999,7 @@
     <Content Include="wwwroot\live-detail\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\server-d8b2c722.css" />
-    <Content Include="wwwroot\live-detail\assets\js\main-a0d536e8.js" />
+    <Content Include="wwwroot\live-detail\assets\js\main-6bccdac8.js" />
     <Content Include="wwwroot\live-detail\favicon.ico" />
     <Content Include="wwwroot\live-detail\server.html" />
     <Content Include="wwwroot\live-game-list\assets\ext\icon-search-4037a8fe.svg" />
@@ -2773,10 +2772,6 @@
     <Content Include="wwwroot\ticket-type-recipient\favicon.ico" />
     <Content Include="wwwroot\ticket-type-recipient\server.html" />
     <Content Include="wwwroot\web.config" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\live-detail\server.cshtml" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-ea568b68.ttf" />
@@ -2801,10 +2796,6 @@
     <Content Include="wwwroot\league-management\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\league-management\server.cshtml" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\live-detail\server.cshtml" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-ea568b68.ttf" />
@@ -2886,6 +2877,10 @@
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-center\server.cshtml" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\live-detail\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
