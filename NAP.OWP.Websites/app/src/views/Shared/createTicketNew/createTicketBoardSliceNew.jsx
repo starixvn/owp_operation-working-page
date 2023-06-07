@@ -8,6 +8,7 @@ const createTicketBoardSliceNew = createSlice({
     isEventChecking: false,
     isLiveIncident: false,
     isOthers: false,
+    isOpenLogWork: false,
     valueEvent: null,
     valueOther: '',
     selectedRecipients: [],
@@ -94,6 +95,7 @@ const createTicketBoardSliceNew = createSlice({
         state.isEventChecking = false;
         state.isOthers = false;
         state.isLiveIncident = false;
+        state.isOpenLogWork = false;
       }
     },
     openPopupEventChecking: {
@@ -147,6 +149,19 @@ const createTicketBoardSliceNew = createSlice({
         state.subTypeSelected = [{ value: 0, label: '' }];
         state.selectedRecipients = [];
       }
+    },
+    openPopupLogWork: {
+      reducer: state => {
+        state.isEventChecking = false;
+        state.isLiveIncident = false;
+        state.isOthers = false;
+        state.isOpenLogWork = true;
+      }
+    },
+    closePopupLogWork: {
+      reducer: state => {
+        state.isOpenLogWork = false;
+      }
     }
   }
 });
@@ -171,7 +186,9 @@ const {
   setSubTypeOption,
   setSubTypeSelected,
   closePopupCreateTicketInLGA,
-  openPopupCreateTicketInLGA
+  openPopupCreateTicketInLGA,
+  openPopupLogWork,
+  closePopupLogWork
 } = actions;
 
 export {
@@ -193,7 +210,9 @@ export {
   setSubTypeOption,
   setSubTypeSelected,
   closePopupCreateTicketInLGA,
-  openPopupCreateTicketInLGA
+  openPopupCreateTicketInLGA,
+  openPopupLogWork,
+  closePopupLogWork
 };
 
 export default reducer;

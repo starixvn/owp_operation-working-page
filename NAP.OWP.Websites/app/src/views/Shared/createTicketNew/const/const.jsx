@@ -10,6 +10,7 @@ const URL = {
   ADD_NEW_REQUEST_OTHER: 'new-ticket-issue-other',
   ADD_NEW_REQUEST_EVENT: 'new-ticket-issue-event',
   ADD_NEW_REQUEST_LEAGUE: 'new-ticket-issue-league',
+  ADD_NEW_REQUEST_LOG_WORK: 'new-ticket-issue-log-work',
   ADD_NEW_REQUEST_LIVE_INCIDENT: 'new-ticket-issue-live-incident',
   GET_SUBTYPE: 'get-subtype',
   GET_EVENT: 'new-ticket/get-event',
@@ -36,6 +37,7 @@ const urlRequestSupport = buildRequestURL(URL.ADD_NEW_REQUEST_SUPPORT);
 const urlRequestOther = buildRequestURL(URL.ADD_NEW_REQUEST_OTHER);
 const urlRequestEvent = buildRequestURL(URL.ADD_NEW_REQUEST_EVENT);
 const urlRequestLeague = buildRequestURL(URL.ADD_NEW_REQUEST_LEAGUE);
+const urlRequestLogWork = buildRequestURL(URL.ADD_NEW_REQUEST_LOG_WORK);
 const urlRequestLiveIncident = buildRequestURL(
   URL.ADD_NEW_REQUEST_LIVE_INCIDENT
 );
@@ -63,6 +65,7 @@ export {
   URL,
   urlGetSubType,
   urlRequestSupport,
+  urlRequestLogWork,
   urlRequestOther,
   urlRequestEvent,
   urlRequestLeague,

@@ -4,7 +4,9 @@ import {
   openPopupEventChecking,
   openPopupLiveIncident,
   openPopupOthers,
-  setTypeTicketText
+  setTypeTicketText,
+  openPopupLogWork,
+  closePopupLogWork
 } from './createTicketBoardSliceNew';
 import { closePopup } from '../chatBoardNew/chatBoardSlice';
 import { BUTTON_TYPE } from './const/const';
@@ -36,6 +38,7 @@ const CreateTicketButton = props => {
               onClick={() => {
                 dispatch(setTypeTicketText('Event Checking'));
                 dispatch(closePopup());
+                dispatch(closePopupLogWork());
                 dispatch(openPopupEventChecking());
               }}>
               Event Checking
@@ -46,6 +49,7 @@ const CreateTicketButton = props => {
             onClick={() => {
               dispatch(setTypeTicketText('Group Chat'));
               dispatch(closePopup());
+              dispatch(closePopupLogWork());
               dispatch(openPopupOthers());
             }}>
             Group Chat
@@ -55,6 +59,7 @@ const CreateTicketButton = props => {
             onClick={() => {
               dispatch(setTypeTicketText('Ticket Support'));
               dispatch(closePopup());
+              dispatch(closePopupLogWork());
               dispatch(openPopupOthers());
             }}>
             Ticket Support
@@ -65,6 +70,7 @@ const CreateTicketButton = props => {
               onClick={() => {
                 dispatch(setTypeTicketText('Live Incident'));
                 dispatch(closePopup());
+                dispatch(closePopupLogWork());
                 dispatch(openPopupLiveIncident());
               }}>
               Live Incident
@@ -75,9 +81,9 @@ const CreateTicketButton = props => {
             onClick={() => {
               dispatch(setTypeTicketText('Live Incident'));
               dispatch(closePopup());
-              dispatch(openPopupLiveIncident());
+              dispatch(openPopupLogWork());
             }}>
-            Log Work
+            Ticket Log Work
           </li>
         </div>
       </div>

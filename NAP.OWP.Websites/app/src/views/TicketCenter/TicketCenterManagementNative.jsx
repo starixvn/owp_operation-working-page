@@ -52,7 +52,7 @@ const TicketCenterManagementNative = () => {
           <CreateTicketEventChecking creatorInfo={creatorInfo} />
           <CreateTicketLiveIncident creatorInfo={creatorInfo} />
           <CreateTicketBoardOther creatorInfo={creatorInfo} />
-          <TicketLogWorkCreator />
+          <TicketLogWorkCreator creatorInfo={creatorInfo} />
         </OWPBody>
       </OWPPage>
     </div>

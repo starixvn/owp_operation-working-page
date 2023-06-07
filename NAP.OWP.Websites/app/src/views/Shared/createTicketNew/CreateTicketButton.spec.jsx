@@ -44,14 +44,14 @@ describe('CreateTicketButton under test', () => {
     const { container } = render(<CreateTicketButton buttonType='my-ticket' />);
     const button = container.querySelector('.button-others');
     fireEvent.click(button);
-    expect(mockDispatch).toHaveBeenCalledTimes(3);
+    expect(mockDispatch).toHaveBeenCalledTimes(4);
   });
   it('should dispatch openPopup support when clicked', () => {
     setup(true);
     const { container } = render(<CreateTicketButton buttonType='my-ticket' />);
     const button = container.querySelector('.button-support');
     fireEvent.click(button);
-    expect(mockDispatch).toHaveBeenCalledTimes(3);
+    expect(mockDispatch).toHaveBeenCalledTimes(4);
   });
 
   it('should dispatch openPopup event when clicked', () => {

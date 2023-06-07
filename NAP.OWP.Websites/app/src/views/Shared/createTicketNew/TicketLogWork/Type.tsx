@@ -2,6 +2,7 @@ type SubType = {
   subTypeId: number;
   subTypeName: string;
 };
+
 type SubTypeOption = {
   value: number | string;
   label: string;
@@ -20,4 +21,8 @@ type Recipient = {
   recipientId: number;
   recipientType: number;
   userName: string | null;
+};
+
+type LogWorkProps = {
+  creatorInfo: Recipient;
 };

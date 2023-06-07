@@ -2,8 +2,8 @@ import React from 'react';
 import Select from 'react-select-ts';
 type Props = {
   options: SubTypeOption[];
-  handleChangeSubType: (value: SubTypeOption | null) => void;
-  selected: SubTypeOption;
+  handleChangeSubType: (value: SubTypeOption | null) => Promise<void>;
+  selected: SubTypeOption | undefined;
 };
 
 const Subtype = ({ options, handleChangeSubType, selected }: Props) => {
@@ -20,6 +20,7 @@ const Subtype = ({ options, handleChangeSubType, selected }: Props) => {
             classNamePrefix='input-field-select'
             options={options}
             value={selected}
+            onChange={handleChangeSubType}
           />
         </div>
       </div>
