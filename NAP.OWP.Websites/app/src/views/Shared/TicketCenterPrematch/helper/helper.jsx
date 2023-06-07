@@ -3,12 +3,14 @@ import { FunctionKeys } from '../../Constants';
 import getPermission from '../../permission/getPermission';
 import { isEqual } from 'lodash';
 
-const { LEAGUE, MATCH, OTHER, SUPPORT, LIVE_INCIDENT } = EVENT_TYPE;
+const { LEAGUE, MATCH, OTHER, SUPPORT, LIVE_INCIDENT, LOG_WORK } = EVENT_TYPE;
 const {
   GET_TICKET_DETAIL_LEAGUE,
   GET_TICKET_DETAIL_MATCH,
   GET_TICKET_DETAIL_OTHER,
-  GET_TICKET_DETAIL_SUPPORT
+  GET_TICKET_DETAIL_SUPPORT,
+  GET_TICKET_DETAIL_LIVE_INCIDENT,
+  GET_TICKET_DETAIL_LOG_WORK
 } = URL;
 
 const getDetailSegmentUrlByEventType = eventType => {
@@ -17,7 +19,8 @@ const getDetailSegmentUrlByEventType = eventType => {
     [MATCH]: GET_TICKET_DETAIL_MATCH,
     [OTHER]: GET_TICKET_DETAIL_OTHER,
     [SUPPORT]: GET_TICKET_DETAIL_SUPPORT,
-    [LIVE_INCIDENT]: URL.GET_TICKET_DETAIL_LIVE_INCIDENT
+    [LIVE_INCIDENT]: GET_TICKET_DETAIL_LIVE_INCIDENT,
+    [LOG_WORK]: GET_TICKET_DETAIL_LOG_WORK
   };
   return detailSegmentUrlLookupTable[eventType];
 };

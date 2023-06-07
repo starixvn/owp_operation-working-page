@@ -37,6 +37,7 @@ const chatBoardSlice = createSlice({
       awayName: '',
       subject: '',
       ticketStatus: '',
+      eventName: '',
       creatorInfo: {
         id: 0,
         userName: '',
@@ -78,46 +79,47 @@ const chatBoardSlice = createSlice({
       }
     }
   },
-  extraReducers: builder=>{
-    builder.addCase(getModelByRowIndex.pending, state => {
-      state.loading = REQUEST_STATUS.pending;
-    })
-    .addCase(getModelByRowIndex.fulfilled, (state, action) => {
-      const { ...rest } = action.payload;
-      state.loading = REQUEST_STATUS.idle;
-      state.modelByRowIndex = rest;
-    })
-    .addCase(getModelByRowIndex.rejected, (state, action) => {
-      state.loading = REQUEST_STATUS.idle;
-      state.error = action.error;
-    })
-    .addCase(saveMessage.fulfilled, (state, action) => {
-      const { index, isSaved } = action.payload;
-      state.ticketDetail.messages[index].isSaved = isSaved;
-    })
-    .addCase(getTicketDetail.fulfilled, (state, action) => {
-      state.ticketDetail = action.payload.data;
-      state.loading = REQUEST_STATUS.idle;
-      chatBoardSlice.caseReducers.openPopup(state);
-    })
-    .addCase(createNewMessage.fulfilled, (state, action) => {
-      state.loading = REQUEST_STATUS.idle;
-      state.ticketDetail.messages.push(action.payload);
-    })
-    .addCase(getTicketSubTypes.fulfilled, (state, { payload }) => {
-      state.ticketSubTypeOptions = payload;
-    })
-    .addCase(loadMoreMessageThunk.pending, state => {
-      state.loadMoreMessage = REQUEST_STATUS.pending;
-    })
-    .addCase(loadMoreMessageThunk.fulfilled, (state, { payload }) => {
-      const { canShowMoreMessage, messages } = payload;
-      state.loadMoreMessage = REQUEST_STATUS.idle;
-      state.ticketDetail.canShowMoreMessage = canShowMoreMessage;
-      state.ticketDetail.messages = messages.concat(
-        state.ticketDetail.messages
-      );
-    });
+  extraReducers: builder => {
+    builder
+      .addCase(getModelByRowIndex.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(getModelByRowIndex.fulfilled, (state, action) => {
+        const { ...rest } = action.payload;
+        state.loading = REQUEST_STATUS.idle;
+        state.modelByRowIndex = rest;
+      })
+      .addCase(getModelByRowIndex.rejected, (state, action) => {
+        state.loading = REQUEST_STATUS.idle;
+        state.error = action.error;
+      })
+      .addCase(saveMessage.fulfilled, (state, action) => {
+        const { index, isSaved } = action.payload;
+        state.ticketDetail.messages[index].isSaved = isSaved;
+      })
+      .addCase(getTicketDetail.fulfilled, (state, action) => {
+        state.ticketDetail = action.payload.data;
+        state.loading = REQUEST_STATUS.idle;
+        chatBoardSlice.caseReducers.openPopup(state);
+      })
+      .addCase(createNewMessage.fulfilled, (state, action) => {
+        state.loading = REQUEST_STATUS.idle;
+        state.ticketDetail.messages.push(action.payload);
+      })
+      .addCase(getTicketSubTypes.fulfilled, (state, { payload }) => {
+        state.ticketSubTypeOptions = payload;
+      })
+      .addCase(loadMoreMessageThunk.pending, state => {
+        state.loadMoreMessage = REQUEST_STATUS.pending;
+      })
+      .addCase(loadMoreMessageThunk.fulfilled, (state, { payload }) => {
+        const { canShowMoreMessage, messages } = payload;
+        state.loadMoreMessage = REQUEST_STATUS.idle;
+        state.ticketDetail.canShowMoreMessage = canShowMoreMessage;
+        state.ticketDetail.messages = messages.concat(
+          state.ticketDetail.messages
+        );
+      });
   }
 });
 
