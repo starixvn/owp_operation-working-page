@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32802.440
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAP.OWP.Websites", "NAP.OWP.Websites\NAP.OWP.Websites.csproj", "{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.NAP.OWP.Core", "Fanex.NAP.OWP.Core\Fanex.NAP.OWP.Core.csproj", "{58EAF1C1-E20F-4D8A-899A-6F6AA09D5324}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.NAP.OWP.EventManagement", "Fanex.NAP.OWP.EventManagement\Fanex.NAP.OWP.EventManagement.csproj", "{0D8DF69F-AA84-412D-BDA6-2ED61678E380}"
@@ -95,16 +93,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{
 		SonarQube\nap-owp\CSharp\SonarLint.xml = SonarQube\nap-owp\CSharp\SonarLint.xml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAP.OWP.Websites", "NAP.OWP.Websites\NAP.OWP.Websites.csproj", "{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{58EAF1C1-E20F-4D8A-899A-6F6AA09D5324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58EAF1C1-E20F-4D8A-899A-6F6AA09D5324}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58EAF1C1-E20F-4D8A-899A-6F6AA09D5324}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -229,6 +225,10 @@ Global
 		{D0D2F3CC-5DB7-45A7-B294-6F8B23C0675A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0D2F3CC-5DB7-45A7-B294-6F8B23C0675A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0D2F3CC-5DB7-45A7-B294-6F8B23C0675A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76E2D4A-C356-4CF3-B5CE-06DBA70ECBB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

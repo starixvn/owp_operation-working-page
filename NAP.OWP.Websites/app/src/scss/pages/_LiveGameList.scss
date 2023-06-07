@@ -9,6 +9,10 @@
 .public_fixedDataTable_topShadow {
   z-index: 0;
 }
+.live-game-list-header-header {
+  position: relative;
+  z-index: 20;
+}
 .filter-control {
   flex: 0 1;
   display: flex;
@@ -364,7 +368,7 @@
   &.other-time {
     background: #ea1b21;
   }
-  
+
   &.info-site-time {
     background: #21a6e4;
   }
@@ -1393,4 +1397,10 @@ button.toast-close-button {
   to {
     transform: rotate(-360deg);
   }
+}
+.line-message {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
