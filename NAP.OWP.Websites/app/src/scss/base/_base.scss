@@ -149,7 +149,9 @@ main {
         margin: 0;
         font-weight: 400;
         font-size: 15px!important;
-        color: #000000;
+        .os__upload--success{
+          color: #1C8C00;
+        }
       }
     }
   }
