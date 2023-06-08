@@ -10,7 +10,7 @@ describe('test ticket detail header', () => {
       subject: 'Other subject',
       homeName: '',
       awayName: '',
-      owpLeagueName: 'League',
+      eventName: 'League',
       koTime: new Date()
     };
     const { getByText } = render(<TicketDetailHeader {...props} />);
@@ -25,7 +25,7 @@ describe('test ticket detail header', () => {
       subject: '',
       homeName: 'Team A',
       awayName: 'Team B',
-      owpLeagueName: 'League',
+      eventName: 'League',
       koTime: new Date()
     };
     const { getByText } = render(<TicketDetailHeader {...props} />);
@@ -40,7 +40,7 @@ describe('test ticket detail header', () => {
       subject: '',
       homeName: 'Team A',
       awayName: 'Team B',
-      owpLeagueName: 'League',
+      eventName: 'League',
       koTime: new Date()
     };
     const { getByText } = render(<TicketDetailHeader {...props} />);

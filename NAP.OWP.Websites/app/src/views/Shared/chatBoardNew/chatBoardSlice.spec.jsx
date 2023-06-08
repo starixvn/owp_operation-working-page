@@ -39,6 +39,7 @@ describe('unit test for chatBoardSlice', () => {
         owpAwayId: '',
         homeName: '',
         awayName: '',
+        eventName: '',
         canShowMoreMessage: false,
         subject: '',
         creatorInfo: {
