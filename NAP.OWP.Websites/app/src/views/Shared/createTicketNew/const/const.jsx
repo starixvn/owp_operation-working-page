@@ -16,7 +16,8 @@ const URL = {
   GET_EVENT: 'new-ticket/get-event',
   GET_EVENT_LGA: 'new-ticket/get-event-lga',
   UPLOAD_MULTIPLE: 'multiple-upload',
-  GET_ASSIGNEES_LGA: 'get-assignees-lga'
+  GET_ASSIGNEES_LGA: 'get-assignees-lga',
+  GET_MATCH_INFO: 'get-match-info'
 };
 const BUTTON_TYPE = {
   LIVE_GAME: 'live-game',
@@ -41,6 +42,8 @@ const urlRequestLogWork = buildRequestURL(URL.ADD_NEW_REQUEST_LOG_WORK);
 const urlRequestLiveIncident = buildRequestURL(
   URL.ADD_NEW_REQUEST_LIVE_INCIDENT
 );
+const urlGetMatchInfo = buildRequestURL(URL.GET_MATCH_INFO);
+
 const urlGetAssigneesLGA = (() => {
   const netCoreUrlEvent = 'api-netcore/TicketEvent';
   const netFwURLEvent = 'api/TicketEvent';
@@ -74,6 +77,7 @@ export {
   urlGetEvent,
   urlGetRecipient,
   urlGetEventLGA,
+  urlGetMatchInfo,
   RECIPIENT_TYPE,
   urlGetAssigneesLGA,
   BUTTON_TYPE

@@ -15,12 +15,14 @@ import Status from './component/Status';
 import Recipient from './component/Recipient';
 import Comment from './component/Comment';
 import Attachments from '../Attachments/Attachments';
+
 import ButtonGroup from './component/ButtonGroup';
 import { getSubjectBySubtype, isMatchCheckType } from './LogWorkHelper';
 import { useSelector } from 'react-redux';
 import { closePopupLogWork } from './../createTicketBoardSliceNew';
-import { post } from '../../Service/Service';
-import { urlRequestLogWork } from '../const/const';
+import { post, get } from '../../Service/Service';
+import { urlGetMatchInfo, urlRequestLogWork } from '../const/const';
+import EventSubject from './component/EventSubject';
 
 const TicketLogWorkCreator = ({ creatorInfo }: LogWorkProps) => {
   const [subject, setSubject] = useState('');
@@ -32,6 +34,7 @@ const TicketLogWorkCreator = ({ creatorInfo }: LogWorkProps) => {
   const [comment, setComment] = useState('');
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isErrorRecipient, setErrorRecipient] = useState(false);
+  const [matchInfo, setMatchInfo] = useState<MatchInfo | null>();
 
   const { isOpenLogWork } = useSelector(
     (state: any) => state.createTicketBoard
@@ -119,14 +122,19 @@ const TicketLogWorkCreator = ({ creatorInfo }: LogWorkProps) => {
               handleOnChange={value => setStatusSelected(value as StatusOption)}
             />
           </div>
-          <Subject
-            errorValue={errorSubject}
-            subjectValue={subject}
-            handleOnChangeSubject={value => {
-              setSubject(value);
-              setErrorSubject('');
-            }}
-          />
+
+          {isMatchCheckType(subTypeSelected!) ? (
+            <EventSubject setMatchInfo={value => setMatchInfo(value)} />
+          ) : (
+            <Subject
+              errorValue={errorSubject}
+              subjectValue={subject}
+              handleOnChangeSubject={value => {
+                setSubject(value);
+                setErrorSubject('');
+              }}
+            />
+          )}
           <Recipient
             isErrorRecipient={isErrorRecipient}
             handleOnErrorSubmit={error => setErrorRecipient(error)}

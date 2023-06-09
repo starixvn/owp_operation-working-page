@@ -26,3 +26,10 @@ type Recipient = {
 type LogWorkProps = {
   creatorInfo: Recipient;
 };
+
+type MatchInfo = {
+  leagueName: string;
+  awayName: string;
+  homeName: string;
+  koTime: Date;
+};

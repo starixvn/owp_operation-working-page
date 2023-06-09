@@ -4,7 +4,8 @@ import {
   urlGetEventLGA,
   urlGetRecipient,
   urlGetSubType,
-  urlGetAssigneesLGA
+  urlGetAssigneesLGA,
+  urlGetMatchInfo
 } from './const/const';
 import { orderBy } from 'lodash';
 import { TICKET_TYPE } from '../TicketCenterPrematch/const/const.json';
@@ -58,12 +59,20 @@ const queryAssigneesByOwpMatchId = async model => {
   return response.data;
 };
 
+const getMatchInfoByAdminSiteId = async adminSiteId => {
+  const response = await Axios.get(urlGetMatchInfo, {
+    params: adminSiteId
+  });
+  return response.data;
+};
+
 const Service = {
   recipient,
   recipientBySubType,
   event,
   getSubType,
-  queryAssigneesByOwpMatchId
+  queryAssigneesByOwpMatchId,
+  getMatchInfoByAdminSiteId
 };
 
 export default Service;
