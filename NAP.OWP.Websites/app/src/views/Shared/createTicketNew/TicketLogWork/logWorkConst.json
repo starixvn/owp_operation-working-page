@@ -13,5 +13,6 @@
       "label": "Canceled"
     }
   ],
-  "subtypeDefault": { "label": "Others", "value": 0 }
+  "ticketType": 5,
+  "subjectMaxLength": 200
 }

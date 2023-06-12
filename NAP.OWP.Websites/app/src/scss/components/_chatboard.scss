@@ -1458,6 +1458,9 @@
     opacity: 0;
   }
 }
-.log-work .box-comment .comment {
-  height: 85px;
+.log-work .box-comment #comment {
+  height: 85px !important;
+}
+.log-work .css-t3ipsp-control {
+  box-shadow: none !important;
 }

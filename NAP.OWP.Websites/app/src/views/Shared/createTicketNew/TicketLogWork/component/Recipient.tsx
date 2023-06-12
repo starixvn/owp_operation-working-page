@@ -1,9 +1,10 @@
 import React from 'react';
 import RecipientsSelect from '../../../recipientSelect/RecipientsSelect';
+import { TRecipient } from '../Type';
 
 type Props = {
-  selectedRecipients: Recipient[];
-  handleOnChange: (recipients: Recipient[]) => void;
+  selectedRecipients: TRecipient[];
+  handleOnChange: (recipients: TRecipient[]) => void;
   isErrorRecipient: boolean;
   handleOnErrorSubmit: (value: boolean) => void;
 };

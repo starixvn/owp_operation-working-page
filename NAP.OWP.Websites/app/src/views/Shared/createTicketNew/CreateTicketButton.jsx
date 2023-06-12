@@ -15,11 +15,11 @@ import PropTypes from 'prop-types';
 const { LIVE_GAME, PRE_MATCH, MY_TICKET } = BUTTON_TYPE;
 
 const propTypes = {
-  buttonType: PropTypes.string
+  buttonType: PropTypes.string,
+  isCreateLogWork: PropTypes.bool
 };
 
-const CreateTicketButton = props => {
-  const { buttonType } = props;
+const CreateTicketButton = ({ buttonType, isCreateLogWork = false }) => {
   const isShowEventCheckingButton =
     buttonType === MY_TICKET || buttonType === PRE_MATCH;
   const isShowLiveIncidentButton =
@@ -76,15 +76,16 @@ const CreateTicketButton = props => {
               Live Incident
             </li>
           )}
-          <li
-            className='button-work-log'
-            onClick={() => {
-              dispatch(setTypeTicketText('Live Incident'));
-              dispatch(closePopup());
-              dispatch(openPopupLogWork());
-            }}>
-            Ticket Log Work
-          </li>
+          {isCreateLogWork && (
+            <li
+              className='button-work-log'
+              onClick={() => {
+                dispatch(closePopup());
+                dispatch(openPopupLogWork());
+              }}>
+              Ticket Log Work
+            </li>
+          )}
         </div>
       </div>
     </div>

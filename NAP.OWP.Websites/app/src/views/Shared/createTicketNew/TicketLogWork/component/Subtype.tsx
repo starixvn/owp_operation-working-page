@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select-ts';
+import { SubTypeOption } from '../Type';
 type Props = {
   options: SubTypeOption[];
   handleChangeSubType: (value: SubTypeOption | null) => Promise<void>;
@@ -11,7 +12,7 @@ const Subtype = ({ options, handleChangeSubType, selected }: Props) => {
     <div className='form-createTicket subtype'>
       <div className='left-form'>
         <label className='label' htmlFor='subject'>
-          SubType:
+          SubType:<span className='required'>*</span>
         </label>
       </div>
       <div className='right-form'>

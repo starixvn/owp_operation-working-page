@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select-ts';
+import { StatusOption } from '../Type';
 
 type Props = {
   options: StatusOption[];
@@ -15,7 +16,12 @@ const Status = ({ options, selected, handleOnChange }: Props) => {
       </label>
       <br />
       <div className='select'>
-        <Select classNamePrefix='input-field-select' options={options} value={selected} onChange={handleOnChange} />
+        <Select
+          classNamePrefix='input-field-select'
+          options={options}
+          value={selected}
+          onChange={handleOnChange}
+        />
       </div>
     </div>
   );

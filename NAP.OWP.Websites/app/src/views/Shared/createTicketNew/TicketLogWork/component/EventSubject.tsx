@@ -1,40 +1,38 @@
 import { TextField } from '@mui/material';
-import { ClearIcon } from 'mdi-react';
 import React, { useState } from 'react';
 import { get } from '../../../Service/Service';
 import { urlGetMatchInfo } from '../../const/const';
 import { formatTime } from '../../../DateTime/dateTimeHelper';
+import { MatchInfo } from '../Type';
 
 type Props = {
-  sendMatchInfo: (value: MatchInfo) => void;
+  setMatchId: (value: string) => void;
+  errorInvalid: string;
+  setErrorInvalid: (value: string) => void;
 };
 
-const EventSubject = ({ sendMatchInfo }: Props) => {
-  const [error, setError] = useState('');
+const EventSubject = ({ setMatchId, errorInvalid, setErrorInvalid }: Props) => {
   const [matchInfo, setMatchInfo] = useState<MatchInfo | null>(null);
-  const [input, setInput] = useState('');
+  const [value, setValue] = useState('');
 
-  const handleOnBlur = async (adminSiteId: string) => {
-    const validAdminSideId = parseInt(adminSiteId);
+  const handleOnBlur = async () => {
+    const validAdminSideId = Boolean(parseInt(value));
     if (validAdminSideId) {
-      const response = await get({ adminSiteId, url: urlGetMatchInfo });
+      const response = await get({ adminSiteId: value, url: urlGetMatchInfo });
       setMatchInfo(response?.data);
-      setInput(formatTime(response?.data?.koTime, 'minute', 'lll') || '');
-      response?.data ? setError('') : setError('Invalid MatchId');
+      response?.data ? setErrorInvalid('') : setErrorInvalid('Invalid MatchId');
+      response?.data && setMatchId(value);
       return;
     }
-    setError('Invalid MatchId');
+    setErrorInvalid('Invalid MatchId');
+    setMatchId('');
     setMatchInfo(null);
   };
 
-  const resetInput = () => {
-    setInput('');
-    setError('');
+  const handleOnChange = (text: string) => {
+    setValue(text);
     setMatchInfo(null);
-  };
-  const handleOnChange = (adminSiteId: string) => {
-    const validAdminSideId = parseInt(adminSiteId);
-    validAdminSideId && setInput(adminSiteId);
+    setErrorInvalid('');
   };
   return (
     <div className='form-createTicket'>
@@ -49,26 +47,25 @@ const EventSubject = ({ sendMatchInfo }: Props) => {
       <div className='right-form'>
         <TextField
           id='subject'
-          helperText={error}
-          error={Boolean(error)}
+          helperText={errorInvalid}
+          error={Boolean(errorInvalid)}
           margin='normal'
-          value={formatTime(matchInfo?.koTime, 'minute', 'lll')}
-          onBlur={event => handleOnBlur(event.target.value)}
+          value={value}
+          onChange={event => handleOnChange(event.target.value)}
+          onBlur={handleOnBlur}
           variant='standard'
           label={
             matchInfo && (
               <div className='selected-event'>
                 <span>{matchInfo.leagueName}</span>
-                <span className='league-event-selected'>
-                  {matchInfo.homeName} vs {matchInfo.awayName}
+                <span className='league-event-selected event-subject'>
+                  {matchInfo.homeName} vs {matchInfo.awayName} (
+                  {formatTime(matchInfo?.koTime, 'minute', 'lll')} )
                 </span>
               </div>
             )
           }
         />
-        <button onClick={resetInput}>
-          <ClearIcon />
-        </button>
       </div>
     </div>
   );

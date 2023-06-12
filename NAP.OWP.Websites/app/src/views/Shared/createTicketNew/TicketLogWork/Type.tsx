@@ -15,7 +15,7 @@ type StatusOption = {
   label: string;
 };
 
-type Recipient = {
+type TRecipient = {
   groupName: string | null;
   nickName: string;
   recipientId: number;
@@ -24,7 +24,7 @@ type Recipient = {
 };
 
 type LogWorkProps = {
-  creatorInfo: Recipient;
+  creatorInfo: TRecipient;
 };
 
 type MatchInfo = {
@@ -32,4 +32,12 @@ type MatchInfo = {
   awayName: string;
   homeName: string;
   koTime: Date;
+};
+export {
+  MatchInfo,
+  LogWorkProps,
+  TRecipient,
+  StatusOption,
+  SubTypeOption,
+  SubType
 };
