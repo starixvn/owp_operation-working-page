@@ -4,6 +4,7 @@ import { get } from '../../../Service/Service';
 import { urlGetMatchInfo } from '../../const/const';
 import { formatTime } from '../../../DateTime/dateTimeHelper';
 import { MatchInfo } from '../Type';
+import { isValidMatchId } from '../LogWorkHelper';
 
 type Props = {
   setMatchId: (value: string) => void;
@@ -16,12 +17,12 @@ const EventSubject = ({ setMatchId, errorInvalid, setErrorInvalid }: Props) => {
   const [value, setValue] = useState('');
 
   const handleOnBlur = async () => {
-    const validAdminSideId = Boolean(parseInt(value));
+    const validAdminSideId = isValidMatchId(parseInt(value));
     if (validAdminSideId) {
       const response = await get({ adminSiteId: value, url: urlGetMatchInfo });
       setMatchInfo(response?.data);
       response?.data ? setErrorInvalid('') : setErrorInvalid('Invalid MatchId');
-      response?.data && setMatchId(value);
+      response?.data ? setMatchId(value) : setMatchId('');
       return;
     }
     setErrorInvalid('Invalid MatchId');

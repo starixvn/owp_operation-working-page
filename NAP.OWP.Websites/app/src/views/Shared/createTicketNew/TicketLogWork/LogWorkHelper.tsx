@@ -6,4 +6,15 @@ const getSubjectBySubtype = (subtype: SubTypeOption) =>
 const isMatchCheckType = (subtype: SubTypeOption) =>
   subtype?.label?.includes('Match Check');
 
-export { getSubjectBySubtype, isMatchCheckType };
+const isValidMatchId = (matchId: number) => {
+  const minInt32Value = -2147483648;
+  const maxInt32Value = 2147483647;
+
+  return (
+    Number.isInteger(matchId) &&
+    matchId >= minInt32Value &&
+    matchId <= maxInt32Value
+  );
+};
+
+export { getSubjectBySubtype, isMatchCheckType, isValidMatchId };
