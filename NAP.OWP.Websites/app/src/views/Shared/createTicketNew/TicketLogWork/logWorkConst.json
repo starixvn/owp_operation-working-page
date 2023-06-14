@@ -14,5 +14,7 @@
     }
   ],
   "ticketType": 5,
-  "subjectMaxLength": 200
+  "subjectMaxLength": 200,
+  "subtypeOther": 2002,
+  "subtypeMatchCheck": 2001
 }

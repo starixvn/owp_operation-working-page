@@ -1,10 +1,11 @@
 import { SubTypeOption } from './Type';
+import { subtypeMatchCheck } from './logWorkConst.json';
 
 const getSubjectBySubtype = (subtype: SubTypeOption) =>
-  subtype.label.includes('Match Check') ? '' : subtype.label;
+  subtype.value === subtypeMatchCheck ? '' : subtype.label;
 
 const isMatchCheckType = (subtype: SubTypeOption) =>
-  subtype?.label?.includes('Match Check');
+  subtype?.value === subtypeMatchCheck;
 
 const isValidMatchId = (matchId: number) => {
   const minInt32Value = -2147483648;

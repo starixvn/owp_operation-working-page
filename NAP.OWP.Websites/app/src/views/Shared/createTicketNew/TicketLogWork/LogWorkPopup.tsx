@@ -10,7 +10,13 @@ import {
   saveFileToBackEnd
 } from '../Helper/HelperCreateTicket';
 import Subtype from './component/Subtype';
-import { STATUS, ticketType, subjectMaxLength } from './logWorkConst.json';
+import {
+  STATUS,
+  ticketType,
+  subjectMaxLength,
+  subtypeOther,
+  subtypeMatchCheck
+} from './logWorkConst.json';
 import Status from './component/Status';
 import Recipient from './component/Recipient';
 import Comment from './component/Comment';
@@ -45,14 +51,14 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
 
   useEffect(() => {
     (async () => {
-      const subType: SubType[] = await getSubTypeByType(5);
+      const subType: SubType[] = await getSubTypeByType(ticketType);
       const option = subType.map(
         ({ subTypeId: value, subTypeName: label }) => ({
           value,
           label
         })
       );
-      const subTypeDefault = option.find(x => x.label === 'Others');
+      const subTypeDefault = option.find(x => x.value === subtypeOther);
       const recipientDefault = await getRecipientDefaultBySubType(
         subTypeDefault?.value
       );
@@ -101,6 +107,7 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
       Recipients,
       Message: comment || 'Please add',
       SubType: subTypeSelected?.value,
+      Status: statusSelected.value,
       TicketType: ticketType,
       AdminSiteId: adminSiteId,
       Subject: subject,
