@@ -1,24 +1,19 @@
-import React from 'react';
-import { useSelector, Provider, useDispatch } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import PropTypes from 'prop-types';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CreateTicketPlusCircle from './CreateTicketPlusCircle';
 
-const middleWares = [];
-const mockStore = configureStore(middleWares);
-
-const initialState = {};
-const store = mockStore(initialState);
-
-const Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
-
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: jest.fn()
+}));
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
   useDispatch: jest.fn()
 }));
 
 const mockedDispatch = jest.fn();
+const mockSetState = jest.fn();
 const setUp = isOpenTicket => {
   useSelector.mockImplementation(selectorFn =>
     selectorFn({
@@ -37,18 +32,21 @@ const setUp = isOpenTicket => {
         isOpenTicket
       },
       createTicketBoard: {
-        selectedRecipients: {
-          recipientId: 25334034,
-          groupName: null,
-          userName: 'CPHSAN',
-          nickName: 'CPHSan',
-          recipientType: 1
-        }
+        selectedRecipients: [
+          {
+            recipientId: 25334034,
+            groupName: null,
+            userName: 'CPHSAN',
+            nickName: 'CPHSan',
+            recipientType: 1
+          }
+        ]
       },
       subTypeSelected: 1
     })
   );
   useDispatch.mockReturnValue(mockedDispatch);
+  useState.mockImplementation(init => [init, mockSetState]);
 };
 
 describe('test CreateTicketPlusCircle', () => {
@@ -65,13 +63,15 @@ describe('test CreateTicketPlusCircle', () => {
         recipientType: 1,
         userName: 'sa'
       },
-      selectedRecipients: {
-        recipientId: 25334034,
-        groupName: null,
-        userName: 'CPHSAN',
-        nickName: 'CPHSan',
-        recipientType: 1
-      },
+      selectedRecipients: [
+        {
+          recipientId: 25334034,
+          groupName: null,
+          userName: 'CPHSAN',
+          nickName: 'CPHSan',
+          recipientType: 1
+        }
+      ],
       modelByRowIndex: {
         LeagueId: 1,
         InfoSiteMatchId: 123,
@@ -87,6 +87,6 @@ describe('test CreateTicketPlusCircle', () => {
     };
     const { container } = render(<CreateTicketPlusCircle {...props} />);
     const element = container.querySelector('.chat-board-popup');
-    expect(element).toBeInTheDocument();
+    waitFor(() => expect(element).toBeInTheDocument());
   });
 });

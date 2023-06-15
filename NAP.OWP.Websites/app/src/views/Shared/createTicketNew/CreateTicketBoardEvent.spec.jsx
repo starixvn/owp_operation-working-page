@@ -198,7 +198,7 @@ describe('CreateTicketBoard under test', () => {
     await flushPromises();
     expect(post).toHaveBeenCalledTimes(1);
     expect(handleBuildModel).toHaveBeenCalledTimes(1);
-    expect(mockDispatch).toHaveBeenCalledTimes(4);
+    expect(mockDispatch).toHaveBeenCalledTimes(3);
   });
   it('Should dispatch error', async () => {
     setup(null, [], recipient, subTypeSelected, 'Event Checking', 'sad');
@@ -213,6 +213,6 @@ describe('CreateTicketBoard under test', () => {
     const button = container.querySelector('.button-submit');
     fireEvent.click(button);
     await flushPromises();
-    expect(mockDispatch).toHaveBeenCalledTimes(3);
+    expect(mockDispatch).toHaveBeenCalledTimes(2);
   });
 });

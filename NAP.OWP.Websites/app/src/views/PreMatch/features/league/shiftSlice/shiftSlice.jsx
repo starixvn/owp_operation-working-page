@@ -17,7 +17,8 @@ import {
   restoreDeletedLeague,
   getShiftByDateAndEmployee,
   getShiftByDateAndEmployeeWhenChat,
-  getAssignedLeagueId
+  getAssignedLeagueId,
+  getTicketList
 } from './shiftThunkNative';
 import { NOTETYPE } from '../../../const/const';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
@@ -365,6 +366,32 @@ const shiftSlice = createSlice({
           state.isShowUnreadMessage
         );
       }
+    },
+    reloadTicketInTable: {
+      reducer: (state, { payload }) => {
+        const { id, isTicketLeague, ticketList } = payload;
+        if (isTicketLeague) {
+          const findLeague = state.leagues.find(
+            league => league.LeagueId === id
+          );
+          findLeague.HasMessages = ticketList.length > 0;
+          findLeague.TicketList = ticketList;
+          findLeague.IsRead = ticketList.every(ticket => ticket.IsRead);
+        } else {
+          const findMatch = state.matches.find(
+            match => match.InfoSiteMatchId === id
+          );
+          findMatch.HasMessages = ticketList.length > 0;
+          findMatch.TicketList = ticketList;
+          findMatch.IsRead = ticketList.every(ticket => ticket.IsRead);
+        }
+
+        state.entities = mergeMatchesToLeagues(
+          state.matches,
+          state.leagues,
+          state.isShowUnreadMessage
+        );
+      }
     }
   },
   extraReducers: builder => {
@@ -488,7 +515,8 @@ const {
   changeStatePopupLeagueNote,
   changeStatePopupMatchNote,
   updateIconNoteToPencil,
-  sortByDefault
+  sortByDefault,
+  reloadTicketInTable
 } = actions;
 export {
   actions,
@@ -520,7 +548,8 @@ export {
   changeStatePopupLeagueNote,
   changeStatePopupMatchNote,
   updateIconNoteToPencil,
-  sortByDefault
+  sortByDefault,
+  reloadTicketInTable
 };
 
 export default reducer;

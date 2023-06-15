@@ -1,13 +1,11 @@
-import React, { createRef } from 'react';
 import { act, render } from '@testing-library/react';
-import { useSelector, useDispatch } from 'react-redux';
-import ViewFilterNighShift from './ViewFilterNighShift';
-import Loading from '../../../components/Loading';
-import FilterPrematchViewer from './FilterPrematchViewer';
 import axios from 'axios';
-import Spinner from '../../../components/Spinner';
 import { noop } from 'lodash';
+import React, { createRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
+import Spinner from '../../../components/Spinner';
+import ViewFilterNighShift from './ViewFilterNighShift';
 
 jest.mock('../../app/store');
 jest.mock('axios');
