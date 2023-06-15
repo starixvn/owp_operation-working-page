@@ -31,6 +31,7 @@ const URL_NIGHT_SHIFT = `${url}/get-night-shift`;
 const URL_DAY_SHIFT = `${url}/get-day-shift`;
 const URL_QUERY_LEAGUE_BY_ID = `${url}/query-league-by-id`;
 const URL_QUERY_ASSIGNED_LEAGUE_ID = `${url}/get-assigned-league-id`;
+const URL_QUERY_TICKET_LIST = `${url}/get-ticket-list`;
 
 const LAST_UPDATED = {
   apiKey: 'pre-match-assignment-get-last-updated'
@@ -104,5 +105,6 @@ export {
   BetType,
   URL_QUERY_ASSIGNED_LEAGUE_ID,
   simpleApiQueryUrl,
-  simpleApiUpdateUrl
+  simpleApiUpdateUrl,
+  URL_QUERY_TICKET_LIST
 };
