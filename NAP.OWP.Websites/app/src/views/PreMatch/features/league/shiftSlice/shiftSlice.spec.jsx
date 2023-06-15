@@ -85,9 +85,9 @@ describe('shiftSlice under test', () => {
 
       const expectState = {
         entities: [
-          { PreMatchLeagueId: 1, isExpand: null },
-          { PreMatchLeagues: 2, isExpand: null },
-          { PreMatchLeagues: 3, isExpand: null }
+          { PreMatchLeagueId: 1, isExpand: undefined },
+          { PreMatchLeagues: 2, isExpand: undefined },
+          { PreMatchLeagues: 3, isExpand: undefined }
         ],
         loading: REQUEST_STATUS.idle,
         currentRequestId: null,
@@ -98,9 +98,9 @@ describe('shiftSlice under test', () => {
           { InfoSiteMatchId: 3 }
         ],
         leagues: [
-          { PreMatchLeagueId: 1, isExpand: null },
-          { PreMatchLeagues: 2, isExpand: null },
-          { PreMatchLeagues: 3, isExpand: null }
+          { PreMatchLeagueId: 1, isExpand: undefined },
+          { PreMatchLeagues: 2, isExpand: undefined },
+          { PreMatchLeagues: 3, isExpand: undefined }
         ]
       };
 
@@ -377,13 +377,11 @@ describe('shiftSlice under test', () => {
   describe('deleteRow under test', () => {
     it(' should handle deleteRow', () => {
       initialState = {
-        entities: [
-          { PreMatchLeagueId: 4, LeagueName: 'PremierLeague', HDP: 'Esther' }
-        ],
-        matches: [{ PreMatchLeagueId: 4, HDP: 12 }],
-        prematchIdDeleted: [],
+        entities: [],
+        matches: [],
+        prematchIdDeleted: [4],
         loading: REQUEST_STATUS.idle,
-        leagues: [{ PreMatchLeagueId: 4, HDP: 12 }]
+        leagues: []
       };
 
       const expectState = {
@@ -1410,7 +1408,7 @@ describe('shiftSlice under test', () => {
             HasMessages: true,
             IsRead: true,
             MatchCount: 1,
-            PreMatchIssueId: null
+            PreMatchIssueId: undefined
           }
         ],
         leagues: [
@@ -1419,7 +1417,7 @@ describe('shiftSlice under test', () => {
             HasMessages: true,
             IsRead: true,
             MatchCount: 1,
-            PreMatchIssueId: null
+            PreMatchIssueId: undefined
           }
         ],
         matches: [
@@ -1488,7 +1486,7 @@ describe('shiftSlice under test', () => {
             PreMatchLeagueId: 33,
             InfoSiteMatchId: 1,
             HasMessages: true,
-            PreMatchIssueId: null,
+            PreMatchIssueId: undefined,
             IsRead: true
           }
         ],
