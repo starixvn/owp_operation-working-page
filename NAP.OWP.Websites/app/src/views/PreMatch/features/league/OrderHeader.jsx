@@ -6,7 +6,7 @@ import { TableConst } from './constants/preMatchConst';
 import { nanoid } from '@reduxjs/toolkit';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import { get } from '../../ImportPrematchHelperNative';
-import { URLQUERYASSIGNEDLEAGUEID } from '../../const/const';
+import { URL_QUERY_ASSIGNED_LEAGUE_ID } from '../../const/const';
 import { buildGoToTradingPageLink } from '../../helper/preMatchHelper';
 import { resetCopyInfo } from '../copy/copySlice';
 
@@ -47,7 +47,7 @@ const OrderHeader = headerModel => {
   const handleOpenNewTab = async event => {
     event.preventDefault();
     const resp = await get({
-      url: URLQUERYASSIGNEDLEAGUEID,
+      url: URL_QUERY_ASSIGNED_LEAGUE_ID,
       bettypeId,
       isTakeOver,
       actorId: permission.ActorId,

@@ -1,13 +1,8 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { useSelector, useDispatch, useStore } from 'react-redux';
-import ActionIcon from './ActionIcon';
+import React from 'react';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import ToastrWrapper from '../../../components/ToastrWrapper';
-import { setImmediate } from 'timers';
-
-function flushPromises() {
-  return new Promise(resolve => setImmediate(resolve));
-}
+import ActionIcon from './ActionIcon';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
@@ -24,14 +19,14 @@ const noteData = [
     PreMatchNoteId: 123,
     PreMatchNoteMessageId: 111,
     Username: 'sa',
-    LastUpdated: new Date(),
+    LAST_UPDATED: new Date(),
     Note: 'test note abc'
   },
   {
     PreMatchNoteId: 123,
     PreMatchNoteMessageId: 222,
     Username: 'starix1',
-    LastUpdated: new Date(),
+    LAST_UPDATED: new Date(),
     Note: 'test222222'
   }
 ];
@@ -71,7 +66,7 @@ const getProps = (InfoSiteMatchId = 123) => {
       PreMatchNoteId: 123,
       PreMatchNoteMessageId: 222,
       Username: 'starix1',
-      LastUpdated: new Date(),
+      LAST_UPDATED: new Date(),
       Note: 'test222222'
     },
     model: {

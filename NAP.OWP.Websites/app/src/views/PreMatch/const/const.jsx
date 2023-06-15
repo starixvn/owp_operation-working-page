@@ -21,43 +21,43 @@ const simpleApiUpdateUrl =
     ? `${NET_CORE_UPDATE_SIMPLE_API}`
     : `${window.netCoreRootUrl}/${UPDATE_SIMPLE_API}`;
 
-const URLQUERYCHANGELOG = `${url}/get-log`;
+const URL_QUERY_CHANGE_LOG = `${url}/get-log`;
 
-const URLQUERYWORKINGSHIFT = `${url}/get-working-shift`;
+const URL_QUERY_WORKING_SHIFT = `${url}/get-working-shift`;
 
-const URLQUERYINFOMATCH = `${url}/get-info-match`;
-const URLQUERYASSIGNEE = `${url}/get-assignee-pre-match`;
-const URLNIGHTSHIFT = `${url}/get-night-shift`;
-const URLDAYSHIFT = `${url}/get-day-shift`;
-const URLQUERYLEAGUEBYID = `${url}/query-league-by-id`;
-const URLQUERYASSIGNEDLEAGUEID = `${url}/get-assigned-league-id`;
+const URL_QUERY_INFO_MATCH = `${url}/get-info-match`;
+const URL_QUERY_ASSIGNEE = `${url}/get-assignee-pre-match`;
+const URL_NIGHT_SHIFT = `${url}/get-night-shift`;
+const URL_DAY_SHIFT = `${url}/get-day-shift`;
+const URL_QUERY_LEAGUE_BY_ID = `${url}/query-league-by-id`;
+const URL_QUERY_ASSIGNED_LEAGUE_ID = `${url}/get-assigned-league-id`;
 
-const LASTUPDATED = {
+const LAST_UPDATED = {
   apiKey: 'pre-match-assignment-get-last-updated'
 };
 
-const TAKEOVERAPIKEY = 'pre-match-assignment-get-start-time';
+const TAKE_OVER_API_KEY = 'pre-match-assignment-get-start-time';
 
-const QUERYDELETELEAGUEAPIKEY = 'pre-match-assignment-get-deleted-leagues';
+const QUERY_DELETE_LEAGUE_API_KEY = 'pre-match-assignment-get-deleted-leagues';
 
-const QUERYDELETELEAGUERECOVERAPIKEY = 'pre-match-assignment-recover';
+const QUERY_DELETE_LEAGUE_RECOVER_API_KEY = 'pre-match-assignment-recover';
 
-const QUERYCHECKLEAGUECONTAINSASSIGNMENT =
+const QUERY_CHECK_LEAGUE_CONTAINS_ASSIGNMENT =
   'pre-match-assignment-check-league-contains-assignment';
 
 const URL = {
-  INSERTNOTE: `${url}/post-note-message`,
-  CREATENOTE: `${url}/create-note`,
-  UPDATENOTE: `${url}/edit-note-message`,
+  INSERT_NOTE: `${url}/post-note-message`,
+  CREATE_NOTE: `${url}/create-note`,
+  UPDATE_NOTE: `${url}/edit-note-message`,
   SAVE_PREMATCH_ASSIGNMENT: `${url}/save`
 };
 
-const APIKEY = {
-  QUERYNOTE: 'pre-match-assignment-get-note-messages',
-  DELETENOTE: 'pre-match-assignment-delete-note-messages'
+const API_KEY = {
+  QUERY_NOTE: 'pre-match-assignment-get-note-messages',
+  DELETE_NOTE: 'pre-match-assignment-delete-note-messages'
 };
 
-const NOTETYPE = {
+const NOTE_TYPE = {
   LEAGUE: 'LEAGUE',
   MATCH: 'MATCH'
 };
@@ -83,26 +83,26 @@ const BetType = {
 
 export {
   ticketType,
-  URLQUERYCHANGELOG,
-  URLQUERYWORKINGSHIFT,
-  URLQUERYINFOMATCH,
-  URLQUERYASSIGNEE,
-  QUERYDELETELEAGUEAPIKEY,
-  QUERYDELETELEAGUERECOVERAPIKEY,
-  QUERYCHECKLEAGUECONTAINSASSIGNMENT,
-  LASTUPDATED,
-  TAKEOVERAPIKEY,
-  URLNIGHTSHIFT,
-  URLDAYSHIFT,
-  URLQUERYLEAGUEBYID,
-  APIKEY,
+  URL_QUERY_CHANGE_LOG,
+  URL_QUERY_WORKING_SHIFT,
+  URL_QUERY_INFO_MATCH,
+  URL_QUERY_ASSIGNEE,
+  QUERY_DELETE_LEAGUE_API_KEY,
+  QUERY_DELETE_LEAGUE_RECOVER_API_KEY,
+  QUERY_CHECK_LEAGUE_CONTAINS_ASSIGNMENT,
+  LAST_UPDATED,
+  TAKE_OVER_API_KEY,
+  URL_NIGHT_SHIFT,
+  URL_DAY_SHIFT,
+  URL_QUERY_LEAGUE_BY_ID,
+  API_KEY,
   URL,
-  NOTETYPE,
+  NOTE_TYPE,
   netCoreUrl,
   MATCH_OFFER,
   TradingPageUrl,
   BetType,
-  URLQUERYASSIGNEDLEAGUEID,
+  URL_QUERY_ASSIGNED_LEAGUE_ID,
   simpleApiQueryUrl,
   simpleApiUpdateUrl
 };

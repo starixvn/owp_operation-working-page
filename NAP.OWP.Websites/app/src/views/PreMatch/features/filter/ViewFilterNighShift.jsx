@@ -6,7 +6,7 @@ import {
 } from '../league/shiftSlice/shiftSlice';
 import { updateFilterDate } from '../filter/filterSlice';
 import { updateStartTimeOriginal } from '../header/headerSlice';
-import { URLNIGHTSHIFT } from '../../const/const';
+import { URL_NIGHT_SHIFT } from '../../const/const';
 import {
   getMMDDYYYYStringFromDateTime,
   getHourAndMinutes
@@ -71,7 +71,7 @@ const ViewFilterNighShift = () => {
       Employee: employeeValue,
       LeagueName: leagueNameValue,
       ActorId: policy.permission.ActorId,
-      url: URLNIGHTSHIFT,
+      url: URL_NIGHT_SHIFT,
       StartTime: getHourAndMinutes(startTimeOriginal) || ''
     };
 

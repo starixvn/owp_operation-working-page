@@ -9,7 +9,7 @@ import SaveComponent from './SaveComponent';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import { getLastUpdate } from '../header/headerSlice';
 import {
-  LASTUPDATED,
+  LAST_UPDATED,
   netCoreUrl,
   URL,
   simpleApiQueryUrl
@@ -52,7 +52,7 @@ const DayShiftSaver = () => {
     event.preventDefault();
     const model = {
       url: simpleApiQueryUrl,
-      apiKey: LASTUPDATED.apiKey,
+      apiKey: LAST_UPDATED.apiKey,
       isDay: true
     };
     Spinner.show();

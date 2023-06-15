@@ -1,0 +1,21 @@
+{
+  "sonar.exclusions": [
+    "**/*.legacy.cs",
+    "**/*.native.*",
+    "**/*Native.*"
+  ],
+  "sonar.global.exclusions": [
+    "**/*GlobalSuppressions.cs",
+    "**/*AssemblyInfo.cs",
+    "**/*.generated.cs",
+    "**/*.native.*",
+    "**/Global.asax.cs",
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/*.js",
+    "**/*.html",
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "sonar.inclusions": []
+}

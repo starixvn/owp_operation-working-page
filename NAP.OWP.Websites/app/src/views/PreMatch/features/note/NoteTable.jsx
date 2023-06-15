@@ -6,8 +6,8 @@ import { saveNote, clearNewCreatedNoteId } from './NoteSlice';
 import { useStableDispatch } from '../../ImportPrematchHelperNative';
 import { URL } from '../../const/const';
 import {
-  addNoteIdtoLeague,
-  addNoteIdtoMatch
+  addNoteIdToLeague,
+  addNoteIdToMatch
 } from '../league/shiftSlice/shiftSlice';
 
 const propTypes = {
@@ -28,8 +28,8 @@ const NoteTable = props => {
   useEffect(() => {
     const addNoteIcon = () => {
       InfoSiteMatchId
-        ? dispatch(addNoteIdtoMatch({ newCreatedNoteId, InfoSiteMatchId }))
-        : dispatch(addNoteIdtoLeague({ newCreatedNoteId, LeagueId }));
+        ? dispatch(addNoteIdToMatch({ newCreatedNoteId, InfoSiteMatchId }))
+        : dispatch(addNoteIdToLeague({ newCreatedNoteId, LeagueId }));
       dispatch(clearNewCreatedNoteId());
     };
     if (newCreatedNoteId) {
@@ -43,7 +43,7 @@ const NoteTable = props => {
       let saveModel = {};
       if (!PreMatchNoteId) {
         saveModel = {
-          url: URL.CREATENOTE,
+          url: URL.CREATE_NOTE,
           OWPLeagueId: LeagueId,
           InfoSiteMatchId,
           Message: value,
@@ -51,7 +51,7 @@ const NoteTable = props => {
         };
       } else {
         saveModel = {
-          url: URL.INSERTNOTE,
+          url: URL.INSERT_NOTE,
           PreMatchNoteId,
           Message: value
         };

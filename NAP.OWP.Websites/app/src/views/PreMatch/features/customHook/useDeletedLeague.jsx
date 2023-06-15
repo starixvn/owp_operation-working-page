@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import { useSelector } from 'react-redux';
-import { QUERYDELETELEAGUEAPIKEY, simpleApiQueryUrl } from '../../const/const';
+import {
+  QUERY_DELETE_LEAGUE_API_KEY,
+  simpleApiQueryUrl
+} from '../../const/const';
 import { deleteLeague } from '../deletedLeague/deleteLeagueSlice';
 
 const useDeletedLeague = (isDay = false) => {
@@ -12,7 +15,7 @@ const useDeletedLeague = (isDay = false) => {
   useEffect(() => {
     const filterDeleteModel = {
       url: simpleApiQueryUrl,
-      apikey: QUERYDELETELEAGUEAPIKEY,
+      apikey: QUERY_DELETE_LEAGUE_API_KEY,
       EventDate: filterDate,
       IsDay: isDay
     };

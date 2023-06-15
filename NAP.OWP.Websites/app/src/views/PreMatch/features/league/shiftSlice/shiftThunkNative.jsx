@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { post, get } from '../../../ImportPrematchHelperNative';
 import {
-  QUERYDELETELEAGUERECOVERAPIKEY,
-  URLQUERYLEAGUEBYID,
-  URLQUERYASSIGNEDLEAGUEID,
+  QUERY_DELETE_LEAGUE_RECOVER_API_KEY,
+  URL_QUERY_LEAGUE_BY_ID,
+  URL_QUERY_ASSIGNED_LEAGUE_ID,
   simpleApiUpdateUrl
 } from '../../../const/const';
 
@@ -13,12 +13,12 @@ const restoreDeletedLeague = createAsyncThunk(
     const { startTimeOriginal } = getState().header;
     const restore = {
       url: simpleApiUpdateUrl,
-      apiKey: QUERYDELETELEAGUERECOVERAPIKEY,
+      apiKey: QUERY_DELETE_LEAGUE_RECOVER_API_KEY,
       PreMatchLeagueId: preMatchLeagueId
     };
     const queryObject = {
       PreMatchLeagueId: preMatchLeagueId,
-      url: URLQUERYLEAGUEBYID,
+      url: URL_QUERY_LEAGUE_BY_ID,
       StartTime: startTimeOriginal || null
     };
     const responseRestore = await post(restore);
@@ -49,7 +49,7 @@ const getAssignedLeagueId = createAsyncThunk(
   'dayShift/getAssignedLeagueId',
   async actorId => {
     const resp = await get({
-      url: URLQUERYASSIGNEDLEAGUEID,
+      url: URL_QUERY_ASSIGNED_LEAGUE_ID,
       actorId
     });
     return resp.data;

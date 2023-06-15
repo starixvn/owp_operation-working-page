@@ -4,7 +4,7 @@ import { restoreDeletedLeague } from '../league/shiftSlice/shiftSlice';
 import { refeshDeletedLeagueTable } from './deleteLeagueSlice';
 import RestoreIcon from 'mdi-react/RestoreIcon';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
-import { LASTUPDATED, simpleApiQueryUrl } from '../../const/const';
+import { LAST_UPDATED, simpleApiQueryUrl } from '../../const/const';
 import { getLastUpdate } from '../header/headerSlice';
 
 const propTypes = {
@@ -16,7 +16,7 @@ const RecoverCell = props => {
   const stableDispatch = useStableDispatch();
   const model = {
     url: simpleApiQueryUrl,
-    apiKey: LASTUPDATED.apiKey
+    apiKey: LAST_UPDATED.apiKey
   };
   const handleRestore = () => {
     stableDispatch(restoreDeletedLeague(PreMatchLeagueId));

@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getShiftByDateAndEmployee } from '../league/shiftSlice/shiftSlice';
 import { updateFilterEmployer, updateFilterDate } from '../filter/filterSlice';
-import { URLDAYSHIFT } from '../../const/const';
+import { URL_DAY_SHIFT } from '../../const/const';
 import { getMMDDYYYYStringFromDateTime } from '../../../Shared/DateTime/dateTimeHelper';
 import { backupFilterModel } from '../signalR/signalRSlice';
 import { getDisableRef, getValueRef } from '../../../Shared/Utils';
@@ -44,7 +44,7 @@ const ViewFilterDayShift = () => {
       Employee: employeeValue,
       LeagueName: leagueNameValue,
       ActorId: policy.permission.ActorId,
-      url: URLDAYSHIFT
+      url: URL_DAY_SHIFT
     };
 
     stableDispatch(updateFilterDate(selectedDate));

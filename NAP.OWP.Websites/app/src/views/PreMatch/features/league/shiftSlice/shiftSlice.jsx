@@ -1,27 +1,26 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { isEqual } from 'lodash';
+import { REQUEST_STATUS } from '../../../../Shared/Constants';
+import { NOTE_TYPE } from '../../../const/const';
 import {
-  mergeMatchesToLeagues,
-  changeExpandStateOneLeague,
   changeExpandStateAllLeague,
-  changeOpenNoteStateOneMatch,
+  changeExpandStateOneLeague,
   changeOpenNoteStateOneLeague,
-  updateLeagueData,
+  changeOpenNoteStateOneMatch,
+  clearState,
+  mergeMatchesToLeagues,
   pasteCopied,
   pasteMultipleValue,
   sortLeaguesByColumnKey,
   sortLeaguesByDefault,
-  clearState
+  updateLeagueData
 } from './shiftHelper';
 import {
-  restoreDeletedLeague,
+  getAssignedLeagueId,
   getShiftByDateAndEmployee,
   getShiftByDateAndEmployeeWhenChat,
-  getAssignedLeagueId,
-  getTicketList
+  restoreDeletedLeague
 } from './shiftThunkNative';
-import { NOTETYPE } from '../../../const/const';
-import { REQUEST_STATUS } from '../../../../Shared/Constants';
 
 const shiftSlice = createSlice({
   name: 'dayShift',
@@ -30,7 +29,7 @@ const shiftSlice = createSlice({
     matches: [],
     leagues: [],
     loading: REQUEST_STATUS.idle,
-    currentRequestId: undefined,
+    currentRequestId: null,
     error: null,
     sortState: {},
     prematchIdUpdated: [],
@@ -271,7 +270,7 @@ const shiftSlice = createSlice({
         );
       }
     },
-    addIssueIdtoLeague: {
+    addIssueIdToLeague: {
       reducer: (state, action) => {
         const { newCreatedIssueId, LeagueId } = action.payload;
         const league = state.leagues.find(l => l.LeagueId === LeagueId);
@@ -287,7 +286,7 @@ const shiftSlice = createSlice({
         );
       }
     },
-    addIssueIdtoMatch: {
+    addIssueIdToMatch: {
       reducer: (state, action) => {
         const { newCreatedIssueId, InfoSiteMatchId } = action.payload;
         const match = state.matches.find(
@@ -324,7 +323,7 @@ const shiftSlice = createSlice({
     updateIconNoteToPencil: {
       reducer: (state, action) => {
         const { key, value } = action.payload;
-        const target = isEqual(key, NOTETYPE.LEAGUE)
+        const target = isEqual(key, NOTE_TYPE.LEAGUE)
           ? state.leagues.find(l => l.LeagueId === value)
           : state.matches.find(m => m.InfoSiteMatchId === value);
         target.PreMatchNoteId = null;
@@ -336,7 +335,7 @@ const shiftSlice = createSlice({
         );
       }
     },
-    addNoteIdtoLeague: {
+    addNoteIdToLeague: {
       reducer: (state, action) => {
         const { newCreatedNoteId, LeagueId } = action.payload;
         const league = state.leagues.find(l => l.LeagueId === LeagueId);
@@ -350,7 +349,7 @@ const shiftSlice = createSlice({
         );
       }
     },
-    addNoteIdtoMatch: {
+    addNoteIdToMatch: {
       reducer: (state, action) => {
         const { newCreatedNoteId, InfoSiteMatchId } = action.payload;
         const match = state.matches.find(
@@ -505,13 +504,13 @@ const {
   expandOneLeague,
   updatedIconIssueLeagueRow,
   updatedIconIssueMatchRow,
-  addIssueIdtoMatch,
-  addIssueIdtoLeague,
+  addIssueIdToMatch,
+  addIssueIdToLeague,
   showUnreadMessageOnly,
   unShowUnreadMessageOnly,
   changeRowHightLevelWhenPrepareTyping,
-  addNoteIdtoLeague,
-  addNoteIdtoMatch,
+  addNoteIdToLeague,
+  addNoteIdToMatch,
   changeStatePopupLeagueNote,
   changeStatePopupMatchNote,
   updateIconNoteToPencil,
@@ -520,36 +519,36 @@ const {
 } = actions;
 export {
   actions,
-  getShiftByDateAndEmployee,
-  getShiftByDateAndEmployeeWhenChat,
-  sortByColumnKey,
-  pasteCopiedValue,
-  pasteCopiedMultipleValue,
-  deleteRow,
-  updatePrematch,
-  clearStateDayShift,
-  clearStateNightShift,
-  restore,
-  restoreDeletedLeague,
-  clearEntities,
-  collapseAllLeague,
-  expandAllLeague,
-  collapseOneLeague,
-  expandOneLeague,
-  updatedIconIssueLeagueRow,
-  updatedIconIssueMatchRow,
-  addIssueIdtoMatch,
-  addIssueIdtoLeague,
-  showUnreadMessageOnly,
-  unShowUnreadMessageOnly,
+  addIssueIdToLeague,
+  addIssueIdToMatch,
+  addNoteIdToLeague,
+  addNoteIdToMatch,
   changeRowHightLevelWhenPrepareTyping,
-  addNoteIdtoLeague,
-  addNoteIdtoMatch,
   changeStatePopupLeagueNote,
   changeStatePopupMatchNote,
-  updateIconNoteToPencil,
+  clearEntities,
+  clearStateDayShift,
+  clearStateNightShift,
+  collapseAllLeague,
+  collapseOneLeague,
+  deleteRow,
+  expandAllLeague,
+  expandOneLeague,
+  getShiftByDateAndEmployee,
+  getShiftByDateAndEmployeeWhenChat,
+  pasteCopiedMultipleValue,
+  pasteCopiedValue,
+  reloadTicketInTable,
+  restore,
+  restoreDeletedLeague,
+  showUnreadMessageOnly,
+  sortByColumnKey,
   sortByDefault,
-  reloadTicketInTable
+  unShowUnreadMessageOnly,
+  updateIconNoteToPencil,
+  updatePrematch,
+  updatedIconIssueLeagueRow,
+  updatedIconIssueMatchRow
 };
 
 export default reducer;

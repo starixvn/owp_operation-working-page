@@ -1,6 +1,6 @@
 import shiftSlice, {
-  addNoteIdtoLeague,
-  addNoteIdtoMatch,
+  addNoteIdToLeague,
+  addNoteIdToMatch,
   changeRowHightLevelWhenPrepareTyping,
   changeStatePopupLeagueNote,
   changeStatePopupMatchNote,
@@ -24,8 +24,8 @@ import shiftSlice, {
   updatePrematch
 } from './shiftSlice';
 import {
-  addIssueIdtoLeague,
-  addIssueIdtoMatch,
+  addIssueIdToLeague,
+  addIssueIdToMatch,
   pasteCopiedValue
 } from '../../../ImportPrematchHelperNative';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
@@ -85,22 +85,22 @@ describe('shiftSlice under test', () => {
 
       const expectState = {
         entities: [
-          { PreMatchLeagueid: 1, isExpand: undefined },
-          { PreMatchLeagues: 2, isExpand: undefined },
-          { PreMatchLeagues: 3, isExpand: undefined }
+          { PreMatchLeagueId: 1, isExpand: null },
+          { PreMatchLeagues: 2, isExpand: null },
+          { PreMatchLeagues: 3, isExpand: null }
         ],
         loading: REQUEST_STATUS.idle,
         currentRequestId: null,
         error: null,
         matches: [
-          { InfoSiteMatcheid: 1 },
-          { InfoSiteMatcheid: 2 },
-          { InfoSiteMatcheid: 3 }
+          { InfoSiteMatchId: 1 },
+          { InfoSiteMatchId: 2 },
+          { InfoSiteMatchId: 3 }
         ],
         leagues: [
-          { PreMatchLeagueid: 1, isExpand: undefined },
-          { PreMatchLeagues: 2, isExpand: undefined },
-          { PreMatchLeagues: 3, isExpand: undefined }
+          { PreMatchLeagueId: 1, isExpand: null },
+          { PreMatchLeagues: 2, isExpand: null },
+          { PreMatchLeagues: 3, isExpand: null }
         ]
       };
 
@@ -109,14 +109,14 @@ describe('shiftSlice under test', () => {
         meta: { requestId: 2 },
         payload: {
           PreMatchLeagues: [
-            { PreMatchLeagueid: 1 },
+            { PreMatchLeagueId: 1 },
             { PreMatchLeagues: 2 },
             { PreMatchLeagues: 3 }
           ],
           InfoSiteMatches: [
-            { InfoSiteMatcheid: 1 },
-            { InfoSiteMatcheid: 2 },
-            { InfoSiteMatcheid: 3 }
+            { InfoSiteMatchId: 1 },
+            { InfoSiteMatchId: 2 },
+            { InfoSiteMatchId: 3 }
           ]
         }
       };
@@ -307,7 +307,7 @@ describe('shiftSlice under test', () => {
             PreMatchLeagueId: 100,
             HDP: 'sa',
             OU: 'starix1',
-            HDPTakeOver: 'haha',
+            HDPTakeOver: 'ha',
             OUTakeOver: null
           }
         ],
@@ -327,7 +327,7 @@ describe('shiftSlice under test', () => {
             PreMatchLeagueId: 100,
             HDP: 'sa',
             OU: 'starix1',
-            HDPTakeOver: 'haha',
+            HDPTakeOver: 'ha',
             OUTakeOver: null
           },
           {
@@ -350,7 +350,7 @@ describe('shiftSlice under test', () => {
             PreMatchLeagueId: 100,
             HDP: 'sa',
             OU: 'starix1',
-            HDPTakeOver: 'haha',
+            HDPTakeOver: 'ha',
             OUTakeOver: null
           },
           {
@@ -397,7 +397,7 @@ describe('shiftSlice under test', () => {
       const action = {
         type: deleteRow.type,
         payload: {
-          preMatchLeagueId: 4
+          PreMatchLeagueId: 4
         }
       };
 
@@ -482,7 +482,7 @@ describe('shiftSlice under test', () => {
       expect(state).toEqual(expectState);
     });
 
-    it('isExistsIdInprematchIdUpdated  = null, should handle pasteCopiedValue', () => {
+    it('isExistsIdInPrematchIdUpdated  = null, should handle pasteCopiedValue', () => {
       initialState = {
         entities: [
           {
@@ -1383,8 +1383,8 @@ describe('shiftSlice under test', () => {
     });
   });
 
-  describe('addIssueIdtoLeague under test', () => {
-    it(' should handle addIssueIdtoLeague', () => {
+  describe('addIssueIdToLeague under test', () => {
+    it(' should handle addIssueIdToLeague', () => {
       initialState = {
         loading: REQUEST_STATUS.idle,
         leagues: [
@@ -1410,7 +1410,7 @@ describe('shiftSlice under test', () => {
             HasMessages: true,
             IsRead: true,
             MatchCount: 1,
-            PreMatchIssueId: undefined
+            PreMatchIssueId: null
           }
         ],
         leagues: [
@@ -1419,7 +1419,7 @@ describe('shiftSlice under test', () => {
             HasMessages: true,
             IsRead: true,
             MatchCount: 1,
-            PreMatchIssueId: undefined
+            PreMatchIssueId: null
           }
         ],
         matches: [
@@ -1432,7 +1432,7 @@ describe('shiftSlice under test', () => {
       };
 
       const action = {
-        type: addIssueIdtoLeague.type,
+        type: addIssueIdToLeague.type,
         payload: {
           newCreateIssueId: true,
           PreMatchLeagueId: 33
@@ -1445,8 +1445,8 @@ describe('shiftSlice under test', () => {
     });
   });
 
-  describe('addIssueIdtoMatch under test', () => {
-    it(' should handle addIssueIdtoMatch', () => {
+  describe('addIssueIdToMatch under test', () => {
+    it(' should handle addIssueIdToMatch', () => {
       initialState = {
         loading: REQUEST_STATUS.idle,
         leagues: [
@@ -1488,7 +1488,7 @@ describe('shiftSlice under test', () => {
             PreMatchLeagueId: 33,
             InfoSiteMatchId: 1,
             HasMessages: true,
-            PreMatchIssueId: undefined,
+            PreMatchIssueId: null,
             IsRead: true
           }
         ],
@@ -1496,7 +1496,7 @@ describe('shiftSlice under test', () => {
       };
 
       const action = {
-        type: addIssueIdtoMatch.type,
+        type: addIssueIdToMatch.type,
         payload: {
           newCreateIssueId: true,
           InfoSiteMatchId: 1
@@ -1697,8 +1697,8 @@ describe('shiftSlice under test', () => {
     });
   });
 
-  describe('addNoteIdtoLeague under test', () => {
-    it(' should handle addNoteIdtoLeague', () => {
+  describe('addNoteIdToLeague under test', () => {
+    it(' should handle addNoteIdToLeague', () => {
       initialState = {
         loading: REQUEST_STATUS.idle,
         leagues: [
@@ -1746,7 +1746,7 @@ describe('shiftSlice under test', () => {
       };
 
       const action = {
-        type: addNoteIdtoLeague.type,
+        type: addNoteIdToLeague.type,
         payload: {
           newCreatedNoteId: 234,
           LeagueId: 40
@@ -1759,8 +1759,8 @@ describe('shiftSlice under test', () => {
     });
   });
 
-  describe('addNoteIdtoMatch under test', () => {
-    it(' should handle addNoteIdtoMatch', () => {
+  describe('addNoteIdToMatch under test', () => {
+    it(' should handle addNoteIdToMatch', () => {
       initialState = {
         loading: REQUEST_STATUS.idle,
         leagues: [
@@ -1804,7 +1804,7 @@ describe('shiftSlice under test', () => {
       };
 
       const action = {
-        type: addNoteIdtoMatch.type,
+        type: addNoteIdToMatch.type,
         payload: {
           newCreatedNoteId: 123,
           InfoSiteMatchId: 1

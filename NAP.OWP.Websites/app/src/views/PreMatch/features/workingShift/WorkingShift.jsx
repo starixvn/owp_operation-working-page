@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import WorkingShiftTable from './WorkingShiftTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { workingShift } from './WorkingShiftSlice';
-import { URLQUERYWORKINGSHIFT } from '../../const/const';
+import { URL_QUERY_WORKING_SHIFT } from '../../const/const';
 import { isEqual } from 'lodash';
 import Loading from '../../../components/Loading';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
@@ -15,7 +15,7 @@ const WorkingShift = () => {
 
   useEffect(() => {
     const filterWorkingShiftModel = {
-      url: URLQUERYWORKINGSHIFT,
+      url: URL_QUERY_WORKING_SHIFT,
       date: filterDate
     };
     stableDispatch(workingShift(filterWorkingShiftModel));

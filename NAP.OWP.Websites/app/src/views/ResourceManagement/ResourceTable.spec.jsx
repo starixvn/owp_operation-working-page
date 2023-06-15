@@ -73,7 +73,7 @@ describe('ResourceTable', () => {
           { Id: 2, Value: '2' }
         ]
       };
-      const { container } = render(<ResourceTable {...props} />);
+      render(<ResourceTable {...props} />);
     });
   });
 

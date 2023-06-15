@@ -16,15 +16,19 @@
   "sonarlint.ls.javaHome": "C:\\Program Files\\Java\\jdk1.8.0_201",
   "editor.acceptSuggestionOnEnter": "smart",
   "cSpell.words": [
+    "apikey",
+    "bettype",
+    "FIFA",
     "maxbet",
     "netcore",
     "Prematch",
     "reduxjs",
+    "starix",
     "testid",
     "uuidv"
   ],
   "sonarlint.connectedMode.project": {
-    "connectionId": "sonar",
+    "connectionId": "https-sonarqube-nexdev-net-",
     "projectKey": "Nap-OWP"
   }
 }

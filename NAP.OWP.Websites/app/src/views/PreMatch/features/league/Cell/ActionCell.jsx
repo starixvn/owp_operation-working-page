@@ -10,7 +10,7 @@ import useStableDispatch from '../../../../Shared/customHook/useStableDispatch';
 import { resetCopyInfo } from '../../copy/copySlice';
 import Spinner from '../../../../components/Spinner';
 import {
-  QUERYCHECKLEAGUECONTAINSASSIGNMENT,
+  QUERY_CHECK_LEAGUE_CONTAINS_ASSIGNMENT,
   simpleApiQueryUrl
 } from '../../../const/const';
 import { post } from '../../../ImportPrematchHelperNative';
@@ -32,7 +32,7 @@ const ActionCell = props => {
     Spinner.show();
     const result = await post({
       url: simpleApiQueryUrl,
-      apiKey: QUERYCHECKLEAGUECONTAINSASSIGNMENT,
+      apiKey: QUERY_CHECK_LEAGUE_CONTAINS_ASSIGNMENT,
       PreMatchLeagueId
     });
     const isContainsAssignment = result.data[0].IsContainsAssignment;
