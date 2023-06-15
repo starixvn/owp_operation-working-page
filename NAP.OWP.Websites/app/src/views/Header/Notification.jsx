@@ -485,7 +485,8 @@ class Notification extends React.Component {
             rest
           );
           isEqual(process.env.NODE_ENV, 'production') &&
-            documentTitle.BlinkDocumentTitle(data.message);
+            // eslint-disable-next-line no-warning-comments
+            documentTitle.BlinkDocumentTitle(data.message); // NOSONAR
 
           const type = notificationTypes.find(x => x.type === messageType);
 
