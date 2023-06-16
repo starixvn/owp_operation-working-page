@@ -58,7 +58,6 @@ export const createFlag = props => {
   const vStringCondition = /[(]V[)]/im;
 
   const vString = vStringCondition.exec(flagName);
-
   if (vString) {
     const vStringRight = flagName
       .substring(vString.index + 3, flagName.length)
@@ -90,46 +89,33 @@ export const testRegex = props => {
 
 export const checkLeague = props => {
   const { leagueName } = props;
-  const isSABA = testRegex({
-    leagueName,
-    ...SABA
-  });
-  const pes = testRegex({
-    leagueName,
-    ...FIFA_FLAG
-  });
-  const pes21 = testRegex({
-    leagueName,
-    ...PES_FLAG_21
-  });
-  const fifa = testRegex({
-    leagueName,
-    ...PES_FLAG
-  });
+  const isSABA = testRegex({ leagueName, ...SABA });
+  const pes = testRegex({ leagueName, ...PES_FLAG });
+  const pes21 = testRegex({ leagueName, ...PES_FLAG_21 });
+  const fifa = testRegex({ leagueName, ...FIFA_FLAG });
+  const fifa23 = testRegex({ leagueName, ...FIFA_FLAG_23 });
 
-  const fifa23 = testRegex({
-    leagueName,
-    ...FIFA_FLAG_23
-  });
+  if (isSABA) {
+    if (pes && fifa) {
+      return { isHaveFlag: null, flagInfo: null };
+    }
 
-  if (isSABA && pes && fifa) {
+    if (pes) {
+      return { isHaveFlag: true, flagInfo: PES_FLAG.type };
+    }
+
+    if (fifa) {
+      return { isHaveFlag: true, flagInfo: FIFA_FLAG.type };
+    }
+
+    if (fifa23) {
+      return { isHaveFlag: true, flagInfo: FIFA_FLAG_23.type };
+    }
+
+    if (pes21) {
+      return { isHaveFlag: true, flagInfo: PES_FLAG_21.type };
+    }
     return { isHaveFlag: null, flagInfo: null };
-  }
-
-  if (pes21) {
-    return { isHaveFlag: true, flagInfo: PES_FLAG_21.type };
-  }
-
-  if (isSABA && pes) {
-    return { isHaveFlag: true, flagInfo: FIFA_FLAG.type };
-  }
-
-  if (isSABA && fifa) {
-    return { isHaveFlag: true, flagInfo: PES_FLAG.type };
-  }
-
-  if (isSABA && fifa23) {
-    return { isHaveFlag: true, flagInfo: FIFA_FLAG_23.type };
   }
 
   return { isHaveFlag: null, flagInfo: null };
@@ -139,10 +125,16 @@ export const Flag = props => {
   const { leagueName, homeName, awayName } = props;
   const { isHaveFlag, flagInfo } = checkLeague({ leagueName });
 
+  let newAwayName = awayName.replace(/\u00A0/, ' ');
+  let newHomeName = homeName.replace(/\u00A0/, ' ');
+
   const result = isHaveFlag
     ? {
-        awayFlag: createFlag({ flagName: awayName, flagInfo }),
-        homeFlag: createFlag({ flagName: homeName, flagInfo }),
+        awayFlag: createFlag({
+          flagName: newAwayName,
+          flagInfo
+        }),
+        homeFlag: createFlag({ flagName: newHomeName, flagInfo }),
         flagInfo
       }
     : null;

@@ -32,5 +32,5 @@ export const FIFA_23_IMAGE_STORE = [
   'Sweden (V)',
   'Ukraine (V)',
   'USA (V)',
-  'Wales (V)'
+  'Wales  (V)'
 ];
