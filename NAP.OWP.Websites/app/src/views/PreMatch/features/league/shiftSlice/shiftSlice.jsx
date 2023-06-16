@@ -18,7 +18,6 @@ import {
 import {
   getAssignedLeagueId,
   getShiftByDateAndEmployee,
-  getShiftByDateAndEmployeeWhenChat,
   restoreDeletedLeague
 } from './shiftThunkNative';
 
@@ -373,16 +372,20 @@ const shiftSlice = createSlice({
           const findLeague = state.leagues.find(
             league => league.LeagueId === id
           );
-          findLeague.HasMessages = ticketList.length > 0;
-          findLeague.TicketList = ticketList;
-          findLeague.IsRead = ticketList.every(ticket => ticket.IsRead);
+          if (findLeague) {
+            findLeague.HasMessages = ticketList.length > 0;
+            findLeague.TicketList = ticketList;
+            findLeague.IsRead = ticketList.every(ticket => ticket.IsRead);
+          }
         } else {
           const findMatch = state.matches.find(
             match => match.InfoSiteMatchId === id
           );
-          findMatch.HasMessages = ticketList.length > 0;
-          findMatch.TicketList = ticketList;
-          findMatch.IsRead = ticketList.every(ticket => ticket.IsRead);
+          if (findMatch) {
+            findMatch.HasMessages = ticketList.length > 0;
+            findMatch.TicketList = ticketList;
+            findMatch.IsRead = ticketList.every(ticket => ticket.IsRead);
+          }
         }
 
         state.entities = mergeMatchesToLeagues(
@@ -435,23 +438,6 @@ const shiftSlice = createSlice({
           state.error = action.error;
           state.currentRequestId = null;
         }
-      })
-      .addCase(getShiftByDateAndEmployeeWhenChat.fulfilled, (state, action) => {
-        state.loading = REQUEST_STATUS.idle;
-        state.entities.length = 0;
-        const { InfoSiteMatches, PreMatchLeagues } = action.payload;
-
-        state.leagues = [...[], ...PreMatchLeagues];
-        state.matches = [...[], ...InfoSiteMatches];
-
-        changeExpandStateAllLeague(state.leagues, state.isShowUnreadMessage);
-
-        state.entities = mergeMatchesToLeagues(
-          state.matches,
-          state.leagues,
-          state.isShowUnreadMessage
-        );
-        state.currentRequestId = null;
       })
       .addCase(restoreDeletedLeague.pending, state => {
         const { loading } = state;
@@ -535,7 +521,6 @@ export {
   expandAllLeague,
   expandOneLeague,
   getShiftByDateAndEmployee,
-  getShiftByDateAndEmployeeWhenChat,
   pasteCopiedMultipleValue,
   pasteCopiedValue,
   reloadTicketInTable,

@@ -12,10 +12,7 @@ import {
   pasteCopiedValue,
   updatePrematch
 } from './features/league/shiftSlice/shiftSlice';
-import {
-  getShiftByDateAndEmployee,
-  getShiftByDateAndEmployeeWhenChat
-} from './features/league/shiftSlice/shiftThunkNative';
+import { getShiftByDateAndEmployee } from './features/league/shiftSlice/shiftThunkNative';
 import SignalRWrapper from './features/signalR/SignalrWrapper';
 
 export {
@@ -31,7 +28,6 @@ export {
   addIssueIdToLeague,
   addIssueIdToMatch,
   getShiftByDateAndEmployee,
-  getShiftByDateAndEmployeeWhenChat,
   SignalRWrapper,
   formatTime,
   pasteCopiedValue,

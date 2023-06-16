@@ -15,7 +15,7 @@ const TicketDetailInformation = ({
 }) => {
   const { HasWrite, ActorId } = permission;
 
-  const { ticketId } = ticketDetail;
+  const { ticketId, eventType } = ticketDetail;
 
   const handleRemoveRecipient = useCallback(
     async recipient => {
@@ -25,7 +25,8 @@ const TicketDetailInformation = ({
         ticketId,
         recipientId,
         recipientType,
-        ActorId
+        ActorId,
+        ticketEventType: eventType
       };
       const url =
         process.env.NODE_ENV === 'development'
@@ -35,7 +36,7 @@ const TicketDetailInformation = ({
       const { status, data } = await Axios.post(url, requestModel);
       return { status, data };
     },
-    [ActorId, ticketId]
+    [ActorId, ticketId, eventType]
   );
 
   const handleAddRecipient = useCallback(

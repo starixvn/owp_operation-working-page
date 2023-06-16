@@ -37,13 +37,6 @@ const getShiftByDateAndEmployee = createAsyncThunk(
     return response.data;
   }
 );
-const getShiftByDateAndEmployeeWhenChat = createAsyncThunk(
-  'dayShift/getShiftByDateAndEmployeeWhenChat',
-  async modelFilter => {
-    const response = await post(modelFilter);
-    return response.data;
-  }
-);
 
 const getAssignedLeagueId = createAsyncThunk(
   'dayShift/getAssignedLeagueId',
@@ -56,9 +49,4 @@ const getAssignedLeagueId = createAsyncThunk(
   }
 );
 
-export {
-  restoreDeletedLeague,
-  getShiftByDateAndEmployee,
-  getShiftByDateAndEmployeeWhenChat,
-  getAssignedLeagueId
-};
+export { restoreDeletedLeague, getShiftByDateAndEmployee, getAssignedLeagueId };
