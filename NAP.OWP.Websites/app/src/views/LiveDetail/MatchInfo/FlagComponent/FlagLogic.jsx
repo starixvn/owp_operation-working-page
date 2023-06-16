@@ -58,7 +58,6 @@ export const createFlag = props => {
   const vStringCondition = /[(]V[)]/im;
 
   const vString = vStringCondition.exec(flagName);
-
   if (vString) {
     const vStringRight = flagName
       .substring(vString.index + 3, flagName.length)
@@ -126,10 +125,16 @@ export const Flag = props => {
   const { leagueName, homeName, awayName } = props;
   const { isHaveFlag, flagInfo } = checkLeague({ leagueName });
 
+  let newAwayName = awayName.replace(/\u00A0/, ' ');
+  let newHomeName = homeName.replace(/\u00A0/, ' ');
+
   const result = isHaveFlag
     ? {
-        awayFlag: createFlag({ flagName: awayName, flagInfo }),
-        homeFlag: createFlag({ flagName: homeName, flagInfo }),
+        awayFlag: createFlag({
+          flagName: newAwayName,
+          flagInfo
+        }),
+        homeFlag: createFlag({ flagName: newHomeName, flagInfo }),
         flagInfo
       }
     : null;
