@@ -9,7 +9,9 @@ const TraderCell = ({ value, isManagement }: Props) => {
   return (
     <>
       <div className={isManagement ? 'trader-management' : 'trader'}>
-        <span>{isManagement ? <b>{value}</b> : value}</span>
+        <span>
+          {isManagement ? <b style={{ color: '#1e88e5' }}>{value}</b> : value}
+        </span>
       </div>
     </>
   );

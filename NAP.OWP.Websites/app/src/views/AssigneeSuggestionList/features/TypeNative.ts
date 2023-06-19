@@ -109,9 +109,12 @@ type TQueryColorExplainInfo = {
 };
 
 type TQueryWorkScheduleInfo = {
+  workScheduleInfoOrigin: TAssigneeSuggestion;
   workScheduleInfo: TAssigneeSuggestion;
   loadingDataTable: string;
+  searchText: string;
   queryDataTable: (params: TQueryWorkScheduleType) => Promise<void>;
+  searchDataTable: (keyword: string) => void;
 };
 
 type TQueryWorkScheduleType = {

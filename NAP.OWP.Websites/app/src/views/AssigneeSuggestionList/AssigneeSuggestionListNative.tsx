@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { OWPHeader, OWPPage, OWPBody } from '../Shared/common/OWP/OPWPage';
 import Header from './features/header/Header';
-import ColorExplain from './features/colorExplain/ColorExplain';
 import SuggestionTable from './features/table/SuggestionTable';
 import { shallow } from 'zustand/shallow';
 import useStore from './app/useStoreNative';
@@ -33,7 +32,6 @@ const AssigneeSuggestionList = () => {
     <OWPPage className='suggestion-list'>
       <OWPHeader className='suggestion-list'>
         <Header />
-        <ColorExplain />
       </OWPHeader>
       <OWPBody className='suggestion-list'>
         {isEqual(loading, REQUEST_STATUS.pending) ? (

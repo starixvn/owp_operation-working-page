@@ -31,7 +31,27 @@
     font-size: 1.2rem;
   }
 }
-
+// Filter 
+.suggestion-list-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 90px 0 0;
+}
+.search-assignee{
+  input{
+    background: #FAFAFA;
+    border: 1px solid #D3D3D3;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 5px 8px;
+    min-width: 200px;
+    outline: none;
+    &:focus{
+      outline: none;
+    }
+  }
+}
 // Table
 .rt-thead.-header {
   z-index: 12 !important;

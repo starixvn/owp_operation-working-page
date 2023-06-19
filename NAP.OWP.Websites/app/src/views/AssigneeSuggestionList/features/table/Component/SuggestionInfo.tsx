@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { UserWorkingSchedule } from '../../TypeNative';
 import TraderInfo from './TraderInfo';
 import WorkingShift from './WorkingShift';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { shallow } from 'zustand/shallow';
+import useStore from '../../../app/useStoreNative';
+
 type Props = {
   workingShifts: UserWorkingSchedule[] | null;
   title: string;
@@ -12,6 +15,17 @@ type Props = {
 
 const SuggestionInfo = ({ workingShifts, title, isOpen = false }: Props) => {
   const [isOpenExpand, setOpenExpand] = useState<boolean>(isOpen);
+  const { searchText } = useStore(
+    state => ({
+      searchText: state.searchText
+    }),
+    shallow
+  );
+
+  useEffect(() => {
+    Boolean(searchText) && setOpenExpand(true);
+  }, [searchText]);
+
   return (
     <>
       <tr className='full-row'>
