@@ -1,9 +1,13 @@
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(utc);
 dayjs.extend(localizedFormat);
+dayjs.extend(timezone);
+dayjs.extend(customParseFormat);
 
 const buildTimeRangeForFromDate = fromDate => {
   const maxFromDate = new Date(fromDate);
@@ -100,8 +104,14 @@ const formatTime = (value, startOf, formatOutput) => {
 };
 
 const formatTimeForTicketLGAPopup = (value, startOf, formatOutput) => {
-  var modifiedDateTimeString = value && value.replace(/\+.*$/, '');
-  return dayjs(modifiedDateTimeString).startOf(startOf).format(formatOutput);
+  if (!value) {
+    return null;
+  }
+  const timezone = 'America/New_York';
+
+  return process.env.NODE_ENV === 'development'
+    ? dayjs(value).startOf(startOf).format(formatOutput)
+    : dayjs(value).tz(timezone).format('MMM DD, YYYY h:mm A');
 };
 
 const formatTimeOsLastUpdate = dateStr =>
