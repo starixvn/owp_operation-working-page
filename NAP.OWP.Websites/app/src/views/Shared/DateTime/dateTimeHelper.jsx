@@ -99,6 +99,11 @@ const formatTime = (value, startOf, formatOutput) => {
   return dayjs(value).startOf(startOf).format(formatOutput);
 };
 
+const formatTimeForTicketLGAPopup = (value, startOf, formatOutput) => {
+  var modifiedDateTimeString = value && value.replace(/\+.*$/, '');
+  return dayjs(modifiedDateTimeString).startOf(startOf).format(formatOutput);
+};
+
 const formatTimeOsLastUpdate = dateStr =>
   dayjs.utc(dateStr).format('MMMM DD, YYYY hh:mm A');
 
@@ -168,5 +173,6 @@ export {
   getMMDDYYYYStringFromDateTime,
   getLocaleDateTime,
   getDayjsFromTime,
-  formatTimeOsLastUpdate
+  formatTimeOsLastUpdate,
+  formatTimeForTicketLGAPopup
 };
