@@ -55,7 +55,7 @@ const getTicketTitle = ticket => {
   }
   if (ticket.eventType === EVENT_TYPE.LOG_WORK) {
     return ticket.eventName
-      ? `${ticket.eventName} - ${ticket.homeName}/${ticket.awayName}`
+      ? `[${ticket.adminSiteId}] ${ticket.eventName} - ${ticket.homeName}/${ticket.awayName}`
       : ticket.subject;
   }
   return ticket.owpLeagueName;
