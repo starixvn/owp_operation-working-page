@@ -2758,8 +2758,8 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\ticket-center\assets\ext\server-12ecede1.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-b1853765.js" />
+    <Content Include="wwwroot\ticket-center\assets\ext\server-87aded9e.css" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-cc9bcdb5.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />
@@ -2843,10 +2843,6 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\event-assignment\server.cshtml" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
@@ -2856,10 +2852,6 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\ticket-center\server.cshtml" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-ea568b68.ttf" />
