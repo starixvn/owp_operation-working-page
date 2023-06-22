@@ -14,8 +14,7 @@ import {
   STATUS,
   ticketType,
   subjectMaxLength,
-  subtypeOther,
-  subtypeMatchCheck
+  subtypeTicketCheck
 } from './logWorkConst.json';
 import Status from './component/Status';
 import Recipient from './component/Recipient';
@@ -58,7 +57,7 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
           label
         })
       );
-      const subTypeDefault = option.find(x => x.value === subtypeOther);
+      const subTypeDefault = option.find(x => x.value === subtypeTicketCheck);
       const recipientDefault = await getRecipientDefaultBySubType(
         subTypeDefault?.value
       );

@@ -16,5 +16,6 @@
   "ticketType": 5,
   "subjectMaxLength": 200,
   "subtypeOther": 24,
-  "subtypeMatchCheck": 21
+  "subtypeMatchCheck": 21,
+  "subtypeTicketCheck":20
 }
