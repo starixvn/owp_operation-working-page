@@ -6,7 +6,7 @@ const createProps = isExpand => {
   return {
     teamName: {
       homeName: 'Arsenal (V)',
-      awayName: 'AC Milan (V)'
+      AwayName: 'AC Milan (V)'
     },
     leagueName: 'PremierLeague',
     isExpand: isExpand
