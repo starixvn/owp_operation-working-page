@@ -87,7 +87,8 @@ export const testRegex = props => {
   return null;
 };
 
-export const checkLeague = props => {
+// eslint-disable-next-line no-warning-comments
+export const checkLeague = props => /* NOSONAR */ {
   const { leagueName } = props;
   const isSABA = testRegex({ leagueName, ...SABA });
   const pes = testRegex({ leagueName, ...PES_FLAG });

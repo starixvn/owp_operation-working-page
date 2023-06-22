@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash';
 import {
-  TAKEOVERAPIKEY,
+  TAKE_OVER_API_KEY,
   TradingPageUrl,
   simpleApiQueryUrl
 } from '../const/const';
@@ -24,21 +24,21 @@ const buildClassNameAssignmentCell = (isHighlight, isCopying) => {
   return className;
 };
 
-const buildLastUpdatedFormatter = props => {
+const buildLAST_UPDATEDFormatter = props => {
   const { updateTime, updateBy } = props;
-  const lastUpdatedFormatter = updateTime
+  const LAST_UPDATEDFormatter = updateTime
     ? formatTime(updateTime, 'minute', 'LLL')
     : undefined;
   return {
-    lastUpdatedFormatter,
+    LAST_UPDATEDFormatter,
     updateBy
   };
 };
 
 const buildLastUpdate = props => {
-  const { lastUpdatedFormatter, updateBy } = props;
-  const lastUpdate = lastUpdatedFormatter
-    ? ` (Last Updated at ${lastUpdatedFormatter} GMT+8 by ${updateBy})`
+  const { LAST_UPDATEDFormatter, updateBy } = props;
+  const lastUpdate = LAST_UPDATEDFormatter
+    ? ` (Last Updated at ${LAST_UPDATEDFormatter} GMT+8 by ${updateBy})`
     : null;
   return lastUpdate;
 };
@@ -49,14 +49,14 @@ const pipe =
     fns.reduce((y, func) => func(y), x);
 
 const buildHeaderTitle = (updateTime, updateBy) => {
-  const builderPipe = pipe(buildLastUpdatedFormatter, buildLastUpdate);
+  const builderPipe = pipe(buildLAST_UPDATEDFormatter, buildLastUpdate);
   return builderPipe({ updateTime, updateBy });
 };
 
 const buildStartTimeQueryModel = evenDate => {
   return {
     url: simpleApiQueryUrl,
-    apiKey: TAKEOVERAPIKEY,
+    apiKey: TAKE_OVER_API_KEY,
     EventDate: evenDate
   };
 };
@@ -69,7 +69,7 @@ export {
   buildClassNameAssignmentCell,
   buildHeaderTitle,
   buildStartTimeQueryModel,
-  buildLastUpdatedFormatter,
+  buildLAST_UPDATEDFormatter,
   buildLastUpdate,
   buildGoToTradingPageLink
 };

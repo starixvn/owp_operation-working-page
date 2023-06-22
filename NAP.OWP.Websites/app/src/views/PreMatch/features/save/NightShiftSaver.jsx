@@ -6,7 +6,7 @@ import { clearStateNightShift } from '../league/shiftSlice/shiftSlice';
 import Spinner from '../../../components/Spinner';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import SaveComponent from './SaveComponent';
-import { LASTUPDATED, simpleApiQueryUrl } from '../../const/const';
+import { LAST_UPDATED, simpleApiQueryUrl } from '../../const/const';
 import { getLastUpdate } from '../header/headerSlice';
 import { post } from '../../ImportPrematchHelperNative';
 import { buildModelNightShiftSaver } from './modelSaveNightShiftBuilder';
@@ -44,7 +44,7 @@ const NightShiftSaver = () => {
       ToastrWrapper.showInfo('The assignment has been updated successfully!');
       const model = {
         url: simpleApiQueryUrl,
-        apiKey: LASTUPDATED.apiKey,
+        apiKey: LAST_UPDATED.apiKey,
         isDay: false
       };
       dispatch(getLastUpdate(model));

@@ -1,10 +1,10 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import EventAssignmentService from './Service';
-import AuthorizeService from '../Authorize/Service';
-import EventInformation from './EventAssignment';
-import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import AuthorizeService from '../Authorize/Service';
+import EventInformation from './EventAssignment';
+import EventAssignmentService from './Service';
 jest.mock('./Service');
 jest.mock('../Authorize/Service');
 const middleWares = [];
@@ -12,7 +12,7 @@ const mockStore = configureStore(middleWares);
 const store = mockStore({
   chatBoard: { modelByRowIndex: {} },
   createTicketBoard: {
-    selectedRecipients: {},
+    selectedRecipients: [],
     subTypeSelected: null,
     isOpenCreateTicketInLGA: true
   },

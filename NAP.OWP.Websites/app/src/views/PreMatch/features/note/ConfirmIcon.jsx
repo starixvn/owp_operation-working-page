@@ -21,7 +21,7 @@ const ConfirmIcon = props => {
     const postModel = {
       PreMatchNoteMessageId,
       Message: editNoteRef.current.value,
-      url: URL.UPDATENOTE
+      url: URL.UPDATE_NOTE
     };
     dispatch(updateNote(postModel));
     setIsEditing(false);

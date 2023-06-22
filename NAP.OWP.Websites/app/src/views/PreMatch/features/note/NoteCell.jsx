@@ -9,7 +9,7 @@ import {
   changeStatePopupLeagueNote
 } from '../league/shiftSlice/shiftSlice';
 import { clearNote, getNote } from './NoteSlice';
-import { APIKEY, simpleApiQueryUrl } from '../../const/const';
+import { API_KEY, simpleApiQueryUrl } from '../../const/const';
 import { useSelector } from 'react-redux';
 
 const propTypes = {
@@ -54,7 +54,7 @@ const NoteCell = props => {
     stableDispatch(clearNote());
     const getModel = {
       url: simpleApiQueryUrl,
-      apiKey: APIKEY.QUERYNOTE,
+      apiKey: API_KEY.QUERY_NOTE,
       PreMatchNoteId
     };
     stableDispatch(getNote(getModel));

@@ -144,7 +144,7 @@ const logAction = {
   updateOtherAssignment: 'Update Other Assignment'
 };
 
-const APIKEY = {
+const API_KEY = {
   VALIDATE_ASSIGNEE: 'pre-match-assignment-validate-assignment'
 };
 
@@ -154,5 +154,5 @@ export {
   ColumnModels,
   logAction,
   DefaultTableStyle,
-  APIKEY
+  API_KEY
 };

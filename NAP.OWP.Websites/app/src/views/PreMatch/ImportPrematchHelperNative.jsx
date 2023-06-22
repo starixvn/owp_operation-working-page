@@ -7,15 +7,12 @@ import ShowUnreadMessageCheckBox from './features/expandCollapse/ShowUnreadMessa
 import { get, post } from '../Shared/Service/Service';
 import useStableDispatch from '../Shared/customHook/useStableDispatch';
 import {
-  addIssueIdtoLeague,
-  addIssueIdtoMatch,
+  addIssueIdToLeague,
+  addIssueIdToMatch,
   pasteCopiedValue,
   updatePrematch
 } from './features/league/shiftSlice/shiftSlice';
-import {
-  getShiftByDateAndEmployee,
-  getShiftByDateAndEmployeeWhenChat
-} from './features/league/shiftSlice/shiftThunkNative';
+import { getShiftByDateAndEmployee } from './features/league/shiftSlice/shiftThunkNative';
 import SignalRWrapper from './features/signalR/SignalrWrapper';
 
 export {
@@ -28,10 +25,9 @@ export {
   post,
   get,
   useStableDispatch,
-  addIssueIdtoLeague,
-  addIssueIdtoMatch,
+  addIssueIdToLeague,
+  addIssueIdToMatch,
   getShiftByDateAndEmployee,
-  getShiftByDateAndEmployeeWhenChat,
   SignalRWrapper,
   formatTime,
   pasteCopiedValue,

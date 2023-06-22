@@ -1,10 +1,8 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import Filter from './Filter';
-import { getProductPreference } from '../productPreference/productThunkNative';
-import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import store from '../../app/storeNative';
+import Filter from './Filter';
 
 const mockState = {
   store: {

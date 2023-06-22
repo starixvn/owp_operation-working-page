@@ -54,9 +54,9 @@ describe('Helper under test', () => {
     ];
 
     const expectedResult = [
-      { leagueName: 'A', eventDateTimeGmt8: '2022-12-31' },
       { leagueName: 'B', eventDateTimeGmt8: '2023-01-01' },
-      { leagueName: 'C', eventDateTimeGmt8: '2022-01-01' }
+      { leagueName: 'C', eventDateTimeGmt8: '2022-01-01' },
+      { leagueName: 'A', eventDateTimeGmt8: '2022-12-31' }
     ];
 
     const result = filterResult(value);

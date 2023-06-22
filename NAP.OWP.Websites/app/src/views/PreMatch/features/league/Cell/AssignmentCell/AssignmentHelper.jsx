@@ -1,5 +1,5 @@
 import { post } from '../../../../ImportPrematchHelperNative';
-import { APIKEY } from '../../constants/preMatchConst';
+import { API_KEY } from '../../constants/preMatchConst';
 import { simpleApiQueryUrl } from '../../../../const/const';
 
 const validateAssignment = async (value, olderValue = '') => {
@@ -8,7 +8,7 @@ const validateAssignment = async (value, olderValue = '') => {
   let valueBeforeValidate;
   const modelValidation = {
     url: simpleApiQueryUrl,
-    apikey: APIKEY.VALIDATE_ASSIGNEE,
+    apikey: API_KEY.VALIDATE_ASSIGNEE,
     Assignee: value
   };
   const validateResponse = await post(modelValidation);

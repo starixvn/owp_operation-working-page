@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -475,6 +474,14 @@
     <Content Include="wwwroot\assignee-suggestion-list\assets\js\main-11545d1a.js" />
     <Content Include="wwwroot\assignee-suggestion-list\favicon.ico" />
     <Content Include="wwwroot\assignee-suggestion-list\server.html" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-f34334fe.svg" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\server-ba8b4a33.css" />
+    <Content Include="wwwroot\day-shift-assignment\assets\js\main-20d42540.js" />
+    <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
+    <Content Include="wwwroot\day-shift-assignment\server.html" />
     <Content Include="wwwroot\images\Flags\FIFA23\Argentina %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FIFA23\Australia %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FIFA23\Austria %28V%29.jpg" />
@@ -517,14 +524,6 @@
     <Content Include="wwwroot\auto-assignment\assets\js\main-50a82890.js" />
     <Content Include="wwwroot\auto-assignment\favicon.ico" />
     <Content Include="wwwroot\auto-assignment\server.html" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\icon-search-4037a8fe.svg" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_none-232840bc.svg" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\server-eae45026.css" />
-    <Content Include="wwwroot\day-shift-assignment\assets\js\main-ef5661bd.js" />
-    <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
-    <Content Include="wwwroot\day-shift-assignment\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
@@ -2646,8 +2645,8 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\server-eae45026.css" />
-    <Content Include="wwwroot\night-shift-assignment\assets\js\main-1df01e2c.js" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\server-ba8b4a33.css" />
+    <Content Include="wwwroot\night-shift-assignment\assets\js\main-c6e357b5.js" />
     <Content Include="wwwroot\night-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\night-shift-assignment\server.html" />
     <Content Include="wwwroot\notification-setting\assets\ext\icon-search-4037a8fe.svg" />
@@ -2844,10 +2843,6 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
@@ -2856,10 +2851,6 @@
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\live-game-list\server.cshtml" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
     <Content Include="wwwroot\popup-container\server.cshtml" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
@@ -2881,6 +2872,14 @@
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

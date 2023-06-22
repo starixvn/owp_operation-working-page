@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import { useStableDispatch } from '../../ImportPrematchHelperNative';
 import { deleteNote } from './NoteSlice';
-import { APIKEY, NOTETYPE, simpleApiUpdateUrl } from '../../const/const';
+import { API_KEY, NOTE_TYPE, simpleApiUpdateUrl } from '../../const/const';
 import { useStore } from 'react-redux';
 import { updateIconNoteToPencil } from '../league/shiftSlice/shiftSlice';
 
@@ -29,7 +29,7 @@ const ActionIcon = props => {
     if (result.value) {
       const deleteModel = {
         url: simpleApiUpdateUrl,
-        apiKey: APIKEY.DELETENOTE,
+        apiKey: API_KEY.DELETE_NOTE,
         PreMatchNoteMessageId
       };
       await dispatch(deleteNote(deleteModel));
@@ -37,11 +37,11 @@ const ActionIcon = props => {
       const { notes } = state.note;
       const updateModel = InfoSiteMatchId
         ? {
-            key: NOTETYPE.MATCH,
+            key: NOTE_TYPE.MATCH,
             value: InfoSiteMatchId
           }
         : {
-            key: NOTETYPE.LEAGUE,
+            key: NOTE_TYPE.LEAGUE,
             value: LeagueId
           };
 

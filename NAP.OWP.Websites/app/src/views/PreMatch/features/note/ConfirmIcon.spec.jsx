@@ -20,14 +20,14 @@ const setUp = (hasWrite = true) => {
             PreMatchNoteId: 123,
             PreMatchNoteMessageId: 111,
             Username: 'sa',
-            LastUpdated: new Date(),
+            LAST_UPDATED: new Date(),
             Note: 'test note abc'
           },
           {
             PreMatchNoteId: 123,
             PreMatchNoteMessageId: 222,
             Username: 'starix1',
-            LastUpdated: new Date(),
+            LAST_UPDATED: new Date(),
             Note: 'test222222'
           }
         ]
@@ -47,7 +47,7 @@ const getProps = {
     PreMatchNoteId: 123,
     PreMatchNoteMessageId: 222,
     Username: 'starix1',
-    LastUpdated: new Date(),
+    LAST_UPDATED: new Date(),
     Note: 'test222222'
   },
   model: {

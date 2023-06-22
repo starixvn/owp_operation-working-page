@@ -7,13 +7,17 @@ import {
 } from '../league/shiftSlice/shiftSlice';
 import { updateStartTimeFilter } from '../header/headerSlice';
 import { TimePicker } from 'antd';
-import { URLNIGHTSHIFT } from '../../const/const';
+import { URL_NIGHT_SHIFT } from '../../const/const';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import { DateTimeFilterCommon } from '../../ImportPrematchHelperNative';
 import CollapseBtn from '../expandCollapse/CollapseBtn';
 import ExpandBtn from '../expandCollapse/ExpandBtn';
 import ShowUnreadMessageCheckBox from '../expandCollapse/ShowUnreadMessageCheckBox';
-import { getMMDDYYYYStringFromDateTime, getHourAndMinutes, getDayjsFromTime } from '../../../Shared/DateTime/dateTimeHelper';
+import {
+  getMMDDYYYYStringFromDateTime,
+  getHourAndMinutes,
+  getDayjsFromTime
+} from '../../../Shared/DateTime/dateTimeHelper';
 
 const format = 'h:mm A';
 
@@ -22,7 +26,9 @@ const EditFilterNightShift = () => {
   const startTimeOriginal = useSelector(
     state => state.header.startTimeOriginal
   );
-  const startTime = startTimeOriginal ? getDayjsFromTime(startTimeOriginal) : null;
+  const startTime = startTimeOriginal
+    ? getDayjsFromTime(startTimeOriginal)
+    : null;
 
   const permission = useSelector(state => state.policy.permission);
   const dispatch = useDispatch();
@@ -31,11 +37,13 @@ const EditFilterNightShift = () => {
 
   const handleSubmit = useCallback(
     selectedDate => {
-      const startTimePicker = startTimeSelected ? startTimeSelected.format('HH:mm') : '';
+      const startTimePicker = startTimeSelected
+        ? startTimeSelected.format('HH:mm')
+        : '';
       const model = {
         EventDate: getMMDDYYYYStringFromDateTime(selectedDate),
-        Employee: undefined,
-        url: URLNIGHTSHIFT,
+        Employee: null,
+        url: URL_NIGHT_SHIFT,
         ActorId: permission.ActorId,
         StartTime: getHourAndMinutes(startTimePicker) || ''
       };

@@ -6,7 +6,7 @@ import Loading from '../../../components/Loading';
 import { pageSizeOptions, REQUEST_STATUS } from '../../../Shared/Constants';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import Pagination from '../../../Shared/Paging/Pagination';
-import { URLQUERYCHANGELOG } from '../../const/const';
+import { URL_QUERY_CHANGE_LOG } from '../../const/const';
 import { changeLog } from './ChangeLogSlice';
 import ChangeLogTable from './ChangeLogTable';
 import update from 'immutability-helper';
@@ -42,7 +42,7 @@ const ChangeLog = ({ isDay }) => {
 
   useEffect(() => {
     const filterChangeLogModel = {
-      url: URLQUERYCHANGELOG,
+      url: URL_QUERY_CHANGE_LOG,
       pageSize: pageInfo.pageSize.value,
       pageNumber: pageInfo.currentPage,
       isDay

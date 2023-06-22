@@ -53,10 +53,14 @@ const RecipientSuggestion = (data: PropsType) => {
         ToastrWrapper.showError(error);
       }
     );
+    // eslint-disable-next-line no-warning-comments
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setSuggestions(getSuggestions(searchValue));
+    // eslint-disable-next-line no-warning-comments
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.currentRecipients]);
 
   const getSuggestions = (value: string) => {
