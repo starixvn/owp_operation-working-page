@@ -1,7 +1,26 @@
 .app-body {
   margin-top: 55px !important;
 }
-
+.swal2-container{
+  &.swal2-backdrop-show{
+    padding-top: 0;
+    background: transparent;
+    .swal2-popup{
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 0px 0px 5px 5px!important;
+      width: 26rem!important;
+      padding: 10px 0px!important;
+      .swal2-html-container{
+        margin: 0;
+        font-weight: 400;
+        font-size: 15px!important;
+        .os__upload--success{
+          color: #1C8C00;
+        }
+      }
+    }
+  }
+}
 .button-upload-other-spport {
   border: none;
   border-radius: 2px;
@@ -251,7 +270,7 @@
         transition: background 0.2s ease;
         background: #eee;
         color: #a2a2a2;
-        .mdi-icon {;
+        .mdi-icon {
             margin: 0;
           }
       }

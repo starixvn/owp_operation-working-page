@@ -27,7 +27,9 @@ const Header = () => {
   return (
     <div className='block-filter has-dropdown'>
       {renderFilterTicketCenter()}
-      {HasWrite && <CreateTicketButton buttonType={MY_TICKET} />}
+      {HasWrite && (
+        <CreateTicketButton buttonType={MY_TICKET} isCreateLogWork />
+      )}
 
       <MarkAllReadButton actorId={ActorId} filterModel></MarkAllReadButton>
 

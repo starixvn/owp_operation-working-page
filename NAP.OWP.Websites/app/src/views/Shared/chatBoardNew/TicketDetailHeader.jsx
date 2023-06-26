@@ -7,7 +7,7 @@ const TicketDetailHeader = ({
   subject = '',
   homeName = '',
   awayName = '',
-  owpLeagueName = '',
+  eventName = '',
   koTime = ''
 }) => {
   if (subject) {
@@ -19,7 +19,7 @@ const TicketDetailHeader = ({
     const evenDate = formatTime(koTime, 'minute', 'MMM DD, YYYY');
     return (
       <>
-        <h3 className='text-bold'>#{`${ticketId} - ${owpLeagueName}`}</h3>
+        <h3 className='text-bold'>#{`${ticketId} - ${eventName}`}</h3>
         <div className='event-title'>
           <span className='text-bold h3'>
             {' '}
@@ -34,8 +34,8 @@ const TicketDetailHeader = ({
     );
   }
 
-  if (owpLeagueName) {
-    return <h3 className='text-bold'>#{`${ticketId} - ${owpLeagueName}`}</h3>;
+  if (eventName) {
+    return <h3 className='text-bold'>#{`${ticketId} - ${eventName}`}</h3>;
   }
 
   return (

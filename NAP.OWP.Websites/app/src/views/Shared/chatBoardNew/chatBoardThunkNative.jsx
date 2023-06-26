@@ -1,7 +1,7 @@
 import { post } from '../Service/Service';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Axios from 'axios';
-import { URL } from './const/index.json';
+import { URL, TICKET_TYPE } from './const/index.json';
 
 const handleMessage = name =>
   createAsyncThunk(name, async model => {
@@ -12,13 +12,10 @@ const handleMessage = name =>
 const getTicketDetail = createAsyncThunk(
   'message/GetTicketDetail',
   async (model, { rejectWithValue, getState }) => {
-
     const { detailSegmentUrl, isQueryMessageInLastTwoDay, ...rest } = model;
     const state = getState();
 
-    const {
-      ticketDetail
-    } = state.chatBoard;
+    const { ticketDetail } = state.chatBoard;
 
     const { messages } = ticketDetail;
 
@@ -44,9 +41,9 @@ const getTicketDetail = createAsyncThunk(
     return status === 203
       ? rejectWithValue(data)
       : {
-        data,
-        status
-      };
+          data,
+          status
+        };
   }
 );
 
@@ -176,7 +173,9 @@ const getTicketSubTypes = createAsyncThunk(
         value: d.subTypeId,
         label: d.subTypeName
       }));
-      return [...options, { value: 0, label: '' }];
+      return ticketTypeId != TICKET_TYPE.LOG_WORK
+        ? [...options, { value: 0, label: '' }]
+        : [...options];
     }
     return [];
   }

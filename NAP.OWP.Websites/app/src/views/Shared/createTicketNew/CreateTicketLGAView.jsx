@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import ShareOfChatBoardTicket from './ShareOfChatBoardTicket/ShareOfChatBoardTicket';
 import useStableDispatch from '../customHook/useStableDispatch';
-import { formatTime } from '../DateTime/dateTimeHelper';
+import { formatTimeForTicketLGAPopup } from '../DateTime/dateTimeHelper';
 import { post } from '../Service/Service';
 import Service from './Service';
 import Spinner from '../../components/Spinner';
@@ -106,7 +106,7 @@ const CreateTicketLGAView = props => {
             </div>
             <div className='league-ko-time'>
               {' '}
-              {`${formatTime(EventDateTime, 'minute', 'lll')}`}
+              {`${formatTimeForTicketLGAPopup(EventDateTime, 'minute', 'lll')}`}
             </div>
           </div>
         </div>

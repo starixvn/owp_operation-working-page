@@ -12,6 +12,7 @@ import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';
 import CreateTicketLiveIncident from '../Shared/createTicketNew/CreateTicketLiveIncident';
 import CreateTicketEventChecking from '../Shared/createTicketNew/CreateTicketEventChecking';
 import CreateTicketBoardOther from '../Shared/createTicketNew/CreateTicketBoardOther';
+import TicketLogWorkCreator from './../Shared/createTicketNew/TicketLogWork/TicketLogWorkCreator';
 
 const { INDIVIDUAL } = RECIPIENT_TYPE;
 const TicketCenterManagementNative = () => {
@@ -51,6 +52,7 @@ const TicketCenterManagementNative = () => {
           <CreateTicketEventChecking creatorInfo={creatorInfo} />
           <CreateTicketLiveIncident creatorInfo={creatorInfo} />
           <CreateTicketBoardOther creatorInfo={creatorInfo} />
+          <TicketLogWorkCreator creatorInfo={creatorInfo} />
         </OWPBody>
       </OWPPage>
     </div>

@@ -126,8 +126,8 @@ export const Flag = props => {
   const { leagueName, homeName, awayName } = props;
   const { isHaveFlag, flagInfo } = checkLeague({ leagueName });
 
-  let newAwayName = awayName.replace(/\u00A0/, ' ');
-  let newHomeName = homeName.replace(/\u00A0/, ' ');
+  const newAwayName = awayName.replace(/\u00A0/, ' ');
+  const newHomeName = homeName.replace(/\u00A0/, ' ');
 
   const result = isHaveFlag
     ? {

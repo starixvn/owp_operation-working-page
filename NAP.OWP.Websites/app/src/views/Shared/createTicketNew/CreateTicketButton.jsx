@@ -4,7 +4,9 @@ import {
   openPopupEventChecking,
   openPopupLiveIncident,
   openPopupOthers,
-  setTypeTicketText
+  setTypeTicketText,
+  openPopupLogWork,
+  closePopupLogWork
 } from './createTicketBoardSliceNew';
 import { closePopup } from '../chatBoardNew/chatBoardSlice';
 import { BUTTON_TYPE } from './const/const';
@@ -13,11 +15,11 @@ import PropTypes from 'prop-types';
 const { LIVE_GAME, PRE_MATCH, MY_TICKET } = BUTTON_TYPE;
 
 const propTypes = {
-  buttonType: PropTypes.string
+  buttonType: PropTypes.string,
+  isCreateLogWork: PropTypes.bool
 };
 
-const CreateTicketButton = props => {
-  const { buttonType } = props;
+const CreateTicketButton = ({ buttonType, isCreateLogWork = false }) => {
   const isShowEventCheckingButton =
     buttonType === MY_TICKET || buttonType === PRE_MATCH;
   const isShowLiveIncidentButton =
@@ -36,6 +38,7 @@ const CreateTicketButton = props => {
               onClick={() => {
                 dispatch(setTypeTicketText('Event Checking'));
                 dispatch(closePopup());
+                dispatch(closePopupLogWork());
                 dispatch(openPopupEventChecking());
               }}>
               Event Checking
@@ -46,6 +49,7 @@ const CreateTicketButton = props => {
             onClick={() => {
               dispatch(setTypeTicketText('Group Chat'));
               dispatch(closePopup());
+              dispatch(closePopupLogWork());
               dispatch(openPopupOthers());
             }}>
             Group Chat
@@ -55,6 +59,7 @@ const CreateTicketButton = props => {
             onClick={() => {
               dispatch(setTypeTicketText('Ticket Support'));
               dispatch(closePopup());
+              dispatch(closePopupLogWork());
               dispatch(openPopupOthers());
             }}>
             Ticket Support
@@ -65,9 +70,20 @@ const CreateTicketButton = props => {
               onClick={() => {
                 dispatch(setTypeTicketText('Live Incident'));
                 dispatch(closePopup());
+                dispatch(closePopupLogWork());
                 dispatch(openPopupLiveIncident());
               }}>
               Live Incident
+            </li>
+          )}
+          {isCreateLogWork && (
+            <li
+              className='button-work-log'
+              onClick={() => {
+                dispatch(closePopup());
+                dispatch(openPopupLogWork());
+              }}>
+              S&VR
             </li>
           )}
         </div>

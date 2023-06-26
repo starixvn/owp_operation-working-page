@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import OtherIssueCell from './OtherIssueCell';
 import LeagueCell from './LeagueCell';
 import MatchCell from './MatchCell';
+import LogWorkCell from './LogWorkCell';
 
 const propTypes = {
   data: PropTypes.object.isRequired,
@@ -41,6 +42,8 @@ const LeagueCellFactory = ({ data, onClick }) => {
           onClick={onClick}
         />
       );
+    case 6:
+      return <LogWorkCell data={data} onClick={onClick} />;
     default:
       return (
         <OtherIssueCell
