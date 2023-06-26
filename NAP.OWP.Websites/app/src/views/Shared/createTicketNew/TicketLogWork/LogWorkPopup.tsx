@@ -121,7 +121,7 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
   return (
     <div className='chat-board-popup' id='create-ticket-other-popup'>
       <Header
-        ticketHeader='Ticket Log Work'
+        ticketHeader='S&VR'
         handleClosePopup={() => dispatch(closePopupLogWork(false))}
       />
       <div className='log-work'>

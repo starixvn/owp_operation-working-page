@@ -2760,7 +2760,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-03daf8bd.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-84f837d4.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-2daaddd1.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />

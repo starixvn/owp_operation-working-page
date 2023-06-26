@@ -83,7 +83,7 @@ const CreateTicketButton = ({ buttonType, isCreateLogWork = false }) => {
                 dispatch(closePopup());
                 dispatch(openPopupLogWork());
               }}>
-              Ticket Log Work
+              S&VR
             </li>
           )}
         </div>
