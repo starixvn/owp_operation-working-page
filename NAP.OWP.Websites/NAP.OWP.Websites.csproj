@@ -525,14 +525,6 @@
     <Content Include="wwwroot\images\Flags\FIFA23\Ukraine %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FIFA23\USA %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FIFA23\Wales  %28V%29.jpg" />
-    <Content Include="wwwroot\auto-assignment\assets\ext\icon-search-4037a8fe.svg" />
-    <Content Include="wwwroot\auto-assignment\assets\ext\logo_none-232840bc.svg" />
-    <Content Include="wwwroot\auto-assignment\assets\ext\logo_text-c3062a52.svg" />
-    <Content Include="wwwroot\auto-assignment\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\auto-assignment\assets\ext\server-9f59122d.css" />
-    <Content Include="wwwroot\auto-assignment\assets\js\main-50a82890.js" />
-    <Content Include="wwwroot\auto-assignment\favicon.ico" />
-    <Content Include="wwwroot\auto-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\logo_text-c3062a52.svg" />
@@ -2772,10 +2764,6 @@
     <Content Include="wwwroot\ticket-type-recipient\favicon.ico" />
     <Content Include="wwwroot\ticket-type-recipient\server.html" />
     <Content Include="wwwroot\web.config" />
-    <Content Include="wwwroot\auto-assignment\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\auto-assignment\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\auto-assignment\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\auto-assignment\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-ea568b68.ttf" />
