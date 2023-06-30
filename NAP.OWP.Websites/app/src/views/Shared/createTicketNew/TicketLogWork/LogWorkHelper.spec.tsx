@@ -4,7 +4,7 @@ import { getSubjectBySubtype, isMatchCheckType } from './LogWorkHelper';
 describe('getSubjectBySubtype', () => {
   test('returns an empty string when subtype label includes "Match Check"', () => {
     const subtype: SubTypeOption = {
-      value: 1,
+      value: 21,
       label: 'Some Match Check Subtype'
     };
     const subject = getSubjectBySubtype(subtype);
@@ -21,7 +21,7 @@ describe('getSubjectBySubtype', () => {
 describe('isMatchCheckType', () => {
   test('returns true when subtype label includes "Match Check"', () => {
     const subtype: SubTypeOption = {
-      value: 1,
+      value: 21,
       label: 'Some Match Check Subtype'
     };
     const isMatchCheck = isMatchCheckType(subtype);

@@ -21,7 +21,12 @@ import Recipient from './component/Recipient';
 import Comment from './component/Comment';
 import Attachments from '../Attachments/Attachments';
 import ButtonGroup from './component/ButtonGroup';
-import { getSubjectBySubtype, isMatchCheckType } from './LogWorkHelper';
+import {
+  getSubjectBySubtype,
+  isErrorInput,
+  isErrorMatchCheck,
+  isMatchCheckType
+} from './LogWorkHelper';
 import { closePopupLogWork } from './../createTicketBoardSliceNew';
 import { post } from '../../Service/Service';
 import EventSubject from './component/EventSubject';
@@ -64,27 +69,25 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
       setSubTypeOption(option);
       setSubtypeSelected(subTypeDefault);
       setRecipient(recipientDefault);
-      setSubject(subTypeDefault!.label);
+      subTypeDefault && setSubject(subTypeDefault.label);
     })();
   }, []);
 
   const handleOnChangeSubtype = async (subtype: SubTypeOption | null) => {
-    setSubtypeSelected(subtype!);
-    const recipientBySubtype = await getRecipientDefaultBySubType(
-      subtype?.value
-    );
-    setRecipient(recipientBySubtype);
-    setSubject(getSubjectBySubtype(subtype!));
-    setErrorSubject('');
-    setErrorRecipient(false);
+    if (subtype) {
+      setSubtypeSelected(subtype);
+      const recipientBySubtype = await getRecipientDefaultBySubType(
+        subtype?.value
+      );
+      setRecipient(recipientBySubtype);
+      setSubject(getSubjectBySubtype(subtype));
+      setErrorSubject('');
+      setErrorRecipient(false);
+    }
   };
 
   const handleOnSubmit = async () => {
-    if (
-      !recipient.length ||
-      (!isMatchCheckType(subTypeSelected!) &&
-        (!subject.length || subject.length > 200))
-    ) {
+    if (isErrorInput(recipient, subTypeSelected, subject)) {
       !recipient.length && setErrorRecipient(true);
       !subject.length && setErrorSubject('This field is required');
       subject.length > subjectMaxLength &&
@@ -92,7 +95,7 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
       return;
     }
 
-    if (isMatchCheckType(subTypeSelected!) && !adminSiteId) {
+    if (isErrorMatchCheck(subTypeSelected, adminSiteId)) {
       setErrorMatchCheck('Invalid MatchId');
       return;
     }
@@ -138,7 +141,7 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
           />
         </div>
 
-        {isMatchCheckType(subTypeSelected!) ? (
+        {isMatchCheckType(subTypeSelected) ? (
           <EventSubject
             errorInvalid={errorMatchCheck}
             setErrorInvalid={setErrorMatchCheck}
