@@ -29,7 +29,7 @@ const props: LogWorkProps = {
 describe('Subject', () => {
   it('Ticket Log Work', () => {
     render(<TicketLogWorkCreator creatorInfo={props.creatorInfo} />);
-    const title = screen.getByText('Type: Ticket Log Work');
+    const title = screen.getByText('Type: S&VR');
     expect(title).toBeInTheDocument();
   });
 });

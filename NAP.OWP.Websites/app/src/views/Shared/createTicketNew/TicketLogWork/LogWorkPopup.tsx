@@ -74,14 +74,16 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
   }, []);
 
   const handleOnChangeSubtype = async (subtype: SubTypeOption | null) => {
-    setSubtypeSelected(subtype);
-    const recipientBySubtype = await getRecipientDefaultBySubType(
-      subtype?.value
-    );
-    setRecipient(recipientBySubtype);
-    setSubject(getSubjectBySubtype(subtype));
-    setErrorSubject('');
-    setErrorRecipient(false);
+    if (subtype) {
+      setSubtypeSelected(subtype);
+      const recipientBySubtype = await getRecipientDefaultBySubType(
+        subtype?.value
+      );
+      setRecipient(recipientBySubtype);
+      setSubject(getSubjectBySubtype(subtype));
+      setErrorSubject('');
+      setErrorRecipient(false);
+    }
   };
 
   const handleOnSubmit = async () => {

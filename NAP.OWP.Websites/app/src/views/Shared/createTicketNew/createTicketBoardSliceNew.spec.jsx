@@ -30,6 +30,7 @@ describe('createTicketBoardSlice under test', () => {
       errorRecipient: false,
       errorTextField: '',
       isLiveIncident: false,
+      isOpenLogWork: false,
       eventChecking: [],
       recipientAssigned: [],
       isOpenCreateTicketInLGA: false,
@@ -363,13 +364,15 @@ describe('createTicketBoardSlice under test', () => {
       isOpenPopup: true,
       isEventChecking: true,
       isLiveIncident: true,
-      isOthers: false
+      isOthers: false,
+      isOpenLogWork: false
     };
     const expectEventCheckingState = {
       isOpenPopup: false,
       isEventChecking: false,
       isLiveIncident: false,
-      isOthers: false
+      isOthers: false,
+      isOpenLogWork: false
     };
     const action = {
       type: closeCreatePopup.type
