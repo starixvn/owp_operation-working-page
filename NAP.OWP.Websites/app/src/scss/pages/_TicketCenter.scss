@@ -142,6 +142,12 @@
       padding-top: 10px;
       position: relative;
       z-index: 4;
+      .calendar {
+      margin-right: 5px;
+        .label {
+          margin-bottom: 7px;
+        }
+      } 
       .search-text .label {
         margin-bottom: 5px;
       }
@@ -892,7 +898,7 @@
     padding-bottom: 0;
   }
   .block-filter {
-    max-width: 1390px;
+    max-width: 1550px;
     .input-text-event,
     .input-text-ticketId {
       background-color: transparent;
@@ -909,6 +915,7 @@
         border-color: #2684ff;
       }
     }
+    
   }
 }
 .tickets-tab-body {

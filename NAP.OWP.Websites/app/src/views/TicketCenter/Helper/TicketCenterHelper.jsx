@@ -7,6 +7,19 @@ import {
   URL
 } from '../../Shared/TicketCenterPrematch/helper/helper';
 
+const getDefaultDateRange = () => {
+  const curDate = new Date();
+  const fromDateDefault = new Date(curDate);
+  fromDateDefault.setDate(curDate.getDate() - 1);
+  const minDate = new Date(curDate);
+  minDate.setDate(curDate.getDate() - 30);
+  return {
+    fromDateDefault,
+    toDateDefault: curDate,
+    minDate
+  };
+};
+
 const flowFromPreMatch = (userId, searchKey) => {
   return {
     Keyword: searchKey,
@@ -67,5 +80,6 @@ export {
   getDetailSegmentUrlByEventType,
   buildTicketTypeFilter,
   EVENT_TYPE,
-  URL
+  URL,
+  getDefaultDateRange
 };
