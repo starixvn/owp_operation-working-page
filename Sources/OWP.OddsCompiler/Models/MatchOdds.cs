@@ -8,7 +8,7 @@
 
         public int Bettype { get; set; }
 
-        public int TeamChoice { get; set; } = 1;
+        public int? TeamChoice { get; set; } = null;
 
         public decimal? HDP { get; set; }
 

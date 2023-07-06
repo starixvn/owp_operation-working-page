@@ -36,7 +36,6 @@ class OddTable extends React.Component {
   }
 
   render() {
-    const { policy } = this.props;
     return (
       <Table bordered>
         <thead>
@@ -46,7 +45,6 @@ class OddTable extends React.Component {
             <th className='odd-col'>Home</th>
             <th className='odd-col'>Away</th>
             <th className='odd-col'>Draw</th>
-            {policy.HasWrite && <th className='action-col'>Action</th>}
           </tr>
         </thead>
         <tbody>{this.renderBody()}</tbody>
@@ -60,10 +58,10 @@ class OddTable extends React.Component {
 
   renderBody() {
     const { rows } = this.props;
-    const getBetTypes = filter(rows, function(r) {
+    const getBetTypes = filter(rows, function (r) {
       return r.Id > 0;
     }).map(x => x.BetType);
-    const betTypeOptions = filter(betTypes, function(bt) {
+    const betTypeOptions = filter(betTypes, function (bt) {
       return !includes(getBetTypes, bt);
     });
     this.rowRefs = times(rows.length, () => React.createRef());

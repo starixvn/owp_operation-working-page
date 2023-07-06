@@ -27,6 +27,16 @@ Toastr.confirm = jest.fn(() => {
 });
 const props = {
   policy: { HasRead: true, HasWrite: true },
+  matchSettingData: [
+    {
+      Bettype: 1,
+      Spread: 0.2
+    },
+    {
+      Bettype: 2,
+      Spread: 0.25
+    }
+  ],
   events: events,
   pageSize: 200,
   pageIndex: 0,
@@ -35,6 +45,7 @@ const props = {
   columnFiltersChange: jest.fn(),
   onOddsChange: jest.fn()
 };
+
 describe('Table component', () => {
   beforeEach(() => {
     const user = {
@@ -90,7 +101,7 @@ describe('Table component', () => {
   it('should render 1 table, render OddsCell', async () => {
     const { container } = render(<Table {...props} />);
     const oddsInput = container
-      .querySelector('.cell-handicap-away')
+      .querySelector('.cell-handicap-home')
       .querySelector('.cell-input')
       .querySelector('input');
 
@@ -105,10 +116,6 @@ describe('Table component', () => {
   it('should render 1 table,onChange OddsRows ', async () => {
     Service.updateOdds.mockReset();
     const { container } = render(<Table {...props} />);
-    const oddsInput1 = container
-      .querySelector('.cell-handicap-away')
-      .querySelector('.cell-input')
-      .querySelector('input');
     const oddsInput2 = container
       .querySelector('.cell-handicap-home')
       .querySelector('.cell-input')
@@ -117,18 +124,16 @@ describe('Table component', () => {
       .querySelector('.cell-handicap')
       .querySelector('.cell-input')
       .querySelector('input');
+
     const oddsInput4 = container
       .querySelector('.cell-over-under')
-      .querySelector('.cell-input')
-      .querySelector('input');
-    const oddsInput5 = container
-      .querySelector('.cell-over')
       .querySelector('.cell-input')
       .querySelector('input');
     const oddsInput6 = container
       .querySelector('.cell-under')
       .querySelector('.cell-input')
       .querySelector('input');
+
     const oddsInput7 = container
       .querySelector('.cell-one')
       .querySelector('.cell-input')
@@ -137,21 +142,20 @@ describe('Table component', () => {
       .querySelector('.cell-two')
       .querySelector('.cell-input')
       .querySelector('input');
-    await userEvent.type(oddsInput4, '1');
+
+    fireEvent.change(oddsInput4, { target: { value: '0.25' } });
     fireEvent.blur(oddsInput4);
-    await userEvent.type(oddsInput5, '1');
-    fireEvent.blur(oddsInput5);
-    await userEvent.type(oddsInput6, '1');
+    fireEvent.change(oddsInput6, { target: { value: '1' } });
     fireEvent.blur(oddsInput6);
-    await userEvent.type(oddsInput7, '1');
+
+    fireEvent.change(oddsInput7, { target: { value: '1' } });
     fireEvent.blur(oddsInput7);
-    await userEvent.type(oddsInput8, '1');
+    fireEvent.change(oddsInput8, { target: { value: '1' } });
     fireEvent.blur(oddsInput8);
-    await userEvent.type(oddsInput1, '1');
-    fireEvent.blur(oddsInput1);
-    await userEvent.type(oddsInput2, '2');
+
+    fireEvent.change(oddsInput2, { target: { value: '1' } });
     fireEvent.blur(oddsInput2);
-    await userEvent.type(oddsInput3, '4');
+    fireEvent.change(oddsInput3, { target: { value: '-0.25' } });
     fireEvent.blur(oddsInput3);
 
     expect(Service.updateOdds).toBeCalledTimes(2);

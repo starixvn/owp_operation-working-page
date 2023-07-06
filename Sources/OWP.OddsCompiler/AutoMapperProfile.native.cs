@@ -8,6 +8,8 @@
     {
         private const int home = 1;
 
+        private const int away = 2;
+
         private const int hdpBettype = 1;
 
         private const int ouBettype = 3;
@@ -17,7 +19,7 @@
             CreateMap<MatchInfoModel, ExcelReportModel>()
                 .ForMember(dest => dest.KickOffTime, opt => opt.MapFrom(src => src.KickOffTimeToDisplay))
                 .ForMember(dest => dest.OtherTime, opt => opt.MapFrom(src => src.OtherTimeToDisplay))
-                .ForMember(dest => dest.Fav, opt => opt.MapFrom(src => src.MatchOddsRow.Handicap.TeamChoice == home ? "Home" : "Away"))
+                .ForMember(dest => dest.Fav, opt => opt.MapFrom(src => GetTeamChoice(src)))
                 .ForMember(dest => dest.HDP, opt => opt.MapFrom(src => src.MatchOddsRow.Handicap.HDP))
                 .ForMember(dest => dest.HomeOdds, opt => opt.MapFrom(src => src.MatchOddsRow.Handicap.Odds1))
                 .ForMember(dest => dest.AwayOdds, opt => opt.MapFrom(src => src.MatchOddsRow.Handicap.Odds2))
@@ -42,6 +44,19 @@
         {
             var matchSetting = src.MatchSettings.FirstOrDefault(x => x.Bettype == bettype);
             return matchSetting != null ? matchSetting.SpreadToDisplay : string.Empty;
+        }
+
+        private static string GetTeamChoice(MatchInfoModel src)
+        {
+            switch (src.MatchOddsRow.Handicap.TeamChoice)
+            {
+                case home:
+                    return "Home";
+                case away:
+                    return "Away";
+                default:
+                    return string.Empty;
+            }
         }
     }
 }

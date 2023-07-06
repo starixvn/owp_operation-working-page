@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, CardHeader, Collapse } from 'reactstrap';
@@ -198,15 +199,6 @@ class OddPanel extends React.Component {
             )}{' '}
             Recommend Odds
           </Button>
-          {policy.HasWrite && rows && rows.length < 3 && (
-            <Button
-              className='btn-add-odd'
-              onClick={() => this.newRow()}
-              disabled={isCreating || isEditing}>
-              <PlusIcon size={15} />
-              <span>Add</span>
-            </Button>
-          )}
         </CardHeader>
         <Collapse isOpen={isOpen}>
           {isNil(rows) ? (

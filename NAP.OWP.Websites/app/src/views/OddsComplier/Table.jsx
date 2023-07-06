@@ -299,6 +299,7 @@ class Table extends Component {
         key={`OddsRow_${this.state.key}`}
         policy={this.props.policy}
         data={event.MatchOddsRow}
+        matchSettingData={event.MatchSettings}
         event={event}
         onChange={data => this.onOddsChange(index, data)}
       />
