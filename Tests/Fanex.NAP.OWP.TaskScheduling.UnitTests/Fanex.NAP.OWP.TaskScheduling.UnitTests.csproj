@@ -60,7 +60,7 @@
       <HintPath>..\..\packages\NSubstitute.4.2.2\lib\net46\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="Olympus.InfositeClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Olympus.InfoSiteClient.2.1.0.13\lib\net461\Olympus.InfositeClient.dll</HintPath>
+      <HintPath>..\..\packages\Olympus.InfositeClient.2.2.0.7\lib\net472\Olympus.InfositeClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
