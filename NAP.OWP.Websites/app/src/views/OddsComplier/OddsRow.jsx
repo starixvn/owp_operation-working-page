@@ -1,4 +1,4 @@
-import { cloneDeep, isEqual, isNil } from 'lodash';
+import { cloneDeep, isNil } from 'lodash';
 import BroomIcon from 'mdi-react/BroomIcon';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';

@@ -36,11 +36,8 @@ class OddsCell extends PureComponent {
   }
 
   onBlur() {
-    const { value, onChange, validateValue } = this.props;
+    const { onChange, validateValue } = this.props;
     const newValue = this.state.value;
-    if (newValue === value) {
-      return;
-    }
 
     if (!validateValue || validateValue(newValue)) {
       this.setState({ isInvalid: false });
