@@ -2007,7 +2007,7 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\server-8cc05387.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-14b2f1b5.js" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-e032d126.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -2760,7 +2760,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-7a7ae9f0.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-ccaafaf8.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-ff4ee8f9.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />
@@ -2869,10 +2869,6 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\ticket-center\server.cshtml" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
@@ -2881,6 +2877,10 @@
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\live-game-list\server.cshtml" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\ticket-center\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

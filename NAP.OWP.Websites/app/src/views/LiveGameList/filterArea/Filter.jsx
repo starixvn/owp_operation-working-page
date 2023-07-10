@@ -80,7 +80,6 @@ const Filter = () => {
       return;
     }
     let selectedMatchStatusByDate = statusOptions;
-    console.log(statusOptions);
     const today = new Date();
     if (Utils.isSameOrAfter(selectedDate, today)) {
       selectedMatchStatusByDate = statusOptions
@@ -90,7 +89,6 @@ const Filter = () => {
         )
         .sort((a, b) => a.value - b.value);
     }
-    console.log(selectedMatchStatusByDate);
     setSelectedMatchStatus(selectedMatchStatusByDate);
   }, [selectedDate]);
 
