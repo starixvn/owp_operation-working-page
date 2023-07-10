@@ -167,7 +167,7 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Olympus.InfositeClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Olympus.InfoSiteClient.2.1.0.13\lib\net461\Olympus.InfositeClient.dll</HintPath>
+      <HintPath>..\packages\Olympus.InfositeClient.2.2.0.7\lib\net472\Olympus.InfositeClient.dll</HintPath>
     </Reference>
     <Reference Include="Olympus.SimpleDataApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Olympus.SimpleDataApi.1.0.1\lib\net461\Olympus.SimpleDataApi.dll</HintPath>
