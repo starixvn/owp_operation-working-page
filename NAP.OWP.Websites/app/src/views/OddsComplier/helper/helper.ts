@@ -59,7 +59,7 @@ const validateHDPGoal = (value: number) => {
 
   return validateGoal(
     isValidHDP,
-    'Please input numbers below 0 that are multiples of 0.25. E.g., 0, -0.25, -0.5, -1, ...'
+    'Please input numbers below 0 that are multiples of 0.25.<br>E.g. 0, -0.25, -0.5, -1, ...'
   );
 };
 
@@ -68,7 +68,7 @@ const validateOUGoal = (value: number) => {
 
   return validateGoal(
     isValidOU,
-    'Please input numbers above 0 that are multiples of 0.25. E.g., 0, 0.25, 0.5, 1, ...'
+    'Please input numbers above 0 that are multiples of 0.25.<br>E.g. 0, 0.25, 0.5, 1, ...'
   );
 };
 
