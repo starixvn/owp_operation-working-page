@@ -114,10 +114,6 @@ class OddsRow extends PureComponent {
     this.triggerDataChange();
   }
 
-  isValidInput(odd) {
-    return !isNil(odd) && !isEqual(odd, 'error');
-  }
-
   countValidInput(oddsData) {
     let validCount = 0;
     if (oddsData.Bettype !== MajorBetTypes.OneXTwo) {
@@ -130,11 +126,11 @@ class OddsRow extends PureComponent {
       }
     }
 
-    if (this.isValidInput(oddsData.Odds1)) {
+    if (!isNil(oddsData.Odds1)) {
       validCount++;
     }
 
-    if (this.isValidInput(oddsData.Odds2)) {
+    if (!isNil(oddsData.Odds2)) {
       validCount++;
     }
 
