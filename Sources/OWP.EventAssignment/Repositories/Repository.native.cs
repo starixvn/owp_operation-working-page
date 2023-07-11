@@ -596,6 +596,7 @@ namespace OWP.EventAssignment.Repositories
                     KickOffTimeStr = match.KickOffTime,
                     OtherTime = match.OtherTime?.ToKOTime(),
                     OtherTimeStr = match?.OtherTime,
+                    LeagueGroup = match.LeagueGroup,
                     League = match.League,
                     Home = match.Home,
                     Away = match.Away,
