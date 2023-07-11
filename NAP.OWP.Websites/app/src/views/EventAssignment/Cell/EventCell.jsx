@@ -51,7 +51,11 @@ class EventCell extends React.PureComponent {
     };
     return (
       <div className='table-cell' key={`Event${uuidv4()}${rowIndex}`}>
-        <p className='league-name'>{event.League}</p>
+        {event.LeagueGroup && (
+          <h4 className='league-group league-badge'>{event.LeagueGroup}</h4>
+        )}
+        <h4 className='league-group league-name'>{event.League}</h4>
+
         {allowToAddMinorMatch && (
           <a
             onClick={e => {

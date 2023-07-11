@@ -32,6 +32,8 @@
 
         public string League { get; set; }
 
+        public string LeagueGroup { get; set; }
+
         public string Home { get; set; }
 
         public string Away { get; set; }

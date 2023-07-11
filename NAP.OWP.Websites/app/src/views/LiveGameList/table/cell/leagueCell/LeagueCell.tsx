@@ -2,7 +2,8 @@ import React from 'react';
 import { CellProps } from '../../../type/TableType';
 
 const LeagueCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
-  const { League, MatchOffers, NoOfHDP, NoOfHDPId } = dataSource[rowIndex];
+  const { League, MatchOffers, NoOfHDP, NoOfHDPId, LeagueGroup } =
+    dataSource[rowIndex];
 
   const renderNoOfHdpInfo = () =>
     NoOfHDP && (
@@ -22,7 +23,12 @@ const LeagueCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
 
   return (
     <div className='league-cell'>
-      <p>{League}</p>
+      <p>
+        {LeagueGroup && (
+          <span className='league-group league-type'>{LeagueGroup}</span>
+        )}
+        <span className='league-group league-name'>{League}</span>
+      </p>
       <p>
         {renderNoOfHdpInfo()}
         {renderMatchOffer()}
