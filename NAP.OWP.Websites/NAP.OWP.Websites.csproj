@@ -2663,7 +2663,7 @@
     <Content Include="wwwroot\odds-compiler\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\odds-compiler\assets\ext\server-44d24d88.css" />
-    <Content Include="wwwroot\odds-compiler\assets\js\main-41b84807.js" />
+    <Content Include="wwwroot\odds-compiler\assets\js\main-6b3e37eb.js" />
     <Content Include="wwwroot\odds-compiler\favicon.ico" />
     <Content Include="wwwroot\odds-compiler\server.html" />
     <Content Include="wwwroot\os-league-setting\assets\ext\icon-search-4037a8fe.svg" />

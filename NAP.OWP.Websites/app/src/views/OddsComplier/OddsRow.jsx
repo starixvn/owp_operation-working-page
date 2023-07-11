@@ -22,8 +22,9 @@ const propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
+const defaultOption = { value: null, label: '' };
+
 const teamOptions = [
-  { value: null, label: '' },
   { value: 1, label: 'Home' },
   { value: 2, label: 'Away' }
 ];
@@ -150,7 +151,9 @@ class OddsRow extends PureComponent {
   render() {
     const { policy } = this.props;
     const { data, matchSettingData } = this.props;
-    const selectedOption = teamOptions[data.Handicap.TeamChoice ?? 0];
+    const selectedOption = data.Handicap.TeamChoice
+      ? teamOptions[data.Handicap.TeamChoice - 1]
+      : defaultOption;
     const isValidateHandicap = this.isValidate(data.Handicap);
     const isValidateOverUnder = this.isValidate(data.OverUnder);
     const isValidateOneXTwo = this.isValidate(data.OneXTwo);
