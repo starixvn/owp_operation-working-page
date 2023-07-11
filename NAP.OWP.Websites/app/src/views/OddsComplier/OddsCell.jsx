@@ -10,7 +10,8 @@ const propTypes = {
   isValidate: PropTypes.bool,
   onChange: PropTypes.func,
   validateValue: PropTypes.func,
-  isAutoField: PropTypes.bool
+  isAutoField: PropTypes.bool,
+  isDisabled: PropTypes.bool
 };
 
 class OddsCell extends PureComponent {
@@ -52,16 +53,18 @@ class OddsCell extends PureComponent {
   }
 
   render() {
-    const { policy, value, isAutoField } = this.props;
+    const { policy, value, isAutoField, isDisabled } = this.props;
     const classNameCss = `input-field ${value < 0 ? ' input-negative' : ''}${
       this.state.isInvalid ? ' input-invalid' : ''
     }`;
+    const isDisable = isDisabled || isAutoField;
+
     return (
       <div className='cell-input'>
         {isAutoField && this.state.isInvalid && (
           <span className='error'>error</span>
         )}
-        {policy.HasWrite && !isAutoField ? (
+        {policy.HasWrite && !isDisable ? (
           <NumericTextbox
             className={classNameCss}
             min={-1000}
@@ -72,6 +75,7 @@ class OddsCell extends PureComponent {
             format=''
             onChange={this.onChange}
             onBlur={this.onBlur}
+            onEnter={this.onBlur}
           />
         ) : (
           <Input className={classNameCss} value={value || ''} disabled />

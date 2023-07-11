@@ -154,6 +154,8 @@ class OddsRow extends PureComponent {
     const isValidateHandicap = this.isValidate(data.Handicap);
     const isValidateOverUnder = this.isValidate(data.OverUnder);
     const isValidateOneXTwo = this.isValidate(data.OneXTwo);
+    const isEditHDPOdd =
+      data.Handicap.TeamChoice && data.Handicap.TeamChoice > 0;
     return (
       <div className='rows'>
         <div className='cell-handicap'>
@@ -181,6 +183,7 @@ class OddsRow extends PureComponent {
               data.Handicap.HDP = value;
               this.onOddsChange(data.Handicap);
             }}
+            isAutoField={!isEditHDPOdd}
           />
         </div>
         <div className='cell-handicap-home'>
@@ -196,6 +199,7 @@ class OddsRow extends PureComponent {
               );
               this.onOddsChange(data.Handicap);
             }}
+            isAutoField={!isEditHDPOdd}
           />
         </div>
         <div className='cell-handicap-away'>
