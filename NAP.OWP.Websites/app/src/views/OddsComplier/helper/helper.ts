@@ -4,9 +4,7 @@ import ToastrWrapper from '../../components/ToastrWrapper';
 const STEP = 0.25;
 const MIN_SPREAD_HDP = 0.08;
 const MAX_SPREAD_HDP = 0.3;
-const MIN_ODD_HOME = 0.4;
 const NUMBER_TWO = 2;
-const MAX_ABS_HOME = 0.99;
 const ONE_HUNDRED = 100;
 
 const roundNumber = (num: number) =>
@@ -15,27 +13,32 @@ const roundNumber = (num: number) =>
 const calculateOdds = (
   matchSettings: { Bettype?: number; Spread?: number }[],
   oddHome: number,
-  spreadType: number
+  spread: number
 ) => {
-  const setting = matchSettings.find(x => x.Bettype === spreadType);
-  const spread = setting?.Spread ?? 0;
+  const setting = matchSettings.find(x => x.Bettype === spread);
+  const spreadValue = setting?.Spread ?? 0;
 
-  if (spread < MIN_SPREAD_HDP || spread > MAX_SPREAD_HDP) {
+  if (spreadValue < MIN_SPREAD_HDP || spreadValue > MAX_SPREAD_HDP) {
+    return null;
+  }
+  if (oddHome === null) {
     return null;
   }
 
-  if (oddHome >= MIN_ODD_HOME && oddHome <= 1) {
-    return roundNumber(NUMBER_TWO - spread - oddHome);
-  }
+  return roundNumber(calculateStep2(oddHome, spreadValue));
+};
 
-  if (oddHome < 0) {
-    const absOddHome = Math.abs(oddHome);
-    if (absOddHome >= MIN_ODD_HOME && absOddHome <= MAX_ABS_HOME) {
-      return roundNumber(absOddHome - spread);
-    }
+const calculateStep2 = (oddHome: number, spread: number) => {
+  const tmpOdds = (oddHome + spread) * -1;
+  if (tmpOdds > 1) {
+    return (NUMBER_TWO - tmpOdds) * -1;
+  } else if (tmpOdds < -1) {
+    return NUMBER_TWO + tmpOdds;
+  } else if (tmpOdds === -1) {
+    return 1;
+  } else {
+    return tmpOdds;
   }
-
-  return null;
 };
 
 const calculateAwayOdds = (matchSettings: [], oddHome: number) => {

@@ -134,7 +134,6 @@ class OddsRow extends PureComponent {
     if (!isNil(oddsData.Odds2)) {
       validCount++;
     }
-
     return validCount;
   }
 

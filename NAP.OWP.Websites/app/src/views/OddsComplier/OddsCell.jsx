@@ -78,7 +78,11 @@ class OddsCell extends PureComponent {
             onEnter={this.onBlur}
           />
         ) : (
-          <Input className={classNameCss} value={value || ''} disabled />
+          <Input
+            className={classNameCss}
+            value={value !== null ? value : ''}
+            disabled
+          />
         )}
       </div>
     );
