@@ -74,5 +74,7 @@
         public string IpTv { get; set; }
 
         public string MatchCode { get; set; }
+
+        public string OddsStatus { get; set; }
     }
 }

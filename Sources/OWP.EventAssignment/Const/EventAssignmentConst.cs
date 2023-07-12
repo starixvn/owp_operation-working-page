@@ -2,8 +2,6 @@
 {
     public static class EventAssignmentConst
     {
-        public static readonly string[] StatusNotOffered = { "Cancel", "Suspended" };
-
-        public static readonly string EventStatusRunning = "running";
+        public static readonly string[] StatusOffered = { "running", "closePrice", "internal", "suspend" };
     }
 }
