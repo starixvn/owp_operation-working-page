@@ -5,6 +5,7 @@ import { PlusIcon, ArrowRightIcon } from 'mdi-react';
 
 import PropTypes from 'prop-types';
 import EventPopup from '../../Shared/EventPopup';
+import MatchInfo from '../components/MatchInfo';
 
 const propTypesEvent = {
   isAllowAddEvent: PropTypes.bool.isRequired,
@@ -77,22 +78,8 @@ class EventCell extends React.PureComponent {
             <ArrowRightIcon size={13} />
           </a>
         )}
-        <p className='match-name'>
-          {event.Home} -vs- {event.Away}
-        </p>
-        {event.NoOfHDP && (
-          <span className={`badge-label badge-hdp-${event.NoOfHDPId}`}>
-            {event.NoOfHDP}
-          </span>
-        )}
-        {event.MatchOffers.map((element, index) => (
-          <span key={`${uuidv4()}${index}`} className='badge-label match-offer'>
-            {element.MatchOfferValue}
-          </span>
-        ))}
-        {event.MatchCode && (
-          <span className='match-code'>{event.MatchCode}</span>
-        )}
+
+        <MatchInfo event={event} />
 
         {event.AdminSiteId > 0 && (
           <>
