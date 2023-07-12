@@ -495,7 +495,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-6b6d9991.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-e94addcf.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-09f8d855.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
@@ -2006,7 +2006,7 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\server-2ab33a89.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-15c784c4.js" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-8007d64c.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -2670,7 +2670,7 @@
     <Content Include="wwwroot\os-league-setting\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\os-league-setting\assets\ext\server-5a32f407.css" />
-    <Content Include="wwwroot\os-league-setting\assets\js\main-9c399eb6.js" />
+    <Content Include="wwwroot\os-league-setting\assets\js\main-88399e1d.js" />
     <Content Include="wwwroot\os-league-setting\favicon.ico" />
     <Content Include="wwwroot\os-league-setting\server.html" />
     <Content Include="wwwroot\other-sport\assets\ext\icon-search-4037a8fe.svg" />
