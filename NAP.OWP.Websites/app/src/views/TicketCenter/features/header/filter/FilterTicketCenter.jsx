@@ -14,6 +14,8 @@ import { getTicketTypeOption } from '../../../services/service';
 import { buildTicketTypeFilter } from '../../../Helper/TicketCenterHelper';
 import Loading from '../../../../components/Loading';
 import { MultiSelect } from 'react-multi-select-component';
+import DateRangeFilter from './DateRangeFilter';
+import { getDefaultDateRange } from '../../../Helper/TicketCenterHelper';
 
 const propTypes = {
   defaultValue: PropTypes.object.isRequired
@@ -21,6 +23,7 @@ const propTypes = {
 
 const FilterTicketCenter = props => {
   const { defaultValue } = props;
+  const { fromDateDefault, toDateDefault } = getDefaultDateRange();
   const defaultStatus = STATUS.filter(
     x => x.value === defaultValue.TicketStatuses
   );
@@ -85,6 +88,8 @@ const FilterTicketCenter = props => {
       );
       setDefaultOption(initTicketTypeValue);
       defaultValue.TicketTypeId = initTicketTypeValue.join(',');
+      defaultValue.FromDateFilter = fromDateDefault.toISOString();
+      defaultValue.ToDateFilter = toDateDefault.toISOString();
       setFilter({ ...defaultValue });
 
       setTicketTypeOption([...parentOption, ...childrenOption, ...emptyOption]);
@@ -100,6 +105,7 @@ const FilterTicketCenter = props => {
 
   return (
     <>
+      <DateRangeFilter updateFilter={updateFilter} />
       <div className='search-text'>
         <div className='label'>Event</div>
         <input

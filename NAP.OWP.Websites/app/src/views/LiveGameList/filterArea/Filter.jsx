@@ -25,7 +25,9 @@ const Filter = () => {
   const [selectedDate, setSelectedDate] = useState(buildDefaultLGLFilterDate());
   const [searchDisabled, setSearchDisabled] = useState(false);
   const datePicker = createRef();
-  const [selectedMatchStatus, setSelectedMatchStatus] = useState(DEFAULT_STATUS_OPTION);
+  const [selectedMatchStatus, setSelectedMatchStatus] = useState(
+    DEFAULT_STATUS_OPTION
+  );
   const [statusOptions, setStatusOptions] = useState([]);
   const { isShowUnReadTicketOnly } = useSelector(state => state.events);
   const dispatch = useStableDispatch();
@@ -82,12 +84,13 @@ const Filter = () => {
     if (Utils.isSameOrAfter(selectedDate, today)) {
       selectedMatchStatusByDate = statusOptions
         .filter(
-          x => x.label === MatchStatuses.Live || x.label === MatchStatuses.InPlay
-        );
+          x =>
+            x.label === MatchStatuses.Live || x.label === MatchStatuses.InPlay
+        )
+        .sort((a, b) => a.value - b.value);
     }
     setSelectedMatchStatus(selectedMatchStatusByDate);
   }, [selectedDate]);
-
 
   return (
     <div className='filter-control'>
