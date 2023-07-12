@@ -129,7 +129,6 @@ class FilterNative extends PureComponent {
             onChange={e => this.dateChange(e)}
             dateFormat='MMM dd, yyyy'
             ref={this.datePicker}
-            monthsShown={1}
           />
           <span className='icon-calendar' onClick={() => this.openCalendar()}>
             <CalendarIcon size={14} />

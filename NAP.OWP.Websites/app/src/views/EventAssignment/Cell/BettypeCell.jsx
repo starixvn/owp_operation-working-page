@@ -13,15 +13,12 @@ class BettypeCell extends React.PureComponent {
       others,
       assignmentBetType,
       isAllowAdd,
-      isLoading
+      isLoading,
+      otherTime
     } = assignment;
 
-    const {
-      bettypeName,
-      rowIndex,
-      onSavedAssigment,
-      onDeletedAssigment
-    } = this.props;
+    const { bettypeName, rowIndex, onSavedAssigment, onDeletedAssigment } =
+      this.props;
     if (isLoading) {
       return <span>Loading</span>;
     }
@@ -39,6 +36,7 @@ class BettypeCell extends React.PureComponent {
         rowIndex={rowIndex}
         onSaved={onSavedAssigment}
         onDeleted={onDeletedAssigment}
+        otherTime={otherTime}
       />
     );
   }
@@ -50,7 +48,6 @@ const propTypesBettype = {
   onSavedAssigment: PropTypes.func.isRequired,
   onDeletedAssigment: PropTypes.func.isRequired
 };
-
 
 BettypeCell.propTypes = propTypesBettype;
 export default BettypeCell;

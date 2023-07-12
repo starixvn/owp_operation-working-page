@@ -1606,6 +1606,7 @@ body.swal2-shown .chat-board-popup {
 
   .assignment .button-suggestion {
     display: none;
+    margin-top: 5px;
   }
 
   &:hover {
@@ -2463,11 +2464,10 @@ textarea.input-field.drag-able.form-control::placeholder {
     }
   }
 }
-.btn-suggestion {
+.btn-ko-time-suggestion {
   color: #73818f;
-}
-.btn-suggestion:hover {
-  cursor: pointer;
+  display: block;
+  top: 15px;
 }
 
 .line-message {
@@ -2475,4 +2475,9 @@ textarea.input-field.drag-able.form-control::placeholder {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.btn-other-time-suggestion {
+  color: #ff9f09;
+  display: block;
 }

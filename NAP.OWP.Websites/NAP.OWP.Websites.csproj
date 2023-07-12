@@ -472,7 +472,7 @@
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\server-0de24d35.css" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\js\main-63db487c.js" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\js\main-4606ca57.js" />
     <Content Include="wwwroot\assignee-suggestion-list\favicon.ico" />
     <Content Include="wwwroot\assignee-suggestion-list\server.html" />
     <Content Include="wwwroot\auto-assignment\assets\ext\icon-search-4037a8fe.svg" />
@@ -2785,10 +2785,6 @@
     <Content Include="wwwroot\notification-setting\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\notification-setting\server.cshtml" />
     <Content Include="wwwroot\popup-container\server.cshtml" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
     <Content Include="wwwroot\auto-assignment\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\auto-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\auto-assignment\assets\ext\OWP-ea568b68.ttf" />
@@ -2885,6 +2881,14 @@
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-center\server.cshtml" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\event-assignment\server.cshtml" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
