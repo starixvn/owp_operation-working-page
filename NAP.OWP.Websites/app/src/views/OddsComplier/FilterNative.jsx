@@ -7,15 +7,16 @@ import { Input } from 'reactstrap';
 import Toastr from '../components/ToastrWrapper';
 import { MessageText } from './constants/Resoures';
 import CalendarIcon from 'mdi-react/CalendarIcon';
-import { buildTimeRangeLast30Day, getMMDDYYYYStringFromDateTime } from '../Shared/DateTime/dateTimeHelper';
+import {
+  buildTimeRangeLast30Day,
+  getMMDDYYYYStringFromDateTime
+} from '../Shared/DateTime/dateTimeHelper';
 
 const propTypes = {
   submit: PropTypes.func.isRequired,
   export: PropTypes.func.isRequired,
   matchStatuses: PropTypes.array.isRequired
 };
-
-let selectedDate = new Date();
 
 const Latest30Days = buildTimeRangeLast30Day(new Date());
 
@@ -25,6 +26,7 @@ class FilterNative extends PureComponent {
     this.state = {
       selectedMatchStatus: [],
       League: '',
+      selectedDate: new Date(),
       isExcludeSpecialProducts: true
     };
 
@@ -55,9 +57,9 @@ class FilterNative extends PureComponent {
       this.matchStatusOptions,
       date
     );
-    selectedDate = date;
     this.setState({
-      selectedMatchStatus
+      selectedMatchStatus,
+      selectedDate: date
     });
   }
 
@@ -74,7 +76,8 @@ class FilterNative extends PureComponent {
     const {
       selectedMatchStatus,
       League,
-      isExcludeSpecialProducts
+      isExcludeSpecialProducts,
+      selectedDate
     } = this.state;
     if (selectedMatchStatus.length < 1) {
       Toastr.showError(MessageText.warningSelectMatchStatus);
@@ -94,10 +97,13 @@ class FilterNative extends PureComponent {
     const {
       selectedMatchStatus,
       League,
-      isExcludeSpecialProducts
+      isExcludeSpecialProducts,
+      selectedDate
     } = this.state;
     const date = getMMDDYYYYStringFromDateTime(selectedDate);
-    const selectedMatchStatusIds = selectedMatchStatus.map(x => x.value).join(',');
+    const selectedMatchStatusIds = selectedMatchStatus
+      .map(x => x.value)
+      .join(',');
 
     e.preventDefault();
     const postModel = {
@@ -111,7 +117,8 @@ class FilterNative extends PureComponent {
   };
 
   render() {
-    const { selectedMatchStatus, isExcludeSpecialProducts } = this.state;
+    const { selectedMatchStatus, isExcludeSpecialProducts, selectedDate } =
+      this.state;
     return (
       <div className='filter'>
         <div className='filter-control calendar'>
@@ -122,6 +129,7 @@ class FilterNative extends PureComponent {
             onChange={e => this.dateChange(e)}
             dateFormat='MMM dd, yyyy'
             ref={this.datePicker}
+            monthsShown={1}
           />
           <span className='icon-calendar' onClick={() => this.openCalendar()}>
             <CalendarIcon size={14} />
@@ -141,9 +149,8 @@ class FilterNative extends PureComponent {
             value={selectedMatchStatus}
             disableSearch
             ClearSelectedIcon={null}
-            onChange={
-              selected =>
-                this.setState({ selectedMatchStatus: selected })
+            onChange={selected =>
+              this.setState({ selectedMatchStatus: selected })
             }
           />
         </div>
@@ -154,11 +161,10 @@ class FilterNative extends PureComponent {
             type='checkbox'
             name='oldLeague'
             className='form-check-input'
-            onChange={
-              () =>
-                this.setState({
-                  isExcludeSpecialProducts: !isExcludeSpecialProducts
-                })
+            onChange={() =>
+              this.setState({
+                isExcludeSpecialProducts: !isExcludeSpecialProducts
+              })
             }
           />
           <label className='form-check-label' htmlFor='chb-old-league'>
