@@ -79,7 +79,7 @@ class EventCell extends React.PureComponent {
           </a>
         )}
 
-        <MatchInfo event={event} />
+        <MatchInfo event={event} componentId={uuidv4()} />
 
         {event.AdminSiteId > 0 && (
           <>

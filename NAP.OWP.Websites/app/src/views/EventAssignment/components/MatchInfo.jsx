@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  event: PropTypes.object
+  event: PropTypes.object,
+  componentId: PropTypes.string
 };
 
-const MatchInfo = ({ event }) => {
+const MatchInfo = ({ event, componentId }) => {
   return (
     <>
       <p className='match-name'>
@@ -17,7 +18,9 @@ const MatchInfo = ({ event }) => {
         </span>
       )}
       {event.MatchOffers.map((element, index) => (
-        <span key={`${uuidv4()}${index}`} className='badge-label match-offer'>
+        <span
+          key={`${componentId}${index}`}
+          className='badge-label match-offer'>
           {element.MatchOfferValue}
         </span>
       ))}

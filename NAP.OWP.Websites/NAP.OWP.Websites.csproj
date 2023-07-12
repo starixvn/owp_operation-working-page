@@ -495,7 +495,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-6b6d9991.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-09f8d855.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-e4e99fdf.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
@@ -2748,10 +2748,10 @@
     <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\task-list\assets\ext\server-a096fb0e.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-2ca3c482.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-24bffcc8.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-795a691c.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-0fdb7eac.js" />
+    <Content Include="wwwroot\task-list\assets\js\main-a9e20f41.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-692eada2.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-d1cee15e.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-7ef47304.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
@@ -2784,10 +2784,6 @@
     <Content Include="wwwroot\notification-setting\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\notification-setting\server.cshtml" />
     <Content Include="wwwroot\popup-container\server.cshtml" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\task-list\server.cshtml" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
@@ -2868,10 +2864,6 @@
     <Content Include="wwwroot\event-upload\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\event-upload\server.cshtml" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\event-assignment\server.cshtml" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
@@ -2888,6 +2880,10 @@
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-center\server.cshtml" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\task-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
