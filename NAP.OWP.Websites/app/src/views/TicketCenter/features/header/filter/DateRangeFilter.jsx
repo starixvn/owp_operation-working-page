@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import CalendarIcon from 'mdi-react/CalendarIcon';
 import { getDefaultDateRange } from '../../../Helper/TicketCenterHelper';
+import Utils from '../../../../Shared/Utils';
 const propTypes = {
   updateFilter: PropTypes.func.isRequired
 };
 
 const DateRangeFilter = ({ updateFilter }) => {
   const { fromDateDefault, toDateDefault, minDate } = getDefaultDateRange();
-
   const [toDateFilter, setToDateFilter] = useState(toDateDefault);
   const [fromDateFilter, setFromDateFilter] = useState(fromDateDefault);
 
@@ -18,12 +18,12 @@ const DateRangeFilter = ({ updateFilter }) => {
 
   const handleChangeFromDate = date => {
     setFromDateFilter(date);
-    updateFilter('FromDateFilter', date.toISOString());
+    updateFilter('FromDateFilter', Utils.formatDate(date));
   };
 
   const handleChangeToDate = date => {
     setToDateFilter(date);
-    updateFilter('ToDateFilter', date.toISOString());
+    updateFilter('ToDateFilter', Utils.formatDate(date));
   };
 
   return (

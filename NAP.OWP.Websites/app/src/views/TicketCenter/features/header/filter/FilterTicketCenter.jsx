@@ -16,6 +16,7 @@ import Loading from '../../../../components/Loading';
 import { MultiSelect } from 'react-multi-select-component';
 import DateRangeFilter from './DateRangeFilter';
 import { getDefaultDateRange } from '../../../Helper/TicketCenterHelper';
+import Utils from '../../../../Shared/Utils';
 
 const propTypes = {
   defaultValue: PropTypes.object.isRequired
@@ -88,8 +89,8 @@ const FilterTicketCenter = props => {
       );
       setDefaultOption(initTicketTypeValue);
       defaultValue.TicketTypeId = initTicketTypeValue.join(',');
-      defaultValue.FromDateFilter = fromDateDefault.toISOString();
-      defaultValue.ToDateFilter = toDateDefault.toISOString();
+      defaultValue.FromDateFilter = Utils.formatDate(fromDateDefault);
+      defaultValue.ToDateFilter = Utils.formatDate(toDateDefault);
       setFilter({ ...defaultValue });
 
       setTicketTypeOption([...parentOption, ...childrenOption, ...emptyOption]);

@@ -8,14 +8,20 @@ import {
 } from '../../Shared/TicketCenterPrematch/helper/helper';
 
 const getDefaultDateRange = () => {
-  const curDate = new Date();
-  const fromDateDefault = new Date(curDate);
-  fromDateDefault.setDate(curDate.getDate() - 1);
-  const minDate = new Date(curDate);
-  minDate.setDate(curDate.getDate() - 30);
+  const dateTimeGmtPlus8String = new Date().toLocaleString('en-US', {
+    timeZone: 'Asia/Manila'
+  });
+  const dateTimeGmtPlus8 = new Date(dateTimeGmtPlus8String);
+
+  const fromDateDefault = new Date(dateTimeGmtPlus8String);
+  fromDateDefault.setDate(dateTimeGmtPlus8.getDate() - 1);
+
+  const minDate = new Date(dateTimeGmtPlus8String);
+  minDate.setDate(dateTimeGmtPlus8.getDate() - 30);
+
   return {
     fromDateDefault,
-    toDateDefault: curDate,
+    toDateDefault: dateTimeGmtPlus8,
     minDate
   };
 };
