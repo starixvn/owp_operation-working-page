@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -1999,7 +1998,7 @@
     <Content Include="wwwroot\live-detail\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\server-db50b35f.css" />
-    <Content Include="wwwroot\live-detail\assets\js\main-db14228b.js" />
+    <Content Include="wwwroot\live-detail\assets\js\main-c4a45599.js" />
     <Content Include="wwwroot\live-detail\favicon.ico" />
     <Content Include="wwwroot\live-detail\server.html" />
     <Content Include="wwwroot\live-game-list\assets\ext\icon-search-4037a8fe.svg" />
@@ -2662,8 +2661,8 @@
     <Content Include="wwwroot\odds-compiler\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\odds-compiler\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\odds-compiler\assets\ext\server-c4e76b5c.css" />
-    <Content Include="wwwroot\odds-compiler\assets\js\main-b28228cc.js" />
+    <Content Include="wwwroot\odds-compiler\assets\ext\server-44d24d88.css" />
+    <Content Include="wwwroot\odds-compiler\assets\js\main-bdae3b74.js" />
     <Content Include="wwwroot\odds-compiler\favicon.ico" />
     <Content Include="wwwroot\odds-compiler\server.html" />
     <Content Include="wwwroot\os-league-setting\assets\ext\icon-search-4037a8fe.svg" />
@@ -2828,10 +2827,6 @@
     <Content Include="wwwroot\notification-setting\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\notification-setting\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\notification-setting\server.cshtml" />
-    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\odds-compiler\server.cshtml" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-ea568b68.ttf" />
@@ -2881,6 +2876,14 @@
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-center\server.cshtml" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\live-detail\server.cshtml" />
+    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\odds-compiler\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

@@ -141,7 +141,7 @@ $blueBg: #def6fc;
   &.other-time {
     background: #ea1b21;
   }
-  &.info-site-time{
+  &.info-site-time {
     background: #21a6e4;
   }
 
@@ -595,7 +595,11 @@ $blueBg: #def6fc;
       }
 
       .cell-input {
-        text-align: right;
+        text-align: center;
+        span.error {
+          color: #ff5656;
+          font-style: italic;
+        }
       }
 
       .value-hdp {
@@ -1164,7 +1168,10 @@ $blueBg: #def6fc;
 .basic-multi-select .select__control {
   min-height: 23px;
 }
-
+.basic-multi-select .select__menu .select__menu-list .select__option {
+  padding: 0px 10px !important;
+  height: 20px !important;
+}
 .required .label::after {
   content: '*';
   color: #ff5656;
@@ -1202,6 +1209,10 @@ $blueBg: #def6fc;
     opacity: 0.5;
     pointer-events: none;
   }
+}
+
+.form-control:disabled {
+  border: none;
 }
 
 .row .last {
@@ -1346,6 +1357,7 @@ $blueBg: #def6fc;
 
 .input-invalid {
   border-bottom-color: #ff5656;
+  border-block-width: 1.5px;
 
   .ant-time-picker-input,
   .select__control {

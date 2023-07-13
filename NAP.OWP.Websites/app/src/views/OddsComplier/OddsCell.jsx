@@ -8,27 +8,44 @@ const propTypes = {
   policy: PropTypes.object.isRequired,
   value: PropTypes.number,
   isValidate: PropTypes.bool,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func,
+  validateValue: PropTypes.func,
+  isAutoField: PropTypes.bool,
+  isDisabled: PropTypes.bool
 };
 
 class OddsCell extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.value
+      value: this.props.value,
+      isInvalid: false
     };
     this.onBlur = this.onBlur.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  onBlur() {
-    const { value, onChange } = this.props;
-    const newValue = this.state.value;
-    if (newValue === value) {
-      return;
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.isValidate !== this.props.isValidate ||
+      prevProps.value !== this.props.value
+    ) {
+      this.setState({
+        isInvalid: this.props.isValidate && isNil(this.props.value)
+      });
     }
+  }
 
-    onChange(newValue);
+  onBlur() {
+    const { onChange, validateValue } = this.props;
+    const newValue = this.state.value;
+
+    if (!validateValue || validateValue(newValue)) {
+      this.setState({ isInvalid: false });
+      onChange && onChange(newValue);
+    } else {
+      this.setState({ isInvalid: true });
+    }
   }
 
   onChange(value) {
@@ -36,12 +53,18 @@ class OddsCell extends PureComponent {
   }
 
   render() {
-    const { policy, value, isValidate } = this.props;
-    const isInvalid = isValidate && isNil(value);
-    const classNameCss = `input-field ${(value < 0 ? ' input-negative' : '')}${(isInvalid ? ' input-invalid' : '')}`;
+    const { policy, value, isAutoField, isDisabled } = this.props;
+    const classNameCss = `input-field ${value < 0 ? ' input-negative' : ''}${
+      this.state.isInvalid ? ' input-invalid' : ''
+    }`;
+    const isDisable = isDisabled || isAutoField;
+
     return (
       <div className='cell-input'>
-        {policy.HasWrite ? (
+        {isAutoField && this.state.isInvalid && (
+          <span className='error'>error</span>
+        )}
+        {policy.HasWrite && !isDisable ? (
           <NumericTextbox
             className={classNameCss}
             min={-1000}
@@ -52,9 +75,14 @@ class OddsCell extends PureComponent {
             format=''
             onChange={this.onChange}
             onBlur={this.onBlur}
+            onEnter={this.onBlur}
           />
         ) : (
-          <Input className={classNameCss} value={value || ''} disabled />
+          <Input
+            className={classNameCss}
+            value={value !== null ? value : ''}
+            disabled
+          />
         )}
       </div>
     );

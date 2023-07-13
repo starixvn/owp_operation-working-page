@@ -1,20 +1,28 @@
-import React, { PureComponent } from 'react';
-import Animated from 'react-select/animated';
-import PropTypes from 'prop-types';
-import Select from 'react-select';
-import BroomIcon from 'mdi-react/BroomIcon';
-import OddsCell from './OddsCell';
 import { cloneDeep, isNil } from 'lodash';
-import Service from './Service';
+import BroomIcon from 'mdi-react/BroomIcon';
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import Select from 'react-select';
 import { MajorBetTypes } from '../Shared/Constants';
 import Toastr from '../components/ToastrWrapper';
+import OddsCell from './OddsCell';
+import Service from './Service';
+import {
+  calculateAwayOdds,
+  calculateOverOdds,
+  validateHDPGoal,
+  validateOUGoal
+} from './helper/helper';
 
 const propTypes = {
   policy: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
+  matchSettingData: PropTypes.array,
   event: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired
 };
+
+const defaultOption = { value: null, label: '' };
 
 const teamOptions = [
   { value: 1, label: 'Home' },
@@ -126,7 +134,6 @@ class OddsRow extends PureComponent {
     if (!isNil(oddsData.Odds2)) {
       validCount++;
     }
-
     return validCount;
   }
 
@@ -142,17 +149,20 @@ class OddsRow extends PureComponent {
 
   render() {
     const { policy } = this.props;
-    const { data } = this.props;
-    const selectedOption = teamOptions[data.Handicap.TeamChoice - 1];
+    const { data, matchSettingData } = this.props;
+    const selectedOption = data.Handicap.TeamChoice
+      ? teamOptions[data.Handicap.TeamChoice - 1]
+      : defaultOption;
     const isValidateHandicap = this.isValidate(data.Handicap);
     const isValidateOverUnder = this.isValidate(data.OverUnder);
     const isValidateOneXTwo = this.isValidate(data.OneXTwo);
+    const isEditHDPOdd =
+      data.Handicap.TeamChoice && data.Handicap.TeamChoice > 0;
     return (
       <div className='rows'>
         <div className='cell-handicap'>
           <div className='select-wrapper-default'>
             <Select
-              components={Animated}
               options={teamOptions}
               value={selectedOption}
               className='basic-multi-select'
@@ -170,10 +180,12 @@ class OddsRow extends PureComponent {
             policy={policy}
             value={data.Handicap.HDP}
             isValidate={isValidateHandicap}
+            validateValue={validateHDPGoal}
             onChange={value => {
               data.Handicap.HDP = value;
               this.onOddsChange(data.Handicap);
             }}
+            isAutoField={!isEditHDPOdd}
           />
         </div>
         <div className='cell-handicap-home'>
@@ -183,8 +195,13 @@ class OddsRow extends PureComponent {
             isValidate={isValidateHandicap}
             onChange={value => {
               data.Handicap.Odds1 = value;
+              data.Handicap.Odds2 = calculateAwayOdds(
+                matchSettingData,
+                data.Handicap.Odds1
+              );
               this.onOddsChange(data.Handicap);
             }}
+            isAutoField={!isEditHDPOdd}
           />
         </div>
         <div className='cell-handicap-away'>
@@ -192,10 +209,7 @@ class OddsRow extends PureComponent {
             policy={policy}
             value={data.Handicap.Odds2}
             isValidate={isValidateHandicap}
-            onChange={value => {
-              data.Handicap.Odds2 = value;
-              this.onOddsChange(data.Handicap);
-            }}
+            isAutoField
           />
         </div>
         <div className='cell-over-under'>
@@ -203,6 +217,7 @@ class OddsRow extends PureComponent {
             policy={policy}
             value={data.OverUnder.HDP}
             isValidate={isValidateOverUnder}
+            validateValue={validateOUGoal}
             onChange={value => {
               data.OverUnder.HDP = value;
               this.onOddsChange(data.OverUnder);
@@ -214,10 +229,7 @@ class OddsRow extends PureComponent {
             policy={policy}
             value={data.OverUnder.Odds1}
             isValidate={isValidateOverUnder}
-            onChange={value => {
-              data.OverUnder.Odds1 = value;
-              this.onOddsChange(data.OverUnder);
-            }}
+            isAutoField
           />
         </div>
         <div className='cell-under'>
@@ -227,6 +239,10 @@ class OddsRow extends PureComponent {
             isValidate={isValidateOverUnder}
             onChange={value => {
               data.OverUnder.Odds2 = value;
+              data.OverUnder.Odds1 = calculateOverOdds(
+                matchSettingData,
+                data.OverUnder.Odds2
+              );
               this.onOddsChange(data.OverUnder);
             }}
           />

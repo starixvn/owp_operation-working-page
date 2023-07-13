@@ -37,7 +37,24 @@
       }
     ],
 
-    "MatchSettings": [{ "Bettype": 1 }],
+    "MatchSettings": [
+      {
+        "OWPMatchId": 1158496,
+        "Bettype": 1,
+        "MaxBet": 2500,
+        "Spread": 0.2,
+        "MaxBetToDisplay": "2.5K",
+        "SpreadToDisplay": "20%"
+      },
+      {
+        "OWPMatchId": 1158496,
+        "Bettype": 3,
+        "MaxBet": 2500,
+        "Spread": 0.2,
+        "MaxBetToDisplay": "2.5K",
+        "SpreadToDisplay": "20%"
+      }
+    ],
     "Channel": "Channel1",
     "Remark": "Remark1",
     "Round": "Round1",
@@ -71,9 +88,9 @@
     "FM": [],
     "AIO": [],
     "KickOffTimeToDisplay": "5:00 PM",
-    "InfoSiteTimeDisplay" : "5:00 PM",
-      "InfoSiteTime": "5:00 PM",
-      "OtherTimeToDisplay": "5:00 PM",
-      "OtherTime":  "5:00 PM"
+    "InfoSiteTimeDisplay": "5:00 PM",
+    "InfoSiteTime": "5:00 PM",
+    "OtherTimeToDisplay": "5:00 PM",
+    "OtherTime": "5:00 PM"
   }
 ]

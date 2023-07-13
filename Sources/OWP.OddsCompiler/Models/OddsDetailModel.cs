@@ -10,7 +10,7 @@
 
         public decimal? HDP { get; set; }
 
-        public short TeamChoice { get; set; }
+        public int? TeamChoice { get; set; }
 
         public short Choice { get; set; }
 

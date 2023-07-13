@@ -45,14 +45,7 @@ class OddRow extends React.Component {
   }
 
   render() {
-    const {
-      policy,
-      allowEdit,
-      isCreating,
-      isEditing,
-      isMultipleEdit,
-      betTypeOptions
-    } = this.props;
+    const { isCreating, isEditing, betTypeOptions } = this.props;
     const { BetType, HomeOdd, AwayOdd } = this.state;
     return (
       <tr>
@@ -74,18 +67,6 @@ class OddRow extends React.Component {
           onChange={value => this.onRowChange('AwayOdd', value)}
         />
         {this.renderDrawCell()}
-        {policy.HasWrite && (
-          <ActionCell
-            policy={policy}
-            isEditing={isEditing}
-            isMultipleEdit={isMultipleEdit}
-            disabled={!allowEdit}
-            onSave={() => this.onSave()}
-            onCancel={() => this.onCancel()}
-            onEdit={() => this.onEdit()}
-            onDelete={() => this.onDelete()}
-          />
-        )}
       </tr>
     );
   }
