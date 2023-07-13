@@ -9,7 +9,6 @@ const propTypes = {
 
 const DateRangeFilter = ({ updateFilter }) => {
   const { fromDateDefault, toDateDefault, minDate } = getDefaultDateRange();
-
   const [toDateFilter, setToDateFilter] = useState(toDateDefault);
   const [fromDateFilter, setFromDateFilter] = useState(fromDateDefault);
 
@@ -18,12 +17,12 @@ const DateRangeFilter = ({ updateFilter }) => {
 
   const handleChangeFromDate = date => {
     setFromDateFilter(date);
-    updateFilter('FromDateFilter', date.toISOString());
+    updateFilter('FromDateFilter', date);
   };
 
   const handleChangeToDate = date => {
     setToDateFilter(date);
-    updateFilter('ToDateFilter', date.toISOString());
+    updateFilter('ToDateFilter', date);
   };
 
   return (

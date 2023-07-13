@@ -88,8 +88,8 @@ const FilterTicketCenter = props => {
       );
       setDefaultOption(initTicketTypeValue);
       defaultValue.TicketTypeId = initTicketTypeValue.join(',');
-      defaultValue.FromDateFilter = fromDateDefault.toISOString();
-      defaultValue.ToDateFilter = toDateDefault.toISOString();
+      defaultValue.FromDateFilter = fromDateDefault;
+      defaultValue.ToDateFilter = toDateDefault;
       setFilter({ ...defaultValue });
 
       setTicketTypeOption([...parentOption, ...childrenOption, ...emptyOption]);

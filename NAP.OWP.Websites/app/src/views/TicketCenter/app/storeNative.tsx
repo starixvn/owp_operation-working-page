@@ -15,6 +15,10 @@ const store = configureStore({
     deletePolicy: createMultiplePolicySlice('deletePolicy'),
     signalR: signalRReducer
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    }),
   devTools: !isEqual(process.env.NODE_ENV, 'production')
 });
 
