@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -2759,7 +2760,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-7a7ae9f0.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-181442f9.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-21f67262.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />
@@ -2784,10 +2785,6 @@
     <Content Include="wwwroot\notification-setting\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\notification-setting\server.cshtml" />
     <Content Include="wwwroot\popup-container\server.cshtml" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\ticket-center\server.cshtml" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-ea568b68.ttf" />
@@ -2864,10 +2861,6 @@
     <Content Include="wwwroot\event-upload\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\event-upload\server.cshtml" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\live-game-list\server.cshtml" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
@@ -2876,14 +2869,22 @@
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\odds-compiler\server.cshtml" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\ticket-center\server.cshtml" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\event-assignment\server.cshtml" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\live-game-list\server.cshtml" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\ticket-center\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
