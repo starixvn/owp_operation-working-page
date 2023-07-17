@@ -60,7 +60,6 @@
                 match.ParentMatchId, match.MinorBettypeId);
                 match.InfoSiteTime = infoSite?.KickOffTime;
                 match.InfoSiteTimeDisplay = infoSite?.KickOffTimeDisplay;
-                match.IsShowAbsenceIcon = match.OddsStatus != null && !EventAssignmentConst.StatusOffered.Contains(match.OddsStatus);
             }
 
             var permissionFullBetTypes = permission.LiveGameAssignment_FullBetTypes;

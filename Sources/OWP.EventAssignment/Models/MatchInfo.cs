@@ -75,6 +75,6 @@
 
         public string MatchCode { get; set; }
 
-        public string OddsStatus { get; set; }
+        public bool IsShowAbsenceIcon { get; set; }
     }
 }
