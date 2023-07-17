@@ -636,7 +636,7 @@ namespace OWP.EventAssignment.Repositories
                         Channel = match.Channel,
                         Stream = match.WatchBet
                     }),
-                    OddsStatus = match.OddsStatus
+                    IsShowAbsenceIcon = match.IsShowAbsenceIcon
             };
 
                 if (!match.IsMinorMatch)

@@ -123,7 +123,5 @@
         public TimeSpan KickOffTimeStr { get; set; }
 
         public TimeSpan? OtherTimeStr { get; set; }
-
-        public string OddsStatus { get; set; }
     }
 }
