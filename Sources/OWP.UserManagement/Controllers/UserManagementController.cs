@@ -1,4 +1,6 @@
-﻿namespace OWP.UserManagement.Controllers
+﻿using OWP.Services;
+
+namespace OWP.UserManagement.Controllers
 {
     using System;
     using System.IO;
@@ -21,16 +23,18 @@
         private readonly ModelService modelService;
         private readonly Repository repository;
         private readonly ICurrentSession currentSession;
+        private readonly AccessCounter accessCounter;
 
         public UserManagementController(ResourceRepository resourceRepository, ExportService exportService,
             ModelService modelService,
-            Repository repository, ICurrentSession currentSession)
+            Repository repository, ICurrentSession currentSession, AccessCounter accessCounter)
         {
             this.resourceRepository = resourceRepository;
             this.exportService = exportService;
             this.modelService = modelService;
             this.repository = repository;
             this.currentSession = currentSession;
+            this.accessCounter = accessCounter;
         }
 
         [NapAuth(FunctionKey = FunctionKeys.UserManagement, Policy = Constant.Policy.Read)]
@@ -67,7 +71,7 @@
                 UserGroups = RefResourceHelper.SortUserGroups(userGroups.ToList()),
                 Permission = permission
             };
-
+            await accessCounter.UpdateCounter(MenuItems.UserManagement);
             return View(filter);
         }
 

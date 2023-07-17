@@ -23,22 +23,26 @@ namespace NAP.OWP.Websites.Controllers
         private readonly PermissionService permissionService;
         private readonly ICache cache;
         private readonly ICurrentSession session;
+        private readonly AccessCounter accessCounter;
 
-        public HomeController(Service headerService, PermissionService permissionService, ICache cache, ICurrentSession session)
+        public HomeController(Service headerService, PermissionService permissionService, ICache cache,
+            ICurrentSession session, AccessCounter accessCounter)
         {
             this.headerService = headerService;
             this.permissionService = permissionService;
             this.cache = cache;
             this.session = session;
+            this.accessCounter = accessCounter;
         }
 
-        public ActionResult Index() => TaskList();
+        public async Task<ActionResult> Index() => await TaskList();
 
         [AllowAnonymous]
         public string GetInfositeMatchesJson(string ip, DateTime date)
         {
             var formattedDate = date.ToString("yyyy-MM-dd");
             var request = $"{ip}/api/EventSchedule/getEventsByDate?rd_checked=true&date_from={formattedDate}&date_to={formattedDate}";
+                $"http://10.99.98.249:82/DataCenter/api/EventSchedule/getEventsByDate?rd_checked=true&date_from={formattedDate}&date_to={formattedDate}";
             var response = new HttpClient().GetAsync(request).Result;
 
             return response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync().Result : string.Empty;
@@ -56,7 +60,8 @@ namespace NAP.OWP.Websites.Controllers
             {
                 Title = title,
                 Header = await headerService.Query(),
-                HasDetailInformationPermission = permissionService.HasRight(FunctionKeys.DetailsInformation, Constant.Policy.Read),
+                HasDetailInformationPermission =
+                    permissionService.HasRight(FunctionKeys.DetailsInformation, Constant.Policy.Read),
                 HasQuickSearchPermission = permissionService.HasRight(FunctionKeys.QuickSearch, Constant.Policy.Read)
             };
 
@@ -104,14 +109,26 @@ namespace NAP.OWP.Websites.Controllers
 
         [Route("EventAssignment")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
-        public ActionResult EventAssignment() => View("~/wwwroot/event-assignment/server.cshtml");
+        public async Task<ActionResult> EventAssignment()
+        {
+            await accessCounter.UpdateCounter(MenuItems.LiveGameAssignment);
+            return View("~/wwwroot/event-assignment/server.cshtml");
+        }
 
         [Route("EventUpload")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Host)]
-        public ActionResult EventUpload() => View("~/wwwroot/event-upload/server.cshtml");
+        public async Task<ActionResult> EventUpload()
+        {
+            await accessCounter.UpdateCounter(MenuItems.EventUploadNew);
+            return View("~/wwwroot/event-upload/server.cshtml");
+        }
 
         [Route("AutoAssignment")]
-        public ActionResult AutoAssignment() => View("~/wwwroot/auto-assignment/server.cshtml");
+        public async Task<ActionResult> AutoAssignment()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/auto-assignment/server.cshtml");
+        }
 
         [Route("ResourceManagement")]
         [NapAuth(FunctionKey = FunctionKeys.UserManagement, Policy = Constant.Policy.Read)]
@@ -122,51 +139,95 @@ namespace NAP.OWP.Websites.Controllers
 
         [Route("OddsCompiler")]
         [NapAuth(FunctionKey = FunctionKeys.OddsCompiler, Policy = Constant.Policy.Read)]
-        public ActionResult OddsCompiler() => View("~/wwwroot/odds-compiler/server.cshtml");
+        public async Task<ActionResult> OddsCompiler()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/odds-compiler/server.cshtml");
+        }
 
         // Add new page
         [Route("TraderReport")]
         [NapAuth(FunctionKey = FunctionKeys.TraderReport, Policy = Constant.Policy.Read)]
-        public ActionResult LSTReport() => View("~/wwwroot/lst-report/server.cshtml");
+        public async Task<ActionResult> LSTReport()
+        {
+            await accessCounter.UpdateCounter(MenuItems.TraderReport);
+            return View("~/wwwroot/lst-report/server.cshtml");
+        }
 
         // Add new page
         [Route("LeagueManagement/{id=999}/{leagueName=''}/{isActive='false'}")]
         [NapAuth(FunctionKey = FunctionKeys.LeagueManagement, Policy = Constant.Policy.Read)]
-        public ActionResult LeagueManagement() => View("~/wwwroot/league-management/server.cshtml");
+        public async Task<ActionResult> LeagueManagement()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/league-management/server.cshtml");
+        }
 
         // Add new page
         [Route("LAReport")]
         [NapAuth(FunctionKey = FunctionKeys.LAReport, Policy = Constant.Policy.Read)]
-        public ActionResult LAReport() => View("~/wwwroot/la-report/server.cshtml");
+        public async Task<ActionResult> LAReport()
+        {
+            await accessCounter.UpdateCounter(MenuItems.LAReport);
+            return View("~/wwwroot/la-report/server.cshtml");
+        }
 
         [Route("OvertimeReport")]
         [NapAuth(FunctionKey = FunctionKeys.OvertimeReport, Policy = Constant.Policy.Read)]
-        public ActionResult OvertimeReport() => View("~/wwwroot/overtime-report/server.cshtml");
+        public async Task<ActionResult> OvertimeReport()
+        {
+            await accessCounter.UpdateCounter(MenuItems.OvertimeReport);
+            return View("~/wwwroot/overtime-report/server.cshtml");
+        }
 
         [Route("DayShiftAssignment")]
         [NapAuth(FunctionKey = FunctionKeys.DayShiftAssignment, Policy = Constant.Policy.Read)]
-        public ActionResult DayShiftAssignment() => View("~/wwwroot/day-shift-assignment/server.cshtml");
+        public async Task<ActionResult> DayShiftAssignment()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/day-shift-assignment/server.cshtml");
+        }
 
         // Add new page
         [Route("NightShiftAssignment")]
         [NapAuth(FunctionKey = FunctionKeys.NightShiftAssignment, Policy = Constant.Policy.Read)]
-        public ActionResult NightShiftAssignment() => View("~/wwwroot/night-shift-assignment/server.cshtml");
+        public async Task<ActionResult> NightShiftAssignment()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/night-shift-assignment/server.cshtml");
+        }
 
         [Route("MyTickets")]
         [NapAuth(FunctionKey = FunctionKeys.MyTickets, Policy = Constant.Policy.Read)]
-        public ActionResult TicketCenter() => View("~/wwwroot/ticket-center/server.cshtml");
+        public async Task<ActionResult> TicketCenter()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/ticket-center/server.cshtml");
+        }
 
         [Route("TicketTypeRecipient")]
         [NapAuth(FunctionKey = FunctionKeys.TicketTypeSettings, Policy = Constant.Policy.Host)]
-        public ActionResult TicketTypeRecipient() => View("~/wwwroot/ticket-type-recipient/server.cshtml");
+        public async Task<ActionResult> TicketTypeRecipient()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/ticket-type-recipient/server.cshtml");
+        }
 
         [Route("LiveGameListNew")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameList, Policy = Constant.Policy.Read)]
-        public ActionResult LiveGameList() => View("~/wwwroot/live-game-list/server.cshtml");
+        public async Task<ActionResult> LiveGameList()
+        {
+            await accessCounter.UpdateCounter(MenuItems.LiveGameListNew);
+            return View("~/wwwroot/live-game-list/server.cshtml");
+        }
 
         [Route("RecipientGroup")]
         [NapAuth(FunctionKey = FunctionKeys.RecipientGroup, Policy = Constant.Policy.Host)]
-        public ActionResult RecipientGroup() => View("~/wwwroot/recipient-group/server.cshtml");
+        public async Task<ActionResult> RecipientGroup()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/recipient-group/server.cshtml");
+        }
 
         [Route("OSLiveGameAssignment")]
         [NapAuth(FunctionKey = FunctionKeys.OSLiveGameAssignment, Policy = Constant.Policy.Read)]
@@ -174,15 +235,27 @@ namespace NAP.OWP.Websites.Controllers
 
         [Route("AssignmentConfiguration")]
         [NapAuth(FunctionKey = FunctionKeys.AssignmentConfiguration, Policy = Constant.Policy.Read)]
-        public ActionResult TraderAssignmentConfiguration() => View("~/wwwroot/product-preference/server.cshtml");
+        public async Task<ActionResult> TraderAssignmentConfiguration()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AssignmentConfiguration);
+            return View("~/wwwroot/product-preference/server.cshtml");
+        }
 
         [Route("PrematchReport")]
         [NapAuth(FunctionKey = FunctionKeys.PrematchReport, Policy = Constant.Policy.Read)]
-        public ActionResult PrematchReportConfiguration() => View("~/wwwroot/prematch-report/server.cshtml");
+        public async Task<ActionResult> PrematchReportConfiguration()
+        {
+            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            return View("~/wwwroot/prematch-report/server.cshtml");
+        }
 
         [Route("MatchCountLiveReport")]
         [NapAuth(FunctionKey = FunctionKeys.MatchCountLiveReport, Policy = Constant.Policy.Read)]
-        public ActionResult MatchCountLiveReport() => View("~/wwwroot/match-count-live-report/server.cshtml");
+        public async Task<ActionResult> MatchCountLiveReport()
+        {
+            await accessCounter.UpdateCounter(MenuItems.MatchCountLiveReport);
+            return View("~/wwwroot/match-count-live-report/server.cshtml");
+        }
 
         [Route("OSBasketballMaxbet")]
         [NapAuth(FunctionKey = FunctionKeys.OSBasketballMaxbet, Policy = Constant.Policy.Read)]
@@ -190,17 +263,30 @@ namespace NAP.OWP.Websites.Controllers
 
         [Route("EventPickingNew")]
         [NapAuth(FunctionKey = FunctionKeys.EventPickingNew, Policy = Constant.Policy.Read)]
-        public ActionResult EventPickingNew() => View("~/wwwroot/event-picking/server.cshtml");
+        public async Task<ActionResult> EventPickingNew()
+        {
+            await accessCounter.UpdateCounter(MenuItems.EventPicking);
+            return View("~/wwwroot/event-picking/server.cshtml");
+        }
 
         [Route("TaskListNew")]
         [NapAuth(FunctionKey = FunctionKeys.OWPEventManagement, Policy = Constant.Policy.Read)]
-        public ActionResult TaskList() => View("~/wwwroot/task-list/server.cshtml");
+        public async Task<ActionResult> TaskList()
+        {
+            await accessCounter.UpdateCounter(MenuItems.TaskListNew);
+            return View("~/wwwroot/task-list/server.cshtml");
+        }
 
         [Route("ProviderArrangement")]
         [NapAuth(FunctionKey = FunctionKeys.ProviderArrangement, Policy = Constant.Policy.Read)]
-        public ActionResult ProviderArrangement() => View("~/wwwroot/provider-arrangement/server.cshtml");
+        public async Task<ActionResult>ProviderArrangement()
+        {
+            await accessCounter.UpdateCounter(MenuItems.ProviderArrangement);
+            return View("~/wwwroot/provider-arrangement/server.cshtml");
+        }
 
-        [Route("AssigneeSuggestionList")]
+
+    [Route("AssigneeSuggestionList")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
         public ActionResult A() => View("~/wwwroot/assignee-suggestion-list/server.cshtml");
 

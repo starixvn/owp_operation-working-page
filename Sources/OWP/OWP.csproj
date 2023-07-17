@@ -287,6 +287,7 @@
     <Compile Include="Criteria\GetRefResourceByNameCriteria.cs" />
     <Compile Include="Criteria\GetSubTypeSpecialProductCriteria.cs" />
     <Compile Include="Criteria\GetUserInfoByIdCriteria.cs" />
+    <Compile Include="Criteria\UpdateAccessCounterCriteria.cs" />
     <Compile Include="Criteria\UpdateTimezoneCriteria.cs" />
     <Compile Include="Enumerations\AssignmentType.native.cs" />
     <Compile Include="Enumerations\MajorBettype.native.cs" />
@@ -318,6 +319,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Services\AccessCounterService.native.cs" />
     <Compile Include="Services\CheckIsLiveStatusServices.cs" />
     <Compile Include="Services\ConfigurationService.native.cs" />
     <Compile Include="Services\GetAdminSiteMatchIdService.native.cs" />
