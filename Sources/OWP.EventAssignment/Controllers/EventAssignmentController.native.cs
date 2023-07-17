@@ -45,22 +45,6 @@
             var eventModels = await repository.Query(queryModel);
             var parentMatchIds = string.Join(",", eventModels.Select(x => x.ParentMatchId).Distinct());
             var infoSiteTimeResult = await repository.GetInfoSiteTime(parentMatchIds);
-            var adminSiteIdsWithOwpMatches = await repository.GetAdminSiteMatchId(parentMatchIds);
-            var adminSitesIdsOdds = await repository.GetAdminSiteInfo();
-
-            var adminSiteInfo = adminSitesIdsOdds.GroupBy(x => x.AdminSiteMatchId)
-                .Where(g => g.All(x => x.OddsStatus != EventAssignmentConst.EventStatusRunning))
-                .Select(g => g.First(x => x.OddsStatus != EventAssignmentConst.EventStatusRunning)).ToList();
-
-            var adminSiteMatchInfo = adminSiteIdsWithOwpMatches.Join(adminSiteInfo,
-                    l1 => l1.AdminSiteMatchId,
-                    l2 => l2.AdminSiteMatchId,
-                    (l1, l2) => new { l1, l2 })
-                .Select(x => new AdminSiteMatchInfoModel
-                {
-                    AdminSiteMatchId = x.l1.AdminSiteMatchId,
-                    ParentMatchId = x.l1.ParentMatchId
-                }).ToList();
 
             await repository.DetectEventHasTicket(eventModels);
 
@@ -69,20 +53,14 @@
                 eventModels = eventModels.Where(e => e.IsRead.HasValue && !e.IsRead.Value)?.ToList();
             }
 
-            if(eventModels is null)
-            {
-                return new List<EventModel>();
-            }
-
             foreach (var match in eventModels)
             {
                 var infoSite = infoSiteTimeResult.FirstOrDefault(x => x.ParentMatchId == match.ParentMatchId);
-                var isShowAbsenceIcon = adminSiteMatchInfo.Any(x => x.ParentMatchId == match.OWPMatchId);
                 match.AdminSiteId = await getAdminSiteMatchIdService.GetAdminSiteMatchId(match.OWPMatchId,
                 match.ParentMatchId, match.MinorBettypeId);
                 match.InfoSiteTime = infoSite?.KickOffTime;
                 match.InfoSiteTimeDisplay = infoSite?.KickOffTimeDisplay;
-                match.IsShowAbsenceIcon = !EventAssignmentConst.StatusNotOffered.Contains(match.MatchStatus) && isShowAbsenceIcon;
+                match.IsShowAbsenceIcon = match.OddsStatus != null && !EventAssignmentConst.StatusOffered.Contains(match.OddsStatus);
             }
 
             var permissionFullBetTypes = permission.LiveGameAssignment_FullBetTypes;

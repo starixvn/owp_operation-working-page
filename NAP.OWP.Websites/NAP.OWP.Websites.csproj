@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -494,8 +495,8 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\event-assignment\assets\ext\server-094cb6e4.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-0da09e99.js" />
+    <Content Include="wwwroot\event-assignment\assets\ext\server-6b6d9991.css" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-e4e99fdf.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
@@ -2005,8 +2006,8 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\live-game-list\assets\ext\server-8cc05387.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-e032d126.js" />
+    <Content Include="wwwroot\live-game-list\assets\ext\server-2ab33a89.css" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-8007d64c.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -2748,10 +2749,10 @@
     <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\task-list\assets\ext\server-a096fb0e.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-2ca3c482.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-24bffcc8.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-795a691c.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-0fdb7eac.js" />
+    <Content Include="wwwroot\task-list\assets\js\main-a9e20f41.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-692eada2.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-d1cee15e.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-7ef47304.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
@@ -2759,7 +2760,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-7a7ae9f0.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-181442f9.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-21f67262.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />
@@ -2771,6 +2772,19 @@
     <Content Include="wwwroot\ticket-type-recipient\favicon.ico" />
     <Content Include="wwwroot\ticket-type-recipient\server.html" />
     <Content Include="wwwroot\web.config" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\live-detail\server.cshtml" />
+    <Content Include="wwwroot\messagebox-management\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\messagebox-management\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\messagebox-management\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\messagebox-management\server.cshtml" />
+    <Content Include="wwwroot\notification-setting\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\notification-setting\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\notification-setting\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\notification-setting\server.cshtml" />
+    <Content Include="wwwroot\popup-container\server.cshtml" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-ea568b68.ttf" />
@@ -2783,18 +2797,10 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\event-assignment\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
-    <Content Include="wwwroot\event-upload\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\event-upload\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\event-upload\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\event-upload\server.cshtml" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-ea568b68.ttf" />
@@ -2803,10 +2809,6 @@
     <Content Include="wwwroot\league-management\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\league-management\server.cshtml" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\live-detail\server.cshtml" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-ea568b68.ttf" />
@@ -2815,18 +2817,10 @@
     <Content Include="wwwroot\match-count-live-report\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\match-count-live-report\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\match-count-live-report\server.cshtml" />
-    <Content Include="wwwroot\messagebox-management\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\messagebox-management\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\messagebox-management\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\messagebox-management\server.cshtml" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\notification-setting\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\notification-setting\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\notification-setting\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\notification-setting\server.cshtml" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-ea568b68.ttf" />
@@ -2839,7 +2833,6 @@
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\overtime-report\server.cshtml" />
-    <Content Include="wwwroot\popup-container\server.cshtml" />
     <Content Include="wwwroot\prematch-report\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\prematch-report\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\prematch-report\assets\ext\OWP-ea568b68.ttf" />
@@ -2860,18 +2853,14 @@
     <Content Include="wwwroot\resource-management\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\resource-management\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\resource-management\server.cshtml" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\task-list\server.cshtml" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\live-game-list\server.cshtml" />
+    <Content Include="wwwroot\event-upload\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\event-upload\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\event-upload\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\event-upload\server.cshtml" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
@@ -2880,6 +2869,18 @@
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\odds-compiler\server.cshtml" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\event-assignment\server.cshtml" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\live-game-list\server.cshtml" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\task-list\server.cshtml" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ea568b68.ttf" />

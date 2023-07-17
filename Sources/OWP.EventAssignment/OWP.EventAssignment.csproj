@@ -105,8 +105,6 @@
     <Compile Include="Criteria\EditMainMatchCriteria.cs" />
     <Compile Include="Criteria\AddMatchRecommendOddsCriteria.cs" />
     <Compile Include="Criteria\AddMatchSettingCriteria.cs" />
-    <Compile Include="Criteria\GetAdminSiteIdByOwpMatchIdCriteria.cs" />
-    <Compile Include="Criteria\GetAdminSiteInfoCriteria.cs" />
     <Compile Include="Criteria\GetInfoSiteTimeCriteria.cs" />
     <Compile Include="Criteria\GetSpecialEventTemplateCriteria.cs" />
     <Compile Include="Criteria\AddMinorMatchCriteria.cs" />

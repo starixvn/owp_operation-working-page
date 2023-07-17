@@ -2212,6 +2212,17 @@ button.toast-close-button {
     border-color: #dc3545;
   }
 }
+.league-group {
+  display: inline;
+}
+.league-badge{
+  font-size: 13px;
+  font-weight: bold;
+  padding: 3px 3px;
+  background-color: #CBCBCB;
+  margin-right: 3px;
+  border-radius: 2px;
+}
 .league-name {
   font-size: 13px;
   color: black;

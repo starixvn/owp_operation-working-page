@@ -13,6 +13,7 @@
         public TimeSpan KickOffTime { get; set; }
 
         public TimeSpan? OtherTime { get; set; }
+        public string LeagueGroup { get; set; }
 
         public string League { get; set; }
 
@@ -73,5 +74,7 @@
         public string IpTv { get; set; }
 
         public string MatchCode { get; set; }
+
+        public string OddsStatus { get; set; }
     }
 }

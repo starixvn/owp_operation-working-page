@@ -32,6 +32,8 @@
 
         public string League { get; set; }
 
+        public string LeagueGroup { get; set; }
+
         public string Home { get; set; }
 
         public string Away { get; set; }
@@ -121,5 +123,7 @@
         public TimeSpan KickOffTimeStr { get; set; }
 
         public TimeSpan? OtherTimeStr { get; set; }
+
+        public string OddsStatus { get; set; }
     }
 }

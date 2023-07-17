@@ -5,6 +5,7 @@ import { PlusIcon, ArrowRightIcon } from 'mdi-react';
 
 import PropTypes from 'prop-types';
 import EventPopup from '../../Shared/EventPopup';
+import MatchInfo from '../components/MatchInfo';
 
 const propTypesEvent = {
   isAllowAddEvent: PropTypes.bool.isRequired,
@@ -51,7 +52,11 @@ class EventCell extends React.PureComponent {
     };
     return (
       <div className='table-cell' key={`Event${uuidv4()}${rowIndex}`}>
-        <p className='league-name'>{event.League}</p>
+        {event.LeagueGroup && (
+          <h4 className='league-group league-badge'>{event.LeagueGroup}</h4>
+        )}
+        <h4 className='league-group league-name'>{event.League}</h4>
+
         {allowToAddMinorMatch && (
           <a
             onClick={e => {
@@ -73,22 +78,8 @@ class EventCell extends React.PureComponent {
             <ArrowRightIcon size={13} />
           </a>
         )}
-        <p className='match-name'>
-          {event.Home} -vs- {event.Away}
-        </p>
-        {event.NoOfHDP && (
-          <span className={`badge-label badge-hdp-${event.NoOfHDPId}`}>
-            {event.NoOfHDP}
-          </span>
-        )}
-        {event.MatchOffers.map((element, index) => (
-          <span key={`${uuidv4()}${index}`} className='badge-label match-offer'>
-            {element.MatchOfferValue}
-          </span>
-        ))}
-        {event.MatchCode && (
-          <span className='match-code'>{event.MatchCode}</span>
-        )}
+
+        <MatchInfo event={event} componentId={uuidv4()} />
 
         {event.AdminSiteId > 0 && (
           <>

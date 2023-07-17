@@ -13,9 +13,9 @@ type Column = {
   isCanFilter?: boolean;
   isCanSort?: boolean;
   sortState?: {
-    columnKey: Required<string>,
-    oderType: string
-  }
+    columnKey: Required<string>;
+    oderType: string;
+  };
 };
 
 type ColumnSchema = {
@@ -140,6 +140,7 @@ interface MatchInfo {
   IsPES: boolean;
   KickOffTime: string;
   League: string;
+  LeagueGroup: string;
   MatchCode: string;
   MatchNo: string;
   MatchOffers: MatchOffer[];
@@ -194,8 +195,8 @@ interface RefreshModel {
 }
 
 interface ISortState {
-  columnKey: Required<string>,
-  orderType: string
+  columnKey: Required<string>;
+  orderType: string;
 }
 
 export {

@@ -207,7 +207,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  padding-left: 5px;
+  padding-left: 5px;  
 }
 // overwrite css CustomTable
 .is-show-note {
@@ -351,7 +351,13 @@
   }
 }
 // league cell
-
+.league-type {
+  font-weight: bold;
+  padding: 3px 3px;
+  background-color: #CBCBCB;
+  margin-right: 3px;
+  border-radius: 2px;
+}
 .badge-label {
   padding: 0 2px;
   margin-right: 3px;

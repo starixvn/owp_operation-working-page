@@ -34,10 +34,7 @@ namespace OWP.EventAssignment.Repositories
         Task DetectEventHasTicket(IList<EventModel> eventModels);
 
         Task<IList<InfoSiteTimeModel>> GetInfoSiteTime(string ids);
-
-        Task<IList<AdminSiteOddsModel>> GetAdminSiteInfo();
-
-        Task<IList<AdminSiteIdModel>> GetAdminSiteMatchId(string ids);
+        
     }
 
     public class RepositoryImp : Repository
@@ -596,6 +593,7 @@ namespace OWP.EventAssignment.Repositories
                     KickOffTimeStr = match.KickOffTime,
                     OtherTime = match.OtherTime?.ToKOTime(),
                     OtherTimeStr = match?.OtherTime,
+                    LeagueGroup = match.LeagueGroup,
                     League = match.League,
                     Home = match.Home,
                     Away = match.Away,
@@ -637,7 +635,8 @@ namespace OWP.EventAssignment.Repositories
                         IpTv = match.IpTv,
                         Channel = match.Channel,
                         Stream = match.WatchBet
-                    })
+                    }),
+                    OddsStatus = match.OddsStatus
             };
 
                 if (!match.IsMinorMatch)
@@ -716,21 +715,6 @@ namespace OWP.EventAssignment.Repositories
                 ParentMatchIds = ids
             };
             return (await dynamicRepository.FetchAsync<InfoSiteTimeModel>(criteria)).ToList();
-        }
-
-        public async Task<IList<AdminSiteOddsModel>> GetAdminSiteInfo()
-        {
-            var criteria = new GetAdminSiteInfoCriteria();
-            return (await dynamicRepository.FetchAsync<AdminSiteOddsModel>(criteria)).ToList();
-        }
-
-        public async Task<IList<AdminSiteIdModel>> GetAdminSiteMatchId(string ids)
-        {
-            var criteria = new GetAdminSiteIdByOwpMatchIdCriteria
-            {
-                ParentMatchIds = ids
-            };
-            return (await dynamicRepository.FetchAsync<AdminSiteIdModel>(criteria)).ToList();
         }
     }
 }
