@@ -3,6 +3,7 @@
 namespace OWP.UserManagement.Controllers
 {
     using System;
+    using System.Configuration;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
@@ -71,7 +72,8 @@ namespace OWP.UserManagement.Controllers
                 UserGroups = RefResourceHelper.SortUserGroups(userGroups.ToList()),
                 Permission = permission
             };
-            await accessCounter.UpdateCounter(MenuItems.UserManagement);
+            var functionName = ConfigurationManager.AppSettings["UserManagement"];
+            await accessCounter.UpdateCounter(functionName);
             return View(filter);
         }
 

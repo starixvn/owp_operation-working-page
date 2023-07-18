@@ -22,25 +22,30 @@ namespace Fanex.NAP.OWP.TaskScheduling.Controllers
     using Service.Implement;
     using ViewModels.EventPicking;
     using Builder;
+    using System.Configuration;
 
     public class EventPickingController : Controller
     {
         private readonly LeagueSettingService leagueSettingService;
         private readonly EventPickingService eventPickingService;
+        private readonly AccessCounter accessCounter;
 
-        public EventPickingController(LeagueSettingService leagueSettingService, EventPickingService eventPickingService)
+        public EventPickingController(LeagueSettingService leagueSettingService, EventPickingService eventPickingService, AccessCounter accessCounter)
         {
             this.leagueSettingService = leagueSettingService;
             this.eventPickingService = eventPickingService;
+            this.accessCounter = accessCounter;
         }
 
         [NapAuth(FunctionKey = FunctionKeys.EventPicking, Policy = Constant.Policy.Read)]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var model = new EventPickingViewModel
             {
                 Date = DateTime.Now
             };
+            var functionName = ConfigurationManager.AppSettings["EventPicking"];
+            await accessCounter.UpdateCounter(functionName);
 
             return View("Index", model);
         }
@@ -50,7 +55,8 @@ namespace Fanex.NAP.OWP.TaskScheduling.Controllers
         public async Task<FileResult> SyncedEventPickingExcel(DateTime date)
         {
             var templatePath = Server.MapPath("~/Areas/TaskScheduling/ExcelTemplates/EventPicking.xlsx");
-
+            var functionName = ConfigurationManager.AppSettings["LiveGameAssignment_Export_Event_Picking"];
+            await accessCounter.UpdateCounter(functionName);
             return await DownloadExcel(templatePath, date);
         }
 
@@ -66,6 +72,8 @@ namespace Fanex.NAP.OWP.TaskScheduling.Controllers
         [NapAuth(FunctionKey = FunctionKeys.EventPicking, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> EventPickingExcel(EventPickingViewModel model)
         {
+            var functionName = ConfigurationManager.AppSettings["EventPicking_Export_Excel"];
+            await accessCounter.UpdateCounter(functionName);
             var date = model.Date;
             var templatePath = Server.MapPath("~/Areas/TaskScheduling/ExcelTemplates/EventPicking.xlsx");
 

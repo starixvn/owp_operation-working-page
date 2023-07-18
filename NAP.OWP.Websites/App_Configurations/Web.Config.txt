@@ -1,16 +1,1 @@
-﻿
-
-// Generated helper templates
-// Generated items
-// NAP.OWP.Websites\App_Configurations\Web.AWS.config
-// NAP.OWP.Websites\App_Configurations\Web.PRO.config
-// NAP.OWP.Websites\App_Configurations\Web.SIT.config
-// NAP.OWP.Websites\App_Configurations\Web.UAT3.config
-// NAP.OWP.Websites\App_Configurations\Web.UAT2.config
-// NAP.OWP.Websites\App_Configurations\Web.UAT1.config
-// NAP.OWP.Websites\App_Configurations\Web.UAT.config
-// NAP.OWP.Websites\App_Configurations\Web.LOCAL3.config
-// NAP.OWP.Websites\App_Configurations\Web.LOCAL2.config
-// NAP.OWP.Websites\App_Configurations\Web.LOCAL1.config
-// NAP.OWP.Websites\App_Configurations\Web.LOCAL.config
-// NAP.OWP.Websites\App_Configurations\Web.DEV.config
+﻿ErrorGeneratingOutput

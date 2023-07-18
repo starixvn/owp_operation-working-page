@@ -5,6 +5,7 @@ using OWP.Utils;
 namespace Fanex.NAP.OWP.EventManagement.Controllers
 {
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Linq;
     using System.Web.Mvc;
     using Core.BaseClasses;
@@ -62,7 +63,9 @@ namespace Fanex.NAP.OWP.EventManagement.Controllers
                 SearchDisabled = !IsShowTimeRangeEventInformation() && !IsShowFullEventInformation(),
                 TicketPermission = ticketPermission,
             };
-            await accessCounter.UpdateCounter(MenuItems.LiveGameList);
+            var functionName = ConfigurationManager.AppSettings["LiveGameList"];
+            await accessCounter.UpdateCounter(functionName);
+
             return View("Index", model);
         }
 

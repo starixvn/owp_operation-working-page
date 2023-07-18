@@ -3,6 +3,7 @@
 namespace OWP.DailyWorkingShift.Controllers
 {
     using System;
+    using System.Configuration;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
@@ -56,7 +57,8 @@ namespace OWP.DailyWorkingShift.Controllers
                 UserLocations = resourceRepository.GetAllLocations(),
                 Username = currentSession.Username
             };
-            await accessCounter.UpdateCounter(MenuItems.DailyWorkingShift);
+            var functionName = ConfigurationManager.AppSettings["WorkingShiftManagement"];
+            await accessCounter.UpdateCounter(functionName);
             return View(model);
         }
     }

@@ -8,7 +8,7 @@ namespace OWP.Criteria
 
         public string FunctionName { get; set; }
 
-        public override bool IsValid() => ActorId > 0 && FunctionName is null;
+        public override bool IsValid() => ActorId > 0 && FunctionName != null;
 
         public override string GetSettingKey() => "OWP_AccessCounter_Update";
     }

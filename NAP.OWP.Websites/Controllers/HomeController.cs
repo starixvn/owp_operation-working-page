@@ -14,6 +14,7 @@ namespace NAP.OWP.Websites.Controllers
     using global::OWP.Constants;
     using global::OWP.Services;
     using System;
+    using System.Configuration;
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
@@ -111,7 +112,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> EventAssignment()
         {
-            await accessCounter.UpdateCounter(MenuItems.LiveGameAssignment);
+            var functionName = ConfigurationManager.AppSettings["LiveGameAssignment"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/event-assignment/server.cshtml");
         }
 
@@ -119,14 +121,16 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Host)]
         public async Task<ActionResult> EventUpload()
         {
-            await accessCounter.UpdateCounter(MenuItems.EventUploadNew);
+            var functionName = ConfigurationManager.AppSettings["EventUploadNew"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/event-upload/server.cshtml");
         }
 
         [Route("AutoAssignment")]
         public async Task<ActionResult> AutoAssignment()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["AutoAssignment"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/auto-assignment/server.cshtml");
         }
 
@@ -141,7 +145,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.OddsCompiler, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> OddsCompiler()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["OddsCompiler"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/odds-compiler/server.cshtml");
         }
 
@@ -150,7 +155,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.TraderReport, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> LSTReport()
         {
-            await accessCounter.UpdateCounter(MenuItems.TraderReport);
+            var functionName = ConfigurationManager.AppSettings["TraderReport"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/lst-report/server.cshtml");
         }
 
@@ -159,7 +165,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.LeagueManagement, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> LeagueManagement()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["LeagueManagement"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/league-management/server.cshtml");
         }
 
@@ -168,7 +175,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.LAReport, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> LAReport()
         {
-            await accessCounter.UpdateCounter(MenuItems.LAReport);
+            var functionName = ConfigurationManager.AppSettings["LAReport"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/la-report/server.cshtml");
         }
 
@@ -176,7 +184,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.OvertimeReport, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> OvertimeReport()
         {
-            await accessCounter.UpdateCounter(MenuItems.OvertimeReport);
+            var functionName = ConfigurationManager.AppSettings["OvertimeReport"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/overtime-report/server.cshtml");
         }
 
@@ -184,7 +193,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.DayShiftAssignment, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> DayShiftAssignment()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["DayShiftAssignment"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/day-shift-assignment/server.cshtml");
         }
 
@@ -193,7 +203,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.NightShiftAssignment, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> NightShiftAssignment()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["NightShiftAssignment"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/night-shift-assignment/server.cshtml");
         }
 
@@ -201,7 +212,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.MyTickets, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> TicketCenter()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["MyTickets"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/ticket-center/server.cshtml");
         }
 
@@ -209,7 +221,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.TicketTypeSettings, Policy = Constant.Policy.Host)]
         public async Task<ActionResult> TicketTypeRecipient()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["TicketTypeSettings"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/ticket-type-recipient/server.cshtml");
         }
 
@@ -217,7 +230,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.LiveGameList, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> LiveGameList()
         {
-            await accessCounter.UpdateCounter(MenuItems.LiveGameListNew);
+            var functionName = ConfigurationManager.AppSettings["LiveGameListNew"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/live-game-list/server.cshtml");
         }
 
@@ -225,19 +239,26 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.RecipientGroup, Policy = Constant.Policy.Host)]
         public async Task<ActionResult> RecipientGroup()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["RecipientGroup"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/recipient-group/server.cshtml");
         }
 
         [Route("OSLiveGameAssignment")]
         [NapAuth(FunctionKey = FunctionKeys.OSLiveGameAssignment, Policy = Constant.Policy.Read)]
-        public ActionResult OSLiveGameList() => View("~/wwwroot/other-sport/server.cshtml");
+        public async Task<ActionResult> OSLiveGameList()
+        {
+            var functionName = ConfigurationManager.AppSettings["OSLiveGameAssignment"];
+            await accessCounter.UpdateCounter(functionName);
+            return View("~/wwwroot/other-sport/server.cshtml");
+        }
 
         [Route("AssignmentConfiguration")]
         [NapAuth(FunctionKey = FunctionKeys.AssignmentConfiguration, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> TraderAssignmentConfiguration()
         {
-            await accessCounter.UpdateCounter(MenuItems.AssignmentConfiguration);
+            var functionName = ConfigurationManager.AppSettings["AssignmentConfiguration"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/product-preference/server.cshtml");
         }
 
@@ -245,7 +266,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.PrematchReport, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> PrematchReportConfiguration()
         {
-            await accessCounter.UpdateCounter(MenuItems.AutoAssignment);
+            var functionName = ConfigurationManager.AppSettings["PrematchReport"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/prematch-report/server.cshtml");
         }
 
@@ -253,19 +275,24 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.MatchCountLiveReport, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> MatchCountLiveReport()
         {
-            await accessCounter.UpdateCounter(MenuItems.MatchCountLiveReport);
+            var functionName = ConfigurationManager.AppSettings["MatchCountLiveReport"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/match-count-live-report/server.cshtml");
         }
 
         [Route("OSBasketballMaxbet")]
         [NapAuth(FunctionKey = FunctionKeys.OSBasketballMaxbet, Policy = Constant.Policy.Read)]
-        public ActionResult OSBasketballMaxbet() => View("~/wwwroot/os-league-setting/server.cshtml");
+        public async Task<ActionResult> OSBasketballMaxbet()
+        {
+            var functionName = ConfigurationManager.AppSettings["OSBasketballMaxBet"];
+            await accessCounter.UpdateCounter(functionName);
+            return View("~/wwwroot/os-league-setting/server.cshtml");
+        }
 
         [Route("EventPickingNew")]
         [NapAuth(FunctionKey = FunctionKeys.EventPickingNew, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> EventPickingNew()
         {
-            await accessCounter.UpdateCounter(MenuItems.EventPicking);
             return View("~/wwwroot/event-picking/server.cshtml");
         }
 
@@ -273,7 +300,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.OWPEventManagement, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> TaskList()
         {
-            await accessCounter.UpdateCounter(MenuItems.TaskListNew);
+            var functionName=ConfigurationManager.AppSettings["TaskListNew"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/task-list/server.cshtml");
         }
 
@@ -281,14 +309,20 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.ProviderArrangement, Policy = Constant.Policy.Read)]
         public async Task<ActionResult>ProviderArrangement()
         {
-            await accessCounter.UpdateCounter(MenuItems.ProviderArrangement);
+            var functionName = ConfigurationManager.AppSettings["ProviderArrangement"];
+            await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/provider-arrangement/server.cshtml");
         }
 
 
-    [Route("AssigneeSuggestionList")]
+        [Route("AssigneeSuggestionList")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
-        public ActionResult A() => View("~/wwwroot/assignee-suggestion-list/server.cshtml");
+        public async Task<ActionResult> AssigneeSuggestionList()
+        {
+            var functionName = ConfigurationManager.AppSettings["AssigneeSuggestionList"];
+            await accessCounter.UpdateCounter(functionName);
+            return View("~/wwwroot/assignee-suggestion-list/server.cshtml");
+        }
 
     }
 }
