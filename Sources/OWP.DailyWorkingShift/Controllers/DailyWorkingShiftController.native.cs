@@ -57,7 +57,7 @@ namespace OWP.DailyWorkingShift.Controllers
                 UserLocations = resourceRepository.GetAllLocations(),
                 Username = currentSession.Username
             };
-            var functionName = ConfigurationManager.AppSettings["WorkingShiftManagement"];
+            var functionName = ConfigurationManager.AppSettings["DailyWorkingShift"];
             await accessCounter.UpdateCounter(functionName);
             return View(model);
         }
