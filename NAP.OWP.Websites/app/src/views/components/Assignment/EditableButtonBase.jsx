@@ -20,7 +20,8 @@ const propTypes = {
   index: PropTypes.string,
   columnName: PropTypes.string,
   rowIndex: PropTypes.number,
-  filterDate: PropTypes.string
+  filterDate: PropTypes.string,
+  otherTime: PropTypes.string
 };
 
 class EditableButtonBase extends Component {
@@ -216,12 +217,13 @@ class EditableButtonBase extends Component {
       isAllowAdd,
       betType
     } = this.state;
-    const { matchId, index, filterDate } = this.props;
+    const { matchId, index, filterDate, otherTime } = this.props;
     const hasMentions = listEditableTextMentions.length > 0;
     const displayListEditableMention = listEditableTextMentions.map(
       this.mapEditableTextMention
     );
     const classNameCss = 'assignment ' + index;
+
     return (
       <div className={classNameCss}>
         <EditableTextSuggestion
@@ -251,18 +253,28 @@ class EditableButtonBase extends Component {
           filterDate &&
           BetTypeSuggestion.some(x => x === this.props.columnName) && (
             <div className='button-suggestion'>
-              <a
+              <QuestionMarkCircleIcon
+                size={14}
+                className='btn-ko-time-suggestion'
                 onClick={event =>
                   this.handleLinkClick(
                     event,
-                    // eslint-disable-next-line no-warning-comments
-                    // eslint-disable-next-line react/prop-types
                     `AssigneeSuggestionList?owpMatchId=${matchId}&betTypeId=${betType}&filterDate=${filterDate}`
                   )
                 }
-                className='btn-suggestion'>
-                <QuestionMarkCircleIcon size={14}></QuestionMarkCircleIcon>
-              </a>
+              />
+              {otherTime && (
+                <QuestionMarkCircleIcon
+                  className='btn-other-time-suggestion'
+                  size={14}
+                  onClick={event =>
+                    this.handleLinkClick(
+                      event,
+                      `AssigneeSuggestionList?owpMatchId=${matchId}&betTypeId=${betType}&filterDate=${filterDate}&otherTime=${otherTime}`
+                    )
+                  }
+                />
+              )}
             </div>
           )}
       </div>

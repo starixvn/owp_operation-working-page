@@ -160,6 +160,7 @@ const onDeletedAssigment = (dataSource, assigment, bettypeName, rowIndex) => {
 const buildAssignment = props => {
   const { data, rowIndex, bettypeName, policy } = props;
   const event = data[rowIndex];
+  const otherTime = event.OtherTime;
   const assignments = event[bettypeName];
   let main = { OWPMatchId: 0 };
   let others = [];
@@ -193,7 +194,8 @@ const buildAssignment = props => {
     main,
     others,
     assignmentBetType,
-    isAllowAdd
+    isAllowAdd,
+    otherTime
   };
 };
 

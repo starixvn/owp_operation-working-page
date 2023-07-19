@@ -13,6 +13,7 @@ const AssigneeSuggestionList = () => {
   const matchId = searchParams.get('owpMatchId');
   const betTypeId = searchParams.get('betTypeId');
   const filterDate = searchParams.get('filterDate');
+  const otherTime = searchParams.get('otherTime');
   const { queryDataTable, loading } = useStore(
     state => ({
       queryDataTable: state.queryDataTable,
@@ -25,7 +26,7 @@ const AssigneeSuggestionList = () => {
     matchId &&
       betTypeId &&
       filterDate &&
-      queryDataTable({ matchId, betTypeId, filterDate });
+      queryDataTable({ matchId, betTypeId, filterDate, otherTime });
   }, []);
 
   return (

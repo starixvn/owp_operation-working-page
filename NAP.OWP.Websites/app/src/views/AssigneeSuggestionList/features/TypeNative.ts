@@ -121,6 +121,7 @@ type TQueryWorkScheduleType = {
   matchId: string | null;
   betTypeId: string | null;
   filterDate: string | null;
+  otherTime: string | null;
 };
 
 type TQueryHeaderInfo = {

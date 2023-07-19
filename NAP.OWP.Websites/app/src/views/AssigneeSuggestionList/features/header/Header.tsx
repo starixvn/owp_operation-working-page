@@ -23,6 +23,12 @@ const Header = () => {
     maxbetHDPInString,
     bettypeName
   } = matchInfo;
+
+  const searchParams = new URLSearchParams(document.location.search);
+  const otherTime = searchParams.get('otherTime');
+  const formattedDate = getLocaleDateTime(koTime, "MMM DD, YYYY");
+  const formattedTime = getLocaleDateTime(koTime, "hh:mm A");
+
   return (
     <>
       <div className='match-info'>
@@ -32,9 +38,10 @@ const Header = () => {
               #{matchNo} {leagueName} | {homeName} -vs- {awayName}
             </b>
             &nbsp;
-            <span className='time'>
-              Event Date: {getLocaleDateTime(koTime, 'MMM DD, YYYY hh:mm A')}
-              &nbsp; <span className='maxbet-string'> {maxbetHDPInString}</span>
+            <span className="time">
+              Event Date:&nbsp;
+              {`${formattedDate}${otherTime ? ' - Other time:' : ''} ${formattedTime}`}&nbsp;
+              <span className="maxbet-string"> {maxbetHDPInString}</span>
             </span>
             &nbsp;
             <span className='bet-type'>{bettypeName}</span>

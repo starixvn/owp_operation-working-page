@@ -30,14 +30,15 @@ const crateTableSlice: StateCreator<
     partiallyAvailable: [] as UserWorkingSchedule[],
     busy: [] as UserWorkingSchedule[]
   } as TAssigneeSuggestion,
-  queryDataTable: async ({ matchId, betTypeId, filterDate }) => {
+  queryDataTable: async ({ matchId, betTypeId, filterDate, otherTime }) => {
     set({ loadingDataTable: REQUEST_STATUS.pending });
     const url = buildRequestURL('get-trader-suggestion');
     const response = await axios.get(url, {
       params: {
         owpMatchId: matchId,
         betTypeId,
-        filterDate
+        filterDate,
+        otherTime
       }
     });
     set({
