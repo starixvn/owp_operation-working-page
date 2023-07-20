@@ -43,7 +43,7 @@ namespace NAP.OWP.Websites.Controllers
         {
             var formattedDate = date.ToString("yyyy-MM-dd");
             var request = $"{ip}/api/EventSchedule/getEventsByDate?rd_checked=true&date_from={formattedDate}&date_to={formattedDate}";
-                $"http://10.99.98.249:82/DataCenter/api/EventSchedule/getEventsByDate?rd_checked=true&date_from={formattedDate}&date_to={formattedDate}";
+            
             var response = new HttpClient().GetAsync(request).Result;
 
             return response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync().Result : string.Empty;
