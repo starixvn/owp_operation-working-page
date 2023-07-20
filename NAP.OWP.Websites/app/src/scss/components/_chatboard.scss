@@ -1458,48 +1458,50 @@
 .log-work .css-t3ipsp-control {
   box-shadow: none !important;
 }
-.popup-ChatBoard .message-date {
+.message-list .message-date {
   font-size: 12px;
   color: #dbddde;
   margin-bottom: 5px;
 }
 
-.popup-ChatBoard .date-time-line {
+.message-list .date-time-line {
   width: 100%;
   text-align: center;
   border-bottom: 1px solid #dbddde;
   line-height: 0.1em;
   margin: 10px 0 20px;
 }
-.popup-ChatBoard .date-time-line span {
+.message-list .date-time-line span {
   background: #fff;
   padding: 0 10px;
   font-size: 11px;
   color: #7d8183;
 }
-.popup-ChatBoard .my-message .message-div {
+.message-list .my-message .message-div {
   background: #dbf1ff;
   padding: 5px 10px;
   border-radius: 9px 9px 0px 9px;
   display: inline-block;
   max-width: 360px;
+  margin-bottom: 0;
 }
-.popup-ChatBoard .others-user .message-div {
+.message-list .others-user .message-div {
   background: #f2f6f9;
   padding: 5px 10px;
   border-radius: 9px 9px 9px 0px;
   display: inline-block;
   max-width: 360px;
+  margin-bottom: 0;
 }
 
-.popup-ChatBoard .my-message .message-group {
+.message-list .my-message .message-group {
   white-space: pre-wrap;
   display: flex;
   column-gap: 10px;
   justify-content: flex-end;
 }
 
-.popup-ChatBoard .others-user .message-group {
+.message-list .others-user .message-group {
   white-space: pre-wrap;
   display: flex;
   column-gap: 10px;
@@ -1507,44 +1509,36 @@
   justify-content: start;
 }
 
-.popup-ChatBoard .icon-save-message svg {
+.message-list .icon-save-message svg {
   width: 17px;
   height: 22px;
   fill: #1e88e5;
   margin: 0;
 }
-.popup-ChatBoard .unsave-message svg {
+.message-list .unsave-message svg {
   fill: #3bb54a;
 }
 
-.popup-ChatBoard .message-list .message-row .icon-save-message.unsave-message {
+.message-list .message-row .icon-save-message.unsave-message {
   width: 80px;
   display: flex;
   justify-content: flex-end;
 }
 
-.popup-ChatBoard .message-row .text-saved {
+.message-list .message-row .text-saved {
   color: #828282;
   padding-top: 3px;
 }
 
-.popup-ChatBoard .others-user .unsave-message {
+.others-user .unsave-message {
   flex-direction: row-reverse;
 }
 
-.popup-ChatBoard .message-list::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: #f2f6f9;
-}
-
-.popup-ChatBoard .message-list::-webkit-scrollbar {
+.message-list::-webkit-scrollbar {
   width: 10px;
   background-color: #f2f6f9;
 }
 
-.popup-ChatBoard .message-list::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+.message-list::-webkit-scrollbar-thumb {
   background-color: #c2c2c2;
 }
