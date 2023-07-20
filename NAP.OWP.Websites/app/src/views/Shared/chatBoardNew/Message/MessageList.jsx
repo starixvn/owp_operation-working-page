@@ -41,19 +41,30 @@ const MessageList = ({ policy = 'policy', ticketId }) => {
     return <Loading />;
   }
 
+  const messageGroupByDate = messages.reduce((result, message) => {
+    const date = message.createdDate.split('T')[0];
+    if (!result[date]) {
+      result[date] = [];
+    }
+    result[date].push(message);
+    return result;
+  }, {});
+
   const renderMessageRow = (message, index) => {
-    const key = `${ticketId}-${index}`;
-    const className = isEquals(message.userId, permission.ActorId)
-      ? 'message-row my-message'
-      : 'message-row';
+    const key = `${message.messageId}-${index}`;
+    const isMyMessage = isEquals(message.userId, permission.ActorId);
 
     return (
-      <li key={key} className={className}>
+      <li
+        key={key}
+        className={
+          isMyMessage ? 'message-row my-message' : 'message-row others-user'
+        }>
         <MessageCell
           policy={policy}
-          index={index}
           data={message}
           ticketId={ticketId}
+          isMyMessage={isMyMessage}
         />
       </li>
     );
@@ -81,10 +92,28 @@ const MessageList = ({ policy = 'policy', ticketId }) => {
           <a className='load-more' onClick={handleLoadMoreMessage}>
             Load more
           </a>
-        )}
-        <ul>
-          {messages.map((message, index) => renderMessageRow(message, index))}
-        </ul>
+        )}{' '}
+        {Object.keys(messageGroupByDate).map((date, key) => (
+          <React.Fragment key={`${date}-${key}`}>
+            <div>
+              <h2 className='date-time-line'>
+                <span>
+                  {new Date(date).toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}
+                </span>
+              </h2>
+            </div>
+
+            <ul>
+              {messageGroupByDate[date].map((message, index) =>
+                renderMessageRow(message, index)
+              )}
+            </ul>
+          </React.Fragment>
+        ))}
       </div>
     </>
   );

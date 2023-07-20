@@ -146,8 +146,7 @@ const createIssue = handleMessage('createIssue');
 const saveMessage = createAsyncThunk(
   'save-message',
   async (model, { rejectWithValue }) => {
-    const { index, ...rest } = model;
-    const { status, data } = await post(rest);
+    const { status, data } = await post(model);
     if (status === 203) {
       return rejectWithValue(data);
     }

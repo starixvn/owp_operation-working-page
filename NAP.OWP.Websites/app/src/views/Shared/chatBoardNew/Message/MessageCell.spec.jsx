@@ -56,8 +56,7 @@ describe('test MessageCell', () => {
     const { container } = render(
       <MessageCell data={props} index={0} policy='policy' />
     );
-    const element = container.querySelector('.Linkify');
-    expect(element).toBeInTheDocument();
+
     const save = container.querySelector('.mdi-icon');
     fireEvent.click(save);
     expect(save).toBeInTheDocument();

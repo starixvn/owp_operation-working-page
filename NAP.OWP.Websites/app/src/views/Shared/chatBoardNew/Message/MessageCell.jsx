@@ -16,12 +16,12 @@ const url =
 
 const propTypes = {
   data: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
   policy: PropTypes.string.isRequired,
-  ticketId: PropTypes.number
+  ticketId: PropTypes.number,
+  isMyMessage: PropTypes.bool
 };
 
-const MessageCell = ({ data, index, policy = 'policy', ticketId }) => {
+const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
   const { createdDate, message, username, fileId, messageId, isSaved } = data;
   const dispatch = useStableDispatch();
   const { permission } = useSelector(state => state[policy]);
@@ -37,11 +37,10 @@ const MessageCell = ({ data, index, policy = 'policy', ticketId }) => {
       url,
       messageId,
       isSaved: value,
-      index,
       ticketId,
       actorId: permission.ActorId
     };
-    const actionResult = await dispatch(saveMessage(model));
+    const actionResult = dispatch(saveMessage(model));
     if (saveMessage.rejected.match(actionResult)) {
       ToastrWrapper.showError(actionResult.payload);
     }
@@ -87,11 +86,13 @@ const MessageCell = ({ data, index, policy = 'policy', ticketId }) => {
       <>
         <div className='info-user'>
           <div className='name-user'>
-            <b>{username}</b> - {getCreatedTime()}
-            {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
+            {!isMyMessage && <>{username},</>} {getCreatedTime()}
           </div>
         </div>
-        <div style={{ whiteSpace: 'pre-wrap' }}>{getMessageContent()}</div>
+        <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
+          {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
+          {getMessageContent()}
+        </div>
       </>
     );
   }
