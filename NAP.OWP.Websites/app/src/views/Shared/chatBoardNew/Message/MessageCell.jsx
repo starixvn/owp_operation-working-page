@@ -49,31 +49,31 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
   const renderSaveIcon = () =>
     HasWrite ? (
       <>
-        <span
-          id={`name${messageId}`}
-          className='icon-save-message'
-          onClick={() => handleSaveMessages(true)}>
-          <ContentSaveOutlineIcon />
+        <span className='icon-save-message'>
+          <ContentSaveOutlineIcon
+            onClick={() => handleSaveMessages(true)}
+            id={`name${messageId}`}
+          />
         </span>
         <UncontrolledTooltip placement='top' target={`name${messageId}`}>
-          Click to save your message. Or it will be deleted soon.
+          Click to save your message or it is deleted after 30 days
         </UncontrolledTooltip>
       </>
     ) : (
-      <ContentSaveOutlineIcon className='icon-save-message' />
+      <span className='icon-save-message'>
+        <ContentSaveOutlineIcon />
+      </span>
     );
   const renderUnSaveIcon = () =>
     HasWrite ? (
       <span className='icon-save-message unsave-message'>
         <span className='text-saved'> Saved </span>
-        <span
-          className='icon-unsave-message'
-          onClick={() => handleSaveMessages(false)}>
-          <ContentSaveOutlineIcon />
+        <span className='icon-unsave-message'>
+          <ContentSaveOutlineIcon onClick={() => handleSaveMessages(false)} />
         </span>
       </span>
     ) : (
-      <span className='icon-save-message un-save-message-disable'>
+      <span className='icon-save-message  unsave-message un-save-message-disable'>
         <span className='text-saved'> Saved </span>
         <span className='icon-un-save-message-disable'>
           <ContentSaveOutlineIcon />
