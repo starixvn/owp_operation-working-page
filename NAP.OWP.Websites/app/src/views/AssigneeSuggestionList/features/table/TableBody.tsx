@@ -1,13 +1,14 @@
 import React from 'react';
 import { TAssigneeSuggestion } from '../TypeNative';
 import SuggestionInfo from './Component/SuggestionInfo';
+import { isShowPartially } from '../helper/AssigneeSuggestionHelper';
 
 type Props = {
   workingShifts: TAssigneeSuggestion;
 };
 
 const TableBody = ({
-  workingShifts: { busy, fullyAvailable, partiallyAvailable }
+  workingShifts: { busy, fullyAvailable, partiallyAvailable, matchInfo }
 }: Props) => (
   <>
     <SuggestionInfo
@@ -15,11 +16,13 @@ const TableBody = ({
       title='Assignee Suggestion (Available)'
       isOpen
     />
-    <SuggestionInfo
-      workingShifts={partiallyAvailable}
-      title='Assignee Suggestion (Partially available)'
-      isOpen
-    />
+    {isShowPartially(matchInfo) && (
+      <SuggestionInfo
+        workingShifts={partiallyAvailable}
+        title='Assignee Suggestion (Partially available)'
+        isOpen
+      />
+    )}
     <SuggestionInfo workingShifts={busy} title='Busy' />
   </>
 );

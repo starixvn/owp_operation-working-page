@@ -1,6 +1,10 @@
 import dayjs from 'dayjs';
 import { timeLineColumn, startHour, startMinute } from '../../const/Const.json';
-import { TAssigneeSuggestion, UserWorkingSchedule } from '../TypeNative';
+import {
+  TAssigneeSuggestion,
+  TMatchInfo,
+  UserWorkingSchedule
+} from '../TypeNative';
 
 const getCurrentTimeLine = (filterDate: Date, koTime: Date) => {
   const currentDate = dayjs(koTime);
@@ -23,6 +27,9 @@ const searchAssignee = (assignees: UserWorkingSchedule[], keyword: string) =>
     x.userInfo?.username.toLowerCase().includes(keyword.toLowerCase().trim())
   );
 
+const isShowPartially = (matchInfo: TMatchInfo) =>
+  !matchInfo.leagueName.includes('SABA ');
+
 const SearchAssigneeByKeyword = (
   data: TAssigneeSuggestion,
   keyword: string
@@ -35,4 +42,9 @@ const SearchAssigneeByKeyword = (
   };
 };
 
-export { getCurrentTimeLine, getTotalRecords, SearchAssigneeByKeyword };
+export {
+  getCurrentTimeLine,
+  getTotalRecords,
+  SearchAssigneeByKeyword,
+  isShowPartially
+};
