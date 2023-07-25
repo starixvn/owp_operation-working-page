@@ -94,8 +94,11 @@ const chatBoardSlice = createSlice({
         state.error = action.error;
       })
       .addCase(saveMessage.fulfilled, (state, action) => {
-        const { index, isSaved } = action.payload;
-        state.ticketDetail.messages[index].isSaved = isSaved;
+        const { messageId, isSaved } = action.payload;
+        const message = state.ticketDetail.messages.find(
+          x => x.messageId === messageId
+        );
+        message.isSaved = isSaved;
       })
       .addCase(getTicketDetail.fulfilled, (state, action) => {
         state.ticketDetail = action.payload.data;

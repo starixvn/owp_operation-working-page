@@ -16,12 +16,12 @@ const url =
 
 const propTypes = {
   data: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
   policy: PropTypes.string.isRequired,
-  ticketId: PropTypes.number
+  ticketId: PropTypes.number,
+  isMyMessage: PropTypes.bool
 };
 
-const MessageCell = ({ data, index, policy = 'policy', ticketId }) => {
+const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
   const { createdDate, message, username, fileId, messageId, isSaved } = data;
   const dispatch = useStableDispatch();
   const { permission } = useSelector(state => state[policy]);
@@ -37,11 +37,10 @@ const MessageCell = ({ data, index, policy = 'policy', ticketId }) => {
       url,
       messageId,
       isSaved: value,
-      index,
       ticketId,
       actorId: permission.ActorId
     };
-    const actionResult = await dispatch(saveMessage(model));
+    const actionResult = dispatch(saveMessage(model));
     if (saveMessage.rejected.match(actionResult)) {
       ToastrWrapper.showError(actionResult.payload);
     }
@@ -50,31 +49,31 @@ const MessageCell = ({ data, index, policy = 'policy', ticketId }) => {
   const renderSaveIcon = () =>
     HasWrite ? (
       <>
-        <span
-          id={`name${messageId}`}
-          className='icon-save-message'
-          onClick={() => handleSaveMessages(true)}>
-          <ContentSaveOutlineIcon />
+        <span className='icon-save-message'>
+          <ContentSaveOutlineIcon
+            onClick={() => handleSaveMessages(true)}
+            id={`name${messageId}`}
+          />
         </span>
         <UncontrolledTooltip placement='top' target={`name${messageId}`}>
-          Click to save your message. Or it will be deleted soon.
+          Click to save your message or it is deleted after 30 days
         </UncontrolledTooltip>
       </>
     ) : (
-      <ContentSaveOutlineIcon className='icon-save-message' />
+      <span className='icon-save-message'>
+        <ContentSaveOutlineIcon />
+      </span>
     );
   const renderUnSaveIcon = () =>
     HasWrite ? (
       <span className='icon-save-message unsave-message'>
         <span className='text-saved'> Saved </span>
-        <span
-          className='icon-unsave-message'
-          onClick={() => handleSaveMessages(false)}>
-          <ContentSaveOutlineIcon />
+        <span className='icon-unsave-message'>
+          <ContentSaveOutlineIcon onClick={() => handleSaveMessages(false)} />
         </span>
       </span>
     ) : (
-      <span className='icon-save-message un-save-message-disable'>
+      <span className='icon-save-message  unsave-message un-save-message-disable'>
         <span className='text-saved'> Saved </span>
         <span className='icon-un-save-message-disable'>
           <ContentSaveOutlineIcon />
@@ -87,11 +86,13 @@ const MessageCell = ({ data, index, policy = 'policy', ticketId }) => {
       <>
         <div className='info-user'>
           <div className='name-user'>
-            <b>{username}</b> - {getCreatedTime()}
-            {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
+            {!isMyMessage && <>{username},</>} {getCreatedTime()}
           </div>
         </div>
-        <div style={{ whiteSpace: 'pre-wrap' }}>{getMessageContent()}</div>
+        <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
+          {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
+          {getMessageContent()}
+        </div>
       </>
     );
   }

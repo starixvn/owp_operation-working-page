@@ -13,8 +13,7 @@ const MessageContents = ({
   fileId = '',
   messageContent = ''
 }) => {
-  const getCreatedTime = () =>
-    formatTime(createdDate, 'minute', 'hh:mm A DD/MM/YYYY');
+  const getCreatedTime = () => formatTime(createdDate, 'minute', 'hh:mm A');
 
   const handleOnClick = () => {
     const basicUrl =
@@ -35,12 +34,20 @@ const MessageContents = ({
     return (
       <>
         {!fileId && (
-          <Linkify properties={{ target: '_blank' }}>{messageContent}</Linkify>
+          <p className='message-div'>
+            <Linkify
+              properties={{ target: '_blank' }}
+              className='message-content'>
+              {messageContent}
+            </Linkify>
+          </p>
         )}
         {fileId && (
-          <span className='is-file' onClick={handleOnClick}>
-            {messageContent}
-          </span>
+          <p className='message-div'>
+            <span className='is-file' onClick={handleOnClick}>
+              {messageContent}
+            </span>
+          </p>
         )}
       </>
     );
