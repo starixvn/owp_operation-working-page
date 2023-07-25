@@ -1,6 +1,9 @@
-﻿namespace OWP.DailyWorkingShift.Controllers
+﻿using OWP.Services;
+
+namespace OWP.DailyWorkingShift.Controllers
 {
     using System;
+    using System.Configuration;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
@@ -18,16 +21,18 @@
         private readonly ModelService modelService;
         private readonly ICurrentSession currentSession;
         private readonly UserRepository userRepository;
+        private readonly AccessCounter accessCounter;
 
         public DailyWorkingShiftController(ResourceRepository resourceRepository,
             ModelService modelService,
             ICurrentSession currentSession,
-            UserRepository userRepository)
+            UserRepository userRepository, AccessCounter accessCounter)
         {
             this.resourceRepository = resourceRepository;
             this.modelService = modelService;
             this.currentSession = currentSession;
             this.userRepository = userRepository;
+            this.accessCounter = accessCounter;
         }
 
         [NapAuth(FunctionKey = FunctionKeys.DailyWorkingShift, Policy = Constant.Policy.Read)]
@@ -52,7 +57,8 @@
                 UserLocations = resourceRepository.GetAllLocations(),
                 Username = currentSession.Username
             };
-
+            var functionName = ConfigurationManager.AppSettings["DailyWorkingShift"];
+            await accessCounter.UpdateCounter(functionName);
             return View(model);
         }
     }

@@ -5,6 +5,7 @@ using OWP.Utils;
 namespace Fanex.NAP.OWP.EventManagement.Controllers
 {
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Linq;
     using System.Web.Mvc;
     using Core.BaseClasses;
@@ -23,17 +24,19 @@ namespace Fanex.NAP.OWP.EventManagement.Controllers
         private readonly IEventInformationService eventInformationService;
         private readonly IFilterService filterService;
         private readonly PermissionService permissionService;
+        private readonly AccessCounter accessCounter;
 
         public EventInformationController(
             IEventInformationService eventInformationService,
             IFilterService filterService,
             IOWPBaseService baseService,
-            PermissionService permissionService)
+            PermissionService permissionService, AccessCounter accessCounter)
         {
             BaseService = baseService;
             this.eventInformationService = eventInformationService;
             this.filterService = filterService;
             this.permissionService = permissionService;
+            this.accessCounter = accessCounter;
         }
 
         [NapAuth(FunctionKey = FunctionKeys.LiveGameList, Policy = Constant.Policy.Read)]
@@ -45,7 +48,7 @@ namespace Fanex.NAP.OWP.EventManagement.Controllers
         }
 
         [NapAuth(FunctionKey = FunctionKeys.LiveGameList, Policy = Constant.Policy.Read)]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var filters = filterService.GetFilterByUserId(CurrentSession.UserId);
             var filterDefault = filters.FirstOrDefault(x => x.IsDefault);
@@ -60,6 +63,8 @@ namespace Fanex.NAP.OWP.EventManagement.Controllers
                 SearchDisabled = !IsShowTimeRangeEventInformation() && !IsShowFullEventInformation(),
                 TicketPermission = ticketPermission,
             };
+            var functionName = ConfigurationManager.AppSettings["LiveGameList"];
+            await accessCounter.UpdateCounter(functionName);
 
             return View("Index", model);
         }

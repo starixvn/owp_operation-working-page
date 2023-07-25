@@ -13,6 +13,7 @@
             container.Register<NotificationService, NotificationServiceImp>(Lifestyle.Transient);
             container.Register<UserRepository, UserRepositoryImp>(Lifestyle.Transient);
             container.Register<CheckIsLiveStatusServices, CheckIsLiveStatusServicesImp>(Lifestyle.Transient);
+            container.Register<AccessCounter, AccessCounterImp>(Lifestyle.Transient);
         }
     }
 }

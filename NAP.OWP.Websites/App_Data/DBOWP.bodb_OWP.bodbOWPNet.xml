@@ -181,4 +181,7 @@
 	<Function Name="LeagueManagement">
 		<Setting Key="OWP_LeagueManagement_GetAllTVCondition" SpName="OWP_LeagueManagement_GetAllTVCondition" DbName="DBOWP.bodb_OWP.bodbOWPNet"></Setting>
 	</Function>
+	<Function Name="AccessCounter">
+		<Setting Key="OWP_AccessCounter_Update" SpName="OWP_AccessCounter_Update" DbName="DBOWP.bodb_OWP.bodbOWPNet"></Setting>
+	</Function>
 </Functions>

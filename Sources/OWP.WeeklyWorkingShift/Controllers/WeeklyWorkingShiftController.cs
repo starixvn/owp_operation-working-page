@@ -1,6 +1,9 @@
-﻿namespace OWP.WeeklyWorkingShift.Controllers
+﻿using OWP.Services;
+
+namespace OWP.WeeklyWorkingShift.Controllers
 {
     using System;
+    using System.Configuration;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
@@ -21,19 +24,21 @@
         private readonly ICurrentSession currentSession;
         private readonly WorkingShiftTimezoneSettingRepository timezoneSettingRepository;
         private readonly UserRepository userRepository;
+        private readonly AccessCounter accessCounter;
 
         public WeeklyWorkingShiftController(
             ResourceRepository resourceRepository,
             ModelService modelService,
             ICurrentSession currentSession,
             WorkingShiftTimezoneSettingRepository timezoneSettingRepository,
-            UserRepository userRepository)
+            UserRepository userRepository, AccessCounter accessCounter)
         {
             this.modelService = modelService;
             this.resourceRepository = resourceRepository;
             this.currentSession = currentSession;
             this.timezoneSettingRepository = timezoneSettingRepository;
             this.userRepository = userRepository;
+            this.accessCounter = accessCounter;
         }
 
         [NapAuth(FunctionKey = FunctionKeys.WorkingShiftManagement, Policy = Constant.Policy.Read)]
@@ -65,7 +70,8 @@
                 CurrentSectionId = currentSectionId ?? 0,
                 IsFrame = false
             };
-
+            var functionName = ConfigurationManager.AppSettings["WorkingShiftManagement"];
+            await accessCounter.UpdateCounter(functionName);
             return View(model);
         }
 

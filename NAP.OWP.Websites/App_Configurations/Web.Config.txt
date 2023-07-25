@@ -1,6 +1,4 @@
-﻿
-
-// Generated helper templates
+﻿// Generated helper templates
 // Generated items
 // NAP.OWP.Websites\App_Configurations\Web.AWS.config
 // NAP.OWP.Websites\App_Configurations\Web.PRO.config

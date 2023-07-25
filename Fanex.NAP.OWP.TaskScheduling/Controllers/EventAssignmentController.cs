@@ -1,4 +1,6 @@
-﻿namespace Fanex.NAP.OWP.TaskScheduling.Controllers
+﻿using OWP.Services;
+
+namespace Fanex.NAP.OWP.TaskScheduling.Controllers
 {
     using Fanex.NAP.Core.Web.Session;
     using global::OWP.Constants;
@@ -9,6 +11,7 @@
     using Service.Interfaces;
     using System;
     using System.CodeDom.Compiler;
+    using System.Configuration;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
@@ -19,12 +22,14 @@
     {
         private readonly IEventAssignmentService eventAssignmentService;
         private readonly EventAssignmentPermission eventAssignmentPermission;
+        private readonly AccessCounter accessCounter;
 
         public EventAssignmentController(IEventAssignmentService eventAssignmentService,
-            EventAssignmentPermission eventAssignmentPermission)
+            EventAssignmentPermission eventAssignmentPermission, AccessCounter accessCounter)
         {
             this.eventAssignmentService = eventAssignmentService;
             this.eventAssignmentPermission = eventAssignmentPermission;
+            this.accessCounter = accessCounter;
         }
 
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Reviewed. Suppression is OK here.")]
@@ -59,7 +64,7 @@
                 SyncLiveStatus = syncLiveStatus,
                 PermissionModel = eventAssignmentPermission.BuildPermission()
             };
-
+            await accessCounter.UpdateCounter(ConfigurationManager.AppSettings["LiveGameAssignment_Export"]);
             return await DownLoadExport(eventExportModel);
         }
 
