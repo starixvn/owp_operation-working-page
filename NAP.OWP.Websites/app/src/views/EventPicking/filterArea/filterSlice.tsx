@@ -1,10 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { TFilter, TPayloadFilter } from "../types/filterType";
+import { createSlice } from '@reduxjs/toolkit';
+import { TFilter, TPayloadFilter } from '../types/filterType';
 import {
-  DATE, FILTER_MATCH, SELECT_GAME,
-  FILTER_MATCH_OPTIONS, SELECT_GAME_OPTIONS,
-  HAS_PROVIDER_OPTIONS, HAS_PROVIDER,
-  HAS_OTHER_PROVIDER
+  DATE,
+  FILTER_MATCH,
+  SELECT_GAME,
+  FILTER_MATCH_OPTIONS,
+  SELECT_GAME_OPTIONS,
+  HAS_PROVIDER_OPTIONS,
+  HAS_PROVIDER,
+  HAS_OTHER_PROVIDER,
+  FILTER_MATCH_CATEGORY,
+  FILTER_MATCH_CATEGORY_OPTIONS
 } from './filterConst.json';
 
 const filterSlice = createSlice({
@@ -14,7 +20,8 @@ const filterSlice = createSlice({
     [FILTER_MATCH]: FILTER_MATCH_OPTIONS.map(m => m.value),
     [SELECT_GAME]: SELECT_GAME_OPTIONS.map(m => m.value),
     [HAS_PROVIDER]: HAS_PROVIDER_OPTIONS.map(m => m.value),
-    [HAS_OTHER_PROVIDER]: HAS_PROVIDER_OPTIONS.map(m => m.value)
+    [HAS_OTHER_PROVIDER]: HAS_PROVIDER_OPTIONS.map(m => m.value),
+    [FILTER_MATCH_CATEGORY]: FILTER_MATCH_CATEGORY_OPTIONS.map(m => m.value)
   } as TFilter,
   reducers: {
     setFilter: (state, action: { payload: TPayloadFilter }) => {

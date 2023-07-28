@@ -10,14 +10,11 @@ const propTypes = {
 
 const RemarkCell = props => {
   const { rowIndex, dataSource } = props;
-  const { lstNote, remark, remark2, homeRemark, awayRemark } = dataSource[
-    rowIndex
-  ];
+  const { lstNote, remark, homeRemark, awayRemark } = dataSource[rowIndex];
   const ref = useRef(null);
   const checkShowToolTip = checkIsShow({
     lstNote,
     remark,
-    remark2,
     homeRemark,
     awayRemark
   });
@@ -35,14 +32,6 @@ const RemarkCell = props => {
       <span>
         <strong>Remark: </strong>
         {remark}
-      </span>
-    );
-
-  const renderRemark2 = () =>
-    remark2 && (
-      <span>
-        <strong>Remark 2: </strong>
-        {remark2}
       </span>
     );
 
@@ -67,7 +56,6 @@ const RemarkCell = props => {
       <div className='remark-cell' ref={ref}>
         {renderLstNote()}
         {renderRemark()}
-        {renderRemark2()}
         {renderHomeRemark()}
         {renderAwayRemark()}
       </div>
@@ -78,7 +66,6 @@ const RemarkCell = props => {
           target={ref}>
           {renderLstNote()}
           {renderRemark()}
-          {renderRemark2()}
           {renderHomeRemark()}
           {renderAwayRemark()}
         </UncontrolledTooltip>

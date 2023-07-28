@@ -1,5 +1,6 @@
 {
   "DATE": "date",
+  "FILTER_MATCH_CATEGORY":"filterMatchCategory",
   "FILTER_MATCH": "filterMatch",
   "SELECT_GAME": "selectGame",
   "HAS_PROVIDER": "hasProvider",
@@ -12,6 +13,16 @@
     {
       "value": 0,
       "label": "Offer"
+    }
+  ],
+  "FILTER_MATCH_CATEGORY_OPTIONS": [
+    {
+      "value": "Saba",
+      "label": "Saba"
+    },
+    {
+      "value": "Real",
+      "label": "Real"
     }
   ],
   "FILTER_MATCH_OPTIONS": [

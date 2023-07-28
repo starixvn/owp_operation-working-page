@@ -32,7 +32,7 @@
     "isCanFilter": true
   },
   "MaxBet": {
-    "headerName": "MaxBet(HDP)",
+    "headerName": "MB",
     "columnKey": "MaxBet"
   },
   "IPTvStreaming": {
