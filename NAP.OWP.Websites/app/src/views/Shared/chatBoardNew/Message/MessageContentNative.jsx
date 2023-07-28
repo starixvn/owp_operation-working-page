@@ -7,6 +7,11 @@ import {
   NET_CORE_FILE_UPLOAD,
   NET_FW_FILE_UPLOAD
 } from '../../../Shared/Constants';
+import ExcelIcon from '../../../../assets/svg-element/ExcelIcon';
+import PdfIcon from '../../../../assets/svg-element/PdfIcon';
+import WordIcon from '../../../../assets/svg-element/WordIcon';
+import PptIcon from '../../../../assets/svg-element/PptIcon';
+import AttachFileIcon from '../../../../assets/svg-element/AttachFileIcon';
 
 const MessageContents = ({
   createdDate = '',
@@ -30,6 +35,35 @@ const MessageContents = ({
     }
   };
 
+  const getFileIcon = () => {
+    const extension = messageContent.split('.').pop();
+    switch (extension) {
+      case 'pdf':
+        return <PdfIcon />;
+      case 'doc':
+      case 'docx':
+      case 'odt':
+        return <WordIcon />;
+      case 'xlsx':
+      case 'xls':
+      case 'xlsm':
+        return <ExcelIcon />;
+      case 'ppt':
+      case 'pptx':
+      case 'pps':
+      case 'ppsx':
+        return <PptIcon />;
+      case 'png':
+      case 'jpg':
+      case 'jpeg':
+      case 'gif':
+      case 'bmp':
+        return <></>;
+      default:
+        return <AttachFileIcon />;
+    }
+  };
+
   const getMessageContent = () => {
     return (
       <>
@@ -43,10 +77,9 @@ const MessageContents = ({
           </p>
         )}
         {fileId && (
-          <p className='message-div'>
-            <span className='is-file' onClick={handleOnClick}>
-              {messageContent}
-            </span>
+          <p className='file-div' onClick={handleOnClick}>
+            {getFileIcon()}
+            <span className='is-file'>{messageContent}</span>
           </p>
         )}
       </>
@@ -55,4 +88,5 @@ const MessageContents = ({
 
   return { getCreatedTime, getMessageContent };
 };
+
 export default MessageContents;

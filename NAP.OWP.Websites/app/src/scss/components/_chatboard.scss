@@ -336,6 +336,7 @@
         .is-file {
           color: #1e88e5;
           cursor: pointer;
+          align-self: center;
 
           &:hover {
             text-decoration: underline;
@@ -1555,4 +1556,14 @@
 }
 .message-list .info-user {
   margin-bottom: 0 !important;
+}
+
+.file-div {
+  display: flex;
+  .attach-icon {
+    transform: rotate(45deg);
+  }
+}
+.is-file {
+  align-self: center !important;
 }
