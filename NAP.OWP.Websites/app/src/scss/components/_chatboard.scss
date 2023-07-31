@@ -1567,3 +1567,16 @@
 .is-file {
   align-self: center !important;
 }
+
+.icon-remove-div {
+  position: absolute;
+  top: 5px;
+  left: 60px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+}
+
+.icon-remove-div:hover {
+  cursor: pointer !important;
+}
