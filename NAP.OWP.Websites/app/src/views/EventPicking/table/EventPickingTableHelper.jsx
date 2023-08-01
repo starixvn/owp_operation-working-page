@@ -31,11 +31,8 @@ const buildColumn = (width, column) => {
   };
 };
 
-const calculateHeightOfColumn = (length, widthPercent, widthWindow) => {
-  return (
-    (length * widthPercent * DefaultTableStyle.coefficientTable) / widthWindow
-  );
-};
+const calculateHeightOfColumn = (length, widthPercent, widthWindow) =>
+  (length * widthPercent * DefaultTableStyle.coefficientTable) / widthWindow;
 
 const calculateRowHeight = (dataSource, width) => {
   if (!dataSource) {
