@@ -17,11 +17,11 @@
   ],
   "FILTER_MATCH_CATEGORY_OPTIONS": [
     {
-      "value": "Saba",
+      "value": 1,
       "label": "Saba"
     },
     {
-      "value": "Real",
+      "value": 0,
       "label": "Real"
     }
   ],

@@ -239,7 +239,7 @@ input[type='checkbox'] {
 
 .table {
   margin-top: 1rem;
-  font-size: 1.2rem;
+  font-size: 12px;
   .fixedDataTableLayout_header {
     .fixedDataTableRowLayout_body {
       .fixedDataTableCellGroupLayout_cellGroupWrapper {
@@ -281,22 +281,16 @@ input[type='checkbox'] {
     height: 100%;
     border-bottom: 1px solid #d3d3d3;
   }
-
   .match-cell,
+  .max-bet-cell,
+  .league-cell,
   .streaming-info-cell,
   .provider-cell,
   .round-cell,
-  .remark-cell,
-  .league-cell {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 5%;
+  .remark-cell {
+    padding: 5px 5px;
   }
-
-  .ko-time-cell,
-  .max-bet-cell {
+  .ko-time-cell {
     text-align: center;
     position: relative;
     flex-direction: column;
@@ -317,27 +311,17 @@ input[type='checkbox'] {
     }
   }
   .league-cell {
-    .league-name {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    display: block;
     .offer {
-      display: flex;
-      margin-top: 3px;
       span {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        align-items: center;
+        margin:2px 2px;
+        display: inline-block;
         padding: 3px 5px;
         border-radius: 10px;
         margin-right: 5px;
         color: white;
         background-color: #57b55b;
-        max-width: 50%;
+        max-width: 60%;
         width: fit-content;
       }
     }
@@ -363,11 +347,7 @@ input[type='checkbox'] {
   .round-cell {
     span {
       width: fit-content;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      display: block;
     }
   }
 }

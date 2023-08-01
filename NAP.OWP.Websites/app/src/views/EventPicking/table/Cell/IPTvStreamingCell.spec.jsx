@@ -5,8 +5,8 @@ import { render, screen } from '@testing-library/react';
 const props = {
   dataSource: [
     {
-      tV: 'acb',
-      ipTv: '123',
+      tv: 'acb',
+      iptv: '123',
       channel: 'abc',
       wb: 'abc',
       rowColor: 'red'

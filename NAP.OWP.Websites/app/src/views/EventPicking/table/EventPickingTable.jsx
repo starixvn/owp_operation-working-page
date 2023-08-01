@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import CustomTable from '../../Shared/common/CustomTable/CustomTable';
-import { selectTable, passColorRowTable } from './EventPickingTableHelper';
+import {
+  selectTable,
+  passColorRowTable,
+  calculateRowHeight
+} from './EventPickingTableHelper';
 import { useSelector } from 'react-redux';
 import { DefaultTableStyle } from './TableSchema.json';
 import store from '../app/store';
@@ -17,6 +21,11 @@ const EventPickingTable = () => {
   const { permission } = store.getState().pagePolicy;
   const config = {
     ...tableSchema,
+    onCalculateRowHeight: index =>
+      calculateRowHeight(
+        entities[index],
+        window.innerWidth - DefaultTableStyle.widthResize
+      ),
     onRowClassNameGetter: index => passColorRowTable(entities[index])
   };
 

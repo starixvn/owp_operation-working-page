@@ -22,7 +22,7 @@ describe('selectTable under unit test', () => {
         columnKey: 'League',
         isCanFilter: true,
         isCheckBox: undefined,
-        width: 120
+        width: 150
       },
       {
         headerName: 'Match',
@@ -32,11 +32,11 @@ describe('selectTable under unit test', () => {
         width: 140
       },
       {
-        headerName: 'MaxBet(HDP)',
+        headerName: 'MB',
         columnKey: 'MaxBet',
         isCanFilter: undefined,
         isCheckBox: undefined,
-        width: 60
+        width: 30
       },
       {
         headerName: 'TV/IPTV',
