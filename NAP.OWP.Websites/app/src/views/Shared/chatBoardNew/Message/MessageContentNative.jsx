@@ -12,14 +12,17 @@ import PdfIcon from '../../../../assets/svg-element/PdfIcon';
 import WordIcon from '../../../../assets/svg-element/WordIcon';
 import PptIcon from '../../../../assets/svg-element/PptIcon';
 import AttachFileIcon from '../../../../assets/svg-element/AttachFileIcon';
+import QuoteIcon from '../../../../assets/svg-element/QuoteIcon';
 
 const MessageContents = ({
   createdDate = '',
   fileId = '',
-  messageContent = ''
+  messageContent = '',
+  quoteMessage = '',
+  quoteUsername = '',
+  quoteCreatedDate = ''
 }) => {
   const getCreatedTime = () => formatTime(createdDate, 'minute', 'hh:mm A');
-
   const handleOnClick = () => {
     const basicUrl =
       process.env.NODE_ENV === 'development'
@@ -64,15 +67,31 @@ const MessageContents = ({
     }
   };
 
+  const buildMessageContent = () => {
+    return (
+      <>
+        {quoteMessage && (
+          <>
+            <QuoteIcon />
+            <span className='quote-message'>{quoteMessage}</span>
+            <span className='quote-info'>
+              {quoteUsername},{' '}
+              {formatTime(quoteCreatedDate, 'minute', 'DD MMM YYYY hh:mm A')}
+            </span>
+          </>
+        )}
+        <span className='message-content'>{messageContent}</span>
+      </>
+    );
+  };
+
   const getMessageContent = () => {
     return (
       <>
         {!fileId && (
           <p className='message-div'>
-            <Linkify
-              properties={{ target: '_blank' }}
-              className='message-content'>
-              {messageContent}
+            <Linkify properties={{ target: '_blank' }}>
+              {buildMessageContent()}
             </Linkify>
           </p>
         )}

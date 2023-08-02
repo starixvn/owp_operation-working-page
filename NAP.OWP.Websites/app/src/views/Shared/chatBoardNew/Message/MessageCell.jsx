@@ -22,14 +22,27 @@ const propTypes = {
 };
 
 const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
-  const { createdDate, message, username, fileId, messageId, isSaved } = data;
+  const {
+    createdDate,
+    message,
+    username,
+    fileId,
+    messageId,
+    isSaved,
+    quoteMessage,
+    quoteUsername,
+    quoteCreatedDate
+  } = data;
   const dispatch = useStableDispatch();
   const { permission } = useSelector(state => state[policy]);
   const { HasWrite } = permission;
   const { getCreatedTime, getMessageContent } = MessageContents({
     createdDate,
     fileId,
-    messageContent: message
+    messageContent: message,
+    quoteMessage,
+    quoteUsername,
+    quoteCreatedDate
   });
 
   const handleSaveMessages = async value => {
