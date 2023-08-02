@@ -13,6 +13,7 @@ import WordIcon from '../../../../assets/svg-element/WordIcon';
 import PptIcon from '../../../../assets/svg-element/PptIcon';
 import AttachFileIcon from '../../../../assets/svg-element/AttachFileIcon';
 import QuoteIcon from '../../../../assets/svg-element/QuoteIcon';
+import ImageDisplay from './ImageDisplay';
 
 const MessageContents = ({
   createdDate = '',
@@ -20,7 +21,8 @@ const MessageContents = ({
   messageContent = '',
   quoteMessage = '',
   quoteUsername = '',
-  quoteCreatedDate = ''
+  quoteCreatedDate = '',
+  imageContent
 }) => {
   const getCreatedTime = () => formatTime(createdDate, 'minute', 'hh:mm A');
   const handleOnClick = () => {
@@ -96,10 +98,14 @@ const MessageContents = ({
           </p>
         )}
         {fileId && (
-          <p className='file-div' onClick={handleOnClick}>
+          <div className='file-div' onClick={handleOnClick}>
             {getFileIcon()}
-            <span className='is-file'>{messageContent}</span>
-          </p>
+            {imageContent ? (
+              <ImageDisplay imageContent={imageContent}></ImageDisplay>
+            ) : (
+              <span className='is-file'>{messageContent}</span>
+            )}
+          </div>
         )}
       </>
     );

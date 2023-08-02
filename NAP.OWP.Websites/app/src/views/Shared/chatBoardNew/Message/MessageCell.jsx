@@ -31,7 +31,8 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     isSaved,
     quoteMessage,
     quoteUsername,
-    quoteCreatedDate
+    quoteCreatedDate,
+    imageContent
   } = data;
   const dispatch = useStableDispatch();
   const { permission } = useSelector(state => state[policy]);
@@ -42,7 +43,8 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     messageContent: message,
     quoteMessage,
     quoteUsername,
-    quoteCreatedDate
+    quoteCreatedDate,
+    imageContent
   });
 
   const handleSaveMessages = async value => {
