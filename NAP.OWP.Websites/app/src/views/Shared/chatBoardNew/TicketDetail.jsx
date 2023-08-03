@@ -4,7 +4,12 @@ import MessageList from './Message/MessageList';
 import InputMessage from './Message/InputMessage';
 import useStableDispatch from '../customHook/useStableDispatch';
 import { useSelector } from 'react-redux';
-import { closePopup, createNewMessage, setMessage } from './chatBoardSlice';
+import {
+  closePopup,
+  createNewMessage,
+  setMessage,
+  setModelQuoteMessage
+} from './chatBoardSlice';
 import TicketDetailHeader from './TicketDetailHeader';
 import Axios from 'axios';
 import { URL, TicketStatus as TicketStatusConst } from './const/index.json';
@@ -29,10 +34,15 @@ const TicketDetail = ({ policy = 'policy' }) => {
   const { permission } = useSelector(state => state[policy]);
   const { HasWrite } = permission;
   const [isExpandInfo, setIsExpandInfo] = useState(false);
-  const { ticketDetail, inputMessage, ticketSubTypeOptions } = useSelector(
-    state => state.chatBoard
-  );
+  const {
+    ticketDetail,
+    inputMessage,
+    ticketSubTypeOptions,
+    modelQuoteMessage
+  } = useSelector(state => state.chatBoard);
   const { ticketId } = ticketDetail;
+
+  const { messageId } = modelQuoteMessage;
 
   const handleOnClickClosePopUp = () => {
     dispatch(closePopup());
@@ -55,7 +65,8 @@ const TicketDetail = ({ policy = 'policy' }) => {
       ticketTitle: getTicketTitle(ticketDetail),
       message: inputMessage,
       actorId: permission.ActorId,
-      fileId: ''
+      fileId: '',
+      quoteMessageId: messageId
     };
 
     if (fileId) {
@@ -71,6 +82,7 @@ const TicketDetail = ({ policy = 'policy' }) => {
     }
 
     dispatch(setMessage(''));
+    dispatch(setModelQuoteMessage({}));
     const actionResult = await dispatch(createNewMessage(newMessage));
 
     if (createNewMessage.rejected.match(actionResult)) {

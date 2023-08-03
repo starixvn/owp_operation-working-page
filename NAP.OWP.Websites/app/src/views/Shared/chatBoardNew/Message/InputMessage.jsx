@@ -1,7 +1,7 @@
 import React, { createRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { validExtension } from '../const/index.json';
-import { setMessage } from '../chatBoardSlice';
+import { setMessage, setModelQuoteMessage } from '../chatBoardSlice';
 import useStableDispatch from '../../customHook/useStableDispatch';
 import PropTypes from 'prop-types';
 import SendIcon from '@mui/icons-material/Send';
@@ -59,40 +59,44 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
     setTextFieldValue('');
   };
 
+  const handleRemoveQuoteMessage = () => {
+    dispatch(setModelQuoteMessage({}));
+  };
+
   return (
     <div className='chat-box'>
       <div>
-        <div>
-          {textFieldValue && (
-            <div className='input-image'>
-              <img src={textFieldValue} alt='Pasted' />
-              <div className='icon-remove-div'>
-                <HighlightOffIcon
-                  fontSize='large'
-                  onClick={handleRemoveImage}
-                />
-              </div>
+        {textFieldValue && (
+          <div className='input-image'>
+            <img src={textFieldValue} alt='Pasted' />
+            <div className='icon-remove-div'>
+              <HighlightOffIcon fontSize='large' onClick={handleRemoveImage} />
             </div>
-          )}
-        </div>
-        <div
-          style={{
-            position: 'relative',
-            border: '1px solid #bdbdbd',
-            wordBreak: 'break-all'
-          }}>
-          <>
-            <QuoteIcon />
-            <span className='quote-message'>{message}</span>
-            <span className='quote-info'>
-              {username},{' '}
-              {formatTime(createdDate, 'minute', 'DD MMM YYYY hh:mm A')}
-            </span>
-          </>
-          <div className='icon-remove-div'>
-            <HighlightOffIcon fontSize='large' onClick={handleRemoveImage} />
           </div>
-        </div>
+        )}
+        {messageId && (
+          <div className='quote-text-box'>
+            <>
+              <div className='icon-wrapper'>
+                <div className='icon-quote'>
+                  <QuoteIcon />
+                </div>
+                <div className='icon-remove'>
+                  <HighlightOffIcon
+                    fontSize='large'
+                    onClick={handleRemoveQuoteMessage}
+                  />
+                </div>
+              </div>
+
+              <span className='quote-message-text-box'>{message}</span>
+              <span className='quote-info-text-box'>
+                {username},{' '}
+                {formatTime(createdDate, 'minute', 'DD MMM YYYY hh:mm A')}
+              </span>
+            </>
+          </div>
+        )}
 
         <TextField
           inputRef={textFieldRef}

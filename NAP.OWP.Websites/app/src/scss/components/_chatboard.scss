@@ -1489,6 +1489,8 @@
 .quote-message {
   display: block;
   padding-left: 10px;
+  font-style: italic;
+  color: black;
 }
 .quote-info {
   padding-left: 10px;
@@ -1615,6 +1617,37 @@
   color: #fff;
   background-color: rgba(0, 0, 0, 0.35);
   border-radius: 18px;
+}
+.quote-text-box{
+  position: relative;
+  border: 1px solid #bdbdbd;
+  word-break: 'break-all'
+}
+.icon-wrapper{
+  display: flex;
+}
+.icon-quote{
+  width: 96%;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.icon-remove{
+  cursor: pointer;
+}
+
+.quote-message-text-box{
+  display: block;
+  padding-left: 30px;
+  font-style: italic;
+  color: black;
+}
+.quote-info-text-box{
+  padding-left: 30px;
+  padding-bottom: 5px;
+  font-size: 11px;
+  color: #7f7f7f;
 }
 
 .icon-remove-div:hover {
