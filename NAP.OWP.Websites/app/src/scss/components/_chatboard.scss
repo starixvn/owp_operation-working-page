@@ -1352,7 +1352,7 @@
           margin: 0;
         }
       }
-
+      
       .icon-unsave-message {
         position: relative;
         margin-left: 5px;
@@ -1495,11 +1495,13 @@
   padding-bottom: 5px;
   font-size: 11px;
   color: #7f7f7f;
-  border-bottom: solid 0.5px #545353;
+  border-bottom: solid 0.5px #3b3b3b;
 }
 .message-content {
-  margin-top: 10px;
   display: block;
+}
+.have-quote{
+  margin-top: 10px;
 }
 .message-list .others-user .message-div {
   background: #f2f6f9;
@@ -1516,6 +1518,15 @@
   display: flex;
   column-gap: 10px;
   justify-content: flex-end;
+  .icon-hover-wrapper{
+    display: none;
+  }
+}
+
+.message-list .my-message .message-group:hover{
+  .icon-hover-wrapper{
+    display: flex;
+  }
 }
 
 .message-list .others-user .message-group {
@@ -1524,13 +1535,27 @@
   column-gap: 10px;
   flex-direction: row-reverse;
   justify-content: start;
+  .icon-hover-wrapper{
+    display: none;
+  }
 }
-
+.message-list .others-user .message-group:hover{
+  .icon-hover-wrapper{
+    display: flex;
+  }
+}
 .message-list .icon-save-message svg {
+  display: block;
   width: 17px;
   height: 22px;
   fill: #1e88e5;
   margin: 0;
+}
+
+.icon-reply-message {
+  padding-left: 5px;
+  padding-top: 3px;
+  cursor: pointer;
 }
 .message-list .unsave-message svg {
   fill: #3bb54a;

@@ -45,9 +45,15 @@ const chatBoardSlice = createSlice({
       }
     },
     ticketSubTypeOptions: [],
-    inputMessage: ''
+    inputMessage: '',
+    modelQuoteMessage: {}
   },
   reducers: {
+    setModelQuoteMessage: {
+      reducer: (state, action) => {
+        state.modelQuoteMessage = action.payload;
+      }
+    },
     updateRecipient: {
       reducer: (state, action) => {
         state.ticketDetail.recipients = action.payload;
@@ -133,7 +139,8 @@ const {
   setMessage,
   closePopup,
   openTicketPopup,
-  closeTicketPopup
+  closeTicketPopup,
+  setModelQuoteMessage
 } = actions;
 
 export {
@@ -147,7 +154,8 @@ export {
   getModelByRowIndex,
   openTicketPopup,
   closeTicketPopup,
-  getTicketSubTypes
+  getTicketSubTypes,
+  setModelQuoteMessage
 };
 
 export default reducer;

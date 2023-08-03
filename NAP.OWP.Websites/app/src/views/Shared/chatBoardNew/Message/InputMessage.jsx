@@ -8,6 +8,8 @@ import SendIcon from '@mui/icons-material/Send';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../../assets/svg-element/AttachFileIcon';
+import QuoteIcon from '../../../../assets/svg-element/QuoteIcon';
+import { formatTime } from '../../DateTime/dateTimeHelper';
 
 const InputMessage = ({ handleSendFile, handleSendMessage }) => {
   const dispatch = useStableDispatch();
@@ -15,8 +17,10 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
   const textFieldRef = createRef(null);
   const [textFieldValue, setTextFieldValue] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
-  const { inputMessage } = useSelector(state => state.chatBoard);
-
+  const { inputMessage, modelQuoteMessage } = useSelector(
+    state => state.chatBoard
+  );
+  const { message, messageId, username, createdDate } = modelQuoteMessage;
   const handleFileInputChange = async event => {
     const file = event.target.files[0];
     await handleSendFile(event, file);
@@ -70,6 +74,24 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
               </div>
             </div>
           )}
+        </div>
+        <div
+          style={{
+            position: 'relative',
+            border: '1px solid #bdbdbd',
+            wordBreak: 'break-all'
+          }}>
+          <>
+            <QuoteIcon />
+            <span className='quote-message'>{message}</span>
+            <span className='quote-info'>
+              {username},{' '}
+              {formatTime(createdDate, 'minute', 'DD MMM YYYY hh:mm A')}
+            </span>
+          </>
+          <div className='icon-remove-div'>
+            <HighlightOffIcon fontSize='large' onClick={handleRemoveImage} />
+          </div>
         </div>
 
         <TextField

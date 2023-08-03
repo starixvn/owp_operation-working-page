@@ -6,8 +6,10 @@ import { UncontrolledTooltip } from 'reactstrap';
 import { ContentSaveOutlineIcon } from 'mdi-react';
 import { URL } from '../const/index.json';
 import { saveMessage } from '../chatBoardThunkNative';
+import { setModelQuoteMessage } from '../../chatBoardNew/chatBoardSlice';
 import { useSelector } from 'react-redux';
 import ToastrWrapper from '../../../components/ToastrWrapper';
+import ReplyIcon from '../../../../assets/svg-element/ReplyIcon';
 
 const url =
   process.env.NODE_ENV === 'development'
@@ -61,37 +63,49 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     }
   };
 
+  const handleClickQuoteIcon = () => {
+    const model = {
+      messageId,
+      message,
+      createdDate,
+      username
+    };
+
+    dispatch(setModelQuoteMessage(model));
+  };
+
   const renderSaveIcon = () =>
-    HasWrite ? (
-      <>
+    HasWrite && (
+      <span className='icon-hover-wrapper'>
         <span className='icon-save-message'>
           <ContentSaveOutlineIcon
             onClick={() => handleSaveMessages(true)}
             id={`name${messageId}`}
           />
         </span>
+        <span className='icon-reply-message'>
+          {!fileId && (
+            <ReplyIcon handleOnClick={() => handleClickQuoteIcon()} />
+          )}
+        </span>
         <UncontrolledTooltip placement='top' target={`name${messageId}`}>
           Click to save your message or it is deleted after 30 days
         </UncontrolledTooltip>
-      </>
-    ) : (
-      <span className='icon-save-message'>
-        <ContentSaveOutlineIcon />
       </span>
     );
   const renderUnSaveIcon = () =>
-    HasWrite ? (
-      <span className='icon-save-message unsave-message'>
-        <span className='text-saved'> Saved </span>
-        <span className='icon-unsave-message'>
-          <ContentSaveOutlineIcon onClick={() => handleSaveMessages(false)} />
+    HasWrite && (
+      <span className='icon-hover-wrapper'>
+        <span className='icon-save-message unsave-message'>
+          <span className='text-saved'> Saved </span>
+          <span className='icon-unsave-message'>
+            <ContentSaveOutlineIcon onClick={() => handleSaveMessages(false)} />
+          </span>
         </span>
-      </span>
-    ) : (
-      <span className='icon-save-message  unsave-message un-save-message-disable'>
-        <span className='text-saved'> Saved </span>
-        <span className='icon-un-save-message-disable'>
-          <ContentSaveOutlineIcon />
+        <span className='icon-reply-message'>
+          {!fileId && (
+            <ReplyIcon handleOnClick={() => handleClickQuoteIcon()} />
+          )}
         </span>
       </span>
     );
