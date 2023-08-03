@@ -10,23 +10,23 @@ const propTypes = {
 
 const IPTvStreamingCell = props => {
   const { rowIndex, dataSource } = props;
-  const { tV, ipTv, channel, wb } = dataSource[rowIndex];
+  const { tv, iptv, channel, wb } = dataSource[rowIndex];
   const ref = useRef(null);
-  const checkShowToolTip = checkIsShow({ tV, ipTv, channel, wb });
+  const checkShowToolTip = checkIsShow({ tv, iptv, channel, wb });
 
   const renderTv = () =>
-    tV && (
+    tv && (
       <span>
         <strong>Tv: </strong>
-        {tV}
+        {tv}
       </span>
     );
 
   const renderIpTv = () =>
-    ipTv && (
+    iptv && (
       <span>
         <strong>IPTV: </strong>
-        {ipTv}
+        {iptv}
       </span>
     );
 

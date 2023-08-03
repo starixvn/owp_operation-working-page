@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { Fragment, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledTooltip } from 'reactstrap';
+import { uniqueId } from 'lodash';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -10,20 +11,19 @@ const propTypes = {
 const LeagueCell = props => {
   const { rowIndex, dataSource } = props;
   const { leagueName, matchOffer, noHDP } = dataSource[rowIndex];
+  const matchOfferLst = matchOffer && matchOffer.split(',');
   const refMatchOffer = useRef(null);
   const refNoHdp = useRef(null);
   return (
     <div className='league-cell'>
       <div className='league-name'>{leagueName}</div>
       <div className='offer'>
-        {matchOffer && (
-          <>
-            <span ref={refMatchOffer}>{matchOffer}</span>
-            <UncontrolledTooltip placement='top-start' target={refMatchOffer}>
-              {matchOffer}
-            </UncontrolledTooltip>
-          </>
-        )}
+        {matchOffer &&
+          matchOfferLst.map(x => (
+            <Fragment key={uniqueId()}>
+              <span ref={refMatchOffer}>{x}</span>
+            </Fragment>
+          ))}
         {noHDP && (
           <>
             <span ref={refNoHdp}>{noHDP}</span>

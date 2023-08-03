@@ -10,9 +10,9 @@ const propTypes = {
 
 const RoundCell = props => {
   const { rowIndex, dataSource } = props;
-  const { division, round, eTPK } = dataSource[rowIndex];
+  const { division, round, etpk } = dataSource[rowIndex];
   const ref = useRef(null);
-  const checkShowToolTip = checkIsShow({ division, round, eTPK });
+  const checkShowToolTip = checkIsShow({ division, round, etpk });
 
   const renderDivision = () =>
     division && (
@@ -31,10 +31,10 @@ const RoundCell = props => {
     );
 
   const renderEtPk = () =>
-    eTPK && (
+    etpk && (
       <span>
         <strong>ET_PK: </strong>
-        {eTPK}
+        {etpk}
       </span>
     );
 

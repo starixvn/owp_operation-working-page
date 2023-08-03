@@ -9,7 +9,8 @@
     "height": 750,
     "maxHeight": 750,
     "headerHeight": 50,
-    "initialWidth": 15
+    "initialWidth": 15,
+    "coefficientTable":14500
   },
   "No": {
     "order": 1,
@@ -32,7 +33,7 @@
     "isCanFilter": true
   },
   "MaxBet": {
-    "headerName": "MaxBet(HDP)",
+    "headerName": "MB",
     "columnKey": "MaxBet"
   },
   "IPTvStreaming": {

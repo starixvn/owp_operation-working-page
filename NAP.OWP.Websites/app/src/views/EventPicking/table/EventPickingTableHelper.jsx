@@ -31,6 +31,45 @@ const buildColumn = (width, column) => {
   };
 };
 
+const calculateHeightOfColumn = (length, widthPercent, widthWindow) =>
+  (length * widthPercent * DefaultTableStyle.coefficientTable) / widthWindow;
+
+const calculateRowHeight = (dataSource, width) => {
+  if (!dataSource) {
+    return 0;
+  }
+
+  const heightOfStreaming = calculateHeightOfColumn(
+    dataSource.lengthStreamingCell,
+    0.15,
+    width
+  );
+
+  const heightOfProvider = calculateHeightOfColumn(
+    dataSource.lengthProviderCell,
+    0.15,
+    width
+  );
+  const heightOfRound = calculateHeightOfColumn(
+    dataSource.lengthRoundCell,
+    0.15,
+    width
+  );
+  const heightOfRemark = calculateHeightOfColumn(
+    dataSource.lengthRemarkCell,
+    0.15,
+    width
+  );
+  const heights = [
+    DefaultTableStyle.rowHeight,
+    heightOfStreaming,
+    heightOfProvider,
+    heightOfRound,
+    heightOfRemark
+  ];
+
+  return Math.max(...heights);
+};
 const passColorRowTable = dataSource => {
   if (!dataSource) {
     return '';
@@ -45,9 +84,9 @@ const selectTable = widthWindow => {
     columnSchema: [
       buildColumn(width * 0.03, No),
       buildColumn(width * 0.05, KOTime),
-      buildColumn(width * 0.12, League),
+      buildColumn(width * 0.15, League),
       buildColumn(width * 0.14, Match),
-      buildColumn(width * 0.06, MaxBet),
+      buildColumn(width * 0.03, MaxBet),
       buildColumn(width * 0.15, IPTvStreaming),
       buildColumn(width * 0.15, Provider),
       buildColumn(width * 0.15, Round),
@@ -63,4 +102,4 @@ const selectTable = widthWindow => {
   };
 };
 
-export { selectTable, passColorRowTable };
+export { selectTable, passColorRowTable, calculateRowHeight };

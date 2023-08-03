@@ -45,7 +45,7 @@ const checkRound = (arraySource, keyWordFormat) =>
     item =>
       item.division?.toLowerCase().includes(keyWordFormat) ||
       item.round?.toLowerCase().includes(keyWordFormat) ||
-      item.eTPK?.toLowerCase().includes(keyWordFormat)
+      item.etpk?.toLowerCase().includes(keyWordFormat)
   );
 
 const checkRemark = (arraySource, keyWordFormat) => {
