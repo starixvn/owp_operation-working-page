@@ -49,8 +49,11 @@ const ImageDisplay = ({ imageContent }) => {
 
   const ratio = (() => {
     const { width, height } = imageDimensions;
-    const maxHeight = 300;
-    return width > height ? width / maxHeight : height / maxHeight;
+    const maxSize = 300;
+    if (width < maxSize && height < maxSize) {
+      return 1;
+    }
+    return width > height ? width / maxSize : height / maxSize;
   })();
 
   return (

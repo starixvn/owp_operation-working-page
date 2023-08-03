@@ -60,18 +60,8 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
       <div>
         <div>
           {textFieldValue && (
-            <div
-              className='input-image'
-              style={{
-                padding: '4px',
-                position: 'relative',
-                border: '1px solid #bdbdbd'
-              }}>
-              <img
-                src={textFieldValue}
-                alt='Pasted'
-                style={{ width: '80px', height: '80px', borderRadius: '5px' }}
-              />
+            <div className='input-image'>
+              <img src={textFieldValue} alt='Pasted' />
               <div className='icon-remove-div'>
                 <HighlightOffIcon
                   fontSize='large'
