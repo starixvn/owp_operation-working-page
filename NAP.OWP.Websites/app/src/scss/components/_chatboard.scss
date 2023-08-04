@@ -1352,7 +1352,7 @@
           margin: 0;
         }
       }
-      
+
       .icon-unsave-message {
         position: relative;
         margin-left: 5px;
@@ -1502,7 +1502,7 @@
 .message-content {
   display: block;
 }
-.have-quote{
+.have-quote {
   margin-top: 10px;
 }
 .message-list .others-user .message-div {
@@ -1520,13 +1520,13 @@
   display: flex;
   column-gap: 10px;
   justify-content: flex-end;
-  .icon-hover-wrapper{
+  .icon-hover-wrapper {
     display: none;
   }
 }
 
-.message-list .my-message .message-group:hover{
-  .icon-hover-wrapper{
+.message-list .my-message .message-group:hover {
+  .icon-hover-wrapper {
     display: flex;
   }
 }
@@ -1537,12 +1537,12 @@
   column-gap: 10px;
   flex-direction: row-reverse;
   justify-content: start;
-  .icon-hover-wrapper{
+  .icon-hover-wrapper {
     display: none;
   }
 }
-.message-list .others-user .message-group:hover{
-  .icon-hover-wrapper{
+.message-list .others-user .message-group:hover {
+  .icon-hover-wrapper {
     display: flex;
   }
 }
@@ -1618,32 +1618,32 @@
   background-color: rgba(0, 0, 0, 0.35);
   border-radius: 18px;
 }
-.quote-text-box{
+.quote-text-box {
   position: relative;
   border: 1px solid #bdbdbd;
-  word-break: 'break-all'
+  word-break: 'break-all';
 }
-.icon-wrapper{
+.icon-wrapper {
   display: flex;
 }
-.icon-quote{
+.icon-quote {
   width: 96%;
   display: flex;
   align-items: center;
   padding-left: 20px;
 }
 
-.icon-remove{
+.icon-remove {
   cursor: pointer;
 }
 
-.quote-message-text-box{
+.quote-message-text-box {
   display: block;
   padding-left: 30px;
   font-style: italic;
   color: black;
 }
-.quote-info-text-box{
+.quote-info-text-box {
   padding-left: 30px;
   padding-bottom: 5px;
   font-size: 11px;
@@ -1656,6 +1656,12 @@
 
 .image-responsive:hover {
   cursor: pointer !important;
+}
+.message-list .my-message .image-responsive {
+  border-radius: 9px 9px 0px 9px;
+}
+.message-list .others-user .image-responsive {
+  border-radius: 9px 9px 9px 0px;
 }
 .input-image {
   padding: 4px;
