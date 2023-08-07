@@ -488,7 +488,7 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\server-8bbaf4af.css" />
-    <Content Include="wwwroot\day-shift-assignment\assets\js\main-b48dd8d1.js" />
+    <Content Include="wwwroot\day-shift-assignment\assets\js\main-14dd8da8.js" />
     <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\day-shift-assignment\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-search-4037a8fe.svg" />
@@ -496,7 +496,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-61514caf.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-c7678a88.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-664591c9.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
@@ -2007,7 +2007,7 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\server-9fcd10e6.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-53664c23.js" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-91670e8b.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -2647,7 +2647,7 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\server-8bbaf4af.css" />
-    <Content Include="wwwroot\night-shift-assignment\assets\js\main-b8f5a0a8.js" />
+    <Content Include="wwwroot\night-shift-assignment\assets\js\main-e79e9615.js" />
     <Content Include="wwwroot\night-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\night-shift-assignment\server.html" />
     <Content Include="wwwroot\notification-setting\assets\ext\icon-search-4037a8fe.svg" />
@@ -2749,10 +2749,10 @@
     <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\task-list\assets\ext\server-a5556b3d.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-e337a646.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-5681ca6d.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-a0f2cc71.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-4403001a.js" />
+    <Content Include="wwwroot\task-list\assets\js\main-0256797a.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-b57b76ce.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-942dda74.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-8d04b95a.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
@@ -2760,7 +2760,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-868f0db6.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-bd2f427b.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-3b2c6f38.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />

@@ -14,7 +14,6 @@ import { formatTime } from '../../DateTime/dateTimeHelper';
 const InputMessage = ({ handleSendFile, handleSendMessage }) => {
   const dispatch = useStableDispatch();
   const inputFileRef = createRef();
-  const textFieldRef = createRef(null);
   const [textFieldValue, setTextFieldValue] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const { inputMessage, modelQuoteMessage } = useSelector(
@@ -103,7 +102,7 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
         )}
 
         <TextField
-          inputRef={textFieldRef}
+          inputRef={textFieldRef => textFieldRef && textFieldRef.focus()}
           variant='outlined'
           placeholder='Type a message...'
           onChange={handleInputMessageChange}
