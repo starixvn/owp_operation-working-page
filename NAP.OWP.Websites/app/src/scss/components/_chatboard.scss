@@ -1523,11 +1523,23 @@
   .icon-hover-wrapper {
     display: none;
   }
+  .icon-hover-wrapper-unsave{
+    display: flex;
+    .icon-reply-message{
+      display: none;
+    }
+  }
 }
 
 .message-list .my-message .message-group:hover {
   .icon-hover-wrapper {
     display: flex;
+  }
+  .icon-hover-wrapper-unsave{
+    display: flex;
+    .icon-reply-message{
+      display: flex;
+    }
   }
 }
 

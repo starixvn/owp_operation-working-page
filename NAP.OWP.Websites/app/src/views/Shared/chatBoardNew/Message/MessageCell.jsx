@@ -95,7 +95,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     );
   const renderUnSaveIcon = () =>
     HasWrite && (
-      <span className='icon-hover-wrapper'>
+      <span className='icon-hover-wrapper-unsave'>
         <span className='icon-save-message unsave-message'>
           <span className='text-saved'> Saved </span>
           <span className='icon-unsave-message'>
