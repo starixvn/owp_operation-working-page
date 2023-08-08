@@ -46,7 +46,9 @@ const chatBoardSlice = createSlice({
     },
     ticketSubTypeOptions: [],
     inputMessage: '',
-    modelQuoteMessage: {}
+    modelQuoteMessage: {},
+    imagesLoaded: 0,
+    isAllImagesLoaded: false
   },
   reducers: {
     setModelQuoteMessage: {
@@ -77,11 +79,25 @@ const chatBoardSlice = createSlice({
     closePopup: {
       reducer: state => {
         state.isOpenPopup = false;
+        state.imagesLoaded = 0;
+        state.isAllImagesLoaded = false;
       }
     },
     openPopup: {
       reducer: state => {
         state.isOpenPopup = true;
+      }
+    },
+    setImagesLoaded: {
+      reducer: state => {
+        state.imagesLoaded++;
+        const msgImage = state.ticketDetail.messages.filter(
+          msg => msg.imageContent
+        );
+
+        if (state.imagesLoaded === msgImage.length) {
+          state.isAllImagesLoaded = true;
+        }
       }
     }
   },
@@ -140,7 +156,8 @@ const {
   closePopup,
   openTicketPopup,
   closeTicketPopup,
-  setModelQuoteMessage
+  setModelQuoteMessage,
+  setImagesLoaded
 } = actions;
 
 export {
@@ -155,7 +172,8 @@ export {
   openTicketPopup,
   closeTicketPopup,
   getTicketSubTypes,
-  setModelQuoteMessage
+  setModelQuoteMessage,
+  setImagesLoaded
 };
 
 export default reducer;

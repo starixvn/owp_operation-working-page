@@ -16,6 +16,7 @@ const MessageList = ({ policy = 'policy', ticketId }) => {
   const dispatch = useStableDispatch();
   const {
     loading,
+    isAllImagesLoaded,
     ticketDetail: { messages, canShowMoreMessage }
   } = useSelector(state => state.chatBoard);
   const { permission } = useSelector(state => state[policy]);
@@ -24,18 +25,16 @@ const MessageList = ({ policy = 'policy', ticketId }) => {
     if (messages?.length) {
       const lastPosition = messages.length - 1;
       const lastMessageId = messages[lastPosition].messageId;
-
       if (!isEquals(lastMessageIdRef.current, lastMessageId)) {
         previousScrollDiff.current = 0;
         lastMessageIdRef.current = lastMessageId;
       }
-
       if (listRef.current) {
         listRef.current.scrollTop =
           listRef.current?.scrollHeight - previousScrollDiff.current;
       }
     }
-  }, [messages]);
+  }, [messages, isAllImagesLoaded]);
 
   if (isEqual(loading, REQUEST_STATUS.pending)) {
     return <Loading />;

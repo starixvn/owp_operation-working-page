@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
+import { setImagesLoaded } from '../chatBoardSlice';
+import useStableDispatch from '../../customHook/useStableDispatch';
 const propTypes = {
   imageContent: PropTypes.string.isRequired
 };
@@ -11,6 +12,7 @@ const ImageDisplay = ({ imageContent }) => {
     width: 1,
     height: 1
   });
+  const dispatch = useStableDispatch();
 
   useEffect(() => {
     const base64ToBlob = (base64Data, contentType) => {
@@ -56,10 +58,14 @@ const ImageDisplay = ({ imageContent }) => {
     return width > height ? width / maxSize : height / maxSize;
   })();
 
+  const handleImageLoad = () => {
+    dispatch(setImagesLoaded());
+  };
   return (
     <>
       {imageUrl && (
         <img
+          onLoad={handleImageLoad}
           className='image-responsive'
           width={imageDimensions.width / ratio}
           height={imageDimensions.height / ratio}
