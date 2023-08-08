@@ -1486,6 +1486,7 @@
   max-width: 360px;
   margin-bottom: 0;
 }
+
 .quote-message {
   display: block;
   padding-left: 10px;
@@ -1497,13 +1498,12 @@
   padding-bottom: 5px;
   font-size: 11px;
   color: #7f7f7f;
-  border-bottom: solid 0.5px #3b3b3b;
 }
 .message-content {
   display: block;
 }
 .have-quote {
-  margin-top: 10px;
+  border-top: solid 0.5px #3b3b3b;
 }
 .message-list .others-user .message-div {
   background: #f2f6f9;

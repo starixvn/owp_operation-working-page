@@ -19,6 +19,7 @@ const MessageContents = ({
   createdDate = '',
   fileId = '',
   messageContent = '',
+  quoteMessageId = '',
   quoteMessage = '',
   quoteUsername = '',
   quoteCreatedDate = '',
@@ -72,18 +73,22 @@ const MessageContents = ({
   const buildMessageContent = () => {
     return (
       <>
-        {quoteMessage && (
+        {quoteMessageId > 0 && (
           <>
             <QuoteIcon />
-            <span className='quote-message'>{quoteMessage}</span>
-            <span className='quote-info'>
-              {quoteUsername},{' '}
-              {formatTime(quoteCreatedDate, 'minute', 'DD MMM YYYY hh:mm A')}
+            <span className='quote-message'>
+              {quoteMessage ?? 'This message has been deleted'}
             </span>
+            {quoteMessage && (
+              <span className='quote-info'>
+                {quoteUsername},{' '}
+                {formatTime(quoteCreatedDate, 'minute', 'DD MMM YYYY hh:mm A')}
+              </span>
+            )}
           </>
         )}
         <span
-          className={`message-content ${quoteMessage ? 'have-quote' : ''} `}>
+          className={`message-content ${quoteMessageId ? 'have-quote' : ''} `}>
           {messageContent}
         </span>
       </>
