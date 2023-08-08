@@ -79,13 +79,13 @@ const chatBoardSlice = createSlice({
     closePopup: {
       reducer: state => {
         state.isOpenPopup = false;
-        state.imagesLoaded = 0;
-        state.isAllImagesLoaded = false;
       }
     },
     openPopup: {
       reducer: state => {
         state.isOpenPopup = true;
+        state.imagesLoaded = 0;
+        state.isAllImagesLoaded = false;
       }
     },
     setImagesLoaded: {

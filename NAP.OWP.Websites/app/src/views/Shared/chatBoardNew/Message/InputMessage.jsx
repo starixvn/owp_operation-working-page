@@ -110,6 +110,7 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
           autoFocus
           multiline
           onPaste={handlePaste}
+          maxRows={4}
           onKeyPress={handleOnKeyPress}
           spellCheck={false}
         />
