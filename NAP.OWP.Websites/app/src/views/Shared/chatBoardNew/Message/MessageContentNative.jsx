@@ -73,7 +73,7 @@ const MessageContents = ({
   const buildMessageContent = () => {
     return (
       <>
-        {quoteMessageId > 0 && (
+        {quoteMessageId > 0 ? (
           <>
             <QuoteIcon />
             <span className='quote-message'>
@@ -85,12 +85,15 @@ const MessageContents = ({
                 {formatTime(quoteCreatedDate, 'minute', 'DD MMM YYYY hh:mm A')}
               </span>
             )}
+            {quoteMessage && (
+              <span className='message-content have-quote'>
+                {messageContent}
+              </span>
+            )}
           </>
+        ) : (
+          <span className='message-content'>{messageContent}</span>
         )}
-        <span
-          className={`message-content ${quoteMessageId ? 'have-quote' : ''} `}>
-          {messageContent}
-        </span>
       </>
     );
   };
