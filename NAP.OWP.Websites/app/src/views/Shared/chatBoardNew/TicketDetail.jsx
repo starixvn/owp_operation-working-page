@@ -77,7 +77,7 @@ const TicketDetail = ({ policy = 'policy' }) => {
       };
     }
 
-    if (!newMessage.message) {
+    if (!newMessage.message.trim()) {
       return;
     }
 
@@ -123,6 +123,7 @@ const TicketDetail = ({ policy = 'policy' }) => {
 
   useEffect(() => {
     setIsExpandInfo(false);
+    dispatch(setModelQuoteMessage({}));
   }, [ticketId]);
 
   return (
