@@ -7,7 +7,6 @@ import {
   SummaryCell,
   MaxBetCell,
   SpreadCell,
-  StatusCell,
   ActionCell,
   LeagueCell
 } from './OsLeagueSettingCell';
@@ -19,7 +18,6 @@ import {
   Spread,
   Round,
   Summary,
-  Status,
   Action
 } from './TableSchema.json';
 import { CellModel } from '../../typing/tableType';
@@ -41,8 +39,6 @@ const dynamicCell = (rowIndex: number, cellModel: CellModel) => {
       return <RoundCell dataSource={dataSource} rowIndex={rowIndex} />;
     case Summary.columnKey:
       return <SummaryCell dataSource={dataSource} rowIndex={rowIndex} />;
-    case Status.columnKey:
-      return <StatusCell dataSource={dataSource} rowIndex={rowIndex} />;
     case Action.columnKey:
       return <ActionCell dataSource={dataSource} rowIndex={rowIndex} />;
   }

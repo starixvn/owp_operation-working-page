@@ -774,6 +774,19 @@ button {
     }
   }
 }
+.league-cell{
+  .maxbet-status{
+    padding-right: 5px;
+  }
+}
+.maxbet-cell {
+  display: flex;
+  .maxbet-status{
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+  }
+}
 // status history popup
 .tableFixHead-log {
   overflow: auto;

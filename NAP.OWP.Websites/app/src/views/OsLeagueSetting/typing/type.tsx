@@ -23,7 +23,11 @@ interface IMultipleSelectProps {
 
 interface IStatus {
   isActive: boolean | undefined;
-  onChange?: (event: boolean) => void;
+  onChange?: (event: boolean, key: string) => void;
+}
+
+interface StatusProps extends IStatus {
+  key: string;
 }
 
 type PopupType = 'add' | 'edit' | null;
@@ -125,5 +129,6 @@ export {
   TCommonType,
   TDefaultSelected,
   TLeagueName,
-  TInputCustom
+  TInputCustom,
+  StatusProps
 };

@@ -63,7 +63,7 @@ const EditSetting = () => {
 
   const active: IStatus = {
     isActive,
-    onChange: value => setSettingInfo('isActive', value)
+    onChange: (value, key) => setSettingInfo(key, value)
   };
 
   const showSuccessMessage = async () => {
@@ -89,9 +89,11 @@ const EditSetting = () => {
     <SettingPopup title={leagueName} isAdd={false} onSave={handleSave}>
       <>
         <LeagueContent {...leagueProps}>
-          <Status {...active} />
+          <Status {...active} key='isActive' />
         </LeagueContent>
-        <SettingContent {...rest} />
+        <SettingContent {...rest}>
+          <Status {...active} key='isActiveMaxBet' />
+        </SettingContent>
       </>
     </SettingPopup>
   );
