@@ -25,7 +25,7 @@ import {
   NET_FW_FILE_UPLOAD
 } from '../../Shared/Constants';
 import { updateTicketStatus } from './chatBoardThunkNative';
-import isEqual from 'lodash';
+import isEqual from 'lodash.isequal';
 import TicketDetailInformation from './TicketDetailInformation';
 import { KeyboardArrowDownIcon, KeyboardArrowUpIcon } from 'mdi-react';
 
@@ -89,7 +89,6 @@ const TicketDetail = ({ policy = 'policy' }) => {
       ToastsWrapper.showError(actionResult.payload);
       return;
     }
-
     if (isEqual(ticketDetail.ticketStatus, TicketStatusConst.Closed)) {
       const model = {
         ticketId: ticketDetail.ticketId,
