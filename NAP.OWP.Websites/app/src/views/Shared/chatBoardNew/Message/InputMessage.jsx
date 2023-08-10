@@ -102,7 +102,7 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
         )}
 
         <TextField
-          inputRef={textFieldRef => textFieldRef && textFieldRef.focus()}
+          inputRef={textFieldRef => textFieldRef?.focus()}
           variant='outlined'
           placeholder='Type a message...'
           onChange={handleInputMessageChange}

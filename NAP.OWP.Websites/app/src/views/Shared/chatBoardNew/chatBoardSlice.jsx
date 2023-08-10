@@ -127,10 +127,6 @@ const chatBoardSlice = createSlice({
         state.loading = REQUEST_STATUS.idle;
         chatBoardSlice.caseReducers.openPopup(state);
       })
-      .addCase(createNewMessage.fulfilled, (state, action) => {
-        state.loading = REQUEST_STATUS.idle;
-        state.ticketDetail.messages.push(action.payload);
-      })
       .addCase(getTicketSubTypes.fulfilled, (state, { payload }) => {
         state.ticketSubTypeOptions = payload;
       })
