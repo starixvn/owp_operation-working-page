@@ -23,11 +23,12 @@ interface IMultipleSelectProps {
 
 interface IStatus {
   isActive: boolean | undefined;
-  onChange?: (event: boolean, key: string) => void;
+  onChange?: (event: boolean) => void;
 }
 
-interface StatusProps extends IStatus {
-  key: string;
+interface IStatusProps {
+  statusLeague: IStatus;
+  statusMaxBet: IStatus;
 }
 
 type PopupType = 'add' | 'edit' | null;
@@ -130,5 +131,5 @@ export {
   TDefaultSelected,
   TLeagueName,
   TInputCustom,
-  StatusProps
+  IStatusProps
 };

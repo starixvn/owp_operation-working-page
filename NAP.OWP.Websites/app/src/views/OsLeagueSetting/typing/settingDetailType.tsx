@@ -2,6 +2,7 @@ interface ISettingDetail {
   leagueSettingId?: number;
   leagueName?: string;
   isActive?: boolean;
+  isActiveMaxBet?: boolean;
   region?: number | null;
   category?: number | null;
   weekMatch?: number;
@@ -22,6 +23,4 @@ interface ISettingDetail {
   children?: JSX.Element;
 }
 
-export {
-  ISettingDetail
-};
+export { ISettingDetail };

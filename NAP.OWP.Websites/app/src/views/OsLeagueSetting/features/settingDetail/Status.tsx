@@ -1,15 +1,15 @@
 import { Switch } from '@mui/material';
 import React, { ChangeEvent, useState } from 'react';
-import { StatusProps } from '../../typing/type';
+import { IStatus } from '../../typing/type';
 
-const Status = (props: StatusProps) => {
-  const { isActive, onChange, key } = props;
+const Status = (props: IStatus) => {
+  const { isActive, onChange } = props;
   const [value, setValue] = useState(isActive);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { checked } = event.target;
     setValue(checked);
-    onChange && onChange(checked, key);
+    onChange && onChange(checked);
   };
 
   return (
