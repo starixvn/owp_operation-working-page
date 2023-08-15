@@ -37,9 +37,9 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
 
   const sendMessage = async event => {
     if (textFieldValue && selectedImage) {
+      setTextFieldValue('');
       await handleSendFile(event, selectedImage);
       setSelectedImage(null);
-      setTextFieldValue('');
     }
     await handleSendMessage(event);
   };
