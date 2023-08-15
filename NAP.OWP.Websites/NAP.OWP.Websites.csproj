@@ -2716,7 +2716,7 @@
     <Content Include="wwwroot\product-preference\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\product-preference\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\product-preference\assets\ext\server-afe2f17c.css" />
-    <Content Include="wwwroot\product-preference\assets\js\main-a1c257ff.js" />
+    <Content Include="wwwroot\product-preference\assets\js\main-ede3c002.js" />
     <Content Include="wwwroot\product-preference\favicon.ico" />
     <Content Include="wwwroot\product-preference\server.html" />
     <Content Include="wwwroot\provider-arrangement\assets\ext\icon-search-4037a8fe.svg" />
@@ -2816,10 +2816,6 @@
     <Content Include="wwwroot\prematch-report\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\prematch-report\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\prematch-report\server.cshtml" />
-    <Content Include="wwwroot\product-preference\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\product-preference\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\product-preference\assets\ext\OWP-ea568b68.ttf" />
-    <Content Include="wwwroot\product-preference\server.cshtml" />
     <Content Include="wwwroot\provider-arrangement\assets\ext\OWP-27acea6a.woff" />
     <Content Include="wwwroot\provider-arrangement\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\provider-arrangement\assets\ext\OWP-ea568b68.ttf" />
@@ -2884,6 +2880,10 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
+    <Content Include="wwwroot\product-preference\assets\ext\OWP-27acea6a.woff" />
+    <Content Include="wwwroot\product-preference\assets\ext\OWP-6b4f0813.eot" />
+    <Content Include="wwwroot\product-preference\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\product-preference\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

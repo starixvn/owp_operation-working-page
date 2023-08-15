@@ -11,6 +11,10 @@ const FilterRole = () => {
   const { filter } = store.getState();
   const { roleOption } = filter.dropdownOptions;
 
+  const roleOptionCustom = roleOption.map(item =>
+    item.value === 0 ? { ...item, label: 'None' } : item
+  );
+
   const handleChange = useCallback(
     event => {
       dispatch(
@@ -26,7 +30,7 @@ const FilterRole = () => {
   return (
     <MultipleSelectionTemplate
       label='Role'
-      options={roleOption}
+      options={roleOptionCustom}
       value={roleOption}
       disabled={false}
       handleChange={handleChange}
