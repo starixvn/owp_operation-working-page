@@ -5,7 +5,6 @@ import MaxBetCell from './MaxBet/MaxBetCell';
 import SpreadCell from './Spread/SpreadCell';
 import RoundCell from './Round/RoundCell';
 import SummaryCell from './Summary/SummaryCell';
-import StatusCell from './Status/StatusCell';
 import ActionCell from './Action/ActionCell';
 export {
   NoCell,
@@ -14,7 +13,6 @@ export {
   SummaryCell,
   MaxBetCell,
   SpreadCell,
-  StatusCell,
   ActionCell,
   LeagueCell
 };

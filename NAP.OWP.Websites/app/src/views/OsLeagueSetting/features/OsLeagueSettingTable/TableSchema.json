@@ -11,10 +11,9 @@
     "headerHeight": 38,
     "initialWidth": 15,
     "NoSize": 0.02,
-    "StatusSize": 0.04,
     "CategorySize": 0.06,
-    "LeagueSize": 0.19,
-    "MaxBetSize": 0.06,
+    "LeagueSize": 0.21,
+    "MaxBetSize": 0.08,
     "SpreadSize": 0.06,
     "RoundSize": 0.06,
     "SummarySize": 0.47,
@@ -49,10 +48,6 @@
   "Summary": {
     "headerName": "Summary",
     "columnKey": "Summary"
-  },
-  "Status": {
-    "headerName": "Status",
-    "columnKey": "Status"
   },
   "Action": {
     "headerName": "Action",

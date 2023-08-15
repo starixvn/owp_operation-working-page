@@ -39,6 +39,7 @@ interface DataSource {
   summaryInfo: Required<Array<SummaryDetail>>;
   summaryRemark: Required<Array<SummaryDetail>>;
   isActive: Required<boolean>;
+  isActiveMaxBet: Required<boolean>;
 }
 
 export {
@@ -49,4 +50,3 @@ export {
   LogHistoryProps,
   CellProps
 };
-

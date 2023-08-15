@@ -32,6 +32,7 @@ const settingInfoDefault = {
   leagueSettingId: 0,
   leagueName: '',
   isActive: false,
+  isActiveMaxBet: false,
   region: optionValueNone,
   category: optionValueNone,
   weekMatch: optionValueNone,

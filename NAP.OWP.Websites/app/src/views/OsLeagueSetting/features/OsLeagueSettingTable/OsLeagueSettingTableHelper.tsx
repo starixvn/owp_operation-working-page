@@ -6,7 +6,6 @@ import {
   Spread,
   Round,
   Summary,
-  Status,
   Action,
   DefaultTableStyle
 } from './TableSchema.json';
@@ -47,7 +46,6 @@ const selectTable = (widthWindow: number) => {
     minWidth,
     initialWidth,
     NoSize,
-    StatusSize,
     CategorySize,
     LeagueSize,
     MaxBetSize,
@@ -61,7 +59,6 @@ const selectTable = (widthWindow: number) => {
   return {
     columnSchema: [
       buildColumn(width * NoSize, No),
-      buildColumn(width * StatusSize, Status),
       buildColumn(width * CategorySize, Category),
       buildColumn(width * LeagueSize, League),
       buildColumn(width * MaxBetSize, MaxBet),

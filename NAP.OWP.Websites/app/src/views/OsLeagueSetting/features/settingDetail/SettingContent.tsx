@@ -135,6 +135,7 @@ const SettingContent = (props: ISettingDetail) => {
       <div className='setting-row'>
         <Round {...rounds} />
         <WeekMatch {...weekMatch} />
+        {props.children}
       </div>
       <div className='setting-row'>
         <OfferLine {...offerLine} />

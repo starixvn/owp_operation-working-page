@@ -8,7 +8,7 @@ import { shallow } from 'zustand/shallow';
 import { isEqual } from 'lodash';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import Loading from '../../../components/Loading';
-import { ILeagueContent, IStatus } from '../../typing/type';
+import { ILeagueContent, IStatusProps } from '../../typing/type';
 import { editSetting } from '../../osLeague.json';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 
@@ -46,8 +46,8 @@ const EditSetting = () => {
 
   const policy = getPolicy();
 
-  const { category, region, leagueName, isActive, ...rest } = settingInfoOrigin;
-
+  const { category, region, leagueName, isActive, isActiveMaxBet, ...rest } =
+    settingInfoOrigin;
   const leagueProps: ILeagueContent = {
     category: {
       disabled: !policy.HasWrite,
@@ -61,9 +61,15 @@ const EditSetting = () => {
     }
   };
 
-  const active: IStatus = {
-    isActive,
-    onChange: value => setSettingInfo('isActive', value)
+  const active: IStatusProps = {
+    statusLeague: {
+      isActive,
+      onChange: value => setSettingInfo('isActive', value)
+    },
+    statusMaxBet: {
+      isActive: isActiveMaxBet,
+      onChange: value => setSettingInfo('isActiveMaxBet', value)
+    }
   };
 
   const showSuccessMessage = async () => {
@@ -89,9 +95,11 @@ const EditSetting = () => {
     <SettingPopup title={leagueName} isAdd={false} onSave={handleSave}>
       <>
         <LeagueContent {...leagueProps}>
-          <Status {...active} />
+          <Status {...active.statusLeague} />
         </LeagueContent>
-        <SettingContent {...rest} />
+        <SettingContent {...rest}>
+          <Status {...active.statusMaxBet} />
+        </SettingContent>
       </>
     </SettingPopup>
   );

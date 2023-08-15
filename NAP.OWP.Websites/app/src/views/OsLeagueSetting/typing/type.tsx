@@ -26,6 +26,11 @@ interface IStatus {
   onChange?: (event: boolean) => void;
 }
 
+interface IStatusProps {
+  statusLeague: IStatus;
+  statusMaxBet: IStatus;
+}
+
 type PopupType = 'add' | 'edit' | null;
 
 interface ISelection {
@@ -125,5 +130,6 @@ export {
   TCommonType,
   TDefaultSelected,
   TLeagueName,
-  TInputCustom
+  TInputCustom,
+  IStatusProps
 };
