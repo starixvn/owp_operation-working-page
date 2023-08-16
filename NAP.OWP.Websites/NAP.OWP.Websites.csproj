@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -488,7 +487,7 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\server-9465ea5f.css" />
-    <Content Include="wwwroot\day-shift-assignment\assets\js\main-90dba61b.js" />
+    <Content Include="wwwroot\day-shift-assignment\assets\js\main-fcfa5ce1.js" />
     <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\day-shift-assignment\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-search-4037a8fe.svg" />
@@ -496,7 +495,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-ae1871f5.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-12fa93ef.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-826bb61c.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
@@ -2007,7 +2006,7 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\server-ac023cb2.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-e523f016.js" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-407052ca.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -2647,7 +2646,7 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\server-9465ea5f.css" />
-    <Content Include="wwwroot\night-shift-assignment\assets\js\main-c5433af7.js" />
+    <Content Include="wwwroot\night-shift-assignment\assets\js\main-05a201a9.js" />
     <Content Include="wwwroot\night-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\night-shift-assignment\server.html" />
     <Content Include="wwwroot\notification-setting\assets\ext\icon-search-4037a8fe.svg" />
@@ -2749,10 +2748,10 @@
     <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\task-list\assets\ext\server-0f1e9724.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-05b9aefb.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-d3d42e48.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-8e328f57.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-189b0698.js" />
+    <Content Include="wwwroot\task-list\assets\js\main-c8a2c2d9.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-23042e00.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-7eb63634.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-51632bdb.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
@@ -2760,7 +2759,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f34334fe.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-3a22b6d1.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-5325aa63.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-1275b8ed.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />

@@ -42,7 +42,11 @@ const MessageContents = ({
   };
 
   const getFileIcon = () => {
-    const extension = messageContent.split('.').pop();
+    const extension = messageContent
+      .split('.')
+      .pop()
+      .toLocaleLowerCase()
+      .trim();
     switch (extension) {
       case 'pdf':
         return <PdfIcon />;
