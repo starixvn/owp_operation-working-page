@@ -45,9 +45,17 @@ const chatBoardSlice = createSlice({
       }
     },
     ticketSubTypeOptions: [],
-    inputMessage: ''
+    inputMessage: '',
+    modelQuoteMessage: {},
+    imagesLoaded: 0,
+    isAllImagesLoaded: false
   },
   reducers: {
+    setModelQuoteMessage: {
+      reducer: (state, action) => {
+        state.modelQuoteMessage = action.payload;
+      }
+    },
     updateRecipient: {
       reducer: (state, action) => {
         state.ticketDetail.recipients = action.payload;
@@ -76,6 +84,20 @@ const chatBoardSlice = createSlice({
     openPopup: {
       reducer: state => {
         state.isOpenPopup = true;
+        state.imagesLoaded = 0;
+        state.isAllImagesLoaded = false;
+      }
+    },
+    setImagesLoaded: {
+      reducer: state => {
+        state.imagesLoaded++;
+        const msgImage = state.ticketDetail.messages.filter(
+          msg => msg.imageContent
+        );
+
+        if (state.imagesLoaded === msgImage.length) {
+          state.isAllImagesLoaded = true;
+        }
       }
     }
   },
@@ -105,10 +127,6 @@ const chatBoardSlice = createSlice({
         state.loading = REQUEST_STATUS.idle;
         chatBoardSlice.caseReducers.openPopup(state);
       })
-      .addCase(createNewMessage.fulfilled, (state, action) => {
-        state.loading = REQUEST_STATUS.idle;
-        state.ticketDetail.messages.push(action.payload);
-      })
       .addCase(getTicketSubTypes.fulfilled, (state, { payload }) => {
         state.ticketSubTypeOptions = payload;
       })
@@ -133,7 +151,9 @@ const {
   setMessage,
   closePopup,
   openTicketPopup,
-  closeTicketPopup
+  closeTicketPopup,
+  setModelQuoteMessage,
+  setImagesLoaded
 } = actions;
 
 export {
@@ -147,7 +167,9 @@ export {
   getModelByRowIndex,
   openTicketPopup,
   closeTicketPopup,
-  getTicketSubTypes
+  getTicketSubTypes,
+  setModelQuoteMessage,
+  setImagesLoaded
 };
 
 export default reducer;

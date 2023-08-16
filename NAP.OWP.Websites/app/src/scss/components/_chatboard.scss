@@ -336,6 +336,7 @@
         .is-file {
           color: #1e88e5;
           cursor: pointer;
+          align-self: center;
 
           &:hover {
             text-decoration: underline;
@@ -1485,6 +1486,29 @@
   max-width: 360px;
   margin-bottom: 0;
 }
+
+.quote-message {
+  display: block;
+  padding-left: 10px;
+  font-style: italic;
+  color: black;
+  overflow-wrap: anywhere;
+}
+.quote-info {
+  padding-left: 10px;
+  padding-bottom: 5px;
+  font-size: 11px;
+  color: #7f7f7f;
+}
+.message-content {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.have-quote {
+  border-top: solid 0.5px #3b3b3b;
+  padding-top: 5px;
+  margin-top: 5px;
+}
 .message-list .others-user .message-div {
   background: #f2f6f9;
   padding: 5px 10px;
@@ -1500,6 +1524,27 @@
   display: flex;
   column-gap: 10px;
   justify-content: flex-end;
+  .icon-hover-wrapper {
+    display: none;
+  }
+  .icon-hover-wrapper-unsave{
+    display: flex;
+    .icon-reply-message{
+      display: none;
+    }
+  }
+}
+
+.message-list .my-message .message-group:hover {
+  .icon-hover-wrapper {
+    display: flex;
+  }
+  .icon-hover-wrapper-unsave{
+    display: flex;
+    .icon-reply-message{
+      display: flex;
+    }
+  }
 }
 
 .message-list .others-user .message-group {
@@ -1508,20 +1553,45 @@
   column-gap: 10px;
   flex-direction: row-reverse;
   justify-content: start;
+  .icon-hover-wrapper {
+    display: none;
+  }
+  .icon-hover-wrapper-unsave{
+    display: flex;
+    .icon-reply-message{
+      display: none;
+    }
+  }
 }
-
+.message-list .others-user .message-group:hover {
+  .icon-hover-wrapper {
+    display: flex;
+  }
+  .icon-hover-wrapper-unsave{
+    display: flex;
+    .icon-reply-message{
+      display: flex;
+    }
+  }
+}
 .message-list .icon-save-message svg {
+  display: block;
   width: 17px;
   height: 22px;
   fill: #1e88e5;
   margin: 0;
+}
+
+.icon-reply-message {
+  padding-left: 5px;
+  padding-top: 3px;
+  cursor: pointer;
 }
 .message-list .unsave-message svg {
   fill: #3bb54a;
 }
 
 .message-list .message-row .icon-save-message.unsave-message {
-  width: 80px;
   display: flex;
   justify-content: flex-end;
 }
@@ -1555,4 +1625,83 @@
 }
 .message-list .info-user {
   margin-bottom: 0 !important;
+}
+
+.file-div {
+  display: flex;
+  .attach-icon {
+    transform: rotate(45deg);
+  }
+}
+.is-file {
+  align-self: center !important;
+}
+
+.icon-remove-div {
+  position: absolute;
+  top: 5px;
+  left: 60px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+}
+.quote-text-box {
+  position: relative;
+  border-top: 1px solid #bdbdbd;
+  border-left: 1px solid #bdbdbd;
+  border-right: 1px solid #bdbdbd;
+  overflow-wrap: anywhere;
+  padding-bottom: 5px;
+}
+.icon-wrapper {
+  display: flex;
+}
+.icon-quote {
+  width: 96%;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.icon-remove {
+  cursor: pointer;
+}
+
+.quote-message-text-box {
+  display: block;
+  padding-left: 30px;
+  font-style: italic;
+  color: black;
+}
+.quote-info-text-box {
+  padding-left: 30px;
+  padding-bottom: 5px;
+  font-size: 11px;
+  color: #7f7f7f;
+}
+
+.icon-remove-div:hover {
+  cursor: pointer !important;
+}
+
+.image-responsive:hover {
+  cursor: pointer !important;
+}
+.message-list .my-message .image-responsive {
+  border-radius: 9px 9px 0px 9px;
+}
+.message-list .others-user .image-responsive {
+  border-radius: 9px 9px 9px 0px;
+}
+.input-image {
+  padding: 4px;
+  position: relative;
+  border-top: 1px solid #bdbdbd;
+  border-left: 1px solid #bdbdbd;
+  border-right: 1px solid #bdbdbd;
+}
+.input-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
 }
