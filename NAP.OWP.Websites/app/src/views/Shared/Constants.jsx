@@ -37,7 +37,11 @@ export const MinorBetTypes = {
   NextBooking: -7,
   Specific15minsTotalBooking: -8,
   FastMarket: -88,
-  AllInOne: -89
+  AllInOne: -89,
+  AllInOneTotalBookings: -189,
+  AllInOneCorners: -289,
+  FastMarketTotalBookings: -188,
+  FastMarketCorners: -288
 };
 
 export const allBettype = [
