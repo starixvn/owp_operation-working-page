@@ -24,7 +24,7 @@
     "build-batch-5": "npm run build:other-sport & npm run build:product-preference & npm run build:ticket-type-recipient",
     "build-batch-6": "npm run build:recipient-group & npm run build:overtime-report & npm run build:prematch-report & npm run build:match-count-live-report",
     "build-batch-7": "npm run build:os-league-setting & npm run build:event-upload & npm run build:provider-arrangement & npm run build:event-picking",
-    "build-batch-8": "npm run build:assignee-suggestion",
+    "build-batch-8": "npm run build:assignee-suggestion & npm run build:la-kpi",
     "build-all": "npm run build-batch-0 & npm run build-batch-1 & npm run build-batch-2 & npm run build-batch-3 & npm run build-batch-4 & npm run build-batch-5 & npm run build-batch-6 & npm run build-batch-7 & npm run build-batch-8",
     "build-related-popup-ticket": "npm run build:task-list & npm run build:live-game-list & npm run build:live-game-assignment & npm run build:ticket-center & npm run build:day-shift-assignment & npm run build:night-shift-assignment",
     "start:product-preference": "set NODE_APP=product-preference & vite",
@@ -82,7 +82,9 @@
     "start:provider-arrangement": "set NODE_APP=provider-arrangement & vite",
     "build:provider-arrangement": "set NODE_APP=provider-arrangement & vite build",
     "start:assignee-suggestion": "set NODE_APP=assignee-suggestion-list & vite",
-    "build:assignee-suggestion": "set NODE_APP=assignee-suggestion-list & vite build"
+    "build:assignee-suggestion": "set NODE_APP=assignee-suggestion-list & vite build",
+    "start:la-kpi": "set NODE_APP=la-kpi & vite",
+    "build:la-kpi": "set NODE_APP=la-kpi & vite build"
   },
   "dependencies": {
     "@coreui/coreui": "^4.2.6",
