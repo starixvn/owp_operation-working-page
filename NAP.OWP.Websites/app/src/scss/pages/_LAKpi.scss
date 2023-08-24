@@ -1,0 +1,37 @@
+.table-content{
+  padding-top: 30px;
+  max-width: 1600px;
+  table {
+    width: 100%;
+    color: #494848;
+    font-size: 12px;
+    background: rgba(172, 184, 168, 0.20);
+    border-collapse: collapse;
+    th{
+      text-align: center;
+      border: 1px solid #C8CED3;
+      &:nth-child(1){
+        min-width: 30px;
+      }
+      &:nth-child(2){
+        min-width: 60px;
+      }
+      &:nth-child(3){
+        min-width: 60px;
+      }
+      &:nth-child(4){
+        min-width: 60px;
+      }
+    }
+    td{
+      text-align: center;
+      border: 1px solid #C8CED3;
+      &:nth-child(2){
+        text-align: left !important;
+        padding-left: 3px;
+      }
+    }
+    
+  }
+}
+

@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import LAKpiTable from './feature/table/LAKpiTable';
 
 const LAKpiNative = () => {
-  return <div>LAKPI</div>;
+  return <LAKpiTable />;
 };
 
 export default LAKpiNative;
