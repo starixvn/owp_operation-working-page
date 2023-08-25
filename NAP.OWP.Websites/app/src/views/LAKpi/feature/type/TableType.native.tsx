@@ -11,20 +11,21 @@ type TAction = {
 
 
 type TTotalGameInfo = {
-  virtualMatches: Required<number>;
-  multipleMatches: Required<number>;
-  specialProducts: Required<number>;
-  fiveMajorLeagues: Required<number>;
-  multipleProducts: Required<number>;
+  virtualMatches: number;
+  multipleMatches: number;
+  specialProducts: number;
+  fiveMajorLeagues: number;
+  multipleProducts: number;
 };
 
 type DataSource = {
   userName: Required<string>;
   progress: Required<string>;
   target: Required<string>;
-  gapWithTarget: TTotalGameInfo;
-  achievedGames: TTotalGameInfo;
+  gapWithTarget: Required<TTotalGameInfo>;
+  achievedGames: Required<TTotalGameInfo>;
   reward: number;
 };
+
 
 export { DataSource, TState, TAction, TTotalGameInfo };
