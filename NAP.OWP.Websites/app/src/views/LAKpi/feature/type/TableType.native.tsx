@@ -27,4 +27,4 @@ type DataSource = {
   reward: number;
 };
 
-export { DataSource, TState, TAction };
+export { DataSource, TState, TAction, TTotalGameInfo };

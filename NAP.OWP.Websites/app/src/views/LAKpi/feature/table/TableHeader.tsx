@@ -17,9 +17,7 @@ const TableHeader = () => {
       </tr>
       <tr>
         {duplicatedList.map(x => (
-          <Fragment key={uniqueId()}>
-            <th>{x.label}</th>
-          </Fragment>
+          <th key={uniqueId()}>{x.label}</th>
         ))}
       </tr>
     </>

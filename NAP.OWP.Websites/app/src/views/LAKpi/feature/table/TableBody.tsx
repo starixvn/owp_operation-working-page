@@ -1,21 +1,22 @@
 import React from 'react';
 import { DataSource } from '../type/TableType.native';
-import TableBodyRow from './TableBodyRow';
-type TableBodyProps = {
-  dataSource: Array<DataSource>;
-};
-const TableBody = (props: TableBodyProps) => {
-  const { dataSource } = props;
-  const renderRow = (dataSource: DataSource[]) =>
-    dataSource.map((item: DataSource, index) => (
-      <TableBodyRow
-        key={`${item.userName}-${index}`}
-        dataSource={item}
-        rowIndex={index}
-      />
-    ));
+import TableBodyTotalGame from './TableBodyTotalGame';
 
-  return <>{renderRow(dataSource)}</>;
+const TableBody = (dataSource: Array<DataSource>) => {
+  return <>
+    {dataSource.map((item, index) => (
+      <tr key={`${item.userName}-${index}`}>
+        <td>{index + 1}</td>
+        <td>{item.userName}</td>
+        <td>{item.progress}</td>
+        <td>{item.target}</td>
+        <TableBodyTotalGame {...item.gapWithTarget} />
+        <TableBodyTotalGame {...item.achievedGames} />
+        <td>{item.reward}</td>
+      </tr>
+    ))
+    }
+  </>;
 };
 
 export default TableBody;

@@ -22,7 +22,7 @@ const LAKpiTable = () => {
           <TableHeader />
         </thead>
         <tbody>
-          <TableBody dataSource={entities} />
+          <TableBody {...entities} />
         </tbody>
       </table>
     </div>
