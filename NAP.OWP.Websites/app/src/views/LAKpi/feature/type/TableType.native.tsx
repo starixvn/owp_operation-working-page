@@ -1,17 +1,18 @@
+type TTotalGameInfo = {
+  virtualMatches: Required<number>;
+  multipleMatches: Required<number>;
+  specialProducts: Required<number>;
+  fiveMajorLeagues: Required<number>;
+  multipleProducts: Required<number>;
+}
+
 type DataSource = {
-  userName: string;
-  progress: string;
-  target: string;
-  virtualMatchesGap: number;
-  multipleMatchesGap: number;
-  specialProductsGap: number;
-  majorLeaguesGap: number;
-  multipleProductGap: number;
-  virtualMatchesAchieved: number;
-  multipleMatchesAchieved: number;
-  specialProductsAchieved: number;
-  majorLeaguesAchieved: number;
-  multipleProductAchieved: number;
+  userName: Required<string>;
+  userId: Required<string>;
+  progress: Required<string>;
+  target: Required<string>;
+  gapWithTarget: TTotalGameInfo,
+  achievedGames: TTotalGameInfo
   reward: number;
 };
 
