@@ -12,14 +12,6 @@ const LAKpiTable = () => {
 
   if (isEquals(loadingStatus, REQUEST_STATUS.pending)) {
     return <Loading />;
-        specialProducts: 1345,
-        fiveMajorLeagues: 155551,
-        multipleProducts: 124
-      },
-        specialProducts: 1345,
-        fiveMajorLeagues: 155551,
-        multipleProducts: 124
-      },
   }
 
   return (
