@@ -1,0 +1,18 @@
+{
+  "keyOfDataSource": [
+    "userName",
+    "progress",
+    "target",
+    "virtualMatchesGap",
+    "multipleMatchesGap",
+    "specialProductsGap",
+    "majorLeaguesGap",
+    "multipleProductGap",
+    "virtualMatchesAchieved",
+    "multipleMatchesAchieved",
+    "specialProductsAchieved",
+    "majorLeaguesAchieved",
+    "multipleProductAchieved",
+    "reward"
+  ]
+}
