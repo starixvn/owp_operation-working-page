@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { keyOfTotalGameInfo } from './TableConst.json';
+import { uniqueId } from 'lodash';
 
 const TableHeader = () => {
+  const duplicatedList = [...keyOfTotalGameInfo, ...keyOfTotalGameInfo];
   return (
     <>
       <tr>
@@ -13,16 +16,11 @@ const TableHeader = () => {
         <th rowSpan={2}>Reward</th>
       </tr>
       <tr>
-        <th>Virtual Matches</th>
-        <th>Multiple Matches</th>
-        <th>Special Products</th>
-        <th>Major Leagues</th>
-        <th>Multiple Products</th>
-        <th>Virtual Matches</th>
-        <th>Multiple Matches</th>
-        <th>Special Products</th>
-        <th>Major Leagues</th>
-        <th>Multiple Products</th>
+        {duplicatedList.map(x => (
+          <Fragment key={uniqueId()}>
+            <th>{x.label}</th>
+          </Fragment>
+        ))}
       </tr>
     </>
   );

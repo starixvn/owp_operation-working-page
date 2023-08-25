@@ -2,6 +2,7 @@ import React from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import { DataSource } from '../type/TableType.native';
+import InfoIcon from '../../../../assets/svg-element/InfoIcon';
 
 const LAKpiTable = () => {
   const dataSource: DataSource[] = [
@@ -9,38 +10,47 @@ const LAKpiTable = () => {
       userName: 'sa',
       progress: 'Level B',
       target: 'Level A',
-      virtualMatchesGap: 414,
-      multipleMatchesGap: 513565,
-      specialProductsGap: 1345,
-      majorLeaguesGap: 155551,
-      multipleProductGap: 124,
-      virtualMatchesAchieved: 1234,
-      multipleMatchesAchieved: 1234,
-      specialProductsAchieved: 1234,
-      majorLeaguesAchieved: 1234,
-      multipleProductAchieved: 1234,
+      gapWithTarget: {
+        virtualMatches: 414,
+        multipleMatches: 513565,
+        specialProducts: 1345,
+        fiveMajorLeagues: 155551,
+        multipleProducts: 124
+      },
+      achievedGames: {
+        virtualMatches: 414,
+        multipleMatches: 513565,
+        specialProducts: 1345,
+        fiveMajorLeagues: 155551,
+        multipleProducts: 124
+      },
       reward: 5
     },
     {
       userName: 'starix1',
       progress: 'Level C',
       target: 'Level B',
-      virtualMatchesGap: 1234,
-      multipleMatchesGap: 1234,
-      specialProductsGap: 1234,
-      majorLeaguesGap: 1234,
-      multipleProductGap: 1234,
-      virtualMatchesAchieved: 1234,
-      multipleMatchesAchieved: 1234,
-      specialProductsAchieved: 1234,
-      majorLeaguesAchieved: 1234,
-      multipleProductAchieved: 1234,
+      gapWithTarget: {
+        virtualMatches: 414,
+        multipleMatches: 513565,
+        specialProducts: 1345,
+        fiveMajorLeagues: 155551,
+        multipleProducts: 124
+      },
+      achievedGames: {
+        virtualMatches: 414,
+        multipleMatches: 513565,
+        specialProducts: 1345,
+        fiveMajorLeagues: 155551,
+        multipleProducts: 124
+      },
       reward: 5
     }
   ];
 
   return (
     <div className='table-content'>
+      <InfoIcon />
       <table>
         <thead>
           <TableHeader />

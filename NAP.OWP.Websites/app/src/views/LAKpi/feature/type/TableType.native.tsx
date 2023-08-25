@@ -4,16 +4,15 @@ type TTotalGameInfo = {
   specialProducts: Required<number>;
   fiveMajorLeagues: Required<number>;
   multipleProducts: Required<number>;
-}
+};
 
 type DataSource = {
   userName: Required<string>;
-  userId: Required<string>;
   progress: Required<string>;
   target: Required<string>;
-  gapWithTarget: TTotalGameInfo,
-  achievedGames: TTotalGameInfo
+  gapWithTarget: TTotalGameInfo;
+  achievedGames: TTotalGameInfo;
   reward: number;
 };
 
-export { DataSource };
+export { DataSource, TTotalGameInfo };

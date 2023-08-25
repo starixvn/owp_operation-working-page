@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import { DataSource } from '../type/TableType.native';
-import { keyOfDataSource } from './TableConst.json';
+import { DataSource, TTotalGameInfo } from '../type/TableType.native';
 import { uniqueId } from 'lodash';
+import TableBodyTotalGame from './TableBodyTotalGame';
 
 type TableBodyRowProps = {
   dataSource: DataSource;
@@ -13,11 +13,12 @@ const TableBodyRow = (props: TableBodyRowProps) => {
   return (
     <tr>
       <td>{rowIndex + 1}</td>
-      {keyOfDataSource.map(x => (
-        <Fragment key={uniqueId()}>
-          <td>{dataSource[x as keyof DataSource]}</td>
-        </Fragment>
-      ))}
+      <td>{dataSource.userName}</td>
+      <td>{dataSource.progress}</td>
+      <td>{dataSource.target}</td>
+      <TableBodyTotalGame data={dataSource.gapWithTarget} />
+      <TableBodyTotalGame data={dataSource.achievedGames} />
+      <td>{dataSource.reward}</td>
     </tr>
   );
 };

@@ -1,18 +1,24 @@
 {
-  "keyOfDataSource": [
-    "userName",
-    "progress",
-    "target",
-    "virtualMatchesGap",
-    "multipleMatchesGap",
-    "specialProductsGap",
-    "majorLeaguesGap",
-    "multipleProductGap",
-    "virtualMatchesAchieved",
-    "multipleMatchesAchieved",
-    "specialProductsAchieved",
-    "majorLeaguesAchieved",
-    "multipleProductAchieved",
-    "reward"
+  "keyOfTotalGameInfo": [
+    {
+      "label": "Virtual Matches",
+      "key": "virtualMatches"
+    },
+    {
+      "label": "Multiple Matches",
+      "key": "multipleMatches"
+    },
+    {
+      "label": "Special Products",
+      "key": "specialProducts"
+    },
+    {
+      "label": "Major Leagues",
+      "key": "fiveMajorLeagues"
+    },
+    {
+      "label": "Multiple Products",
+      "key": "multipleProducts"
+    }
   ]
 }
