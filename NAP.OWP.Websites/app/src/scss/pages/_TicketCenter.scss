@@ -119,14 +119,13 @@
     }
   }
   .btn-right {
-    padding: 10px 10px 0px 10px;
+    padding: 10px 0px 0px 0px;
     .filter-control-checkbox {
       display: flex;
       font-size: 1.4rem;
       color: #1e88e5;
       input[type='checkbox'] {
         position: relative;
-        top: 4px;
         margin-right: 5px;
         margin-left: 15px;
         cursor: pointer;
@@ -143,11 +142,11 @@
       position: relative;
       z-index: 4;
       .calendar {
-      margin-right: 5px;
+        margin-right: 5px;
         .label {
           margin-bottom: 7px;
         }
-      } 
+      }
       .search-text .label {
         margin-bottom: 5px;
       }
@@ -915,7 +914,6 @@
         border-color: #2684ff;
       }
     }
-    
   }
 }
 .tickets-tab-body {

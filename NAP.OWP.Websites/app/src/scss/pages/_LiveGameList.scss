@@ -11,7 +11,6 @@
 }
 .live-game-list-header-header {
   position: relative;
-  z-index: 20;
 }
 .filter-control {
   flex: 0 1;
@@ -207,7 +206,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  padding-left: 5px;  
+  padding-left: 5px;
 }
 // overwrite css CustomTable
 .is-show-note {
@@ -354,7 +353,7 @@
 .league-type {
   font-weight: bold;
   padding: 3px 3px;
-  background-color: #CBCBCB;
+  background-color: #cbcbcb;
   margin-right: 3px;
   border-radius: 2px;
 }
