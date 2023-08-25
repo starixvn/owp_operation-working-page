@@ -1,52 +1,26 @@
 import React from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
-import { DataSource } from '../type/TableType.native';
+import useStore from '../../app/store';
 import InfoIcon from '../../../../assets/svg-element/InfoIcon';
+import Loading from '../../../components/Loading';
+import { isEquals } from 'immutability-helper';
+import { REQUEST_STATUS } from '../../../Shared/Constants';
 
 const LAKpiTable = () => {
-  const dataSource: DataSource[] = [
-    {
-      userName: 'sa',
-      progress: 'Level B',
-      target: 'Level A',
-      gapWithTarget: {
-        virtualMatches: 414,
-        multipleMatches: 513565,
+  const { loadingStatus, entities } = useStore(state => state.dataTable);
+
+  if (isEquals(loadingStatus, REQUEST_STATUS.pending)) {
+    return <Loading />;
         specialProducts: 1345,
         fiveMajorLeagues: 155551,
         multipleProducts: 124
       },
-      achievedGames: {
-        virtualMatches: 414,
-        multipleMatches: 513565,
         specialProducts: 1345,
         fiveMajorLeagues: 155551,
         multipleProducts: 124
       },
-      reward: 5
-    },
-    {
-      userName: 'starix1',
-      progress: 'Level C',
-      target: 'Level B',
-      gapWithTarget: {
-        virtualMatches: 414,
-        multipleMatches: 513565,
-        specialProducts: 1345,
-        fiveMajorLeagues: 155551,
-        multipleProducts: 124
-      },
-      achievedGames: {
-        virtualMatches: 414,
-        multipleMatches: 513565,
-        specialProducts: 1345,
-        fiveMajorLeagues: 155551,
-        multipleProducts: 124
-      },
-      reward: 5
-    }
-  ];
+  }
 
   return (
     <div className='table-content'>
@@ -56,7 +30,7 @@ const LAKpiTable = () => {
           <TableHeader />
         </thead>
         <tbody>
-          <TableBody dataSource={dataSource} />
+          <TableBody dataSource={entities} />
         </tbody>
       </table>
     </div>

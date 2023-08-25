@@ -1,8 +1,12 @@
 import React from 'react';
 import LAKpiTable from './feature/table/LAKpiTable';
+import Filter from './feature/filter/Filter';
 
 const LAKpiNative = () => {
-  return <LAKpiTable />;
+  return <>
+    <Filter />
+    <LAKpiTable />
+  </>;
 };
 
 export default LAKpiNative;

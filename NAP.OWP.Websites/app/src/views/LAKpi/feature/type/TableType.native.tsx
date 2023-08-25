@@ -1,3 +1,15 @@
+type TState = {
+  dataTable: {
+    loadingStatus: string,
+    entities: Array<DataSource>
+  }
+}
+
+type TAction = {
+  queryDataTable: (fromDate: Required<Date>, toDate: Required<Date>) => Promise<void>
+};
+
+
 type TTotalGameInfo = {
   virtualMatches: Required<number>;
   multipleMatches: Required<number>;
@@ -15,4 +27,4 @@ type DataSource = {
   reward: number;
 };
 
-export { DataSource, TTotalGameInfo };
+export { DataSource, TState, TAction };

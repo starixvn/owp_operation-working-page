@@ -1,0 +1,6 @@
+{
+  "FILTER_PARAM": {
+    "FROM_DATE_KEY": "fromDate",
+    "TO_DATE_KEY": "toDate"
+  }
+}
