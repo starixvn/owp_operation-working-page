@@ -137,7 +137,8 @@ interface MatchInfo {
   IsFantasy: boolean;
   IsMinorMatch: boolean;
   IsOneHourToKickOffTime: boolean;
-  IsPES: boolean;
+  IsPES23: boolean;
+  IsPESOther: boolean;
   KickOffTime: string;
   League: string;
   LeagueGroup: string;

@@ -5,11 +5,12 @@ import KOTime from '../features/component/KOTime';
 
 const KOTimeToday = (props: KOTimeCellProps) => {
   const { dataSource, rowIndex } = props;
-  const { IsFIFA, IsPES, EventDateDisplay } = dataSource;
+  const { IsFIFA, IsPESOther, IsPES23, EventDateDisplay } = dataSource;
 
   const flagsProps: PesOrFiFa = {
     IsFIFA,
-    IsPES,
+    IsPESOther,
+    IsPES23,
     rowIndex
   };
   return (

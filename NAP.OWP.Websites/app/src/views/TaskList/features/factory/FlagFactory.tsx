@@ -4,10 +4,10 @@ import PesIcon from '../component/PesIcon';
 import FifaIcon from '../component/FifaIcon';
 
 const FlagFactory = (props: PesOrFiFa) => {
-  const { IsPES, IsFIFA } = props;
+  const { IsPESOther, IsFIFA, IsPES23 } = props;
   let flag = null;
 
-  if (IsPES) {
+  if (IsPESOther || IsPES23) {
     flag = <PesIcon {...props} />;
   }
   if (IsFIFA) {
