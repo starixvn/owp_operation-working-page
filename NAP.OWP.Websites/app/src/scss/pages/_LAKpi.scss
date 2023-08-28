@@ -21,9 +21,9 @@
     bottom: 10px;
   }
 }
-.tooltip-explain{
+.tooltip-explain {
   transition: opacity 0s linear;
-  
+
   .tooltip-inner {
     text-align: center;
     min-width: 500px;
@@ -31,20 +31,20 @@
   table {
     width: 100%;
     font-size: 12px;
-    .condition-column{
+    .condition-column {
       display: inline-block;
-      .condition-element{
+      .condition-element {
         display: flex;
-        span{
-          &:nth-child(3){
+        span {
+          &:nth-child(3) {
             display: none;
           }
         }
       }
-      div{
-        &:nth-child(1){
-          span{
-            &:nth-child(3){
+      div {
+        &:nth-child(1) {
+          span {
+            &:nth-child(3) {
               display: flex !important;
             }
           }
@@ -52,7 +52,6 @@
       }
     }
   }
-  
 }
 .table-content {
   padding-top: 30px;
@@ -88,4 +87,15 @@
       }
     }
   }
+}
+
+.react-datepicker__header {
+  background: #2197ff;
+  border-bottom: 0;
+  padding: 0;
+
+  padding: 10px 0 !important;
+  font-size: 17px !important;
+  color: #fff;
+  font-weight: normal;
 }
