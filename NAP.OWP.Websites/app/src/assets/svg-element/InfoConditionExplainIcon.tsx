@@ -1,5 +1,5 @@
 import React from 'react';
-import { UncontrolledTooltip, Tooltip } from 'reactstrap';
+import { UncontrolledTooltip } from 'reactstrap';
 import TableConditionConfig from '../../views/LAKpi/feature/tableConditionConfig/TableConditionConfig';
 
 const InfoConditionExplainIcon = () => {
@@ -20,13 +20,12 @@ const InfoConditionExplainIcon = () => {
           fill='black'
         />
       </svg>
-      <Tooltip
-        isOpen
+      <UncontrolledTooltip
         className='tooltip-explain'
         placement='right'
         target='icon-info'>
         <TableConditionConfig />
-      </Tooltip>
+      </UncontrolledTooltip>
     </>
   );
 };

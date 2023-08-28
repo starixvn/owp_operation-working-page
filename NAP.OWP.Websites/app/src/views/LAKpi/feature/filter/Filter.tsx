@@ -1,28 +1,27 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import DatePicker, { ReactDatePicker } from 'react-datepicker';
 import CalendarIcon from 'mdi-react/CalendarIcon';
 import ToastrWrapper from '../../../components/ToastrWrapper';
-import { initDefaultFilterDate, getMonthDifference } from '../../Utils';
+import { initDefaultFilterDate, getMonthDifference, getDaysInMonth } from '../../Utils';
 import update from 'immutability-helper';
-import { FILTER_PARAM } from '../../const.json';
+import useStore from '../../app/store';
 
-const { FROM_DATE_KEY, TO_DATE_KEY } = FILTER_PARAM;
 const { defaultFromDate, defaultToDate } = initDefaultFilterDate();
 
 const Filter = () => {
   const fromDatePicker = useRef<ReactDatePicker>(null);
   const toDatePicker = useRef<ReactDatePicker>(null);
-
+  const queryDataTable = useStore(state => state.queryDataTable);
 
   const [filterDate, setFilterDate] = useState({
-    [FROM_DATE_KEY]: defaultFromDate,
-    [TO_DATE_KEY]: defaultToDate
+    fromDate: defaultFromDate,
+    toDate: defaultToDate
   });
 
   const validateFilterParameters = () => {
-    const month = getMonthDifference(filterDate[FROM_DATE_KEY], filterDate[TO_DATE_KEY]);
+    const month = getMonthDifference(filterDate.fromDate, filterDate.toDate);
 
-    if (getMonthDifference(filterDate[FROM_DATE_KEY], filterDate[TO_DATE_KEY]) <= 24) {
+    if (getMonthDifference(filterDate.fromDate, filterDate.toDate) <= 24) {
       return true;
     }
 
@@ -33,21 +32,29 @@ const Filter = () => {
     return false;
   };
 
-
-  const handleSearch = () => {
-
-  };
-
   const handleExport = () => {
     // TODO
   };
 
-  const onDateChanged = (date: Date, key: Required<string>) => {
+  const onFromDateChanged = (date: Date) => {
+    date.setDate(1);
     const newDate = update(filterDate, {
-      [key]: { $set: date }
+      fromDate: { $set: date }
     });
     setFilterDate(newDate);
   };
+
+  const onToDateChanged = (date: Date) => {
+    date.setDate(getDaysInMonth(date));
+    const newDate = update(filterDate, {
+      toDate: { $set: date }
+    });
+    setFilterDate(newDate);
+  };
+
+  useEffect(() => {
+    queryDataTable(filterDate.fromDate, filterDate.toDate);
+  }, []);
 
   return (
     <div className='top-control'>
@@ -55,12 +62,12 @@ const Filter = () => {
         <div className='filter-control calendar'>
           <div className='label'>From Date</div>
           <DatePicker
-            selected={filterDate[FROM_DATE_KEY]}
+            selected={filterDate.fromDate}
             showMonthYearPicker
             dateFormat="MMM yyyy"
             ref={fromDatePicker}
             className='to-date-picker'
-            onChange={date => date && onDateChanged(date, FROM_DATE_KEY)}
+            onChange={onFromDateChanged}
           />
           <span
             className='icon-calendar'
@@ -72,12 +79,12 @@ const Filter = () => {
         <div className='filter-control calendar'>
           <div className='label'>To Date</div>
           <DatePicker
-            selected={filterDate[TO_DATE_KEY]}
+            selected={filterDate.toDate}
             showMonthYearPicker
             dateFormat="MMM yyyy"
             ref={toDatePicker}
             className='to-date-picker'
-            onChange={date => date && onDateChanged(date, TO_DATE_KEY)}
+            onChange={onToDateChanged}
           />
           <span
             className='icon-calendar'
@@ -87,7 +94,7 @@ const Filter = () => {
           </span>
         </div>
         <div className='filter-control btn-block'>
-          <button className='button-submit' onClick={handleSearch}>
+          <button className='button-submit' onClick={() => queryDataTable(filterDate.fromDate, filterDate.toDate)}>
             Search
           </button>
           <button className='button-export' onClick={handleExport}>

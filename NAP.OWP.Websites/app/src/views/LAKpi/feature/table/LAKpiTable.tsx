@@ -9,7 +9,6 @@ import { REQUEST_STATUS } from '../../../Shared/Constants';
 
 const LAKpiTable = () => {
   const { loadingStatus, entities } = useStore(state => state.dataTable);
-
   if (isEquals(loadingStatus, REQUEST_STATUS.pending)) {
     return <Loading />;
   }
@@ -22,7 +21,7 @@ const LAKpiTable = () => {
           <TableHeader />
         </thead>
         <tbody>
-          <TableBody {...entities} />
+          <TableBody dataSource={entities} />
         </tbody>
       </table>
     </div>

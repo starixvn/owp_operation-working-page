@@ -39,4 +39,4 @@ type TCondition = {
   reward: string;
 };
 
-export { DataSource, TTotalGameInfo, TCondition, TTotalGameConditionInfo };
+export { TState, TAction DataSource, TTotalGameInfo, TCondition, TTotalGameConditionInfo };

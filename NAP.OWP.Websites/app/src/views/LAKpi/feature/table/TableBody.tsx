@@ -2,9 +2,11 @@ import React from 'react';
 import { DataSource } from '../type/TableType.native';
 import TableBodyTotalGame from './TableBodyTotalGame';
 
-const TableBody = (dataSource: Array<DataSource>) => {
+const TableBody = (props: {
+  dataSource: Array<DataSource>
+}) => {
   return <>
-    {dataSource.map((item, index) => (
+    {props.dataSource.map((item, index) => (
       <tr key={`${item.userName}-${index}`}>
         <td>{index + 1}</td>
         <td>{item.userName}</td>
