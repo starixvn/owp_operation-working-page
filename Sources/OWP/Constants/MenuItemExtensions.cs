@@ -8,11 +8,9 @@
         {
             var dictionary = new Dictionary<string, string>
             {
-                { MenuItems.Home, "icon-home" },
                 { MenuItems.TaskListNew, "icon-home" },
                 { MenuItems.LiveGameAssignment, "icon-calendar-clock" },
                 { MenuItems.ProviderArrangement, "icon-provider-arrangement" },
-                { MenuItems.EventUpload, "icon-cloud-upload" },
                 { MenuItems.EventUploadNew, "icon-cloud-upload" },
                 { MenuItems.EventPicking, "icon-calendar-check" },
                 { MenuItems.EventPickingNew, "icon-calendar-check" },

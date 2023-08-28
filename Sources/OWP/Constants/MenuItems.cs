@@ -8,7 +8,7 @@
 // </summary>
 //
 // <history>
-// Lasted generated date: 1/4/2023 11:40:13 AM
+// Lasted generated date: 8/28/2023 2:37:00 PM
 // </history>
 
 namespace OWP.Constants
@@ -40,13 +40,11 @@ namespace OWP.Constants
 
 				public const string EventTickets = "Event Tickets";
 
-				public const string EventUpload = "Event Upload";
-
 				public const string EventUploadNew = "Event Upload New";
 
 				public const string General = "General";
 
-				public const string Home = "Home";
+				public const string LAKPI = "LA KPI";
 
 				public const string LAReport = "LA Report";
 
@@ -83,6 +81,8 @@ namespace OWP.Constants
 				public const string ProviderArrangement = "Provider Arrangement";
 
 				public const string RecipientGroup = "Recipient Group";
+
+				public const string Reports = "Reports";
 
 				public const string TaskListNew = "Task List New";
 
