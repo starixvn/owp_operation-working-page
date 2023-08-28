@@ -95,7 +95,15 @@
             }
             else if (minorBettype == (int)MinorBettype.Specific15Mins)
             {
-                resultTraders = GetTradersForSpecific15Mins(traders, matchInfo, assignmentType);
+                resultTraders = GetTradersForSpecificMatch(traders, matchInfo, assignmentType, (int)MinorBettype.Specific15MinsCorners, (int)MinorBettype.Specific15MinsTotalBookings);
+            }
+            else if (minorBettype == (int)MinorBettype.AllInOne)
+            {
+                resultTraders  = GetTradersForSpecificMatch(traders, matchInfo, assignmentType, (int)MinorBettype.AllInOneCorners, (int)MinorBettype.AllInOneTotalBookings);
+            }
+            else if (minorBettype == (int)MinorBettype.FastMarket)
+            {
+                resultTraders = GetTradersForSpecificMatch(traders, matchInfo, assignmentType, (int)MinorBettype.FastMarketCorners, (int)MinorBettype.FastMarketTotalBookings);
             }
             else
             {
@@ -105,21 +113,21 @@
             return resultTraders;
         }
 
-        private static IEnumerable<MatchTrader> GetTradersForSpecific15Mins(IEnumerable<MatchTrader> traders, MatchInfo matchInfo, int assignmentType)
+        private static IEnumerable<MatchTrader> GetTradersForSpecificMatch(IEnumerable<MatchTrader> traders, MatchInfo matchInfo, int assignmentType, int minorBetTypeCorner, int minorBetTypeBooking)
         {
             IEnumerable<MatchTrader> resultTraders;
 
             switch (matchInfo.MinorBettypeId)
             {
                 case (int)MinorBettype.NoOfCorner:
-                    resultTraders = traders.Where(x => x.MinorBettypeId == (int)MinorBettype.Specific15MinsCorners
+                    resultTraders = traders.Where(x => x.MinorBettypeId == minorBetTypeCorner
                                                        && x.ParentMatchId == matchInfo.ParentMatchId
                                                        && x.Bettype == (int)MajorBettype.Handicap
                                                        && x.AssignmentType == assignmentType);
                     break;
 
                 case (int)MinorBettype.TotalBooking:
-                    resultTraders = traders.Where(x => x.MinorBettypeId == (int)MinorBettype.Specific15MinsTotalBookings
+                    resultTraders = traders.Where(x => x.MinorBettypeId == minorBetTypeBooking
                                                        && x.ParentMatchId == matchInfo.ParentMatchId
                                                        && x.Bettype == (int)MajorBettype.Handicap
                                                        && x.AssignmentType == assignmentType);

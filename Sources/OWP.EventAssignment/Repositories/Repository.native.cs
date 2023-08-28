@@ -649,6 +649,8 @@ namespace OWP.EventAssignment.Repositories
                 else
                 {
                     eventInstance.Specific15Mins = GetAssignmentForSpecific15minsOfMinorMatch(assignments, match);
+                    eventInstance.FM = GetAssignmentForFMOfMinorMatch(assignments, match);
+                    eventInstance.AIO = GetAssignmentForAIOOfMinorMatch(assignments, match);
                 }
 
                 events.Add(eventInstance);
@@ -683,6 +685,44 @@ namespace OWP.EventAssignment.Repositories
                 return assignments.Where(x => x.MinorBettypeId == (int)MinorBettype.Specific15MinsTotalBookings
                                                   && x.ParentMatchId == matchInfo.ParentMatchId
                                                   && x.Bettype == (int)MajorBettype.Handicap).ToList();
+            }
+
+            return new List<Assignment>();
+        }
+
+        private static IList<Assignment> GetAssignmentForAIOOfMinorMatch(IList<Assignment> assignments, MatchInfo matchInfo)
+        {
+            if (Equals(matchInfo.MinorBettypeId, (int)MinorBettype.NoOfCorner))
+            {
+                return assignments.Where(x => x.MinorBettypeId == (int)MinorBettype.AllInOneCorners
+                                              && x.ParentMatchId == matchInfo.ParentMatchId
+                                              && x.Bettype == (int)MajorBettype.Handicap).ToList();
+            }
+
+            if (Equals(matchInfo.MinorBettypeId, (int)MinorBettype.TotalBooking))
+            {
+                return assignments.Where(x => x.MinorBettypeId == (int)MinorBettype.AllInOneTotalBookings
+                                              && x.ParentMatchId == matchInfo.ParentMatchId
+                                              && x.Bettype == (int)MajorBettype.Handicap).ToList();
+            }
+
+            return new List<Assignment>();
+        }
+
+        private static IList<Assignment> GetAssignmentForFMOfMinorMatch(IList<Assignment> assignments, MatchInfo matchInfo)
+        {
+            if (Equals(matchInfo.MinorBettypeId, (int)MinorBettype.NoOfCorner))
+            {
+                return assignments.Where(x => x.MinorBettypeId == (int)MinorBettype.FastMarketCorners
+                                              && x.ParentMatchId == matchInfo.ParentMatchId
+                                              && x.Bettype == (int)MajorBettype.Handicap).ToList();
+            }
+
+            if (Equals(matchInfo.MinorBettypeId, (int)MinorBettype.TotalBooking))
+            {
+                return assignments.Where(x => x.MinorBettypeId == (int)MinorBettype.FastMarketTotalBookings
+                                              && x.ParentMatchId == matchInfo.ParentMatchId
+                                              && x.Bettype == (int)MajorBettype.Handicap).ToList();
             }
 
             return new List<Assignment>();

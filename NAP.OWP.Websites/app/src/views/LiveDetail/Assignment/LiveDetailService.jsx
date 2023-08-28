@@ -54,10 +54,7 @@ const initializeAssignment = (assignmentType, bettype, minorBettypeId) => {
 };
 
 const ishasSettings = matchSetting => {
-  return (
-    matchSetting.Maxbet ||
-    matchSetting.Spread
-  );
+  return matchSetting.Maxbet || matchSetting.Spread;
 };
 
 const isHasMatchSetting = matchSetting =>
@@ -580,6 +577,18 @@ const getDataForGroupNoOfCorners = (matchSettings, assignments) => {
     assignments
   );
 
+  const dataAllInOneNoOfCorners = getHDPRow(
+    MinorBetTypes.AllInOneCorners,
+    matchSettings,
+    assignments
+  );
+
+  const dataFastMarketNoOfCorners = getHDPRow(
+    MinorBetTypes.FastMarketCorners,
+    matchSettings,
+    assignments
+  );
+
   let listAssignmentItem = [
     dataNoOfCornersHDP,
     dataNoOfCornersOU,
@@ -617,6 +626,18 @@ const getDataForGroupNoOfCorners = (matchSettings, assignments) => {
     listAssignmentItem.push(data15minsNoOfCorners);
   }
 
+  if (dataAllInOneNoOfCorners) {
+    dataAllInOneNoOfCorners.HT.isAllowAdd = false;
+    dataAllInOneNoOfCorners.LA.isAllowAdd = false;
+    listAssignmentItem.push(dataAllInOneNoOfCorners);
+  }
+
+  if (dataFastMarketNoOfCorners) {
+    dataFastMarketNoOfCorners.HT.isAllowAdd = false;
+    dataFastMarketNoOfCorners.LA.isAllowAdd = false;
+    listAssignmentItem.push(dataFastMarketNoOfCorners);
+  }
+
   return {
     Group: groupName,
     DataSource: listAssignmentItem,
@@ -643,6 +664,18 @@ const getDataForGroupTotalBooking = (matchSettings, assignments) => {
   );
   const data15minsTotalBooking = getHDPRow(
     MinorBetTypes.Specific15minsTotalBooking,
+    matchSettings,
+    assignments
+  );
+
+  const dataAllInOneTotalBooking = getHDPRow(
+    MinorBetTypes.AllInOneTotalBookings,
+    matchSettings,
+    assignments
+  );
+
+  const dataFastMarketTotalBooking = getHDPRow(
+    MinorBetTypes.FastMarketTotalBookings,
     matchSettings,
     assignments
   );
@@ -685,6 +718,18 @@ const getDataForGroupTotalBooking = (matchSettings, assignments) => {
     data15minsTotalBooking.HT.isAllowAdd = false;
     data15minsTotalBooking.LA.isAllowAdd = false;
     listAssignmentItem.push(data15minsTotalBooking);
+  }
+
+  if (dataAllInOneTotalBooking) {
+    dataAllInOneTotalBooking.HT.isAllowAdd = false;
+    dataAllInOneTotalBooking.LA.isAllowAdd = false;
+    listAssignmentItem.push(dataAllInOneTotalBooking);
+  }
+
+  if (dataFastMarketTotalBooking) {
+    dataFastMarketTotalBooking.HT.isAllowAdd = false;
+    dataFastMarketTotalBooking.LA.isAllowAdd = false;
+    listAssignmentItem.push(dataFastMarketTotalBooking);
   }
 
   return {
@@ -785,7 +830,11 @@ const getAll = (matchSettings, assignments) => {
     MinorBetTypes.TotalBooking,
     MinorBetTypes.Specific15minsTotalBooking,
     MinorBetTypes.FastMarket,
-    MinorBetTypes.AllInOne
+    MinorBetTypes.FastMarketCorners,
+    MinorBetTypes.FastMarketTotalBookings,
+    MinorBetTypes.AllInOne,
+    MinorBetTypes.AllInOneCorners,
+    MinorBetTypes.AllInOneTotalBookings
   ];
 
   const minorBettypes = matchSettings

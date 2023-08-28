@@ -28,6 +28,18 @@
         FastMarket = -88,
 
         [Description("All In One")]
-        AllInOne = -89
+        AllInOne = -89,
+
+        [Description("All In One Total Of Bookings")]
+        AllInOneTotalBookings = -189,
+
+        [Description("All In One Number Of Corners")]
+        AllInOneCorners = -289,
+
+        [Description("Fast Market Total Of Bookings")]
+        FastMarketTotalBookings = -188,
+
+        [Description("Fast Market Number Of Corners")]
+        FastMarketCorners = -288,
     }
 }

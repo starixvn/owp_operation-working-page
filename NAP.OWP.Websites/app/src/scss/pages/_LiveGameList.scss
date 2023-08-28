@@ -1409,3 +1409,6 @@ button.toast-close-button {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.cd-cover-layer {
+  z-index: 100 !important;
+}

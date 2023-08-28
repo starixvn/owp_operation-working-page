@@ -35,9 +35,20 @@ const checkAllowAddAssignmentSpecific10Mins = (
   return true;
 };
 
-const checkAllowAddAssignmentFM = (minorBettypeId, bettypeName) => {
-  if (isEqual(bettypeName, 'FM') || isEqual(bettypeName, 'AIO')) {
-    return minorBettypeId === null;
+const checkAllowAddAssignmentFM = (
+  minorBettypeId,
+  bettypeName,
+  assignments
+) => {
+  if (
+    (isEqual(bettypeName, 'FM') || isEqual(bettypeName, 'AIO')) &&
+    minorBettypeId !== null &&
+    !(
+      minorBettypeId === MinorBetTypes.NoOfCorners ||
+      minorBettypeId === MinorBetTypes.TotalBooking
+    )
+  ) {
+    return assignments && assignments.length > 0;
   }
 
   return true;
@@ -59,13 +70,24 @@ const checkAllowAddAssignmentFullBetTypes = (
       bettypeName,
       assignments
     ) &&
-    checkAllowAddAssignmentFM(minorBettypeId, bettypeName)
+    checkAllowAddAssignmentFM(minorBettypeId, bettypeName, assignments)
   );
 };
 
-const checkAllowAddAssignmentPHBetTypes = (minorBettypeId, columnName) => {
-  if (isEqual(columnName, 'FM') || isEqual(columnName, 'AIO')) {
-    return minorBettypeId == null;
+const checkAllowAddAssignmentPHBetTypes = (
+  minorBettypeId,
+  bettypeName,
+  assignments
+) => {
+  if (
+    (isEqual(bettypeName, 'FM') || isEqual(bettypeName, 'AIO')) &&
+    minorBettypeId !== null &&
+    !(
+      minorBettypeId === MinorBetTypes.NoOfCorners ||
+      minorBettypeId === MinorBetTypes.TotalBooking
+    )
+  ) {
+    return assignments && assignments.length > 0;
   }
   return false;
 };
@@ -87,7 +109,11 @@ const checkAllowAddAssignment = (
       assignments
     );
   } else {
-    return checkAllowAddAssignmentPHBetTypes(minorBettypeId, bettypeName);
+    return checkAllowAddAssignmentPHBetTypes(
+      minorBettypeId,
+      bettypeName,
+      assignments
+    );
   }
 };
 
