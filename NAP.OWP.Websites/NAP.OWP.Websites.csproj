@@ -2006,8 +2006,8 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\live-game-list\assets\ext\server-5d1acaf0.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-b6eedfd9.js" />
+    <Content Include="wwwroot\live-game-list\assets\ext\server-c10eec51.css" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-4a14a095.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -2748,11 +2748,11 @@
     <Content Include="wwwroot\task-list\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\task-list\assets\ext\server-0f1e9724.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-c8a2c2d9.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-23042e00.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-7eb63634.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-51632bdb.js" />
+    <Content Include="wwwroot\task-list\assets\ext\server-a1acc940.css" />
+    <Content Include="wwwroot\task-list\assets\js\main-e00e3fce.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-c95e2f28.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-7a9a99d6.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-f20d6530.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
