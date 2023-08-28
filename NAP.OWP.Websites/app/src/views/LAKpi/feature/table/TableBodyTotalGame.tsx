@@ -1,7 +1,7 @@
 import React from 'react';
 import { TTotalGameInfo } from '../type/TableType.native';
 import { uniqueId } from 'lodash';
-import { keyOfTotalGameInfo } from './TableConst.json';
+import { keyOfTotalGameInfo } from '../../TableConst.json';
 
 const TableBodyTotalGame = (props: TTotalGameInfo) => {
   return (

@@ -18,6 +18,10 @@ type TTotalGameInfo = {
   multipleProducts: number;
 };
 
+interface TTotalGameConditionInfo extends TTotalGameInfo {
+  totalVirtualMultipleMatches: number;
+}
+
 type DataSource = {
   userName: Required<string>;
   progress: Required<string>;
@@ -27,5 +31,12 @@ type DataSource = {
   reward: number;
 };
 
+type TCondition = {
+  level: string;
+  conditionFirst: TTotalGameConditionInfo;
+  conditionSecond: TTotalGameConditionInfo;
+  timeRange: string;
+  reward: string;
+};
 
-export { DataSource, TState, TAction, TTotalGameInfo };
+export { DataSource, TTotalGameInfo, TCondition, TTotalGameConditionInfo };

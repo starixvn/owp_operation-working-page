@@ -20,5 +20,13 @@
       "label": "Multiple Products",
       "key": "multipleProducts"
     }
-  ]
+  ],
+  "keyOfConditionTable": {
+    "totalVirtualMultipleMatches": "Virtual Matches + Multiple Matches",
+    "virtualMatches": "Virtual Matches",
+    "multipleMatches": "Multiple Matches",
+    "specialProducts": "Special Products",
+    "fiveMajorLeagues": "Major Leagues",
+    "multipleProducts": "Multiple Products"
+  }
 }

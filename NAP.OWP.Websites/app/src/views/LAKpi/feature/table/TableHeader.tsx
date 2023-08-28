@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { keyOfTotalGameInfo } from './TableConst.json';
+import { keyOfTotalGameInfo } from '../../TableConst.json';
 import { uniqueId } from 'lodash';
 
 const TableHeader = () => {

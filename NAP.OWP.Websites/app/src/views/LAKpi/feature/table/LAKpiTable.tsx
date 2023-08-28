@@ -2,7 +2,7 @@ import React from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import useStore from '../../app/store';
-import InfoIcon from '../../../../assets/svg-element/InfoIcon';
+import InfoConditionExplainIcon from '../../../../assets/svg-element/InfoConditionExplainIcon';
 import Loading from '../../../components/Loading';
 import { isEquals } from 'immutability-helper';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
@@ -16,7 +16,7 @@ const LAKpiTable = () => {
 
   return (
     <div className='table-content'>
-      <InfoIcon />
+      <InfoConditionExplainIcon />
       <table>
         <thead>
           <TableHeader />
