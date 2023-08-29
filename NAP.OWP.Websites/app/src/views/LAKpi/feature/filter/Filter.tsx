@@ -23,18 +23,6 @@ const Filter = () => {
     toDate: defaultToDate
   });
 
-  const validateFilterParameters = () => {
-    const month = getMonthDifference(filterDate.fromDate, filterDate.toDate);
-
-    if (getMonthDifference(filterDate.fromDate, filterDate.toDate) <= 24) {
-      return true;
-    }
-
-    ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
-
-    return false;
-  };
-
   const handleExport = () => {
     // TODO
   };
@@ -53,6 +41,13 @@ const Filter = () => {
       toDate: { $set: date }
     });
     setFilterDate(newDate);
+  };
+
+  const handleOnSearch = () => {
+    if (getMonthDifference(filterDate.fromDate, filterDate.toDate) > 24) {
+      ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
+    }
+    queryDataTable(filterDate.fromDate, filterDate.toDate);
   };
 
   useEffect(() => {
@@ -98,11 +93,7 @@ const Filter = () => {
           </span>
         </div>
         <div className='filter-control btn-block'>
-          <button
-            className='button-submit'
-            onClick={() =>
-              queryDataTable(filterDate.fromDate, filterDate.toDate)
-            }>
+          <button className='button-submit' onClick={handleOnSearch}>
             Search
           </button>
           <button className='button-export' onClick={handleExport}>
