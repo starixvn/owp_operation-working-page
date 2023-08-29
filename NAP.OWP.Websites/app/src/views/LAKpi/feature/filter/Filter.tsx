@@ -2,9 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import DatePicker, { ReactDatePicker } from 'react-datepicker';
 import CalendarIcon from 'mdi-react/CalendarIcon';
 import ToastrWrapper from '../../../components/ToastrWrapper';
-import { initDefaultFilterDate, getMonthDifference, getDaysInMonth } from '../../Utils';
+import {
+  initDefaultFilterDate,
+  getMonthDifference,
+  getDaysInMonth
+} from '../../Utils';
 import update from 'immutability-helper';
 import useStore from '../../app/store';
+import InfoConditionExplainIcon from '../tableConditionConfig/InfoConditionExplainIcon';
 
 const { defaultFromDate, defaultToDate } = initDefaultFilterDate();
 
@@ -25,9 +30,7 @@ const Filter = () => {
       return true;
     }
 
-    ToastrWrapper.showError(
-      <h4>Time Range is only within 2 years</h4>
-    );
+    ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
 
     return false;
   };
@@ -64,7 +67,7 @@ const Filter = () => {
           <DatePicker
             selected={filterDate.fromDate}
             showMonthYearPicker
-            dateFormat="MMM yyyy"
+            dateFormat='MMM yyyy'
             ref={fromDatePicker}
             className='to-date-picker'
             onChange={onFromDateChanged}
@@ -81,7 +84,7 @@ const Filter = () => {
           <DatePicker
             selected={filterDate.toDate}
             showMonthYearPicker
-            dateFormat="MMM yyyy"
+            dateFormat='MMM yyyy'
             ref={toDatePicker}
             className='to-date-picker'
             onChange={onToDateChanged}
@@ -94,12 +97,19 @@ const Filter = () => {
           </span>
         </div>
         <div className='filter-control btn-block'>
-          <button className='button-submit' onClick={() => queryDataTable(filterDate.fromDate, filterDate.toDate)}>
+          <button
+            className='button-submit'
+            onClick={() =>
+              queryDataTable(filterDate.fromDate, filterDate.toDate)
+            }>
             Search
           </button>
           <button className='button-export' onClick={handleExport}>
             Export
           </button>
+        </div>
+        <div className='right-control icon-condition'>
+          <InfoConditionExplainIcon />
         </div>
       </div>
     </div>

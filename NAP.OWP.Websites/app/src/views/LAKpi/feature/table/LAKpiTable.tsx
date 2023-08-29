@@ -2,7 +2,6 @@ import React from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import useStore from '../../app/store';
-import InfoConditionExplainIcon from '../../../../assets/svg-element/InfoConditionExplainIcon';
 import Loading from '../../../components/Loading';
 import { isEquals } from 'immutability-helper';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
@@ -15,7 +14,6 @@ const LAKpiTable = () => {
 
   return (
     <div className='table-content'>
-      <InfoConditionExplainIcon />
       <table>
         <thead>
           <TableHeader />

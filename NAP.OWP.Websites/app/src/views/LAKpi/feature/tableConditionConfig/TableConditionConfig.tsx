@@ -63,10 +63,12 @@ const TableConditionConfig = () => {
           <tr key={uniqueId()}>
             <td>{x.level}</td>
             {index === 0 ? (
-              <td>
-                <span>Virtual Matches + Multiple Matches</span>
-                <span>{`>=`}</span>
-                <span>{x.conditionFirst.totalVirtualMultipleMatches}</span>
+              <td className='condition-column'>
+                <div className='condition-element-new-level'>
+                  <span>Virtual Matches + Multiple Matches</span>
+                  <span>{`>=`}</span>
+                  <span>{x.conditionFirst.totalVirtualMultipleMatches}</span>
+                </div>
               </td>
             ) : (
               <ConditionColumn

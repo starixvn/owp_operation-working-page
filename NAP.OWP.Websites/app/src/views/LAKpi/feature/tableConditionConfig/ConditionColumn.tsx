@@ -17,7 +17,7 @@ const ConditionColumn = (props: ConditionColumnProps) => {
   return (
     <>
       <td className='condition-column'>
-        {keyGenerate.map(x => {
+        {keyGenerate.map((x, index) => {
           const value1 = conditionFirst[x.key as keyof TTotalGameConditionInfo];
           const value2 =
             conditionSecond[x.key as keyof TTotalGameConditionInfo];
@@ -25,7 +25,7 @@ const ConditionColumn = (props: ConditionColumnProps) => {
             <div key={uniqueId()} className='condition-element'>
               <span>{x.label}</span>
               <span>{value1}</span>
-              <span>or</span>
+              {index === 0 ? <span>or</span> : <span></span>}
               <span>{value2}</span>
             </div>
           );

@@ -20,33 +20,51 @@
     right: 10px;
     bottom: 10px;
   }
+  .icon-condition{
+    padding-right: 5px;
+    justify-content: center;
+  }
 }
 .tooltip-explain {
   transition: opacity 0s linear;
-
   .tooltip-inner {
-    text-align: center;
     min-width: 500px;
   }
   table {
     width: 100%;
     font-size: 12px;
+    th{
+      &:nth-child(1){
+        min-width: 50px;
+      }
+    }
     .condition-column {
+      width: 100%;
+      text-align: left;
       display: inline-block;
+      .condition-element-new-level{
+        display: flex;
+        span {
+          padding-right: 10px;
+        }
+      }
       .condition-element {
         display: flex;
         span {
-          &:nth-child(3) {
-            display: none;
+          &:nth-child(1) {
+            width: 40%;
           }
-        }
-      }
-      div {
-        &:nth-child(1) {
-          span {
-            &:nth-child(3) {
-              display: flex !important;
-            }
+          &:nth-child(2) {
+            text-align: center;
+            width: 25%;
+          }
+          &:nth-child(3) {
+            text-align: center;
+            width: 10%;
+          }
+          &:nth-child(4) {
+            text-align: center;
+            width: 25%;
           }
         }
       }
@@ -54,7 +72,7 @@
   }
 }
 .table-content {
-  padding-top: 30px;
+  padding-top: 10px;
   max-width: 1600px;
   table {
     width: 100%;
