@@ -17,7 +17,7 @@ const Filter = () => {
   const fromDatePicker = useRef<ReactDatePicker>(null);
   const toDatePicker = useRef<ReactDatePicker>(null);
   const queryDataTable = useStore(state => state.queryDataTable);
-
+  const queryConditionData = useStore(state => state.queryConditionData);
   const [filterDate, setFilterDate] = useState({
     fromDate: defaultFromDate,
     toDate: defaultToDate
@@ -57,6 +57,7 @@ const Filter = () => {
 
   useEffect(() => {
     queryDataTable(filterDate.fromDate, filterDate.toDate);
+    queryConditionData();
   }, []);
 
   return (

@@ -1,8 +1,13 @@
-import { get } from "../Shared/Service/Service";
+import { get } from '../Shared/Service/Service';
+import { netCoreURL, netFwURL } from './const.json';
 
+const buildRequestURL = (key: string | null) =>
+  process.env.NODE_ENV === 'development'
+    ? `${netCoreURL}/${key}`
+    : `${window.netCoreRootUrl}/${netFwURL}/${key}`;
 
 const queryDataTable = async (fromDate: Date, toDate: Date) => {
-  const url = "http://localhost:5000/api/kpi/la";
+  const url = buildRequestURL('');
   const response = await get({
     url,
     fromDate,
@@ -12,6 +17,13 @@ const queryDataTable = async (fromDate: Date, toDate: Date) => {
   return response.data;
 };
 
-export {
-  queryDataTable
+const queryConditionData = async () => {
+  const url = buildRequestURL('get-condition');
+  const response = await get({
+    url
+  });
+
+  return response.data;
 };
+
+export { queryDataTable, queryConditionData };

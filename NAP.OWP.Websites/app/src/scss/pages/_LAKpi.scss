@@ -23,25 +23,30 @@
   .icon-condition{
     padding-right: 5px;
     justify-content: center;
+    cursor: pointer;
   }
 }
 .tooltip-explain {
   transition: opacity 0s linear;
   .tooltip-inner {
     min-width: 500px;
+    height: 510px;
   }
   table {
     width: 100%;
+    height: 100%;
     font-size: 12px;
+    td{
+      padding-top: 30px;
+    }
     th{
       &:nth-child(1){
         min-width: 50px;
       }
     }
     .condition-column {
-      width: 100%;
+      width: 60%;
       text-align: left;
-      display: inline-block;
       .condition-element-new-level{
         display: flex;
         span {
@@ -51,6 +56,7 @@
       .condition-element {
         display: flex;
         span {
+          padding-bottom: 4px;
           &:nth-child(1) {
             width: 40%;
           }

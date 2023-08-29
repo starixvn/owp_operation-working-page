@@ -1,53 +1,10 @@
 import React from 'react';
-import { TCondition } from '../type/TableType.native';
 import ConditionColumn from './ConditionColumn';
 import { uniqueId } from 'lodash';
+import useStore from '../../app/store';
 
 const TableConditionConfig = () => {
-  const fakeData: TCondition[] = [
-    {
-      level: 'New',
-      conditionFirst: {
-        totalVirtualMultipleMatches: 2050,
-        virtualMatches: 0,
-        multipleMatches: 0,
-        specialProducts: 0,
-        fiveMajorLeagues: 0,
-        multipleProducts: 0
-      },
-      conditionSecond: {
-        totalVirtualMultipleMatches: 0,
-        virtualMatches: 0,
-        multipleMatches: 0,
-        specialProducts: 0,
-        fiveMajorLeagues: 0,
-        multipleProducts: 0
-      },
-      timeRange: 'Last 1 year',
-      reward: '5%'
-    },
-    {
-      level: 'D',
-      conditionFirst: {
-        totalVirtualMultipleMatches: 0,
-        virtualMatches: 3600,
-        multipleMatches: 500,
-        specialProducts: 0,
-        fiveMajorLeagues: 0,
-        multipleProducts: 0
-      },
-      conditionSecond: {
-        totalVirtualMultipleMatches: 0,
-        virtualMatches: 3200,
-        multipleMatches: 800,
-        specialProducts: 0,
-        fiveMajorLeagues: 0,
-        multipleProducts: 0
-      },
-      timeRange: 'Last 2 year',
-      reward: '10%'
-    }
-  ];
+  const conditionData = useStore(state => state.conditionData);
   return (
     <table>
       <thead>
@@ -59,7 +16,7 @@ const TableConditionConfig = () => {
         </tr>
       </thead>
       <tbody>
-        {fakeData.map((x, index) => (
+        {conditionData.map((x, index) => (
           <tr key={uniqueId()}>
             <td>{x.level}</td>
             {index === 0 ? (

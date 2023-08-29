@@ -2,5 +2,7 @@
   "FILTER_PARAM": {
     "FROM_DATE_KEY": "fromDate",
     "TO_DATE_KEY": "toDate"
-  }
+  },
+  "netCoreURL": "api-netcore/kpi/la",
+  "netFwURL": "api/kpi/la"
 }

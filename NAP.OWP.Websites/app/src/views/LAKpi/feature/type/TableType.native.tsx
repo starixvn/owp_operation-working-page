@@ -1,14 +1,18 @@
 type TState = {
   dataTable: {
-    loadingStatus: string,
-    entities: Array<DataSource>
-  }
-}
-
-type TAction = {
-  queryDataTable: (fromDate: Required<Date>, toDate: Required<Date>) => Promise<void>
+    loadingStatus: string;
+    entities: Array<DataSource>;
+  };
+  conditionData: Array<TCondition>;
 };
 
+type TAction = {
+  queryDataTable: (
+    fromDate: Required<Date>,
+    toDate: Required<Date>
+  ) => Promise<void>;
+  queryConditionData: () => Promise<void>;
+};
 
 type TTotalGameInfo = {
   virtualMatches: number;
@@ -32,6 +36,7 @@ type DataSource = {
 };
 
 type TCondition = {
+  progress: string;
   level: string;
   conditionFirst: TTotalGameConditionInfo;
   conditionSecond: TTotalGameConditionInfo;
@@ -39,4 +44,11 @@ type TCondition = {
   reward: string;
 };
 
-export { TState, TAction DataSource, TTotalGameInfo, TCondition, TTotalGameConditionInfo };
+export {
+  TState,
+  TAction,
+  DataSource,
+  TTotalGameInfo,
+  TCondition,
+  TTotalGameConditionInfo
+};

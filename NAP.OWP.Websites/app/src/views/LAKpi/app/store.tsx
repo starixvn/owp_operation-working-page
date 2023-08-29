@@ -2,12 +2,19 @@ import { create } from 'zustand';
 import update from 'immutability-helper';
 import { TAction, TState } from '../feature/type/TableType.native';
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { queryDataTable } from '../service';
+import { queryDataTable, queryConditionData } from '../service';
 
 const useStore = create<TState & TAction>(set => ({
   dataTable: {
     loadingStatus: REQUEST_STATUS.idle,
     entities: []
+  },
+  conditionData: [],
+  queryConditionData: async () => {
+    const data = await queryConditionData();
+    set({
+      conditionData: data
+    });
   },
   queryDataTable: async (fromDate: Required<Date>, toDate: Required<Date>) => {
     set((state: TState) =>
@@ -19,7 +26,7 @@ const useStore = create<TState & TAction>(set => ({
     );
 
     const data = await queryDataTable(fromDate, toDate);
-    debugger
+
     set((state: TState) =>
       update(state, {
         dataTable: {
