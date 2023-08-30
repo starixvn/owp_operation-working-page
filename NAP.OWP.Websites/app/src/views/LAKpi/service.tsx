@@ -7,7 +7,9 @@ const buildRequestURL = (key: string | null) =>
     : `${window.netCoreRootUrl}/${netFwURL}/${key}`;
 
 const queryDataTable = async (fromDate: Date, toDate: Date) => {
-  const url = buildRequestURL('');
+  const url = process.env.NODE_ENV === 'development'
+    ? `${netCoreURL}`
+    : `${window.netCoreRootUrl}/${netFwURL}`;;
   const response = await get({
     url,
     fromDate,
