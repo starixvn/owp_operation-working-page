@@ -24,6 +24,7 @@
                 { MenuItems.DailyWorkingShift, "icon-calendar-today" },
                 { MenuItems.TraderReport,"icon-file-chart" },
                 { MenuItems.LAReport,"icon-Path" },
+                { MenuItems.LAKPI, "icon-kpi"},
                 { MenuItems.OvertimeReport,"icon-overtime-report" },
                 { MenuItems.MatchCountLiveReport,"icon-Path" },
                 { MenuItems.AutoAssignment, "icon-auto-assignment" },

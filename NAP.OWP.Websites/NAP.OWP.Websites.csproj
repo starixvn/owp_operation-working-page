@@ -2117,9 +2117,9 @@
     <Content Include="wwwroot\la-kpi\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\logo_text-c3062a52.svg" />
-    <Content Include="wwwroot\la-kpi\assets\ext\OWP-f34334fe.svg" />
-    <Content Include="wwwroot\la-kpi\assets\ext\server-096fc769.css" />
-    <Content Include="wwwroot\la-kpi\assets\js\main-141d6258.js" />
+    <Content Include="wwwroot\la-kpi\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\la-kpi\assets\ext\server-56d3fc65.css" />
+    <Content Include="wwwroot\la-kpi\assets\js\main-aa8a37a4.js" />
     <Content Include="wwwroot\la-kpi\favicon.ico" />
     <Content Include="wwwroot\la-kpi\server.html" />
     <Content Include="wwwroot\la-report\assets\ext\icon-search-4037a8fe.svg" />
@@ -3024,9 +3024,9 @@
     <Content Include="wwwroot\live-detail\assets\ext\OWP-6b4f0813.eot" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-ea568b68.ttf" />
     <Content Include="wwwroot\live-detail\server.cshtml" />
-    <Content Include="wwwroot\la-kpi\assets\ext\OWP-27acea6a.woff" />
-    <Content Include="wwwroot\la-kpi\assets\ext\OWP-6b4f0813.eot" />
-    <Content Include="wwwroot\la-kpi\assets\ext\OWP-ea568b68.ttf" />
+    <Content Include="wwwroot\la-kpi\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\la-kpi\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
