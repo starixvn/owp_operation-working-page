@@ -1,4 +1,5 @@
 import { get } from '../Shared/Service/Service';
+import Utils from '../Shared/Utils';
 import { netCoreURL, netFwURL } from './const.json';
 
 const buildRequestURL = (key: string | null) =>
@@ -6,10 +7,14 @@ const buildRequestURL = (key: string | null) =>
     ? `${netCoreURL}/${key}`
     : `${window.netCoreRootUrl}/${netFwURL}/${key}`;
 
-const queryDataTable = async (fromDate: Date, toDate: Date) => {
-  const url = process.env.NODE_ENV === 'development'
-    ? `${netCoreURL}`
-    : `${window.netCoreRootUrl}/${netFwURL}`;;
+const queryDataTable = async (filterFromDate: Date, filterToDate: Date) => {
+  const url =
+    process.env.NODE_ENV === 'development'
+      ? `${netCoreURL}`
+      : `${window.netCoreRootUrl}/${netFwURL}`;
+  const fromDate = Utils.formatDate(filterFromDate);
+  const toDate = Utils.formatDate(filterToDate);
+
   const response = await get({
     url,
     fromDate,

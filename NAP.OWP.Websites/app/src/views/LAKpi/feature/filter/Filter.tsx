@@ -46,6 +46,7 @@ const Filter = () => {
   const handleOnSearch = () => {
     if (getMonthDifference(filterDate.fromDate, filterDate.toDate) > 24) {
       ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
+      return;
     }
     queryDataTable(filterDate.fromDate, filterDate.toDate);
   };
