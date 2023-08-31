@@ -4,20 +4,24 @@ import {
   PES_FLAG,
   PES_FLAG_21,
   FIFA_FLAG_23,
+  PES_FLAG_23,
   SABA
 } from './FlagStore/FlagsCondition';
 import { PES_IMAGE_STORE } from './FlagStore/PES';
 import { PES_21_IMAGE_STORE } from './FlagStore/PES21';
 import { FIFA_23_IMAGE_STORE } from './FlagStore/FIFA23';
+import { PES_23_IMAGE_STORE } from './FlagStore/PES23';
 
 export const getFlagFromStore = props => {
   const { flagName, flagNameLibrary, flagURL } = props;
   const flagInStore = flagNameLibrary.find(
     f => f.toLowerCase() === flagName.toLowerCase()
   );
+
   if (flagInStore) {
     return `${flagURL}/${flagInStore}.jpg`;
   }
+
   return null;
 };
 
@@ -41,6 +45,12 @@ export const flagFactory = props => {
         flagName,
         flagNameLibrary: PES_21_IMAGE_STORE,
         flagURL: PES_FLAG_21.rootPath
+      });
+    case 'PES 23':
+      return getFlagFromStore({
+        flagName,
+        flagNameLibrary: PES_23_IMAGE_STORE,
+        flagURL: PES_FLAG_23.rootPath
       });
     case 'FIFA 23':
       return getFlagFromStore({
@@ -95,28 +105,30 @@ export const checkLeague = props => /* NOSONAR */ {
   const pes21 = testRegex({ leagueName, ...PES_FLAG_21 });
   const fifa = testRegex({ leagueName, ...FIFA_FLAG });
   const fifa23 = testRegex({ leagueName, ...FIFA_FLAG_23 });
+  const pes23 = testRegex({ leagueName, ...PES_FLAG_23 });
 
-  if (isSABA) {
-    if (pes && fifa) {
-      return { isHaveFlag: null, flagInfo: null };
-    }
-
-    if (pes) {
-      return { isHaveFlag: true, flagInfo: PES_FLAG.type };
-    }
-
-    if (fifa) {
-      return { isHaveFlag: true, flagInfo: FIFA_FLAG.type };
-    }
-
-    if (fifa23) {
-      return { isHaveFlag: true, flagInfo: FIFA_FLAG_23.type };
-    }
-
-    if (pes21) {
-      return { isHaveFlag: true, flagInfo: PES_FLAG_21.type };
-    }
+  if (pes && fifa) {
     return { isHaveFlag: null, flagInfo: null };
+  }
+
+  if (pes21) {
+    return { isHaveFlag: true, flagInfo: PES_FLAG_21.type };
+  }
+
+  if (pes23) {
+    return { isHaveFlag: true, flagInfo: PES_FLAG_23.type };
+  }
+
+  if (isSABA && pes) {
+    return { isHaveFlag: true, flagInfo: PES_FLAG.type };
+  }
+
+  if (isSABA && fifa) {
+    return { isHaveFlag: true, flagInfo: FIFA_FLAG.type };
+  }
+
+  if (isSABA && fifa23) {
+    return { isHaveFlag: true, flagInfo: FIFA_FLAG_23.type };
   }
 
   return { isHaveFlag: null, flagInfo: null };
