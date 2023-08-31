@@ -11,9 +11,6 @@ const LAKpiTable = () => {
   const [maxHeight, setMaxHeight] = useState(window.innerHeight - headerHeight);
   const { loadingStatus, entities } = useStore(state => state.dataTable);
   const tableRef = useRef<HTMLDivElement>(null);
-  if (isEquals(loadingStatus, REQUEST_STATUS.pending)) {
-    return <Loading />;
-  }
 
   const handleResizeBrowser = () => {
     const { innerHeight } = window;
@@ -24,6 +21,10 @@ const LAKpiTable = () => {
     window.addEventListener('resize', handleResizeBrowser);
     return () => window.removeEventListener('resize', handleResizeBrowser);
   }, []);
+
+  if (isEquals(loadingStatus, REQUEST_STATUS.pending)) {
+    return <Loading />;
+  }
 
   return (
     <div ref={tableRef} style={{ maxHeight }} className='table-content'>

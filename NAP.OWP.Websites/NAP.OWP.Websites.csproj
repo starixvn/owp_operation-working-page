@@ -2118,8 +2118,8 @@
     <Content Include="wwwroot\la-kpi\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\la-kpi\assets\ext\server-b7ee5a47.css" />
-    <Content Include="wwwroot\la-kpi\assets\js\main-436e196b.js" />
+    <Content Include="wwwroot\la-kpi\assets\ext\server-f215a4c4.css" />
+    <Content Include="wwwroot\la-kpi\assets\js\main-6bfc1282.js" />
     <Content Include="wwwroot\la-kpi\favicon.ico" />
     <Content Include="wwwroot\la-kpi\server.html" />
     <Content Include="wwwroot\la-report\assets\ext\icon-search-4037a8fe.svg" />
