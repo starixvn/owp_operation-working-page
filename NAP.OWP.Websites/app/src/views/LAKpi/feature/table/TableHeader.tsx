@@ -8,7 +8,7 @@ const TableHeader = () => {
     <>
       <tr>
         <th rowSpan={2}>#</th>
-        <th rowSpan={2}>UserName</th>
+        <th rowSpan={2}>Username</th>
         <th rowSpan={2}>Progress</th>
         <th rowSpan={2}>Target</th>
         <th colSpan={5}>The gap to win the target</th>

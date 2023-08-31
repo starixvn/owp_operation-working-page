@@ -13,7 +13,7 @@
       "key": "specialProducts"
     },
     {
-      "label": "Major Leagues",
+      "label": "5 Major Leagues",
       "key": "fiveMajorLeagues"
     },
     {
@@ -26,7 +26,8 @@
     "virtualMatches": "Virtual Matches",
     "multipleMatches": "Multiple Matches",
     "specialProducts": "Special Products",
-    "fiveMajorLeagues": "Major Leagues",
+    "fiveMajorLeagues": "5 Major Leagues",
     "multipleProducts": "Multiple Products"
-  }
+  },
+  "headerHeight": 150
 }

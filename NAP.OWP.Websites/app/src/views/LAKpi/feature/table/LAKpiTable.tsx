@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import useStore from '../../app/store';
 import Loading from '../../../components/Loading';
 import { isEquals } from 'immutability-helper';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
+import { headerHeight } from '../../TableConst.json';
 
 const LAKpiTable = () => {
+  const [maxHeight, setMaxHeight] = useState(window.innerHeight - headerHeight);
   const { loadingStatus, entities } = useStore(state => state.dataTable);
+  const tableRef = useRef<HTMLDivElement>(null);
   if (isEquals(loadingStatus, REQUEST_STATUS.pending)) {
     return <Loading />;
   }
 
+  const handleResizeBrowser = () => {
+    const { innerHeight } = window;
+    setMaxHeight(innerHeight - headerHeight);
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener('resize', handleResizeBrowser);
+    return () => window.removeEventListener('resize', handleResizeBrowser);
+  }, []);
+
   return (
-    <div className='table-content'>
+    <div ref={tableRef} style={{ maxHeight }} className='table-content'>
       <table>
         <thead>
           <TableHeader />

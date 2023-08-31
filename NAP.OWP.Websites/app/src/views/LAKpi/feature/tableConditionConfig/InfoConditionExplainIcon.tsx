@@ -1,11 +1,31 @@
-import React from 'react';
-import { UncontrolledTooltip } from 'reactstrap';
+import React, { useEffect, useRef, useState } from 'react';
+import { Tooltip } from 'reactstrap';
 import TableConditionConfig from './TableConditionConfig';
 
-const InfoConditionExplainIcon = () => {
+const InfoConditionExplainIcon: React.FC = () => {
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const ref = useRef<SVGSVGElement | null>(null);
+  const toggle = () => {
+    setTooltipOpen(!tooltipOpen);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setTooltipOpen(false);
+      }
+    };
+    window.addEventListener('click', handleOutsideClick);
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <>
       <svg
+        ref={ref}
+        onClick={toggle}
         id='icon-info'
         width='24'
         height='24'
@@ -20,12 +40,13 @@ const InfoConditionExplainIcon = () => {
           fill='#39f'
         />
       </svg>
-      <UncontrolledTooltip
+      <Tooltip
+        isOpen={tooltipOpen}
         className='tooltip-explain'
         placement='bottom'
         target='icon-info'>
         <TableConditionConfig />
-      </UncontrolledTooltip>
+      </Tooltip>
     </>
   );
 };
