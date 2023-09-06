@@ -14,16 +14,19 @@ const TableBody = (props: {
           key={`${item.userName}-${index}`}>
           <td>{index + 1}</td>
           <td>{item.userName}</td>
-          {props.isGap && (
+          {props.isGap ? (
             <>
               <td>{item.progress}</td>
               <td>{item.target}</td>
               <TableBodyTotalGame {...item.gapWithTarget} />
+              <TableBodyTotalGame {...item.achievedGames} />
+              <td>{item.reward}</td>
+            </>
+          ) : (
+            <>
+              <TableBodyTotalGame {...item.achievedGames} />
             </>
           )}
-
-          <TableBodyTotalGame {...item.achievedGames} />
-          <td>{item.reward}</td>
         </tr>
       ))}
     </>

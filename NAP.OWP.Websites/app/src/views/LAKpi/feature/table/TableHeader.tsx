@@ -11,16 +11,19 @@ const TableHeader = (props: { isGap: boolean }) => {
       <tr>
         <th rowSpan={2}>#</th>
         <th rowSpan={2}>Username</th>
-        {props.isGap && (
+        {props.isGap ? (
           <>
             <th rowSpan={2}>Progress</th>
             <th rowSpan={2}>Target</th>
             <th colSpan={5}>The gap to win the target</th>
+            <th colSpan={5}>Achieved matches</th>
+            <th rowSpan={2}>Reward</th>
+          </>
+        ) : (
+          <>
+            <th colSpan={5}>Achieved matches</th>
           </>
         )}
-
-        <th colSpan={5}>Achieved matches</th>
-        <th rowSpan={2}>Reward</th>
       </tr>
       <tr>
         {duplicatedList.map(x => (
