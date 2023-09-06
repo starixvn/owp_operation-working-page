@@ -47,7 +47,8 @@ useStore.setState({
         reward: 100
       }
     ],
-    loadingStatus: 'idle'
+    loadingStatus: 'idle',
+    isGap: true
   }
 });
 

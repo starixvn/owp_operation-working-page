@@ -7,7 +7,8 @@ import { queryDataTable, queryConditionData } from '../service';
 const useStore = create<TState & TAction>(set => ({
   dataTable: {
     loadingStatus: REQUEST_STATUS.idle,
-    entities: []
+    entities: [],
+    isGap: true
   },
   conditionData: [],
   queryConditionData: async () => {
@@ -31,7 +32,8 @@ const useStore = create<TState & TAction>(set => ({
       update(state, {
         dataTable: {
           loadingStatus: { $set: REQUEST_STATUS.idle },
-          entities: { $set: data }
+          entities: { $set: data.kpiLa },
+          isGap: { $set: data.isGap }
         }
       })
     );

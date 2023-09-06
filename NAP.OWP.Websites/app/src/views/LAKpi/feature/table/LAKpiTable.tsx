@@ -9,7 +9,7 @@ import { headerHeight } from '../../TableConst.json';
 
 const LAKpiTable = () => {
   const [maxHeight, setMaxHeight] = useState(window.innerHeight - headerHeight);
-  const { loadingStatus, entities } = useStore(state => state.dataTable);
+  const { loadingStatus, entities, isGap } = useStore(state => state.dataTable);
   const tableRef = useRef<HTMLDivElement>(null);
 
   const handleResizeBrowser = () => {
@@ -30,10 +30,10 @@ const LAKpiTable = () => {
     <div ref={tableRef} style={{ maxHeight }} className='table-content'>
       <table>
         <thead>
-          <TableHeader />
+          <TableHeader isGap={isGap} />
         </thead>
         <tbody>
-          <TableBody dataSource={entities} />
+          <TableBody dataSource={entities} isGap={isGap} />
         </tbody>
       </table>
     </div>

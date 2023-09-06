@@ -2,6 +2,7 @@ type TState = {
   dataTable: {
     loadingStatus: string;
     entities: Array<DataSource>;
+    isGap: boolean;
   };
   conditionData: Array<TCondition>;
 };
