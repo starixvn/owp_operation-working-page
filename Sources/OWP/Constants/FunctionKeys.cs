@@ -160,6 +160,8 @@ namespace OWP.Constants
 
 				public const string WorkingShiftManagement_ShiftManagement = "WorkingShiftManagement_ShiftManagement";
 
-			}
+                public const string LAKpi = "LAKpi";
+
+    }
 	 
 }

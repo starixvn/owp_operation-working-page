@@ -325,6 +325,7 @@ namespace NAP.OWP.Websites.Controllers
         }
 
         [Route("LAKpi")]
+        [NapAuth(FunctionKey = FunctionKeys.LAKpi, Policy = Constant.Policy.None)]
         public async Task<ActionResult> LaKpi()
         {
             await accessCounter.UpdateCounter("LAKpi");
