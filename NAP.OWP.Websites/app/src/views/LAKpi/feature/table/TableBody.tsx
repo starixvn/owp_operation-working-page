@@ -2,7 +2,7 @@ import React from 'react';
 import { DataSource } from '../type/TableType.native';
 import TableBodyTotalGame from './TableBodyTotalGame';
 
-const TableBody = (props: { dataSource: Array<DataSource> }) => {
+const TableBody = (props: {
   dataSource: Array<DataSource>;
   isGap: boolean;
 }) => {

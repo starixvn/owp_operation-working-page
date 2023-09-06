@@ -115,16 +115,20 @@
     }
 
     tbody {
-      background: rgba(172, 184, 168, 0.2);
-
       .row-even {
+        &:hover {
+          background-color: #cef3fc !important;
+        }
+
         background: #f5f5f5 !important;
       }
 
-      tr {
+      .row-odd {
         &:hover {
           background-color: #cef3fc;
         }
+
+        background: rgba(172, 184, 168, 0.2);
       }
     }
 
