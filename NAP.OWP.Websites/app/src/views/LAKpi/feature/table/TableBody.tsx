@@ -2,14 +2,16 @@ import React from 'react';
 import { DataSource } from '../type/TableType.native';
 import TableBodyTotalGame from './TableBodyTotalGame';
 
-const TableBody = (props: {
+const TableBody = (props: { dataSource: Array<DataSource> }) => {
   dataSource: Array<DataSource>;
   isGap: boolean;
 }) => {
   return (
     <>
       {props.dataSource.map((item, index) => (
-        <tr key={`${item.userName}-${index}`}>
+        <tr
+          className={`${index % 2 === 0 ? 'row-even' : 'row-odd'}`}
+          key={`${item.userName}-${index}`}>
           <td>{index + 1}</td>
           <td>{item.userName}</td>
           {props.isGap && (
