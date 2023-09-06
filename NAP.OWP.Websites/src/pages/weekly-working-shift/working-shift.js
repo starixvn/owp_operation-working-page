@@ -381,7 +381,7 @@ jQuery(document).ready(function ($) {
     });
 
     $('#btnExportAllWorkingShiftSMSLocal').on('click', function () {
-        var sectionIds = [1, 3, 5, 6, 7, 8, 13, 14, 18, 20, 21, 24, 27, 26];
+        var sectionIds = [1, 3, 5, 6, 7, 8, 13, 14, 18, 20, 21, 24, 27, 26, 31,32,33,34,35,36];
         var deparmentIds = [9, 14, 11, 15, 12, 13, 8, 3, 2, 10, 6, 1, 7, 0];
         var userCategoryIds = [1];
         var userLocationCodes = ['SMS', 'WAH HCMC'];
@@ -399,7 +399,7 @@ jQuery(document).ready(function ($) {
     });
 
     $('#btnExportAllWorkingShiftSMSExpat').on('click', function () {
-        var sectionIds = [1, 2, 3, 5, 13, 14, 15, 18, 20];
+        var sectionIds = [1, 2, 3, 5, 13, 14, 15, 18, 20, 31, 32, 35, 36];
         var deparmentIds = [9, 14, 11, 15, 12, 13, 8, 3, 2, 10, 6, 1, 7, 0];
         var userCategoryIds = [2];
         var userLocationCodes = ['SMS', 'WAH HCMC'];
