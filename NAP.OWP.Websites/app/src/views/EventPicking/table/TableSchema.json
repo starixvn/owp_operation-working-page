@@ -10,7 +10,7 @@
     "maxHeight": 750,
     "headerHeight": 50,
     "initialWidth": 15,
-    "coefficientTable":14500
+    "coefficientTable": 14500
   },
   "No": {
     "order": 1,
@@ -55,5 +55,20 @@
     "headerName": "Remark",
     "columnKey": "Remark",
     "isCanFilter": true
+  },
+  "R&DUpdate": {
+    "headerName": "R&D Update",
+    "columnKey": "R&DUpdate",
+    "isCanFilter": false
+  },
+  "CheckedByLst": {
+    "headerName": "Checked by LST",
+    "columnKey": "CheckedByLst",
+    "isCanFilter": false
+  },
+  "Action": {
+    "headerName": "Checked by LST",
+    "columnKey": "CheckedByLst",
+    "isCanFilter": false
   }
 }

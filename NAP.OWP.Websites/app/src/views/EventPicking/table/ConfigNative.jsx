@@ -9,8 +9,12 @@ import {
   MaxBetCell,
   IPTvStreamingCell,
   ProviderCell,
-  RoundCell
+  RoundCell,
+  RAndDUpdateCell,
+  CheckedByLstCell,
+  ActionCell
 } from './Cell';
+
 import {
   No,
   KOTime,
@@ -20,7 +24,10 @@ import {
   MaxBet,
   IPTvStreaming,
   Provider,
-  Round
+  Round,
+  RAndDUpdate,
+  CheckedByLst,
+  Action
 } from './TableSchema.json';
 
 const dynamicCell = (rowIndex, cellModel) => {
@@ -44,6 +51,12 @@ const dynamicCell = (rowIndex, cellModel) => {
       return <RoundCell dataSource={dataSource} rowIndex={rowIndex} />;
     case Remark.columnKey:
       return <RemarkCell dataSource={dataSource} rowIndex={rowIndex} />;
+    case RAndDUpdateCell.columnKey:
+      return <RAndDUpdate dataSource={dataSource} rowIndex={rowIndex} />;
+    case CheckedByLstCell.columnKey:
+      return <CheckedByLst dataSource={dataSource} rowIndex={rowIndex} />;
+    case ActionCell.columnKey:
+      return <Action dataSource={dataSource} rowIndex={rowIndex} />;
   }
   return null;
 };

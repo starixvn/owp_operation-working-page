@@ -8,7 +8,10 @@ import {
   MaxBet,
   IPTvStreaming,
   Provider,
-  Round
+  Round,
+  RAndDUpdate,
+  CheckedByLst,
+  Action
 } from './TableSchema.json';
 
 import {
@@ -90,7 +93,10 @@ const selectTable = widthWindow => {
       buildColumn(width * 0.15, IPTvStreaming),
       buildColumn(width * 0.15, Provider),
       buildColumn(width * 0.15, Round),
-      buildColumn(width * 0.15, Remark)
+      buildColumn(width * 0.15, Remark),
+      buildColumn(width * 0.15, RAndDUpdate),
+      buildColumn(width * 0.15, CheckedByLst),
+      buildColumn(width * 0.15, Action)
     ],
     tableStyle: DefaultTableStyle,
     filterFunc: filterBySearchKey,
