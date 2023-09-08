@@ -2,10 +2,11 @@
   "netCoreURL": "api-netcore/EventPicking",
   "netFwURL": "api/EventPicking",
   "getEventPicking": "get-event-picking",
+  "getLogsHistory": "get-logs-history",
   "UPDATE_NO_OFFER_MATCH": "update-noOffer-match",
-  "MESSAGE":{
-    "CHECK_ALL":"Are you sure you want to select all of these matches?",
-    "UN_CHECK_ALL":"Are you sure you want to unselect all of these matches?"
+  "MESSAGE": {
+    "CHECK_ALL": "Are you sure you want to select all of these matches?",
+    "UN_CHECK_ALL": "Are you sure you want to unselect all of these matches?"
   },
   "SELECT_GAME": [
     {

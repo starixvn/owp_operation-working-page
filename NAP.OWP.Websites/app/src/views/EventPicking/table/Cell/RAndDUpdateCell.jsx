@@ -9,22 +9,22 @@ const propTypes = {
 
 const RAndDUpdateCell = props => {
   const { rowIndex, dataSource } = props;
-  const { rAndDUpdate } = dataSource[rowIndex];
+  const { rAndDInfos } = dataSource[rowIndex];
   const renderCell = () => {
     return (
       <div className='r-and-d-update-cell'>
         <div className='r-and-d-update'>
           <ul className='r-and-d-update-list'>
-            {rAndDUpdate.map(info => (
+            {rAndDInfos.map(info => (
               <li
                 key={uniqueId()}
                 style={{
-                  backgroundColor: info.backgroundColor,
+                  backgroundColor: info.bgColor,
                   color: info.textColor,
                   margin: '2px',
                   padding: '2px'
                 }}>
-                {info.content}
+                {info.rAndDUpdate}
               </li>
             ))}
           </ul>
@@ -33,7 +33,7 @@ const RAndDUpdateCell = props => {
     );
   };
 
-  return rAndDUpdate.length && renderCell();
+  return rAndDInfos.length && renderCell();
 };
 
 RAndDUpdateCell.propTypes = propTypes;
