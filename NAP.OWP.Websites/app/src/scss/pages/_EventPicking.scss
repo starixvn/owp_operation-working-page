@@ -275,6 +275,9 @@ input[type='checkbox'] {
   .streaming-info-cell,
   .provider-cell,
   .round-cell,
+  .r-and-d-update-cell,
+  .checked-cell,
+  .action-cell,
   .remark-cell {
     padding: 0;
     margin: 0;
@@ -289,6 +292,16 @@ input[type='checkbox'] {
   .round-cell,
   .remark-cell {
     padding: 5px 5px;
+  }
+  .checked-cell,
+  .action-cell {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .r-and-d-update-list {
+    padding: 5px 5px;
+    width: fit-content;
   }
   .ko-time-cell {
     text-align: center;
@@ -314,7 +327,7 @@ input[type='checkbox'] {
     display: block;
     .offer {
       span {
-        margin:2px 2px;
+        margin: 2px 2px;
         display: inline-block;
         padding: 3px 5px;
         border-radius: 10px;

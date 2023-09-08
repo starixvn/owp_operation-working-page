@@ -7,6 +7,9 @@ import MaxBetCell from './MaxBetCell';
 import ProviderCell from './ProviderCell';
 import RemarkCell from './RemarkCell';
 import RoundCell from './RoundCell';
+import ActionCell from './ActionCell';
+import RAndDUpdateCell from './RAndDUpdateCell';
+import CheckedByLstCell from './CheckedByLstCell';
 export {
   NoCell,
   IPTvStreamingCell,
@@ -16,5 +19,8 @@ export {
   MatchCell,
   ProviderCell,
   RemarkCell,
-  LeagueCell
+  LeagueCell,
+  ActionCell,
+  RAndDUpdateCell,
+  CheckedByLstCell
 };

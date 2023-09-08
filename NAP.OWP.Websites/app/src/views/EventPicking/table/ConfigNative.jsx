@@ -51,12 +51,12 @@ const dynamicCell = (rowIndex, cellModel) => {
       return <RoundCell dataSource={dataSource} rowIndex={rowIndex} />;
     case Remark.columnKey:
       return <RemarkCell dataSource={dataSource} rowIndex={rowIndex} />;
-    case RAndDUpdateCell.columnKey:
-      return <RAndDUpdate dataSource={dataSource} rowIndex={rowIndex} />;
-    case CheckedByLstCell.columnKey:
-      return <CheckedByLst dataSource={dataSource} rowIndex={rowIndex} />;
-    case ActionCell.columnKey:
-      return <Action dataSource={dataSource} rowIndex={rowIndex} />;
+    case RAndDUpdate.columnKey:
+      return <RAndDUpdateCell dataSource={dataSource} rowIndex={rowIndex} />;
+    case CheckedByLst.columnKey:
+      return <CheckedByLstCell dataSource={dataSource} rowIndex={rowIndex} />;
+    case Action.columnKey:
+      return <ActionCell dataSource={dataSource} rowIndex={rowIndex} />;
   }
   return null;
 };

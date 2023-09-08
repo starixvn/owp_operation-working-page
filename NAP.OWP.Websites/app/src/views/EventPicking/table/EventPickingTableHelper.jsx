@@ -95,8 +95,8 @@ const selectTable = widthWindow => {
       buildColumn(width * 0.15, Round),
       buildColumn(width * 0.15, Remark),
       buildColumn(width * 0.15, RAndDUpdate),
-      buildColumn(width * 0.15, CheckedByLst),
-      buildColumn(width * 0.15, Action)
+      buildColumn(100, CheckedByLst),
+      buildColumn(50, Action)
     ],
     tableStyle: DefaultTableStyle,
     filterFunc: filterBySearchKey,

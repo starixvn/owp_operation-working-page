@@ -1,6 +1,5 @@
-import React, { Fragment, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { UncontrolledTooltip } from 'reactstrap';
 import { uniqueId } from 'lodash';
 
 const propTypes = {
@@ -10,31 +9,31 @@ const propTypes = {
 
 const RAndDUpdateCell = props => {
   const { rowIndex, dataSource } = props;
-  const { leagueName, matchOffer, noHDP } = dataSource[rowIndex];
-  const matchOfferLst = matchOffer && matchOffer.split(',');
-  const refMatchOffer = useRef(null);
-  const refNoHdp = useRef(null);
-  return (
-    <div className='league-cell'>
-      <div className='league-name'>{leagueName}</div>
-      <div className='offer'>
-        {matchOffer &&
-          matchOfferLst.map(x => (
-            <Fragment key={uniqueId()}>
-              <span ref={refMatchOffer}>{x}</span>
-            </Fragment>
-          ))}
-        {noHDP && (
-          <>
-            <span ref={refNoHdp}>{noHDP}</span>
-            <UncontrolledTooltip placement='top-start' target={refNoHdp}>
-              {noHDP}
-            </UncontrolledTooltip>
-          </>
-        )}
+  const { rAndDUpdate } = dataSource[rowIndex];
+  const renderCell = () => {
+    return (
+      <div className='r-and-d-update-cell'>
+        <div className='r-and-d-update'>
+          <ul className='r-and-d-update-list'>
+            {rAndDUpdate.map(info => (
+              <li
+                key={uniqueId()}
+                style={{
+                  backgroundColor: info.backgroundColor,
+                  color: info.textColor,
+                  margin: '2px',
+                  padding: '2px'
+                }}>
+                {info.content}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
+
+  return rAndDUpdate.length && renderCell();
 };
 
 RAndDUpdateCell.propTypes = propTypes;

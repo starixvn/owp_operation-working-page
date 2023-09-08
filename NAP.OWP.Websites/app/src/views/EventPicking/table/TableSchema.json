@@ -56,9 +56,9 @@
     "columnKey": "Remark",
     "isCanFilter": true
   },
-  "R&DUpdate": {
+  "RAndDUpdate": {
     "headerName": "R&D Update",
-    "columnKey": "R&DUpdate",
+    "columnKey": "RAndDUpdate",
     "isCanFilter": false
   },
   "CheckedByLst": {
@@ -67,8 +67,8 @@
     "isCanFilter": false
   },
   "Action": {
-    "headerName": "Checked by LST",
-    "columnKey": "CheckedByLst",
+    "headerName": "Action",
+    "columnKey": "Action",
     "isCanFilter": false
   }
 }
