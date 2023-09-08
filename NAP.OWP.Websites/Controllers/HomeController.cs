@@ -324,5 +324,13 @@ namespace NAP.OWP.Websites.Controllers
             return View("~/wwwroot/assignee-suggestion-list/server.cshtml");
         }
 
+        [Route("LAKpi")]
+        [NapAuth(FunctionKey = FunctionKeys.LAKpi, Policy = Constant.Policy.None)]
+        public async Task<ActionResult> LaKpi()
+        {
+            await accessCounter.UpdateCounter("LAKpi");
+            return View("~/wwwroot/la-kpi/server.cshtml");
+        }
+
     }
 }

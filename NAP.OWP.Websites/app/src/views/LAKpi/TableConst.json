@@ -1,0 +1,33 @@
+{
+  "keyOfTotalGameInfo": [
+    {
+      "label": "Virtual Matches",
+      "key": "virtualMatches"
+    },
+    {
+      "label": "Multiple Matches",
+      "key": "multipleMatches"
+    },
+    {
+      "label": "Special Products",
+      "key": "specialProducts"
+    },
+    {
+      "label": "5 Major Leagues",
+      "key": "fiveMajorLeagues"
+    },
+    {
+      "label": "Multiple Products",
+      "key": "multipleProducts"
+    }
+  ],
+  "keyOfConditionTable": {
+    "totalVirtualMultipleMatches": "Virtual Matches + Multiple Matches",
+    "virtualMatches": "Virtual Matches",
+    "multipleMatches": "Multiple Matches",
+    "specialProducts": "Special Products",
+    "fiveMajorLeagues": "5 Major Leagues",
+    "multipleProducts": "Multiple Products"
+  },
+  "headerHeight": 150
+}

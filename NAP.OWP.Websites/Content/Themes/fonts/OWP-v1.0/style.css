@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'OWP';
-  src:  url('fonts/OWP.eot?8al0au');
-  src:  url('fonts/OWP.eot?8al0au#iefix') format('embedded-opentype'),
-    url('fonts/OWP.ttf?8al0au') format('truetype'),
-    url('fonts/OWP.woff?8al0au') format('woff'),
-    url('fonts/OWP.svg?8al0au#OWP') format('svg');
+  src:  url('fonts/OWP.eot?2ggqfg');
+  src:  url('fonts/OWP.eot?2ggqfg#iefix') format('embedded-opentype'),
+    url('fonts/OWP.ttf?2ggqfg') format('truetype'),
+    url('fonts/OWP.woff?2ggqfg') format('woff'),
+    url('fonts/OWP.svg?2ggqfg#OWP') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-kpi:before {
+  content: "\e91f";
+}
 .icon-provider-arrangement:before {
   content: "\e91e";
 }
