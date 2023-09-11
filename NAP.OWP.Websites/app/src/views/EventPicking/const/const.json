@@ -3,6 +3,8 @@
   "netFwURL": "api/EventPicking",
   "getEventPicking": "get-event-picking",
   "getLogsHistory": "get-logs-history",
+  "getLeague": "get-league-name",
+  "getUpdateType": "get-update-type",
   "UPDATE_NO_OFFER_MATCH": "update-noOffer-match",
   "MESSAGE": {
     "CHECK_ALL": "Are you sure you want to select all of these matches?",

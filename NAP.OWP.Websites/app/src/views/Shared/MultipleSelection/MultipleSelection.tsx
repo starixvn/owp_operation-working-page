@@ -11,6 +11,7 @@ const MultipleSelection = (props: IMultipleSelectProps) => {
     isRequired,
     onValueRenderer,
     onShowDropdownListOption,
+    disableSearch,
     ...multiSelectProp
   } = props;
   const [className, setClassName] = useState<string | null>(null);
@@ -56,7 +57,7 @@ const MultipleSelection = (props: IMultipleSelectProps) => {
   }, [className, onShowDropdownListOption]);
 
   return (
-    <div className={`multi-select-dropdown ${className}`}>
+    <div className={`multi-select-dropdown ${props.className} ${className}`}>
       <div className='label'>
         {label}
         {isRequired && <span className='required-field'> *</span>}
@@ -68,7 +69,7 @@ const MultipleSelection = (props: IMultipleSelectProps) => {
         options={props.options}
         ClearSelectedIcon={null}
         className={`multi-select ${props.disabled ? 'disable-text' : ''}`}
-        disableSearch
+        disableSearch={props.disableSearch ?? true}
         disabled={props.disabled}
         hasSelectAll
         labelledBy='Select...'

@@ -1,6 +1,6 @@
 import { IMultipleSelectProps } from "../../Shared/MultipleSelection/type";
 
-type TCommonFilterInfo = Date | (number | string)[];
+type TCommonFilterInfo = Date | (number | string | null)[];
 type TFilter = {
   [x: string]: TCommonFilterInfo
 };

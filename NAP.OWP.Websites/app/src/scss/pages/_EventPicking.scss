@@ -109,6 +109,9 @@ input[type='checkbox'] {
   position: relative;
   padding: 0 1rem;
 }
+.multi-select .select-panel > div {
+  display: block !important;
+}
 .filter-control {
   flex: 0 1;
   display: flex;
@@ -137,7 +140,6 @@ input[type='checkbox'] {
       }
       .dropdown-content {
         left: 0;
-
         .select-panel {
           .select-list {
             li {
@@ -417,4 +419,23 @@ input[type='checkbox'] {
 }
 .form-check-input:checked[type='checkbox'] {
   background-image: none !important;
+}
+.multi-select
+  .select-item
+  .item-renderer
+  input[type='checkbox']
+  + span::before {
+  margin-right: 7px;
+}
+.multi-select-dropdown {
+  &.league {
+    width: 300px;
+  }
+  &.update-type {
+    width: 180px;
+  }
+}
+
+.multi-select .select-item .item-renderer input[type='checkbox'] + span {
+  height: auto;
 }

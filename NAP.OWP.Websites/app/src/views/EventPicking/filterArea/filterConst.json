@@ -1,10 +1,12 @@
 {
   "DATE": "date",
-  "FILTER_MATCH_CATEGORY":"filterMatchCategory",
+  "LEAGUE": "league",
+  "FILTER_MATCH_CATEGORY": "filterMatchCategory",
   "FILTER_MATCH": "filterMatch",
   "SELECT_GAME": "selectGame",
   "HAS_PROVIDER": "hasProvider",
   "HAS_OTHER_PROVIDER": "hasOtherProvider",
+  "UPDATE_TYPE": "updateType",
   "SELECT_GAME_OPTIONS": [
     {
       "value": 1,
