@@ -12,12 +12,13 @@ import League from './League';
 import SelectGame from './SelectGame';
 import UpdateType from './UpdateType';
 import { getLeagues, getUpdateTypes } from './slice/filterThunkNative';
+import Utils from '../../Shared/Utils';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const { date } = useSelector((state: RootState) => state.filter.param);
   useEffect(() => {
-    dispatch(getLeagues((date as Date).toDateString()));
+    dispatch(getLeagues(Utils.formatDate(date)));
   }, [date, dispatch]);
 
   useEffect(() => {

@@ -16,6 +16,7 @@ import {
   UPDATE_TYPE
 } from '../filterConst.json';
 import { getLeagues, getUpdateTypes } from './filterThunkNative';
+import Utils from '../../../Shared/Utils';
 
 const filterSlice = createSlice({
   name: 'filter/filterSlice',
@@ -23,7 +24,7 @@ const filterSlice = createSlice({
     leagues: [] as Option[],
     updateTypes: [] as Option[],
     param: {
-      [DATE]: new Date(),
+      [DATE]: Utils.formatDate(new Date()),
       [FILTER_MATCH]: FILTER_MATCH_OPTIONS.map(m => m.value),
       [SELECT_GAME]: SELECT_GAME_OPTIONS.map(m => m.value),
       [HAS_PROVIDER]: HAS_PROVIDER_OPTIONS.map(m => m.value),
@@ -50,7 +51,7 @@ const filterSlice = createSlice({
         state.updateTypes = payload.concat(noneOption);
         state.param[UPDATE_TYPE] = state.updateTypes.map(m => m.value);
       });
-  },
+  }
 });
 
 const { reducer, actions } = filterSlice;

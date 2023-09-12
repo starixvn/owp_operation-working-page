@@ -6,6 +6,7 @@ import useStableDispatch from '../../Shared/customHook/useStableDispatch';
 import { maxDate, minDate } from '../helper/filterHelper';
 import { DATE } from './filterConst.json';
 import { setFilter } from './slice/filterSlice';
+import Utils from '../../Shared/Utils';
 
 function DateTimePicker() {
   const [openCalendar, setOpenCalendar] = useState(false);
@@ -19,7 +20,7 @@ function DateTimePicker() {
       dispatch(
         setFilter({
           key: DATE,
-          value: newDate
+          value: Utils.formatDate(newDate)
         })
       );
     }
