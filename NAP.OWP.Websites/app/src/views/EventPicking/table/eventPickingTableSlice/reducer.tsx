@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { getEventPickings } from './eventSliceThunkNative';
-import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
+import updateNoOfferMatchThunk from '../updateConfirmedThunkNative';
 import { updateEntities } from '../../helper/reducerHelper';
 import { TTableSlice, TFilterState } from '../../types/dataTableType';
 import {

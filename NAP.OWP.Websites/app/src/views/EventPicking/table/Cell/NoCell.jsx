@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import store from '../../app/store';
 import { Input } from 'reactstrap';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
-import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
+import updateNoOfferMatchThunk from '../updateConfirmedThunkNative';
 import {
   buildNoOfferChildMatchInfo,
   buildNoOfferMainMatchInfo

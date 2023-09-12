@@ -1,7 +1,7 @@
 import Spinner from '../../components/Spinner';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import store from '../app/store';
-import updateNoOfferMatchThunk from '../table/updateNoOfferMatchThunkNative';
+import updateNoOfferMatchThunk from '../table/updateConfirmedThunkNative';
 import { MESSAGE } from '../const/const.json';
 import { TDataSource, TNoOfferMatch } from '../types/noOfferMatchType';
 
