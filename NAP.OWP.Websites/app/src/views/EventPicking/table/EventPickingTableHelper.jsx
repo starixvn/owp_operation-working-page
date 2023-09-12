@@ -24,13 +24,22 @@ import { dynamicCell } from './ConfigNative';
 import { calculateCustomTableWidth } from '../../Shared/common/CustomTable/Helper';
 
 const buildColumn = (width, column) => {
-  const { headerName, columnKey, isCanFilter, isCheckBox } = column;
+  const {
+    headerName,
+    columnKey,
+    isCanFilter,
+    isCheckBox,
+    onCheckChange,
+    checked
+  } = column;
   return {
     headerName,
     columnKey,
     isCanFilter,
     isCheckBox,
-    width
+    width,
+    checked,
+    onCheckChange
   };
 };
 
@@ -80,12 +89,17 @@ const passColorRowTable = dataSource => {
   return `${dataSource.rowColor}-row`;
 };
 
-const selectTable = widthWindow => {
+const selectTable = (isNoOfferAll, isConfirmAll) => {
+  const widthWindow = window.innerWidth - DefaultTableStyle.widthResize;
   const minWidth = 880;
   const width = widthWindow < minWidth ? minWidth : widthWindow;
   return {
     columnSchema: [
-      buildColumn(width * 0.03, No),
+      buildColumn(width * 0.03, {
+        ...No,
+        checked: isNoOfferAll,
+        onCheckChange: handleNoOfferAllMatch
+      }),
       buildColumn(width * 0.05, KOTime),
       buildColumn(width * 0.15, League),
       buildColumn(width * 0.14, Match),
@@ -95,7 +109,11 @@ const selectTable = widthWindow => {
       buildColumn(width * 0.15, Round),
       buildColumn(width * 0.15, Remark),
       buildColumn(width * 0.15, RAndDUpdate),
-      buildColumn(100, CheckedByLst),
+      buildColumn(100, {
+        ...CheckedByLst,
+        checked: isConfirmAll,
+        onCheckChange: () => console.log('CheckedByLst')
+      }),
       buildColumn(50, Action)
     ],
     tableStyle: DefaultTableStyle,
@@ -103,8 +121,7 @@ const selectTable = widthWindow => {
     clearFilterFunc: clearFilter,
     dynamicCell,
     tableWidth: columnSchema =>
-      calculateCustomTableWidth(columnSchema, DefaultTableStyle.initialWidth),
-    onCheckChange: handleNoOfferAllMatch
+      calculateCustomTableWidth(columnSchema, DefaultTableStyle.initialWidth)
   };
 };
 
