@@ -18,8 +18,11 @@ const Filter = () => {
   const { date } = useSelector((state: RootState) => state.filter.param);
   useEffect(() => {
     dispatch(getLeagues((date as Date).toDateString()));
-    dispatch(getUpdateTypes());
   }, [date, dispatch]);
+
+  useEffect(() => {
+    dispatch(getUpdateTypes());
+  }, [dispatch]);
 
   return (
     <div className='filter-control'>

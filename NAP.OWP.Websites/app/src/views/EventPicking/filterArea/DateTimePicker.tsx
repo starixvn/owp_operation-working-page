@@ -1,12 +1,11 @@
+import CalendarIcon from 'mdi-react/CalendarIcon';
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import CalendarIcon from 'mdi-react/CalendarIcon';
+import { v4 as uuidv4 } from 'uuid';
 import useStableDispatch from '../../Shared/customHook/useStableDispatch';
+import { maxDate, minDate } from '../helper/filterHelper';
 import { DATE } from './filterConst.json';
 import { setFilter } from './slice/filterSlice';
-import { maxDate, minDate } from '../helper/filterHelper';
-import { v4 as uuidv4 } from 'uuid';
-import { getLeagues } from './slice/filterThunkNative';
 
 function DateTimePicker() {
   const [openCalendar, setOpenCalendar] = useState(false);
@@ -23,7 +22,6 @@ function DateTimePicker() {
           value: newDate
         })
       );
-      dispatch(getLeagues(newDate.toDateString()));
     }
   };
 
