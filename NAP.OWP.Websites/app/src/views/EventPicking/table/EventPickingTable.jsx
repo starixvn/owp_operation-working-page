@@ -17,7 +17,7 @@ const getTableSchema = () => {
 const EventPickingTable = () => {
   const [tableSchema, setTableSchema] = useState(getTableSchema());
   const model = useSelector(state => state.eventPickingTable);
-  const { isNoOfferAll, entities, ...rest } = model;
+  const { isNoOfferAll, isConfirmAll, entities, ...rest } = model;
   const { permission } = store.getState().pagePolicy;
   const config = {
     ...tableSchema,
