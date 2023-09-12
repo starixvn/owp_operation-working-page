@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
-import HistoricIcon from 'mdi-react/HistoricIcon';
+import LogHistoryIcon from '../../../../assets/svg-element/LogHistoryIcon';
 import HistoryModal from '../../modal/HistoryModal.native';
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -16,8 +15,8 @@ const ActionCell = props => {
   return (
     <>
       <div className='action-cell'>
-        <span className='icon-history' onClick={() => setOpenLog(true)}>
-          <HistoricIcon size={14} />
+        <span className='icon-history-event' onClick={() => setOpenLog(true)}>
+          <LogHistoryIcon width={24} height={24} />
         </span>
       </div>
       {openLog && (
