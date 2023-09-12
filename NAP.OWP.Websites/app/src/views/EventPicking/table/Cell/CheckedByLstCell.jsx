@@ -31,6 +31,7 @@ const CheckedByLstCell = props => {
     <div className='checked-cell'>
       <Input
         type='checkbox'
+        className='check-by-lst'
         checked={isCheck}
         disabled={!permission.HasWrite}
         onChange={handleSelectedChanged}

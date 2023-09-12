@@ -504,3 +504,21 @@ input[type='checkbox'] {
     max-width: 290px;
   }
 }
+
+.check-by-lst:checked {
+  background-color: green !important;
+  border-color: green !important;
+}
+
+.check-by-lst:checked:after {
+  content: '✔' !important;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-top: 1px;
+}

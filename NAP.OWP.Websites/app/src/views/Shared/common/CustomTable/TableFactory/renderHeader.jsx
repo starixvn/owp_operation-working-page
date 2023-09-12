@@ -13,6 +13,7 @@ const renderHeader = headerModel => {
     isCanCollapseExpand,
     isCheckBox,
     checked,
+    className,
     canCheck,
     onCheckChange
   } = headerModel;
@@ -50,6 +51,7 @@ const renderHeader = headerModel => {
         </span>
         <input
           type='checkbox'
+          className={className}
           disabled={!canCheck}
           checked={checked}
           onChange={onCheckChange}

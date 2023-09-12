@@ -65,7 +65,8 @@
     "headerName": "Checked by LST",
     "columnKey": "CheckedByLst",
     "isCanFilter": false,
-    "isCheckBox": true
+    "isCheckBox": true,
+    "className": "check-by-lst"
   },
   "Action": {
     "headerName": "Action",

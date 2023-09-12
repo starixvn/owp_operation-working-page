@@ -32,6 +32,7 @@ const createColumn = props => {
     isFreeze,
     isCheckBox,
     checked,
+    className,
     onCheckChange
   } = columnModel;
 
@@ -48,6 +49,7 @@ const createColumn = props => {
     isCheckBox,
     canCheck,
     checked,
+    className,
     onCheckChange,
     sortFunc,
     filterFunc,

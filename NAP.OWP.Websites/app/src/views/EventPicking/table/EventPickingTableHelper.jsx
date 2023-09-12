@@ -31,7 +31,8 @@ const buildColumn = (width, column) => {
     isCanFilter,
     isCheckBox,
     onCheckChange,
-    checked
+    checked,
+    className
   } = column;
   return {
     headerName,
@@ -40,6 +41,7 @@ const buildColumn = (width, column) => {
     isCheckBox,
     width,
     checked,
+    className,
     onCheckChange
   };
 };
