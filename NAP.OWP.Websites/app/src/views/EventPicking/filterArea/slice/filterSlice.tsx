@@ -48,7 +48,7 @@ const filterSlice = createSlice({
       .addCase(getUpdateTypes.fulfilled, (state, { payload }) => {
         const noneOption = { value: null, label: '-- None --' } as Option;
         state.updateTypes = payload.concat(noneOption);
-        state.param[UPDATE_TYPE] = payload.map(m => m.value);
+        state.param[UPDATE_TYPE] = state.updateTypes.map(m => m.value);
       });
   },
 });
