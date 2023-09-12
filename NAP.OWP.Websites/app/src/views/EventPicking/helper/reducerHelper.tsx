@@ -22,7 +22,7 @@ const updateConfirmedMatch = (entities: TDataTable[], confirmInfo: TConfirmed) =
       id =>
         id === element.infoSiteMatchId
     )) {
-      element.confirmed = confirmInfo.confirmed;
+      element.isCheck = confirmInfo.confirmed;
     }
   });
 };

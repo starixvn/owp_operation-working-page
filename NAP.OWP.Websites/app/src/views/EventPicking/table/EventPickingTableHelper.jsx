@@ -22,6 +22,7 @@ import handleNoOfferAllMatch from '../helper/noOfferAllMatchHelper';
 import { dynamicCell } from './ConfigNative';
 
 import { calculateCustomTableWidth } from '../../Shared/common/CustomTable/Helper';
+import updateConfirmAllEvent from '../helper/confirmedHelper';
 
 const buildColumn = (width, column) => {
   const {
@@ -109,10 +110,10 @@ const selectTable = (isNoOfferAll, isConfirmAll) => {
       buildColumn(width * 0.15, Round),
       buildColumn(width * 0.15, Remark),
       buildColumn(width * 0.15, RAndDUpdate),
-      buildColumn(100, {
+      buildColumn(width * 0.17, {
         ...CheckedByLst,
         checked: isConfirmAll,
-        onCheckChange: () => console.log('CheckedByLst')
+        onCheckChange: updateConfirmAllEvent
       }),
       buildColumn(50, Action)
     ],

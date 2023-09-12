@@ -27,15 +27,17 @@ const EventPickingTable = () => {
     onRowClassNameGetter: index => passColorRowTable(entities[index])
   };
 
-  const handleResizeBrowser = () => {
-    const { innerWidth } = window;
-    setTableSchema(selectTable(innerWidth - DefaultTableStyle.widthResize));
-  };
+  const handleResizeBrowser = () =>
+    setTableSchema(selectTable(isNoOfferAll, isConfirmAll));
 
   useEffect(() => {
     window.addEventListener('resize', handleResizeBrowser);
     return () => window.removeEventListener('resize', handleResizeBrowser);
   }, []);
+
+  useEffect(() => {
+    setTableSchema(selectTable(isNoOfferAll, isConfirmAll));
+  }, [isNoOfferAll, isConfirmAll]);
 
   return (
     <CustomTable

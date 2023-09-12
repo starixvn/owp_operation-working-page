@@ -26,7 +26,7 @@ type TDataTable = {
   division: string;
   round: string;
   eTPK: string;
-  confirmed: boolean;
+  isCheck: boolean;
 };
 
 type TTableSlice = {

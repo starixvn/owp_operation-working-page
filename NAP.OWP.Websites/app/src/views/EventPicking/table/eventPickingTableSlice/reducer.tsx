@@ -30,7 +30,7 @@ const EventPickingTableSlice = createSlice({
         filterByKeyword
       );
       if (state.entities.length) {
-        state.isConfirmAll = state.entities.every(x => x.confirmed);
+        state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
       }
     },
@@ -39,7 +39,7 @@ const EventPickingTableSlice = createSlice({
       state.filterState = [];
       state.entities = entitiesOriginal;
       if (state.entities.length) {
-        state.isConfirmAll = state.entities.every(x => x.confirmed);
+        state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
       }
     }
@@ -59,7 +59,7 @@ const EventPickingTableSlice = createSlice({
         updateConfirmedMatch(state.entitiesOriginal, confirmInfo);
         updateConfirmedMatch(state.entities, confirmInfo);
         if (state.entities.length) {
-          state.isConfirmAll = state.entities.every(x => x.confirmed);
+          state.isConfirmAll = state.entities.every(x => x.isCheck);
         }
       })
       .addCase(getEventPickings.pending, state => {
@@ -74,7 +74,7 @@ const EventPickingTableSlice = createSlice({
           filterByKeyword
         );
         if (state.entities.length) {
-          state.isConfirmAll = state.entities.every(x => x.confirmed);
+          state.isConfirmAll = state.entities.every(x => x.isCheck);
           state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
         }
       })

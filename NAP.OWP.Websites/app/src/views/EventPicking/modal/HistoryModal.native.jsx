@@ -6,6 +6,7 @@ import Loading from '../../components/Loading';
 import isEqual from 'lodash.isequal';
 import { get } from '../../Shared/Service/Service';
 import { netCoreURL, netFwURL, getLogsHistory } from '../const/const.json';
+import dayjs from 'dayjs';
 
 const resolveUrl = () =>
   process.env.NODE_ENV === 'development'
@@ -37,9 +38,13 @@ const HistoryModal = props => {
       const { date, modifiedBy, action, oldValue, newValue } = log;
       return (
         <tr key={index}>
-          <td className='date'>{date}</td>
+          <td className='date'>
+            {dayjs(date, 'YYYY-MM-DDTHH:mm:ss').format('MM/DD/YYYY hh:mm A')}
+          </td>
           <td className='modified-by'>{modifiedBy}</td>
-          <td className='action'>{action}</td>
+          <td className='action'>
+            <span dangerouslySetInnerHTML={{ __html: action }} />
+          </td>
           <td className='old-value'>{oldValue}</td>
           <td className='new-value'>{newValue}</td>
         </tr>

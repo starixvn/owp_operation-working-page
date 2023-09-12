@@ -107,7 +107,6 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
       ? ''
       : onRowClassNameGetter(index, entities);
   };
-
   return (
     <div className='table' ref={ref}>
       {isEqual(loading, REQUEST_STATUS.pending) && <Loading />}

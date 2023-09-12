@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import store from '../../app/store';
 import { Input } from 'reactstrap';
 import updateConfirmedThunk from '../updateConfirmedThunkNative';
+import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -11,8 +12,10 @@ const propTypes = {
 
 const CheckedByLstCell = props => {
   const { rowIndex, dataSource } = props;
-  const { confirmed, infoSiteMatchId } = dataSource[rowIndex];
+  const { isCheck, infoSiteMatchId } = dataSource[rowIndex];
+
   const { permission } = store.getState().pagePolicy;
+  const dispatch = useStableDispatch();
 
   const handleSelectedChanged = async event => {
     const value = event.target.checked;
@@ -28,7 +31,7 @@ const CheckedByLstCell = props => {
     <div className='checked-cell'>
       <Input
         type='checkbox'
-        checked={confirmed}
+        checked={isCheck}
         disabled={!permission.HasWrite}
         onChange={handleSelectedChanged}
       />
