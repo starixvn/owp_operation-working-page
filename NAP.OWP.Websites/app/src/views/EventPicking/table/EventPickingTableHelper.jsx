@@ -112,7 +112,7 @@ const selectTable = (isNoOfferAll, isConfirmAll) => {
       buildColumn(width * 0.15, Round),
       buildColumn(width * 0.15, Remark),
       buildColumn(width * 0.15, RAndDUpdate),
-      buildColumn(width * 0.17, {
+      buildColumn(width * 0.08, {
         ...CheckedByLst,
         checked: isConfirmAll,
         onCheckChange: updateConfirmAllEvent
