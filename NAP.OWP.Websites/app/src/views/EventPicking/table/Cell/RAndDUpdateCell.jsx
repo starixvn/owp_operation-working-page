@@ -22,8 +22,8 @@ const RAndDUpdateCell = props => {
                   style={{
                     backgroundColor: info.bgColor,
                     color: info.textColor,
-                    margin: '2px',
-                    padding: '2px'
+                    margin: '1px',
+                    padding: '1px'
                   }}>
                   {info.rAndDUpdate}
                 </li>
