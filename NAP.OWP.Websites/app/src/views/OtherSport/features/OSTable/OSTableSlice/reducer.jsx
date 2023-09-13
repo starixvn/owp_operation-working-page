@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 import { createSlice } from '@reduxjs/toolkit';
 import getOSAssignment from './getOSAssignmentThunkNative';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
@@ -20,8 +21,8 @@ const osLiveGameAssignmentSlice = createSlice({
     entities: [],
     entitiesOriginal: [],
     sortState: {
-      columnKey: undefined,
-      orderType: undefined
+      columnKey: undefined, // NOSONAR
+      orderType: undefined // NOSONAR
     },
     filterState: [],
     collapseExpandAllRowState: {
@@ -60,9 +61,10 @@ const osLiveGameAssignmentSlice = createSlice({
       );
       // eslint-disable-next-line no-warning-comments
       // eslint-disable-next-line no-unused-vars
-      state.collapseExpandRowState.rowHasModeCollapse = state.collapseExpandRowState.rowHasModeCollapse.filter(
-        r => r !== osMatchId
-      );
+      state.collapseExpandRowState.rowHasModeCollapse =
+        state.collapseExpandRowState.rowHasModeCollapse.filter(
+          r => r !== osMatchId
+        );
     },
     collapseAllRow: (state, action) => {
       state.collapseExpandAllRowState = action.payload;
@@ -115,41 +117,42 @@ const osLiveGameAssignmentSlice = createSlice({
       );
     }
   },
-  extraReducers: builder=> {
-    builder.addCase(getOSAssignment.pending,state => {
-      state.loading = REQUEST_STATUS.pending;
-    })
-    .addCase(getOSAssignment.fulfilled,(state, action) => {
-      state.loading = REQUEST_STATUS.idle;
-      state.entitiesOriginal = [...action.payload];
-      state.entities = filterDataTable(
-        state.entitiesOriginal,
-        state.filterState,
-        filterHomeOrAwayByKeyword
-      );
-      const { orderType, columnKey } = state.sortState;
-      state.entities = orderBy(state.entities, columnKey, orderType);
-      const { rowHasModeCollapse } = state.collapseExpandRowState;
-      state.entities.forEach(entity => {
-        const isCollapsed = rowHasModeCollapse.some(
-          r => r === entity.osMatchId
+  extraReducers: builder => {
+    builder
+      .addCase(getOSAssignment.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(getOSAssignment.fulfilled, (state, action) => {
+        state.loading = REQUEST_STATUS.idle;
+        state.entitiesOriginal = [...action.payload];
+        state.entities = filterDataTable(
+          state.entitiesOriginal,
+          state.filterState,
+          filterHomeOrAwayByKeyword
         );
-        isCollapsed &&
-          updatePropHidenTranderMaxbet(0, entity.traderMaxbetModels, true);
+        const { orderType, columnKey } = state.sortState;
+        state.entities = orderBy(state.entities, columnKey, orderType);
+        const { rowHasModeCollapse } = state.collapseExpandRowState;
+        state.entities.forEach(entity => {
+          const isCollapsed = rowHasModeCollapse.some(
+            r => r === entity.osMatchId
+          );
+          isCollapsed &&
+            updatePropHidenTranderMaxbet(0, entity.traderMaxbetModels, true);
+        });
+        const rowHasModeCollapseCloneable = [...rowHasModeCollapse];
+        state.collapseExpandRowState.rowHasModeCollapse.length = 0;
+        rowHasModeCollapseCloneable.forEach(matchId => {
+          const rowCollapsedInNewSession = state.entities.some(
+            r => r.osMatchId === matchId
+          );
+          rowCollapsedInNewSession &&
+            state.collapseExpandRowState.rowHasModeCollapse.push(matchId);
+        });
+      })
+      .addCase(getOSAssignment.rejected, state => {
+        state.loading = REQUEST_STATUS.idle;
       });
-      const rowHasModeCollapseCloneable = [...rowHasModeCollapse];
-      state.collapseExpandRowState.rowHasModeCollapse.length = 0;
-      rowHasModeCollapseCloneable.forEach(matchId => {
-        const rowCollapsedInNewSession = state.entities.some(
-          r => r.osMatchId === matchId
-        );
-        rowCollapsedInNewSession &&
-          state.collapseExpandRowState.rowHasModeCollapse.push(matchId);
-      });
-    })
-    .addCase(getOSAssignment.rejected,state => {
-      state.loading = REQUEST_STATUS.idle;
-    });
   }
 });
 

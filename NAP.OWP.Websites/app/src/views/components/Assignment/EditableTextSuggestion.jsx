@@ -265,7 +265,7 @@ class EditableTextSuggestion extends Component {
     }
   }
 
-  onChange = (event, { newValue }) => {
+  onChange = (_, { newValue }) => {
     this.setState({
       value: newValue,
       hasChange: true
@@ -351,7 +351,7 @@ class EditableTextSuggestion extends Component {
     });
   };
 
-  onSuggestionSelected(event, { suggestion }) {
+  onSuggestionSelected(_, { suggestion }) {
     this.setState({
       suggestionSelected: suggestion
     });

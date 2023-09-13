@@ -44,7 +44,8 @@ const Filter = () => {
   };
 
   const handleOnSearch = () => {
-    if (getMonthDifference(filterDate.fromDate, filterDate.toDate) > 24) {
+    const TWO_YEARS = 24;
+    if (getMonthDifference(filterDate.fromDate, filterDate.toDate) > TWO_YEARS) {
       ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
       return;
     }

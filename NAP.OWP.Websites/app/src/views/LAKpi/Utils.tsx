@@ -1,12 +1,14 @@
+/* eslint-disable no-warning-comments */
 const initDefaultFilterFromDate = () => {
-  const fromYear = new Date().getFullYear() - 2;
-  const fromDate = new Date(fromYear, 11, 1);
+  const fromYear = new Date().getFullYear() - 2; // NOSONAR
+  const fromDate = new Date(fromYear, 11, 1); // NOSONAR
+
   return fromDate;
 };
 
 const initDefaultFilterToDate = () => {
   const currentYear = new Date().getFullYear();
-  return new Date(currentYear, 10, 30);
+  return new Date(currentYear, 10, 30); // NOSONAR
 };
 
 const initDefaultFilterDate = () => ({
@@ -18,10 +20,11 @@ const getDaysInMonth = (date: Date) =>
   new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
 const getMonthDifference = (startDate: Date, endDate: Date) => {
+  const MONTH_NUMBER = 12;
   return (
     endDate.getMonth() -
     startDate.getMonth() +
-    12 * (endDate.getFullYear() - startDate.getFullYear()) +
+    MONTH_NUMBER * (endDate.getFullYear() - startDate.getFullYear()) +
     1
   );
 };

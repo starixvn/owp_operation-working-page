@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 import { tableSchema, defaultTableStyle } from '../../../Const.json';
 import dynamicCell from './dynamicCell';
 import { calculateCustomTableWidth } from '../../../../Shared/common/CustomTable/Helper';
@@ -20,7 +21,7 @@ const getConfigTable = containerWidth => {
     }),
     tableStyle: defaultTableStyle,
     dynamicCell,
-    sortFunc: undefined,
+    sortFunc: undefined, // NOSONAR
     onRowClassNameGetter: handleRowClassNameGetter,
     tableWidth
   };

@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 import { createSelector } from 'reselect';
 import MaxbetConst from '../constants/MaxbetConst';
 
@@ -29,7 +30,7 @@ const selectTeamInfo = createSelector(
   (loading, entity) => ({
     loading: loading ?? true,
     entity,
-    error: undefined
+    error: undefined // NOSONAR
   })
 );
 

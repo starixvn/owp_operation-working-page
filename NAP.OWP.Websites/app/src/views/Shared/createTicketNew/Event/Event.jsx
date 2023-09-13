@@ -30,7 +30,7 @@ const Event = props => {
   const [open, setOpen] = useState(false);
   const [eventOption, setEventOption] = useState([]);
 
-  const handleChangedAutoComplete = (event, value) => {
+  const handleChangedAutoComplete = (_, value) => {
     if (value) {
       const assignee = eventChecking.findIndex(
         x => x.eventInfoViewModel[0].owpLeagueId === value.owpLeagueId

@@ -1,16 +1,15 @@
 /* eslint-disable no-warning-comments */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Button, CardHeader, Collapse } from 'reactstrap';
-import PlusIcon from 'mdi-react/PlusIcon';
+import { isEqual, isNil } from 'lodash';
 import ChevronDownIcon from 'mdi-react/ChevronDownIcon';
 import ChevronRightIcon from 'mdi-react/ChevronRightIcon';
-import { isNil, isEqual } from 'lodash';
-import Service from './Service';
-import { MajorBetTypes } from '../../Shared/Constants';
-import OddTable from './OddTable';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Button, CardHeader, Collapse } from 'reactstrap';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { MajorBetTypes } from '../../Shared/Constants';
+import OddTable from './OddTable';
+import Service from './Service';
 
 const Toastr = withReactContent(Swal);
 const propTypes = {

@@ -53,13 +53,11 @@ const initializeAssignment = (assignmentType, bettype, minorBettypeId) => {
   };
 };
 
-const ishasSettings = matchSetting => {
-  return matchSetting.Maxbet || matchSetting.Spread;
-};
+const hasSettings = matchSetting => matchSetting.Maxbet || matchSetting.Spread;
 
 const isHasMatchSetting = matchSetting =>
   matchSetting &&
-  ishasSettings(matchSetting) &&
+  hasSettings(matchSetting) &&
   matchSetting.IsFromMaxbetSetting === false;
 
 const isHasAssignment = (mainAssignment, otherAssignment) =>

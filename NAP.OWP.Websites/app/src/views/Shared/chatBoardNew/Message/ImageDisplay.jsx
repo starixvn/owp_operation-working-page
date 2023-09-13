@@ -26,7 +26,7 @@ const ImageDisplay = ({ imageContent }) => {
         offset += sliceSize
       ) {
         const slice = byteCharacters.slice(offset, offset + sliceSize);
-        const byteNumbers = new Array(slice.length);
+        const byteNumbers = Array.from(slice.length);
         for (let i = 0; i < slice.length; i++) {
           byteNumbers[i] = slice.charCodeAt(i);
         }

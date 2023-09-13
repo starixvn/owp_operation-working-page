@@ -90,9 +90,8 @@ class TradingInfoTable extends React.Component {
       const key = `${index}`;
       return (
         <TradingInfoRow
-          handleMatchSettingChange={
-            match =>
-              handleMatchSettingChange(index, match)
+          handleMatchSettingChange={match =>
+            handleMatchSettingChange(index, match)
           }
           handleDeleteMatchSetting={() => handleDeleteMatchSetting(index)}
           key={key}
@@ -170,9 +169,7 @@ class TradingInfoTable extends React.Component {
   handleDeleteMatchSetting = position => {
     const { matchSettings } = this.state;
     this.setState({
-      matchSettings: matchSettings.filter(
-        (matchSetting, index) => position !== index
-      ),
+      matchSettings: matchSettings.filter((_, index) => position !== index),
       canAddMatchSetting: true,
       renderMatch: true
     });
@@ -206,17 +203,17 @@ class TradingInfoTable extends React.Component {
     });
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(_, nextState) {
     const { renderMatch } = nextState;
     return renderMatch;
   }
 
   componentDidMount() {
     const { bettypes } = this.props;
-    const matchs = createFirstAndSecondMatchSetting(bettypes);
+    const matches = createFirstAndSecondMatchSetting(bettypes);
     this.setState({
-      matchSettings: matchs.matchSettings,
-      bettypesOpition: matchs.bettypesOpition
+      matchSettings: matches.matchSettings,
+      bettypesOpition: matches.bettypesOpition
     });
   }
 }

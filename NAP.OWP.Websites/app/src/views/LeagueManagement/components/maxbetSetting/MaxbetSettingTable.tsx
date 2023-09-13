@@ -98,7 +98,7 @@ const MaxbetSettingTable = () => {
       }
     };
 
-    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
       const list: HTMLCollectionOf<Element> = document.getElementsByClassName(ACTIVE_CLICK);
       for (const element of Array.from(list)) {
         element.className = element.className.replace(ACTIVE_CLICK, '');

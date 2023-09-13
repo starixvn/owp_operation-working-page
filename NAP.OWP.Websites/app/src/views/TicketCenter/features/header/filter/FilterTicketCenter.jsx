@@ -11,11 +11,13 @@ import ToastrWrapper from '../../../../components/ToastrWrapper';
 import { STATUS } from '../../../const/const.json';
 import TicketTypeFilter from './TicketTypeFilter';
 import { getTicketTypeOption } from '../../../services/service';
-import { buildTicketTypeFilter } from '../../../Helper/TicketCenterHelper';
+import {
+  buildTicketTypeFilter,
+  getDefaultDateRange
+} from '../../../Helper/TicketCenterHelper';
 import Loading from '../../../../components/Loading';
 import { MultiSelect } from 'react-multi-select-component';
 import DateRangeFilter from './DateRangeFilter';
-import { getDefaultDateRange } from '../../../Helper/TicketCenterHelper';
 import Utils from '../../../../Shared/Utils';
 
 const propTypes = {

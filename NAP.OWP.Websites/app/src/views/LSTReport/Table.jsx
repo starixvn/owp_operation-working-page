@@ -126,9 +126,8 @@ class Table extends React.Component {
             name={match}
             subColId=''
             orderName={this.getOrderName(columnOrder, match)}
-            onOrder={
-              (subColumnId, orderName) =>
-                this.props.onOrder(match, subColumnId, orderName)
+            onOrder={(subColumnId, orderName) =>
+              this.props.onOrder(match, subColumnId, orderName)
             }
           />
         ),
@@ -140,7 +139,7 @@ class Table extends React.Component {
     return columnFixed;
   };
 
-  renderCellStyleTurnOver(state, rowInfo, column) {
+  renderCellStyleTurnOver(_, rowInfo, column) {
     if (
       rowInfo &&
       column &&
@@ -167,9 +166,8 @@ class Table extends React.Component {
             color={subCol.color}
             subColId={subCol.id}
             orderName={this.getOrderName(columnOrder, subCol.id, columnId)}
-            onOrder={
-              (subColumId, orderName) =>
-                this.props.onOrder(columnId, subColumId, orderName)
+            onOrder={(subColumId, orderName) =>
+              this.props.onOrder(columnId, subColumId, orderName)
             }
           />
         ),

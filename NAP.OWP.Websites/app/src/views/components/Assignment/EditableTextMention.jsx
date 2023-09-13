@@ -130,7 +130,7 @@ class EditableTextMention extends Component {
     }
   }
 
-  handleChange(event, newValue, newPlainTextValue, mentions) {
+  handleChange(_, newValue, newPlainTextValue, mentions) {
     let selectedUserName = '';
     const maxLengthInputDefault = 60;
     let maxLengthInput = maxLengthInputDefault;
@@ -165,7 +165,7 @@ class EditableTextMention extends Component {
     });
   }
 
-  renderSuggestion(entry, search, highlightedDisplay, index) {
+  renderSuggestion(entry, _, highlightedDisplay, index) {
     return (
       <UserItem
         user={entry}
@@ -378,11 +378,8 @@ class EditableTextMention extends Component {
       this.cancelChangeOtherAssignment();
     } else {
       const id = this.handleGetUserByUserName();
-      const {
-        isValidUser,
-        assignmentNote,
-        userId
-      } = this.handleGetAssignmentNote(id);
+      const { isValidUser, assignmentNote, userId } =
+        this.handleGetAssignmentNote(id);
       if (isValidUser) {
         const getMatchId = !assignmentItem.OWPMatchId
           ? OWPMatchId
@@ -402,7 +399,7 @@ class EditableTextMention extends Component {
     }
   }
 
-  handleOnBlur(event, clickedSuggestion) {
+  handleOnBlur(_, clickedSuggestion) {
     if (!clickedSuggestion) {
       this.createUpdateOrDeleteAssignment();
     }
@@ -455,12 +452,8 @@ class EditableTextMention extends Component {
   }
 
   render() {
-    const {
-      isEditableTextMention,
-      mentionValue,
-      UserId,
-      isNeedMention
-    } = this.state;
+    const { isEditableTextMention, mentionValue, UserId, isNeedMention } =
+      this.state;
     const { policy, assignmentItem } = this.props;
     let assignmentNote = assignmentItem.AssignmentNote;
     if (!assignmentItem.UserId && assignmentNote) {

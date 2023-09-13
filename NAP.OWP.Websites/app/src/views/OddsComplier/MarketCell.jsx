@@ -41,7 +41,7 @@ class MarketCell extends Component {
     this.setState({ value }, this.props.onChange(value));
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(_, nextState) {
     return this.state.value !== nextState.value;
   }
 
