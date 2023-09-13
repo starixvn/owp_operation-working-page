@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -495,7 +496,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-c454dfbb.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-07a61c90.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-47821430.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
@@ -2926,10 +2927,6 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-assignment\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
@@ -2950,10 +2947,6 @@
     <Content Include="wwwroot\league-management\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\league-management\server.cshtml" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\live-detail\server.cshtml" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
@@ -3027,6 +3020,14 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-assignment\server.cshtml" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\live-detail\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
