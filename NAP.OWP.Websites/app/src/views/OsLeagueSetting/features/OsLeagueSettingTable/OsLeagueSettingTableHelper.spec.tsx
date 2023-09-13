@@ -3,19 +3,46 @@ import { selectTable, calculateRowHeight } from './OsLeagueSettingTableHelper';
 describe('selectTable under unit test', () => {
   it('create correct columnSchema', () => {
     const columnSchema = [
-      { headerName: '#', columnKey: 'No', width: 17.6 },
-      { headerName: 'Status', columnKey: 'Status', width: 35.2 },
-      { headerName: 'Category', columnKey: 'Category', width: 52.8 },
-      { headerName: 'League', columnKey: 'League', width: 167.2 },
-      { headerName: 'MaxBet', columnKey: 'MaxBet', width: 52.8 },
-      { headerName: 'Spread', columnKey: 'Spread', width: 52.8 },
-      { headerName: 'Round', columnKey: 'Round', width: 52.8 },
       {
-        headerName: 'Summary',
-        columnKey: 'Summary',
-        width: 413.59999999999997
+        headerName: "#",
+        columnKey: "No",
+        width: 17.6,
       },
-      { headerName: 'Action', columnKey: 'Action', width: 35.2 }
+      {
+        headerName: "Category",
+        columnKey: "Category",
+        width: 52.8,
+      },
+      {
+        headerName: "League",
+        columnKey: "League",
+        width: 184.79999999999998,
+      },
+      {
+        headerName: "MaxBet",
+        columnKey: "MaxBet",
+        width: 70.4,
+      },
+      {
+        headerName: "Spread",
+        columnKey: "Spread",
+        width: 52.8,
+      },
+      {
+        headerName: "Round",
+        columnKey: "Round",
+        width: 52.8,
+      },
+      {
+        headerName: "Summary",
+        columnKey: "Summary",
+        width: 413.59999999999997,
+      },
+      {
+        headerName: "Action",
+        columnKey: "Action",
+        width: 35.2,
+      },
     ];
     const table = selectTable(800);
 

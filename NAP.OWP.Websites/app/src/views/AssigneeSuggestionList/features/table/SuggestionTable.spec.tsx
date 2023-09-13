@@ -33,7 +33,8 @@ describe('SuggestionTable', () => {
         busy: [],
         matchInfo: {
           filterDate: '2023-04-20',
-          koTime: '10:00'
+          koTime: '10:00',
+          leagueName: "league A"
         }
       }
     });

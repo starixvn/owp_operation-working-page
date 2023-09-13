@@ -1,19 +1,29 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ToastrWrapper from '../../components/ToastrWrapper';
 import Filter from './Filter';
 
 jest.mock('react-redux', () => ({
-  useDispatch: jest.fn()
+  useDispatch: jest.fn(),
+  useSelector: jest.fn()
 }));
 jest.mock('../../components/ToastrWrapper');
 
 ToastrWrapper.showError = jest.fn().mockReturnValue('OK');
-
+const state = {
+  filter: {
+    param: {
+      date: 'Nov 11, 2022'
+    },
+    leagues: [{ value: 1, label: 'a' }],
+    updateTypes: [{ value: 1, label: 'a' }]
+  }
+};
 const mockedDispatch = jest.fn();
 useDispatch.mockReturnValue(mockedDispatch);
+useSelector.mockImplementation(selectorFn => selectorFn({ ...state }));
 
 describe('test FilterTicketCenter', () => {
   afterEach(() => {
@@ -21,9 +31,9 @@ describe('test FilterTicketCenter', () => {
   });
 
   it('show list Filter ', async () => {
-    render(<Filter />);
+    const { container } = render(<Filter />);
 
-    expect(screen.queryByText(/Date/i)).toBeInTheDocument();
+    expect(container.querySelector('.calendar')).toBeInTheDocument();
     expect(screen.queryByText(/Select Game/i)).toBeInTheDocument();
     expect(screen.queryByText(/Filter Match/i)).toBeInTheDocument();
   });
@@ -31,6 +41,6 @@ describe('test FilterTicketCenter', () => {
   it('click Search, should dispatch', async () => {
     render(<Filter />);
     await fireEvent.click(screen.queryByText(/Search/i));
-    expect(mockedDispatch).toHaveBeenCalledTimes(1);
+    expect(mockedDispatch).toHaveBeenCalledTimes(3);
   });
 });

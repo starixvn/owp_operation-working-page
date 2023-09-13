@@ -18,7 +18,7 @@ exports[`Filter component should render correctly 1`] = `
       />
     </div>
     <div
-      class="multi-select-dropdown null"
+      class="multi-select-dropdown undefined null"
     >
       <div
         class="label"
@@ -62,7 +62,7 @@ exports[`Filter component should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="multi-select-dropdown null"
+      class="multi-select-dropdown undefined null"
     >
       <div
         class="label"
@@ -106,7 +106,7 @@ exports[`Filter component should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="multi-select-dropdown null"
+      class="multi-select-dropdown undefined null"
     >
       <div
         class="label"

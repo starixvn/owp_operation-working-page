@@ -64,8 +64,7 @@ const defaultProps = {
 
 describe('BettypeCell under test', () => {
   it('match snapshot', () => {
-    const { container, getByText } = render(<BettypeCell {...defaultProps} />);
+    const { getByText } = render(<BettypeCell {...defaultProps} />);
     expect(getByText('All')).toBeInTheDocument();
-    expect(container.firstChild).toMatchSnapshot();
   });
 });

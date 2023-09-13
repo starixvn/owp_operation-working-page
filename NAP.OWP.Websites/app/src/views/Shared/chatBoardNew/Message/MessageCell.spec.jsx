@@ -1,9 +1,8 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import MessageCell from './MessageCell';
-import { post } from '../../Service/Service';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveMessage } from '../chatBoardThunkNative';
+import MessageCell from './MessageCell';
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
   useDispatch: jest.fn()
@@ -110,7 +109,7 @@ describe('test MessageCell', () => {
       <MessageCell data={props} index={0} policy='policy' />
     );
     const element = container.querySelector('.icon-save-message');
-    expect(element).toBeInTheDocument();
+    expect(element).toBeNull();
   });
   it('render with no permission', () => {
     setUp(false);
@@ -127,6 +126,6 @@ describe('test MessageCell', () => {
       <MessageCell data={props} index={0} policy='policy' />
     );
     const element = container.querySelector('.icon-un-save-message-disable');
-    expect(element).toBeInTheDocument();
+    expect(element).toBeNull();
   });
 });

@@ -2,7 +2,6 @@ import { REQUEST_STATUS } from '../Constants';
 import slice, {
   closePopup,
   getTicketDetail,
-  createNewMessage,
   saveMessage,
   openTicketPopup,
   closeTicketPopup,
@@ -20,17 +19,17 @@ describe('unit test for chatBoardSlice', () => {
       isOpenTicket: false,
       modelByRowIndex: {},
       loading: REQUEST_STATUS.idle,
+      loadMoreMessage: REQUEST_STATUS.idle,
       error: null,
       isShowAllMessage: false,
-      loadMoreMessage: 'idle',
       ticketDetail: {
         ticketId: '',
-        ticketStatus: '',
-        ticketSubTypeId: 0,
-        ticketSubTypeName: '',
         eventType: 0,
         ticketTypeId: '',
         ticketTypeName: '',
+        ticketSubTypeId: 0,
+        ticketSubTypeName: '',
+        canShowMoreMessage: false,
         messages: [],
         recipients: [],
         owpLeagueId: '',
@@ -39,9 +38,9 @@ describe('unit test for chatBoardSlice', () => {
         owpAwayId: '',
         homeName: '',
         awayName: '',
-        eventName: '',
-        canShowMoreMessage: false,
         subject: '',
+        ticketStatus: '',
+        eventName: '',
         creatorInfo: {
           id: 0,
           userName: '',
@@ -49,7 +48,10 @@ describe('unit test for chatBoardSlice', () => {
         }
       },
       ticketSubTypeOptions: [],
-      inputMessage: ''
+      inputMessage: '',
+      modelQuoteMessage: {},
+      imagesLoaded: 0,
+      isAllImagesLoaded: false
     };
 
     const newState = slice(undefined, action);
@@ -125,6 +127,8 @@ describe('unit test for chatBoardSlice', () => {
       ticketDetail: {}
     };
     const expectedState = {
+      imagesLoaded: 0,
+      isAllImagesLoaded: false,
       isOpenPopup: true,
       loading: REQUEST_STATUS.idle,
       ticketDetail: {
@@ -160,28 +164,6 @@ describe('unit test for chatBoardSlice', () => {
           creatorInfo: null
         }
       }
-    };
-
-    const newState = slice(state, action);
-
-    expect(newState).toEqual(expectedState);
-  });
-
-  it('should handle createNewMessage.fulfilled', () => {
-    const state = {
-      ticketDetail: {
-        messages: []
-      }
-    };
-    const expectedState = {
-      loading: REQUEST_STATUS.idle,
-      ticketDetail: {
-        messages: ['abc']
-      }
-    };
-    const action = {
-      type: createNewMessage.fulfilled.type,
-      payload: 'abc'
     };
 
     const newState = slice(state, action);
