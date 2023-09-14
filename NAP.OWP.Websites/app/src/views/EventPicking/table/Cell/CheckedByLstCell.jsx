@@ -19,12 +19,14 @@ const CheckedByLstCell = props => {
 
   const handleSelectedChanged = async event => {
     const value = event.target.checked;
-    await dispatch(
-      updateConfirmedThunk({
-        confirmed: value,
-        infoSiteMatchIds: [infoSiteMatchId]
-      })
-    );
+    if (value) {
+      await dispatch(
+        updateConfirmedThunk({
+          confirmed: value,
+          infoSiteMatchIds: [infoSiteMatchId]
+        })
+      );
+    }
   };
 
   return (

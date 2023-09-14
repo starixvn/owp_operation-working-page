@@ -30,6 +30,7 @@ const createColumn = props => {
     isCanSort,
     isCanFilter,
     isFreeze,
+    fixedRight,
     isCheckBox,
     checked,
     className,
@@ -78,6 +79,7 @@ const createColumn = props => {
       cell={({ rowIndex }) => dynamicCell(rowIndex, cellModel)}
       width={width}
       fixed={isFreeze}
+      fixedRight={fixedRight}
     />
   );
 };

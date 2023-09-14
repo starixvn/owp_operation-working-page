@@ -504,7 +504,7 @@
     <Content Include="wwwroot\event-picking\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\server-849cd8fc.css" />
-    <Content Include="wwwroot\event-picking\assets\js\main-33f825df.js" />
+    <Content Include="wwwroot\event-picking\assets\js\main-18f24e30.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\event-upload\assets\ext\icon-search-4037a8fe.svg" />
@@ -2927,10 +2927,6 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-picking\server.cshtml" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-a7443744.ttf" />
@@ -3024,6 +3020,10 @@
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-assignment\server.cshtml" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-picking\server.cshtml" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />

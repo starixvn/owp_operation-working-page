@@ -32,7 +32,9 @@ const buildColumn = (width, column) => {
     isCheckBox,
     onCheckChange,
     checked,
-    className
+    className,
+    isFreeze,
+    fixedRight
   } = column;
   return {
     headerName,
@@ -42,7 +44,9 @@ const buildColumn = (width, column) => {
     width,
     checked,
     className,
-    onCheckChange
+    onCheckChange,
+    isFreeze,
+    fixedRight
   };
 };
 
@@ -112,7 +116,7 @@ const selectTable = (isNoOfferAll, isConfirmAll) => {
       buildColumn(width * 0.15, Round),
       buildColumn(width * 0.15, Remark),
       buildColumn(width * 0.15, RAndDUpdate),
-      buildColumn(width * 0.08, {
+      buildColumn(width * 0.04, {
         ...CheckedByLst,
         checked: isConfirmAll,
         onCheckChange: updateConfirmAllEvent

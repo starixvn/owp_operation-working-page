@@ -1,6 +1,6 @@
 {
   "DefaultTableStyle": {
-    "rowHeight": 100,
+    "rowHeight": 78,
     "rowHeightPlus": 120,
     "widthResize": 150,
     "width": 2000,
@@ -8,7 +8,7 @@
     "filterOffset": 200,
     "height": 750,
     "maxHeight": 750,
-    "headerHeight": 50,
+    "headerHeight": 45,
     "initialWidth": 15,
     "coefficientTable": 14500
   },
@@ -16,21 +16,25 @@
     "order": 1,
     "isCheckBox": true,
     "headerName": "No #",
-    "columnKey": "No"
+    "columnKey": "No",
+    "isFreeze": true
   },
   "KOTime": {
     "headerName": "KOTime",
-    "columnKey": "KOTime"
+    "columnKey": "KOTime",
+    "isFreeze": true
   },
   "League": {
     "headerName": "League",
     "columnKey": "League",
-    "isCanFilter": true
+    "isCanFilter": true,
+    "isFreeze": true
   },
   "Match": {
     "headerName": "Match",
     "columnKey": "Match",
-    "isCanFilter": true
+    "isCanFilter": true,
+    "isFreeze": true
   },
   "MaxBet": {
     "headerName": "MB",
@@ -59,18 +63,21 @@
   "RAndDUpdate": {
     "headerName": "R&D Update",
     "columnKey": "RAndDUpdate",
-    "isCanFilter": false
+    "isCanFilter": false,
+    "fixedRight": true
   },
   "CheckedByLst": {
-    "headerName": "Checked by LST",
+    "headerName": "Checked",
     "columnKey": "CheckedByLst",
     "isCanFilter": false,
     "isCheckBox": true,
-    "className": "check-by-lst"
+    "className": "check-by-lst",
+    "fixedRight": true
   },
   "Action": {
     "headerName": "Action",
     "columnKey": "Action",
-    "isCanFilter": false
+    "isCanFilter": false,
+    "fixedRight": true
   }
 }

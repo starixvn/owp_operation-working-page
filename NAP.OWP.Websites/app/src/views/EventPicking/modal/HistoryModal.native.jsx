@@ -14,7 +14,8 @@ const resolveUrl = () =>
     : `${window.netCoreRootUrl}/${netFwURL}/${getLogsHistory}`;
 
 const HistoryModal = props => {
-  const { infoSiteMatchId, onToggle } = props;
+  const { infoSiteMatchId, header, onToggle } = props;
+
   const [loading, setLoading] = useState(REQUEST_STATUS.loading);
   const [logHistory, setLogHistory] = useState([]);
 
@@ -30,9 +31,6 @@ const HistoryModal = props => {
     })();
   }, [infoSiteMatchId]);
 
-  if (isEqual(loading, REQUEST_STATUS.loading)) {
-    return <Loading />;
-  }
   const renderBody = () => {
     return logHistory.map((log, index) => {
       const { date, modifiedBy, action, oldValue, newValue } = log;
@@ -53,9 +51,7 @@ const HistoryModal = props => {
   };
   return (
     <Modal isOpen scrollable className='log-history-modal' size='xl' centered>
-      <ModalHeader toggle={onToggle}>
-        <strong>Log History - Event Picking</strong>
-      </ModalHeader>
+      <ModalHeader toggle={onToggle}>{header}</ModalHeader>
       <ModalBody>
         <Table>
           <thead>
@@ -76,7 +72,8 @@ const HistoryModal = props => {
 
 HistoryModal.propTypes = {
   infoSiteMatchId: PropTypes.number.isRequired,
-  onToggle: PropTypes.func.isRequired
+  onToggle: PropTypes.func.isRequired,
+  header: PropTypes.string.isRequired
 };
 
 export default HistoryModal;

@@ -9,7 +9,8 @@
   "UPDATE_CONFIRMED": "update-confirmed",
   "MESSAGE": {
     "CHECK_ALL": "Are you sure you want to select all of these matches?",
-    "UN_CHECK_ALL": "Are you sure you want to unselect all of these matches?"
+    "UN_CHECK_ALL": "Are you sure you want to unselect all of these matches?",
+    "CONFIRM_ALL": "Are you sure you want to check all of these matches?"
   },
   "SELECT_GAME": [
     {
