@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,6 +8,10 @@ import Filter from './Filter';
 jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
   useSelector: jest.fn()
+}));
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: jest.fn()
 }));
 jest.mock('../../components/ToastrWrapper');
 
@@ -22,8 +26,10 @@ const state = {
   }
 };
 const mockedDispatch = jest.fn();
+const mockSetState = jest.fn();
 useDispatch.mockReturnValue(mockedDispatch);
 useSelector.mockImplementation(selectorFn => selectorFn({ ...state }));
+useState.mockImplementation(init => [init, mockSetState]);
 
 describe('test FilterTicketCenter', () => {
   afterEach(() => {

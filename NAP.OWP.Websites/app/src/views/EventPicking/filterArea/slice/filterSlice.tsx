@@ -13,7 +13,8 @@ import {
   LEAGUE,
   SELECT_GAME,
   SELECT_GAME_OPTIONS,
-  UPDATE_TYPE
+  UPDATE_TYPE,
+  NONE_OPTION
 } from '../filterConst.json';
 import { getLeagues, getUpdateTypes } from './filterThunkNative';
 import Utils from '../../../Shared/Utils';
@@ -47,7 +48,7 @@ const filterSlice = createSlice({
         state.param[LEAGUE] = payload.map(m => m.value);
       })
       .addCase(getUpdateTypes.fulfilled, (state, { payload }) => {
-        const noneOption = { value: null, label: '-- None --' } as Option;
+        const noneOption = NONE_OPTION as Option;
         state.updateTypes = payload.concat(noneOption);
         state.param[UPDATE_TYPE] = state.updateTypes.map(m => m.value);
       });
