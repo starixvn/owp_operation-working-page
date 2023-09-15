@@ -36,15 +36,15 @@ const HistoryModal = props => {
       const { date, modifiedBy, action, oldValue, newValue } = log;
       return (
         <tr key={index}>
-          <td className='date'>
+          <td>
             {dayjs(date, 'YYYY-MM-DDTHH:mm:ss').format('MM/DD/YYYY hh:mm A')}
           </td>
-          <td className='modified-by'>{modifiedBy}</td>
-          <td className='action'>
+          <td>{modifiedBy}</td>
+          <td>
             <span dangerouslySetInnerHTML={{ __html: action }} />
           </td>
-          <td className='old-value'>{oldValue}</td>
-          <td className='new-value'>{newValue}</td>
+          <td>{oldValue}</td>
+          <td>{newValue}</td>
         </tr>
       );
     });
@@ -52,19 +52,19 @@ const HistoryModal = props => {
   return (
     <Modal isOpen scrollable className='log-history-modal' size='xl' centered>
       <ModalHeader toggle={onToggle}>{header}</ModalHeader>
-      <ModalBody>
-        <Table>
+      <ModalBody className='modal-log-history-table'>
+        <table className='log-history-table'>
           <thead>
             <tr>
-              <th className='date'>Date (GMT+8)</th>
-              <th className='modified-by'>Modified by</th>
-              <th className='action'>Action</th>
-              <th className='old-value'>Old Value</th>
-              <th className='new-value'>New Value</th>
+              <th>Date (GMT+8)</th>
+              <th>Modified by</th>
+              <th>Action</th>
+              <th>Old Value</th>
+              <th>New Value</th>
             </tr>
           </thead>
           <tbody>{renderBody()}</tbody>
-        </Table>
+        </table>
       </ModalBody>
     </Modal>
   );

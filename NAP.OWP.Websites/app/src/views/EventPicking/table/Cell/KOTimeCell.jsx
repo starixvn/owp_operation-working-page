@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Utils from '../../../Shared/Utils';
+import { formatTime } from '../../../Shared/DateTime/dateTimeHelper';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -12,7 +12,7 @@ const KoTimeCell = props => {
   const { eventDateTime } = dataSource[rowIndex];
   return (
     <div className='ko-time-cell'>
-      <span>{Utils.formatDateTimeString(new Date(eventDateTime))}</span>
+      <span>{formatTime(eventDateTime, 'minute', 'hh:mm A')}</span>
     </div>
   );
 };

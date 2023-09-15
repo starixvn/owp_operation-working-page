@@ -79,12 +79,16 @@ const calculateRowHeight = (dataSource, width) => {
     0.15,
     width
   );
+
+  const heightOfRAndD = calculateHeightOfColumn(115, 0.15, width);
+
   const heights = [
     DefaultTableStyle.rowHeight,
     heightOfStreaming,
     heightOfProvider,
     heightOfRound,
-    heightOfRemark
+    heightOfRemark,
+    heightOfRAndD
   ];
 
   return Math.max(...heights);
@@ -93,6 +97,7 @@ const passColorRowTable = dataSource => {
   if (!dataSource) {
     return '';
   }
+  console.log(`${dataSource.rowColor}-row`);
   return `${dataSource.rowColor}-row`;
 };
 
@@ -107,7 +112,7 @@ const selectTable = (isNoOfferAll, isConfirmAll) => {
         checked: isNoOfferAll,
         onCheckChange: handleNoOfferAllMatch
       }),
-      buildColumn(width * 0.05, KOTime),
+      buildColumn(width * 0.04, KOTime),
       buildColumn(width * 0.15, League),
       buildColumn(width * 0.14, Match),
       buildColumn(width * 0.03, MaxBet),

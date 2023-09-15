@@ -19,11 +19,10 @@ const RAndDUpdateCell = props => {
             ? rAndDInfos.map(info => (
                 <li
                   key={uniqueId()}
+                  className='r-and-d-update-item'
                   style={{
                     backgroundColor: info.bgColor,
-                    color: info.textColor,
-                    margin: '1px',
-                    padding: '1px'
+                    color: info.textColor
                   }}>
                   {info.rAndDUpdate}
                 </li>

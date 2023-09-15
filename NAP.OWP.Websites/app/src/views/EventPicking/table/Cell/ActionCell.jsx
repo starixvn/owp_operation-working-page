@@ -26,7 +26,7 @@ const ActionCell = props => {
     <>
       <div className='action-cell'>
         <span className='icon-history-event' onClick={() => setOpenLog(true)}>
-          <LogHistoryIcon width={24} height={24} />
+          <LogHistoryIcon width={20} height={20} />
         </span>
       </div>
       {openLog && (
