@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 
@@ -7,7 +8,7 @@ const signalRSlice = createSlice({
     backupFilterModel: null,
     backupGetIssueModel: null,
     loading: REQUEST_STATUS.idle,
-    currentRequestId: undefined,
+    currentRequestId: undefined, // NOSONAR
     error: null
   },
   reducers: {

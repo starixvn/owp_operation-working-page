@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 import { createSlice } from '@reduxjs/toolkit';
 import compareValues from '../../../../Shared/Order/compareValues';
 import { isEqual } from 'lodash';
@@ -29,7 +30,7 @@ const eventCheckingSlice = createSlice({
   initialState: {
     entities: [],
     entitiesOrigin: [],
-    currentRequestId: undefined,
+    currentRequestId: undefined, // NOSONAR
     loading: REQUEST_STATUS.idle,
     error: null,
     sortState: {},
@@ -70,57 +71,60 @@ const eventCheckingSlice = createSlice({
       }
     }
   },
-  extraReducers: builder=>{
-    builder.addCase(getEventTickets.pending,(state, action) => {
-      const { loading } = state;
-      if (isEqual(loading, REQUEST_STATUS.idle)) {
-        state.currentRequestId = action.meta.requestId;
-        state.loading = REQUEST_STATUS.pending;
-      }
-    })
-    .addCase(getEventTickets.fulfilled, (state, action) => {
-      const { requestId } = action.meta;
-      if (
-        isEqual(state.loading, REQUEST_STATUS.pending) &&
-        isEqual(state.currentRequestId, requestId)
-      ) {
-        state.entities.length = 0;
-        state.loading = REQUEST_STATUS.idle;
-        state.currentRequestId = null;
+  extraReducers: builder => {
+    builder
+      .addCase(getEventTickets.pending, (state, action) => {
+        const { loading } = state;
+        if (isEqual(loading, REQUEST_STATUS.idle)) {
+          state.currentRequestId = action.meta.requestId;
+          state.loading = REQUEST_STATUS.pending;
+        }
+      })
+      .addCase(getEventTickets.fulfilled, (state, action) => {
+        const { requestId } = action.meta;
+        if (
+          isEqual(state.loading, REQUEST_STATUS.pending) &&
+          isEqual(state.currentRequestId, requestId)
+        ) {
+          state.entities.length = 0;
+          state.loading = REQUEST_STATUS.idle;
+          state.currentRequestId = null;
+          state.entitiesOrigin = [...[], ...action.payload];
+          state.entities = filterIssueByUnreadMessageValue(state);
+        }
+      })
+      .addCase(getEventTickets.rejected, (state, action) => {
+        const { requestId } = action.meta;
+        if (
+          isEqual(state.loading, REQUEST_STATUS.pending) &&
+          isEqual(state.currentRequestId, requestId)
+        ) {
+          state.currentRequestId = null;
+          state.loading = REQUEST_STATUS.idle;
+          state.error = action.error;
+        }
+      })
+      .addCase(refreshEventTickets.fulfilled, (state, action) => {
         state.entitiesOrigin = [...[], ...action.payload];
-        state.entities = filterIssueByUnreadMessageValue(state);
-      }
-    })
-    .addCase(getEventTickets.rejected, (state, action) => {
-      const { requestId } = action.meta;
-      if (
-        isEqual(state.loading, REQUEST_STATUS.pending) &&
-        isEqual(state.currentRequestId, requestId)
-      ) {
-        state.currentRequestId = null;
+        const filteredTickets = filterIssueByUnreadMessageValue(state);
+        const pinnedEntities = filteredTickets.filter(x => x.isPinned);
+        const unpinEntities = filteredTickets.filter(x => !x.isPinned);
+        state.entities = pinnedEntities.concat(unpinEntities);
+      })
+      .addCase(pinTicket.pending, state => handlePendingState(state))
+      .addCase(pinTicket.fulfilled, state => {
         state.loading = REQUEST_STATUS.idle;
-        state.error = action.error;
-      }
-    })
-    .addCase(refreshEventTickets.fulfilled, (state, action) => {
-      state.entitiesOrigin = [...[], ...action.payload];
-      const filteredTickets = filterIssueByUnreadMessageValue(state);
-      const pinnedEntities = filteredTickets.filter(x => x.isPinned);
-      const unpinEntities = filteredTickets.filter(x => !x.isPinned);
-      state.entities = pinnedEntities.concat(unpinEntities);
-    })
-    .addCase(pinTicket.pending, state => handlePendingState(state))
-    .addCase(pinTicket.fulfilled, state => {
-      state.loading = REQUEST_STATUS.idle;
-    })
-    .addCase(pinTicket.rejected, (state, action) =>
-      handleRejectState(state, action.error))
-    .addCase(deleteTicket.pending, state => handlePendingState(state))
-  .addCase(deleteTicket.fulfilled, state => {
-      state.loading = REQUEST_STATUS.idle;
-    })
-    .addCase(deleteTicket.rejected, (state, action) =>
-      handleRejectState(state, action.error));
+      })
+      .addCase(pinTicket.rejected, (state, action) =>
+        handleRejectState(state, action.error)
+      )
+      .addCase(deleteTicket.pending, state => handlePendingState(state))
+      .addCase(deleteTicket.fulfilled, state => {
+        state.loading = REQUEST_STATUS.idle;
+      })
+      .addCase(deleteTicket.rejected, (state, action) =>
+        handleRejectState(state, action.error)
+      );
   }
 });
 

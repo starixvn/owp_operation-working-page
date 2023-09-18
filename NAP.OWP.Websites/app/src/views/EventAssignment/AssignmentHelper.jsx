@@ -40,17 +40,16 @@ const checkAllowAddAssignmentFM = (
   bettypeName,
   assignments
 ) => {
-  if (
-    (isEqual(bettypeName, 'FM') || isEqual(bettypeName, 'AIO')) &&
+  const isFMOrAIO = isEqual(bettypeName, 'FM') || isEqual(bettypeName, 'AIO');
+  const isMinorBettypeValid =
     minorBettypeId !== null &&
-    !(
-      minorBettypeId === MinorBetTypes.NoOfCorners ||
-      minorBettypeId === MinorBetTypes.TotalBooking
-    )
-  ) {
+    ![MinorBetTypes.NoOfCorners, MinorBetTypes.TotalBooking].includes(
+      minorBettypeId
+    );
+
+  if (isFMOrAIO && isMinorBettypeValid) {
     return assignments && assignments.length > 0;
   }
-
   return true;
 };
 
@@ -79,16 +78,17 @@ const checkAllowAddAssignmentPHBetTypes = (
   bettypeName,
   assignments
 ) => {
-  if (
-    (isEqual(bettypeName, 'FM') || isEqual(bettypeName, 'AIO')) &&
+  const isFMOrAIO = isEqual(bettypeName, 'FM') || isEqual(bettypeName, 'AIO');
+  const isMinorBettypeValid =
     minorBettypeId !== null &&
-    !(
-      minorBettypeId === MinorBetTypes.NoOfCorners ||
-      minorBettypeId === MinorBetTypes.TotalBooking
-    )
-  ) {
+    ![MinorBetTypes.NoOfCorners, MinorBetTypes.TotalBooking].includes(
+      minorBettypeId
+    );
+
+  if (isFMOrAIO && isMinorBettypeValid) {
     return assignments && assignments.length > 0;
   }
+
   return false;
 };
 

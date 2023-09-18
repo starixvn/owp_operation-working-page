@@ -1,7 +1,8 @@
+import { TConfirmed } from "../types/confirmed";
 import TDataTable from "../types/dataTableType";
 import { TNoOfferMatch } from "../types/noOfferMatchType";
 
-const updateEntities = (entities: TDataTable[], noOfferMatch: TNoOfferMatch[]) => {
+const updateNoOfferMatch = (entities: TDataTable[], noOfferMatch: TNoOfferMatch[]) => {
   entities.forEach(element => {
     const noOfferMatchTarget = noOfferMatch.find(
       x =>
@@ -15,6 +16,18 @@ const updateEntities = (entities: TDataTable[], noOfferMatch: TNoOfferMatch[]) =
   });
 };
 
+const updateConfirmedMatch = (entities: TDataTable[], confirmInfo: TConfirmed) => {
+  entities.forEach(element => {
+    if (confirmInfo.infoSiteMatchIds.some(
+      id =>
+        id === element.infoSiteMatchId
+    )) {
+      element.isCheck = confirmInfo.confirmed;
+    }
+  });
+};
+
 export {
-  updateEntities
+  updateNoOfferMatch,
+  updateConfirmedMatch
 };

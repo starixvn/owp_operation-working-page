@@ -12,7 +12,8 @@ const renderHeader = headerModel => {
     isCanFilter,
     isCanCollapseExpand,
     isCheckBox,
-    isChecked,
+    checked,
+    className,
     canCheck,
     onCheckChange
   } = headerModel;
@@ -50,8 +51,9 @@ const renderHeader = headerModel => {
         </span>
         <input
           type='checkbox'
+          className={className}
           disabled={!canCheck}
-          checked={isChecked}
+          checked={checked}
           onChange={onCheckChange}
         />
       </div>

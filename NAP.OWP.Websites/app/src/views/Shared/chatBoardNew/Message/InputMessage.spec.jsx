@@ -1,26 +1,16 @@
-import React, { useState, createRef } from 'react';
-import { useSelector, useDispatch, Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { Input } from 'reactstrap';
-import { AttachFileIcon, SendIcon } from 'mdi-react';
-import InputMessage from './InputMessage';
+import { fireEvent, render, screen } from '@testing-library/react';
 import axios from 'axios';
-import ToastrWrapper from '../../../components/ToastrWrapper';
 import { noop } from 'lodash';
+import React, { createRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { setImmediate } from 'timers';
+import ToastrWrapper from '../../../components/ToastrWrapper';
+import InputMessage from './InputMessage';
 
 function flushPromises() {
   return new Promise(resolve => setImmediate(resolve));
 }
 
-const middlewares = [];
-const mockStore = configureStore(middlewares);
-
-const initialState = {};
-const store = mockStore(initialState);
-
-const Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
 const setState = jest.fn();
 
 jest.mock('react-redux', () => ({
@@ -65,6 +55,12 @@ useSelector.mockImplementation(f =>
           userName: '',
           nickName: ''
         }
+      },
+      modelQuoteMessage: {
+        message: 'ahihi',
+        messageId: 42699,
+        userId: 360418,
+        createdDate: '2023-09-13T17:43:08.77'
       }
     },
     policy: {

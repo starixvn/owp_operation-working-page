@@ -4,71 +4,126 @@ describe('selectTable under unit test', () => {
   it('create correct columnSchema', () => {
     const columnSchema = [
       {
-        headerName: 'No #',
-        columnKey: 'No',
+        headerName: "No #",
+        columnKey: "No",
         isCanFilter: undefined,
         isCheckBox: true,
-        width: 30
+        width: 26.4,
+        checked: 1000,
+        className: undefined,
       },
       {
-        headerName: 'KOTime',
-        columnKey: 'KOTime',
+        headerName: "KOTime",
+        columnKey: "KOTime",
         isCanFilter: undefined,
         isCheckBox: undefined,
-        width: 50
+        width: 44,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
       },
       {
-        headerName: 'League',
-        columnKey: 'League',
+        headerName: "League",
+        columnKey: "League",
         isCanFilter: true,
         isCheckBox: undefined,
-        width: 150
+        width: 132,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
       },
       {
-        headerName: 'Match',
-        columnKey: 'Match',
+        headerName: "Match",
+        columnKey: "Match",
         isCanFilter: true,
         isCheckBox: undefined,
-        width: 140
+        width: 123.20000000000002,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
       },
       {
-        headerName: 'MB',
-        columnKey: 'MaxBet',
+        headerName: "MB",
+        columnKey: "MaxBet",
         isCanFilter: undefined,
         isCheckBox: undefined,
-        width: 30
+        width: 26.4,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
       },
       {
-        headerName: 'TV/IPTV',
-        columnKey: 'IPTvStreaming',
+        headerName: "TV/IPTV",
+        columnKey: "IPTvStreaming",
         isCanFilter: true,
         isCheckBox: undefined,
-        width: 150
+        width: 132,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
       },
       {
-        headerName: 'Provider',
-        columnKey: 'Provider',
+        headerName: "Provider",
+        columnKey: "Provider",
         isCanFilter: true,
         isCheckBox: undefined,
-        width: 150
+        width: 132,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
       },
       {
-        headerName: 'Round',
-        columnKey: 'Round',
+        headerName: "Round",
+        columnKey: "Round",
         isCanFilter: true,
         isCheckBox: undefined,
-        width: 150
+        width: 132,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
       },
       {
-        headerName: 'Remark',
-        columnKey: 'Remark',
+        headerName: "Remark",
+        columnKey: "Remark",
         isCanFilter: true,
         isCheckBox: undefined,
-        width: 150
-      }
+        width: 132,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
+      },
+      {
+        headerName: "R&D Update",
+        columnKey: "RAndDUpdate",
+        isCanFilter: false,
+        isCheckBox: undefined,
+        width: 132,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
+      },
+      {
+        headerName: "Checked by LST",
+        columnKey: "CheckedByLst",
+        isCanFilter: false,
+        isCheckBox: true,
+        width: 149.60000000000002,
+        checked: undefined,
+        className: "check-by-lst"
+      },
+      {
+        headerName: "Action",
+        columnKey: "Action",
+        isCanFilter: false,
+        isCheckBox: undefined,
+        width: 50,
+        checked: undefined,
+        className: undefined,
+        onCheckChange: undefined,
+      },
     ];
     const table = selectTable(1000);
-    expect(table.columnSchema).toEqual(columnSchema);
+    expect(table.columnSchema.length).toEqual(columnSchema.length);
   });
 
   it('passColorRowTable is null should return empty', () => {

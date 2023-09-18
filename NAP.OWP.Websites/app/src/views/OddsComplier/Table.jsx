@@ -72,7 +72,7 @@ class Table extends Component {
     this.events = cloneDeep(props.events);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(_, nextState) {
     return !isEqual(this.state.key, nextState.key);
   }
 
@@ -281,7 +281,7 @@ class Table extends Component {
     );
   }
 
-  onOddsChange(index, data) {
+  onOddsChange(_, data) {
     const { events } = this.state;
     const _data = cloneDeep(data);
     const _index = findIndex(events, ['OWPMatchId', _data.Handicap.OWPMatchId]);

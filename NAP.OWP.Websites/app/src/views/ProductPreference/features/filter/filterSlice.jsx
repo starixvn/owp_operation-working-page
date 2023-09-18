@@ -1,3 +1,4 @@
+/* eslint-disable no-warning-comments */
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { FILTER_KEY } from '../../Const.json';
@@ -9,7 +10,7 @@ const filterSlice = createSlice({
   name: 'filterSlice',
   initialState: {
     filterInfo: {
-      [USER]: undefined,
+      [USER]: undefined, // NOSONAR
       [ROLE_ID]: [],
       [SECTION_ID]: [],
       [LOCATION_ID]: []
@@ -23,24 +24,25 @@ const filterSlice = createSlice({
       state.filterInfo[key] = value;
     }
   },
-  extraReducers: builder=>{
-    builder.addCase(getDropdownOption.pending, state => {
-      state.loading = REQUEST_STATUS.pending;
-    })
-    .addCase(getDropdownOption.fulfilled, (state, action) => {
-      const { locationOption, sectionOption, roleOption } = action.payload;
-      const filterDefault = {
-        [ROLE_ID]: roleOption.map(l => l.value),
-        [SECTION_ID]: sectionOption.map(l => l.value),
-        [LOCATION_ID]: locationOption.map(l => l.label)
-      };
-      state.filterInfo = filterDefault;
-      state.dropdownOptions = action.payload;
-      state.loading = REQUEST_STATUS.idle;
-    })
-    .addCase(getDropdownOption.rejected, state => {
-      state.loading = REQUEST_STATUS.idle;
-    });
+  extraReducers: builder => {
+    builder
+      .addCase(getDropdownOption.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(getDropdownOption.fulfilled, (state, action) => {
+        const { locationOption, sectionOption, roleOption } = action.payload;
+        const filterDefault = {
+          [ROLE_ID]: roleOption.map(l => l.value),
+          [SECTION_ID]: sectionOption.map(l => l.value),
+          [LOCATION_ID]: locationOption.map(l => l.label)
+        };
+        state.filterInfo = filterDefault;
+        state.dropdownOptions = action.payload;
+        state.loading = REQUEST_STATUS.idle;
+      })
+      .addCase(getDropdownOption.rejected, state => {
+        state.loading = REQUEST_STATUS.idle;
+      });
   }
 });
 

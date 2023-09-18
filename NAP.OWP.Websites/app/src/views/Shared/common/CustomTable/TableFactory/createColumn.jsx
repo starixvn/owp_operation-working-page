@@ -7,9 +7,9 @@ const createColumn = props => {
     dataSource,
     columnModel,
     dynamicCell,
+    canCheck,
     sortFunc,
     filterFunc,
-    onCheckChange,
     clearFilterFunc,
     collapseAllRowFunc,
     expandAllRowFunc,
@@ -24,15 +24,17 @@ const createColumn = props => {
     color,
     sortState,
     filterState,
-    isChecked,
     collapseExpandAllRowState,
     collapseExpandRowState,
     isCanCollapseExpand,
     isCanSort,
     isCanFilter,
     isFreeze,
+    fixedRight,
     isCheckBox,
-    canCheck
+    checked,
+    className,
+    onCheckChange
   } = columnModel;
 
   const headerModel = {
@@ -40,7 +42,6 @@ const createColumn = props => {
     columnKey,
     sortState,
     filterState,
-    isChecked,
     collapseExpandAllRowState,
     collapseExpandRowState,
     isCanCollapseExpand,
@@ -48,12 +49,14 @@ const createColumn = props => {
     isCanFilter,
     isCheckBox,
     canCheck,
+    checked,
+    className,
+    onCheckChange,
     sortFunc,
     filterFunc,
     clearFilterFunc,
     collapseAllRowFunc,
-    expandAllRowFunc,
-    onCheckChange
+    expandAllRowFunc
   };
 
   const cellModel = {
@@ -76,6 +79,7 @@ const createColumn = props => {
       cell={({ rowIndex }) => dynamicCell(rowIndex, cellModel)}
       width={width}
       fixed={isFreeze}
+      fixedRight={fixedRight}
     />
   );
 };

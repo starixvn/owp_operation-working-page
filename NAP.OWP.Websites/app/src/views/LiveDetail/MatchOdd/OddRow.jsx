@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import BetTypeCell from './BetTypeCell';
 import GoalCell from './GoalCell';
 import OddCell from './OddCell';
-import ActionCell from './ActionCell';
 import { MajorBetTypes } from '../../Shared/Constants';
 import service from './Service';
 

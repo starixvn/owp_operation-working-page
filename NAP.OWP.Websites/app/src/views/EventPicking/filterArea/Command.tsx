@@ -7,7 +7,7 @@ const Command = () => {
 
   const handleSearch = () => {
     const { filter } = store.getState();
-    dispatch(getEventPickings(filter));
+    dispatch(getEventPickings(filter.param));
   };
 
   return (

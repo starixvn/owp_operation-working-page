@@ -9,6 +9,7 @@ describe('eventPickingSlice', () => {
       entities: [],
       entitiesOriginal: [],
       filterState: [],
+      isConfirmAll: false,
       'isNoOfferAll': false,
       loading: REQUEST_STATUS.idle
     });
@@ -52,7 +53,8 @@ describe('eventPickingSlice', () => {
           keyword: 'league'
         }
       ],
-      'isNoOfferAll': false
+      isConfirmAll: false,
+      isNoOfferAll: false
     };
     const action = {
       type: filterBySearchKey.type,
@@ -97,6 +99,7 @@ describe('eventPickingSlice', () => {
         }
       ],
       filterState: [],
+      isConfirmAll: false,
       isNoOfferAll: false
     };
     const action = {
@@ -158,6 +161,7 @@ describe('eventPickingSlice', () => {
       ],
       filterState: [],
       loading: REQUEST_STATUS.idle,
+      isConfirmAll: false,
       isNoOfferAll: false
     };
     const action = {

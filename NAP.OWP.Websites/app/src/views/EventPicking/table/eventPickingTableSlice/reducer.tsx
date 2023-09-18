@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { getEventPickings } from './eventSliceThunkNative';
 import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
-import { updateEntities } from '../../helper/reducerHelper';
+import updateConfirmedThunk from '../updateConfirmedThunkNative';
+import { updateNoOfferMatch, updateConfirmedMatch } from '../../helper/reducerHelper';
 import { TTableSlice, TFilterState } from '../../types/dataTableType';
 import {
   addOrReplaceFilterState,
@@ -15,6 +16,7 @@ const EventPickingTableSlice = createSlice({
     entities: [],
     entitiesOriginal: [],
     isNoOfferAll: false,
+    isConfirmAll: false,
     filterState: [] as TFilterState[],
     loading: REQUEST_STATUS.idle
   } as TTableSlice,
@@ -28,6 +30,7 @@ const EventPickingTableSlice = createSlice({
         filterByKeyword
       );
       if (state.entities.length) {
+        state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
       }
     },
@@ -36,6 +39,7 @@ const EventPickingTableSlice = createSlice({
       state.filterState = [];
       state.entities = entitiesOriginal;
       if (state.entities.length) {
+        state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
       }
     }
@@ -44,10 +48,18 @@ const EventPickingTableSlice = createSlice({
     builder
       .addCase(updateNoOfferMatchThunk.fulfilled, (state, { payload }) => {
         const noOfferMatch = payload;
-        updateEntities(state.entitiesOriginal, noOfferMatch);
-        updateEntities(state.entities, noOfferMatch);
+        updateNoOfferMatch(state.entitiesOriginal, noOfferMatch);
+        updateNoOfferMatch(state.entities, noOfferMatch);
         if (state.entities.length) {
           state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
+        }
+      })
+      .addCase(updateConfirmedThunk.fulfilled, (state, { payload }) => {
+        const confirmInfo = payload;
+        updateConfirmedMatch(state.entitiesOriginal, confirmInfo);
+        updateConfirmedMatch(state.entities, confirmInfo);
+        if (state.entities.length) {
+          state.isConfirmAll = state.entities.every(x => x.isCheck);
         }
       })
       .addCase(getEventPickings.pending, state => {
@@ -62,6 +74,7 @@ const EventPickingTableSlice = createSlice({
           filterByKeyword
         );
         if (state.entities.length) {
+          state.isConfirmAll = state.entities.every(x => x.isCheck);
           state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
         }
       })

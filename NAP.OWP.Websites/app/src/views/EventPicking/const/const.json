@@ -2,10 +2,15 @@
   "netCoreURL": "api-netcore/EventPicking",
   "netFwURL": "api/EventPicking",
   "getEventPicking": "get-event-picking",
+  "getLogsHistory": "get-logs-history",
+  "getLeague": "get-league-name",
+  "getUpdateType": "get-update-type",
   "UPDATE_NO_OFFER_MATCH": "update-noOffer-match",
-  "MESSAGE":{
-    "CHECK_ALL":"Are you sure you want to select all of these matches?",
-    "UN_CHECK_ALL":"Are you sure you want to unselect all of these matches?"
+  "UPDATE_CONFIRMED": "update-confirmed",
+  "MESSAGE": {
+    "CHECK_ALL": "Are you sure you want to select all of these matches?",
+    "UN_CHECK_ALL": "Are you sure you want to unselect all of these matches?",
+    "CONFIRM_ALL": "Are you sure you want to check all of these matches?"
   },
   "SELECT_GAME": [
     {

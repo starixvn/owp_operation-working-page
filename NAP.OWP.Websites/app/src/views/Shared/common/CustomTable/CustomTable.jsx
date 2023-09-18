@@ -27,15 +27,13 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
     onCalculateRowHeight,
     onRowClassNameGetter,
     collapseAllRowFunc,
-    expandAllRowFunc,
-    onCheckChange
+    expandAllRowFunc
   } = config;
   const tableRef = React.createRef();
   const { rowHeight, headerHeight, defaultHeight, filterOffset } = tableStyle;
   const {
     sortState,
     filterState,
-    isChecked,
     canCheck,
     collapseExpandAllRowState,
     collapseExpandRowState
@@ -44,8 +42,6 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
   columnSchema.map(item =>
     Object.assign(item, {
       sortState,
-      isChecked,
-      canCheck,
       filterState,
       collapseExpandAllRowState,
       collapseExpandRowState
@@ -68,6 +64,7 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
   const newProps = {
     dataSource: model.entities,
     columnSchema,
+    canCheck,
     dynamicCell,
     sortFunc,
     sortState,
@@ -76,8 +73,7 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
     collapseAllRowFunc,
     expandAllRowFunc,
     handleShowTicket,
-    onShowDropdownListOption: handleShowDropdownListOption,
-    onCheckChange
+    onShowDropdownListOption: handleShowDropdownListOption
   };
 
   const { loading, entities } = model;
@@ -111,7 +107,6 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
       ? ''
       : onRowClassNameGetter(index, entities);
   };
-
   return (
     <div className='table' ref={ref}>
       {isEqual(loading, REQUEST_STATUS.pending) && <Loading />}

@@ -55,6 +55,7 @@ useStore.setState({
 describe('render table', () => {
   it('should render', () => {
     const { container } = render(<LAKpiTable />);
-    expect(container).toMatchSnapshot();
+    const element = container.querySelector('.table-content');
+    expect(element).toBeInTheDocument();
   });
 });

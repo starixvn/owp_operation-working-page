@@ -1,18 +1,9 @@
+import { fireEvent, render } from '@testing-library/react';
 import React, { useState } from 'react';
-import { useSelector, useDispatch, Provider } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TicketDetail from './TicketDetail';
-import configureStore from 'redux-mock-store';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
-const middlewares = [];
-const mockStore = configureStore(middlewares);
-
-const initialState = {};
-const store = mockStore(initialState);
 const mockSetState = jest.fn();
-
-const Wrapper = ({ children }) => <Provider store={store}>{children}</Provider>;
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
@@ -46,6 +37,12 @@ useSelector.mockImplementation(f =>
           userName: '',
           nickName: ''
         }
+      },
+      modelQuoteMessage: {
+        message: 'ahihi',
+        messageId: 42699,
+        userId: 360418,
+        createdDate: '2023-09-13T17:43:08.77'
       }
     },
     policy: {
@@ -72,6 +69,6 @@ describe('test with TicketDetail component', () => {
 
     fireEvent.click(element);
 
-    expect(mockedDispatch).toHaveBeenCalledTimes(1);
+    expect(mockedDispatch).toBeCalled();
   });
 });

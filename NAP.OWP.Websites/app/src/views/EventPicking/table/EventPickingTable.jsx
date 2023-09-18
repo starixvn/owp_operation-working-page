@@ -9,15 +9,13 @@ import { useSelector } from 'react-redux';
 import { DefaultTableStyle } from './TableSchema.json';
 import store from '../app/store';
 
-const getTableSchema = () => {
-  const { innerWidth } = window;
-  return selectTable(innerWidth - DefaultTableStyle.widthResize);
-};
-
 const EventPickingTable = () => {
-  const [tableSchema, setTableSchema] = useState(getTableSchema());
   const model = useSelector(state => state.eventPickingTable);
-  const { isNoOfferAll, entities, ...rest } = model;
+  const { isNoOfferAll, isConfirmAll, entities, ...rest } = model;
+  const [tableSchema, setTableSchema] = useState(
+    selectTable(isNoOfferAll, isConfirmAll)
+  );
+
   const { permission } = store.getState().pagePolicy;
   const config = {
     ...tableSchema,
@@ -29,22 +27,23 @@ const EventPickingTable = () => {
     onRowClassNameGetter: index => passColorRowTable(entities[index])
   };
 
-  const handleResizeBrowser = () => {
-    const { innerWidth } = window;
-    setTableSchema(selectTable(innerWidth - DefaultTableStyle.widthResize));
-  };
+  const handleResizeBrowser = () =>
+    setTableSchema(selectTable(isNoOfferAll, isConfirmAll));
 
   useEffect(() => {
     window.addEventListener('resize', handleResizeBrowser);
     return () => window.removeEventListener('resize', handleResizeBrowser);
   }, []);
 
+  useEffect(() => {
+    setTableSchema(selectTable(isNoOfferAll, isConfirmAll));
+  }, [isNoOfferAll, isConfirmAll]);
+
   return (
     <CustomTable
       model={{
         entities,
         ...rest,
-        isChecked: isNoOfferAll,
         canCheck: permission.HasWrite
       }}
       config={config}

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import EventPickingTableSlice from '../table/eventPickingTableSlice/reducer';
-import filterSlice from '../filterArea/filterSlice';
+import filterSlice from '../filterArea/slice/filterSlice';
 import createMultiplePolicySlice from '../../Shared/permission/multiplePolicySlice';
 import { isEqual } from 'lodash';
 

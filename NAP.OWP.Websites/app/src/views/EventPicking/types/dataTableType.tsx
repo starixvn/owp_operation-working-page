@@ -26,12 +26,14 @@ type TDataTable = {
   division: string;
   round: string;
   eTPK: string;
+  isCheck: boolean;
 };
 
 type TTableSlice = {
   entities: Array<TDataTable>;
   entitiesOriginal: Array<TDataTable>;
   isNoOfferAll: boolean;
+  isConfirmAll: boolean;
   filterState: Array<TFilterState>;
   loading: string;
 };
