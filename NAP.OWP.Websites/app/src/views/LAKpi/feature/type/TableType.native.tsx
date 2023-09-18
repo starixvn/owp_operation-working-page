@@ -2,6 +2,7 @@ type TState = {
   dataTable: {
     loadingStatus: string;
     entities: Array<DataSource>;
+    dataSourcesFiltered: Array<DataSource>;
     isGap: boolean;
   };
   conditionData: Array<TCondition>;
@@ -13,6 +14,7 @@ type TAction = {
     toDate: Required<Date>
   ) => Promise<void>;
   queryConditionData: () => Promise<void>;
+  setDataSourcesFiltered: (data: DataSource[]) => void;
 };
 
 type TTotalGameInfo = {

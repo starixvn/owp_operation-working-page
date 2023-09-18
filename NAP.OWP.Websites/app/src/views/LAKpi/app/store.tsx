@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import update from 'immutability-helper';
-import { TAction, TState } from '../feature/type/TableType.native';
+import { DataSource, TAction, TState } from '../feature/type/TableType.native';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import { queryDataTable, queryConditionData } from '../service';
 
@@ -8,6 +8,7 @@ const useStore = create<TState & TAction>(set => ({
   dataTable: {
     loadingStatus: REQUEST_STATUS.idle,
     entities: [],
+    dataSourcesFiltered: [],
     isGap: true
   },
   conditionData: [],
@@ -33,7 +34,17 @@ const useStore = create<TState & TAction>(set => ({
         dataTable: {
           loadingStatus: { $set: REQUEST_STATUS.idle },
           entities: { $set: data.kpiLa },
+          dataSourcesFiltered: { $set: data.kpiLa },
           isGap: { $set: data.isGap }
+        }
+      })
+    );
+  },
+  setDataSourcesFiltered: (data: DataSource[]) => {
+    set((state: TState) =>
+      update(state, {
+        dataTable: {
+          dataSourcesFiltered: { $set: data }
         }
       })
     );

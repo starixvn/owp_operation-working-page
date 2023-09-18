@@ -100,6 +100,11 @@
   max-width: 1600px;
   overflow-y: auto;
 
+  .filter-popup {
+    margin-top: 25px;
+    margin-left: 160px;
+  }
+
   table {
     padding: 0;
     width: 100%;
@@ -146,6 +151,16 @@
 
       &:nth-child(2) {
         min-width: 60px;
+
+        .icon-filter {
+          margin-left: 30px;
+          cursor: pointer;
+        }
+
+        .active {
+          color: #309f53 !important;
+        }
+
       }
 
       &:nth-child(3) {
