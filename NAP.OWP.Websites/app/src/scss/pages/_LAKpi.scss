@@ -160,7 +160,6 @@
         .active {
           color: #309f53 !important;
         }
-
       }
 
       &:nth-child(3) {
@@ -192,6 +191,11 @@
 .table-content::-webkit-scrollbar-thumb {
   background-color: #8b8b8b;
   border-radius: 10px;
+}
+
+.value-negative,
+.fail-progress {
+  color: red;
 }
 
 .react-datepicker__header {

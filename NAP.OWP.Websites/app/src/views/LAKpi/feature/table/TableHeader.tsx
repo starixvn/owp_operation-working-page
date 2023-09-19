@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { keyOfTotalGameInfo } from '../../TableConst.json';
 import { uniqueId } from 'lodash';
 import FilterIcon from 'mdi-react/FilterIcon';
