@@ -112,12 +112,14 @@
     height: 100%;
     color: #494848;
     font-size: 12px;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
 
     thead {
       background: #e3e3e3;
       top: 0;
       position: sticky;
+
 
       .username {
         width: 160px;
@@ -125,6 +127,8 @@
     }
 
     tbody {
+
+
       .row-even {
         &:hover {
           background-color: #cef3fc !important;
@@ -138,7 +142,7 @@
           background-color: #cef3fc;
         }
 
-        background: #f9f9f9;
+        background: #dededf;
       }
     }
 
@@ -269,12 +273,14 @@
   color: #1e88e5;
   margin-right: 5px;
 }
+
 .tableFixHead {
   overflow: auto;
   box-shadow: inset 1px -1px #c8ced3;
   margin-bottom: 20px;
   max-height: 600px;
   border-right: 1px solid #c8ced3;
+
   thead {
     th {
       position: sticky;
@@ -283,32 +289,40 @@
       box-shadow: inset 1px -1px #c8ced3, inset 1px 1px #c8ced3;
     }
   }
+
   tbody {
     th {
       position: sticky;
       left: 0;
     }
   }
+
   td {
     box-shadow: inset 1px -1px #c8ced3;
   }
+
   th {
     box-shadow: inset 1px 1px #c8ced3, 0 1px #c8ced3;
   }
 }
+
 .edit-popup {
   .title {
     font-weight: bold;
     padding-bottom: 10px;
   }
+
   .modal-body {
     padding: 3rem 2rem;
     min-height: 700px;
+
     .list-btn {
       text-align: right;
+
       button {
         margin-left: 20px;
       }
+
       .button-cancel {
         border: 0;
         height: 26px;
@@ -336,63 +350,80 @@
       }
     }
   }
+
   .edit-target-table {
     border-collapse: collapse;
+
     thead {
+
       th,
       td {
         background: #e3e3e3;
       }
     }
+
     tbody {
       tr:nth-child(even) {
         background-color: #ffffff;
       }
+
       tr:nth-child(even) {
         background-color: #f9f9f9;
       }
     }
+
     th,
     td {
       border-collapse: collapse;
       height: 30px;
       padding: 4px 8px 3px;
       text-align: center;
+
       &:nth-child(1) {
         width: 30px;
       }
+
       &:nth-child(2) {
         text-align: left;
         width: 200px;
       }
+
       &:nth-child(3) {
         width: 300px;
       }
+
       &:nth-child(4) {
         width: 300px;
       }
+
       div.css-1nmdiq5-menu {
         min-width: 50px !important;
       }
+
       .basic-multi-select .select__control {
         width: 100% !important;
         border-bottom: none !important;
         text-decoration: none;
       }
+
       .css-t3ipsp-control {
         border: none;
       }
+
       .select__input {
         color: transparent !important;
       }
+
       .css-d7l1ni-option {
         background-color: #ffffff !important;
       }
+
       .css-d7l1ni-option:hover {
         background-color: #ebf5ff !important;
       }
     }
   }
+
   .tableFixHead::-webkit-scrollbar {
     background-color: #f5f5f5;
     padding-left: 3px !important;
