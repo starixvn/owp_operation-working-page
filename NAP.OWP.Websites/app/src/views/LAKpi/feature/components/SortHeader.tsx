@@ -12,7 +12,6 @@ type SortHeaderProps = {
 
 const SortHeader = (props: SortHeaderProps) => {
   const { columnKey, headerName, property } = props;
-  const setSortState = useStore(state => state.setSortState);
   const sortDataSources = useStore(state => state.sortDataSources);
   const { columnKeySelected, orderType, propertySelected } = useStore(
     state => state.sortState
@@ -25,7 +24,6 @@ const SortHeader = (props: SortHeaderProps) => {
       orderType: orderSelection,
       propertySelected: property
     };
-    setSortState(sortState);
     sortDataSources(sortState);
   };
 
@@ -33,7 +31,10 @@ const SortHeader = (props: SortHeaderProps) => {
     orderType: string,
     columnKeySelected: string
   ) => {
-    if (isEqual(columnKey, columnKeySelected)) {
+    if (
+      isEqual(propertySelected, property) &&
+      isEqual(columnKey, columnKeySelected)
+    ) {
       return isEqual(orderType, asc) ? desc : asc;
     }
     return desc;
@@ -45,7 +46,8 @@ const SortHeader = (props: SortHeaderProps) => {
       <span
         onClick={handleOnClickOrder}
         className={`sort-icon ${
-          propertySelected === property && columnKeySelected === columnKey
+          isEqual(propertySelected, property) &&
+          isEqual(columnKeySelected, columnKey)
             ? orderType
             : ''
         }`}

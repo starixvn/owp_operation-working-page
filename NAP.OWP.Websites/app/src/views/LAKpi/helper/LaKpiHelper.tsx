@@ -12,6 +12,7 @@ const sortData = (
   columnKey: string,
   orderType: string
 ) => {
+  console.log(orderType);
   const columnKeyTotalMatch = keyOfTotalGameInfo.map(x => x.key);
   let dataSorted: DataSource[] = [];
 
@@ -19,7 +20,6 @@ const sortData = (
     dataSorted = [...dataSource].sort((src, dest) => {
       const first = src[property as keyof DataSource] as TTotalGameInfo;
       const second = dest[property as keyof DataSource] as TTotalGameInfo;
-
       return correctComparer(
         first[columnKey as keyof TTotalGameInfo],
         second[columnKey as keyof TTotalGameInfo],

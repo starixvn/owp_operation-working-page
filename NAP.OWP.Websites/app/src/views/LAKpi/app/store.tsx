@@ -8,7 +8,12 @@ import {
   Target
 } from '../feature/type/TableType.native';
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { queryDataTable, queryConditionData, queryLevelOption, updateTargetLevel } from '../service';
+import {
+  queryDataTable,
+  queryConditionData,
+  queryLevelOption,
+  updateTargetLevel
+} from '../service';
 import { sortData } from '../helper/LaKpiHelper';
 
 const useStore = create<TState & TAction>((set, get) => ({
@@ -71,13 +76,6 @@ const useStore = create<TState & TAction>((set, get) => ({
       })
     );
   },
-  setSortState: (data: SortState) => {
-    set((state: TState) =>
-      update(state, {
-        sortState: { $set: data }
-      })
-    );
-  },
   sortDataSources: (sortState: SortState) => {
     const { dataTable } = get();
     const dataSorted = sortData(
@@ -88,6 +86,7 @@ const useStore = create<TState & TAction>((set, get) => ({
     );
     set((state: TState) =>
       update(state, {
+        sortState: { $set: sortState },
         dataTable: {
           dataSourcesFiltered: { $set: dataSorted }
         }

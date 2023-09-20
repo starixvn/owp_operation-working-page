@@ -25,7 +25,6 @@ type TAction = {
   queryLevelOption: () => Promise<void>;
   updateTargetLevel: (model: Target[]) => Promise<void>;
   setDataSourcesFiltered: (data: DataSource[]) => void;
-  setSortState: (data: SortState) => void;
   sortDataSources: (sortState: SortState) => void;
 };
 
@@ -64,12 +63,12 @@ type TCondition = {
 type TargetOption = {
   value: number | null;
   label: string;
-}
+};
 
 type Target = {
   userId: number;
   targetId: number | null;
-}
+};
 
 export {
   TState,

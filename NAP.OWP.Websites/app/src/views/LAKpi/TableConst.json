@@ -75,7 +75,7 @@
       "key": "multipleProducts"
     }
   ],
-  "orderOfLevel": ["Level A", "Level B", "Level C", "Level D", "New", "Fail"],
+  "orderOfLevel": ["Fail", "New", "Level D", "Level C", "Level B", "Level A"],
   "keyOfConditionTable": {
     "totalVirtualMultipleMatches": "Virtual Matches + Multiple Matches",
     "virtualMatches": "Virtual Matches",
