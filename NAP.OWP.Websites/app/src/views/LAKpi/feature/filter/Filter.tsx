@@ -4,7 +4,6 @@ import CalendarIcon from 'mdi-react/CalendarIcon';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import {
   initDefaultFilterDate,
-  getMonthDifference,
   getDaysInMonth,
   isValidTimeRange
 } from '../../Utils';

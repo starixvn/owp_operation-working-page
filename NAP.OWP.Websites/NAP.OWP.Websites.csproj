@@ -2118,18 +2118,10 @@
     <Content Include="wwwroot\la-kpi\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\la-kpi\assets\ext\server-142328b0.css" />
-    <Content Include="wwwroot\la-kpi\assets\js\main-1ac1e0d4.js" />
+    <Content Include="wwwroot\la-kpi\assets\ext\server-2a76af79.css" />
+    <Content Include="wwwroot\la-kpi\assets\js\main-433a1944.js" />
     <Content Include="wwwroot\la-kpi\favicon.ico" />
     <Content Include="wwwroot\la-kpi\server.html" />
-    <Content Include="wwwroot\la-report\assets\ext\icon-search-4037a8fe.svg" />
-    <Content Include="wwwroot\la-report\assets\ext\logo_none-232840bc.svg" />
-    <Content Include="wwwroot\la-report\assets\ext\logo_text-c3062a52.svg" />
-    <Content Include="wwwroot\la-report\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\la-report\assets\ext\server-8c129d0c.css" />
-    <Content Include="wwwroot\la-report\assets\js\main-5f334610.js" />
-    <Content Include="wwwroot\la-report\favicon.ico" />
-    <Content Include="wwwroot\la-report\server.html" />
     <Content Include="wwwroot\league-management\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\league-management\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\league-management\assets\ext\logo_text-c3062a52.svg" />
@@ -2931,14 +2923,6 @@
     <Content Include="wwwroot\event-upload\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-upload\server.cshtml" />
-    <Content Include="wwwroot\la-kpi\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\la-kpi\server.cshtml" />
-    <Content Include="wwwroot\la-report\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\la-report\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\la-report\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\la-report\server.cshtml" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-a7443744.ttf" />
@@ -3028,6 +3012,10 @@
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
+    <Content Include="wwwroot\la-kpi\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\la-kpi\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
