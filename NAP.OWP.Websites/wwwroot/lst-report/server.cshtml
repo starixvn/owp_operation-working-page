@@ -62,6 +62,7 @@ Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
   </script>
   <input type="hidden" value="@currentUsername" >
 
+    @Html.Hidden("RootURL", Url.Content("~/"))
 </body>
 
 </html>
