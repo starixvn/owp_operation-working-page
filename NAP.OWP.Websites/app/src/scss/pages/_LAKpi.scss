@@ -114,8 +114,6 @@
     font-size: 12px;
     border-collapse: collapse;
 
-
-
     thead {
       background: #e3e3e3;
       top: 0;
@@ -124,9 +122,6 @@
       .username {
         width: 160px;
       }
-
-
-
     }
 
     tbody {
@@ -389,6 +384,12 @@
       }
       .select__input {
         color: transparent !important;
+      }
+      .css-d7l1ni-option {
+        background-color: #ffffff !important;
+      }
+      .css-d7l1ni-option:hover {
+        background-color: #ebf5ff !important;
       }
     }
   }

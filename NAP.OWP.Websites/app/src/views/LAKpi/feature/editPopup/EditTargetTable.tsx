@@ -25,18 +25,20 @@ const EditTargetTable = (props: Props) => {
         updatedData[index] = newUser;
         setUpdatedData(updatedData);
       };
+      const className = user.progress === 'Fail' ? 'fail-progress' : '';
 
       return (
         <tr key={user.userName}>
           <td>{index + 1}</td>
           <td>{user.userName}</td>
-          <td>{user.progress}</td>
+          <td className={className}>{user.progress}</td>
           <td>
             <Select
               defaultValue={option}
               className='basic-multi-select'
               classNamePrefix='select'
               options={levelOption}
+              autoFocus={false}
               onChange={handleChange} />
           </td>
         </tr>
