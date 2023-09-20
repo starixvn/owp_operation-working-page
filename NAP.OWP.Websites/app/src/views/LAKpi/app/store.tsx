@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import update from 'immutability-helper';
-import { DataSource, TAction, TState } from '../feature/type/TableType.native';
+import { DataSource, TAction, TState, Target } from '../feature/type/TableType.native';
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { queryDataTable, queryConditionData } from '../service';
+import { queryDataTable, queryConditionData, queryLevelOption, updateTargetLevel } from '../service';
 
 const useStore = create<TState & TAction>(set => ({
   dataTable: {
@@ -12,11 +12,21 @@ const useStore = create<TState & TAction>(set => ({
     isGap: true
   },
   conditionData: [],
+  levelOption: [],
   queryConditionData: async () => {
     const data = await queryConditionData();
     set({
       conditionData: data
     });
+  },
+  queryLevelOption: async () => {
+    const data = await queryLevelOption();
+    set({
+      levelOption: data
+    });
+  },
+  updateTargetLevel: async (model: Target[]) => {
+    await updateTargetLevel(model);
   },
   queryDataTable: async (fromDate: Required<Date>, toDate: Required<Date>) => {
     set((state: TState) =>

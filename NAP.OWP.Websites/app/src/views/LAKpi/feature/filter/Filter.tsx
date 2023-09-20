@@ -10,6 +10,7 @@ import {
 import update from 'immutability-helper';
 import useStore from '../../app/store';
 import InfoConditionExplainIcon from '../tableConditionConfig/InfoConditionExplainIcon';
+import EditTarget from './EditTarget';
 
 const { defaultFromDate, defaultToDate } = initDefaultFilterDate();
 
@@ -18,6 +19,7 @@ const Filter = () => {
   const toDatePicker = useRef<ReactDatePicker>(null);
   const queryDataTable = useStore(state => state.queryDataTable);
   const queryConditionData = useStore(state => state.queryConditionData);
+  const queryLevelOptions = useStore(state => state.queryLevelOption);
   const [filterDate, setFilterDate] = useState({
     fromDate: defaultFromDate,
     toDate: defaultToDate
@@ -55,6 +57,7 @@ const Filter = () => {
   useEffect(() => {
     queryDataTable(filterDate.fromDate, filterDate.toDate);
     queryConditionData();
+    queryLevelOptions();
   }, []);
 
   return (
@@ -103,6 +106,7 @@ const Filter = () => {
           </button>
         </div>
         <div className='right-control icon-condition'>
+          <EditTarget />
           <InfoConditionExplainIcon />
         </div>
       </div>
