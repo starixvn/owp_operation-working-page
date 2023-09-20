@@ -1,7 +1,12 @@
 import React from 'react';
-import { keyOfTotalGameInfo } from '../../TableConst.json';
+import {
+  keyOfTotalGameGap,
+  keyOfTotalAchievedMatches
+} from '../../TableConst.json';
 import { uniqueId } from 'lodash';
 import FilterIcon from 'mdi-react/FilterIcon';
+import SortHeader from '../components/SortHeader';
+
 type PropsTableHeader = {
   isGap: boolean;
   isActiveIconFilter: boolean;
@@ -9,15 +14,15 @@ type PropsTableHeader = {
 };
 
 const TableHeader = (props: PropsTableHeader) => {
-  const duplicatedList = props.isGap
-    ? [...keyOfTotalGameInfo, ...keyOfTotalGameInfo]
-    : keyOfTotalGameInfo;
+  const headerTotalGameList = props.isGap
+    ? [...keyOfTotalGameGap, ...keyOfTotalAchievedMatches]
+    : keyOfTotalAchievedMatches;
 
   return (
     <>
       <tr>
         <th rowSpan={2}>#</th>
-        <th rowSpan={2}>
+        <th className='username' rowSpan={2}>
           <span>Username</span>
           <span
             className={`icon-filter ${
@@ -29,8 +34,20 @@ const TableHeader = (props: PropsTableHeader) => {
         </th>
         {props.isGap ? (
           <>
-            <th rowSpan={2}>Progress</th>
-            <th rowSpan={2}>Target</th>
+            <th rowSpan={2}>
+              <SortHeader
+                columnKey={'progress'}
+                headerName={'Progress'}
+                property={'progress'}
+              />
+            </th>
+            <th rowSpan={2}>
+              <SortHeader
+                columnKey={'target'}
+                headerName={'Target'}
+                property={'target'}
+              />
+            </th>
             <th colSpan={5}>The gap to win the target</th>
             <th colSpan={5}>Achieved matches</th>
             <th rowSpan={2}>Reward</th>
@@ -42,8 +59,14 @@ const TableHeader = (props: PropsTableHeader) => {
         )}
       </tr>
       <tr>
-        {duplicatedList.map(x => (
-          <th key={uniqueId()}>{x.label}</th>
+        {headerTotalGameList.map(x => (
+          <th key={uniqueId()}>
+            <SortHeader
+              columnKey={x.key}
+              headerName={x.label}
+              property={x.property}
+            />
+          </th>
         ))}
       </tr>
     </>

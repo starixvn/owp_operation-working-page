@@ -98,6 +98,7 @@
 
 .table-content {
   max-width: 1600px;
+  min-height: 300px;
   overflow-y: auto;
 
   .filter-popup {
@@ -113,10 +114,19 @@
     font-size: 12px;
     border-collapse: collapse;
 
+
+
     thead {
       background: #eee;
       top: 0;
       position: sticky;
+
+      .username {
+        width: 160px;
+      }
+
+
+
     }
 
     tbody {
@@ -145,13 +155,61 @@
       text-align: center;
       border: 1px solid #c8ced3;
 
+      .sort-header {
+        display: flex;
+        text-align: center;
+
+        .sort-icon {
+          margin-top: 10px;
+          margin-left: 5px;
+          transform: translate(0, -50%);
+          width: 12px;
+          height: 12px;
+          cursor: pointer;
+
+          &.ORDER_ASC {
+            &:before {
+              border-color: transparent transparent #4b595c transparent;
+            }
+          }
+
+          &.ORDER_DESC {
+            &:after {
+              border-color: #4b595c transparent transparent transparent;
+            }
+          }
+
+          &:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            right: 0;
+            border-style: solid;
+            top: 0;
+            border-color: transparent transparent #93a9aa transparent;
+            border-width: 0 3px 5px 3px;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            right: 0;
+            border-style: solid;
+            bottom: 0;
+            border-color: #93a9aa transparent transparent transparent;
+            border-width: 5px 3px 0 3px;
+          }
+        }
+      }
+
       &:nth-child(1) {
         min-width: 30px;
       }
 
       &:nth-child(2) {
-        min-width: 60px;
-
         .icon-filter {
           margin-left: 30px;
           cursor: pointer;

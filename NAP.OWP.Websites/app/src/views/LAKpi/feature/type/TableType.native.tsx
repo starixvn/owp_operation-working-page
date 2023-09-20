@@ -7,6 +7,13 @@ type TState = {
   };
   conditionData: Array<TCondition>;
   levelOption: Array<TargetOption>;
+  sortState: SortState;
+};
+
+type SortState = {
+  columnKeySelected: string;
+  orderType: string;
+  propertySelected: string;
 };
 
 type TAction = {
@@ -18,6 +25,8 @@ type TAction = {
   queryLevelOption: () => Promise<void>;
   updateTargetLevel: (model: Target[]) => Promise<void>;
   setDataSourcesFiltered: (data: DataSource[]) => void;
+  setSortState: (data: SortState) => void;
+  sortDataSources: (sortState: SortState) => void;
 };
 
 type TTotalGameInfo = {
@@ -69,6 +78,7 @@ export {
   TTotalGameInfo,
   TCondition,
   TTotalGameConditionInfo,
+  SortState,
   TargetOption,
   Target
 };

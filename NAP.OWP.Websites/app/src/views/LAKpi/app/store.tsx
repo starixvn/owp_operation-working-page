@@ -1,10 +1,17 @@
 import { create } from 'zustand';
 import update from 'immutability-helper';
-import { DataSource, TAction, TState, Target } from '../feature/type/TableType.native';
+import {
+  DataSource,
+  SortState,
+  TAction,
+  TState,
+  Target
+} from '../feature/type/TableType.native';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import { queryDataTable, queryConditionData, queryLevelOption, updateTargetLevel } from '../service';
+import { sortData } from '../helper/LaKpiHelper';
 
-const useStore = create<TState & TAction>(set => ({
+const useStore = create<TState & TAction>((set, get) => ({
   dataTable: {
     loadingStatus: REQUEST_STATUS.idle,
     entities: [],
@@ -13,6 +20,11 @@ const useStore = create<TState & TAction>(set => ({
   },
   conditionData: [],
   levelOption: [],
+  sortState: {
+    columnKeySelected: '',
+    orderType: '',
+    propertySelected: ''
+  },
   queryConditionData: async () => {
     const data = await queryConditionData();
     set({
@@ -55,6 +67,29 @@ const useStore = create<TState & TAction>(set => ({
       update(state, {
         dataTable: {
           dataSourcesFiltered: { $set: data }
+        }
+      })
+    );
+  },
+  setSortState: (data: SortState) => {
+    set((state: TState) =>
+      update(state, {
+        sortState: { $set: data }
+      })
+    );
+  },
+  sortDataSources: (sortState: SortState) => {
+    const { dataTable } = get();
+    const dataSorted = sortData(
+      dataTable.dataSourcesFiltered,
+      sortState.propertySelected,
+      sortState.columnKeySelected,
+      sortState.orderType
+    );
+    set((state: TState) =>
+      update(state, {
+        dataTable: {
+          dataSourcesFiltered: { $set: dataSorted }
         }
       })
     );
