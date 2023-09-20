@@ -21,6 +21,10 @@ type TAction = {
     fromDate: Required<Date>,
     toDate: Required<Date>
   ) => Promise<void>;
+  exportDataTable: (
+    fromDate: Required<Date>,
+    toDate: Required<Date>
+  ) => Promise<void>;
   queryConditionData: () => Promise<void>;
   queryLevelOption: () => Promise<void>;
   updateTargetLevel: (model: Target[]) => Promise<void>;

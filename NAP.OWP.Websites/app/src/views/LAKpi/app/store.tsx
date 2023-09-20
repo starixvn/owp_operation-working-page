@@ -12,7 +12,8 @@ import {
   queryDataTable,
   queryConditionData,
   queryLevelOption,
-  updateTargetLevel
+  updateTargetLevel,
+  exportDataTable
 } from '../service';
 import { sortData } from '../helper/LaKpiHelper';
 
@@ -35,6 +36,9 @@ const useStore = create<TState & TAction>((set, get) => ({
     set({
       conditionData: data
     });
+  },
+  exportDataTable: async (fromDate: Required<Date>, toDate: Required<Date>) => {
+    await exportDataTable(fromDate, toDate);
   },
   queryLevelOption: async () => {
     const data = await queryLevelOption();

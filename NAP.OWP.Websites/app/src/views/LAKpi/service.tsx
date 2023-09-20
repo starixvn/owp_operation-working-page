@@ -9,10 +9,7 @@ const buildRequestURL = (key: string | null) =>
     : `${window.netCoreRootUrl}/${netFwURL}/${key}`;
 
 const queryDataTable = async (filterFromDate: Date, filterToDate: Date) => {
-  const url =
-    process.env.NODE_ENV === 'development'
-      ? `${netCoreURL}`
-      : `${window.netCoreRootUrl}/${netFwURL}`;
+  const url = buildRequestURL('');
   const fromDate = Utils.formatDate(filterFromDate);
   const toDate = Utils.formatDate(filterToDate);
 
@@ -21,8 +18,14 @@ const queryDataTable = async (filterFromDate: Date, filterToDate: Date) => {
     fromDate,
     toDate
   });
-
   return response.data;
+};
+
+const exportDataTable = async (filterFromDate: Date, filterToDate: Date) => {
+  const url = buildRequestURL('export');
+  const fromDate = Utils.formatDate(filterFromDate);
+  const toDate = Utils.formatDate(filterToDate);
+  window.location.href = `${url}?fromDate=${fromDate}&toDate=${toDate}`;
 };
 
 const queryConditionData = async () => {
@@ -52,5 +55,6 @@ export {
   queryDataTable,
   queryConditionData,
   queryLevelOption,
-  updateTargetLevel
+  updateTargetLevel,
+  exportDataTable
 };
