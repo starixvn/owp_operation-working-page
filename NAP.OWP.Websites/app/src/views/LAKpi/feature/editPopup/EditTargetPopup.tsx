@@ -25,8 +25,10 @@ const EditTargetPopup = (props: Props) => {
   const handleSave = async () => {
     const differences = updatedData.filter(x => !entities.includes(x));
     const targetData = differences.map(x => ({ userId: x.userId, targetId: x.targetId } as Target));
-    updateTargetLevel(targetData);
-    queryDataTable(defaultFromDate, defaultToDate);
+    if (targetData.length > 0) {
+      await updateTargetLevel(targetData);
+      await queryDataTable(defaultFromDate, defaultToDate);
+    }
     setIsOpenPopup(false);
   };
 

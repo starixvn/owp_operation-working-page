@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -2119,7 +2118,7 @@
     <Content Include="wwwroot\la-kpi\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\server-f7a0d1c4.css" />
-    <Content Include="wwwroot\la-kpi\assets\js\main-ded59eaf.js" />
+    <Content Include="wwwroot\la-kpi\assets\js\main-fb721714.js" />
     <Content Include="wwwroot\la-kpi\favicon.ico" />
     <Content Include="wwwroot\la-kpi\server.html" />
     <Content Include="wwwroot\league-management\assets\ext\icon-search-4037a8fe.svg" />
