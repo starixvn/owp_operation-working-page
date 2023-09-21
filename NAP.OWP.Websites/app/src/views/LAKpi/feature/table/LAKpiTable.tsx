@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import useStore from '../../app/store';
@@ -22,6 +22,7 @@ const LAKpiTable = () => {
     state => state.setDataSourcesFiltered
   );
   const tableRef = useRef<HTMLDivElement>(null);
+  const filterRef = useRef<HTMLDivElement>(null);
 
   const handleResizeBrowser = () => {
     const { innerHeight } = window;
@@ -33,11 +34,27 @@ const LAKpiTable = () => {
     return () => window.removeEventListener('resize', handleResizeBrowser);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutSide = (event: MouseEvent) => {
+      if (
+        filterRef.current &&
+        !filterRef.current.contains(event.target as Node)
+      ) {
+        closeFilterHeader();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutSide);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutSide);
+    };
+  }, [filterRef]);
+
   if (isEquals(loadingStatus, REQUEST_STATUS.pending)) {
     return <Loading />;
   }
 
   const openFilterHeader = () => setIsOpen(true);
+  const closeFilterHeader = () => setIsOpen(false);
 
   const handleOnSearchFilter = () => {
     setIsActiveIconFilter(true);
@@ -57,8 +74,8 @@ const LAKpiTable = () => {
   return (
     <>
       {isOpen && (
-        <div className='filter-popup filter-popup is-show'>
-          <span className='close-popup' onClick={() => setIsOpen(false)}>
+        <div ref={filterRef} className='filter-popup filter-popup is-show'>
+          <span className='close-popup' onClick={closeFilterHeader}>
             <CloseIcon size={14} />
           </span>
           <input
