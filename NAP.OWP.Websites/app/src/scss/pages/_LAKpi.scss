@@ -96,15 +96,18 @@
   }
 }
 
+.filter-popup {
+  margin-top: 25px;
+  margin-left: 160px;
+  z-index: 99;
+}
+
 .table-content {
   max-width: 1600px;
   min-height: 300px;
   overflow-y: auto;
 
-  .filter-popup {
-    margin-top: 25px;
-    margin-left: 160px;
-  }
+
 
   table {
     padding: 0;
@@ -157,6 +160,11 @@
       .sort-header {
         display: flex;
         text-align: center;
+        width: 100%;
+
+        .sort-header-name {
+          width: 90%;
+        }
 
         .sort-icon {
           margin-top: 10px;

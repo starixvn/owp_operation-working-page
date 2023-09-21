@@ -42,7 +42,7 @@ const SortHeader = (props: SortHeaderProps) => {
 
   return (
     <div className='sort-header'>
-      <span>{headerName}</span>
+      <span className='sort-header-name'>{headerName}</span>
       <span
         onClick={handleOnClickOrder}
         className={`sort-icon ${

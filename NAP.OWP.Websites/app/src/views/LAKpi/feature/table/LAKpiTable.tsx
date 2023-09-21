@@ -55,7 +55,7 @@ const LAKpiTable = () => {
   };
 
   return (
-    <div ref={tableRef} style={{ maxHeight }} className='table-content'>
+    <>
       {isOpen && (
         <div className='filter-popup filter-popup is-show'>
           <span className='close-popup' onClick={() => setIsOpen(false)}>
@@ -79,19 +79,21 @@ const LAKpiTable = () => {
           </Button>
         </div>
       )}
-      <table>
-        <thead>
-          <TableHeader
-            isGap={isGap}
-            isActiveIconFilter={isActiveIconFilter}
-            openFilterHeader={openFilterHeader}
-          />
-        </thead>
-        <tbody>
-          <TableBody dataSource={dataSourcesFiltered} isGap={isGap} />
-        </tbody>
-      </table>
-    </div>
+      <div ref={tableRef} style={{ maxHeight }} className='table-content'>
+        <table>
+          <thead>
+            <TableHeader
+              isGap={isGap}
+              isActiveIconFilter={isActiveIconFilter}
+              openFilterHeader={openFilterHeader}
+            />
+          </thead>
+          <tbody>
+            <TableBody dataSource={dataSourcesFiltered} isGap={isGap} />
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 
