@@ -77,12 +77,15 @@ const showNotifySuccess = async message =>
   Toastr.fire({
     html: message,
     timer: 3000,
-    padding: 0,
-    width: 300,
     showConfirmButton: false,
     position: 'top',
     customClass: 'toast-notify',
     showClass: {
+      backdrop: '',
+      popup: '',
+      icon: ''
+    },
+    hideClass: {
       backdrop: '',
       popup: '',
       icon: ''

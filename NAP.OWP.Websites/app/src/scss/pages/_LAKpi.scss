@@ -107,8 +107,6 @@
   min-height: 300px;
   overflow-y: auto;
 
-
-
   table {
     padding: 0;
     width: 100%;
@@ -444,6 +442,15 @@
   align-items: center;
   text-align: center;
   width: 300px !important;
+  position: absolute;
+  width: 50px;
+  height: 55px;
+  z-index: 2147483647;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 15px;
+  background: #ffffff;
+  border-radius: 0px 0px 5px 5px !important;
+  margin-top: -10px;
 }
 .swal2-popup.swal2-modal.toast-notify.swal2-show {
   margin: 0px !important;
@@ -452,4 +459,5 @@
 
 .toast-notify div#swal2-html-container {
   margin: 10px;
+  font-size: 15px !important;
 }

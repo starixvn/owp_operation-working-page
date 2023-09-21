@@ -29,7 +29,7 @@ const EditTargetPopup = (props: Props) => {
     if (targetData.length > 0) {
       await updateTargetLevel(targetData);
       await queryDataTable(defaultFromDate, defaultToDate);
-      ToastrWrapper.showNotifySuccess('Changes are save successfully');
+      ToastrWrapper.showNotifySuccess('Changes are saved successfully');
     }
     setIsOpenPopup(false);
   };
