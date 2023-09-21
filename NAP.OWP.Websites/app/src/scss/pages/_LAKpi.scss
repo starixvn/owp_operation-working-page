@@ -123,15 +123,12 @@
       top: 0;
       position: sticky;
 
-
       .username {
         width: 160px;
       }
     }
 
     tbody {
-
-
       .row-even {
         &:hover {
           background-color: #cef3fc !important;
@@ -363,7 +360,6 @@
     border-collapse: collapse;
 
     thead {
-
       th,
       td {
         background: #e3e3e3;
@@ -442,4 +438,18 @@
     background-color: #8b8b8b;
     border-radius: 10px;
   }
+}
+.swal2-popup.swal2-modal.toast-notify {
+  padding: 0px !important;
+  align-items: center;
+  text-align: center;
+  width: 300px !important;
+}
+.swal2-popup.swal2-modal.toast-notify.swal2-show {
+  margin: 0px !important;
+  align-items: center;
+}
+
+.toast-notify div#swal2-html-container {
+  margin: 10px;
 }

@@ -21,6 +21,3 @@ function executeCopy(...params) {
     document.removeEventListener('copy', listener);
     NotifyCopySuccess();
 };
-
-
-

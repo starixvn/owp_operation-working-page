@@ -4,6 +4,7 @@ import useStore from '../../app/store';
 import { DataSource, Target } from '../type/TableType.native';
 import EditTargetTable from './EditTargetTable';
 import { initDefaultFilterDate } from '../../Utils';
+import ToastrWrapper from '../../../components/ToastrWrapper';
 
 interface Props {
   setIsOpenPopup: Dispatch<SetStateAction<boolean>>;
@@ -28,6 +29,7 @@ const EditTargetPopup = (props: Props) => {
     if (targetData.length > 0) {
       await updateTargetLevel(targetData);
       await queryDataTable(defaultFromDate, defaultToDate);
+      ToastrWrapper.showNotifySuccess('Changes are save successfully');
     }
     setIsOpenPopup(false);
   };

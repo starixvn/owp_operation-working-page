@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import useStore from '../../app/store';
-import { DataSource, Target, TargetOption } from '../type/TableType.native';
 import Select, { SingleValue } from 'react-select-ts';
+import useStore from '../../app/store';
+import { DataSource, TargetOption } from '../type/TableType.native';
 
 interface Props {
   data: DataSource[],
@@ -13,22 +13,23 @@ const EditTargetTable = (props: Props) => {
   const { data, setUpdatedData, updatedData } = props;
   const { levelOption } = useStore(state => state);
 
+  const handleChange = (newValue: SingleValue<TargetOption>, user: DataSource, index: number) => {
+    const newUser: DataSource = {
+      ...user,
+      targetId: newValue?.value ?? null,
+      target: newValue?.label ?? ''
+    };
+    updatedData[index] = newUser;
+    setUpdatedData(updatedData);
+  };
+
   const renderData = () => (
     data.map((user, index) => {
       const option = { value: user.targetId, label: user.target } as TargetOption;
-      const handleChange = (newValue: SingleValue<TargetOption>) => {
-        const newUser: DataSource = {
-          ...user,
-          targetId: newValue?.value ?? null,
-          target: newValue?.label ?? ''
-        };
-        updatedData[index] = newUser;
-        setUpdatedData(updatedData);
-      };
       const className = user.progress === 'Fail' ? 'fail-progress' : '';
 
       return (
-        <tr key={user.userName}>
+        <tr key={index}>
           <td>{index + 1}</td>
           <td>{user.userName}</td>
           <td className={className}>{user.progress}</td>
@@ -39,7 +40,7 @@ const EditTargetTable = (props: Props) => {
               classNamePrefix='select'
               options={levelOption}
               autoFocus={false}
-              onChange={handleChange} />
+              onChange={newValue => handleChange(newValue, user, index)} />
           </td>
         </tr>
       );
