@@ -84,7 +84,9 @@
     "start:assignee-suggestion": "set NODE_APP=assignee-suggestion-list & vite",
     "build:assignee-suggestion": "set NODE_APP=assignee-suggestion-list & vite build",
     "start:la-kpi": "set NODE_APP=la-kpi & vite",
-    "build:la-kpi": "set NODE_APP=la-kpi & vite build"
+    "build:la-kpi": "set NODE_APP=la-kpi & vite build",
+    "start:feedback": "set NODE_APP=feedback & vite",
+    "build:feedback": "set NODE_APP=feedback & vite build"
   },
   "dependencies": {
     "@coreui/coreui": "^4.2.6",
