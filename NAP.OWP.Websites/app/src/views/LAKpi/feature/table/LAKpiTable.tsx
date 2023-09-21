@@ -9,6 +9,7 @@ import { headerHeight } from '../../TableConst.json';
 import { CloseIcon } from 'mdi-react';
 import { Button } from 'reactstrap';
 import { DataSource } from '../type/TableType.native';
+import { filterData } from '../../helper/LaKpiHelper';
 
 const LAKpiTable = () => {
   const [maxHeight, setMaxHeight] = useState(window.innerHeight - headerHeight);
@@ -18,9 +19,11 @@ const LAKpiTable = () => {
   const { loadingStatus, entities, isGap, dataSourcesFiltered } = useStore(
     state => state.dataTable
   );
+  const { filterHeaderValue } = useStore(state => state);
   const setDataSourcesFiltered = useStore(
     state => state.setDataSourcesFiltered
   );
+  const setFilterHeader = useStore(state => state.setFilterHeader);
   const tableRef = useRef<HTMLDivElement>(null);
   const filterRef = useRef<HTMLDivElement>(null);
 
@@ -59,14 +62,12 @@ const LAKpiTable = () => {
   const handleOnSearchFilter = () => {
     setIsActiveIconFilter(true);
     setIsOpen(false);
-    const dataFiltered = dataSourcesFiltered.filter((x: DataSource) =>
-      x.userName.includes(value)
-    );
+    const dataFiltered = filterData(entities, filterHeaderValue);
     setDataSourcesFiltered(dataFiltered);
   };
 
   const handleClearAllFilter = () => {
-    setValue('');
+    setFilterHeader('');
     setIsActiveIconFilter(false);
     setDataSourcesFiltered(entities);
   };
@@ -81,16 +82,16 @@ const LAKpiTable = () => {
           <input
             className='input-field'
             placeholder='Search'
-            value={value}
+            value={filterHeaderValue}
             autoFocus
-            onChange={e => setValue(e.target.value)}
+            onChange={e => setFilterHeader(e.target.value)}
           />
           <span className='clear-all' onClick={handleClearAllFilter}>
             Clear All
           </span>
           <Button
             className='btn-search'
-            disabled={!value}
+            disabled={!filterHeaderValue}
             onClick={handleOnSearchFilter}>
             Search
           </Button>

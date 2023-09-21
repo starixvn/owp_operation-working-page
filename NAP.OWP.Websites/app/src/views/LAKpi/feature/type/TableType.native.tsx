@@ -5,6 +5,7 @@ type TState = {
     dataSourcesFiltered: Array<DataSource>;
     isGap: boolean;
   };
+  filterHeaderValue: string;
   conditionData: Array<TCondition>;
   levelOption: Array<TargetOption>;
   sortState: SortState;
@@ -30,6 +31,7 @@ type TAction = {
   updateTargetLevel: (model: Target[]) => Promise<void>;
   setDataSourcesFiltered: (data: DataSource[]) => void;
   sortDataSources: (sortState: SortState) => void;
+  setFilterHeader: (value: string) => void;
 };
 
 type TTotalGameInfo = {

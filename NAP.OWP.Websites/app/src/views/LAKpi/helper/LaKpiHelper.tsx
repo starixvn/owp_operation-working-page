@@ -52,4 +52,7 @@ const correctComparer = (
   return schemaComparer[directionArg];
 };
 
-export { sortData };
+const filterData = (dataSource: DataSource[], value: string) =>
+  dataSource.filter((x: DataSource) => x.userName.includes(value));
+
+export { sortData, filterData };

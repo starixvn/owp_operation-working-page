@@ -15,7 +15,7 @@ import {
   updateTargetLevel,
   exportDataTable
 } from '../service';
-import { sortData } from '../helper/LaKpiHelper';
+import { filterData, sortData } from '../helper/LaKpiHelper';
 
 const useStore = create<TState & TAction>((set, get) => ({
   dataTable: {
@@ -24,6 +24,7 @@ const useStore = create<TState & TAction>((set, get) => ({
     dataSourcesFiltered: [],
     isGap: true
   },
+  filterHeaderValue: '',
   conditionData: [],
   levelOption: [],
   sortState: {
@@ -50,6 +51,7 @@ const useStore = create<TState & TAction>((set, get) => ({
     await updateTargetLevel(model);
   },
   queryDataTable: async (fromDate: Required<Date>, toDate: Required<Date>) => {
+    const { filterHeaderValue } = get();
     set((state: TState) =>
       update(state, {
         dataTable: {
@@ -59,13 +61,13 @@ const useStore = create<TState & TAction>((set, get) => ({
     );
 
     const data = await queryDataTable(fromDate, toDate);
-
+    const dataFiltered = filterData(data.kpiLa, filterHeaderValue);
     set((state: TState) =>
       update(state, {
         dataTable: {
           loadingStatus: { $set: REQUEST_STATUS.idle },
           entities: { $set: data.kpiLa },
-          dataSourcesFiltered: { $set: data.kpiLa },
+          dataSourcesFiltered: { $set: dataFiltered },
           isGap: { $set: data.isGap }
         }
       })
@@ -94,6 +96,13 @@ const useStore = create<TState & TAction>((set, get) => ({
         dataTable: {
           dataSourcesFiltered: { $set: dataSorted }
         }
+      })
+    );
+  },
+  setFilterHeader: (value: string) => {
+    set((state: TState) =>
+      update(state, {
+        filterHeaderValue: { $set: value }
       })
     );
   }
