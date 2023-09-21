@@ -1,0 +1,96 @@
+{
+  "FUNCTIONS": [
+    {
+      "value": 1,
+      "label": "Task List"
+    },
+    {
+      "value": 2,
+      "label": "User Management"
+    },
+    {
+      "value": 3,
+      "label": "Working Shift Management"
+    },
+    {
+      "value": 4,
+      "label": "Daily Working Shift"
+    },
+    {
+      "value": 5,
+      "label": "Assignment Configuration"
+    },
+    {
+      "value": 6,
+      "label": "Event Picking"
+    },
+    {
+      "value": 7,
+      "label": "Event Upload"
+    },
+    {
+      "value": 8,
+      "label": "Live Game Assignment"
+    },
+    {
+      "value": 9,
+      "label": "Live Game List"
+    },
+    {
+      "value": 10,
+      "label": "Prematch Report"
+    },
+    {
+      "value": 11,
+      "label": " LA KPI"
+    },
+    {
+      "value": 12,
+      "label": "Trader Report"
+    },
+    {
+      "value": 13,
+      "label": "LA Report"
+    },
+    {
+      "value": 14,
+      "label": "Overtime Report"
+    },
+    {
+      "value": 15,
+      "label": "Match Count Live Report"
+    },
+    {
+      "value": 16,
+      "label": "Event Tickets"
+    },
+    {
+      "value": 17,
+      "label": "PreMatch Assignment"
+    },
+    {
+      "value": 18,
+      "label": "League Management"
+    },
+    {
+      "value": 19,
+      "label": "Odds Compiler"
+    },
+    {
+      "value": 20,
+      "label": "OS Live Game Assignment"
+    },
+    {
+      "value": 21,
+      "label": "OS Basketball Maxbet"
+    },
+    {
+      "value": 22,
+      "label": "Provider Arrangement"
+    },
+    {
+      "value": 23,
+      "label": "Suggestion List"
+    }
+  ]
+}
