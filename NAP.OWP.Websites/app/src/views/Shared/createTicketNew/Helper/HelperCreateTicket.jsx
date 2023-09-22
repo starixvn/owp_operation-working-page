@@ -3,6 +3,7 @@ import { chain } from 'lodash';
 import Service from '../Service';
 import { urlUploadFile } from '../const/const';
 import ToastrWrapper from '../../../components/ToastrWrapper';
+import { TICKET_TYPE } from '../../TicketCenterPrematch/const/const.json';
 import React from 'react';
 
 const informResult = result => {
@@ -61,11 +62,20 @@ const filterResult = value => {
   return event.reduce((a, b) => a.concat(b), []);
 };
 
+const filterFeedbackSubtype = (ticketType, option) => {
+  if (ticketType === TICKET_TYPE.GROUP_CHAT) {
+    return option.filter(x => x.label !== 'Feedback');
+  }
+
+  return option;
+};
+
 export {
   informResult,
   formatRecipientModel,
   getRecipientDefaultBySubType,
   saveFileToBackEnd,
   getSubTypeByType,
-  filterResult
+  filterResult,
+  filterFeedbackSubtype
 };
