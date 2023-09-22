@@ -23,7 +23,7 @@ const MessageContents = ({
   quoteMessage = '',
   quoteUsername = '',
   quoteCreatedDate = '',
-  imageContent
+  imageFileName
 }) => {
   const getCreatedTime = () => formatTime(createdDate, 'minute', 'hh:mm A');
   const handleOnClick = () => {
@@ -115,8 +115,8 @@ const MessageContents = ({
         {fileId && (
           <div className='file-div' onClick={handleOnClick}>
             {getFileIcon()}
-            {imageContent ? (
-              <ImageDisplay imageContent={imageContent}></ImageDisplay>
+            {imageFileName ? (
+              <ImageDisplay imageFileName={imageFileName}></ImageDisplay>
             ) : (
               <span className='is-file'>{messageContent}</span>
             )}

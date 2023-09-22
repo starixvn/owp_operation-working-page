@@ -1,7 +1,8 @@
 import {
   validExtension,
   imageExtension,
-  EVENT_TYPE
+  EVENT_TYPE,
+  URL
 } from '../const/index.json';
 
 const buildMessageListClassName = (height, isExpandInfo) => {
@@ -60,9 +61,13 @@ const getTicketTitle = ticket => {
   }
   return ticket.owpLeagueName;
 };
-
+const getUrlTicketFile = imageName =>
+  process.env.NODE_ENV === 'development'
+    ? `${URL.NET_CORE_TICKET_CENTER_FILE}/${imageName}`
+    : `${window.netCoreRootUrl}/${URL.NET_FW_TICKET_CENTER_FILE}/${imageName}`;
 export {
   buildMessageListClassName,
+  getUrlTicketFile,
   validateFileExtension,
   validateFileSize,
   getTicketTitle,
