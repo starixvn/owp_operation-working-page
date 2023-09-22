@@ -76,6 +76,12 @@ type Target = {
   targetId: number | null;
 };
 
+type SortHeaderProps = {
+  columnKey: string;
+  headerName: string;
+  property: string;
+};
+
 export {
   TState,
   TAction,
@@ -85,5 +91,6 @@ export {
   TTotalGameConditionInfo,
   SortState,
   TargetOption,
-  Target
+  Target,
+  SortHeaderProps
 };

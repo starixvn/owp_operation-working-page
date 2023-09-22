@@ -15,7 +15,6 @@ const LAKpiTable = () => {
   const [maxHeight, setMaxHeight] = useState(window.innerHeight - headerHeight);
   const [isOpen, setIsOpen] = useState(false);
   const [isActiveIconFilter, setIsActiveIconFilter] = useState(false);
-  const [value, setValue] = useState('');
   const { loadingStatus, entities, isGap, dataSourcesFiltered } = useStore(
     state => state.dataTable
   );

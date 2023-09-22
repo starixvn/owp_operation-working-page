@@ -2,42 +2,22 @@ import { isEqual } from 'lodash';
 import React from 'react';
 import { SortState } from '../type/TableType.native';
 import useStore from '../../app/store';
-import { asc, desc } from '../../TableConst.json';
-
-type SortHeaderProps = {
-  columnKey: string;
-  headerName: string;
-  property: string;
-};
+import { SortHeaderProps } from '../type/TableType.native';
+import { buildOrderSelection } from '../../helper/LaKpiHelper';
 
 const SortHeader = (props: SortHeaderProps) => {
   const { columnKey, headerName, property } = props;
   const sortDataSources = useStore(state => state.sortDataSources);
-  const { columnKeySelected, orderType, propertySelected } = useStore(
-    state => state.sortState
-  );
-
+  const sortState = useStore(state => state.sortState);
+  const { columnKeySelected, orderType, propertySelected } = sortState;
   const handleOnClickOrder = () => {
-    const orderSelection = buildOrderSelection(orderType, columnKeySelected);
-    const sortState: SortState = {
+    const orderSelection = buildOrderSelection(sortState, props);
+    const sortStateNew: SortState = {
       columnKeySelected: columnKey,
       orderType: orderSelection,
       propertySelected: property
     };
-    sortDataSources(sortState);
-  };
-
-  const buildOrderSelection = (
-    orderType: string,
-    columnKeySelected: string
-  ) => {
-    if (
-      isEqual(propertySelected, property) &&
-      isEqual(columnKey, columnKeySelected)
-    ) {
-      return isEqual(orderType, asc) ? desc : asc;
-    }
-    return desc;
+    sortDataSources(sortStateNew);
   };
 
   return (

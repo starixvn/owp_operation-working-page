@@ -1,4 +1,10 @@
-import { DataSource, TTotalGameInfo } from '../feature/type/TableType.native';
+import { isEqual } from 'lodash';
+import {
+  DataSource,
+  SortHeaderProps,
+  SortState,
+  TTotalGameInfo
+} from '../feature/type/TableType.native';
 import {
   keyOfTotalGameInfo,
   orderOfLevel,
@@ -12,7 +18,6 @@ const sortData = (
   columnKey: string,
   orderType: string
 ) => {
-  console.log(orderType);
   const columnKeyTotalMatch = keyOfTotalGameInfo.map(x => x.key);
   let dataSorted: DataSource[] = [];
 
@@ -55,4 +60,16 @@ const correctComparer = (
 const filterData = (dataSource: DataSource[], value: string) =>
   dataSource.filter((x: DataSource) => x.userName.includes(value));
 
-export { sortData, filterData };
+const buildOrderSelection = (sortState: SortState, props: SortHeaderProps) => {
+  const { columnKeySelected, orderType, propertySelected } = sortState;
+  const { property, columnKey } = props;
+  if (
+    isEqual(propertySelected, property) &&
+    isEqual(columnKey, columnKeySelected)
+  ) {
+    return isEqual(orderType, asc) ? desc : asc;
+  }
+  return desc;
+};
+
+export { sortData, filterData, buildOrderSelection };
