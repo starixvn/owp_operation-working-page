@@ -3,7 +3,7 @@ import React from 'react';
 const Command = () => {
   return (
     <div className='command'>
-      <button>Submit</button>
+      <button className='submit'>Submit</button>
     </div>
   );
 };

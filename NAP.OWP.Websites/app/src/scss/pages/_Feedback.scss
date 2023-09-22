@@ -62,4 +62,21 @@
       color: red;
     }
   }
+
+  .command {
+    .submit {
+      border: 0;
+      height: 26px;
+      line-height: 26px;
+      text-transform: capitalize;
+      border-radius: 2px;
+      font-size: 13px;
+      color: #fff;
+      background: #2fb159;
+      padding: 0 1rem;
+      box-shadow: 0 2px 2px #00000024, 0 3px 2px -2px #0003, 0 1px 5px #0000001f;
+      cursor: pointer;
+      transition: 0.2s ease all;
+    }
+  }
 }
