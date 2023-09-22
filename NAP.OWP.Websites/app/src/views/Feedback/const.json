@@ -1,4 +1,13 @@
 {
+  "HEADER": {
+    "TITLE": "Feedback Form",
+    "DESCRIPTION": "We would love to hear your thoughts, suggestions or problems so we can improve!"
+  },
+  "BODY": {
+    "CHOOSE_FUNCTION": "Choose function to give feedback",
+    "DESCRIPTION": "Describe your feedback",
+    "RATE_FUNCTION": "Rate this function"
+  },
   "FUNCTIONS": [
     {
       "value": 1,
