@@ -2119,7 +2119,7 @@
     <Content Include="wwwroot\la-kpi\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\server-1d7bc7a9.css" />
-    <Content Include="wwwroot\la-kpi\assets\js\main-2463e6e7.js" />
+    <Content Include="wwwroot\la-kpi\assets\js\main-d520785d.js" />
     <Content Include="wwwroot\la-kpi\favicon.ico" />
     <Content Include="wwwroot\la-kpi\server.html" />
     <Content Include="wwwroot\league-management\assets\ext\icon-search-4037a8fe.svg" />
