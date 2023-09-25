@@ -21,17 +21,10 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api-netcore/, 'api')
       },
-      '/api-netcore-static-file': {
+      '/Tickets': {
         target: nerCoreUrl,
         secure: false,
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api-netcore-static-file/, '')
-      },
-      '/api-static-file': {
-        target: netFwUrl,
-        secure: false,
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api-static-file/, '')
+        changeOrigin: true
       },
       '/net-core-state-api': {
         target: nerCoreUrl,

@@ -64,7 +64,7 @@ const getTicketTitle = ticket => {
 const getUrlTicketFile = imageName =>
   process.env.NODE_ENV === 'development'
     ? `${URL.NET_CORE_TICKET_CENTER_FILE}/${imageName}`
-    : `${window.netCoreRootUrl}/${URL.NET_FW_TICKET_CENTER_FILE}/${imageName}`;
+    : `${window.netCoreRootUrl}/${URL.NET_CORE_TICKET_CENTER_FILE}/${imageName}`;
 export {
   buildMessageListClassName,
   getUrlTicketFile,
