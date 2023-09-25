@@ -1,17 +1,13 @@
 import React from 'react';
-import FunctionDropdown from './components/FunctionDropdown';
+import FunctionDropdown from './components/FunctionDropdown.native';
 import Describe from './components/Describe.native';
 import RateFunction from './components/RateFunction';
 
-const Body = () => {
-  return (
-    <div className='body'>
-      <FunctionDropdown />
-      <Describe />
-      <RateFunction />
-    </div>
-  );
-};
+const Body = () => <div className='body'>
+  <FunctionDropdown />
+  <Describe />
+  <RateFunction />
+</div>;
 
 
 export default Body;

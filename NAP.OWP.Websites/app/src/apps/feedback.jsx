@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Layout from '../views/Layout';
-import Feedback from '../views/Feedback/Feedback.tsx';
+import Feedback from '../views/Feedback/FeedbackSelection.native';
 import '../scss/pages/_Feedback.scss';
 
 const container = document.getElementById('root');

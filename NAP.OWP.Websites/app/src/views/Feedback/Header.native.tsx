@@ -6,14 +6,10 @@ const {
   DESCRIPTION
 } = HEADER;
 
-const Header = () => {
-  return (
-    <div className='header'>
-      <p className='title'>{TITLE}</p>
-      <span className='description'>{DESCRIPTION}</span>
-    </div>
-  );
-};
-
+const Header = () =>
+  <div className='header'>
+    <p className='title'>{TITLE}</p>
+    <span className='description'>{DESCRIPTION}</span>
+  </div>;
 
 export default Header;

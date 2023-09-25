@@ -3,10 +3,15 @@
     "TITLE": "Feedback Form",
     "DESCRIPTION": "We would love to hear your thoughts, suggestions or problems so we can improve!"
   },
+  "THANK_YOU": "Thanks for your submission! <3",
   "BODY": {
     "CHOOSE_FUNCTION": "Choose function to give feedback",
     "DESCRIPTION": "Describe your feedback",
     "RATE_FUNCTION": "Rate this function"
+  },
+  "URL": {
+    "NET_Core_TICKET_CENTER": "api-netcore/TicketCenter",
+    "NET_FW_TICKET_CENTER": "api/TicketCenter"
   },
   "FUNCTIONS": [
     {

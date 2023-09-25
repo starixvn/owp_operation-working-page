@@ -8,15 +8,24 @@ enum RateIconEnum {
   AMAZING = 'amazing'
 }
 
+enum StatusEnum {
+  FEED_BACK = 'FEED_BACK',
+  THANK_YOU = 'THANK_YOU'
+}
+
 type TFeedback = {
   feedBackInfo: {
-    functionName: Required<string>,
+    functionId: Required<string>,
     rate: RateIconEnum,
   },
+  statusForm: StatusEnum,
   setRateStatus: (status: RateIconEnum) => void,
+  setStatusForm: (status: StatusEnum) => void,
+  postFeedback: () => Promise<void>,
 }
 
 export {
   TFeedback,
-  RateIconEnum
+  RateIconEnum,
+  StatusEnum
 };
