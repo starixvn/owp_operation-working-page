@@ -1,14 +1,96 @@
-import React from 'react';
-import { BODY } from '../const.json';
+import React, { createRef, useState, ChangeEvent, KeyboardEvent } from 'react';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { TextField } from '@mui/material';
+import AttachFileIcon from '../../../assets/svg-element/AttachFileIcon';
 
-const Describe = () => {
+type Props = {
+  handleInputChange: (text: string) => void;
+  handleImageChange: (image: File) => void;
+  handleFileChange: (file: File) => void;
+  inputMessage: string;
+  selectedFile: File | null;
+  selectedImage: File | null;
+};
+
+const Describe: React.FC<Props> = ({
+  handleInputChange,
+  handleImageChange,
+  handleFileChange,
+  inputMessage,
+  selectedFile,
+  selectedImage
+}) => {
+  const inputFileRef = createRef<HTMLInputElement>();
+  const [urlImageValue, setUrlImageValue] = useState<string>('');
+
+  const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      handleFileChange(file);
+    }
+  };
+
+  const handleInputMessageChange = (event: ChangeEvent<HTMLInputElement>) => {
+    handleInputChange(event.target.value);
+  };
+
+  const handlePaste = (event: ClipboardEvent) => {
+    const items = (event.clipboardData || event.originalEvent.clipboardData)
+      .items;
+    for (const item of items) {
+      if (item.type.indexOf('image') !== -1) {
+        const blob = item.getAsFile();
+        const imageUrl = URL.createObjectURL(blob);
+        setUrlImageValue(imageUrl);
+        handleImageChange(blob);
+        break;
+      }
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setUrlImageValue('');
+  };
+
   return (
-    <div className='description'>
-      <p className='title'>{BODY.DESCRIPTION}<span className='required'>*</span></p>
-      <input type='text' />
+    <div className='chat-box'>
+      <div>
+        {urlImageValue && selectedImage && (
+          <div className='input-image'>
+            <img src={urlImageValue} alt='Pasted' />
+            <div className='icon-remove-div'>
+              <HighlightOffIcon fontSize='large' onClick={handleRemoveImage} />
+            </div>
+          </div>
+        )}
+
+        <TextField
+          inputRef={inputFileRef}
+          variant='outlined'
+          placeholder='Type a message...'
+          onChange={handleInputMessageChange}
+          value={inputMessage}
+          autoFocus
+          multiline
+          onPaste={handlePaste}
+          maxRows={4}
+          spellCheck={false}
+        />
+      </div>
+      <AttachFileIcon
+        handleOnClick={() =>
+          inputFileRef?.current && inputFileRef.current.click()
+        }
+      />
+      {selectedFile && <p>{selectedFile.name}</p>}
+      <input
+        ref={inputFileRef}
+        hidden
+        type='file'
+        onChange={handleFileInputChange}
+      />
     </div>
   );
 };
-
 
 export default Describe;
