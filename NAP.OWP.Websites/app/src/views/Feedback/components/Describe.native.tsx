@@ -2,6 +2,7 @@ import React, { createRef, useState, ChangeEvent, KeyboardEvent } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../assets/svg-element/AttachFileIcon';
+import { BODY } from '../const.json';
 
 type Props = {
   handleInputChange: (text: string) => void;
@@ -53,42 +54,47 @@ const Describe: React.FC<Props> = ({
   };
 
   return (
-    <div className='chat-box'>
-      <div>
-        {urlImageValue && selectedImage && (
-          <div className='input-image'>
-            <img src={urlImageValue} alt='Pasted' />
-            <div className='icon-remove-div'>
-              <HighlightOffIcon fontSize='large' onClick={handleRemoveImage} />
+    <div className='describe'>
+      <div className='description'>
+        <p className='title'>{BODY.DESCRIPTION}<span className='required'>*</span></p>
+      </div>
+      <div className='chat-box'>
+        <div>
+          {urlImageValue && selectedImage && (
+            <div className='input-image'>
+              <img src={urlImageValue} alt='Pasted' />
+              <div className='icon-remove-div'>
+                <HighlightOffIcon fontSize='large' onClick={handleRemoveImage} />
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <TextField
-          inputRef={inputFileRef}
-          variant='outlined'
-          placeholder='Type a message...'
-          onChange={handleInputMessageChange}
-          value={inputMessage}
-          autoFocus
-          multiline
-          onPaste={handlePaste}
-          maxRows={4}
-          spellCheck={false}
+          <TextField
+            inputRef={inputFileRef}
+            variant='outlined'
+            placeholder='Type a message...'
+            onChange={handleInputMessageChange}
+            value={inputMessage}
+            autoFocus
+            multiline
+            onPaste={handlePaste}
+            maxRows={4}
+            spellCheck={false}
+          />
+        </div>
+        <AttachFileIcon
+          handleOnClick={() =>
+            inputFileRef?.current && inputFileRef.current.click()
+          }
+        />
+        {selectedFile && <p className='file-attachment'>{selectedFile.name}</p>}
+        <input
+          ref={inputFileRef}
+          hidden
+          type='file'
+          onChange={handleFileInputChange}
         />
       </div>
-      <AttachFileIcon
-        handleOnClick={() =>
-          inputFileRef?.current && inputFileRef.current.click()
-        }
-      />
-      {selectedFile && <p>{selectedFile.name}</p>}
-      <input
-        ref={inputFileRef}
-        hidden
-        type='file'
-        onChange={handleFileInputChange}
-      />
     </div>
   );
 };
