@@ -4,6 +4,7 @@ import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../assets/svg-element/AttachFileIcon';
 import { BODY } from '../const.json';
 import useStore from '../app/store';
+import { CloseIcon, FileOutlineIcon } from 'mdi-react';
 
 const Describe = () => {
   const { inputMessage, selectedFile, selectedImage } = useStore(
@@ -93,14 +94,15 @@ const Describe = () => {
         />
       </div>
       {selectedFile && (
-        <div className='file-upload'>
-          <p className='file-upload-attachment'>{selectedFile.name} </p>
-          <span className='remove-file'>
-            <HighlightOffIcon
-              fontSize='medium'
-              onClick={() => updateFeedbackInfo('selectedFile', null)}
-            />
-          </span>
+        <div className='file-list'>
+          <div className='item item-0'>
+            <div className='info-file'>
+              <FileOutlineIcon className='icon-file' />
+              <div>{selectedFile.name}</div>
+              <div className='file-volume'>{(selectedFile.size / (1024 * 1024)).toFixed(2)} MB</div>
+            </div>
+            <CloseIcon className='icon-close' onClick={() => updateFeedbackInfo('selectedFile', null)} />
+          </div>
         </div>
       )}
     </div>

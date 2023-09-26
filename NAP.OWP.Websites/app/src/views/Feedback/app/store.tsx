@@ -21,7 +21,6 @@ const useStore = create<TFeedback>((set, get) => ({
     selectedImage: null
   },
   statusForm: StatusEnum.FEED_BACK,
-  validateForm: null,
   setStatusForm: (status: StatusEnum) => {
     set(state =>
       update(state, {
@@ -48,26 +47,8 @@ const useStore = create<TFeedback>((set, get) => ({
     );
   },
   validateBeforeCreate: () => validateInfoCreateFeedback(get()),
-    set(state =>
-      update(state, {
-        validateForm: {
-          $set: null
-        }
-      }));
-  },
-
   postFeedback: async () => {
     const { selectedFile, selectedImage, functionName, rate, inputMessage } = get().feedBackInfo;
-    if (!result.valid) {
-      set(state =>
-        update(state, {
-          validateForm: {
-            $set: result
-          }
-        }));
-      return;
-    }
-
     const userFeedbackInfo = await queryUserFeedbackInfo();
     const creatorInfo = {
       groupName: null,
