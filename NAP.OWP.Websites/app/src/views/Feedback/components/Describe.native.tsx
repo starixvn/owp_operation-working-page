@@ -6,8 +6,8 @@ import { BODY } from '../const.json';
 
 type Props = {
   handleInputChange: (text: string) => void;
-  handleImageChange: (image: File) => void;
-  handleFileChange: (file: File) => void;
+  handleImageChange: (image: File | null) => void;
+  handleFileChange: (file: File | null) => void;
   inputMessage: string;
   selectedFile: File | null;
   selectedImage: File | null;
@@ -50,13 +50,17 @@ const Describe: React.FC<Props> = ({
   };
 
   const handleRemoveImage = () => {
+    handleImageChange(null);
     setUrlImageValue('');
   };
 
   return (
     <div className='describe'>
       <div className='description'>
-        <p className='title'>{BODY.DESCRIPTION}<span className='required'>*</span></p>
+        <p className='title'>
+          {BODY.DESCRIPTION}
+          <span className='required'>*</span>
+        </p>
       </div>
       <div className='chat-box'>
         <div>
@@ -64,7 +68,10 @@ const Describe: React.FC<Props> = ({
             <div className='input-image'>
               <img src={urlImageValue} alt='Pasted' />
               <div className='icon-remove-div'>
-                <HighlightOffIcon fontSize='large' onClick={handleRemoveImage} />
+                <HighlightOffIcon
+                  fontSize='large'
+                  onClick={handleRemoveImage}
+                />
               </div>
             </div>
           )}
@@ -87,7 +94,7 @@ const Describe: React.FC<Props> = ({
             inputFileRef?.current && inputFileRef.current.click()
           }
         />
-        {selectedFile && <p className='file-attachment'>{selectedFile.name}</p>}
+
         <input
           ref={inputFileRef}
           hidden
@@ -95,6 +102,17 @@ const Describe: React.FC<Props> = ({
           onChange={handleFileInputChange}
         />
       </div>
+      {selectedFile && (
+        <div className='file-upload'>
+          <p className='file-upload-attachment'>{selectedFile.name} </p>
+          <span className='remove-file'>
+            <HighlightOffIcon
+              fontSize='medium'
+              onClick={() => handleFileChange(null)}
+            />
+          </span>
+        </div>
+      )}
     </div>
   );
 };

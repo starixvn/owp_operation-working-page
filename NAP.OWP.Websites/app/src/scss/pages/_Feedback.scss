@@ -1859,6 +1859,15 @@
   }
 }
 
-.file-attachment {
-  position: absolute;
+.file-upload {
+  .file-upload-attachment {
+    margin-top: 1px;
+  }
+  display: flex;
+  .remove-file {
+    margin-left: 4px;
+    :hover {
+      cursor: pointer;
+    }
+  }
 }
