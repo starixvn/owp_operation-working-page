@@ -97,7 +97,6 @@ const passColorRowTable = dataSource => {
   if (!dataSource) {
     return '';
   }
-  console.log(`${dataSource.rowColor}-row`);
   return `${dataSource.rowColor}-row`;
 };
 

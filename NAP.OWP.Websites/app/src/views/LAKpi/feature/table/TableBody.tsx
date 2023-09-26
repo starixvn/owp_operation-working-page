@@ -17,7 +17,11 @@ const TableBody = (props: {
           <td>{item.userName}</td>
           {props.isGap ? (
             <>
-              <td>{item.progress}</td>
+              {item.progress === 'Fail' ? (
+                <td className='fail-progress'>{item.progress}</td>
+              ) : (
+                <td>{item.progress}</td>
+              )}
               <td>{item.target}</td>
               <TableBodyTotalGame {...item.gapWithTarget} />
               <TableBodyTotalGame {...item.achievedGames} />

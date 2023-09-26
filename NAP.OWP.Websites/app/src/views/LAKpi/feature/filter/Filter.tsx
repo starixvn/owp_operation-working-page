@@ -4,27 +4,37 @@ import CalendarIcon from 'mdi-react/CalendarIcon';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import {
   initDefaultFilterDate,
-  getMonthDifference,
-  getDaysInMonth
+  getDaysInMonth,
+  isValidTimeRange
 } from '../../Utils';
 import update from 'immutability-helper';
 import useStore from '../../app/store';
 import InfoConditionExplainIcon from '../tableConditionConfig/InfoConditionExplainIcon';
+import EditTarget from './EditTarget';
 
 const { defaultFromDate, defaultToDate } = initDefaultFilterDate();
 
 const Filter = () => {
   const fromDatePicker = useRef<ReactDatePicker>(null);
   const toDatePicker = useRef<ReactDatePicker>(null);
-  const queryDataTable = useStore(state => state.queryDataTable);
-  const queryConditionData = useStore(state => state.queryConditionData);
+  const {
+    queryConditionData,
+    queryDataTable,
+    exportDataTable,
+    queryLevelOption
+  } = useStore(state => state);
+
   const [filterDate, setFilterDate] = useState({
     fromDate: defaultFromDate,
     toDate: defaultToDate
   });
 
   const handleExport = () => {
-    // TODO
+    if (isValidTimeRange(filterDate.fromDate, filterDate.toDate)) {
+      ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
+      return;
+    }
+    exportDataTable(filterDate.fromDate, filterDate.toDate);
   };
 
   const onFromDateChanged = (date: Date) => {
@@ -44,8 +54,7 @@ const Filter = () => {
   };
 
   const handleOnSearch = () => {
-    const TWO_YEARS = 24;
-    if (getMonthDifference(filterDate.fromDate, filterDate.toDate) > TWO_YEARS) {
+    if (isValidTimeRange(filterDate.fromDate, filterDate.toDate)) {
       ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
       return;
     }
@@ -55,6 +64,7 @@ const Filter = () => {
   useEffect(() => {
     queryDataTable(filterDate.fromDate, filterDate.toDate);
     queryConditionData();
+    queryLevelOption();
   }, []);
 
   return (
@@ -103,6 +113,7 @@ const Filter = () => {
           </button>
         </div>
         <div className='right-control icon-condition'>
+          <EditTarget />
           <InfoConditionExplainIcon />
         </div>
       </div>

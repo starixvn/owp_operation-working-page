@@ -330,7 +330,7 @@
                 switch(Environment)
                 {
 					case SiteEnvironment.DEV:
-						return "https://localhost:5001";
+						return "http://localhost:5000";
 					case SiteEnvironment.LOCAL1:
 						return "/n1";
 					case SiteEnvironment.LOCAL2:

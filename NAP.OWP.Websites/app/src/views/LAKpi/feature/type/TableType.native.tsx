@@ -2,9 +2,19 @@ type TState = {
   dataTable: {
     loadingStatus: string;
     entities: Array<DataSource>;
+    dataSourcesFiltered: Array<DataSource>;
     isGap: boolean;
   };
+  filterHeaderValue: string;
   conditionData: Array<TCondition>;
+  levelOption: Array<TargetOption>;
+  sortState: SortState;
+};
+
+type SortState = {
+  columnKeySelected: string;
+  orderType: string;
+  propertySelected: string;
 };
 
 type TAction = {
@@ -12,7 +22,16 @@ type TAction = {
     fromDate: Required<Date>,
     toDate: Required<Date>
   ) => Promise<void>;
+  exportDataTable: (
+    fromDate: Required<Date>,
+    toDate: Required<Date>
+  ) => Promise<void>;
   queryConditionData: () => Promise<void>;
+  queryLevelOption: () => Promise<void>;
+  updateTargetLevel: (model: Target[]) => Promise<void>;
+  setDataSourcesFiltered: (data: DataSource[]) => void;
+  sortDataSources: (sortState: SortState) => void;
+  setFilterHeader: (value: string) => void;
 };
 
 type TTotalGameInfo = {
@@ -28,9 +47,11 @@ interface TTotalGameConditionInfo extends TTotalGameInfo {
 }
 
 type DataSource = {
+  userId: Required<number>;
   userName: Required<string>;
   progress: Required<string>;
-  target: Required<string>;
+  target: string | null;
+  targetId: number | null;
   gapWithTarget: Required<TTotalGameInfo>;
   achievedGames: Required<TTotalGameInfo>;
   reward: number;
@@ -45,11 +66,31 @@ type TCondition = {
   reward: string;
 };
 
+type TargetOption = {
+  value: number | null;
+  label: string;
+};
+
+type Target = {
+  userId: number;
+  targetId: number | null;
+};
+
+type SortHeaderProps = {
+  columnKey: string;
+  headerName: string;
+  property: string;
+};
+
 export {
   TState,
   TAction,
   DataSource,
   TTotalGameInfo,
   TCondition,
-  TTotalGameConditionInfo
+  TTotalGameConditionInfo,
+  SortState,
+  TargetOption,
+  Target,
+  SortHeaderProps
 };

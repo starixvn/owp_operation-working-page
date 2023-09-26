@@ -1,23 +1,57 @@
 import { create } from 'zustand';
 import update from 'immutability-helper';
-import { TAction, TState } from '../feature/type/TableType.native';
+import {
+  DataSource,
+  SortState,
+  TAction,
+  TState,
+  Target
+} from '../feature/type/TableType.native';
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { queryDataTable, queryConditionData } from '../service';
+import {
+  queryDataTable,
+  queryConditionData,
+  queryLevelOption,
+  updateTargetLevel,
+  exportDataTable
+} from '../service';
+import { filterData, sortData } from '../helper/LaKpiHelper';
 
-const useStore = create<TState & TAction>(set => ({
+const useStore = create<TState & TAction>((set, get) => ({
   dataTable: {
     loadingStatus: REQUEST_STATUS.idle,
     entities: [],
+    dataSourcesFiltered: [],
     isGap: true
   },
+  filterHeaderValue: '',
   conditionData: [],
+  levelOption: [],
+  sortState: {
+    columnKeySelected: '',
+    orderType: '',
+    propertySelected: ''
+  },
   queryConditionData: async () => {
     const data = await queryConditionData();
     set({
       conditionData: data
     });
   },
+  exportDataTable: async (fromDate: Required<Date>, toDate: Required<Date>) => {
+    await exportDataTable(fromDate, toDate);
+  },
+  queryLevelOption: async () => {
+    const data = await queryLevelOption();
+    set({
+      levelOption: data
+    });
+  },
+  updateTargetLevel: async (model: Target[]) => {
+    await updateTargetLevel(model);
+  },
   queryDataTable: async (fromDate: Required<Date>, toDate: Required<Date>) => {
+    const { filterHeaderValue } = get();
     set((state: TState) =>
       update(state, {
         dataTable: {
@@ -27,14 +61,48 @@ const useStore = create<TState & TAction>(set => ({
     );
 
     const data = await queryDataTable(fromDate, toDate);
-
+    const dataFiltered = filterData(data.kpiLa, filterHeaderValue);
     set((state: TState) =>
       update(state, {
         dataTable: {
           loadingStatus: { $set: REQUEST_STATUS.idle },
           entities: { $set: data.kpiLa },
+          dataSourcesFiltered: { $set: dataFiltered },
           isGap: { $set: data.isGap }
         }
+      })
+    );
+  },
+  setDataSourcesFiltered: (data: DataSource[]) => {
+    set((state: TState) =>
+      update(state, {
+        dataTable: {
+          dataSourcesFiltered: { $set: data }
+        }
+      })
+    );
+  },
+  sortDataSources: (sortState: SortState) => {
+    const { dataTable } = get();
+    const dataSorted = sortData(
+      dataTable.dataSourcesFiltered,
+      sortState.propertySelected,
+      sortState.columnKeySelected,
+      sortState.orderType
+    );
+    set((state: TState) =>
+      update(state, {
+        sortState: { $set: sortState },
+        dataTable: {
+          dataSourcesFiltered: { $set: dataSorted }
+        }
+      })
+    );
+  },
+  setFilterHeader: (value: string) => {
+    set((state: TState) =>
+      update(state, {
+        filterHeaderValue: { $set: value }
       })
     );
   }

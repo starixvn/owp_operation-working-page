@@ -73,6 +73,25 @@ const confirmYesNo = async message =>
     cancelButtonText: 'No'
   });
 
+const showNotifySuccess = async message =>
+  Toastr.fire({
+    html: message,
+    timer: 3000,
+    showConfirmButton: false,
+    position: 'top',
+    customClass: 'toast-notify',
+    showClass: {
+      backdrop: '',
+      popup: '',
+      icon: ''
+    },
+    hideClass: {
+      backdrop: '',
+      popup: '',
+      icon: ''
+    }
+  });
+
 const ToastrWrapper = {
   show,
   showInfo,
@@ -80,7 +99,8 @@ const ToastrWrapper = {
   showWarning,
   confirm,
   confirmYesNo,
-  showWarningSessionExpired
+  showWarningSessionExpired,
+  showNotifySuccess
 };
 
 export default ToastrWrapper;

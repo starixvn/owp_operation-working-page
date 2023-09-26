@@ -1,6 +1,7 @@
-import { get } from '../Shared/Service/Service';
+import { get, post } from '../Shared/Service/Service';
 import Utils from '../Shared/Utils';
 import { netCoreURL, netFwURL } from './const.json';
+import { Target } from './feature/type/TableType.native';
 
 const buildRequestURL = (key: string | null) =>
   process.env.NODE_ENV === 'development'
@@ -8,10 +9,7 @@ const buildRequestURL = (key: string | null) =>
     : `${window.netCoreRootUrl}/${netFwURL}/${key}`;
 
 const queryDataTable = async (filterFromDate: Date, filterToDate: Date) => {
-  const url =
-    process.env.NODE_ENV === 'development'
-      ? `${netCoreURL}`
-      : `${window.netCoreRootUrl}/${netFwURL}`;
+  const url = buildRequestURL('');
   const fromDate = Utils.formatDate(filterFromDate);
   const toDate = Utils.formatDate(filterToDate);
 
@@ -20,8 +18,14 @@ const queryDataTable = async (filterFromDate: Date, filterToDate: Date) => {
     fromDate,
     toDate
   });
-
   return response.data;
+};
+
+const exportDataTable = async (filterFromDate: Date, filterToDate: Date) => {
+  const url = buildRequestURL('export');
+  const fromDate = Utils.formatDate(filterFromDate);
+  const toDate = Utils.formatDate(filterToDate);
+  window.location.href = `${url}?fromDate=${fromDate}&toDate=${toDate}`;
 };
 
 const queryConditionData = async () => {
@@ -33,4 +37,24 @@ const queryConditionData = async () => {
   return response.data;
 };
 
-export { queryDataTable, queryConditionData };
+const queryLevelOption = async () => {
+  const url = buildRequestURL('get-level-option');
+  const response = await get({ url });
+
+  return response.data;
+};
+
+const updateTargetLevel = async (model: Target[]) => {
+  const url = buildRequestURL('update-target-level');
+  const response = await post({ url, targetLevel: model });
+
+  return response.data;
+};
+
+export {
+  queryDataTable,
+  queryConditionData,
+  queryLevelOption,
+  updateTargetLevel,
+  exportDataTable
+};

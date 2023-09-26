@@ -28,5 +28,14 @@ const getMonthDifference = (startDate: Date, endDate: Date) => {
     1
   );
 };
+const isValidTimeRange = (startDate: Date, endDate: Date) => {
+  const TWO_YEARS = 24;
+  return getMonthDifference(startDate, endDate) > TWO_YEARS;
+};
 
-export { initDefaultFilterDate, getMonthDifference, getDaysInMonth };
+export {
+  initDefaultFilterDate,
+  getMonthDifference,
+  getDaysInMonth,
+  isValidTimeRange
+};
