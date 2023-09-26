@@ -1124,8 +1124,8 @@
     <Content Include="wwwroot\feedback\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\feedback\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\feedback\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\feedback\assets\ext\server-c228b386.css" />
-    <Content Include="wwwroot\feedback\assets\js\main-6aff56f0.js" />
+    <Content Include="wwwroot\feedback\assets\ext\server-149f9f46.css" />
+    <Content Include="wwwroot\feedback\assets\js\main-d162e58b.js" />
     <Content Include="wwwroot\feedback\favicon.ico" />
     <Content Include="wwwroot\feedback\server.html" />
     <Content Include="wwwroot\la-kpi\assets\ext\icon-feedback-57264197.svg" />
@@ -1367,10 +1367,6 @@
     <Content Include="wwwroot\event-upload\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-upload\server.cshtml" />
-    <Content Include="wwwroot\feedback\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\feedback\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\feedback\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\feedback\server.cshtml" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
