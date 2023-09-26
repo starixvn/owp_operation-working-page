@@ -6,17 +6,29 @@ import { queryFunction } from '../services.native';
 const FunctionDropdown = () => {
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState(null);
+
+  const style = {
+    control: base => ({
+      ...base,
+      border: '1px solid gray',
+      boxShadow: 'none',
+      '&:hover': {
+        border: '1px solid gray',
+      }
+    })
+  };
+
   useEffect(() => {
     (async () => {
       setOptions(await queryFunction());
     }
     )();
-
   }, []);
   return (
     <div className='choose__function'>
       <p className='title'>{BODY.CHOOSE_FUNCTION}<span className='required'>*</span></p>
       <Select
+        styles={style}
         data-testId='select'
         options={options}
         value={selected}
