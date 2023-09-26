@@ -103,7 +103,7 @@ class Header extends Component {
               )}
               <CNavItem>
                 <NavLink
-                  href='/Feedback'
+                  href='Feedback'
                   className='cd-feedback'
                   target='_blank'>
                   check
