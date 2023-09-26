@@ -14,49 +14,57 @@ import GoodActiveIcon from '../../../assets/svg-element/GoodActiveIcon';
 import AmazingActiveIcon from '../../../assets/svg-element/AmazingActiveIcon';
 
 const RateFunction = () => {
-
-
-  const setRateStatus = useStore(state => state.setRateStatus);
+  const updateFeedbackInfo = useStore(state => state.updateFeedbackInfo);
   const rate = useStore(state => state.feedBackInfo.rate);
   return (
     <div className='rate__function'>
       <p className='title'>{BODY.RATE_FUNCTION}</p>
       <div className='rate__icon'>
-        {rate !== RateIconEnum.ANGRY ?
-          <a onClick={() => setRateStatus(RateIconEnum.ANGRY)}>
+        {rate !== RateIconEnum.ANGRY ? (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.ANGRY)}>
             <AngryIcon />
           </a>
-          : <a onClick={() => setRateStatus(RateIconEnum.DEFAULT)}>
+        ) : (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.DEFAULT)}>
             <AngryActiveIcon />
-          </a>}
-        {rate !== RateIconEnum.SAD ?
-          <a onClick={() => setRateStatus(RateIconEnum.SAD)}>
+          </a>
+        )}
+        {rate !== RateIconEnum.SAD ? (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.SAD)}>
             <SadIcon />
           </a>
-          : <a onClick={() => setRateStatus(RateIconEnum.DEFAULT)}>
+        ) : (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.DEFAULT)}>
             <SadActiveIcon />
-          </a>}
-        {rate !== RateIconEnum.NORMAL ?
-          <a onClick={() => setRateStatus(RateIconEnum.NORMAL)}>
+          </a>
+        )}
+        {rate !== RateIconEnum.NORMAL ? (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.NORMAL)}>
             <NormalIcon />
           </a>
-          : <a onClick={() => setRateStatus(RateIconEnum.DEFAULT)}>
+        ) : (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.DEFAULT)}>
             <NormalActiveIcon />
-          </a>}
-        {rate !== RateIconEnum.GOOD ?
-          <a onClick={() => setRateStatus(RateIconEnum.GOOD)}>
+          </a>
+        )}
+        {rate !== RateIconEnum.GOOD ? (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.GOOD)}>
             <GoodIcon />
           </a>
-          : <a onClick={() => setRateStatus(RateIconEnum.DEFAULT)}>
+        ) : (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.DEFAULT)}>
             <GoodActiveIcon />
-          </a>}
-        {rate !== RateIconEnum.AMAZING ?
-          <a onClick={() => setRateStatus(RateIconEnum.AMAZING)}>
+          </a>
+        )}
+        {rate !== RateIconEnum.AMAZING ? (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.AMAZING)}>
             <AmazingIcon />
           </a>
-          : <a onClick={() => setRateStatus(RateIconEnum.DEFAULT)}>
+        ) : (
+          <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.DEFAULT)}>
             <AmazingActiveIcon />
-          </a>}
+          </a>
+        )}
       </div>
     </div>
   );

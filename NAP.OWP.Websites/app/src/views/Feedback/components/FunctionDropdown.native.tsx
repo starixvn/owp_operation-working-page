@@ -6,13 +6,13 @@ import { SelectOption } from '../type';
 import useStore from '../app/store';
 
 const FunctionDropdown = () => {
-  const setFunctionName = useStore(state => state.setFunctionName);
+  const updateFeedbackInfo = useStore(state => state.updateFeedbackInfo);
   const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState<SelectOption | null>(null);
 
   const handleChange = (event: SelectOption | null) => {
     setSelected(event);
-    event && setFunctionName(event.label);
+    event && updateFeedbackInfo('functionName', event.label);
   };
 
   const style = {
@@ -21,7 +21,7 @@ const FunctionDropdown = () => {
       border: '1px solid gray',
       boxShadow: 'none',
       '&:hover': {
-        border: '1px solid gray',
+        border: '1px solid gray'
       }
     })
   };
@@ -29,12 +29,14 @@ const FunctionDropdown = () => {
   useEffect(() => {
     (async () => {
       setOptions(await queryFunction());
-    }
-    )();
+    })();
   }, []);
   return (
     <div className='choose__function'>
-      <p className='title'>{BODY.CHOOSE_FUNCTION}<span className='required'>*</span></p>
+      <p className='title'>
+        {BODY.CHOOSE_FUNCTION}
+        <span className='required'>*</span>
+      </p>
       <Select
         styles={style}
         data-testId='select'

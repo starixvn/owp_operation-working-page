@@ -1,7 +1,15 @@
 import { create } from 'zustand';
 import update from 'immutability-helper';
 import { RateIconEnum, TFeedback, StatusEnum } from '../type';
-
+import { queryUserFeedbackInfo } from '../services.native';
+import { RECIPIENT_TYPE } from '../const.json';
+import {
+  formatRecipientModel,
+  saveFileToBackEnd
+} from '../../Shared/createTicketNew/Helper/HelperCreateTicket';
+import { urlRequestOther } from '../../Shared/createTicketNew/const/const';
+import { post } from '../../Shared/Service/Service';
+const { INDIVIDUAL, GROUP } = RECIPIENT_TYPE;
 const useStore = create<TFeedback>((set, get) => ({
   feedBackInfo: {
     functionName: '',
@@ -15,7 +23,8 @@ const useStore = create<TFeedback>((set, get) => ({
     set(state =>
       update(state, {
         statusForm: { $set: status }
-      }));
+      })
+    );
   },
   setRateStatus: (rate: RateIconEnum) => {
     set(state =>
@@ -23,7 +32,8 @@ const useStore = create<TFeedback>((set, get) => ({
         feedBackInfo: {
           rate: { $set: rate }
         }
-      }));
+      })
+    );
   },
   setFunctionName: (functionName: string) => {
     set(state =>
@@ -31,16 +41,63 @@ const useStore = create<TFeedback>((set, get) => ({
         feedBackInfo: {
           functionName: { $set: functionName }
         }
-      }));
+      })
+    );
   },
   postFeedback: async () => {
     const { feedBackInfo } = get();
-    // TODO
-    set(state => update(state, {
-      statusForm: {
-        $set: StatusEnum.THANK_YOU
-      }
-    }));
+    const { selectedFile, selectedImage, functionName, rate, inputMessage } =
+      feedBackInfo;
+
+    const userFeedbackInfo = await queryUserFeedbackInfo();
+    const creatorInfo = {
+      groupName: null,
+      nickName: userFeedbackInfo.creatorName,
+      recipientId: userFeedbackInfo.creatorId,
+      recipientType: INDIVIDUAL,
+      userName: userFeedbackInfo.creatorName
+    };
+    const groupIT = {
+      groupName: userFeedbackInfo.groupITName,
+      nickName: null,
+      recipientId: userFeedbackInfo.groupITId,
+      recipientType: GROUP,
+      userName: null
+    };
+    const Recipients = formatRecipientModel([groupIT], creatorInfo);
+
+    const files = [selectedFile, selectedImage].filter(x => x != null);
+    const fileResults = await saveFileToBackEnd(files);
+
+    const newAddModel = {
+      Files: fileResults,
+      CreatorId: creatorInfo.recipientId,
+      Subject: `${functionName} - ${rate}`,
+      Recipients,
+      Message: inputMessage,
+      SubType: userFeedbackInfo.subtypeId,
+      TicketType: userFeedbackInfo.ticketType,
+      url: urlRequestOther
+    };
+    console.log(newAddModel);
+    const result = await post(newAddModel);
+    result &&
+      set(state =>
+        update(state, {
+          statusForm: {
+            $set: StatusEnum.THANK_YOU
+          }
+        })
+      );
+  },
+  updateFeedbackInfo: (key: string, value: string | File | null) => {
+    set(state =>
+      update(state, {
+        feedBackInfo: {
+          [key]: { $set: value }
+        }
+      })
+    );
   }
 }));
 

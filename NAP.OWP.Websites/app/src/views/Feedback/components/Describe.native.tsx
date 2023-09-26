@@ -3,36 +3,25 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../assets/svg-element/AttachFileIcon';
 import { BODY } from '../const.json';
+import useStore from '../app/store';
 
-type Props = {
-  handleInputChange: (text: string) => void;
-  handleImageChange: (image: File | null) => void;
-  handleFileChange: (file: File | null) => void;
-  inputMessage: string;
-  selectedFile: File | null;
-  selectedImage: File | null;
-};
-
-const Describe: React.FC<Props> = ({
-  handleInputChange,
-  handleImageChange,
-  handleFileChange,
-  inputMessage,
-  selectedFile,
-  selectedImage
-}) => {
+const Describe = () => {
+  const { inputMessage, selectedFile, selectedImage } = useStore(
+    state => state.feedBackInfo
+  );
+  const updateFeedbackInfo = useStore(state => state.updateFeedbackInfo);
   const inputFileRef = createRef<HTMLInputElement>();
   const [urlImageValue, setUrlImageValue] = useState<string>('');
 
   const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const file = event.target.files[0];
-      handleFileChange(file);
+      updateFeedbackInfo('selectedFile', file);
     }
   };
 
   const handleInputMessageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    handleInputChange(event.target.value);
+    updateFeedbackInfo('inputMessage', event.target.value);
   };
 
   const handlePaste = (event: ClipboardEvent) => {
@@ -43,14 +32,14 @@ const Describe: React.FC<Props> = ({
         const blob = item.getAsFile();
         const imageUrl = URL.createObjectURL(blob);
         setUrlImageValue(imageUrl);
-        handleImageChange(blob);
+        updateFeedbackInfo('selectedImage', blob);
         break;
       }
     }
   };
 
   const handleRemoveImage = () => {
-    handleImageChange(null);
+    updateFeedbackInfo('selectedImage', null);
     setUrlImageValue('');
   };
 
@@ -108,7 +97,7 @@ const Describe: React.FC<Props> = ({
           <span className='remove-file'>
             <HighlightOffIcon
               fontSize='medium'
-              onClick={() => handleFileChange(null)}
+              onClick={() => updateFeedbackInfo('selectedFile', null)}
             />
           </span>
         </div>
