@@ -29,6 +29,10 @@ type TFeedback = {
   setStatusForm: (status: StatusEnum) => void;
   setFunctionName: (name: string) => void;
   postFeedback: () => Promise<void>;
+  validateBeforeCreate: () => ({
+    valid: boolean,
+    message: string
+  });
   updateFeedbackInfo: (key: string, value: string | File | null) => void;
 };
   resetValidForm: (value: boolean) => void,

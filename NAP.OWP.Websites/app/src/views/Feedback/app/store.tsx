@@ -10,6 +10,7 @@ import {
 } from '../../Shared/createTicketNew/Helper/HelperCreateTicket';
 import { urlRequestOther } from '../../Shared/createTicketNew/const/const';
 import { post } from '../../Shared/Service/Service';
+
 const { INDIVIDUAL, GROUP } = RECIPIENT_TYPE;
 const useStore = create<TFeedback>((set, get) => ({
   feedBackInfo: {
@@ -46,7 +47,7 @@ const useStore = create<TFeedback>((set, get) => ({
       })
     );
   },
-  resetValidForm: () => {
+  validateBeforeCreate: () => validateInfoCreateFeedback(get()),
     set(state =>
       update(state, {
         validateForm: {
@@ -56,7 +57,7 @@ const useStore = create<TFeedback>((set, get) => ({
   },
 
   postFeedback: async () => {
-    const result = validateInfoCreateFeedback(get());
+    const { selectedFile, selectedImage, functionName, rate, inputMessage } = get().feedBackInfo;
     if (!result.valid) {
       set(state =>
         update(state, {
@@ -66,8 +67,6 @@ const useStore = create<TFeedback>((set, get) => ({
         }));
       return;
     }
-    const { selectedFile, selectedImage, functionName, rate, inputMessage } =
-      feedBackInfo;
 
     const userFeedbackInfo = await queryUserFeedbackInfo();
     const creatorInfo = {
