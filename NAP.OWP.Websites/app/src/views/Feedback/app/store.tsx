@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import update from 'immutability-helper';
 import { RateIconEnum, TFeedback, StatusEnum } from '../type';
 import { queryUserFeedbackInfo } from '../services.native';
+import { validateInfoCreateFeedback } from '../utils';
 import { RECIPIENT_TYPE } from '../const.json';
 import {
   formatRecipientModel,
@@ -19,6 +20,7 @@ const useStore = create<TFeedback>((set, get) => ({
     selectedImage: null
   },
   statusForm: StatusEnum.FEED_BACK,
+  validateForm: null,
   setStatusForm: (status: StatusEnum) => {
     set(state =>
       update(state, {
@@ -44,8 +46,26 @@ const useStore = create<TFeedback>((set, get) => ({
       })
     );
   },
+  resetValidForm: () => {
+    set(state =>
+      update(state, {
+        validateForm: {
+          $set: null
+        }
+      }));
+  },
+
   postFeedback: async () => {
-    const { feedBackInfo } = get();
+    const result = validateInfoCreateFeedback(get());
+    if (!result.valid) {
+      set(state =>
+        update(state, {
+          validateForm: {
+            $set: result
+          }
+        }));
+      return;
+    }
     const { selectedFile, selectedImage, functionName, rate, inputMessage } =
       feedBackInfo;
 

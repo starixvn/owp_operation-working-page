@@ -75,6 +75,7 @@ const Describe = () => {
             multiline
             onPaste={handlePaste}
             maxRows={4}
+            inputProps={{ maxLength: 400 }}
             spellCheck={false}
           />
         </div>

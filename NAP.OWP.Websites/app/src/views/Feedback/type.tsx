@@ -21,12 +21,17 @@ type TFeedback = {
     selectedFile: File | null;
   };
   statusForm: StatusEnum;
+  validateForm: null | {
+    valid: boolean,
+    message: string
+  },
   setRateStatus: (status: RateIconEnum) => void;
   setStatusForm: (status: StatusEnum) => void;
   setFunctionName: (name: string) => void;
   postFeedback: () => Promise<void>;
   updateFeedbackInfo: (key: string, value: string | File | null) => void;
 };
+  resetValidForm: (value: boolean) => void,
 
 interface SelectOption {
   value: number;
