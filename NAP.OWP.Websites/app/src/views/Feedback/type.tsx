@@ -15,17 +15,27 @@ enum StatusEnum {
 
 type TFeedback = {
   feedBackInfo: {
-    functionId: Required<string>,
+    functionName: Required<string>,
     rate: RateIconEnum,
+    inputMessage: string,
+    selectedImage: File | null,
+    selectedFile: File | null
   },
   statusForm: StatusEnum,
   setRateStatus: (status: RateIconEnum) => void,
   setStatusForm: (status: StatusEnum) => void,
+  setFunctionName: (name: string) => void,
   postFeedback: () => Promise<void>,
 }
+
+interface SelectOption {
+  value: number;
+  label: string;
+};
 
 export {
   TFeedback,
   RateIconEnum,
-  StatusEnum
+  StatusEnum,
+  SelectOption
 };

@@ -2,10 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { BODY } from '../const.json';
 import Select from 'react-select-ts';
 import { queryFunction } from '../services.native';
+import { SelectOption } from '../type';
+import useStore from '../app/store';
 
 const FunctionDropdown = () => {
+  const setFunctionName = useStore(state => state.setFunctionName);
   const [options, setOptions] = useState([]);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<SelectOption | null>(null);
+
+  const handleChange = (event: SelectOption | null) => {
+    setSelected(event);
+    event && setFunctionName(event.label);
+  };
 
   const style = {
     control: base => ({
@@ -32,7 +40,7 @@ const FunctionDropdown = () => {
         data-testId='select'
         options={options}
         value={selected}
-        onChange={setSelected}
+        onChange={handleChange}
         className='basic-filter-select'
       />
     </div>

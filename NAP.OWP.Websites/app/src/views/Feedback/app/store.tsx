@@ -1,12 +1,14 @@
 import { create } from 'zustand';
 import update from 'immutability-helper';
 import { RateIconEnum, TFeedback, StatusEnum } from '../type';
-import { post } from '../../Shared/Service/Service';
 
 const useStore = create<TFeedback>((set, get) => ({
   feedBackInfo: {
-    functionId: '',
-    rate: RateIconEnum.DEFAULT
+    functionName: '',
+    rate: RateIconEnum.DEFAULT,
+    inputMessage: '',
+    selectedFile: null,
+    selectedImage: null
   },
   statusForm: StatusEnum.FEED_BACK,
   setStatusForm: (status: StatusEnum) => {
@@ -20,6 +22,14 @@ const useStore = create<TFeedback>((set, get) => ({
       update(state, {
         feedBackInfo: {
           rate: { $set: rate }
+        }
+      }));
+  },
+  setFunctionName: (functionName: string) => {
+    set(state =>
+      update(state, {
+        feedBackInfo: {
+          functionName: { $set: functionName }
         }
       }));
   },
