@@ -5,6 +5,7 @@ import RateFunction from './components/RateFunction';
 import DragAndDrop from '../Shared/common/DragAndDrop/DragAndDrop';
 import useStore from './app/store';
 import {
+  isImage,
   validateFileExtension,
   validateFileSize
 } from '../Shared/chatBoardNew/helper/chatBoardHelper';
@@ -22,7 +23,9 @@ const Body = () => {
           "The file's size should not larger than 5MB. Try another one"
         );
       } else {
-        updateFeedbackInfo('selectedFile', file);
+        isImage(file.name)
+          ? updateFeedbackInfo('selectedImage', file)
+          : updateFeedbackInfo('selectedFile', file);
       }
     }
   };

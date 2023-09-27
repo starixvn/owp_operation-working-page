@@ -1,4 +1,4 @@
-import React, { createRef, useState, ChangeEvent } from 'react';
+import React, { createRef, ChangeEvent } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../assets/svg-element/AttachFileIcon';
@@ -6,6 +6,7 @@ import { BODY } from '../const.json';
 import useStore from '../app/store';
 import { CloseIcon, FileOutlineIcon } from 'mdi-react';
 import {
+  isImage,
   validateFileExtension,
   validateFileSize
 } from '../../Shared/chatBoardNew/helper/chatBoardHelper';
@@ -16,7 +17,6 @@ const Describe = () => {
   );
   const updateFeedbackInfo = useStore(state => state.updateFeedbackInfo);
   const inputFileRef = createRef<HTMLInputElement>();
-  const [urlImageValue, setUrlImageValue] = useState<string>('');
 
   const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -28,7 +28,9 @@ const Describe = () => {
           "The file's size should not larger than 5MB. Try another one"
         );
       } else {
-        updateFeedbackInfo('selectedFile', file);
+        isImage(file.name)
+          ? updateFeedbackInfo('selectedImage', file)
+          : updateFeedbackInfo('selectedFile', file);
       }
     }
   };
@@ -43,8 +45,6 @@ const Describe = () => {
     for (const item of items) {
       if (item.type.indexOf('image') !== -1) {
         const blob = item.getAsFile();
-        const imageUrl = URL.createObjectURL(blob);
-        setUrlImageValue(imageUrl);
         updateFeedbackInfo('selectedImage', blob);
         break;
       }
@@ -53,7 +53,6 @@ const Describe = () => {
 
   const handleRemoveImage = () => {
     updateFeedbackInfo('selectedImage', null);
-    setUrlImageValue('');
   };
 
   return (
@@ -66,9 +65,9 @@ const Describe = () => {
       </div>
       <div className='chat-box'>
         <div>
-          {urlImageValue && selectedImage && (
+          {selectedImage && (
             <div className='input-image'>
-              <img src={urlImageValue} alt='Pasted' />
+              <img src={URL.createObjectURL(selectedImage)} alt='Pasted' />
               <div className='icon-remove-div'>
                 <HighlightOffIcon
                   fontSize='large'
