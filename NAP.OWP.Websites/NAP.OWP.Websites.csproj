@@ -1124,8 +1124,8 @@
     <Content Include="wwwroot\feedback\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\feedback\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\feedback\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\feedback\assets\ext\server-149f9f46.css" />
-    <Content Include="wwwroot\feedback\assets\js\main-4001d0d0.js" />
+    <Content Include="wwwroot\feedback\assets\ext\server-eee60b0b.css" />
+    <Content Include="wwwroot\feedback\assets\js\main-5b45d051.js" />
     <Content Include="wwwroot\feedback\favicon.ico" />
     <Content Include="wwwroot\feedback\server.html" />
     <Content Include="wwwroot\la-kpi\assets\ext\icon-feedback-57264197.svg" />

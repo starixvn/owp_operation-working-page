@@ -88,7 +88,8 @@ const Describe = () => {
             multiline
             onPaste={handlePaste}
             minRows={10}
-            inputProps={{ maxLength: 400 }}
+            maxRows={25}
+            inputProps={{ maxLength: 2000 }}
             spellCheck={false}
           />
         </div>
