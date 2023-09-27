@@ -1,11 +1,15 @@
-import React, { createRef, useState, ChangeEvent, KeyboardEvent } from 'react';
+import React, { createRef, useState, ChangeEvent } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../assets/svg-element/AttachFileIcon';
 import { BODY } from '../const.json';
 import useStore from '../app/store';
 import { CloseIcon, FileOutlineIcon } from 'mdi-react';
-
+import {
+  validateFileExtension,
+  validateFileSize
+} from '../../Shared/chatBoardNew/helper/chatBoardHelper';
+import ToastsWrapper from '../../components/ToastrWrapper';
 const Describe = () => {
   const { inputMessage, selectedFile, selectedImage } = useStore(
     state => state.feedBackInfo
@@ -17,7 +21,15 @@ const Describe = () => {
   const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const file = event.target.files[0];
-      updateFeedbackInfo('selectedFile', file);
+      if (!validateFileExtension(file.name)) {
+        ToastsWrapper.showError('File extension not allowed!');
+      } else if (!validateFileSize(file.size)) {
+        ToastsWrapper.showError(
+          "The file's size should not larger than 5MB. Try another one"
+        );
+      } else {
+        updateFeedbackInfo('selectedFile', file);
+      }
     }
   };
 
@@ -75,7 +87,7 @@ const Describe = () => {
             autoFocus
             multiline
             onPaste={handlePaste}
-            maxRows={4}
+            minRows={10}
             inputProps={{ maxLength: 400 }}
             spellCheck={false}
           />
@@ -99,9 +111,14 @@ const Describe = () => {
             <div className='info-file'>
               <FileOutlineIcon className='icon-file' />
               <div>{selectedFile.name}</div>
-              <div className='file-volume'>{(selectedFile.size / (1024 * 1024)).toFixed(2)} MB</div>
+              <div className='file-volume'>
+                {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB
+              </div>
             </div>
-            <CloseIcon className='icon-close' onClick={() => updateFeedbackInfo('selectedFile', null)} />
+            <CloseIcon
+              className='icon-close'
+              onClick={() => updateFeedbackInfo('selectedFile', null)}
+            />
           </div>
         </div>
       )}
