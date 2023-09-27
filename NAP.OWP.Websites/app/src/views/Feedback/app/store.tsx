@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import update from 'immutability-helper';
 import { RateIconEnum, TFeedback, StatusEnum } from '../type';
 import { queryUserFeedbackInfo } from '../services.native';
-import { validateInfoCreateFeedback } from '../utils';
+import { validateInfoCreateFeedback } from '../utils.native';
 import { RECIPIENT_TYPE } from '../const.json';
 import {
   formatRecipientModel,
@@ -12,7 +12,7 @@ import {
 import { urlRequestOther } from '../../Shared/createTicketNew/const/const';
 import { post } from '../../Shared/Service/Service';
 
-const { INDIVIDUAL, GROUP } = RECIPIENT_TYPE;
+const { INDIVIDUAL } = RECIPIENT_TYPE;
 const useStore = create<TFeedback>((set, get) => ({
   feedBackInfo: {
     functionName: '',

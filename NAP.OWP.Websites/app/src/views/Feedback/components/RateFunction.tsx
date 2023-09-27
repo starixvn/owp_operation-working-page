@@ -18,7 +18,9 @@ const RateFunction = () => {
   const rate = useStore(state => state.feedBackInfo.rate);
   return (
     <div className='rate__function'>
-      <p className='title'>{BODY.RATE_FUNCTION}</p>
+      <p className='title'>{BODY.RATE_FUNCTION}
+        <span className='required'> *</span>
+      </p>
       <div className='rate__icon'>
         {rate !== RateIconEnum.ANGRY ? (
           <a onClick={() => updateFeedbackInfo('rate', RateIconEnum.ANGRY)}>

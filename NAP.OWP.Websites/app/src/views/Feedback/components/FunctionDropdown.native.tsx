@@ -35,7 +35,7 @@ const FunctionDropdown = () => {
     <div className='choose__function'>
       <p className='title'>
         {BODY.CHOOSE_FUNCTION}
-        <span className='required'>*</span>
+        <span className='required'> *</span>
       </p>
       <Select
         styles={style}

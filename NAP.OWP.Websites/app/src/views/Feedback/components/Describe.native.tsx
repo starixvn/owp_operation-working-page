@@ -61,7 +61,7 @@ const Describe = () => {
       <div className='description'>
         <p className='title'>
           {BODY.DESCRIPTION}
-          <span className='required'>*</span>
+          <span className='required'> *</span>
         </p>
       </div>
       <div className='chat-box'>
