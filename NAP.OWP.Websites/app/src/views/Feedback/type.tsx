@@ -1,10 +1,10 @@
 enum RateIconEnum {
   DEFAULT = 'default',
-  ANGRY = 'angry',
-  SAD = 'sad',
-  NORMAL = 'normal',
-  GOOD = 'good',
-  AMAZING = 'amazing'
+  ANGRY = 'Angry',
+  SAD = 'Sad',
+  NORMAL = 'Normal',
+  GOOD = 'Happy',
+  AMAZING = 'Love'
 }
 
 enum StatusEnum {
