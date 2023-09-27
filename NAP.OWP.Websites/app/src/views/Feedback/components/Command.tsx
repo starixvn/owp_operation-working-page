@@ -9,7 +9,6 @@ const Command = () => {
 
   const handleOnClick = () => {
     const result = validateBeforeCreate();
-    debugger
     if (!result.valid) {
       ToastrWrapper.showError(result.message);
       return;

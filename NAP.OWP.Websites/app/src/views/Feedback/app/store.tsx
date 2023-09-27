@@ -6,6 +6,7 @@ import { validateInfoCreateFeedback } from '../utils';
 import { RECIPIENT_TYPE } from '../const.json';
 import {
   formatRecipientModel,
+  getRecipientDefaultBySubType,
   saveFileToBackEnd
 } from '../../Shared/createTicketNew/Helper/HelperCreateTicket';
 import { urlRequestOther } from '../../Shared/createTicketNew/const/const';
@@ -48,7 +49,8 @@ const useStore = create<TFeedback>((set, get) => ({
   },
   validateBeforeCreate: () => validateInfoCreateFeedback(get()),
   postFeedback: async () => {
-    const { selectedFile, selectedImage, functionName, rate, inputMessage } = get().feedBackInfo;
+    const { selectedFile, selectedImage, functionName, rate, inputMessage } =
+      get().feedBackInfo;
     const userFeedbackInfo = await queryUserFeedbackInfo();
     const creatorInfo = {
       groupName: null,
@@ -57,14 +59,10 @@ const useStore = create<TFeedback>((set, get) => ({
       recipientType: INDIVIDUAL,
       userName: userFeedbackInfo.creatorName
     };
-    const groupIT = {
-      groupName: userFeedbackInfo.groupITName,
-      nickName: null,
-      recipientId: userFeedbackInfo.groupITId,
-      recipientType: GROUP,
-      userName: null
-    };
-    const Recipients = formatRecipientModel([groupIT], creatorInfo);
+    const recipientDefaults = await getRecipientDefaultBySubType(
+      userFeedbackInfo.subtypeId
+    );
+    const Recipients = formatRecipientModel(recipientDefaults, creatorInfo);
 
     const files = [selectedFile, selectedImage].filter(x => x != null);
     const fileResults = await saveFileToBackEnd(files);
@@ -74,12 +72,11 @@ const useStore = create<TFeedback>((set, get) => ({
       CreatorId: creatorInfo.recipientId,
       Subject: `${functionName} - ${rate}`,
       Recipients,
-      Message: inputMessage,
+      Message: inputMessage.length > 0 ? inputMessage : 'Please add',
       SubType: userFeedbackInfo.subtypeId,
       TicketType: userFeedbackInfo.ticketType,
       url: urlRequestOther
     };
-    console.log(newAddModel);
     const result = await post(newAddModel);
     result &&
       set(state =>
