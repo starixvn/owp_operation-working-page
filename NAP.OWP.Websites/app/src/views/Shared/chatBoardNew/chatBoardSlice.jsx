@@ -92,7 +92,7 @@ const chatBoardSlice = createSlice({
       reducer: state => {
         state.imagesLoaded++;
         const msgImage = state.ticketDetail.messages.filter(
-          msg => msg.imageContent
+          msg => msg.imageFileName
         );
 
         if (state.imagesLoaded === msgImage.length) {
