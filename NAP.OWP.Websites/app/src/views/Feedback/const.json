@@ -3,7 +3,8 @@
     "TITLE": "Feedback Form",
     "DESCRIPTION": "We would love to hear your thoughts, suggestions or problems so we can improve!"
   },
-  "THANK_YOU": "Thanks for your submission! <3",
+  "THANK_YOU": "Thanks for your submission!",
+  "NEXT_STEP": "You can go to <a href= 'MyTickets' target='_blank'>My Tickets</a> and take a look at your recent feedback.",
   "BODY": {
     "CHOOSE_FUNCTION": "Choose function to give feedback:",
     "DESCRIPTION": "Describe your feedback:",
