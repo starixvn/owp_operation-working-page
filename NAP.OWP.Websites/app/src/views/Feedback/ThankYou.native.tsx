@@ -15,7 +15,9 @@ const ThankYou = () => <div className='feed__back'>
   <div className='body'>
     <span className='next__step' style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: NEXT_STEP.EN }} />
     <p className='next__step' dangerouslySetInnerHTML={{ __html: NEXT_STEP.CN }} />
-    <img src={ThankImage} alt="" />
+    <div className='next__step__img'>
+      <img className='image' src={ThankImage} alt="next step" />
+    </div>
   </div>
 </div>;
 
