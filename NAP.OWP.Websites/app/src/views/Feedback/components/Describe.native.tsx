@@ -58,9 +58,12 @@ const Describe = () => {
   return (
     <div className='describe'>
       <div className='description'>
-        <p className='title'>
-          {BODY.DESCRIPTION}
+        <p className='title' style={{ marginBottom: '3px' }}>
+          {BODY.DESCRIPTION.EN}
           <span className='required'> *</span>
+        </p>
+        <p className='title'>
+          {BODY.DESCRIPTION.CN}
         </p>
       </div>
       <div className='chat-box'>

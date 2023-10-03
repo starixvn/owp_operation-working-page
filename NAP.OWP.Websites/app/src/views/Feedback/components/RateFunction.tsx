@@ -18,8 +18,10 @@ const RateFunction = () => {
   const rate = useStore(state => state.feedBackInfo.rate);
   return (
     <div className='rate__function'>
-      <p className='title'>{BODY.RATE_FUNCTION}
+      <p className='title' style={{ marginBottom: '3px' }}>{BODY.RATE_FUNCTION.EN}
         <span className='required'> *</span>
+      </p>
+      <p className='title' >{BODY.RATE_FUNCTION.CN}
       </p>
       <div className='rate__icon'>
         {rate !== RateIconEnum.ANGRY ? (

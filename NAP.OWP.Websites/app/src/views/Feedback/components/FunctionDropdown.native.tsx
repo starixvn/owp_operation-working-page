@@ -33,9 +33,12 @@ const FunctionDropdown = () => {
   }, []);
   return (
     <div className='choose__function'>
-      <p className='title'>
-        {BODY.CHOOSE_FUNCTION}
+      <p className='title' style={{ marginBottom: '3px' }}>
+        {BODY.CHOOSE_FUNCTION.EN}
         <span className='required'> *</span>
+      </p>
+      <p className='title'>
+        {BODY.CHOOSE_FUNCTION.CN}
       </p>
       <Select
         styles={style}

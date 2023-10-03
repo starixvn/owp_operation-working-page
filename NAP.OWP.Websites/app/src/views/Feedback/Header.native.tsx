@@ -9,7 +9,8 @@ const {
 const Header = () =>
   <div className='header'>
     <p className='title'>{TITLE}</p>
-    <span className='description'>{DESCRIPTION}</span>
+    <span className='description'>{DESCRIPTION.EN}</span>
+    <span className='description'>{DESCRIPTION.CN}</span>
   </div>;
 
 export default Header;
