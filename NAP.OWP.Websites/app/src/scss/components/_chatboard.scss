@@ -75,7 +75,7 @@
     }
 
     .MuiFormControl-root {
-      width: 100%;
+      width: 100% !important;
       .MuiOutlinedInput-notchedOutline,
       .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
         border: 1px solid #bdbdbd !important;
@@ -1527,9 +1527,9 @@
   .icon-hover-wrapper {
     display: none;
   }
-  .icon-hover-wrapper-unsave{
+  .icon-hover-wrapper-unsave {
     display: flex;
-    .icon-reply-message{
+    .icon-reply-message {
       display: none;
     }
   }
@@ -1539,9 +1539,9 @@
   .icon-hover-wrapper {
     display: flex;
   }
-  .icon-hover-wrapper-unsave{
+  .icon-hover-wrapper-unsave {
     display: flex;
-    .icon-reply-message{
+    .icon-reply-message {
       display: flex;
     }
   }
@@ -1556,9 +1556,9 @@
   .icon-hover-wrapper {
     display: none;
   }
-  .icon-hover-wrapper-unsave{
+  .icon-hover-wrapper-unsave {
     display: flex;
-    .icon-reply-message{
+    .icon-reply-message {
       display: none;
     }
   }
@@ -1567,9 +1567,9 @@
   .icon-hover-wrapper {
     display: flex;
   }
-  .icon-hover-wrapper-unsave{
+  .icon-hover-wrapper-unsave {
     display: flex;
-    .icon-reply-message{
+    .icon-reply-message {
       display: flex;
     }
   }

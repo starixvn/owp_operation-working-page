@@ -1,21 +1,22 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Input } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { getValueRef } from '../../Utils';
-import Attachments from '../Attachments/Attachments';
-import RecipientsSelect from '../../recipientSelect/RecipientsSelect';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import useStableDispatch from '../../customHook/useStableDispatch';
 import Select from 'react-select';
+import { Input } from 'reactstrap';
+import { getValueRef } from '../../Utils';
+import useStableDispatch from '../../customHook/useStableDispatch';
+import RecipientsSelect from '../../recipientSelect/RecipientsSelect';
+import Attachments from '../Attachments/Attachments';
+import {
+  filterFeedbackSubtype,
+  getRecipientDefaultBySubType,
+  getSubTypeByType
+} from '../Helper/HelperCreateTicket';
 import {
   changeErrorRecipient,
   setSelectedRecipients,
   setSubTypeSelected
 } from '../createTicketBoardSliceNew';
-import {
-  getSubTypeByType,
-  getRecipientDefaultBySubType
-} from '../Helper/HelperCreateTicket';
 
 const propTypes = {
   handleOnSubmit: PropTypes.func,
@@ -48,12 +49,11 @@ const ShareOfChatBoardTicket = props => {
   useEffect(() => {
     (async () => {
       const subType = await getSubTypeByType(ticketType);
-      const option = subType.map(
-        ({ subTypeId: value, subTypeName: label }) => ({
-          value,
-          label
-        })
-      );
+      let option = subType.map(({ subTypeId: value, subTypeName: label }) => ({
+        value,
+        label
+      }));
+      option = filterFeedbackSubtype(ticketType, option);
       setSubTypeOption([...option, { value: 0, label: '' }]);
     })();
   }, [ticketType]);

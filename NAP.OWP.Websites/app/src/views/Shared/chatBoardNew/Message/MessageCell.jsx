@@ -35,7 +35,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     quoteMessage,
     quoteUsername,
     quoteCreatedDate,
-    imageContent
+    imageFileName
   } = data;
   const dispatch = useStableDispatch();
   const { permission } = useSelector(state => state[policy]);
@@ -48,7 +48,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     quoteMessage,
     quoteUsername,
     quoteCreatedDate,
-    imageContent
+    imageFileName
   });
 
   const handleSaveMessages = async value => {

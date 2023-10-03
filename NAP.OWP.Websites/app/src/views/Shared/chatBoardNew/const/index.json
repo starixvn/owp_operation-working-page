@@ -13,7 +13,8 @@
     "REMOVE_SINGLE_RECIPIENT": "ticket-detail/remove-single-recipient",
     "UPDATE_SAVE_MESSAGE": "ticket-detail/update-save-message",
     "UPDATE_TICKET_STATUS": "ticket-detail/update-ticket-status",
-    "UPDATE_TICKET_SUBTYPE": "ticket-detail/update-ticket-subtype"
+    "UPDATE_TICKET_SUBTYPE": "ticket-detail/update-ticket-subtype",
+    "NET_CORE_TICKET_CENTER_FILE": "Tickets"
   },
   "TICKET_TYPE": {
     "EVENT_CHECKING": 1,
@@ -52,13 +53,7 @@
     ".mp4",
     ".m4v"
   ],
-  "imageExtension": [
-    ".jpg",
-    ".jpeg",
-    ".png",
-    ".gif",
-    ".bmp"
-  ],
+  "imageExtension": [".jpg", ".jpeg", ".png", ".gif", ".bmp"],
   "STATUS": [
     {
       "value": "Open",

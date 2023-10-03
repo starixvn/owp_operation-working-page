@@ -4,6 +4,9 @@
     var controller = ViewContext.ParentActionViewContext.RouteData.Values["Controller"];
     var area = ViewContext.ParentActionViewContext.RouteData.DataTokens["area"];
     var url = string.Format("/{0}/{1}", area, controller);
+    var baseHref =  Request.ApplicationPath;
+    if (baseHref != "/") { baseHref = baseHref + "/"; }
+}
 }
 <header class="cd-main-header animate-search nav-wrapper">
 
@@ -37,7 +40,6 @@
                     </li>
                 </ul>
             </div>
-
             <div class="notification">
                 <a href="javascript:;" class="dropdown-button notification-box js-dropdown-notification" data-activates="dropdown-notification">
                     <i class="mdi mdi-bell icon icon-notification"></i>
@@ -58,6 +60,7 @@
                     <a href="~/MessageBoxManagement" class="show-all">Show all</a>
                 </div>
             </div>
+            <a href="@(baseHref + "Feedback")" target="_blank" class="cd-feedback"></a>
             @if (Model.HasQuickSearchPermission)
             {
                 <a href="#search" class="cd-search-trigger cd-text-replace">Search</a>
@@ -85,7 +88,7 @@
                         {
                             var classActive = url == childItem.Path ? "actived" : "";
                             <li class="menu-item @classActive">
-                                <a class="collapsible-header waves-effect" href="@Url.Content("~" + childItem.Path)" >
+                                <a class="collapsible-header waves-effect" href="@Url.Content("~" + childItem.Path)">
                                     <i class="menu-icon @childItem.IconCssClass" aria-hidden="true" title="@childItem.Name"></i>
                                     <span class="menu-title">@childItem.Name</span>
                                 </a>

@@ -1,12 +1,18 @@
 import {
-  CContainer, CDropdownHeader, CHeader, CHeaderNav, CNavItem
+  CContainer,
+  CDropdownHeader,
+  CHeader,
+  CHeaderNav,
+  CNavItem
 } from '@coreui/react';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
   DropdownItem,
   DropdownMenu,
-  DropdownToggle, NavLink, UncontrolledDropdown
+  DropdownToggle,
+  NavLink,
+  UncontrolledDropdown
 } from 'reactstrap';
 import AccountIcon from 'mdi-react/AccountIcon';
 import LogoutIcon from 'mdi-react/LogoutIcon';
@@ -55,7 +61,6 @@ class Header extends Component {
     } else {
       document.body.classList.remove('sidebar-lg-show');
     }
-
   }
 
   render() {
@@ -70,11 +75,13 @@ class Header extends Component {
       <div>
         <CHeader className='cd-main-header animate-search fixed header-wrapper'>
           <CContainer fluid>
-            <CHeaderNav className="d-md-flex me-auto">
+            <CHeaderNav className='d-md-flex me-auto'>
               <CNavItem>
-                <button type="button" className="navbar-toggler" onClick={() => this.toggleSideBar()}>
-                  <span className="navbar-toggler-icon">
-                  </span>
+                <button
+                  type='button'
+                  className='navbar-toggler'
+                  onClick={() => this.toggleSideBar()}>
+                  <span className='navbar-toggler-icon'></span>
                 </button>
               </CNavItem>
               <CNavItem>
@@ -94,7 +101,14 @@ class Header extends Component {
                   </NavLink>
                 </CNavItem>
               )}
-
+              <CNavItem>
+                <NavLink
+                  href='Feedback'
+                  className='cd-feedback'
+                  target='_blank'>
+                  check
+                </NavLink>
+              </CNavItem>
               <CNavItem>
                 <Notification />
               </CNavItem>

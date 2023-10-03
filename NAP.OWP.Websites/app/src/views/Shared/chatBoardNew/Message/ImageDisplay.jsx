@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { setImagesLoaded } from '../chatBoardSlice';
 import useStableDispatch from '../../customHook/useStableDispatch';
+import { getUrlTicketFile } from '../helper/chatBoardHelper';
 const propTypes = {
-  imageContent: PropTypes.string.isRequired
+  imageFileName: PropTypes.string.isRequired
 };
 
-const ImageDisplay = ({ imageContent }) => {
-  const [imageUrl, setImageUrl] = useState('');
+const ImageDisplay = ({ imageFileName }) => {
+  const [imageUrl] = useState(getUrlTicketFile(imageFileName));
   const [imageDimensions, setImageDimensions] = useState({
     width: 1,
     height: 1
@@ -15,39 +16,12 @@ const ImageDisplay = ({ imageContent }) => {
   const dispatch = useStableDispatch();
 
   useEffect(() => {
-    const base64ToBlob = (base64Data, contentType) => {
-      contentType = contentType || '';
-      const sliceSize = 1024;
-      const byteCharacters = atob(base64Data);
-      const byteArrays = [];
-      for (
-        let offset = 0;
-        offset < byteCharacters.length;
-        offset += sliceSize
-      ) {
-        const slice = byteCharacters.slice(offset, offset + sliceSize);
-        const byteNumbers = Array.from(slice.length);
-        for (let i = 0; i < slice.length; i++) {
-          byteNumbers[i] = slice.charCodeAt(i);
-        }
-        const byteArray = new Uint8Array(byteNumbers);
-        byteArrays.push(byteArray);
-      }
-      return new Blob(byteArrays, { type: contentType });
-    };
-    const blob = base64ToBlob(imageContent, 'image/jpg');
-    const objectURL = URL.createObjectURL(blob);
-
-    setImageUrl(objectURL);
     const image = new Image();
-    image.src = objectURL;
+    image.src = imageUrl;
     image.onload = () => {
       setImageDimensions({ width: image.width, height: image.height });
     };
-    return () => {
-      URL.revokeObjectURL(objectURL);
-    };
-  }, [imageContent]);
+  }, [imageUrl]);
 
   const ratio = (() => {
     const { width, height } = imageDimensions;
@@ -63,7 +37,7 @@ const ImageDisplay = ({ imageContent }) => {
   };
   return (
     <>
-      {imageUrl && (
+      {
         <img
           onLoad={handleImageLoad}
           className='image-responsive'
@@ -71,7 +45,7 @@ const ImageDisplay = ({ imageContent }) => {
           height={imageDimensions.height / ratio}
           src={imageUrl}
         />
-      )}
+      }
     </>
   );
 };

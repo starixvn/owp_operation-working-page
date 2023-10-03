@@ -1115,6 +1115,58 @@ Search Form
         -o-transform: translateX(-50%) translateY(-50%) scale(1);
         transform: translateX(-50%) translateY(-50%) scale(1);
     }
+
+.cd-feedback {
+    display: block;
+    position: relative;
+    z-index: 3;
+    height: 33px;
+    width: 40px;
+    margin: 1rem 0rem 1rem 0.5rem;
+    float: right;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+}
+.cd-feedback::after, .cd-feedback:before {
+    /* used to create the icon lens and the background circle */
+    content: '';
+    position: absolute;
+}
+
+.cd-feedback::after {
+    /* icon lens */
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    height: 24px;
+    width: 24px;
+    background: url(../images/feedback-icon.svg) no-repeat 0px 0;
+}
+
+.cd-feedback::before {
+    /* background circle */
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0);
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0);
+    -ms-transform: translateX(-50%) translateY(-50%) scale(0);
+    -o-transform: translateX(-50%) translateY(-50%) scale(0);
+    transform: translateX(-50%) translateY(-50%) scale(0);
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+}
 /*}*/
 
 /* --------------------------------

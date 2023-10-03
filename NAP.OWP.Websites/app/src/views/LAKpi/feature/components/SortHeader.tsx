@@ -1,8 +1,7 @@
 import { isEqual } from 'lodash';
 import React from 'react';
-import { SortState } from '../type/TableType.native';
 import useStore from '../../app/store';
-import { SortHeaderProps } from '../type/TableType.native';
+import { SortHeaderProps, SortState } from '../type/TableType.native';
 import { buildOrderSelection } from '../../helper/LaKpiHelper';
 
 const SortHeader = (props: SortHeaderProps) => {
