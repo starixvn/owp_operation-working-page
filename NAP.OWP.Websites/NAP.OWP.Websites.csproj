@@ -2743,6 +2743,16 @@
     <Content Include="wwwroot\la-report\assets\js\main-4767aedb.js" />
     <Content Include="wwwroot\la-report\favicon.ico" />
     <Content Include="wwwroot\la-report\server.html" />
+    <Content Include="wwwroot\league-management\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\league-management\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\league-management\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\league-management\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\league-management\assets\ext\server-2ffe893b.css" />
+    <Content Include="wwwroot\league-management\assets\js\main-32a322af.js" />
+    <Content Include="wwwroot\league-management\assets\js\TeamInfo-120cfb11.js" />
+    <Content Include="wwwroot\league-management\favicon.ico" />
+    <Content Include="wwwroot\league-management\server.html" />
     <Content Include="wwwroot\live-detail\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-f12a3b25.svg" />
@@ -3057,6 +3067,10 @@
     <Content Include="wwwroot\feedback\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\feedback\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\feedback\server.cshtml" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\league-management\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
