@@ -36,7 +36,7 @@ const TableLeagueDetail = () => {
       postData(
         buildQuerySimpleApi(),
         {
-          OWPLeagueId: id,
+          OWPLeagueId: parseInt(id),
           apiKey: MaxbetConst.leagueManagementGetLeagueSettingAPIKey
         },
         QUERY_LEAGUE_DETAIL
