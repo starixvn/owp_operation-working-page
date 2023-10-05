@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 import {
   rebuildLeagueGroupOption as includeEmptyItem,
   hasWriteOnPageMaxbetGeneral
@@ -19,7 +19,7 @@ const propTypes = {
   rowIndex: PropTypes.number.isRequired
 };
 const LeagueGroupCell = ({ dataSource, rowIndex }) => {
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const store = useStore();
   const { leagueGroupOption } = store.getState().leagueGroupReducer;
   const { policyData } = store.getState().policyReducer;
@@ -42,7 +42,7 @@ const LeagueGroupCell = ({ dataSource, rowIndex }) => {
 
     if (confirmResult.value) {
       const model = {
-        LeagueGroupId: GroupValue,
+        LeagueGroupId: parseInt(GroupValue),
         OWPLeagueId,
         apiKey: MaxbetConst.maxbetUpdateLeagueGroupAPIKey
       };
@@ -51,7 +51,7 @@ const LeagueGroupCell = ({ dataSource, rowIndex }) => {
         GroupValue,
         GroupLabel: label
       };
-      dispath(
+      dispatch(
         postDataWithExtraModel(
           buildUpdateSimpleApi(),
           model,
