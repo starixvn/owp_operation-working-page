@@ -5,7 +5,7 @@ import OsLeagueSettingTable from './features/OsLeagueSettingTable/OsLeagueSettin
 import { shallow } from 'zustand/shallow';
 import Loading from '../components/Loading';
 import getPermission from '../Shared/permission/getPermission';
-import { functionKey } from './osLeague.json';
+import { functionKey, localStoreKey } from './osLeague.json';
 import PopupWrapper from './features/popup/PopupWrapper';
 
 const OsLeagueSetting = () => {
@@ -22,6 +22,10 @@ const OsLeagueSetting = () => {
       setPolicy(policy);
       setLoading(false);
     })();
+
+    for (const key in localStoreKey) {
+      sessionStorage.removeItem(localStoreKey[key as keyof typeof localStoreKey]);
+    }
   }, []);
 
   if (loading) {
