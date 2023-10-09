@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -2841,8 +2842,8 @@
     <Content Include="wwwroot\os-league-setting\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\os-league-setting\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\os-league-setting\assets\ext\server-56925a73.css" />
-    <Content Include="wwwroot\os-league-setting\assets\js\main-e1eca6cb.js" />
+    <Content Include="wwwroot\os-league-setting\assets\ext\server-baad07ec.css" />
+    <Content Include="wwwroot\os-league-setting\assets\js\main-d70d40a7.js" />
     <Content Include="wwwroot\os-league-setting\favicon.ico" />
     <Content Include="wwwroot\os-league-setting\server.html" />
     <Content Include="wwwroot\other-sport\assets\ext\icon-feedback-57264197.svg" />
