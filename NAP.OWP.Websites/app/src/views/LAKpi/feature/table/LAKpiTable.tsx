@@ -96,8 +96,8 @@ const LAKpiTable = () => {
           </Button>
         </div>
       )}
-      <div ref={tableRef} style={{ maxHeight }} className='table-content'>
-        <table>
+      <div ref={tableRef} style={{ maxHeight }} className='table-content-wrap'>
+        <table className='table-content'>
           <thead>
             <TableHeader
               isGap={isGap}
