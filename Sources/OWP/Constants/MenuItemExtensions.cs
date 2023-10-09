@@ -8,14 +8,13 @@
         {
             var dictionary = new Dictionary<string, string>
             {
-                { MenuItems.TaskListNew, "icon-home" },
+                { MenuItems.TaskList, "icon-home" },
                 { MenuItems.LiveGameAssignment, "icon-calendar-clock" },
                 { MenuItems.ProviderArrangement, "icon-provider-arrangement" },
-                { MenuItems.EventUploadNew, "icon-cloud-upload" },
+                { MenuItems.EventUpload, "icon-cloud-upload" },
                 { MenuItems.EventPicking, "icon-calendar-check" },
                 { MenuItems.EventPickingNew, "icon-calendar-check" },
                 { MenuItems.LiveGameList, "icon-video" },
-                { MenuItems.LiveGameListNew, "icon-video" },
                 { MenuItems.UserManagement, "icon-account-multiple" },
                 { MenuItems.AssignmentConfiguration, "icon-account-multiple" },
                 { MenuItems.WorkingShiftManagement, "icon-calendar-today" },

@@ -19,9 +19,12 @@ import {
 } from '../table/tableSlice/tableSlice';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import Utils from '../../Shared/Utils';
+import { UserSuggestion } from '../../components/Assignment/UserSuggestion';
 
 const { LIVE_GAME } = BUTTON_TYPE;
 const Filter = () => {
+  const [userName, setUserName] = useState('');
+  const [userNameIsValid, setUserNameIsValid] = useState(true);
   const [selectedDate, setSelectedDate] = useState(buildDefaultLGLFilterDate());
   const [searchDisabled, setSearchDisabled] = useState(false);
   const datePicker = createRef();
@@ -65,14 +68,20 @@ const Filter = () => {
       return;
     }
 
-    if (!searchDisabled) {
+    if (!searchDisabled && userNameIsValid) {
       const model = {
+        userName,
         filterDate: selectedDate,
         statusId: selectedMatchStatus.map(ms => ms.value).join()
       };
       dispatch(getEvents(model));
       dispatch(setRefreshModel(model));
     }
+  };
+
+  const setUserInfo = (userNameValue, userNameIsValidValue) => {
+    setUserName(userNameValue);
+    setUserNameIsValid(userNameIsValidValue);
   };
 
   useEffect(() => {
@@ -107,6 +116,14 @@ const Filter = () => {
           onClick={() => datePicker.current.setOpen(true)}>
           <CalendarIcon size={14} />
         </span>
+      </div>
+      <div className='employee-filter'>
+        <div className='label'>Employee</div>
+        <UserSuggestion
+          onHandleChange={(userName, userNameIsValid) =>
+            setUserInfo(userName, userNameIsValid)
+          }
+        />
       </div>
 
       <MultipleSelection
