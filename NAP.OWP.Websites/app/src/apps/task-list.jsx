@@ -8,4 +8,4 @@ import '../scss/components/_chatboard.scss';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<Layout view={<TaskList />} title='Task List New' />);
+root.render(<Layout view={<TaskList />} title='Task List' />);

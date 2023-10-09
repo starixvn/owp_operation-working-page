@@ -226,7 +226,7 @@ namespace NAP.OWP.Websites.Controllers
             return View("~/wwwroot/ticket-type-recipient/server.cshtml");
         }
 
-        [Route("LiveGameListNew")]
+        [Route("LiveGameList")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameList, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> LiveGameList()
         {

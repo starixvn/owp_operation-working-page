@@ -8,7 +8,7 @@
 // </summary>
 //
 // <history>
-// Lasted generated date: 8/28/2023 2:37:00 PM
+// Lasted generated date: 10/9/2023 1:40:54 PM
 // </history>
 
 namespace OWP.Constants
@@ -40,7 +40,7 @@ namespace OWP.Constants
 
 				public const string EventTickets = "Event Tickets";
 
-				public const string EventUploadNew = "Event Upload New";
+				public const string EventUpload = "Event Upload";
 
 				public const string General = "General";
 
@@ -55,8 +55,6 @@ namespace OWP.Constants
 				public const string LiveGameAssignment = "Live Game Assignment";
 
 				public const string LiveGameList = "Live Game List";
-
-				public const string LiveGameListNew = "Live Game List New";
 
 				public const string MatchCountLiveReport = "Match Count Live Report";
 
@@ -84,7 +82,7 @@ namespace OWP.Constants
 
 				public const string Reports = "Reports";
 
-				public const string TaskListNew = "Task List New";
+				public const string TaskList = "Task List";
 
 				public const string TicketTypeSettings = "Ticket Type Settings";
 

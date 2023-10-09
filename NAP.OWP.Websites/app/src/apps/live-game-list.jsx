@@ -9,6 +9,4 @@ import '../scss/components/_chatboard.scss';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(
-  <Layout view={<LiveGameListAppNative />} title='Live Game List New' />
-);
+root.render(<Layout view={<LiveGameListAppNative />} title='Live Game List' />);
