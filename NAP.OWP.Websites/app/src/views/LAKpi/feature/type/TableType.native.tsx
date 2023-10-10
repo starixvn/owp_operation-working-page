@@ -1,3 +1,12 @@
+
+type TPermission = {
+  Username: string;
+  HasRead: boolean;
+  HasWrite: boolean
+  ActorId: number
+  SiteId: number
+};
+
 type TState = {
   dataTable: {
     loadingStatus: string;
@@ -9,6 +18,7 @@ type TState = {
   conditionData: Array<TCondition>;
   levelOption: Array<TargetOption>;
   sortState: SortState;
+  permission: null | TPermission;
 };
 
 type SortState = {
@@ -32,6 +42,8 @@ type TAction = {
   setDataSourcesFiltered: (data: DataSource[]) => void;
   sortDataSources: (sortState: SortState) => void;
   setFilterHeader: (value: string) => void;
+  queryPermissions: () => Promise<void>;
+  getPermission: () => TPermission | null
 };
 
 type TTotalGameInfo = {
