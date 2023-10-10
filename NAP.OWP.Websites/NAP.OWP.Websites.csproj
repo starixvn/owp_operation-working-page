@@ -3071,6 +3071,10 @@
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\la-kpi\server.cshtml" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\league-management\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
