@@ -12,7 +12,6 @@ interface Props {
 const EditTargetTable = (props: Props) => {
   const { data, setUpdatedData, updatedData } = props;
   const { levelOption } = useStore(state => state);
-
   const handleChange = (newValue: SingleValue<TargetOption>, user: DataSource, index: number) => {
     const newUser: DataSource = {
       ...user,

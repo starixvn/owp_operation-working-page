@@ -16,6 +16,7 @@ import {
   exportDataTable
 } from '../service';
 import { filterData, sortData } from '../helper/LaKpiHelper';
+import getPermission from '../../Shared/permission/getPermission';
 
 const useStore = create<TState & TAction>((set, get) => ({
   dataTable: {
@@ -25,6 +26,7 @@ const useStore = create<TState & TAction>((set, get) => ({
     isGap: true
   },
   filterHeaderValue: '',
+  permission: null,
   conditionData: [],
   levelOption: [],
   sortState: {
@@ -105,7 +107,16 @@ const useStore = create<TState & TAction>((set, get) => ({
         filterHeaderValue: { $set: value }
       })
     );
-  }
+  },
+  queryPermissions: async () => {
+    const permission = await getPermission('LAKpi');
+    set((state: TState) =>
+      update(state, {
+        permission: { $set: permission }
+      })
+    );
+  },
+  getPermission: () => get().permission
 }));
 
 export default useStore;
