@@ -23,6 +23,7 @@ interface DataSource extends KOTimeProps, PesOrFiFa {
   MatchStatus: string;
   IsTodayEvent: boolean;
   League: Required<string>;
+  LeagueGroup: string;
   WatchBet: string;
   Phone: string;
   OtherProvider: string;

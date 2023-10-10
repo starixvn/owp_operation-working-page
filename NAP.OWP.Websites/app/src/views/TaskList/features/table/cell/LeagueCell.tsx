@@ -2,7 +2,7 @@ import React from 'react';
 import { CellProps } from '../../../type/TTaskListTable';
 
 const LeagueCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
-  const { League, MatchOffers, NoOfHDP, NoOfHDPId } = dataSource;
+  const { League, MatchOffers, NoOfHDP, NoOfHDPId, LeagueGroup } = dataSource;
 
   const renderNoOfHdpInfo = () =>
     NoOfHDP && (
@@ -23,7 +23,12 @@ const LeagueCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
   return (
     <>
       <div className='league-cell'>
-        <p>{League}</p>
+        <p>
+          {LeagueGroup && (
+            <span className='league-group league-badge'>{LeagueGroup}</span>
+          )}
+          <span className='league-group league-name'>{League}</span>
+        </p>
         <p>
           {renderNoOfHdpInfo()}
           {renderMatchOffer()}
