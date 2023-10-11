@@ -67,6 +67,14 @@ button {
   }
 
   .btn-add-league {
+    background: #ff9f09;
+
+    &:active {
+      background: #ff9f09 !important;
+    }
+  }
+
+  .btn-export {
     background: #2fb159;
 
     &:active {
@@ -75,6 +83,7 @@ button {
   }
 
   .btn-add-league,
+  .btn-export,
   .btn-search {
     border: 0;
     height: 26px;
@@ -774,14 +783,14 @@ button {
     }
   }
 }
-.league-cell{
-  .maxbet-status{
+.league-cell {
+  .maxbet-status {
     padding-right: 5px;
   }
 }
 .maxbet-cell {
   display: flex;
-  .maxbet-status{
+  .maxbet-status {
     padding-right: 5px;
     display: flex;
     align-items: center;
@@ -886,5 +895,12 @@ button {
   .log-modal {
     max-width: 1000px;
     margin: 1.75rem auto;
+  }
+}
+.btn-export {
+  background: #1e88e5;
+
+  &:active {
+    background: #1e88e5 !important;
   }
 }

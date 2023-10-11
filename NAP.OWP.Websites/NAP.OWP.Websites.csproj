@@ -2842,8 +2842,8 @@
     <Content Include="wwwroot\os-league-setting\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\os-league-setting\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\os-league-setting\assets\ext\server-712ac428.css" />
-    <Content Include="wwwroot\os-league-setting\assets\js\main-7396ca8b.js" />
+    <Content Include="wwwroot\os-league-setting\assets\ext\server-baad07ec.css" />
+    <Content Include="wwwroot\os-league-setting\assets\js\main-d70d40a7.js" />
     <Content Include="wwwroot\os-league-setting\favicon.ico" />
     <Content Include="wwwroot\os-league-setting\server.html" />
     <Content Include="wwwroot\other-sport\assets\ext\icon-feedback-57264197.svg" />
@@ -2994,10 +2994,6 @@
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\odds-compiler\server.cshtml" />
-    <Content Include="wwwroot\os-league-setting\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\os-league-setting\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\os-league-setting\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\os-league-setting\server.cshtml" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
@@ -3067,6 +3063,10 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\os-league-setting\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\os-league-setting\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\os-league-setting\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\os-league-setting\server.cshtml" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-a7443744.ttf" />
