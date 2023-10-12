@@ -165,7 +165,9 @@ input[type='checkbox'] {
     }
   }
 
-  .button-submit {
+  .button-submit,
+  .btn-group,
+  .user-guide {
     align-self: flex-end;
   }
 
@@ -264,6 +266,34 @@ input[type='checkbox'] {
 .public_fixedDataTable_header .title-header .filter-table {
   margin-right: 5px;
   float: right;
+}
+
+.user__guide,
+.tips {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  text-align: left;
+}
+
+.user__guide--tips {
+  width: fit-content;
+  border-radius: 8px;
+  gap: 16px;
+  background-color: #fff7e7;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  margin-bottom: 10px;
+  .wrapper {
+    padding: 16px;
+  }
+  .tips {
+    margin-left: 5px;
+  }
+}
+
+.export__and--check-all {
+  margin-top: 10px;
 }
 
 .table {

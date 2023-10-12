@@ -13,6 +13,8 @@ import SelectGame from './SelectGame';
 import UpdateType from './UpdateType';
 import { getLeagues, getUpdateTypes } from './slice/filterThunkNative';
 import Utils from '../../Shared/Utils';
+import ExportNative from './ExportNative';
+import UserGuideWrapper from '../userGuide/UserGuideWrapper';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -36,7 +38,9 @@ const Filter = () => {
       <MatchCategory />
       <UpdateType />
       <Command />
+      <ExportNative />
       <InfoIcon />
+      <UserGuideWrapper />
     </div>
   );
 };
