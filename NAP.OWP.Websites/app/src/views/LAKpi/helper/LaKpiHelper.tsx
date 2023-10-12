@@ -58,7 +58,9 @@ const correctComparer = (
 };
 
 const filterData = (dataSource: DataSource[], value: string) =>
-  dataSource.filter((x: DataSource) => x.userName.includes(value));
+  dataSource.filter((x: DataSource) =>
+    x.userName.toLowerCase().includes(value.toLowerCase())
+  );
 
 const buildOrderSelection = (sortState: SortState, props: SortHeaderProps) => {
   const { columnKeySelected, orderType, propertySelected } = sortState;
