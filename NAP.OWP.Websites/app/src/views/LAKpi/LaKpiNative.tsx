@@ -4,18 +4,20 @@ import Filter from './feature/filter/Filter';
 import useStore from './app/store';
 
 const LAKpiNative = () => {
-  const { queryPermissions } = useStore(state => state);
+  const queryPermissionsAndSections = useStore(
+    state => state.queryPermissionsAndSections
+  );
 
   useEffect(() => {
-    (async () => {
-      await queryPermissions();
-    })();
-  }, [queryPermissions]);
+    queryPermissionsAndSections();
+  }, []);
 
-  return <>
-    <Filter />
-    <LAKpiTable />
-  </>;
+  return (
+    <>
+      <Filter />
+      <LAKpiTable />
+    </>
+  );
 };
 
 export default LAKpiNative;

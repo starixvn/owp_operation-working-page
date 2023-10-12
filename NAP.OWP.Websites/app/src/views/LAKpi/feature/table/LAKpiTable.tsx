@@ -8,7 +8,6 @@ import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { headerHeight } from '../../TableConst.json';
 import { CloseIcon } from 'mdi-react';
 import { Button } from 'reactstrap';
-import { DataSource } from '../type/TableType.native';
 import { filterData } from '../../helper/LaKpiHelper';
 
 const LAKpiTable = () => {

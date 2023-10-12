@@ -51,10 +51,20 @@ const updateTargetLevel = async (model: Target[]) => {
   return response.data;
 };
 
+const getSectionOption = async (userId: number) => {
+  const url = buildRequestURL('get-all-section');
+  const response = await get({
+    url,
+    userId
+  });
+  return response.data;
+};
+
 export {
   queryDataTable,
   queryConditionData,
   queryLevelOption,
   updateTargetLevel,
-  exportDataTable
+  exportDataTable,
+  getSectionOption
 };

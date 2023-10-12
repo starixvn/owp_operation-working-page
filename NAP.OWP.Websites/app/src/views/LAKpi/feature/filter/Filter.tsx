@@ -17,12 +17,10 @@ const { defaultFromDate, defaultToDate } = initDefaultFilterDate();
 const Filter = () => {
   const fromDatePicker = useRef<ReactDatePicker>(null);
   const toDatePicker = useRef<ReactDatePicker>(null);
-  const {
-    queryConditionData,
-    queryDataTable,
-    exportDataTable,
-    queryLevelOption
-  } = useStore(state => state);
+  const queryConditionData = useStore(state => state.queryConditionData);
+  const exportDataTable = useStore(state => state.exportDataTable);
+  const queryLevelOption = useStore(state => state.queryLevelOption);
+  const queryDataTable = useStore(state => state.queryDataTable);
 
   const [filterDate, setFilterDate] = useState({
     fromDate: defaultFromDate,

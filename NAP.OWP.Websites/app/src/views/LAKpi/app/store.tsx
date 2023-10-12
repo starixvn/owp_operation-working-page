@@ -13,7 +13,8 @@ import {
   queryConditionData,
   queryLevelOption,
   updateTargetLevel,
-  exportDataTable
+  exportDataTable,
+  getSectionOption
 } from '../service';
 import { filterData, sortData } from '../helper/LaKpiHelper';
 import getPermission from '../../Shared/permission/getPermission';
@@ -29,6 +30,7 @@ const useStore = create<TState & TAction>((set, get) => ({
   permission: null,
   conditionData: [],
   levelOption: [],
+  sectionOption: [],
   sortState: {
     columnKeySelected: '',
     orderType: '',
@@ -108,11 +110,14 @@ const useStore = create<TState & TAction>((set, get) => ({
       })
     );
   },
-  queryPermissions: async () => {
+  queryPermissionsAndSections: async () => {
     const permission = await getPermission('LAKpi');
+    const sectionOption = await getSectionOption(permission.ActorId);
+
     set((state: TState) =>
       update(state, {
-        permission: { $set: permission }
+        permission: { $set: permission },
+        sectionOption: { $set: sectionOption }
       })
     );
   },
