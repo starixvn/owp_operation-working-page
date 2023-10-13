@@ -132,9 +132,7 @@
   th {
     box-shadow: inset 1px 1px #c8ced3, 0 1px #c8ced3;
   }
-
 }
-
 
 .table-content {
   border-collapse: collapse;
@@ -272,9 +270,6 @@
   }
 }
 
-
-
-
 .table-content::-webkit-scrollbar {
   background-color: #f5f5f5;
   width: 7px;
@@ -390,7 +385,6 @@
     border-collapse: collapse;
 
     thead {
-
       th,
       td {
         background: #e3e3e3;
@@ -495,4 +489,93 @@
 .toast-notify div#swal2-html-container {
   margin: 10px;
   font-size: 15px !important;
+}
+.rmsc .dropdown-content {
+  z-index: 2 !important;
+}
+.multi-select-dropdown {
+  width: 150px;
+  margin-right: 10px;
+  .label {
+    margin-bottom: 5px;
+  }
+  .dropdown {
+    width: 100%;
+    &[aria-expanded='true'] {
+      .dropdown-heading {
+        border-bottom-color: #2684ff !important;
+      }
+    }
+
+    .dropdown-heading {
+      border-bottom-color: #cccccc !important;
+    }
+    .dropdown-heading-value {
+      line-height: 29px !important;
+    }
+    .dropdown-content {
+      left: 0;
+
+      .select-panel {
+        .select-list {
+          li {
+            padding: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+.rmsc.status .dropdown-container {
+  border: 0;
+  border-bottom: 1px solid #cccccc;
+  border-radius: 0;
+}
+.rmsc.status {
+  .dropdown-container {
+    border: 0;
+    border-bottom: 1px solid #cccccc;
+    border-radius: 0;
+    &:focus-within {
+      box-shadow: none;
+    }
+  }
+  .dropdown-heading {
+    height: 28px;
+    border: 0 !important;
+    .dropdown-heading-dropdown-arrow {
+      display: none;
+    }
+    &:after {
+      position: absolute;
+      top: 50%;
+      margin-top: -2px;
+      right: 0;
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 4.5px 0 4.5px;
+      border-color: gray transparent transparent transparent;
+    }
+  }
+  .dropdown-content {
+    .select-item {
+      outline: none;
+      &.selected,
+      &:hover {
+        background: #ebf5ff;
+      }
+    }
+    .item-renderer {
+      input[type='checkbox'] {
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+}
+.rmsc .dropdown-container {
+  background-color: transparent !important;
 }

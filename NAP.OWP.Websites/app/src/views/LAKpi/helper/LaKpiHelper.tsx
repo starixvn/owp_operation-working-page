@@ -3,6 +3,7 @@ import {
   DataSource,
   SortHeaderProps,
   SortState,
+  TSectionOption,
   TTotalGameInfo
 } from '../feature/type/TableType.native';
 import {
@@ -73,5 +74,6 @@ const buildOrderSelection = (sortState: SortState, props: SortHeaderProps) => {
   }
   return desc;
 };
-
-export { sortData, filterData, buildOrderSelection };
+const buildSectionInString = (sections: Array<TSectionOption>) =>
+  sections.map(x => x.value).join(',');
+export { sortData, filterData, buildOrderSelection, buildSectionInString };

@@ -10,6 +10,11 @@ type TSection = {
   sectionName: string;
   isContainUser: boolean;
 };
+type TSectionOption = {
+  label: string;
+  value: string;
+};
+
 type TState = {
   dataTable: {
     loadingStatus: string;
@@ -22,7 +27,9 @@ type TState = {
   levelOption: Array<TargetOption>;
   sortState: SortState;
   permission: null | TPermission;
-  sectionOption: Array<TSection>;
+  sectionOption: Array<TSectionOption>;
+  sectionSelected: Array<TSectionOption>;
+  loading: string;
 };
 
 type SortState = {
@@ -34,11 +41,13 @@ type SortState = {
 type TAction = {
   queryDataTable: (
     fromDate: Required<Date>,
-    toDate: Required<Date>
+    toDate: Required<Date>,
+    section: string
   ) => Promise<void>;
   exportDataTable: (
     fromDate: Required<Date>,
-    toDate: Required<Date>
+    toDate: Required<Date>,
+    section: string
   ) => Promise<void>;
   queryConditionData: () => Promise<void>;
   queryLevelOption: () => Promise<void>;
@@ -46,6 +55,7 @@ type TAction = {
   setDataSourcesFiltered: (data: DataSource[]) => void;
   sortDataSources: (sortState: SortState) => void;
   setFilterHeader: (value: string) => void;
+  setSectionSelected: (value: Array<TSectionOption>) => void;
   queryPermissionsAndSections: () => Promise<void>;
   getPermission: () => TPermission | null;
 };
@@ -108,5 +118,7 @@ export {
   SortState,
   TargetOption,
   Target,
-  SortHeaderProps
+  SortHeaderProps,
+  TSection,
+  TSectionOption
 };

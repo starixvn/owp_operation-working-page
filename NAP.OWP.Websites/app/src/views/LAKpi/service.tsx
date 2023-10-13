@@ -8,7 +8,11 @@ const buildRequestURL = (key: string | null) =>
     ? `${netCoreURL}/${key}`
     : `${window.netCoreRootUrl}/${netFwURL}/${key}`;
 
-const queryDataTable = async (filterFromDate: Date, filterToDate: Date) => {
+const queryDataTable = async (
+  filterFromDate: Date,
+  filterToDate: Date,
+  sectionIds: string
+) => {
   const url = buildRequestURL('');
   const fromDate = Utils.formatDate(filterFromDate);
   const toDate = Utils.formatDate(filterToDate);
@@ -16,16 +20,21 @@ const queryDataTable = async (filterFromDate: Date, filterToDate: Date) => {
   const response = await get({
     url,
     fromDate,
-    toDate
+    toDate,
+    sectionIds
   });
   return response.data;
 };
 
-const exportDataTable = async (filterFromDate: Date, filterToDate: Date) => {
+const exportDataTable = async (
+  filterFromDate: Date,
+  filterToDate: Date,
+  sectionIds: string
+) => {
   const url = buildRequestURL('export');
   const fromDate = Utils.formatDate(filterFromDate);
   const toDate = Utils.formatDate(filterToDate);
-  window.location.href = `${url}?fromDate=${fromDate}&toDate=${toDate}`;
+  window.location.href = `${url}?fromDate=${fromDate}&toDate=${toDate}&sectionIds:${sectionIds}`;
 };
 
 const queryConditionData = async () => {
