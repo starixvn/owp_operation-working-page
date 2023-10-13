@@ -10,6 +10,13 @@ const createProps = (isGap = true) =>
       dataSourcesFiltered: [],
       loadingStatus: 'idle',
       isGap: isGap
+    },
+    permission: {
+      HasWrite: true,
+      ActorId: 8,
+      HasRead: true,
+      SiteId: 99,
+      Username: 'liam'
     }
   });
 
@@ -33,7 +40,9 @@ describe('EditTarget Component', () => {
 
   it('opens the EditTargetPopup when clicked', () => {
     const { container } = render(<EditTarget />);
+
     const editTargetSpan = container.querySelector('.edit-target');
+
     fireEvent.click(editTargetSpan!);
 
     const editTargetPopup = screen.getByText('Username');

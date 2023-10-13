@@ -34,7 +34,7 @@ const exportDataTable = async (
   const url = buildRequestURL('export');
   const fromDate = Utils.formatDate(filterFromDate);
   const toDate = Utils.formatDate(filterToDate);
-  window.location.href = `${url}?fromDate=${fromDate}&toDate=${toDate}&sectionIds:${sectionIds}`;
+  window.location.href = `${url}?fromDate=${fromDate}&toDate=${toDate}&sectionIds=${sectionIds}`;
 };
 
 const queryConditionData = async () => {
