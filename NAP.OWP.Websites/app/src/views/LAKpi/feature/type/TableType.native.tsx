@@ -68,6 +68,14 @@ type TTotalGameInfo = {
   multipleProducts: number;
 };
 
+type TLog = {
+  logId: number;
+  modifyBy: string;
+  oldValue: string;
+  newValue: string;
+  logDate: Date;
+};
+
 interface TTotalGameConditionInfo extends TTotalGameInfo {
   totalVirtualMultipleMatches: number;
 }
@@ -120,5 +128,6 @@ export {
   Target,
   SortHeaderProps,
   TSection,
-  TSectionOption
+  TSectionOption,
+  TLog
 };

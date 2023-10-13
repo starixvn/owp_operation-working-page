@@ -1,6 +1,7 @@
 import React from 'react';
 import { DataSource } from '../type/TableType.native';
 import TableBodyTotalGame from './TableBodyTotalGame';
+import HistoryCell from '../components/HistoryCell';
 
 const TWO = 2;
 const TableBody = (props: {
@@ -26,6 +27,9 @@ const TableBody = (props: {
               <TableBodyTotalGame {...item.gapWithTarget} />
               <TableBodyTotalGame {...item.achievedGames} />
               <td>{item.reward}</td>
+              <td>
+                <HistoryCell userId={item.userId} userName={item.userName} />
+              </td>
             </>
           ) : (
             <>

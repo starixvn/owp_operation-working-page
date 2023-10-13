@@ -51,6 +51,7 @@ const TableHeader = (props: PropsTableHeader) => {
             <th colSpan={5}>The gap to win the target</th>
             <th colSpan={5}>Achieved matches</th>
             <th rowSpan={2}>Reward</th>
+            <th rowSpan={2}>History</th>
           </>
         ) : (
           <>

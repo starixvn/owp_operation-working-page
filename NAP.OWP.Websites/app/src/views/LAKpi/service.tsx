@@ -69,11 +69,18 @@ const getSectionOption = async (userId: number) => {
   return response.data;
 };
 
+const getLogHistory = async (userId: number) => {
+  const url = buildRequestURL('get-log-target-level');
+  const response = await get({ url, userId });
+  return response.data;
+};
+
 export {
   queryDataTable,
   queryConditionData,
   queryLevelOption,
   updateTargetLevel,
   exportDataTable,
-  getSectionOption
+  getSectionOption,
+  getLogHistory
 };

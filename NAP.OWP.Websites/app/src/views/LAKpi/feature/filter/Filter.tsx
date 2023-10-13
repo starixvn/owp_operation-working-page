@@ -35,6 +35,10 @@ const Filter = () => {
       ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
       return;
     }
+    if (!sectionSelected.length) {
+      ToastrWrapper.showError('Please select at least one section');
+      return;
+    }
     exportDataTable(
       filterDate.fromDate,
       filterDate.toDate,
@@ -61,6 +65,10 @@ const Filter = () => {
   const handleOnSearch = () => {
     if (isValidTimeRange(filterDate.fromDate, filterDate.toDate)) {
       ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
+      return;
+    }
+    if (!sectionSelected.length) {
+      ToastrWrapper.showError('Please select at least one section');
       return;
     }
     queryDataTable(
