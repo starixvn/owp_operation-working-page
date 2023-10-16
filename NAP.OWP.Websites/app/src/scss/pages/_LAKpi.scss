@@ -610,10 +610,13 @@
   min-width: 530px;
   max-width: 1000px;
   width: 100%;
+  border-right: 1px solid #c8ced3;
+  border-top: 1px solid #c8ced3;
   thead {
     th,
     td {
       background: #dedede;
+      box-shadow: inset 1px -1px #c8ced3;
     }
   }
   tr {
@@ -621,6 +624,7 @@
     td {
       border-collapse: collapse;
       padding: 6px;
+      box-shadow: inset 1px -1px #c8ced3;
       &:first-child {
         width: 160px;
       }

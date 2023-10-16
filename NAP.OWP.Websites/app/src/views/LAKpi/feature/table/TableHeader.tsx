@@ -32,6 +32,9 @@ const TableHeader = (props: PropsTableHeader) => {
             <FilterIcon size={14} />
           </span>
         </th>
+        <th rowSpan={2}>
+          <span>Section</span>
+        </th>
         {props.isGap ? (
           <>
             <th rowSpan={2}>

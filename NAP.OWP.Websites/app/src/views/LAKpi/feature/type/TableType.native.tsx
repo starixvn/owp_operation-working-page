@@ -83,6 +83,7 @@ interface TTotalGameConditionInfo extends TTotalGameInfo {
 type DataSource = {
   userId: Required<number>;
   userName: Required<string>;
+  sectionName: Required<string>;
   progress: Required<string>;
   target: string | null;
   targetId: number | null;

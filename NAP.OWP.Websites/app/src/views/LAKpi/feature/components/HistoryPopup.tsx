@@ -24,7 +24,7 @@ const HistoryPopup = ({ handleClosePopup, userId, userName }: Props) => {
     <div>
       <Modal isOpen scrollable className='status-fix' centered>
         <ModalHeader toggle={handleClosePopup}>
-          Status History - {userName}
+          Target Update History - {userName}
         </ModalHeader>
         <ModalBody>
           <div className='status-fix-body'>

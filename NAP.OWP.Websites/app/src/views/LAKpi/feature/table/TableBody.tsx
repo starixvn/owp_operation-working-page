@@ -16,6 +16,7 @@ const TableBody = (props: {
           key={`${item.userName}-${index}`}>
           <td>{index + 1}</td>
           <td>{item.userName}</td>
+          <td>{item.sectionName}</td>
           {props.isGap ? (
             <>
               {item.progress === 'Fail' ? (
