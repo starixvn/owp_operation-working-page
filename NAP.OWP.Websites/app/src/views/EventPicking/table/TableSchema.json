@@ -16,25 +16,21 @@
     "order": 1,
     "isCheckBox": true,
     "headerName": "No #",
-    "columnKey": "No",
-    "isFreeze": true
+    "columnKey": "No"
   },
   "KOTime": {
     "headerName": "KOTime",
-    "columnKey": "KOTime",
-    "isFreeze": true
+    "columnKey": "KOTime"
   },
   "League": {
     "headerName": "League",
     "columnKey": "League",
-    "isCanFilter": true,
-    "isFreeze": true
+    "isCanFilter": true
   },
   "Match": {
     "headerName": "Match",
     "columnKey": "Match",
-    "isCanFilter": true,
-    "isFreeze": true
+    "isCanFilter": true
   },
   "MaxBet": {
     "headerName": "MB",
@@ -63,21 +59,18 @@
   "RAndDUpdate": {
     "headerName": "R&D Update",
     "columnKey": "RAndDUpdate",
-    "isCanFilter": false,
-    "fixedRight": true
+    "isCanFilter": false
   },
   "CheckedByLst": {
     "headerName": "Checked",
     "columnKey": "CheckedByLst",
     "isCanFilter": false,
     "isCheckBox": true,
-    "className": "check-by-lst",
-    "fixedRight": true
+    "className": "check-by-lst"
   },
   "Action": {
     "headerName": "Action",
     "columnKey": "Action",
-    "isCanFilter": false,
-    "fixedRight": true
+    "isCanFilter": false
   }
 }
