@@ -14,7 +14,7 @@ const HistoryCell = ({ userId, userName }: Props) => {
       <div>
         <span
           className='icon-history'
-          id={`history-icon-`}
+          id={`history-icon-${userId}`}
           onClick={() => setIsOpen(!isOpen)}></span>
       </div>
       {isOpen && (
