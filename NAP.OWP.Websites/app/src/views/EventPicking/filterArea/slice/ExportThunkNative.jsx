@@ -1,0 +1,26 @@
+import { exportExcelUrl, queryDataExcel } from '../../UtilsNative';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
+
+const exportExcel = createAsyncThunk(
+  'EventPicking/export',
+  async modelFilter => {
+    const { data } = await queryDataExcel(exportExcelUrl, modelFilter);
+    if (data) {
+      const urlFake = window.URL.createObjectURL(new Blob([data]));
+      const link = document.createElement('a');
+      link.href = urlFake;
+      link.setAttribute(
+        'download',
+        `Miscmatch v2.0 - ${dayjs(modelFilter.date).format(
+          'YYYYMMDD'
+        )} - Export time ${dayjs(new Date()).format('YYYYMMDD hh:mm A')}.xlsx`
+      );
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+);
+
+export { exportExcel };

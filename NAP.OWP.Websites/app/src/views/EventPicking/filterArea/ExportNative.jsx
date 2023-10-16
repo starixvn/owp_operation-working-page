@@ -1,20 +1,17 @@
 import React from 'react';
 import DropdownNative from '../../Shared/common/Dropdown/DropdownNative';
 import { EXPORT } from './filterConst.json';
+import { exportAndConfirmAllEvent, exportOnly } from '../helper/exportHelper';
 
 const ExportNative = () => {
-  const handleExportAndCheckAll = () => {};
-
-  const handleExport = () => {};
-
   const items = [
     {
       title: EXPORT.EXPORT_AND_CHECK_ALL,
-      handler: handleExportAndCheckAll
+      handler: exportAndConfirmAllEvent
     },
     {
       title: EXPORT.EXPORT_ONLY,
-      handler: handleExport
+      handler: exportOnly
     }
   ];
   return <DropdownNative items={items} />;
