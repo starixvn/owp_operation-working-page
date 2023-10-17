@@ -1067,8 +1067,8 @@
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\server-372eb756.css" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\js\main-ce80b37e.js" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\server-15c21925.css" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\js\main-8cf64147.js" />
     <Content Include="wwwroot\assignee-suggestion-list\favicon.ico" />
     <Content Include="wwwroot\assignee-suggestion-list\server.html" />
     <Content Include="wwwroot\auto-assignment\assets\ext\icon-feedback-57264197.svg" />
@@ -2954,10 +2954,6 @@
     <Content Include="wwwroot\ticket-type-recipient\favicon.ico" />
     <Content Include="wwwroot\ticket-type-recipient\server.html" />
     <Content Include="wwwroot\web.config" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
     <Content Include="wwwroot\auto-assignment\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\auto-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\auto-assignment\assets\ext\OWP-a7443744.ttf" />
@@ -3075,6 +3071,10 @@
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\la-kpi\server.cshtml" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

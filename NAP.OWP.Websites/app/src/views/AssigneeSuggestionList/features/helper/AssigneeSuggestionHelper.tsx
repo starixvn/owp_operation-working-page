@@ -23,9 +23,15 @@ const getTotalRecords = ({
   fullyAvailable.length + partiallyAvailable.length + busy.length;
 
 const searchAssignee = (assignees: UserWorkingSchedule[], keyword: string) =>
-  assignees.filter(x =>
-    x.userInfo?.username.toLowerCase().includes(keyword.toLowerCase().trim())
-  );
+  assignees.filter(x => {
+    const normalizedKeyword = keyword.toLowerCase().trim();
+    return [
+      x.userInfo?.username,
+      x.userInfo?.levelLabel,
+      x.userInfo?.mainBetType,
+      x.userInfo?.maxMultipleGames
+    ].some(prop => prop?.toLowerCase().includes(normalizedKeyword));
+  });
 
 const isShowPartially = (matchInfo: TMatchInfo) =>
   !matchInfo.leagueName.includes('SABA ');
