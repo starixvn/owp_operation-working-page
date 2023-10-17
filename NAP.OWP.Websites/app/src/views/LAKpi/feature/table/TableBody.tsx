@@ -19,11 +19,9 @@ const TableBody = (props: {
           <td>{item.sectionName}</td>
           {props.isGap ? (
             <>
-              {item.progress === 'Fail' ? (
-                <td className='fail-progress'>{item.progress}</td>
-              ) : (
-                <td>{item.progress}</td>
-              )}
+              <td className={`${item.isAlmostWinTarget ? 'almost-target' : ''} ${item.progress === 'Fail' ? 'fail-progress' : ''}`}>
+                {item.progress}
+              </td>
               <td>{item.target}</td>
               <TableBodyTotalGame {...item.gapWithTarget} />
               <TableBodyTotalGame {...item.achievedGames} />
