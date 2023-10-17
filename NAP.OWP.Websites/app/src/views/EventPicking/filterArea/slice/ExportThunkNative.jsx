@@ -6,6 +6,10 @@ const exportExcel = createAsyncThunk(
   'EventPicking/export',
   async modelFilter => {
     const { data } = await queryDataExcel(exportExcelUrl, modelFilter);
+    const currentDateGmt8 = new Date().toLocaleString('en-US', {
+      timeZone: 'Asia/Hong_Kong'
+    });
+
     if (data) {
       const urlFake = window.URL.createObjectURL(new Blob([data]));
       const link = document.createElement('a');
@@ -14,7 +18,9 @@ const exportExcel = createAsyncThunk(
         'download',
         `Miscmatch v2.0 - ${dayjs(modelFilter.date).format(
           'YYYYMMDD'
-        )} - Export time ${dayjs(new Date()).format('YYYYMMDD hh:mm A')}.xlsx`
+        )} - Export time ${dayjs(currentDateGmt8).format(
+          'YYYYMMDD hh:mm A'
+        )}.xlsx`
       );
       document.body.appendChild(link);
       link.click();

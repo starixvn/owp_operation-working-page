@@ -1106,7 +1106,7 @@
     <Content Include="wwwroot\event-picking\assets\ext\server-f4473e19.css" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_check_all-1f6bb12a.png" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_only-49132f43.png" />
-    <Content Include="wwwroot\event-picking\assets\js\main-53f2e5f3.js" />
+    <Content Include="wwwroot\event-picking\assets\js\main-5ca587a8.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\event-upload\assets\ext\icon-feedback-57264197.svg" />
