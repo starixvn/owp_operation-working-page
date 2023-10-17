@@ -32,7 +32,7 @@ const TableHeader = (props: PropsTableHeader) => {
             <FilterIcon size={14} />
           </span>
         </th>
-        <th rowSpan={2}>
+        <th rowSpan={2} className='section-header'>
           <span>Section</span>
         </th>
         {props.isGap ? (

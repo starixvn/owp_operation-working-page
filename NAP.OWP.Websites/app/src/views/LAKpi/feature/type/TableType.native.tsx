@@ -73,7 +73,7 @@ type TLog = {
   modifyBy: string;
   oldValue: string;
   newValue: string;
-  logDate: Date;
+  modifyDate: string;
 };
 
 interface TTotalGameConditionInfo extends TTotalGameInfo {

@@ -41,7 +41,7 @@ const HistoryPopup = ({ handleClosePopup, userId, userName }: Props) => {
               <tbody>
                 {logs.map((x: TLog) => (
                   <tr key={uniqueId()}>
-                    <td>{Utils.formatDateTimeString(x.logDate)}</td>
+                    <td>{x.modifyDate}</td>
                     <td>{x.modifyBy}</td>
                     <td>{x.oldValue}</td>
                     <td>{x.newValue}</td>
