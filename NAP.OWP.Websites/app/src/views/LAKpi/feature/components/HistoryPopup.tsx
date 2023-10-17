@@ -3,6 +3,7 @@ import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import Utils from '../../../Shared/Utils';
 import { TLog } from '../type/TableType.native';
 import { getLogHistory } from '../../service';
+import { uniqueId } from 'lodash';
 
 type Props = {
   handleClosePopup: () => void;
@@ -39,7 +40,7 @@ const HistoryPopup = ({ handleClosePopup, userId, userName }: Props) => {
               </thead>
               <tbody>
                 {logs.map((x: TLog) => (
-                  <tr key={x.logId}>
+                  <tr key={uniqueId()}>
                     <td>{Utils.formatDateTimeString(x.logDate)}</td>
                     <td>{x.modifyBy}</td>
                     <td>{x.oldValue}</td>
