@@ -37,8 +37,8 @@ const Command = () => {
       );
     }
     const url = getURL('export-league-setting');
-
-    return (window.location.href = `${url}?CategoryId=${category}&League=${league}&RoundId=${round}&StatusId=${status}`);
+    window.location.href = `${url}?CategoryId=${category}&League=${league}&RoundId=${round}&StatusId=${status}`;
+    return url;
   };
 
   const policy = getPolicy();

@@ -5,8 +5,11 @@ import { render } from '@testing-library/react';
 
 useStore.setState({
   dataTable: {
-    entities: [
+    entities: [],
+    dataSourcesFiltered: [
       {
+        targetId: 2,
+        userId: 8,
         userName: 'User1',
         progress: '100%',
         target: '150%',
@@ -27,6 +30,8 @@ useStore.setState({
         reward: 200
       },
       {
+        targetId: 3,
+        userId: 7,
         userName: 'User2',
         progress: '75%',
         target: '100%',

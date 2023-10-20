@@ -4,6 +4,8 @@ import {
   DataSource,
   SortState,
   TAction,
+  TSection,
+  TSectionOption,
   TState,
   Target
 } from '../feature/type/TableType.native';
@@ -13,7 +15,8 @@ import {
   queryConditionData,
   queryLevelOption,
   updateTargetLevel,
-  exportDataTable
+  exportDataTable,
+  getSectionOption
 } from '../service';
 import { filterData, sortData } from '../helper/LaKpiHelper';
 import getPermission from '../../Shared/permission/getPermission';
@@ -29,6 +32,9 @@ const useStore = create<TState & TAction>((set, get) => ({
   permission: null,
   conditionData: [],
   levelOption: [],
+  sectionOption: [],
+  sectionSelected: [],
+  loading: REQUEST_STATUS.idle,
   sortState: {
     columnKeySelected: '',
     orderType: '',
@@ -40,8 +46,12 @@ const useStore = create<TState & TAction>((set, get) => ({
       conditionData: data
     });
   },
-  exportDataTable: async (fromDate: Required<Date>, toDate: Required<Date>) => {
-    await exportDataTable(fromDate, toDate);
+  exportDataTable: async (
+    fromDate: Required<Date>,
+    toDate: Required<Date>,
+    section: string
+  ) => {
+    await exportDataTable(fromDate, toDate, section);
   },
   queryLevelOption: async () => {
     const data = await queryLevelOption();
@@ -52,7 +62,11 @@ const useStore = create<TState & TAction>((set, get) => ({
   updateTargetLevel: async (model: Target[]) => {
     await updateTargetLevel(model);
   },
-  queryDataTable: async (fromDate: Required<Date>, toDate: Required<Date>) => {
+  queryDataTable: async (
+    fromDate: Required<Date>,
+    toDate: Required<Date>,
+    section: string
+  ) => {
     const { filterHeaderValue } = get();
     set((state: TState) =>
       update(state, {
@@ -62,7 +76,7 @@ const useStore = create<TState & TAction>((set, get) => ({
       })
     );
 
-    const data = await queryDataTable(fromDate, toDate);
+    const data = await queryDataTable(fromDate, toDate, section);
     const dataFiltered = filterData(data.kpiLa, filterHeaderValue);
     set((state: TState) =>
       update(state, {
@@ -108,11 +122,40 @@ const useStore = create<TState & TAction>((set, get) => ({
       })
     );
   },
-  queryPermissions: async () => {
-    const permission = await getPermission('LAKpi');
+  setSectionSelected: (value: Array<TSectionOption>) => {
     set((state: TState) =>
       update(state, {
-        permission: { $set: permission }
+        sectionSelected: { $set: value }
+      })
+    );
+  },
+
+  queryPermissionsAndSections: async () => {
+    set((state: TState) =>
+      update(state, {
+        loading: { $set: REQUEST_STATUS.pending }
+      })
+    );
+    const permission = await getPermission('LAKpi');
+    const section = await getSectionOption(permission.ActorId);
+    const sectionOption = await section.map((x: TSection) => ({
+      label: x.sectionName,
+      value: x.sectionId
+    }));
+    const sectionSelected = section
+      .filter((x: TSection) => x.isContainUser)
+      .map((x: TSection) => ({
+        label: x.sectionName,
+        value: x.sectionId
+      }));
+    set((state: TState) =>
+      update(state, {
+        permission: { $set: permission },
+        sectionOption: {
+          $set: sectionOption
+        },
+        sectionSelected: { $set: sectionSelected },
+        loading: { $set: REQUEST_STATUS.idle }
       })
     );
   },

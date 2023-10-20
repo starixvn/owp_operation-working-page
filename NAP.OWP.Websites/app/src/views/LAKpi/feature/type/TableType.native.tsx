@@ -1,10 +1,18 @@
-
 type TPermission = {
   Username: string;
   HasRead: boolean;
-  HasWrite: boolean
-  ActorId: number
-  SiteId: number
+  HasWrite: boolean;
+  ActorId: number;
+  SiteId: number;
+};
+type TSection = {
+  sectionId: string;
+  sectionName: string;
+  isContainUser: boolean;
+};
+type TSectionOption = {
+  label: string;
+  value: string;
 };
 
 type TState = {
@@ -19,6 +27,9 @@ type TState = {
   levelOption: Array<TargetOption>;
   sortState: SortState;
   permission: null | TPermission;
+  sectionOption: Array<TSectionOption>;
+  sectionSelected: Array<TSectionOption>;
+  loading: string;
 };
 
 type SortState = {
@@ -30,11 +41,13 @@ type SortState = {
 type TAction = {
   queryDataTable: (
     fromDate: Required<Date>,
-    toDate: Required<Date>
+    toDate: Required<Date>,
+    section: string
   ) => Promise<void>;
   exportDataTable: (
     fromDate: Required<Date>,
-    toDate: Required<Date>
+    toDate: Required<Date>,
+    section: string
   ) => Promise<void>;
   queryConditionData: () => Promise<void>;
   queryLevelOption: () => Promise<void>;
@@ -42,8 +55,9 @@ type TAction = {
   setDataSourcesFiltered: (data: DataSource[]) => void;
   sortDataSources: (sortState: SortState) => void;
   setFilterHeader: (value: string) => void;
-  queryPermissions: () => Promise<void>;
-  getPermission: () => TPermission | null
+  setSectionSelected: (value: Array<TSectionOption>) => void;
+  queryPermissionsAndSections: () => Promise<void>;
+  getPermission: () => TPermission | null;
 };
 
 type TTotalGameInfo = {
@@ -54,6 +68,14 @@ type TTotalGameInfo = {
   multipleProducts: number;
 };
 
+type TLog = {
+  logId: number;
+  modifyBy: string;
+  oldValue: string;
+  newValue: string;
+  modifyDate: string;
+};
+
 interface TTotalGameConditionInfo extends TTotalGameInfo {
   totalVirtualMultipleMatches: number;
 }
@@ -61,12 +83,14 @@ interface TTotalGameConditionInfo extends TTotalGameInfo {
 type DataSource = {
   userId: Required<number>;
   userName: Required<string>;
+  sectionName: Required<string>;
   progress: Required<string>;
   target: string | null;
   targetId: number | null;
   gapWithTarget: Required<TTotalGameInfo>;
   achievedGames: Required<TTotalGameInfo>;
   reward: number;
+  isAlmostWinTarget: boolean;
 };
 
 type TCondition = {
@@ -104,5 +128,8 @@ export {
   SortState,
   TargetOption,
   Target,
-  SortHeaderProps
+  SortHeaderProps,
+  TSection,
+  TSectionOption,
+  TLog
 };

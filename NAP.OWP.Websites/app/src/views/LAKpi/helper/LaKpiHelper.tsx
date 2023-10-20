@@ -3,6 +3,7 @@ import {
   DataSource,
   SortHeaderProps,
   SortState,
+  TSectionOption,
   TTotalGameInfo
 } from '../feature/type/TableType.native';
 import {
@@ -58,7 +59,9 @@ const correctComparer = (
 };
 
 const filterData = (dataSource: DataSource[], value: string) =>
-  dataSource.filter((x: DataSource) => x.userName.includes(value));
+  dataSource.filter((x: DataSource) =>
+    x.userName.toLowerCase().includes(value.toLowerCase())
+  );
 
 const buildOrderSelection = (sortState: SortState, props: SortHeaderProps) => {
   const { columnKeySelected, orderType, propertySelected } = sortState;
@@ -71,5 +74,6 @@ const buildOrderSelection = (sortState: SortState, props: SortHeaderProps) => {
   }
   return desc;
 };
-
-export { sortData, filterData, buildOrderSelection };
+const buildSectionInString = (sections: Array<TSectionOption>) =>
+  sections.map(x => x.value).join(',');
+export { sortData, filterData, buildOrderSelection, buildSectionInString };

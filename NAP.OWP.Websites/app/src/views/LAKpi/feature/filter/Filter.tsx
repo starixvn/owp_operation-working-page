@@ -11,18 +11,19 @@ import update from 'immutability-helper';
 import useStore from '../../app/store';
 import InfoConditionExplainIcon from '../tableConditionConfig/InfoConditionExplainIcon';
 import EditTarget from './EditTarget';
+import SectionOption from './SectionOption';
+import { buildSectionInString } from '../../helper/LaKpiHelper';
 
 const { defaultFromDate, defaultToDate } = initDefaultFilterDate();
 
 const Filter = () => {
   const fromDatePicker = useRef<ReactDatePicker>(null);
   const toDatePicker = useRef<ReactDatePicker>(null);
-  const {
-    queryConditionData,
-    queryDataTable,
-    exportDataTable,
-    queryLevelOption
-  } = useStore(state => state);
+  const queryConditionData = useStore(state => state.queryConditionData);
+  const exportDataTable = useStore(state => state.exportDataTable);
+  const queryLevelOption = useStore(state => state.queryLevelOption);
+  const queryDataTable = useStore(state => state.queryDataTable);
+  const sectionSelected = useStore(state => state.sectionSelected);
 
   const [filterDate, setFilterDate] = useState({
     fromDate: defaultFromDate,
@@ -34,7 +35,15 @@ const Filter = () => {
       ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
       return;
     }
-    exportDataTable(filterDate.fromDate, filterDate.toDate);
+    if (!sectionSelected.length) {
+      ToastrWrapper.showError('Please select at least one section');
+      return;
+    }
+    exportDataTable(
+      filterDate.fromDate,
+      filterDate.toDate,
+      buildSectionInString(sectionSelected)
+    );
   };
 
   const onFromDateChanged = (date: Date) => {
@@ -58,11 +67,23 @@ const Filter = () => {
       ToastrWrapper.showError(<h4>Time Range is only within 2 years</h4>);
       return;
     }
-    queryDataTable(filterDate.fromDate, filterDate.toDate);
+    if (!sectionSelected.length) {
+      ToastrWrapper.showError('Please select at least one section');
+      return;
+    }
+    queryDataTable(
+      filterDate.fromDate,
+      filterDate.toDate,
+      buildSectionInString(sectionSelected)
+    );
   };
 
   useEffect(() => {
-    queryDataTable(filterDate.fromDate, filterDate.toDate);
+    queryDataTable(
+      filterDate.fromDate,
+      filterDate.toDate,
+      buildSectionInString(sectionSelected)
+    );
     queryConditionData();
     queryLevelOption();
   }, []);
@@ -104,6 +125,10 @@ const Filter = () => {
             <CalendarIcon size={14} />
           </span>
         </div>
+        <div className='filter-control'>
+          <SectionOption />
+        </div>
+
         <div className='filter-control btn-block'>
           <button className='button-submit' onClick={handleOnSearch}>
             Search
