@@ -7,7 +7,7 @@ const TableConditionConfig = () => {
   const conditionData = useStore(state => state.conditionData);
   return (
     <>
-      <table>
+      <table className='condition-table'>
         <thead>
           <tr>
             <th>Level</th>

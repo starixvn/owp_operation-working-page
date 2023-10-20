@@ -57,8 +57,12 @@ const TableHeader = (props: PropsTableHeader) => {
             <th colSpan={5} className='achieved-matches'>
               Achieved matches
             </th>
-            <th rowSpan={2}>Reward</th>
-            <th rowSpan={2}>History</th>
+            <th rowSpan={2} className='reward-column'>
+              Reward
+            </th>
+            <th rowSpan={2} className='history-column'>
+              History
+            </th>
           </>
         ) : (
           <>
