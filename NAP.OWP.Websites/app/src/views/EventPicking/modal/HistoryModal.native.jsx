@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, ModalHeader, ModalBody, Table } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { REQUEST_STATUS } from '../../Shared/Constants';
-import Loading from '../../components/Loading';
-import isEqual from 'lodash.isequal';
 import { get } from '../../Shared/Service/Service';
 import { netCoreURL, netFwURL, getLogsHistory } from '../const/const.json';
 import dayjs from 'dayjs';
@@ -16,7 +13,6 @@ const resolveUrl = () =>
 const HistoryModal = props => {
   const { infoSiteMatchId, header, onToggle } = props;
 
-  const [loading, setLoading] = useState(REQUEST_STATUS.loading);
   const [logHistory, setLogHistory] = useState([]);
 
   useEffect(() => {
@@ -27,7 +23,6 @@ const HistoryModal = props => {
         infoSiteMatchId
       });
       setLogHistory(response.data);
-      setLoading(REQUEST_STATUS.idle);
     })();
   }, [infoSiteMatchId]);
 

@@ -115,17 +115,17 @@ const selectTable = (isNoOfferAll, isConfirmAll) => {
       buildColumn(width * 0.15, League),
       buildColumn(width * 0.14, Match),
       buildColumn(width * 0.03, MaxBet),
-      buildColumn(width * 0.15, IPTvStreaming),
-      buildColumn(width * 0.15, Provider),
-      buildColumn(width * 0.15, Round),
-      buildColumn(width * 0.15, Remark),
-      buildColumn(width * 0.15, RAndDUpdate),
+      buildColumn(width * 0.11, IPTvStreaming),
+      buildColumn(width * 0.11, Provider),
+      buildColumn(width * 0.11, Round),
+      buildColumn(width * 0.11, Remark),
+      buildColumn(width * 0.1, RAndDUpdate),
       buildColumn(width * 0.04, {
         ...CheckedByLst,
         checked: isConfirmAll,
         onCheckChange: updateConfirmAllEvent
       }),
-      buildColumn(50, Action)
+      buildColumn(width * 0.03, Action)
     ],
     tableStyle: DefaultTableStyle,
     filterFunc: filterBySearchKey,

@@ -1103,8 +1103,10 @@
     <Content Include="wwwroot\event-picking\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\event-picking\assets\ext\server-71aa8895.css" />
-    <Content Include="wwwroot\event-picking\assets\js\main-c2334439.js" />
+    <Content Include="wwwroot\event-picking\assets\ext\server-f4473e19.css" />
+    <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_check_all-1f6bb12a.png" />
+    <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_only-49132f43.png" />
+    <Content Include="wwwroot\event-picking\assets\js\main-5ca587a8.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\event-upload\assets\ext\icon-feedback-57264197.svg" />
@@ -2958,10 +2960,6 @@
     <Content Include="wwwroot\auto-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\auto-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\auto-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-picking\server.cshtml" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-a7443744.ttf" />
@@ -3075,6 +3073,10 @@
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-picking\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

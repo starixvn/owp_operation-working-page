@@ -10,7 +10,8 @@
   "MESSAGE": {
     "CHECK_ALL": "Are you sure you want to select all of these matches?",
     "UN_CHECK_ALL": "Are you sure you want to unselect all of these matches?",
-    "CONFIRM_ALL": "Are you sure you want to check all of these matches?"
+    "CONFIRM_ALL": "Are you sure you want to check all of these matches?",
+    "EXPORT_AND_CONFIRM_ALL": "Are you sure you want to export and check all? All exported matches will be automatically checked"
   },
   "SELECT_GAME": [
     {
@@ -35,5 +36,6 @@
       "value": 2,
       "label": "White"
     }
-  ]
+  ],
+  "USER_GUIDE": "User Guide - Export Event Picking file"
 }
