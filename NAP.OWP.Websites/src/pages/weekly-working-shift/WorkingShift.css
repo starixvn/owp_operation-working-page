@@ -1074,3 +1074,7 @@
     background-position: left top, right top, right bottom, left bottom; }
   100% {
     background-position: right top, right bottom, left bottom, left top; } }
+ .tipsy .tipsy-inner 
+{
+    max-width: 245px;
+}
