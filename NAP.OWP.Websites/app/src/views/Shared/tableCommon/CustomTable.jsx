@@ -13,7 +13,7 @@ const CustomTable = ({ data, tableHeader, classNameTable, children }) => {
   const [displayStart, setDisplayStart] = useState(0);
   const [displayEnd, setDisplayEnd] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const itemRowHeight = 32;
+  const itemRowHeight = 50;
   const screenHeight = maxHeight;
   const offset = screenHeight;
   const rowsToRender = Math.floor((screenHeight + offset) / itemRowHeight);

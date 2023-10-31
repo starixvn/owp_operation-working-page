@@ -82,6 +82,7 @@ interface MatchSettingInfo {
   BettypeId: number;
   Maxbet: number | null;
   Spread: number | null;
+  IsHasMaxbetSpread: boolean;
   MaxbetSpreadToDisplay: string;
 }
 
@@ -100,6 +101,7 @@ interface MatchSettingModel {
 type ModelSpecialProduct = {
   IsMajorBetType: boolean;
   BetTypeName: string;
+  IsHasMaxbetSpread: boolean;
   Maxbet: MatchSettingInfo | null;
   MainAssignment: AssignmentInfo[];
   OthersAssignment: AssignmentInfo[];
@@ -173,7 +175,7 @@ interface MatchInfo {
   HasTicket: boolean;
   IsRead: boolean;
   MatchStatus: MatchStatus;
-  RowSpan: number;
+  Rowspan: number;
   KickOffTimeDisplay: string;
   InfoSiteTime: string;
   InfoSiteTimeDisplay: string;

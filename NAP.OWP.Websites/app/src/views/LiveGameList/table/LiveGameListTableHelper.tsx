@@ -217,6 +217,7 @@ const buildSpecialListModel = (dataSource: MatchInfo) => {
       IsMajorBetType: true,
       BetTypeName: 'FM',
       Maxbet: dataSource.MatchSetting?.FastMarket,
+      IsHasMaxbetSpread: dataSource.MatchSetting?.FastMarket.IsHasMaxbetSpread,
       MainAssignment: dataSource.Assignment?.FastMarket,
       OthersAssignment: dataSource.Assignment?.FastMarketOthers
     },
@@ -224,12 +225,15 @@ const buildSpecialListModel = (dataSource: MatchInfo) => {
       IsMajorBetType: true,
       BetTypeName: 'AIO',
       Maxbet: null,
+      IsHasMaxbetSpread: false,
       MainAssignment: dataSource.Assignment?.AllInOne,
       OthersAssignment: dataSource.Assignment?.AllInOneOthers
     },
     {
       IsMajorBetType: false,
       BetTypeName: '15mins',
+      IsHasMaxbetSpread:
+        dataSource.MatchSetting?.Specific15Mins.IsHasMaxbetSpread,
       Maxbet: dataSource.MatchSetting?.Specific15Mins,
       MainAssignment: dataSource.Assignment?.Specific15Mins,
       OthersAssignment: dataSource.Assignment?.Specific15MinsOthers
@@ -238,11 +242,15 @@ const buildSpecialListModel = (dataSource: MatchInfo) => {
       IsMajorBetType: false,
       BetTypeName: '10mins',
       Maxbet: dataSource.MatchSetting?.Specific10Mins,
+      IsHasMaxbetSpread:
+        dataSource.MatchSetting?.Specific10Mins.IsHasMaxbetSpread,
       MainAssignment: dataSource.Assignment?.Specific10Mins,
       OthersAssignment: dataSource.Assignment?.Specific10MinsOthers
     }
   ];
-  return specialListModel.filter(x => x.MainAssignment?.length > 0);
+  return specialListModel.filter(
+    x => x.MainAssignment?.length > 0 || x.IsHasMaxbetSpread
+  );
 };
 
 export {

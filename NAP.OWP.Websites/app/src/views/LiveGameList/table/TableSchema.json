@@ -1,4 +1,18 @@
 {
+  "TABLE_HEADER": [
+    "No #",
+    "KO Time",
+    "League",
+    "Match",
+    "Ticket",
+    "Remark",
+    "FT Trader",
+    "1H Trader",
+    "Other Product Trader",
+    "LA",
+    "TV/IPTV",
+    "Provider"
+  ],
   "DefaultTableStyle": {
     "rowHeight": 80,
     "containerHeight": 100,
@@ -23,7 +37,7 @@
     "isCanSort": true,
     "sortState": {
       "columnKey": "KOTime",
-      "oderType":""
+      "oderType": ""
     },
     "size": 0.04
   },
@@ -89,6 +103,6 @@
   },
   "netCoreURL": "api-netcore/LiveGameList",
   "netFwURL": "api/LiveGameList",
-  "ORDER_ASC":"ORDER_ASC",
-  "ORDER_DESC" : "ORDER_DESC"
+  "ORDER_ASC": "ORDER_ASC",
+  "ORDER_DESC": "ORDER_DESC"
 }

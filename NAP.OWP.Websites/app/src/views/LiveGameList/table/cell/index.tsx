@@ -6,10 +6,14 @@ import TicketCell from './ticketCell/TicketCell';
 import RemarkCell from './remarkCell/RemarkCell';
 import FtTraderCell from './ftTraderCell/FtTraderCell';
 import FirstHalfTraderCell from './firstHalfTraderCell/FirstHalfTraderCell';
-import OtherProductTraderCell from './otherProductTrader/OtherProductTraderCell';
 import LaCell from './laCell/LaCell';
 import IpTvStreamingCell from './ipTvStreamingCell/IpTvStreamingCell';
 import ProviderCell from './providerCell/ProviderCell';
+import FirstHalfHdpTraderCell from './traderCell/FirstHalfHdpTraderCell';
+import FirstHalfOuTraderCell from './traderCell/FirstHalfOuTraderCell';
+import FtHdpTraderCell from './traderCell/FtHdpTraderCell';
+import FtOuTraderCell from './traderCell/FtOuTraderCell';
+import OtherProductTraderCell from './traderCell/OtherProductTraderCell';
 
 export {
   NoCell,
@@ -23,5 +27,9 @@ export {
   OtherProductTraderCell,
   LaCell,
   IpTvStreamingCell,
-  ProviderCell
+  ProviderCell,
+  FirstHalfHdpTraderCell,
+  FirstHalfOuTraderCell,
+  FtHdpTraderCell,
+  FtOuTraderCell
 };
