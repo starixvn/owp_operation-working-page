@@ -1,17 +1,53 @@
 {
   "TABLE_HEADER": [
-    "No #",
-    "KO Time",
-    "League",
-    "Match",
-    "Ticket",
-    "Remark",
-    "FT Trader",
-    "1H Trader",
-    "Other Product Trader",
-    "LA",
-    "TV/IPTV",
-    "Provider"
+    {
+      "headerName": "No #",
+      "size": 2
+    },
+    {
+      "headerName": "KO Time",
+      "size": 4
+    },
+    {
+      "headerName": "League",
+      "size": 15
+    },
+    {
+      "headerName": "Match",
+      "size": 14
+    },
+    {
+      "headerName": "Ticket",
+      "size": 3
+    },
+    {
+      "headerName": "Remark",
+      "size": 11
+    },
+    {
+      "headerName": "FT Trader",
+      "size": 11
+    },
+    {
+      "headerName": "1H Trader",
+      "size": 11
+    },
+    {
+      "headerName": "Other Product Trader",
+      "size": 11
+    },
+    {
+      "headerName": "LA",
+      "size": 7
+    },
+    {
+      "headerName": "TV/IPTV",
+      "size": 5
+    },
+    {
+      "headerName": "Provider",
+      "size": 6
+    }
   ],
   "DefaultTableStyle": {
     "rowHeight": 80,

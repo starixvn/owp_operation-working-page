@@ -9,11 +9,11 @@ const TableHeader = () => {
   };
   return (
     <tr>
-      {TABLE_HEADER.map((header, index) => {
-        const colSpan = colSpanObject[header] || colSpanObject.default;
+      {TABLE_HEADER.map((item, index) => {
+        const colSpan = colSpanObject[item.headerName] || colSpanObject.default;
         return (
-          <th key={index} colSpan={colSpan} className={header}>
-            {header}
+          <th style={{ width: `${item.size}%` }} key={index} colSpan={colSpan}>
+            {item.headerName}
           </th>
         );
       })}

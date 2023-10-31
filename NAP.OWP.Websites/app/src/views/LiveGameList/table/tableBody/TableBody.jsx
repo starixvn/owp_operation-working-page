@@ -19,7 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { buildSpecialListModel } from '../LiveGameListTableHelper';
 
 const TableBody = ({ data = '', displayStart = '', displayEnd = '' }) => {
-  const itemRowHeight = 50;
+  const itemRowHeight = 100;
   const rows = [];
 
   rows.push(

@@ -338,64 +338,9 @@
     border-collapse: collapse;
   }
 
-  // tbody {
-  //   //màu đỏ
-  // }
-
-
-
   th {
     text-align: center;
-
-    &:nth-child(1) {
-      width: 2%;
-    }
-
-    &:nth-child(2) {
-      width: 4%;
-    }
-
-    &:nth-child(3) {
-      width: 18%;
-    }
-
-    &:nth-child(4) {
-      width: 15%;
-    }
-
-    &:nth-child(5) {
-      width: 3%;
-    }
-
-    &:nth-child(6) {
-      width: 10%;
-    }
-
-    &:nth-child(7) {
-      width: 10%;
-    }
-
-    &:nth-child(8) {
-      width: 10%;
-    }
-
-    &:nth-child(9) {
-      width: 10%;
-    }
-
-    &:nth-child(10) {
-      width: 10%;
-    }
-
-    &:nth-child(11) {
-      width: 4%;
-    }
-
-    &:nth-child(12) {
-      width: 4%;
-    }
   }
-
 }
 
 .table-event-picking::-webkit-scrollbar {
@@ -619,13 +564,8 @@
 
 // match cell
 .match-cell {
-  height: 100%;
   padding-left: 5px;
-  display: flex;
 
-  .open-live-detail {
-    width: 80%;
-  }
 
   .home-team {
     color: #ce3a33;
@@ -682,8 +622,10 @@
   }
 
   .list-button {
-    width: 20%;
+    padding-right: 5px;
     display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
 }
 
@@ -943,159 +885,73 @@
 
 //Ft Trader
 
-.fh-trader-cell {
-  height: 100%;
+.bg-OU,
+.bg-HDP {
+  background: #44546b !important;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
 
-  table {
-    width: 100%;
-    height: 100%;
-    table-layout: fixed;
-  }
+.bg-FT1X2,
+.bg-HT1X2,
+.bg-AIO,
+.bg-FM {
+  background: #5baba8 !important;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
 
-  tr {
-    width: 100%;
-    height: 50%;
+.bg-15mins,
+.bg-10mins {
+  background: #606cc0 !important;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
 
-    .spread {
-      text-align: center;
-      vertical-align: middle;
-      border-right: 1px solid #e1e1e1;
-    }
-
-    .assignee-group {
-      vertical-align: middle;
-      width: 65%;
-
-      span {
-        font-size: 11px;
-      }
-
-      .assignee-other {
-        word-break: break-all;
-        border: 1px solid #e0e0e0;
-        background: #ffffcd;
-        width: fit-content;
-        color: #444;
-        border-radius: 2px;
-        display: inline-block;
-        padding: 0 5px;
-        width: 100%;
-        // overflow: hidden;
-        // text-overflow: ellipsis;
-        // display: -webkit-box;
-        // -webkit-box-orient: vertical;
-        // -webkit-line-clamp: 1;
-      }
-    }
+.assignee-group {
+  p {
+    padding-left: 5px;
   }
 }
 
-.ft-trader-cell {
-  table {
-    tr {
-      height: 50%;
-    }
-  }
-}
-
-.ft-trader-cell,
-.other-product-trader-cell {
-  height: 100%;
-
-  table {
-    width: 100%;
-    height: 100%;
-    table-layout: fixed;
-  }
-
-  tr {
-    width: 100%;
-
-    :nth-child(2) {
-      border-right: 1px solid #d7cfcf;
-    }
-
-    .name-max-bet {
-      max-width: 45px;
-      text-align: center;
-      vertical-align: middle;
-      color: #fff;
-      font-weight: bold;
-      padding: 0;
-    }
-
-    .bg-HDP,
-    .bg-OU {
-      background: #44546b !important;
-    }
-
-    .bg-HT1X2,
-    .bg-FT1X2,
-    .bg-AIO,
-    .bg-FM {
-      background: #5baba8 !important;
-    }
-
-    .bg-15mins,
-    .bg-10mins {
-      background: #606cc0 !important;
-    }
-
-    .spread {
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    .assignee-group {
-      width: 52%;
-      vertical-align: middle;
-
-      span {
-        font-size: 11px;
-      }
-
-      .assignee-other {
-        word-break: break-all;
-        border: 1px solid #e0e0e0;
-        background: #ffffcd;
-        width: fit-content;
-        color: #444;
-        border-radius: 2px;
-        display: inline-block;
-        padding: 0 5px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-        width: 100%;
-
-        a {
-          align-items: center;
-          display: flex;
-
-          .assignee {
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-            display: block;
-            margin-left: 4px;
-          }
-        }
-      }
-    }
-  }
-}
-
-//la-cell
-.la-cell {
-  padding-top: 5px;
-  padding-left: 5px;
+.spread {
+  text-align: center;
+  vertical-align: middle;
 }
 
 .assignee {
-  color: #2089e5;
+  padding-left: 5px;
+  color: #0882fd;
+  display: block;
   cursor: pointer;
+}
+
+.assignee-other {
+  display: inline-block;
+  max-width: 250px;
+  background-color: #ffffcc;
+  border: 1px solid #c0c0c0;
+  margin-top: 2px;
+  padding: 0 2px;
+  overflow-wrap: break-word;
+}
+
+.assignee-group span.assignee a.dropdown-button {
+  color: #2089e5;
+  text-decoration: none;
+}
+
+.assignee a.dropdown-button {
+  color: #2089e5;
+  text-decoration: none;
+}
+
+span.assignee-other>a.dropdown-button {
+  color: #2089e5;
+  text-decoration: none;
 }
 
 .la-cell {
@@ -1103,34 +959,6 @@
 
   span {
     font-size: 11px;
-  }
-
-  .assignee-other {
-    word-break: break-all;
-    border: 1px solid #e0e0e0;
-    background: #ffffcd;
-    width: fit-content;
-    color: #444;
-    border-radius: 2px;
-    display: inline-block;
-    padding: 0 5px;
-    width: 100%;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-    // display: -webkit-box;
-    // -webkit-box-orient: vertical;
-    // -webkit-line-clamp: 1;
-    // a {
-    //   align-items: center;
-    //   display: flex;
-    //   .assignee {
-    //     text-overflow: ellipsis;
-    //     white-space: nowrap;
-    //     overflow: hidden;
-    //     display: block;
-    //     margin-left: 4px;
-    //   }
-    // }
   }
 }
 
@@ -1178,7 +1006,7 @@
 
   .provider,
   .watch-bet {
-    word-wrap: break-word;
+    word-break: break-all;
     display: block;
 
     &.watch-bet {

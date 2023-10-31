@@ -1,4 +1,3 @@
-import { dynamicCell } from './ConfigNative';
 import {
   AssignmentModel,
   Column,
@@ -59,33 +58,6 @@ const buildColumnKOTime = (width: number, column: Column) => {
     ...buildColumn(width, column),
     isCanSort,
     sortState
-  };
-};
-
-const selectTable = (widthWindow: number) => {
-  const minWidth = 950;
-  const width = widthWindow < minWidth ? minWidth : widthWindow;
-  return {
-    columnSchema: [
-      buildColumn(width * No.size, No),
-      buildColumnKOTime(width * KOTime.size, KOTime),
-      buildColumn(width * League.size, League),
-      buildColumn(width * Match.size, Match),
-      buildColumn(width * Ticket.size, Ticket),
-      buildColumn(width * Remark.size, Remark),
-      buildColumn(width * FtTrader.size, FtTrader),
-      buildColumn(width * FirstHalfTrader.size, FirstHalfTrader),
-      buildColumn(width * OtherProductTrader.size, OtherProductTrader),
-      buildColumn(width * LA.size, LA),
-      buildColumn(width * IPTvStreaming.size, IPTvStreaming),
-      buildColumn(width * Provider.size, Provider)
-    ],
-    tableStyle: DefaultTableStyle,
-    dynamicCell,
-    filterFunc: filterBySearchKey,
-    clearFilterFunc: clearFilter,
-    tableWidth: (columnSchema: ColumnSchema) =>
-      calculateCustomTableWidth(columnSchema, DefaultTableStyle.initialWidth)
   };
 };
 
@@ -255,7 +227,6 @@ const buildSpecialListModel = (dataSource: MatchInfo) => {
 
 export {
   buildColumnKOTime,
-  selectTable,
   filterData,
   buildColorRowTable,
   sortDataAsc,
