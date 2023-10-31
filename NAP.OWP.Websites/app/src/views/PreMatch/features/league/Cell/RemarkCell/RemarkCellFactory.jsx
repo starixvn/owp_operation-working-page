@@ -13,10 +13,18 @@ const propTypes = {
 
 const RemarkCellFactory = props => {
   const { isEditing, rowIndex, dataSource } = props;
-  const { InfoSiteMatchId } = dataSource[rowIndex];
+  const { InfoSiteMatchId, TeamRound } = dataSource[rowIndex];
 
   if (InfoSiteMatchId) {
-    return <Cell />;
+    return (
+      <Cell key={nanoid()} className='header-Remark'>
+        {TeamRound && (
+          <label>
+            <b>Round (H-A/T)</b>: {TeamRound}
+          </label>
+        )}
+      </Cell>
+    );
   }
 
   return (

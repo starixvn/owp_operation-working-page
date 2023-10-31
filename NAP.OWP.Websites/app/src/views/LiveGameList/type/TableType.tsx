@@ -132,6 +132,7 @@ interface MatchInfo {
   Home: string;
   IPTV: string;
   IPTVCopy: string;
+  TeamRound: string;
   IsAllowedToViewDetail: boolean;
   IsFIFA: boolean;
   IsFantasy: boolean;

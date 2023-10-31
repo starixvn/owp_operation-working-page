@@ -46,16 +46,11 @@ namespace Fanex.NAP.OWP.EventManagement.Models.EventInfo
 
         public string League { get; set; }
 
-        public bool IsPES
-        {
-            get => League.IndexOf(" PES ", StringComparison.CurrentCultureIgnoreCase) >= 0;
-        }
+        public bool IsPES => League.IndexOf(" PES ", StringComparison.CurrentCultureIgnoreCase) >= 0;
 
-        public bool IsFIFA
-        {
-            get => League.IndexOf("SABA ", StringComparison.CurrentCultureIgnoreCase) >= 0 &&
-                   League.IndexOf("FIFA", StringComparison.CurrentCultureIgnoreCase) >= 0;
-        }
+        public bool IsFIFA =>
+            League.IndexOf("SABA ", StringComparison.CurrentCultureIgnoreCase) >= 0 &&
+            League.IndexOf("FIFA", StringComparison.CurrentCultureIgnoreCase) >= 0;
 
         public string NoOfHDP { get; set; }
 
@@ -89,12 +84,11 @@ namespace Fanex.NAP.OWP.EventManagement.Models.EventInfo
 
         public int TotalNotes { get; set; }
 
-        public static bool IsHasNewNote
-        {
-            get { return false; }
-        }
+        public static bool IsHasNewNote => false;
 
         public string MatchCode { get; set; }
+
+        public string TeamRound { get; set; }
 
         public AssignmentModel Assignment { get; set; }
 

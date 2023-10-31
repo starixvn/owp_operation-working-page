@@ -27,7 +27,7 @@
         {
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                using (var reader = db.QueryMultiple(criteria))
+                using (var reader = await db.QueryMultipleAsync(criteria))
                 {
                     var matchInfos = reader.Read<MatchInfo>();
                     var traders = reader.Read<MatchTrader>();
@@ -226,6 +226,7 @@
                     HomeName = matchInfo.Home,
                     AwayName = matchInfo.Away,
                     Round = matchInfo.Round,
+                    TeamRound = matchInfo.TeamRound,
                     OutSide = matchInfo.OutSide,
                     Remark = matchInfo.Remark,
                     MatchStatus = matchInfo.MatchStatus,

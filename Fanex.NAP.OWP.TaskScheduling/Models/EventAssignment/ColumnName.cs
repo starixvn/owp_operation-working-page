@@ -112,6 +112,9 @@
         [Description("Round")]
         Round,
 
+        [Description("Round (H-A/T)")]
+        TeamRound,
+
         [Description("TV")]
         TV,
 

@@ -42,34 +42,20 @@
         [Column(ColumnName.Time)]
         public string Time
         {
-            get
-            {
-                return _time;
-            }
-            set
-            {
-                DateTime time;
-
-                _time = DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out time)
+            get => _time;
+            set =>
+                _time = DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out var time)
                     ? time.ToString("hh:mm tt", CultureInfo.InvariantCulture) : value;
-            }
         }
 
         [Column(ColumnName.OtherTime)]
         public string OtherTime
         {
-            get
-            {
-                return _otherTime;
-            }
+            get => _otherTime;
 
-            set
-            {
-                DateTime time;
-
-                _otherTime = DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out time)
+            set =>
+                _otherTime = DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out var time)
                     ? time.ToString("hh:mm tt", CultureInfo.InvariantCulture) : value;
-            }
         }
 
         [Column(ColumnName.MatchOffer)]
@@ -96,16 +82,13 @@
 
         [ExcelIgnore]
         [XMLName("Note")]
-        public string CombineNotes
-        {
-            get
-            {
-                return string.Join("@#", Notes.Where(k => !string.IsNullOrEmpty(k)));
-            }
-        }
+        public string CombineNotes => string.Join("@#", Notes.Where(k => !string.IsNullOrEmpty(k)));
 
         [Column(ColumnName.Round)]
         public string Round { get; set; }
+
+        [Column(ColumnName.TeamRound)]
+        public string TeamRound { get; set; }
 
         [Column(ColumnName.Division)]
         public string OutSide { get; set; }
@@ -156,46 +139,25 @@
         public string Website4 { get; set; }
 
         [ExcelIgnore]
-        public bool IsSelected
-        {
-            get { return false; }
-        }
+        public bool IsSelected => false;
 
         [ExcelIgnore]
-        public int SelectedBy
-        {
-            get { return 0; }
-        }
+        public int SelectedBy => 0;
 
         [ExcelIgnore]
-        public bool IsSoloMatch
-        {
-            get { return false; }
-        }
+        public bool IsSoloMatch => false;
 
         [ExcelIgnore]
-        public string ExtraTimeRemark
-        {
-            get { return string.Empty; }
-        }
+        public string ExtraTimeRemark => string.Empty;
 
         [ExcelIgnore]
-        public string Venue
-        {
-            get { return string.Empty; }
-        }
+        public string Venue => string.Empty;
 
         [ExcelIgnore]
-        public string LocalTV
-        {
-            get { return string.Empty; }
-        }
+        public string LocalTV => string.Empty;
 
         [ExcelIgnore]
-        public string LiveTV
-        {
-            get { return string.Empty; }
-        }
+        public string LiveTV => string.Empty;
 
         [ExcelIgnore]
         public int MinorBettypeId

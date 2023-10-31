@@ -72,6 +72,8 @@
 
         public string MatchCode { get; set; }
 
+        public string TeamRound { get; set; }
+
         public bool? HasTicket { get; set; }
 
         public bool? IsRead { get; set; }

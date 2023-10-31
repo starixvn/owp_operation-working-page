@@ -7,7 +7,7 @@
 
     public static class ColumnStyle
     {
-        public static readonly Dictionary<ColumnName, Color> BrackgroundColorMap = new Dictionary<ColumnName, Color>
+        public static readonly Dictionary<ColumnName, Color> BackgroundColorMap = new Dictionary<ColumnName, Color>
         {
             {ColumnName.No, Color.Black},
             {ColumnName.MatchStatus, Color.Black},
@@ -45,6 +45,7 @@
             {ColumnName.Remark, Color.Black},
             {ColumnName.StreamingInfoWB, Color.Black},
             {ColumnName.Round, Color.Black},
+            {ColumnName.TeamRound, Color.Black},
             {ColumnName.TV, Color.Black},
             {ColumnName.Channel, Color.Black},
             {ColumnName.IPTV, Color.Black},
@@ -115,6 +116,7 @@
             {ColumnName.Remark, IndexedColors.White},
             {ColumnName.StreamingInfoWB, IndexedColors.White},
             {ColumnName.Round, IndexedColors.White},
+            {ColumnName.TeamRound, IndexedColors.White},
             {ColumnName.TV, IndexedColors.White},
             {ColumnName.Channel, IndexedColors.White},
             {ColumnName.IPTV, IndexedColors.White},
@@ -148,13 +150,10 @@
         };
 
         public static Color GetBackgroundColor(ColumnName name)
-        {
-            return BrackgroundColorMap.GetValue(name);
-        }
+            => BackgroundColorMap.GetValue(name);
+
 
         public static IndexedColors GetFontColorColor(ColumnName name)
-        {
-            return FontColorMap.GetValue(name);
-        }
+            => FontColorMap.GetValue(name);
     }
 }

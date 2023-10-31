@@ -75,6 +75,8 @@
 
         public string MatchCode { get; set; }
 
+        public string TeamRound { get; set; }
+
         public bool IsShowAbsenceIcon { get; set; }
     }
 }

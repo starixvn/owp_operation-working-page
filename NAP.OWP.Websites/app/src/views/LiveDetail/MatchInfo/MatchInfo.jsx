@@ -52,9 +52,7 @@ class MatchInfo extends Component {
     const matchInfo = {
       ...data,
       OtherTime: data.OtherTime
-        ? getDayjsFromTime(data.OtherTime).format(
-          TimePickerOutputFormat
-        )
+        ? getDayjsFromTime(data.OtherTime).format(TimePickerOutputFormat)
         : null,
       SelectedMatchStatus: getMatchStatusSelected(data.MatchStatusList),
       Markets: data.Markets,
@@ -81,9 +79,8 @@ class MatchInfo extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleMatchStatusSelectChange = this.handleMatchStatusSelectChange.bind(
-      this
-    );
+    this.handleMatchStatusSelectChange =
+      this.handleMatchStatusSelectChange.bind(this);
     this.onSave = this.onSave.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onEdit = this.onEdit.bind(this);
@@ -173,7 +170,7 @@ class MatchInfo extends Component {
     if (confirmResult.value) {
       matchInfo.MatchStatus =
         matchInfo.SelectedMatchStatus.label === MatchStatuses.InPlay ||
-          matchInfo.SelectedMatchStatus.label === MatchStatuses.Completed
+        matchInfo.SelectedMatchStatus.label === MatchStatuses.Completed
           ? MatchStatuses.Live
           : matchInfo.SelectedMatchStatus.label;
 
@@ -299,8 +296,8 @@ class MatchInfo extends Component {
     const { data } = this.props;
     return data.ParentMatchId
       ? data.ParentMatchStatus === MatchStatuses.Live ||
-      data.ParentMatchStatus === MatchStatuses.Completed ||
-      data.ParentMatchStatus === MatchStatuses.InPlay
+          data.ParentMatchStatus === MatchStatuses.Completed ||
+          data.ParentMatchStatus === MatchStatuses.InPlay
       : true;
   };
 
@@ -413,6 +410,17 @@ class MatchInfo extends Component {
           {isEditing &&
             isHost &&
             this.createCheckbox(updateCheckboxClass, 'IsUpdateOtherTime')}
+        </div>
+      </div>
+    );
+  };
+
+  renderTeamRound = matchInfo => {
+    return (
+      <div className='info-item'>
+        <span className='label'>Round (H-A/T)</span>
+        <div className='content'>
+          <span>{matchInfo.TeamRound}</span>
         </div>
       </div>
     );
@@ -745,6 +753,7 @@ class MatchInfo extends Component {
             updateCheckboxClass
           )}
           {this.renderRound(matchInfo, isEditing, isHost, updateCheckboxClass)}
+          {this.renderTeamRound(matchInfo)}
           {this.renderDivision(
             matchInfo,
             isEditing,

@@ -997,6 +997,9 @@ var eventInformation = function ($) {
             if (this.matchInfo.MatchCode != null) {
                 html.push('<p class="match-code">' + this.matchInfo.MatchCode + '</p>');
             }
+            if (this.matchInfo.TeamRound != null) {
+                html.push('<p class="team-round">' + this.matchInfo.TeamRound + '</p>');
+            }
             html.push('<div class="list-button">');
             if (this.matchInfo.AdminSiteId > 0) {
                 var dropdownId = 'dropdown' + newGuid();

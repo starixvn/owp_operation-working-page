@@ -44,6 +44,7 @@ interface DataSource extends KOTimeProps, PesOrFiFa {
   MinorBettypeId: number;
   Remark: string;
   Round: string;
+  TeamRound: string;
   Division: string;
   Channel: string;
   ReadyDateTimeDisplay: string;
