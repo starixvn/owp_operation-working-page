@@ -1,0 +1,86 @@
+import React, {
+  useState,
+  useLayoutEffect,
+  useCallback,
+  useEffect,
+  useRef
+} from 'react';
+import { throttle } from 'lodash';
+
+const CustomTable = ({ data, tableHeader, classNameTable, children }) => {
+  const containerRef = useRef(null);
+  const [maxHeight, setMaxHeight] = useState(window.innerHeight - 200);
+  const [displayStart, setDisplayStart] = useState(0);
+  const [displayEnd, setDisplayEnd] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const itemRowHeight = 32;
+  const screenHeight = maxHeight;
+  const offset = screenHeight;
+  const rowsToRender = Math.floor((screenHeight + offset) / itemRowHeight);
+
+  const setDisplayPositions = useCallback(
+    scroll => {
+      const scrollWithOffset = Math.floor(scroll - rowsToRender - offset / 2);
+      const displayStartPosition = Math.round(
+        Math.max(0, Math.floor(scrollWithOffset / itemRowHeight))
+      );
+      const displayEndPosition = Math.round(
+        Math.min(displayStartPosition + rowsToRender, data.length)
+      );
+      setDisplayStart(displayStartPosition);
+      setDisplayEnd(displayEndPosition);
+    },
+    [data.length]
+  );
+
+  const onScrollTable = throttle(() => {
+    const scrollTop = containerRef.current?.scrollTop;
+    const scrollHeight = containerRef.current?.scrollHeight;
+    if (data.length !== 0 && scrollTop < scrollHeight) {
+      setScrollPosition(scrollTop);
+      setDisplayPositions(scrollTop);
+    }
+  }, 100);
+
+  const handleResizeBrowser = () => {
+    const { innerHeight } = window;
+    setMaxHeight(innerHeight - 200);
+  };
+
+  const childrenWithProps = React.Children.map(children, child => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, {
+        data,
+        displayStart: displayStart,
+        displayEnd: displayEnd
+      });
+    }
+    return child;
+  });
+
+  useLayoutEffect(() => {
+    window.addEventListener('resize', handleResizeBrowser);
+    return () => window.removeEventListener('resize', handleResizeBrowser);
+  }, []);
+
+  useEffect(() => {
+    setDisplayPositions(scrollPosition);
+  }, [scrollPosition, setDisplayPositions]);
+
+  return (
+    <>
+      <div
+        ref={containerRef}
+        onScroll={onScrollTable}
+        className='table-wrap'
+        style={{ maxHeight }}>
+        <table id='scrollable-table' className={classNameTable}>
+          <thead>{tableHeader}</thead>
+          <tbody>{childrenWithProps}</tbody>
+        </table>
+      </div>
+      <div>Total record: {data.length}</div>
+    </>
+  );
+};
+export default CustomTable;

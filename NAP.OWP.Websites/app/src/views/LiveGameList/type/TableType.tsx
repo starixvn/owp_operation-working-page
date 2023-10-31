@@ -97,6 +97,14 @@ interface MatchSettingModel {
   Specific15Mins: MatchSettingInfo;
 }
 
+type ModelSpecialProduct = {
+  IsMajorBetType: boolean;
+  BetTypeName: string;
+  Maxbet: MatchSettingInfo | null;
+  MainAssignment: AssignmentInfo[];
+  OthersAssignment: AssignmentInfo[];
+};
+
 interface Television {
   OWPMatchId: number;
   TVId: number;
@@ -165,18 +173,6 @@ interface MatchInfo {
   HasTicket: boolean;
   IsRead: boolean;
   MatchStatus: MatchStatus;
-  LengthLeague: number;
-  LengthRemark: number;
-  LengthTraderHdp: number;
-  LengthTraderOu: number;
-  LengthOtherProductOneXTwo: number;
-  LengthOtherProduct1HOneXTwo: number;
-  LengthOtherProductFastMarket: number;
-  LengthOtherProductAllInOne: number;
-  LengthOtherProductTenMinutes: number;
-  LengthOtherProductFifteenMinutes: number;
-  LengthIpTv: number;
-  LengthProvider: number;
   RowSpan: number;
   KickOffTimeDisplay: string;
   InfoSiteTime: string;
@@ -215,5 +211,6 @@ export {
   AssignmentModel,
   PopupState,
   RefreshModel,
-  ISortState
+  ISortState,
+  ModelSpecialProduct
 };

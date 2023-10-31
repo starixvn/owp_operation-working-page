@@ -4,7 +4,8 @@ import {
   Column,
   ColumnSchema,
   FilterState,
-  MatchInfo
+  MatchInfo,
+  ModelSpecialProduct
 } from '../type/TableType';
 import { calculateCustomTableWidth } from '../../Shared/common/CustomTable/Helper';
 import { filterBySearchKey, clearFilter } from '../table/tableSlice/tableSlice';
@@ -59,67 +60,6 @@ const buildColumnKOTime = (width: number, column: Column) => {
     isCanSort,
     sortState
   };
-};
-
-const calculateRowOfColumn = (
-  length: number,
-  widthPercent: number,
-  widthWindow: number
-) => {
-  return (length * widthPercent * coefficientTable) / widthWindow;
-};
-
-const calculateRowHeight = (dataSource: MatchInfo, width: number) => {
-  if (!dataSource) {
-    return 0;
-  }
-  const heightOfLeague = calculateRowOfColumn(
-    dataSource.LengthLeague,
-    League.size,
-    width
-  );
-
-  const heightOfRemark = calculateRowOfColumn(
-    dataSource.LengthRemark,
-    Remark.size,
-    width
-  );
-
-  const heightOfTraderHdp = dataSource.LengthTraderHdp;
-
-  const heightOfTraderOu = dataSource.LengthTraderOu;
-
-  const heightOfOtherProduct =
-    dataSource.LengthOtherProductOneXTwo +
-    dataSource.LengthOtherProduct1HOneXTwo +
-    dataSource.LengthOtherProductAllInOne +
-    dataSource.LengthOtherProductFastMarket +
-    dataSource.LengthOtherProductFifteenMinutes +
-    dataSource.LengthOtherProductTenMinutes;
-
-  const heightOfIpTv = calculateRowOfColumn(
-    dataSource.LengthIpTv,
-    IPTvStreaming.size,
-    width
-  );
-
-  const heightOfProvider = calculateRowOfColumn(
-    dataSource.LengthProvider,
-    Provider.size,
-    width
-  );
-
-  const heights = [
-    DefaultTableStyle.rowHeight,
-    heightOfLeague,
-    heightOfRemark,
-    heightOfTraderHdp + heightOfTraderOu,
-    heightOfOtherProduct,
-    heightOfIpTv,
-    heightOfProvider
-  ];
-
-  return Math.max(...heights);
 };
 
 const selectTable = (widthWindow: number) => {
@@ -271,12 +211,46 @@ const sortDataDesc = (entities: MatchInfo[]) =>
       dest.MatchNo.localeCompare(src.MatchNo)
   );
 
+const buildSpecialListModel = (dataSource: MatchInfo) => {
+  const specialListModel: Array<ModelSpecialProduct> = [
+    {
+      IsMajorBetType: true,
+      BetTypeName: 'FM',
+      Maxbet: dataSource.MatchSetting?.FastMarket,
+      MainAssignment: dataSource.Assignment?.FastMarket,
+      OthersAssignment: dataSource.Assignment?.FastMarketOthers
+    },
+    {
+      IsMajorBetType: true,
+      BetTypeName: 'AIO',
+      Maxbet: null,
+      MainAssignment: dataSource.Assignment?.AllInOne,
+      OthersAssignment: dataSource.Assignment?.AllInOneOthers
+    },
+    {
+      IsMajorBetType: false,
+      BetTypeName: '15mins',
+      Maxbet: dataSource.MatchSetting?.Specific15Mins,
+      MainAssignment: dataSource.Assignment?.Specific15Mins,
+      OthersAssignment: dataSource.Assignment?.Specific15MinsOthers
+    },
+    {
+      IsMajorBetType: false,
+      BetTypeName: '10mins',
+      Maxbet: dataSource.MatchSetting?.Specific10Mins,
+      MainAssignment: dataSource.Assignment?.Specific10Mins,
+      OthersAssignment: dataSource.Assignment?.Specific10MinsOthers
+    }
+  ];
+  return specialListModel.filter(x => x.MainAssignment?.length > 0);
+};
+
 export {
   buildColumnKOTime,
   selectTable,
   filterData,
-  calculateRowHeight,
   buildColorRowTable,
   sortDataAsc,
-  sortDataDesc
+  sortDataDesc,
+  buildSpecialListModel
 };

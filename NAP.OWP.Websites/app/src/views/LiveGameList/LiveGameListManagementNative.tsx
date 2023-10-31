@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { OWPBody, OWPHeader } from '../Shared/common/OWP/OPWPage';
 import Filter from './filterArea/Filter';
-import LiveGameListTable from './table/LiveGameListTable';
 import { FunctionKeys } from '../Shared/Constants';
 import usePermission from '../Shared/customHook/usePermission';
 import CreateTicketBoardOther from '../Shared/createTicketNew/CreateTicketBoardOther';
@@ -13,6 +12,11 @@ import Loading from '../components/Loading';
 import { setUserId } from './table/tableSlice/tableSlice';
 import { useDispatch } from 'react-redux';
 import PopupDetail from './component/PopupDetail';
+import CustomTable from '../Shared/tableCommon/CustomTable';
+import TableHeader from './table/tableHeader/TableHeader';
+import TableBody from './table/tableBody/TableBody';
+import { useSelector } from 'react-redux';
+import { RootState } from './app/storeNative';
 
 type CreatorInfo = {
   groupName: null | string;
@@ -24,7 +28,8 @@ type CreatorInfo = {
 
 const LiveGameListManagementNative = () => {
   const stableDispatch = useDispatch();
-
+  const model = useSelector((state: RootState) => state.events);
+  const { entities } = model;
   const pagePermissionModel = usePermission(
     FunctionKeys.TicketCenter,
     'pagePolicy'
@@ -55,7 +60,12 @@ const LiveGameListManagementNative = () => {
         <Filter />
       </OWPHeader>
       <OWPBody className='live-game-list-body'>
-        <LiveGameListTable />
+        <CustomTable
+          data={entities}
+          tableHeader={<TableHeader />}
+          classNameTable={'table-live-game-list'}>
+          <TableBody />
+        </CustomTable>
         <CreateTicketLGAView creatorInfo={creatorInfo} />
         <CreateTicketBoardOther creatorInfo={creatorInfo} />
         <CreateTicketLiveIncident creatorInfo={creatorInfo} />
