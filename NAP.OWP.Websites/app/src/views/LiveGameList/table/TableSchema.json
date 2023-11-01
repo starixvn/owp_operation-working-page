@@ -2,19 +2,23 @@
   "TABLE_HEADER": [
     {
       "headerName": "No #",
-      "size": 2
+      "size": 3,
+      "isFilter": true
     },
     {
       "headerName": "KO Time",
-      "size": 4
+      "size": 4,
+      "isSort": true
     },
     {
       "headerName": "League",
-      "size": 15
+      "size": 15,
+      "isFilter": true
     },
     {
       "headerName": "Match",
-      "size": 14
+      "size": 14,
+      "isFilter": true
     },
     {
       "headerName": "Ticket",
@@ -26,27 +30,33 @@
     },
     {
       "headerName": "FT Trader",
-      "size": 11
+      "size": 11,
+      "isFilter": true
     },
     {
       "headerName": "1H Trader",
-      "size": 11
+      "size": 11,
+      "isFilter": true
     },
     {
       "headerName": "Other Product Trader",
-      "size": 11
+      "size": 11,
+      "isFilter": true
     },
     {
       "headerName": "LA",
-      "size": 7
+      "size": 7,
+      "isFilter": true
     },
     {
       "headerName": "TV/IPTV",
-      "size": 5
+      "size": 5,
+      "isFilter": true
     },
     {
       "headerName": "Provider",
-      "size": 6
+      "size": 5,
+      "isFilter": true
     }
   ],
   "DefaultTableStyle": {

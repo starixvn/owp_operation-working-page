@@ -8,7 +8,11 @@ import {
   PopupState,
   RefreshModel
 } from '../../type/TableType';
-import { filterData, sortDataAsc, sortDataDesc } from '../LiveGameListTableHelper';
+import {
+  filterData,
+  sortDataAsc,
+  sortDataDesc
+} from '../LiveGameListTableHelper';
 import { getEvents } from './tableThunk';
 import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
 import { addOrReplaceFilterState } from '../../../Shared/Utils';
@@ -17,6 +21,9 @@ import { isEqual } from 'lodash';
 const tableSlice = createSlice({
   name: 'EventInformation',
   initialState: {
+    columnKeyFilter: '',
+    filterHeaderValue: '',
+    isShowFilterHeader: false,
     loading: REQUEST_STATUS.idle,
     isShowUnReadTicketOnly: false,
     entitiesOriginal: [] as MatchInfo[],
@@ -34,6 +41,18 @@ const tableSlice = createSlice({
     refreshModel: {} as RefreshModel
   },
   reducers: {
+    setColumnKeyValue: (state, action) => {
+      state.columnKeyFilter = action.payload;
+    },
+    setFilterHeaderValue: (state, action) => {
+      state.filterHeaderValue = action.payload;
+    },
+    openFilterHeaderPopup: state => {
+      state.isShowFilterHeader = true;
+    },
+    closedFilterHeaderPopup: state => {
+      state.isShowFilterHeader = false;
+    },
     filterByUnReadTicket: (state, action) => {
       const { entitiesOriginal, filterState } = state;
       state.isShowUnReadTicketOnly = action.payload;
@@ -117,28 +136,37 @@ const tableSlice = createSlice({
   },
 
   extraReducers: builder => {
-    builder.addCase(getEvents.pending, state => {
-      state.loading = REQUEST_STATUS.pending;
-    }).addCase(getEvents.fulfilled, (state, { payload }) => {
-      state.loading = REQUEST_STATUS.idle;
-      const { filterState, isShowUnReadTicketOnly } = state;
-      state.entitiesOriginal = payload;
-      state.entities = filterData(payload)(isShowUnReadTicketOnly)(filterState);
-      const { orderType } = state.sortState;
-      if (isEqual(orderType, ORDER_ASC)) {
-        state.entities = sortDataAsc(state.entities);
-      }
-      if (isEqual(orderType, ORDER_DESC)) {
-        state.entities = sortDataDesc(state.entities);
-      }
-    }).addCase(getEvents.rejected, state => {
-      state.loading = REQUEST_STATUS.idle;
-    });
+    builder
+      .addCase(getEvents.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(getEvents.fulfilled, (state, { payload }) => {
+        state.loading = REQUEST_STATUS.idle;
+        const { filterState, isShowUnReadTicketOnly } = state;
+        state.entitiesOriginal = payload;
+        state.entities = filterData(payload)(isShowUnReadTicketOnly)(
+          filterState
+        );
+        const { orderType } = state.sortState;
+        if (isEqual(orderType, ORDER_ASC)) {
+          state.entities = sortDataAsc(state.entities);
+        }
+        if (isEqual(orderType, ORDER_DESC)) {
+          state.entities = sortDataDesc(state.entities);
+        }
+      })
+      .addCase(getEvents.rejected, state => {
+        state.loading = REQUEST_STATUS.idle;
+      });
   }
 });
 
 const { actions, reducer } = tableSlice;
 const {
+  setColumnKeyValue,
+  setFilterHeaderValue,
+  openFilterHeaderPopup,
+  closedFilterHeaderPopup,
   filterBySearchKey,
   clearFilter,
   setDataTable,
@@ -151,6 +179,10 @@ const {
   sortFunc
 } = actions;
 export {
+  setColumnKeyValue,
+  setFilterHeaderValue,
+  openFilterHeaderPopup,
+  closedFilterHeaderPopup,
   filterBySearchKey,
   clearFilter,
   setDataTable,

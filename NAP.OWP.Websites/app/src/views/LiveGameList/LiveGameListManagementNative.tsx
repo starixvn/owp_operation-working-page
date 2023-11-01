@@ -12,11 +12,10 @@ import Loading from '../components/Loading';
 import { setUserId } from './table/tableSlice/tableSlice';
 import { useDispatch } from 'react-redux';
 import PopupDetail from './component/PopupDetail';
-import CustomTable from '../Shared/tableCommon/CustomTable';
-import TableHeader from './table/tableHeader/TableHeader';
-import TableBody from './table/tableBody/TableBody';
+
 import { useSelector } from 'react-redux';
 import { RootState } from './app/storeNative';
+import LiveGameListTable from './table/LiveGameListTable';
 
 type CreatorInfo = {
   groupName: null | string;
@@ -28,8 +27,7 @@ type CreatorInfo = {
 
 const LiveGameListManagementNative = () => {
   const stableDispatch = useDispatch();
-  const model = useSelector((state: RootState) => state.events);
-  const { entities } = model;
+
   const pagePermissionModel = usePermission(
     FunctionKeys.TicketCenter,
     'pagePolicy'
@@ -60,12 +58,7 @@ const LiveGameListManagementNative = () => {
         <Filter />
       </OWPHeader>
       <OWPBody className='live-game-list-body'>
-        <CustomTable
-          data={entities}
-          tableHeader={<TableHeader />}
-          classNameTable={'table-live-game-list'}>
-          <TableBody />
-        </CustomTable>
+        <LiveGameListTable />
         <CreateTicketLGAView creatorInfo={creatorInfo} />
         <CreateTicketBoardOther creatorInfo={creatorInfo} />
         <CreateTicketLiveIncident creatorInfo={creatorInfo} />

@@ -239,51 +239,6 @@
   z-index: 10 !important;
 }
 
-// .table {
-//   margin-top: 10px;
-
-//   .fixedDataTableLayout_header {
-//     .fixedDataTableCellLayout_main {
-//       border-bottom: 1px solid #d3d3d3;
-//     }
-//   }
-
-//   .fixedDataTableRowLayout_main {
-//     overflow: visible;
-//   }
-
-//   .public_fixedDataTable_bodyRow {
-
-//     .fixedDataTableCellGroupLayout_cellGroup,
-//     .fixedDataTableCellLayout_main {
-//       overflow: visible;
-//       padding: 0 !important;
-//       border-bottom: 1px solid #d3d3d3;
-//       padding: 4px;
-
-//       p {
-//         margin-bottom: 5px;
-//       }
-
-//       &:nth-child(1),
-//       &:nth-child(2) {
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//       }
-
-//       &:nth-child(4) {
-//         display: flex;
-//         align-items: center;
-//       }
-
-//       table td {
-//         border-top: 1px solid #c8ced3;
-//       }
-//     }
-//   }
-// }
-
 .table-wrap {
   overflow: auto;
   box-shadow: inset 1px -1px #c8ced3;
@@ -340,6 +295,42 @@
 
   th {
     text-align: center;
+
+    .header-table {
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+
+
+      .filter-header {
+        cursor: pointer;
+        right: 0;
+        top: 0;
+        position: absolute;
+        display: inline-block;
+
+        .filter-popup {
+          position: absolute;
+        }
+      }
+
+    }
+
+    &:nth-child(9),
+    &:nth-child(10),
+    &:nth-child(11),
+    &:nth-child(12) {
+
+      .filter-popup {
+        right: 1px !important;
+        left: auto !important;
+
+        &:before {
+          right: 1px !important;
+          left: auto !important;
+        }
+      }
+    }
   }
 }
 
@@ -353,15 +344,10 @@
   border-radius: 10px;
 }
 
-.title-header {
-  padding-right: 10px;
-  position: relative;
 
-  .filter-table {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+
+.is-hide-another-popup {
+  display: none;
 }
 
 // no cell
@@ -966,7 +952,7 @@ span.assignee-other>a.dropdown-button {
 .tv-cell {
   padding-left: 5px;
   padding-top: 5px;
-  word-wrap: break-word;
+  word-break: break-all;
   display: block;
 }
 
@@ -1508,7 +1494,7 @@ button.toast-close-button {
   transform: translate(0, -50%);
 }
 
-.filter-table .icon-filter.is-filter {
+.icon-filter.is-filter {
   color: #309f53 !important;
 }
 
