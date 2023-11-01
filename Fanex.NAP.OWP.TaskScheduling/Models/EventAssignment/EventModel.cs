@@ -2,6 +2,7 @@
 {
     using Core.Extensions.ExcelExtensions;
     using Core.Extensions.XMLExtensions;
+    using global::OWP.Utils;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -140,6 +141,9 @@
 
         [ExcelIgnore]
         public bool IsSelected => false;
+
+        [ExcelIgnore]
+        public bool IsSaBa => LeagueName.IsContainsIgnoreCase("SABA");
 
         [ExcelIgnore]
         public int SelectedBy => 0;

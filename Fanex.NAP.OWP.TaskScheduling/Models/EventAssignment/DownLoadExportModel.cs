@@ -1,5 +1,6 @@
 ﻿using OWP.EventAssignment.Models;
 using System;
+using System.Reflection.Emit;
 
 namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
 {
@@ -12,6 +13,8 @@ namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
         public string Username { get; set; }
 
         public string MatchStatusIds { get; set; }
+
+        public string MatchType { get; set; }
 
         public int SyncLiveStatus { get; set; }
 

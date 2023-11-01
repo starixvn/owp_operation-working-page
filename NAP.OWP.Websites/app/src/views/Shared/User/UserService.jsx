@@ -61,8 +61,8 @@ const getInfoByUserName = name => {
     return find(users, user => {
       return (
         user.IsSecondAccount === false &&
-        (user.UserName.toLowerCase() === nameTransform ||
-          (user.NickName && user.NickName.toLowerCase() === nameTransform))
+        (user?.UserName?.toLowerCase()?.includes(nameTransform) ||
+          user?.NickName?.toLowerCase()?.includes(nameTransform))
       );
     });
   }

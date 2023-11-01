@@ -15,6 +15,8 @@
 
         public bool ShowUnreadMessage { get; set; }
 
+        public string MatchType { get; set; }
+
         public PermissionModel FullTimeViewPermission { get; set; } = new PermissionModel();
     }
 }
