@@ -1,6 +1,9 @@
 import React, { useState, createRef, useEffect } from 'react';
 import MultipleSelection from '../../Shared/MultipleSelection/MultipleSelection';
-import { DEFAULT_STATUS_OPTION } from '../LiveGameListConst.json';
+import {
+  DEFAULT_STATUS_OPTION,
+  MATCH_TYPE_OPTION
+} from '../LiveGameListConst.json';
 import useStableDispatch from './../../Shared/customHook/useStableDispatch';
 import { getEvents } from '../table/tableSlice/tableThunk';
 import CreateTicketButton from '../../Shared/createTicketNew/CreateTicketButton';
@@ -31,6 +34,7 @@ const Filter = () => {
   const [selectedMatchStatus, setSelectedMatchStatus] = useState(
     DEFAULT_STATUS_OPTION
   );
+  const [selectedMatchType, setSelectedMatchType] = useState(MATCH_TYPE_OPTION);
   const [statusOptions, setStatusOptions] = useState([]);
   const { isShowUnReadTicketOnly } = useSelector(state => state.events);
   const dispatch = useStableDispatch();
@@ -52,7 +56,8 @@ const Filter = () => {
       if (!disable) {
         const model = {
           filterDate: selectedDate,
-          statusId: selectedMatchStatus.map(ms => ms.value).join()
+          statusId: selectedMatchStatus.map(ms => ms.value).join(),
+          matchType: selectedMatchType.map(ms => ms.value).join()
         };
         dispatch(getEvents(model));
         dispatch(setRefreshModel(model));
@@ -68,11 +73,19 @@ const Filter = () => {
       return;
     }
 
+    if (!selectedMatchType.length) {
+      ToastrWrapper.showError(
+        'Please select at least one option for Match Type'
+      );
+      return;
+    }
+
     if (!searchDisabled && userNameIsValid) {
       const model = {
         userName,
         filterDate: selectedDate,
-        statusId: selectedMatchStatus.map(ms => ms.value).join()
+        statusId: selectedMatchStatus.map(ms => ms.value).join(),
+        matchType: selectedMatchType.map(ms => ms.value).join()
       };
       dispatch(getEvents(model));
       dispatch(setRefreshModel(model));
@@ -126,6 +139,12 @@ const Filter = () => {
         />
       </div>
 
+      <MultipleSelection
+        label='Match Type'
+        options={MATCH_TYPE_OPTION}
+        value={selectedMatchType}
+        onChange={value => setSelectedMatchType(value)}
+      />
       <MultipleSelection
         label='Match Status'
         options={statusOptions}
