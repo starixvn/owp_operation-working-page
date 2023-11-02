@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
-import { ORDER_ASC, ORDER_DESC, KOTime } from '../TableSchema.json';
+import { ORDER_ASC, ORDER_DESC } from '../TableSchema.json';
 import {
   FilterState,
   ISortState,
@@ -21,8 +21,7 @@ import { isEqual } from 'lodash';
 const tableSlice = createSlice({
   name: 'EventInformation',
   initialState: {
-    columnKeyFilter: '',
-    filterHeaderValue: '',
+    columnKeyFilterCurrent: '',
     isShowFilterHeader: false,
     loading: REQUEST_STATUS.idle,
     isShowUnReadTicketOnly: false,
@@ -35,17 +34,14 @@ const tableSlice = createSlice({
     } as PopupState,
     filterState: [] as FilterState[],
     sortState: {
-      columnKey: KOTime.columnKey,
+      columnKey: 'KO Time',
       orderType: ''
     } as ISortState,
     refreshModel: {} as RefreshModel
   },
   reducers: {
     setColumnKeyValue: (state, action) => {
-      state.columnKeyFilter = action.payload;
-    },
-    setFilterHeaderValue: (state, action) => {
-      state.filterHeaderValue = action.payload;
+      state.columnKeyFilterCurrent = action.payload;
     },
     openFilterHeaderPopup: state => {
       state.isShowFilterHeader = true;
@@ -164,7 +160,6 @@ const tableSlice = createSlice({
 const { actions, reducer } = tableSlice;
 const {
   setColumnKeyValue,
-  setFilterHeaderValue,
   openFilterHeaderPopup,
   closedFilterHeaderPopup,
   filterBySearchKey,
@@ -180,7 +175,6 @@ const {
 } = actions;
 export {
   setColumnKeyValue,
-  setFilterHeaderValue,
   openFilterHeaderPopup,
   closedFilterHeaderPopup,
   filterBySearchKey,

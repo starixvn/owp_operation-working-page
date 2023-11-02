@@ -9,7 +9,7 @@ import { REQUEST_STATUS } from '../../Shared/Constants';
 import Loading from '../../components/Loading';
 const LiveGameListTable = () => {
   const model = useSelector((state: RootState) => state.events);
-  const { entities, loading, columnKeyFilter, isShowFilterHeader } = model;
+  const { entities, loading } = model;
 
   return (
     <>

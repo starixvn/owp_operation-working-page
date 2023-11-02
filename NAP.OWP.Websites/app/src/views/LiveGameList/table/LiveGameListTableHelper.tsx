@@ -1,30 +1,10 @@
 import {
   AssignmentModel,
-  Column,
-  ColumnSchema,
   FilterState,
   MatchInfo,
   ModelSpecialProduct
 } from '../type/TableType';
-import { calculateCustomTableWidth } from '../../Shared/common/CustomTable/Helper';
-import { filterBySearchKey, clearFilter } from '../table/tableSlice/tableSlice';
-import {
-  DefaultTableStyle,
-  No,
-  KOTime,
-  Match,
-  League,
-  Ticket,
-  Remark,
-  FtTrader,
-  FirstHalfTrader,
-  OtherProductTrader,
-  LA,
-  IPTvStreaming,
-  Provider
-} from './TableSchema.json';
 import { MatchStatuses } from '../../Shared/Constants';
-import { coefficientTable } from '../LiveGameListConst.json';
 import { filterDataTable } from '../../Shared/Utils';
 
 const buildColorRowTable = (dataSource: MatchInfo) => {
@@ -40,25 +20,6 @@ const buildColorRowTable = (dataSource: MatchInfo) => {
     default:
       return '';
   }
-};
-
-const buildColumn = (width: number, column: Column) => {
-  const { headerName, columnKey, isCanFilter } = column;
-  return {
-    headerName,
-    columnKey,
-    isCanFilter,
-    width
-  };
-};
-
-const buildColumnKOTime = (width: number, column: Column) => {
-  const { isCanSort, sortState } = column;
-  return {
-    ...buildColumn(width, column),
-    isCanSort,
-    sortState
-  };
 };
 
 const searchCommonInfo = (
@@ -93,27 +54,22 @@ const isAssignment = (
   );
 
 const commonKeys: { [key: string]: Array<keyof MatchInfo> } = {
-  [No.columnKey]: ['MatchNo'],
-  [League.columnKey]: ['League'],
-  [Match.columnKey]: ['Home', 'Away'],
-  [Provider.columnKey]: ['WatchBet', 'Phone', 'Provider', 'OtherProvider'],
-  [IPTvStreaming.columnKey]: ['IPTVCopy']
+  ['No #']: ['MatchNo'],
+  ['League']: ['League'],
+  ['Match']: ['Home', 'Away'],
+  ['Provider']: ['WatchBet', 'Phone', 'Provider', 'OtherProvider'],
+  ['TV/IPTV']: ['IPTVCopy']
 };
 
 const traderKeys: { [key: string]: Array<keyof AssignmentModel> } = {
-  [FtTrader.columnKey]: [
-    'Handicap',
-    'HandicapOthers',
-    'OverUnder',
-    'OverUnderOthers'
-  ],
-  [FirstHalfTrader.columnKey]: [
+  ['FT Trader']: ['Handicap', 'HandicapOthers', 'OverUnder', 'OverUnderOthers'],
+  ['1H Trader']: [
     'Handicap1st',
     'Handicap1stOthers',
     'OverUnder1st',
     'OverUnder1stOthers'
   ],
-  [OtherProductTrader.columnKey]: [
+  ['Other Product Trader']: [
     'Specific10MinsOthers',
     'Specific15MinsOthers',
     'Specific10Mins',
@@ -127,7 +83,7 @@ const traderKeys: { [key: string]: Array<keyof AssignmentModel> } = {
     'OneXTwo1st',
     'OneXTwo1stOthers'
   ],
-  [LA.columnKey]: ['LA', 'LAOthers']
+  ['LA']: ['LA', 'LAOthers']
 };
 
 const filterDataByKeys = (
@@ -226,7 +182,6 @@ const buildSpecialListModel = (dataSource: MatchInfo) => {
 };
 
 export {
-  buildColumnKOTime,
   filterData,
   buildColorRowTable,
   sortDataAsc,

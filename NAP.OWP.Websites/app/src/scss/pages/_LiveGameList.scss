@@ -475,78 +475,78 @@
     border-radius: 2px;
   }
 
-  .badge-label {
-    padding: 0 2px;
-    margin-right: 3px;
-    display: inline-block;
-    color: #fff;
-    border-radius: 2px;
-    margin-bottom: 2px;
 
-    &.match-offer {
-      background: #70ad47;
-    }
-
-    &.cancel,
-    &.other-time {
-      background: #ea1b21;
-    }
-
-    &.info-site-time {
-      background: #21a6e4;
-    }
-
-    &.badge-hdp-1 {
-      background: #8a34bd;
-    }
-
-    &.badge-hdp-2 {
-      background: #7a5430;
-    }
-
-    &.badge-hdp-3 {
-      background: #058a96;
-    }
-
-    &.badge-hdp-4 {
-      background: #313c7a;
-    }
-
-    &.badge-hdp-5 {
-      background: #9d224e;
-    }
-
-    &.badge-hdp-6 {
-      background: #827717;
-    }
-
-    &.badge-hdp-7 {
-      background: #607d8b;
-    }
-
-    &.badge-hdp-8 {
-      background: #26c6da;
-    }
-
-    &.badge-hdp-9 {
-      background: #b388ff;
-    }
-
-    &.badge-hdp-10 {
-      background: #ff4081;
-    }
-
-    &.badge-4hdp {
-      background: #9d224e;
-    }
-
-    &.badge-hdp-11 {
-      background: #ff4900;
-    }
-  }
 }
 
+.badge-label {
+  padding: 0 2px;
+  margin-right: 3px;
+  display: inline-block;
+  color: #fff;
+  border-radius: 2px;
+  margin-bottom: 2px;
 
+  &.match-offer {
+    background: #70ad47;
+  }
+
+  &.cancel,
+  &.other-time {
+    background: #ea1b21;
+  }
+
+  &.info-site-time {
+    background: #21a6e4;
+  }
+
+  &.badge-hdp-1 {
+    background: #8a34bd;
+  }
+
+  &.badge-hdp-2 {
+    background: #7a5430;
+  }
+
+  &.badge-hdp-3 {
+    background: #058a96;
+  }
+
+  &.badge-hdp-4 {
+    background: #313c7a;
+  }
+
+  &.badge-hdp-5 {
+    background: #9d224e;
+  }
+
+  &.badge-hdp-6 {
+    background: #827717;
+  }
+
+  &.badge-hdp-7 {
+    background: #607d8b;
+  }
+
+  &.badge-hdp-8 {
+    background: #26c6da;
+  }
+
+  &.badge-hdp-9 {
+    background: #b388ff;
+  }
+
+  &.badge-hdp-10 {
+    background: #ff4081;
+  }
+
+  &.badge-4hdp {
+    background: #9d224e;
+  }
+
+  &.badge-hdp-11 {
+    background: #ff4900;
+  }
+}
 
 // match cell
 .match-cell {

@@ -1,13 +1,12 @@
-import { isEqual, uniqueId } from 'lodash';
-import React, { useEffect, useRef, useState } from 'react';
+import { isEqual } from 'lodash';
+import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/storeNative';
 import { useAppDispatch } from '../../app/hookNative';
 import {
   clearFilter,
   closedFilterHeaderPopup,
-  filterBySearchKey,
-  setFilterHeaderValue
+  filterBySearchKey
 } from '../tableSlice/tableSlice';
 import { CloseIcon } from 'mdi-react';
 import { Button } from 'reactstrap';
@@ -19,7 +18,7 @@ type FilterPopupProps = {
 const FilterPopup = ({ columnKey }: FilterPopupProps) => {
   const [filterValue, setFilterValue] = useState('');
   const model = useSelector((state: RootState) => state.events);
-  const { isShowFilterHeader, columnKeyFilter } = model;
+  const { isShowFilterHeader, columnKeyFilterCurrent } = model;
 
   const filterRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
@@ -43,7 +42,9 @@ const FilterPopup = ({ columnKey }: FilterPopupProps) => {
         <div
           ref={filterRef}
           className={`filter-popup is-show ${
-            isEqual(columnKey, columnKeyFilter) ? '' : 'is-hide-another-popup'
+            isEqual(columnKey, columnKeyFilterCurrent)
+              ? ''
+              : 'is-hide-another-popup'
           }`}>
           <span
             className='close-popup'
