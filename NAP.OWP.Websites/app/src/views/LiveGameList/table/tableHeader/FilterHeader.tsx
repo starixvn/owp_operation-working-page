@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
+  closedFilterHeaderPopup,
   openFilterHeaderPopup,
   setColumnKeyValue
 } from '../tableSlice/tableSlice';
@@ -14,9 +15,9 @@ type FilterHeaderProps = {
 
 const FilterHeader = ({ columnKey }: FilterHeaderProps) => {
   const dispatch = useAppDispatch();
-
+  const filterRef = useRef<HTMLDivElement>(null);
   const model = useSelector((state: RootState) => state.events);
-  const { filterState } = model;
+  const { filterState, isShowFilterHeader } = model;
 
   const handleClickFilter = (value: string) => {
     dispatch(setColumnKeyValue(value));
@@ -28,6 +29,21 @@ const FilterHeader = ({ columnKey }: FilterHeaderProps) => {
       return x.columnKey === columnKey;
     });
 
+  useEffect(() => {
+    const handleClickOutSide = (event: MouseEvent) => {
+      if (
+        filterRef.current &&
+        !filterRef.current.contains(event.target as Node)
+      ) {
+        closedFilterHeaderPopup();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutSide);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutSide);
+    };
+  }, [filterRef]);
+
   return (
     <div className='filter-header'>
       <span
@@ -35,7 +51,9 @@ const FilterHeader = ({ columnKey }: FilterHeaderProps) => {
         onClick={() => handleClickFilter(columnKey)}>
         <FilterIcon size={14} />
       </span>
-      <FilterPopup columnKey={columnKey} />
+      {isShowFilterHeader && (
+        <FilterPopup columnKey={columnKey} ref={filterRef} />
+      )}
     </div>
   );
 };

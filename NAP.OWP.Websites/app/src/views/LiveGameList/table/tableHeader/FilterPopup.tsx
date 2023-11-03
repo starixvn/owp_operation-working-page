@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { useRef } from 'react';
+import React, { RefObject, forwardRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/storeNative';
 import { useAppDispatch } from '../../app/hookNative';
@@ -16,68 +16,64 @@ type FilterPopupProps = {
   columnKey: string;
 };
 
-const FilterPopup = ({ columnKey }: FilterPopupProps) => {
-  const model = useSelector((state: RootState) => state.events);
-  const { isShowFilterHeader, columnKeyFilterCurrent, valueFilterAllColumn } =
-    model;
-  const filterValue = valueFilterAllColumn[columnKey] ?? '';
-  const filterRef = useRef<HTMLDivElement>(null);
-  const dispatch = useAppDispatch();
+const FilterPopup = forwardRef<HTMLDivElement, FilterPopupProps>(
+  ({ columnKey }: FilterPopupProps, ref) => {
+    const model = useSelector((state: RootState) => state.events);
+    const { columnKeyFilterCurrent, valueFilterAllColumn } = model;
+    const filterValue = valueFilterAllColumn[columnKey] ?? '';
+    const dispatch = useAppDispatch();
 
-  const handleClearAllFilter = () => {
-    dispatch(closedFilterHeaderPopup());
-    dispatch(clearFilter());
-  };
-  const handleOnSearchFilter = () => {
-    const filterState = {
-      columnKey,
-      keyword: filterValue
+    const handleClearAllFilter = () => {
+      dispatch(closedFilterHeaderPopup());
+      dispatch(clearFilter());
     };
-    dispatch(filterBySearchKey(filterState));
-  };
-  const handleOnchangeValue = (value: string) => {
-    const columnHaveBeenFiltered = {
-      columnKey,
-      keyword: value
+    const handleOnSearchFilter = () => {
+      const filterState = {
+        columnKey,
+        keyword: filterValue
+      };
+      dispatch(filterBySearchKey(filterState));
     };
-    dispatch(setValueFilter(columnHaveBeenFiltered));
-  };
+    const handleOnchangeValue = (value: string) => {
+      const columnHaveBeenFiltered = {
+        columnKey,
+        keyword: value
+      };
+      dispatch(setValueFilter(columnHaveBeenFiltered));
+    };
 
-  return (
-    <>
-      {isShowFilterHeader && (
-        <div
-          ref={filterRef}
-          className={`filter-popup is-show ${
-            isEqual(columnKey, columnKeyFilterCurrent)
-              ? ''
-              : 'is-hide-another-popup'
-          }`}>
-          <span
-            className='close-popup'
-            onClick={() => dispatch(closedFilterHeaderPopup())}>
-            <CloseIcon size={14} />
-          </span>
-          <input
-            className='input-field'
-            placeholder='Search'
-            value={filterValue}
-            autoFocus
-            onChange={e => handleOnchangeValue(e.target.value)}
-          />
-          <span className='clear-all' onClick={handleClearAllFilter}>
-            Clear All Filters
-          </span>
-          <Button
-            className='btn-search'
-            disabled={!filterValue}
-            onClick={handleOnSearchFilter}>
-            Search
-          </Button>
-        </div>
-      )}
-    </>
-  );
-};
+    return (
+      <div
+        ref={ref}
+        className={`filter-popup is-show ${
+          isEqual(columnKey, columnKeyFilterCurrent)
+            ? ''
+            : 'is-hide-another-popup'
+        }`}>
+        <span
+          className='close-popup'
+          onClick={() => dispatch(closedFilterHeaderPopup())}>
+          <CloseIcon size={14} />
+        </span>
+        <input
+          className='input-field'
+          placeholder='Search'
+          value={filterValue}
+          autoFocus
+          onChange={e => handleOnchangeValue(e.target.value)}
+        />
+        <span className='clear-all' onClick={handleClearAllFilter}>
+          Clear All Filters
+        </span>
+        <Button
+          className='btn-search'
+          disabled={!filterValue}
+          onClick={handleOnSearchFilter}>
+          Search
+        </Button>
+      </div>
+    );
+  }
+);
 
 export default FilterPopup;
