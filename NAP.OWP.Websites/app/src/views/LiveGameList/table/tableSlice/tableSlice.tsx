@@ -21,6 +21,7 @@ import { isEqual } from 'lodash';
 const tableSlice = createSlice({
   name: 'EventInformation',
   initialState: {
+    valueFilterAllColumn: [] as FilterState[],
     columnKeyFilterCurrent: '',
     isShowFilterHeader: false,
     loading: REQUEST_STATUS.idle,
@@ -40,6 +41,13 @@ const tableSlice = createSlice({
     refreshModel: {} as RefreshModel
   },
   reducers: {
+    setValueFilter: (state, action) => {
+      const { valueFilterAllColumn } = state;
+      state.valueFilterAllColumn = addOrReplaceFilterState(
+        valueFilterAllColumn,
+        action.payload
+      );
+    },
     setColumnKeyValue: (state, action) => {
       state.columnKeyFilterCurrent = action.payload;
     },
@@ -80,6 +88,7 @@ const tableSlice = createSlice({
     clearFilter: state => {
       const { entitiesOriginal } = state;
       state.filterState = [];
+      state.valueFilterAllColumn = [];
       state.entities = entitiesOriginal;
       const { orderType } = state.sortState;
       if (isEqual(orderType, ORDER_ASC)) {
@@ -159,6 +168,7 @@ const tableSlice = createSlice({
 
 const { actions, reducer } = tableSlice;
 const {
+  setValueFilter,
   setColumnKeyValue,
   openFilterHeaderPopup,
   closedFilterHeaderPopup,
@@ -174,6 +184,7 @@ const {
   sortFunc
 } = actions;
 export {
+  setValueFilter,
   setColumnKeyValue,
   openFilterHeaderPopup,
   closedFilterHeaderPopup,

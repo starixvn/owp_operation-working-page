@@ -1,7 +1,7 @@
 import React from 'react';
 import MaxbetInfo from '../../../component/MaxbetInfo';
 
-const FtHdpTraderCell = ({ dataSource, rowSpan, rowIndex }) => {
+const FtOuTraderCell = ({ dataSource, rowSpan, rowIndex }) => {
   const { MatchSetting, Assignment } = dataSource[rowIndex];
   const { OverUnder } = MatchSetting;
 
@@ -18,4 +18,4 @@ const FtHdpTraderCell = ({ dataSource, rowSpan, rowIndex }) => {
   );
 };
 
-export default FtHdpTraderCell;
+export default FtOuTraderCell;

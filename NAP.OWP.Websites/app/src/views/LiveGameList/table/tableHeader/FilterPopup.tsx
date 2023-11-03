@@ -1,12 +1,13 @@
 import { isEqual } from 'lodash';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/storeNative';
 import { useAppDispatch } from '../../app/hookNative';
 import {
   clearFilter,
   closedFilterHeaderPopup,
-  filterBySearchKey
+  filterBySearchKey,
+  setValueFilter
 } from '../tableSlice/tableSlice';
 import { CloseIcon } from 'mdi-react';
 import { Button } from 'reactstrap';
@@ -16,24 +17,31 @@ type FilterPopupProps = {
 };
 
 const FilterPopup = ({ columnKey }: FilterPopupProps) => {
-  const [filterValue, setFilterValue] = useState('');
   const model = useSelector((state: RootState) => state.events);
-  const { isShowFilterHeader, columnKeyFilterCurrent } = model;
-
+  const { isShowFilterHeader, columnKeyFilterCurrent, valueFilterAllColumn } =
+    model;
+  const filterValue =
+    valueFilterAllColumn?.filter(x => x.columnKey === columnKey) ?? [];
   const filterRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
 
   const handleClearAllFilter = () => {
-    setFilterValue('');
     dispatch(closedFilterHeaderPopup());
     dispatch(clearFilter());
   };
   const handleOnSearchFilter = () => {
-    const model = {
+    const filterState = {
       columnKey,
-      keyword: filterValue
+      keyword: filterValue[0]?.keyword
     };
-    dispatch(filterBySearchKey(model));
+    dispatch(filterBySearchKey(filterState));
+  };
+  const handleOnchangeValue = (value: string) => {
+    const columnHaveBeenFiltered = {
+      columnKey,
+      keyword: value
+    };
+    dispatch(setValueFilter(columnHaveBeenFiltered));
   };
 
   return (
@@ -54,9 +62,9 @@ const FilterPopup = ({ columnKey }: FilterPopupProps) => {
           <input
             className='input-field'
             placeholder='Search'
-            value={filterValue}
+            value={filterValue[0]?.keyword ?? ''}
             autoFocus
-            onChange={e => setFilterValue(e.target.value)}
+            onChange={e => handleOnchangeValue(e.target.value)}
           />
           <span className='clear-all' onClick={handleClearAllFilter}>
             Clear All

@@ -18,7 +18,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import { buildSpecialListModel } from '../LiveGameListTableHelper';
 
-const TableBody = ({ data = '', displayStart = '', displayEnd = '' }) => {
+const TableBody = ({ data = '', displayStart = 0, displayEnd = 0 }) => {
   const itemRowHeight = 100;
   const rows = [];
 
@@ -32,10 +32,9 @@ const TableBody = ({ data = '', displayStart = '', displayEnd = '' }) => {
     const row = data[i];
     if (row !== undefined) {
       const ouSpecificBetTypeGroupListModel = buildSpecialListModel(row);
-
       const buildElementOtherTrader = () => {
         return ouSpecificBetTypeGroupListModel.map(
-          (value, index) =>
+          (_value, index) =>
             ouSpecificBetTypeGroupListModel[index + 1] && (
               <tr key={`other-${i}-${index}`}>
                 <>
