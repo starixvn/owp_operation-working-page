@@ -181,6 +181,9 @@ interface MatchInfo {
   InfoSiteTimeDisplay: string;
   IsShowAbsenceIcon: boolean;
 }
+interface FilterAllColumn {
+  [x: string]: string;
+}
 interface FilterState {
   columnKey: string | undefined;
   keyword: string | undefined;
@@ -200,6 +203,7 @@ interface ISortState {
 }
 
 export {
+  FilterAllColumn,
   Column,
   ColumnSchema,
   CellModel,

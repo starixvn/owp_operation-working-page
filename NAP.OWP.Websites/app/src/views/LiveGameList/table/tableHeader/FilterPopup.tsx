@@ -20,8 +20,7 @@ const FilterPopup = ({ columnKey }: FilterPopupProps) => {
   const model = useSelector((state: RootState) => state.events);
   const { isShowFilterHeader, columnKeyFilterCurrent, valueFilterAllColumn } =
     model;
-  const filterValue =
-    valueFilterAllColumn?.filter(x => x.columnKey === columnKey) ?? [];
+  const filterValue = valueFilterAllColumn[columnKey] ?? '';
   const filterRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
 
@@ -32,7 +31,7 @@ const FilterPopup = ({ columnKey }: FilterPopupProps) => {
   const handleOnSearchFilter = () => {
     const filterState = {
       columnKey,
-      keyword: filterValue[0]?.keyword
+      keyword: filterValue
     };
     dispatch(filterBySearchKey(filterState));
   };
@@ -62,12 +61,12 @@ const FilterPopup = ({ columnKey }: FilterPopupProps) => {
           <input
             className='input-field'
             placeholder='Search'
-            value={filterValue[0]?.keyword ?? ''}
+            value={filterValue}
             autoFocus
             onChange={e => handleOnchangeValue(e.target.value)}
           />
           <span className='clear-all' onClick={handleClearAllFilter}>
-            Clear All
+            Clear All Filters
           </span>
           <Button
             className='btn-search'

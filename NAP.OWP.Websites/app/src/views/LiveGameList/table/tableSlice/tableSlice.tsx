@@ -6,7 +6,8 @@ import {
   ISortState,
   MatchInfo,
   PopupState,
-  RefreshModel
+  RefreshModel,
+  FilterAllColumn
 } from '../../type/TableType';
 import {
   filterData,
@@ -15,13 +16,16 @@ import {
 } from '../LiveGameListTableHelper';
 import { getEvents } from './tableThunk';
 import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
-import { addOrReplaceFilterState } from '../../../Shared/Utils';
+import {
+  addOrReplaceFilterState,
+  pushOrUpdateObject
+} from '../../../Shared/Utils';
 import { isEqual } from 'lodash';
 
 const tableSlice = createSlice({
   name: 'EventInformation',
   initialState: {
-    valueFilterAllColumn: [] as FilterState[],
+    valueFilterAllColumn: {} as FilterAllColumn,
     columnKeyFilterCurrent: '',
     isShowFilterHeader: false,
     loading: REQUEST_STATUS.idle,
@@ -43,7 +47,7 @@ const tableSlice = createSlice({
   reducers: {
     setValueFilter: (state, action) => {
       const { valueFilterAllColumn } = state;
-      state.valueFilterAllColumn = addOrReplaceFilterState(
+      state.valueFilterAllColumn = pushOrUpdateObject(
         valueFilterAllColumn,
         action.payload
       );
@@ -88,7 +92,7 @@ const tableSlice = createSlice({
     clearFilter: state => {
       const { entitiesOriginal } = state;
       state.filterState = [];
-      state.valueFilterAllColumn = [];
+      state.valueFilterAllColumn = {};
       state.entities = entitiesOriginal;
       const { orderType } = state.sortState;
       if (isEqual(orderType, ORDER_ASC)) {
