@@ -18,6 +18,7 @@ import {
 const osLiveGameAssignmentSlice = createSlice({
   name: 'osLiveGameAssignment',
   initialState: {
+    isEdit: false,
     entities: [],
     entitiesOriginal: [],
     sortState: {
@@ -37,6 +38,31 @@ const osLiveGameAssignmentSlice = createSlice({
     loading: REQUEST_STATUS.idle
   },
   reducers: {
+    cancelEditOfferLive: state => {
+      state.entities = filterDataTable(
+        state.entitiesOriginal,
+        state.filterState,
+        filterHomeOrAwayByKeyword
+      );
+      state.entities = orderBy(
+        state.entitiesOriginal,
+        state.sortState.columnKey,
+        state.sortState.orderType
+      );
+    },
+    setDataEntities: (state, action) => {
+      const { entities } = state;
+      const { osMatchId, value } = action.payload;
+      state.entities = entities.map(obj => {
+        if (obj.osMatchId === osMatchId) {
+          return { ...obj, offerLive: value };
+        }
+        return obj;
+      });
+    },
+    setIsEdit: (state, action) => {
+      state.isEdit = action.payload;
+    },
     collapseRow: (state, action) => {
       const { osMatchId, ...rest } = action.payload;
       const { columnKey, mode } = rest;
@@ -158,6 +184,9 @@ const osLiveGameAssignmentSlice = createSlice({
 
 const { reducer, actions } = osLiveGameAssignmentSlice;
 const {
+  cancelEditOfferLive,
+  setDataEntities,
+  setIsEdit,
   order,
   orderBysport,
   filterBySearchKey,
@@ -168,6 +197,9 @@ const {
   expandRow
 } = actions;
 export {
+  cancelEditOfferLive,
+  setDataEntities,
+  setIsEdit,
   order,
   orderBysport,
   filterBySearchKey,

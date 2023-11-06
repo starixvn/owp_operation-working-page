@@ -30,10 +30,18 @@ import {
 } from './TableSchema.json';
 
 const dynamicCell = (rowIndex, cellModel) => {
-  const { dataSource, columnKey, collapseExpandRowState } = cellModel;
+  const { dataSource, columnKey, collapseExpandRowState, handleShowTicket } =
+    cellModel;
   switch (columnKey) {
     case No.columnKey:
-      return <StatusCell dataSource={dataSource} rowIndex={rowIndex} />;
+      return (
+        <StatusCell
+          dataSource={dataSource}
+          rowIndex={rowIndex}
+          handleShowDropdown={handleShowTicket}
+          isLastRow={dataSource.length === rowIndex + 1}
+        />
+      );
     case KOTime.columnKey:
       return <KOTimeCell dataSource={dataSource} rowIndex={rowIndex} />;
     case Sport.columnKey:

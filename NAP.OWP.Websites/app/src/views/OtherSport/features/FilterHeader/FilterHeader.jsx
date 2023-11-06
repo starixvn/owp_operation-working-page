@@ -22,6 +22,12 @@ import { onSubmitFilterModel } from './FilterHeaderSlice';
 import dayjs from 'dayjs';
 import { getValueRef } from '../../../Shared/Utils';
 import OtherSport from '../../otherSport.json';
+import EditOfferLive from './EditOfferLive';
+import { useSelector } from 'react-redux';
+import {
+  cancelEditOfferLive,
+  setIsEdit
+} from '../OSTable/OSTableSlice/reducer';
 
 const propTypes = {
   policy: PropTypes.object.isRequired
@@ -30,8 +36,10 @@ const propTypes = {
 const formatDate = 'YYYY-MM-DD';
 
 const FilterHeader = props => {
+  const model = useSelector(state => state.osAssignmentTable);
+  const { entities, entitiesOriginal, isEdit } = model;
   const stableDispatch = useStableDispatch();
-  const { Username } = props.policy;
+  const { Username, HasWrite } = props.policy;
   const storageKeyByName = `${LOCAL_STORAGE_KEY}_${Username}`;
   const {
     defaultOfferLives,
@@ -127,6 +135,27 @@ const FilterHeader = props => {
     &OfferLives=${offerLives}&MatchStatuses=${matchStatuses}&LinkedMatches=${linkedMatches}`;
   };
 
+  const handleCancel = () => {
+    stableDispatch(setIsEdit(false));
+    stableDispatch(cancelEditOfferLive());
+  };
+  const handleOnOpenEditOfferLive = () => {
+    stableDispatch(setIsEdit(true));
+  };
+
+  const handleOnSave = () => {
+    const offerLiveInfos = entities.map(ele => ({
+      osMatchId: ele.osMatchId,
+      newOfferLive: ele.offerLive
+    }));
+    const model = {
+      fromDate: selectedFromDate,
+      toDate: selectedToDate,
+      offerLiveInfos
+    };
+    console.log(model);
+  };
+
   return (
     <div className='filter'>
       <div className='filter-control calendar'>
@@ -206,6 +235,14 @@ const FilterHeader = props => {
           Download
         </button>
       </div>
+      {HasWrite && (
+        <EditOfferLive
+          handleOnSave={handleOnSave}
+          handleCancel={handleCancel}
+          handleOnOpenEditOfferLive={handleOnOpenEditOfferLive}
+          isEdit={isEdit}
+        />
+      )}
     </div>
   );
 };
