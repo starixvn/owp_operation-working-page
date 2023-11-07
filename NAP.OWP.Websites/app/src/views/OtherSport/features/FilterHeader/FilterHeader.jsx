@@ -158,7 +158,7 @@ const FilterHeader = props => {
       ToastrWrapper.show({
         position: 'top',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
         html: `<span class="os__upload--success">The assignment has been updated successfully!</span>`
       });
     }
@@ -238,10 +238,16 @@ const FilterHeader = props => {
         />
       </div>
       <div className='filter-control btn-block'>
-        <button className='button-submit' onClick={handleOnSubmit}>
+        <button
+          disabled={isEdit}
+          className={`button-submit ${isEdit ? 'button-disable' : ''}`}
+          onClick={handleOnSubmit}>
           Submit
         </button>
-        <button className='button-submit' onClick={handleOnDownload}>
+        <button
+          disabled={isEdit}
+          className={`button-submit ${isEdit ? 'button-disable' : ''}`}
+          onClick={handleOnDownload}>
           Download
         </button>
       </div>

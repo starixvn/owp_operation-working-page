@@ -6,6 +6,6 @@
   "OsAssignmentSubmit": "/get-assignment",
   "lastUpdate": "/last-update",
   "download": "/download",
-  "updateOfferLive": "/update-offer-live",
+  "updateOfferLive": "update-offer-live",
   "dateRange": 7
 }

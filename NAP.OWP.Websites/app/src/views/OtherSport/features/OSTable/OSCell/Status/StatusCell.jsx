@@ -33,7 +33,7 @@ const StatusCell = props => {
   const offerLiveLowerCase = offerLive.toLowerCase();
 
   const offerLiveColors = {
-    postpone: '#4F4F4F',
+    postponed: '#4F4F4F',
     live: '#2FB159',
     canceled: '#EB5757'
   };
@@ -113,7 +113,7 @@ const StatusCell = props => {
               }`}>
               <ul>
                 <li onClick={() => handleOnchange('Live')}>Live</li>
-                <li onClick={() => handleOnchange('Postpone')}>Postpone</li>
+                <li onClick={() => handleOnchange('Postponed')}>Postponed</li>
                 <li onClick={() => handleOnchange('Canceled')}>Canceled</li>
               </ul>
             </div>
