@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { isMatchWith, find, map, filter } from 'lodash';
+import { find, map, filter } from 'lodash';
 import { buildRequestURL } from '../../LiveDetail/buildUrlHelper';
 
 const getAll = async () => {
@@ -43,10 +43,9 @@ const getSuggestion = keyword => {
     const users = dataSourceLocalUsers();
     return filter(users, user => {
       return (
-        user.IsSecondAccount === false &&
-        (isMatchWith(user.UserName.toLowerCase(), lowerCaseKeyword) ||
-          (user.NickName &&
-            isMatchWith(user.NickName.toLowerCase(), lowerCaseKeyword)))
+        (user.IsSecondAccount === false &&
+          user.UserName?.toLowerCase()?.includes(lowerCaseKeyword)) ||
+        user.NickName?.toLowerCase()?.includes(lowerCaseKeyword)
       );
     });
   }
@@ -61,8 +60,8 @@ const getInfoByUserName = name => {
     return find(users, user => {
       return (
         user.IsSecondAccount === false &&
-        (user?.UserName?.toLowerCase()?.includes(nameTransform) ||
-          user?.NickName?.toLowerCase()?.includes(nameTransform))
+        (user.UserName.toLowerCase() === nameTransform ||
+          (user.NickName && user.NickName.toLowerCase() === nameTransform))
       );
     });
   }
