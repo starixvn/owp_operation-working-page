@@ -5,7 +5,7 @@ import { LinkIcon, LinkOffIcon } from 'mdi-react';
 import { useSelector } from 'react-redux';
 import DropdownIcon from '../../../../../../assets/svg-element/DropdownIcon';
 import { useAppDispatch } from '../../../../app/hooks';
-import { setDataEntities } from '../../OSTableSlice/reducer';
+import { upDateDataEntities } from '../../OSTableSlice/reducer';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -68,7 +68,7 @@ const StatusCell = props => {
 
   const handleOnchange = value => {
     setIsOpenDropdown(false);
-    stableDispatch(setDataEntities({ osMatchId, value }));
+    stableDispatch(upDateDataEntities({ osMatchId, value }));
   };
 
   useEffect(() => {

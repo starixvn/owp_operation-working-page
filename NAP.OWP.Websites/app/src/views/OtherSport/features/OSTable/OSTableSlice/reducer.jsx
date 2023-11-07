@@ -18,6 +18,7 @@ import {
 const osLiveGameAssignmentSlice = createSlice({
   name: 'osLiveGameAssignment',
   initialState: {
+    editOfferLiveMatches: [],
     isEdit: false,
     entities: [],
     entitiesOriginal: [],
@@ -38,6 +39,9 @@ const osLiveGameAssignmentSlice = createSlice({
     loading: REQUEST_STATUS.idle
   },
   reducers: {
+    clearEditOfferLiveMatches: state => {
+      state.editOfferLiveMatches = [];
+    },
     cancelEditOfferLive: state => {
       state.entities = filterDataTable(
         state.entitiesOriginal,
@@ -50,11 +54,16 @@ const osLiveGameAssignmentSlice = createSlice({
         state.sortState.orderType
       );
     },
-    setDataEntities: (state, action) => {
-      const { entities } = state;
+    upDateDataEntities: (state, action) => {
+      const { entities, editOfferLiveMatches } = state;
       const { osMatchId, value } = action.payload;
       state.entities = entities.map(obj => {
         if (obj.osMatchId === osMatchId) {
+          const editOfferLiveMatch = {
+            osMatchId: obj.osMatchId,
+            newOfferLive: value
+          };
+          editOfferLiveMatches.push(editOfferLiveMatch);
           return { ...obj, offerLive: value };
         }
         return obj;
@@ -184,8 +193,9 @@ const osLiveGameAssignmentSlice = createSlice({
 
 const { reducer, actions } = osLiveGameAssignmentSlice;
 const {
+  clearEditOfferLiveMatches,
   cancelEditOfferLive,
-  setDataEntities,
+  upDateDataEntities,
   setIsEdit,
   order,
   orderBysport,
@@ -197,8 +207,9 @@ const {
   expandRow
 } = actions;
 export {
+  clearEditOfferLiveMatches,
   cancelEditOfferLive,
-  setDataEntities,
+  upDateDataEntities,
   setIsEdit,
   order,
   orderBysport,

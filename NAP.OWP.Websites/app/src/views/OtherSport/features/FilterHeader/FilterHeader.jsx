@@ -26,9 +26,10 @@ import EditOfferLive from './EditOfferLive';
 import { useSelector } from 'react-redux';
 import {
   cancelEditOfferLive,
-  setIsEdit
+  setIsEdit,
+  clearEditOfferLiveMatches
 } from '../OSTable/OSTableSlice/reducer';
-
+import { saveEditOfferLive } from '../../services/Service';
 const propTypes = {
   policy: PropTypes.object.isRequired
 };
@@ -37,7 +38,7 @@ const formatDate = 'YYYY-MM-DD';
 
 const FilterHeader = props => {
   const model = useSelector(state => state.osAssignmentTable);
-  const { entities, entitiesOriginal, isEdit } = model;
+  const { entities, editOfferLiveMatches, isEdit } = model;
   const stableDispatch = useStableDispatch();
   const { Username, HasWrite } = props.policy;
   const storageKeyByName = `${LOCAL_STORAGE_KEY}_${Username}`;
@@ -138,22 +139,31 @@ const FilterHeader = props => {
   const handleCancel = () => {
     stableDispatch(setIsEdit(false));
     stableDispatch(cancelEditOfferLive());
+    stableDispatch(clearEditOfferLiveMatches());
   };
   const handleOnOpenEditOfferLive = () => {
     stableDispatch(setIsEdit(true));
   };
 
-  const handleOnSave = () => {
-    const offerLiveInfos = entities.map(ele => ({
-      osMatchId: ele.osMatchId,
-      newOfferLive: ele.offerLive
-    }));
+  const handleOnSave = async () => {
     const model = {
       fromDate: selectedFromDate,
       toDate: selectedToDate,
-      offerLiveInfos
+      offerLiveInfos: editOfferLiveMatches
     };
-    console.log(model);
+
+    const result = await saveEditOfferLive(model);
+    if (result === 200) {
+      handleOnSubmit();
+      ToastrWrapper.show({
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000,
+        html: `<span class="os__upload--success">The assignment has been updated successfully!</span>`
+      });
+    }
+    stableDispatch(clearEditOfferLiveMatches());
+    stableDispatch(setIsEdit(false));
   };
 
   return (
@@ -237,6 +247,7 @@ const FilterHeader = props => {
       </div>
       {HasWrite && (
         <EditOfferLive
+          editOfferLiveMatches={editOfferLiveMatches}
           handleOnSave={handleOnSave}
           handleCancel={handleCancel}
           handleOnOpenEditOfferLive={handleOnOpenEditOfferLive}

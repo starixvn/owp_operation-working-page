@@ -1,0 +1,16 @@
+import { post } from '../../Shared/Service/Service';
+import { rootUrl, updateOfferLive, netFw } from '../otherSport.json';
+const saveEditOfferLive = async rest => {
+  const url =
+    process.env.NODE_ENV === 'development'
+      ? `${rootUrl}/${updateOfferLive}`
+      : `${window.netCoreRootUrl}/${netFw}/${updateOfferLive}`;
+  const model = {
+    ...rest,
+    url
+  };
+  const res = await post(model);
+  return res.status;
+};
+
+export { saveEditOfferLive };
