@@ -1094,7 +1094,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-998d9c09.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-628424ee.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-4e9ff3e7.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-feedback-57264197.svg" />
@@ -3076,6 +3076,10 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-assignment\server.cshtml" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
