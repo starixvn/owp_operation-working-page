@@ -8,9 +8,17 @@ type Props = {
   traders: AssignmentInfo[];
   others: AssignmentInfo[];
   rowSpan?: number;
+  userNameFilter: string;
 };
 
-function MaxbetInfo({ name, maxbet, traders, others, rowSpan }: Props) {
+function MaxbetInfo({
+  name,
+  maxbet,
+  traders,
+  others,
+  rowSpan,
+  userNameFilter
+}: Props) {
   return (
     <>
       {name && (
@@ -22,8 +30,11 @@ function MaxbetInfo({ name, maxbet, traders, others, rowSpan }: Props) {
         {maxbet?.MaxbetSpreadToDisplay}
       </td>
       <td rowSpan={rowSpan} className='assignee-group'>
-        <AssignmentComponent assignment={traders} />
-        <OtherAssignment assignment={others} />
+        <AssignmentComponent
+          assignment={traders}
+          userNameFilter={userNameFilter}
+        />
+        <OtherAssignment assignment={others} userNameFilter={userNameFilter} />
       </td>
     </>
   );

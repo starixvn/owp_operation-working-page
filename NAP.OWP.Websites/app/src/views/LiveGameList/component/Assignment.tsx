@@ -2,14 +2,24 @@ import React, { createRef } from 'react';
 import { AssignmentInfo } from '../type/TableType';
 import ContactInfo from './ContactInfo';
 
-const Assignment = (props: { assignment: AssignmentInfo[] }) => {
+const Assignment = (props: {
+  assignment: AssignmentInfo[];
+  userNameFilter: string;
+}) => {
   return (
     <>
       {props.assignment.map(x => {
         const ref = createRef<HTMLAnchorElement>();
         return !x.IsCurrentUser && x.IsHasContactInfo ? (
           <span key={`contact-${x.UserId}`} className='assignee'>
-            <a ref={ref} className='dropdown-button js-traderName'>
+            <a
+              ref={ref}
+              className={`${
+                x.Username?.toLowerCase() ===
+                props.userNameFilter?.toLowerCase()
+                  ? 'highlighted dropdown-button js-traderName'
+                  : 'dropdown-button js-traderName'
+              }`}>
               {x.Username}
             </a>
             <ContactInfo target={ref} assignment={x} />
@@ -20,7 +30,15 @@ const Assignment = (props: { assignment: AssignmentInfo[] }) => {
             className={`${
               x.IsCurrentUser ? 'badge-label my-assign' : 'assignee'
             }  `}>
-            {x.Username}
+            <span
+              className={`${
+                x.Username?.toLowerCase() ===
+                props.userNameFilter?.toLowerCase()
+                  ? 'highlighted'
+                  : ''
+              }`}>
+              {x.Username}
+            </span>
           </span>
         );
       })}

@@ -1,7 +1,9 @@
 import React from 'react';
 import MaxbetInfo from '../../../component/MaxbetInfo';
+import { useSelector } from 'react-redux';
 
 const FirstHalfOuTraderCell = ({ dataSource, rowSpan, rowIndex }) => {
+  const { userNameFilter } = useSelector(state => state.events);
   const { MatchSetting, Assignment } = dataSource[rowIndex];
   const { OverUnder1st } = MatchSetting;
 
@@ -13,6 +15,7 @@ const FirstHalfOuTraderCell = ({ dataSource, rowSpan, rowIndex }) => {
         traders={Assignment.OverUnder1st}
         others={Assignment.OverUnder1stOthers}
         rowSpan={rowSpan}
+        userNameFilter={userNameFilter}
       />
     </>
   );

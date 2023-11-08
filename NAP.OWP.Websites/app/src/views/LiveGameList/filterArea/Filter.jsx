@@ -18,7 +18,9 @@ import { FunctionKeys, MatchStatuses } from '../../Shared/Constants';
 import { useSelector } from 'react-redux';
 import {
   filterByUnReadTicket,
-  setRefreshModel
+  setRefreshModel,
+  setUserNameFilter,
+  setUserNameFilterIsValid
 } from '../table/tableSlice/tableSlice';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import Utils from '../../Shared/Utils';
@@ -26,8 +28,6 @@ import { UserSuggestion } from '../../components/Assignment/UserSuggestion';
 
 const { LIVE_GAME } = BUTTON_TYPE;
 const Filter = () => {
-  const [userName, setUserName] = useState('');
-  const [userNameIsValid, setUserNameIsValid] = useState(true);
   const [selectedDate, setSelectedDate] = useState(buildDefaultLGLFilterDate());
   const [searchDisabled, setSearchDisabled] = useState(false);
   const datePicker = createRef();
@@ -36,7 +36,10 @@ const Filter = () => {
   );
   const [selectedMatchType, setSelectedMatchType] = useState(MATCH_TYPE_OPTION);
   const [statusOptions, setStatusOptions] = useState([]);
-  const { isShowUnReadTicketOnly } = useSelector(state => state.events);
+  const { isShowUnReadTicketOnly, userNameFilter, userNameFilterIsValid } =
+    useSelector(state => state.events);
+  const [userName, setUserName] = useState(userNameFilter);
+  const [userNameIsValid, setUserNameIsValid] = useState(userNameFilterIsValid);
   const dispatch = useStableDispatch();
 
   useEffect(() => {
@@ -80,13 +83,15 @@ const Filter = () => {
       return;
     }
 
-    if (!searchDisabled && userNameIsValid) {
+    if (!searchDisabled && userNameFilterIsValid) {
       const model = {
         userName,
         filterDate: selectedDate,
         statusId: selectedMatchStatus.map(ms => ms.value).join(),
         matchType: selectedMatchType.map(ms => ms.value).join()
       };
+      dispatch(setUserNameFilter(userName));
+      dispatch(setUserNameFilterIsValid(userNameFilterIsValid));
       dispatch(getEvents(model));
       dispatch(setRefreshModel(model));
     }

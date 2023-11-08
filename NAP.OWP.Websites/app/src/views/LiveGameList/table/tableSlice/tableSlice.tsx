@@ -25,6 +25,8 @@ import { isEqual } from 'lodash';
 const tableSlice = createSlice({
   name: 'EventInformation',
   initialState: {
+    userNameFilter: '',
+    userNameFilterIsValid: true,
     valueFilterAllColumn: {} as FilterAllColumn,
     columnKeyFilterCurrent: '',
     isShowFilterHeader: false,
@@ -45,6 +47,12 @@ const tableSlice = createSlice({
     refreshModel: {} as RefreshModel
   },
   reducers: {
+    setUserNameFilter: (state, action) => {
+      state.userNameFilter = action.payload;
+    },
+    setUserNameFilterIsValid: (state, action) => {
+      state.userNameFilterIsValid = action.payload;
+    },
     setValueFilter: (state, action) => {
       const { valueFilterAllColumn } = state;
       state.valueFilterAllColumn = pushOrUpdateObject(
@@ -166,6 +174,8 @@ const tableSlice = createSlice({
 
 const { actions, reducer } = tableSlice;
 const {
+  setUserNameFilter,
+  setUserNameFilterIsValid,
   setValueFilter,
   setColumnKeyValue,
   filterBySearchKey,
@@ -180,6 +190,8 @@ const {
   sortFunc
 } = actions;
 export {
+  setUserNameFilter,
+  setUserNameFilterIsValid,
   setValueFilter,
   setColumnKeyValue,
   filterBySearchKey,

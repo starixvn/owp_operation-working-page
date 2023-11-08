@@ -1,7 +1,9 @@
 import React from 'react';
 import MaxbetInfo from '../../../component/MaxbetInfo';
+import { useSelector } from 'react-redux';
 
 const OtherProductTraderCell = ({ name, maxBet, traders, others, rowSpan }) => {
+  const { userNameFilter } = useSelector(state => state.events);
   return (
     <>
       <MaxbetInfo
@@ -10,6 +12,7 @@ const OtherProductTraderCell = ({ name, maxBet, traders, others, rowSpan }) => {
         traders={traders}
         others={others}
         rowSpan={rowSpan}
+        userNameFilter={userNameFilter}
       />
     </>
   );

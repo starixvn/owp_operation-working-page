@@ -4,17 +4,26 @@ import ContactInfo from './ContactInfo';
 import { UncontrolledTooltip } from 'reactstrap';
 import parse from 'html-react-parser';
 
-const OtherAssignment = (props: { assignment: AssignmentInfo[] }) => {
+const OtherAssignment = (props: {
+  assignment: AssignmentInfo[];
+  userNameFilter: string;
+}) => {
   const { assignment } = props;
   const getNoteOrUserName = (
     note: string | null,
     isCurrentUser: boolean,
-    userName: string
+    userName: string,
+    userNameFilter: string
   ) => {
     const userNameText = () =>
-      `<span
-      className=${isCurrentUser ? 'badge-label my-assign' : 'assignee'}>
-      ${userName}
+      `<span className=${isCurrentUser ? 'badge-label my-assign' : 'assignee'}>
+        <span className=${
+          userName?.toLowerCase() === userNameFilter?.toLowerCase()
+            ? 'highlighted'
+            : ''
+        }>
+        ${userName}
+        </span>
     </span>`;
     return note ? note.replace('#<user>', userNameText()) : '';
   };
@@ -34,7 +43,8 @@ const OtherAssignment = (props: { assignment: AssignmentInfo[] }) => {
                   getNoteOrUserName(
                     x.AssignmentNote,
                     x.IsCurrentUser,
-                    x.Username
+                    x.Username,
+                    props.userNameFilter
                   )
                 )}
               </a>
@@ -42,7 +52,12 @@ const OtherAssignment = (props: { assignment: AssignmentInfo[] }) => {
             </span>
             <UncontrolledTooltip target={refOther}>
               {parse(
-                getNoteOrUserName(x.AssignmentNote, x.IsCurrentUser, x.Username)
+                getNoteOrUserName(
+                  x.AssignmentNote,
+                  x.IsCurrentUser,
+                  x.Username,
+                  props.userNameFilter
+                )
               )}
             </UncontrolledTooltip>
           </p>
@@ -50,12 +65,22 @@ const OtherAssignment = (props: { assignment: AssignmentInfo[] }) => {
           <p key={`contact-${x.UserId}-${index}`}>
             <span ref={refOther} className='assignee-other'>
               {parse(
-                getNoteOrUserName(x.AssignmentNote, x.IsCurrentUser, x.Username)
+                getNoteOrUserName(
+                  x.AssignmentNote,
+                  x.IsCurrentUser,
+                  x.Username,
+                  props.userNameFilter
+                )
               )}
             </span>
             <UncontrolledTooltip target={refOther}>
               {parse(
-                getNoteOrUserName(x.AssignmentNote, x.IsCurrentUser, x.Username)
+                getNoteOrUserName(
+                  x.AssignmentNote,
+                  x.IsCurrentUser,
+                  x.Username,
+                  props.userNameFilter
+                )
               )}
             </UncontrolledTooltip>
           </p>
