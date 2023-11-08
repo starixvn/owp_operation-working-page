@@ -55,12 +55,6 @@ const tableSlice = createSlice({
     setColumnKeyValue: (state, action) => {
       state.columnKeyFilterCurrent = action.payload;
     },
-    openFilterHeaderPopup: state => {
-      state.isShowFilterHeader = true;
-    },
-    closedFilterHeaderPopup: state => {
-      state.isShowFilterHeader = false;
-    },
     filterByUnReadTicket: (state, action) => {
       const { entitiesOriginal, filterState } = state;
       state.isShowUnReadTicketOnly = action.payload;
@@ -174,8 +168,6 @@ const { actions, reducer } = tableSlice;
 const {
   setValueFilter,
   setColumnKeyValue,
-  openFilterHeaderPopup,
-  closedFilterHeaderPopup,
   filterBySearchKey,
   clearFilter,
   setDataTable,
@@ -190,8 +182,6 @@ const {
 export {
   setValueFilter,
   setColumnKeyValue,
-  openFilterHeaderPopup,
-  closedFilterHeaderPopup,
   filterBySearchKey,
   clearFilter,
   setDataTable,

@@ -1,11 +1,10 @@
 import { isEqual } from 'lodash';
-import React, { RefObject, forwardRef, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/storeNative';
 import { useAppDispatch } from '../../app/hookNative';
 import {
   clearFilter,
-  closedFilterHeaderPopup,
   filterBySearchKey,
   setValueFilter
 } from '../tableSlice/tableSlice';
@@ -14,17 +13,18 @@ import { Button } from 'reactstrap';
 
 type FilterPopupProps = {
   columnKey: string;
+  handleClosedPopup: () => void;
 };
 
 const FilterPopup = forwardRef<HTMLDivElement, FilterPopupProps>(
-  ({ columnKey }: FilterPopupProps, ref) => {
+  ({ columnKey, handleClosedPopup }: FilterPopupProps, ref) => {
     const model = useSelector((state: RootState) => state.events);
     const { columnKeyFilterCurrent, valueFilterAllColumn } = model;
     const filterValue = valueFilterAllColumn[columnKey] ?? '';
     const dispatch = useAppDispatch();
 
     const handleClearAllFilter = () => {
-      dispatch(closedFilterHeaderPopup());
+      handleClosedPopup();
       dispatch(clearFilter());
     };
     const handleOnSearchFilter = () => {
@@ -41,6 +41,9 @@ const FilterPopup = forwardRef<HTMLDivElement, FilterPopupProps>(
       };
       dispatch(setValueFilter(columnHaveBeenFiltered));
     };
+    const onClickClosedIcon = () => {
+      handleClosedPopup();
+    };
 
     return (
       <div
@@ -50,9 +53,7 @@ const FilterPopup = forwardRef<HTMLDivElement, FilterPopupProps>(
             ? ''
             : 'is-hide-another-popup'
         }`}>
-        <span
-          className='close-popup'
-          onClick={() => dispatch(closedFilterHeaderPopup())}>
+        <span className='close-popup' onClick={() => onClickClosedIcon()}>
           <CloseIcon size={14} />
         </span>
         <input

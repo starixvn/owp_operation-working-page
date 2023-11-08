@@ -1,9 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import {
-  closedFilterHeaderPopup,
-  openFilterHeaderPopup,
-  setColumnKeyValue
-} from '../tableSlice/tableSlice';
+import React, { useEffect, useRef, useState } from 'react';
+import { setColumnKeyValue } from '../tableSlice/tableSlice';
 import { useAppDispatch } from '../../app/hookNative';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/storeNative';
@@ -17,11 +13,12 @@ const FilterHeader = ({ columnKey }: FilterHeaderProps) => {
   const dispatch = useAppDispatch();
   const filterRef = useRef<HTMLDivElement>(null);
   const model = useSelector((state: RootState) => state.events);
-  const { filterState, isShowFilterHeader } = model;
+  const { filterState } = model;
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
 
   const handleClickFilter = (value: string) => {
     dispatch(setColumnKeyValue(value));
-    dispatch(openFilterHeaderPopup());
+    setIsOpenFilter(true);
   };
 
   const checkIsFiltered = () =>
@@ -29,13 +26,17 @@ const FilterHeader = ({ columnKey }: FilterHeaderProps) => {
       return x.columnKey === columnKey;
     });
 
+  const handleClosedPopup = () => {
+    setIsOpenFilter(false);
+  };
+
   useEffect(() => {
     const handleClickOutSide = (event: MouseEvent) => {
       if (
         filterRef.current &&
         !filterRef.current.contains(event.target as Node)
       ) {
-        closedFilterHeaderPopup();
+        setIsOpenFilter(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutSide);
@@ -51,8 +52,12 @@ const FilterHeader = ({ columnKey }: FilterHeaderProps) => {
         onClick={() => handleClickFilter(columnKey)}>
         <FilterIcon size={14} />
       </span>
-      {isShowFilterHeader && (
-        <FilterPopup columnKey={columnKey} ref={filterRef} />
+      {isOpenFilter && (
+        <FilterPopup
+          handleClosedPopup={handleClosedPopup}
+          columnKey={columnKey}
+          ref={filterRef}
+        />
       )}
     </div>
   );

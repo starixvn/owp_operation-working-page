@@ -9,7 +9,7 @@ import { filterDataTable } from '../../Shared/Utils';
 
 const buildColorRowTable = (dataSource: MatchInfo) => {
   if (!dataSource) {
-    return 0;
+    return '';
   }
   switch (dataSource.MatchStatus) {
     case MatchStatuses.Cancel:

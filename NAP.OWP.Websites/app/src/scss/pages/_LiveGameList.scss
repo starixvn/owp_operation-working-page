@@ -272,6 +272,18 @@
 
 }
 
+.odd-row {
+  background-color: #e7e7e7;
+}
+
+.orange-row {
+  background-color: #fbe78e !important;
+}
+
+.red-row {
+  background-color: #fcb76c !important;
+}
+
 .table-live-game-list {
   border-collapse: collapse;
   padding: 0;
@@ -823,9 +835,10 @@
   }
 
   td {
+    box-shadow: none !important;
     padding: 5px;
     vertical-align: middle;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5 !important;
   }
 
   .btn-add-ticket {
@@ -936,7 +949,7 @@
 }
 
 span.assignee-other>a.dropdown-button {
-  color: #2089e5;
+  color: #494848;
   text-decoration: none;
 }
 
@@ -989,10 +1002,11 @@ span.assignee-other>a.dropdown-button {
 .provider-cell {
   padding-top: 5px;
   padding-left: 5px;
+  word-break: break-all;
 
   .provider,
   .watch-bet {
-    word-break: break-all;
+
     display: block;
 
     &.watch-bet {
@@ -1014,41 +1028,6 @@ span.assignee-other>a.dropdown-button {
   }
 }
 
-.orange-row {
-  background-color: #fbe78e;
-}
-
-.orange-row {
-  background-color: transparent !important;
-
-  &:hover {
-    .public_fixedDataTableCell_main {
-      background-color: #fbe78e !important;
-    }
-  }
-
-  .public_fixedDataTableCell_main {
-    background-color: #fbe78e !important;
-  }
-}
-
-.red-row {
-  background-color: #fcb76c;
-}
-
-.red-row {
-  background-color: transparent !important;
-
-  &:hover {
-    .public_fixedDataTableCell_main {
-      background-color: #fcb76c !important;
-    }
-  }
-
-  .public_fixedDataTableCell_main {
-    background-color: #fcb76c !important;
-  }
-}
 
 //popup hover
 .channel-popover {

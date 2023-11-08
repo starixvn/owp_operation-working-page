@@ -16,7 +16,10 @@ import {
   FtOuTraderCell
 } from '../cell';
 import { v4 as uuidv4 } from 'uuid';
-import { buildSpecialListModel } from '../LiveGameListTableHelper';
+import {
+  buildSpecialListModel,
+  buildColorRowTable
+} from '../LiveGameListTableHelper';
 
 const TableBody = ({ data = '', displayStart = 0, displayEnd = 0 }) => {
   const itemRowHeight = 100;
@@ -30,29 +33,27 @@ const TableBody = ({ data = '', displayStart = 0, displayEnd = 0 }) => {
 
   for (let i = displayStart; i < displayEnd; ++i) {
     const row = data[i];
+    const rowColor = `${buildColorRowTable(row)} ${
+      i % 2 === 1 ? 'odd-row' : 'even-row'
+    }`;
     if (row !== undefined) {
       const ouSpecificBetTypeGroupListModel = buildSpecialListModel(row);
       const buildElementOtherTrader = () => {
         return ouSpecificBetTypeGroupListModel.map(
           (_value, index) =>
             ouSpecificBetTypeGroupListModel[index + 1] && (
-              <tr key={`other-${i}-${index}`}>
-                <>
-                  <OtherProductTraderCell
-                    name={
-                      ouSpecificBetTypeGroupListModel[index + 1].BetTypeName
-                    }
-                    maxBet={ouSpecificBetTypeGroupListModel[index + 1].Maxbet}
-                    traders={
-                      ouSpecificBetTypeGroupListModel[index + 1].MainAssignment
-                    }
-                    others={
-                      ouSpecificBetTypeGroupListModel[index + 1]
-                        .OthersAssignment
-                    }
-                    rowIndex={i}
-                  />
-                </>
+              <tr className={rowColor} key={`other-${i}-${index}`}>
+                <OtherProductTraderCell
+                  name={ouSpecificBetTypeGroupListModel[index + 1].BetTypeName}
+                  maxBet={ouSpecificBetTypeGroupListModel[index + 1].Maxbet}
+                  traders={
+                    ouSpecificBetTypeGroupListModel[index + 1].MainAssignment
+                  }
+                  others={
+                    ouSpecificBetTypeGroupListModel[index + 1].OthersAssignment
+                  }
+                  rowIndex={i}
+                />
               </tr>
             )
         );
@@ -61,7 +62,7 @@ const TableBody = ({ data = '', displayStart = 0, displayEnd = 0 }) => {
       const rowSpanMaxBet = rowSpan > 2 ? 2 : 1;
       rows.push(
         <Fragment key={uuidv4()}>
-          <tr>
+          <tr className={rowColor}>
             <td rowSpan={rowSpan}>
               <NoCell dataSource={data} rowIndex={i} />
             </td>
@@ -114,55 +115,45 @@ const TableBody = ({ data = '', displayStart = 0, displayEnd = 0 }) => {
             </td>
           </tr>
           {rowSpan > 2 && (
-            <tr>
-              <>
-                <OtherProductTraderCell
-                  name='HT1X2'
-                  maxBet={row.MatchSetting.OneXTwo1st}
-                  traders={row.Assignment.OneXTwo1st}
-                  others={row.Assignment.OneXTwo1stOthers}
-                  rowIndex={i}
-                />
-              </>
+            <tr className={rowColor}>
+              <OtherProductTraderCell
+                name='HT1X2'
+                maxBet={row.MatchSetting.OneXTwo1st}
+                traders={row.Assignment.OneXTwo1st}
+                others={row.Assignment.OneXTwo1stOthers}
+                rowIndex={i}
+              />
             </tr>
           )}
-          <tr>
-            <>
-              <FtOuTraderCell
-                rowSpan={rowSpan - rowSpanMaxBet}
-                dataSource={data}
-                rowIndex={i}
-              />
-            </>
-            <>
-              <FirstHalfOuTraderCell
-                rowSpan={rowSpan - rowSpanMaxBet}
-                dataSource={data}
-                rowIndex={i}
-              />
-            </>
+          <tr className={rowColor}>
+            <FtOuTraderCell
+              rowSpan={rowSpan - rowSpanMaxBet}
+              dataSource={data}
+              rowIndex={i}
+            />
+            <FirstHalfOuTraderCell
+              rowSpan={rowSpan - rowSpanMaxBet}
+              dataSource={data}
+              rowIndex={i}
+            />
             {rowSpanMaxBet === 1 && (
-              <>
-                <OtherProductTraderCell
-                  name='HT1X2'
-                  maxBet={row.MatchSetting.OneXTwo1st}
-                  traders={row.Assignment.OneXTwo1st}
-                  others={row.Assignment.OneXTwo1stOthers}
-                  rowIndex={i}
-                />
-              </>
+              <OtherProductTraderCell
+                name='HT1X2'
+                maxBet={row.MatchSetting.OneXTwo1st}
+                traders={row.Assignment.OneXTwo1st}
+                others={row.Assignment.OneXTwo1stOthers}
+                rowIndex={i}
+              />
             )}
             {rowSpan - rowSpanMaxBet >= 1 &&
               ouSpecificBetTypeGroupListModel.length > 0 && (
-                <>
-                  <OtherProductTraderCell
-                    name={ouSpecificBetTypeGroupListModel[0].BetTypeName}
-                    maxBet={ouSpecificBetTypeGroupListModel[0].Maxbet}
-                    traders={ouSpecificBetTypeGroupListModel[0].MainAssignment}
-                    others={ouSpecificBetTypeGroupListModel[0].OthersAssignment}
-                    rowIndex={i}
-                  />
-                </>
+                <OtherProductTraderCell
+                  name={ouSpecificBetTypeGroupListModel[0].BetTypeName}
+                  maxBet={ouSpecificBetTypeGroupListModel[0].Maxbet}
+                  traders={ouSpecificBetTypeGroupListModel[0].MainAssignment}
+                  others={ouSpecificBetTypeGroupListModel[0].OthersAssignment}
+                  rowIndex={i}
+                />
               )}
           </tr>
           {ouSpecificBetTypeGroupListModel.length > 0 &&
