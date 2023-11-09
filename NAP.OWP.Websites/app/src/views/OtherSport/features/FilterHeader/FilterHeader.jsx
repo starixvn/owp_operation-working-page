@@ -29,6 +29,7 @@ import {
   setIsEdit,
   clearEditOfferLiveMatches
 } from '../OSTable/OSTableSlice/reducer';
+import AssignmentUpload from '../AssignmentUpload';
 import { saveEditOfferLive } from '../../services/Service';
 const propTypes = {
   policy: PropTypes.object.isRequired
@@ -38,7 +39,7 @@ const formatDate = 'YYYY-MM-DD';
 
 const FilterHeader = props => {
   const model = useSelector(state => state.osAssignmentTable);
-  const { entities, editOfferLiveMatches, isEdit } = model;
+  const { editOfferLiveMatches, isEdit } = model;
   const stableDispatch = useStableDispatch();
   const { Username, HasWrite } = props.policy;
   const storageKeyByName = `${LOCAL_STORAGE_KEY}_${Username}`;
@@ -167,100 +168,111 @@ const FilterHeader = props => {
   };
 
   return (
-    <div className='filter'>
-      <div className='filter-control calendar'>
-        <div className='label'>From</div>
-        <DatePicker
-          className='from-date'
-          selected={selectedFromDate}
-          onChange={date => setSelectedFromDate(date)}
-          minDate={buildTimeRangeLast30Day(new Date())}
-          dateFormat='MMM dd, yyyy'
+    <>
+      <div className='filter'>
+        <div className='filter-control calendar'>
+          <div className='label'>From</div>
+          <DatePicker
+            className='from-date'
+            selected={selectedFromDate}
+            onChange={date => setSelectedFromDate(date)}
+            minDate={buildTimeRangeLast30Day(new Date())}
+            dateFormat='MMM dd, yyyy'
+          />
+        </div>
+        <div className='filter-control calendar'>
+          <div className='label'>To</div>
+          <DatePicker
+            className='to-date'
+            selected={selectedToDate}
+            onChange={date => setSelectedToDate(date)}
+            minDate={selectedFromDate}
+            dateFormat='MMM dd, yyyy'
+          />
+        </div>
+        <EmployeeFilterNative
+          defaultValue={props.policy.Username}
+          onLoadEmployeeDone={employee => handleSubmitOnStart(employee)}
+          ref={empRef}
         />
+        <div className='filter-control multiselect'>
+          <div className='label'>Sport</div>
+          <MultiSelect
+            className='sport'
+            options={SPORTS}
+            value={selectedSports}
+            disableSearch
+            ClearSelectedIcon={null}
+            onChange={setSelectedSports}
+          />
+        </div>
+        <div className='filter-control multiselect'>
+          <div className='label'>Offer Live</div>
+          <MultiSelect
+            className='offer-live'
+            options={OFFER_LIVES}
+            ClearSelectedIcon={null}
+            value={selectedOfferLives}
+            disableSearch
+            onChange={setSelectedOfferLives}
+          />
+        </div>
+        <div className='filter-control multiselect'>
+          <div className='label'>Match Status</div>
+          <MultiSelect
+            className='match-status'
+            options={MATCH_STATUSES}
+            ClearSelectedIcon={null}
+            value={selectedMatchStatuses}
+            disableSearch
+            onChange={setSelectedMatchStatuses}
+          />
+        </div>
+        <div className='filter-control multiselect'>
+          <div className='label'>Linked Match</div>
+          <MultiSelect
+            className='linked-match'
+            options={LINKED_MATCHES}
+            ClearSelectedIcon={null}
+            disableSearch
+            value={selectedLinkedMatches}
+            onChange={setSelectedLinkedMatches}
+          />
+        </div>
+        <div className='filter-control btn-block'>
+          <button
+            disabled={isEdit}
+            className={`button-submit ${isEdit ? 'button-disable' : ''}`}
+            onClick={handleOnSubmit}>
+            Submit
+          </button>
+          <button
+            disabled={isEdit}
+            className={`button-submit ${isEdit ? 'button-disable' : ''}`}
+            onClick={handleOnDownload}>
+            Download
+          </button>
+        </div>
       </div>
-      <div className='filter-control calendar'>
-        <div className='label'>To</div>
-        <DatePicker
-          className='to-date'
-          selected={selectedToDate}
-          onChange={date => setSelectedToDate(date)}
-          minDate={selectedFromDate}
-          dateFormat='MMM dd, yyyy'
-        />
+      <div className='upload-wrapper-button'>
+        {HasWrite && (
+          <div className='edit-offer-live-wrapper'>
+            <EditOfferLive
+              editOfferLiveMatches={editOfferLiveMatches}
+              handleOnSave={handleOnSave}
+              handleCancel={handleCancel}
+              handleOnOpenEditOfferLive={handleOnOpenEditOfferLive}
+              isEdit={isEdit}
+            />
+          </div>
+        )}
+        {HasWrite && (
+          <div className='btn-upload-assignment'>
+            <AssignmentUpload />
+          </div>
+        )}
       </div>
-      <EmployeeFilterNative
-        defaultValue={props.policy.Username}
-        onLoadEmployeeDone={employee => handleSubmitOnStart(employee)}
-        ref={empRef}
-      />
-      <div className='filter-control multiselect'>
-        <div className='label'>Sport</div>
-        <MultiSelect
-          className='sport'
-          options={SPORTS}
-          value={selectedSports}
-          disableSearch
-          ClearSelectedIcon={null}
-          onChange={setSelectedSports}
-        />
-      </div>
-      <div className='filter-control multiselect'>
-        <div className='label'>Offer Live</div>
-        <MultiSelect
-          className='offer-live'
-          options={OFFER_LIVES}
-          ClearSelectedIcon={null}
-          value={selectedOfferLives}
-          disableSearch
-          onChange={setSelectedOfferLives}
-        />
-      </div>
-      <div className='filter-control multiselect'>
-        <div className='label'>Match Status</div>
-        <MultiSelect
-          className='match-status'
-          options={MATCH_STATUSES}
-          ClearSelectedIcon={null}
-          value={selectedMatchStatuses}
-          disableSearch
-          onChange={setSelectedMatchStatuses}
-        />
-      </div>
-      <div className='filter-control multiselect'>
-        <div className='label'>Linked Match</div>
-        <MultiSelect
-          className='linked-match'
-          options={LINKED_MATCHES}
-          ClearSelectedIcon={null}
-          disableSearch
-          value={selectedLinkedMatches}
-          onChange={setSelectedLinkedMatches}
-        />
-      </div>
-      <div className='filter-control btn-block'>
-        <button
-          disabled={isEdit}
-          className={`button-submit ${isEdit ? 'button-disable' : ''}`}
-          onClick={handleOnSubmit}>
-          Submit
-        </button>
-        <button
-          disabled={isEdit}
-          className={`button-submit ${isEdit ? 'button-disable' : ''}`}
-          onClick={handleOnDownload}>
-          Download
-        </button>
-      </div>
-      {HasWrite && (
-        <EditOfferLive
-          editOfferLiveMatches={editOfferLiveMatches}
-          handleOnSave={handleOnSave}
-          handleCancel={handleCancel}
-          handleOnOpenEditOfferLive={handleOnOpenEditOfferLive}
-          isEdit={isEdit}
-        />
-      )}
-    </div>
+    </>
   );
 };
 

@@ -9,16 +9,18 @@ const AssignmentUpload = () => {
   return (
     <>
       <button
-        className='button-upload-other-spport'
+        className='button-upload-other-sport'
         onClick={() => setCanDisplayWizard(true)}>
         Upload assignment
       </button>
-      {canDisplayWizard &&
+      {canDisplayWizard && (
         <Suspense fallback={<Loading />}>
           <WizardWrapper
             className='wizard-container'
-            onClose={() => setCanDisplayWizard(false)} />
-        </Suspense>}
+            onClose={() => setCanDisplayWizard(false)}
+          />
+        </Suspense>
+      )}
     </>
   );
 };

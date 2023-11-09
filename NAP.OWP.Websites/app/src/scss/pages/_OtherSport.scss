@@ -26,46 +26,7 @@
   }
 }
 
-.upload-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 30px;
-}
 
-.button-upload-other-spport {
-  border: none;
-  border-radius: 2px;
-  display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding: 0 1.5rem;
-  text-transform: capitalize;
-  vertical-align: middle;
-  -webkit-tap-highlight-color: transparent;
-  color: #fff;
-  background-color: #ff9f09;
-  transition: 0.3s ease all;
-  outline: none !important;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 2px -2px rgba(0, 0, 0, 0.2),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
-
-  &:hover {
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14),
-      0 3px 4px -2px rgba(0, 0, 0, 0.2), 0 1px 7px 0 rgba(0, 0, 0, 0.12);
-  }
-
-  @media screen and (max-width: 1889px) {
-    left: auto;
-    right: 40px;
-  }
-}
-
-.last-update {
-  padding: 10px;
-  color: #828282;
-  font-style: italic;
-  font-size: 1.2rem;
-}
 
 @media screen and (max-width: 1800px) {
   .last-update {
@@ -387,8 +348,11 @@
 // OS Live Game Assignment
 //  ** filter ** //
 .other-sport-header {
+  display: flex;
+
   .filter {
-    padding: 10px 0px 10px 10px;
+    padding: 10px 0px 0px 10px;
+    width: 75% !important;
 
     .filter-control {
       margin-bottom: 10px;
@@ -415,6 +379,15 @@
     }
   }
 
+  .upload-wrapper-button {
+    width: 25% !important;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    padding: 10px 10px 0px 10px;
+  }
+
   .mdi-icon {
     margin-left: 5px;
     cursor: pointer;
@@ -431,11 +404,25 @@
 
 }
 
+
 .edit-offer-live-wrapper {
-  width: 25% !important;
+  display: flex;
+  padding-right: 20px;
 }
 
-.button-cancel {
+
+
+.upload-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+
+.button-upload-other-sport,
+.button-edit-offer-live,
+.button-cancel,
+.button-save {
   border: none;
   border-radius: 2px;
   display: inline-block;
@@ -461,10 +448,31 @@
     left: auto;
     right: 40px;
   }
+
+  &.button-edit-offer-live {
+    background-color: #1e88e5 !important;
+  }
+
+  &.button-save {
+    background-color: #1e88e5 !important;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}
+
+.button-save.button-disable {
+  background-color: rgba(151, 151, 151, 1) !important;
 }
 
 .button-submit.button-disable {
   background-color: rgba(151, 151, 151, 1) !important;
+}
+
+.last-update {
+  padding: 10px;
+  color: #828282;
+  font-style: italic;
+  font-size: 1.2rem;
 }
 
 .data-indicator {
