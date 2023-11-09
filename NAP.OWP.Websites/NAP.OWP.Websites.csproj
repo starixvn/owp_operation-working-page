@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -1094,7 +1095,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-998d9c09.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-8b3e9897.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-a53133b6.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-feedback-57264197.svg" />
@@ -2758,7 +2759,7 @@
     <Content Include="wwwroot\live-detail\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\server-78c390fe.css" />
-    <Content Include="wwwroot\live-detail\assets\js\main-7575f6b0.js" />
+    <Content Include="wwwroot\live-detail\assets\js\main-83e2b8d4.js" />
     <Content Include="wwwroot\live-detail\favicon.ico" />
     <Content Include="wwwroot\live-detail\server.html" />
     <Content Include="wwwroot\live-game-list\assets\ext\icon-feedback-57264197.svg" />
@@ -2767,7 +2768,7 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\server-14734765.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-b809b2e1.js" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-a434048b.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-feedback-57264197.svg" />
@@ -3044,10 +3045,6 @@
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\assignee-suggestion-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\assignee-suggestion-list\server.cshtml" />
-<Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-picking\server.cshtml" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
@@ -3060,30 +3057,26 @@
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-assignment\server.cshtml" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\live-detail\server.cshtml" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\live-game-list\server.cshtml" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-assignment\server.cshtml" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\task-list\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\live-detail\server.cshtml" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\live-game-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
