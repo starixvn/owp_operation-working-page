@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -1106,7 +1105,7 @@
     <Content Include="wwwroot\event-picking\assets\ext\server-f4473e19.css" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_check_all-1f6bb12a.png" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_only-49132f43.png" />
-    <Content Include="wwwroot\event-picking\assets\js\main-e04e45b4.js" />
+    <Content Include="wwwroot\event-picking\assets\js\main-7a6dc2e2.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\event-upload\assets\ext\icon-feedback-57264197.svg" />
@@ -3057,10 +3056,6 @@
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-picking\server.cshtml" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
@@ -3077,6 +3072,10 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-picking\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
