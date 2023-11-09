@@ -10,7 +10,7 @@ const propTypes = {
 
 const RoundCell = props => {
   const { rowIndex, dataSource } = props;
-  const { division, round, etpk } = dataSource[rowIndex];
+  const { division, round, etpk, teamRound } = dataSource[rowIndex];
   const ref = useRef(null);
   const checkShowToolTip = checkIsShow({ division, round, etpk });
 
@@ -30,6 +30,14 @@ const RoundCell = props => {
       </span>
     );
 
+  const renderTeamRound = () =>
+    teamRound && (
+      <span>
+        <strong>Round (H-A/T): </strong>
+        {teamRound}
+      </span>
+    );
+
   const renderEtPk = () =>
     etpk && (
       <span>
@@ -43,6 +51,7 @@ const RoundCell = props => {
       <div className='round-cell' ref={ref}>
         {renderDivision()}
         {renderRound()}
+        {renderTeamRound()}
         {renderEtPk()}
       </div>
       {checkShowToolTip && (

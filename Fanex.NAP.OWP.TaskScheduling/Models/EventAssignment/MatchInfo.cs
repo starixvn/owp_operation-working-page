@@ -38,6 +38,8 @@
 
         public string Round { get; set; }
 
+        public string TeamRound { get; set; }
+
         public string OutSide { get; set; }
 
         public string Remark { get; set; }

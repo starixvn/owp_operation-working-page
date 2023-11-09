@@ -44,6 +44,8 @@ namespace Fanex.NAP.OWP.TaskScheduling.Models.TaskListToday
 
         public string MatchCode { get; set; }
 
+        public string TeamRound { get; set; }
+
         public string League { get; set; }
 
         public bool IsPES

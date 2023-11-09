@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class RemarkCell extends React.PureComponent {
   render() {
     const { data, rowIndex } = this.props;
-    const { Round, Division } = data[rowIndex];
+    const { Round, Division, TeamRound } = data[rowIndex];
     const arrayCombine = [];
     data[rowIndex].Remark &&
       arrayCombine.push(<p className='remark-note'>{data[rowIndex].Remark}</p>);
@@ -14,6 +14,13 @@ class RemarkCell extends React.PureComponent {
         <p className='round-note'>
           <b>Round:</b>
           {Round}
+        </p>
+      );
+    TeamRound &&
+      arrayCombine.push(
+        <p className='team-round-note'>
+          <b>Round (H-A/T):</b>
+          {TeamRound}
         </p>
       );
     Division &&
@@ -35,8 +42,6 @@ class RemarkCell extends React.PureComponent {
     );
   }
 }
-
-
 
 const propTypesBase = {
   data: PropTypes.array.isRequired,

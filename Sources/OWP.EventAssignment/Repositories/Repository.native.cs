@@ -598,6 +598,7 @@ namespace OWP.EventAssignment.Repositories
                     Home = match.Home,
                     Away = match.Away,
                     MatchCode = match.MatchCode,
+                    TeamRound = match.TeamRound,
                     Channel = TemplateIpTvChannelBuilder.Build(match.IpTv, match.Channel),
                     Remark = match.Remark,
                     Round = match.Round,

@@ -3,7 +3,7 @@ import { CellProps } from '../../../type/TableType';
 
 const RemarkCell = (props: CellProps): JSX.Element => {
   const { rowIndex, dataSource } = props;
-  const { Remark, Round, Division } = dataSource[rowIndex];
+  const { Remark, Round, Division, TeamRound } = dataSource[rowIndex];
 
   return (
     <div className='remark-cell'>
@@ -12,6 +12,12 @@ const RemarkCell = (props: CellProps): JSX.Element => {
       {Round && (
         <span>
           <strong>Round:</strong> {Round}
+        </span>
+      )}
+      <br></br>
+      {TeamRound && (
+        <span>
+          <strong>Round (H-A/T):</strong> {TeamRound}
         </span>
       )}
       <br></br>

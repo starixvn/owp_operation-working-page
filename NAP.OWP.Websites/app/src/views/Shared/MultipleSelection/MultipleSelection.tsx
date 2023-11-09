@@ -56,6 +56,19 @@ const MultipleSelection = (props: IMultipleSelectProps) => {
       onShowDropdownListOption(isEqual(className, CLASS_NAME_IS_SHOW));
   }, [className, onShowDropdownListOption]);
 
+  const filterOptions = (options: Option[], filterKey: string) => {
+    if (!filterKey) {
+      setSelected(selected);
+      return options;
+    }
+
+    const regex = new RegExp(filterKey, "i");
+    const result = options.filter((x: Option) => x.label && x.label.match(regex));
+    setSelected(result);
+
+    return result;
+  };
+
   return (
     <div className={`multi-select-dropdown ${props.className} ${className}`}>
       <div className='label'>
@@ -77,6 +90,7 @@ const MultipleSelection = (props: IMultipleSelectProps) => {
           selectAll: '-- Select All --'
         }}
         onMenuToggle={handleMenuToggle}
+        filterOptions={filterOptions}
       />
     </div>
   );
