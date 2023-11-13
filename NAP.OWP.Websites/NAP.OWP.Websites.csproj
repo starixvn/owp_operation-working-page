@@ -2853,15 +2853,15 @@
     <Content Include="wwwroot\other-sport\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\other-sport\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\other-sport\assets\ext\server-122560eb.css" />
-    <Content Include="wwwroot\other-sport\assets\js\FileLoader-e07f2f71.js" />
-    <Content Include="wwwroot\other-sport\assets\js\main-ec2cbed2.js" />
-    <Content Include="wwwroot\other-sport\assets\js\StepControl-1ab7540f.js" />
-    <Content Include="wwwroot\other-sport\assets\js\Validation-6fb68f5d.js" />
-    <Content Include="wwwroot\other-sport\assets\js\ValidationError-9506ee59.js" />
-    <Content Include="wwwroot\other-sport\assets\js\ValidationSuccess-9b933ce5.js" />
-    <Content Include="wwwroot\other-sport\assets\js\Wizard-e56488cb.js" />
-    <Content Include="wwwroot\other-sport\assets\js\WizardWrapper-b2cab8c2.js" />
+    <Content Include="wwwroot\other-sport\assets\ext\server-0b4c005a.css" />
+    <Content Include="wwwroot\other-sport\assets\js\FileLoader-2c3d8188.js" />
+    <Content Include="wwwroot\other-sport\assets\js\main-6951ef67.js" />
+    <Content Include="wwwroot\other-sport\assets\js\StepControl-2f699bad.js" />
+    <Content Include="wwwroot\other-sport\assets\js\Validation-8e3280d5.js" />
+    <Content Include="wwwroot\other-sport\assets\js\ValidationError-9ff10849.js" />
+    <Content Include="wwwroot\other-sport\assets\js\ValidationSuccess-e7043927.js" />
+    <Content Include="wwwroot\other-sport\assets\js\Wizard-b82a4742.js" />
+    <Content Include="wwwroot\other-sport\assets\js\WizardWrapper-f5f18a98.js" />
     <Content Include="wwwroot\other-sport\favicon.ico" />
     <Content Include="wwwroot\other-sport\server.html" />
     <Content Include="wwwroot\overtime-report\assets\ext\icon-feedback-57264197.svg" />
@@ -3049,10 +3049,6 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\other-sport\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\other-sport\server.cshtml" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
@@ -3077,6 +3073,10 @@
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\live-game-list\server.cshtml" />
+    <Content Include="wwwroot\other-sport\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\other-sport\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
