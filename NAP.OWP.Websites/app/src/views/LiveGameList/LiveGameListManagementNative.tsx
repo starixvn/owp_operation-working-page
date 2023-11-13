@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { OWPBody, OWPHeader } from '../Shared/common/OWP/OPWPage';
 import Filter from './filterArea/Filter';
-import LiveGameListTable from './table/LiveGameListTable';
 import { FunctionKeys } from '../Shared/Constants';
 import usePermission from '../Shared/customHook/usePermission';
 import CreateTicketBoardOther from '../Shared/createTicketNew/CreateTicketBoardOther';
@@ -13,6 +12,10 @@ import Loading from '../components/Loading';
 import { setUserId } from './table/tableSlice/tableSlice';
 import { useDispatch } from 'react-redux';
 import PopupDetail from './component/PopupDetail';
+
+import { useSelector } from 'react-redux';
+import { RootState } from './app/storeNative';
+import LiveGameListTable from './table/LiveGameListTable';
 
 type CreatorInfo = {
   groupName: null | string;

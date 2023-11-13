@@ -3,6 +3,7 @@
     using System;
     using OWP.Utils;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class EventModel
     {
@@ -31,6 +32,8 @@
         public string OtherTime { get; set; }
 
         public string League { get; set; }
+
+        public bool IsSaBa => League.IsContainsIgnoreCase("SABA");
 
         public string LeagueGroup { get; set; }
 

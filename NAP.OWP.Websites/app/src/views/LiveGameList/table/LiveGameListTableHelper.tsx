@@ -1,35 +1,15 @@
-import { dynamicCell } from './ConfigNative';
 import {
   AssignmentModel,
-  Column,
-  ColumnSchema,
   FilterState,
-  MatchInfo
+  MatchInfo,
+  ModelSpecialProduct
 } from '../type/TableType';
-import { calculateCustomTableWidth } from '../../Shared/common/CustomTable/Helper';
-import { filterBySearchKey, clearFilter } from '../table/tableSlice/tableSlice';
-import {
-  DefaultTableStyle,
-  No,
-  KOTime,
-  Match,
-  League,
-  Ticket,
-  Remark,
-  FtTrader,
-  FirstHalfTrader,
-  OtherProductTrader,
-  LA,
-  IPTvStreaming,
-  Provider
-} from './TableSchema.json';
 import { MatchStatuses } from '../../Shared/Constants';
-import { coefficientTable } from '../LiveGameListConst.json';
 import { filterDataTable } from '../../Shared/Utils';
 
 const buildColorRowTable = (dataSource: MatchInfo) => {
   if (!dataSource) {
-    return 0;
+    return '';
   }
   switch (dataSource.MatchStatus) {
     case MatchStatuses.Cancel:
@@ -40,113 +20,6 @@ const buildColorRowTable = (dataSource: MatchInfo) => {
     default:
       return '';
   }
-};
-
-const buildColumn = (width: number, column: Column) => {
-  const { headerName, columnKey, isCanFilter } = column;
-  return {
-    headerName,
-    columnKey,
-    isCanFilter,
-    width
-  };
-};
-
-const buildColumnKOTime = (width: number, column: Column) => {
-  const { isCanSort, sortState } = column;
-  return {
-    ...buildColumn(width, column),
-    isCanSort,
-    sortState
-  };
-};
-
-const calculateRowOfColumn = (
-  length: number,
-  widthPercent: number,
-  widthWindow: number
-) => {
-  return (length * widthPercent * coefficientTable) / widthWindow;
-};
-
-const calculateRowHeight = (dataSource: MatchInfo, width: number) => {
-  if (!dataSource) {
-    return 0;
-  }
-  const heightOfLeague = calculateRowOfColumn(
-    dataSource.LengthLeague,
-    League.size,
-    width
-  );
-
-  const heightOfRemark = calculateRowOfColumn(
-    dataSource.LengthRemark,
-    Remark.size,
-    width
-  );
-
-  const heightOfTraderHdp = dataSource.LengthTraderHdp;
-
-  const heightOfTraderOu = dataSource.LengthTraderOu;
-
-  const heightOfOtherProduct =
-    dataSource.LengthOtherProductOneXTwo +
-    dataSource.LengthOtherProduct1HOneXTwo +
-    dataSource.LengthOtherProductAllInOne +
-    dataSource.LengthOtherProductFastMarket +
-    dataSource.LengthOtherProductFifteenMinutes +
-    dataSource.LengthOtherProductTenMinutes;
-
-  const heightOfIpTv = calculateRowOfColumn(
-    dataSource.LengthIpTv,
-    IPTvStreaming.size,
-    width
-  );
-
-  const heightOfProvider = calculateRowOfColumn(
-    dataSource.LengthProvider,
-    Provider.size,
-    width
-  );
-
-  const heights = [
-    DefaultTableStyle.rowHeight,
-    heightOfLeague,
-    heightOfRemark,
-    heightOfTraderHdp + heightOfTraderOu,
-    heightOfOtherProduct,
-    heightOfIpTv,
-    heightOfProvider
-  ];
-
-  return Math.max(...heights);
-};
-
-const selectTable = (widthWindow: number) => {
-  const minWidth = 950;
-  const width = widthWindow < minWidth ? minWidth : widthWindow;
-  return {
-    columnSchema: [
-      buildColumn(width * No.size, No),
-      buildColumnKOTime(width * KOTime.size, KOTime),
-      buildColumn(width * League.size, League),
-      buildColumn(width * Match.size, Match),
-      buildColumn(width * Ticket.size, Ticket),
-      buildColumn(width * Remark.size, Remark),
-      buildColumn(width * FtTrader.size, FtTrader),
-      buildColumn(width * FirstHalfTrader.size, FirstHalfTrader),
-      buildColumn(width * OtherProductTrader.size, OtherProductTrader),
-      buildColumn(width * LA.size, LA),
-      buildColumn(width * IPTvStreaming.size, IPTvStreaming),
-      buildColumn(width * Provider.size, Provider)
-    ],
-    tableStyle: DefaultTableStyle,
-    dynamicCell,
-    filterFunc: filterBySearchKey,
-    clearFilterFunc: clearFilter,
-    tableWidth: (columnSchema: ColumnSchema) =>
-      calculateCustomTableWidth(columnSchema, DefaultTableStyle.initialWidth)
-  };
 };
 
 const searchCommonInfo = (
@@ -181,27 +54,22 @@ const isAssignment = (
   );
 
 const commonKeys: { [key: string]: Array<keyof MatchInfo> } = {
-  [No.columnKey]: ['MatchNo'],
-  [League.columnKey]: ['League'],
-  [Match.columnKey]: ['Home', 'Away'],
-  [Provider.columnKey]: ['WatchBet', 'Phone', 'Provider', 'OtherProvider'],
-  [IPTvStreaming.columnKey]: ['IPTVCopy']
+  ['No #']: ['MatchNo'],
+  ['League']: ['League'],
+  ['Match']: ['Home', 'Away'],
+  ['Provider']: ['WatchBet', 'Phone', 'Provider', 'OtherProvider'],
+  ['TV/IPTV']: ['IPTVCopy']
 };
 
 const traderKeys: { [key: string]: Array<keyof AssignmentModel> } = {
-  [FtTrader.columnKey]: [
-    'Handicap',
-    'HandicapOthers',
-    'OverUnder',
-    'OverUnderOthers'
-  ],
-  [FirstHalfTrader.columnKey]: [
+  ['FT Trader']: ['Handicap', 'HandicapOthers', 'OverUnder', 'OverUnderOthers'],
+  ['1H Trader']: [
     'Handicap1st',
     'Handicap1stOthers',
     'OverUnder1st',
     'OverUnder1stOthers'
   ],
-  [OtherProductTrader.columnKey]: [
+  ['Other Product Trader']: [
     'Specific10MinsOthers',
     'Specific15MinsOthers',
     'Specific10Mins',
@@ -215,7 +83,7 @@ const traderKeys: { [key: string]: Array<keyof AssignmentModel> } = {
     'OneXTwo1st',
     'OneXTwo1stOthers'
   ],
-  [LA.columnKey]: ['LA', 'LAOthers']
+  ['LA']: ['LA', 'LAOthers']
 };
 
 const filterDataByKeys = (
@@ -271,12 +139,52 @@ const sortDataDesc = (entities: MatchInfo[]) =>
       dest.MatchNo.localeCompare(src.MatchNo)
   );
 
+const buildSpecialListModel = (dataSource: MatchInfo) => {
+  const specialListModel: Array<ModelSpecialProduct> = [
+    {
+      IsMajorBetType: true,
+      BetTypeName: 'FM',
+      Maxbet: dataSource.MatchSetting?.FastMarket,
+      IsHasMaxbetSpread: dataSource.MatchSetting?.FastMarket.IsHasMaxbetSpread,
+      MainAssignment: dataSource.Assignment?.FastMarket,
+      OthersAssignment: dataSource.Assignment?.FastMarketOthers
+    },
+    {
+      IsMajorBetType: true,
+      BetTypeName: 'AIO',
+      Maxbet: null,
+      IsHasMaxbetSpread: false,
+      MainAssignment: dataSource.Assignment?.AllInOne,
+      OthersAssignment: dataSource.Assignment?.AllInOneOthers
+    },
+    {
+      IsMajorBetType: false,
+      BetTypeName: '15mins',
+      IsHasMaxbetSpread:
+        dataSource.MatchSetting?.Specific15Mins.IsHasMaxbetSpread,
+      Maxbet: dataSource.MatchSetting?.Specific15Mins,
+      MainAssignment: dataSource.Assignment?.Specific15Mins,
+      OthersAssignment: dataSource.Assignment?.Specific15MinsOthers
+    },
+    {
+      IsMajorBetType: false,
+      BetTypeName: '10mins',
+      Maxbet: dataSource.MatchSetting?.Specific10Mins,
+      IsHasMaxbetSpread:
+        dataSource.MatchSetting?.Specific10Mins.IsHasMaxbetSpread,
+      MainAssignment: dataSource.Assignment?.Specific10Mins,
+      OthersAssignment: dataSource.Assignment?.Specific10MinsOthers
+    }
+  ];
+  return specialListModel.filter(
+    x => x.MainAssignment?.length > 0 || x.IsHasMaxbetSpread
+  );
+};
+
 export {
-  buildColumnKOTime,
-  selectTable,
   filterData,
-  calculateRowHeight,
   buildColorRowTable,
   sortDataAsc,
-  sortDataDesc
+  sortDataDesc,
+  buildSpecialListModel
 };

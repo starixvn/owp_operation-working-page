@@ -19,16 +19,14 @@ const propTypes = {
   userName: PropTypes.string.isRequired,
   selectedDate: PropTypes.object.isRequired,
   selectedMatchStatus: PropTypes.array.isRequired,
+  selectedMatchType: PropTypes.string.isRequired,
   isHostEventPicking: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.string.isRequired,
   selectedSyncLive: PropTypes.number.isRequired
 };
 
-const {
-  EventPickingList,
-  LiveGameAssignment,
-  EventPickingListNew
-} = exportExcelTypes;
+const { EventPickingList, LiveGameAssignment, EventPickingListNew } =
+  exportExcelTypes;
 const exportInfo = {
   [EventPickingList]: (model, selectedDate) => {
     const [url, fileName] = [
@@ -55,6 +53,7 @@ const ExportSelector = props => {
     isHostEventPicking,
     selectedDate,
     selectedMatchStatus,
+    selectedMatchType,
     userName,
     userNameIsValid,
     lastUpdated,
@@ -66,6 +65,8 @@ const ExportSelector = props => {
       EventDate: Utils.formatDate(selectedDate),
       Username: userName || '',
       MatchStatusIds: selectedMatchStatus || [],
+      MatchType: selectedMatchType || [],
+      SelectedMatchType: selectedMatchType || [],
       SyncLiveStatus: selectedSyncLive || 0,
       LastUpdated: lastUpdated
     };
@@ -91,13 +92,20 @@ const ExportSelector = props => {
 
   const handleClickExportLiveGameAssignment = () => {
     const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
-    if (selectedMatchStatusIsValid && userNameIsValid) {
+    const selectedMatchTypeIsValid = selectedMatchType.length > 0;
+    if (
+      selectedMatchStatusIsValid &&
+      userNameIsValid &&
+      selectedMatchTypeIsValid
+    ) {
       const { url, fileName } = createUrlFileName(LiveGameAssignment);
       exportExcel(url, fileName);
     } else {
       !selectedMatchStatusIsValid &&
         ToastrWrapper.showError('Please select at least one match status');
       !userNameIsValid && ToastrWrapper.showError('User not found');
+      !selectedMatchTypeIsValid &&
+        showError('Please select at least one match type');
     }
   };
 

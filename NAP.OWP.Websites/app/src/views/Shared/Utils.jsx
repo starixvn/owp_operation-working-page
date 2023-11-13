@@ -29,9 +29,7 @@ const formatDateTime = date => dayjs(date).format('MM/DD/YYYY hh:ss A');
 const formatDateTimeString = date => dayjs(date).format('MM/DD/YYYY hh:mm A');
 
 const formatDateTimeCreateDate = date =>
-  dayjs(date)
-    .add(12, 'h')
-    .format('MM/DD/YYYY hh:mm A');
+  dayjs(date).add(12, 'h').format('MM/DD/YYYY hh:mm A');
 
 const formatDateTimeGMT8 = date => {
   const d = dayjs.utc(date).add(8, 'h');
@@ -46,9 +44,7 @@ const isSameOrAfter = (selectedDate, currentDate) => {
 
 const isYesterdayOrAfterForAssignment = date => {
   const eventDate = dayjs(date).startOf('d');
-  const yesterday = dayjs()
-    .startOf('d')
-    .subtract(1, 'days');
+  const yesterday = dayjs().startOf('d').subtract(1, 'days');
   return eventDate.isSameOrAfter(yesterday);
 };
 
@@ -59,9 +55,7 @@ const isYesterdayOrAfterForLiveDetail = (date, time) => {
     eventDate = eventDate.subtract(1, 'days');
   }
 
-  const yesterday = dayjs()
-    .startOf('d')
-    .subtract(1, 'days');
+  const yesterday = dayjs().startOf('d').subtract(1, 'days');
   return eventDate.isSameOrAfter(yesterday);
 };
 
@@ -75,10 +69,7 @@ const convertJsonToObject = (json, defaultObject = {}) => {
 
 const toLowerCaseForFilter = value => {
   if (value) {
-    return value
-      .toString()
-      .trim()
-      .toLowerCase();
+    return value.toString().trim().toLowerCase();
   }
   return '';
 };
@@ -159,19 +150,17 @@ const buildMatchStatusOption = matchStatuses =>
   }));
 
 const buildSelectedMatchStatus = matchStatusOptions =>
-  matchStatusOptions
-    .filter(
-      x => x.label === MatchStatuses.Live || x.label === MatchStatuses.InPlay
-    );
+  matchStatusOptions.filter(
+    x => x.label === MatchStatuses.Live || x.label === MatchStatuses.InPlay
+  );
 
 const handleOnDateChange = (matchStatusOptions, date) => {
   let selectedMatchStatus = [];
   const today = new Date();
   if (isSameOrAfter(date, today)) {
-    selectedMatchStatus = matchStatusOptions
-      .filter(
-        x => x.label === MatchStatuses.Live || x.label === MatchStatuses.InPlay
-      );
+    selectedMatchStatus = matchStatusOptions.filter(
+      x => x.label === MatchStatuses.Live || x.label === MatchStatuses.InPlay
+    );
   } else {
     selectedMatchStatus = matchStatusOptions;
   }
@@ -189,16 +178,22 @@ const getValueHrefByReversedIndex = pathIndex => {
   return selectedPath;
 };
 
+const pushOrUpdateObject = (currentState, newFilter) => {
+  const { columnKey, keyword } = newFilter;
+  currentState[columnKey] = keyword;
+  return currentState;
+};
+
 const addOrReplaceFilterState = (currentState, newFilter) => {
   const index = currentState.findIndex(
     x => x.columnKey === newFilter.columnKey
   );
   return index > -1
     ? [
-      ...currentState.slice(0, index),
-      newFilter,
-      ...currentState.slice(index + 1)
-    ]
+        ...currentState.slice(0, index),
+        newFilter,
+        ...currentState.slice(index + 1)
+      ]
     : [...currentState, newFilter];
 };
 
@@ -234,6 +229,7 @@ export {
   getValueHrefByReversedIndex,
   getDisableRef,
   addOrReplaceFilterState,
+  pushOrUpdateObject,
   filterDataTable
 };
 export default Utils;

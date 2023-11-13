@@ -16,6 +16,7 @@ import {
 } from '../Shared/DateTime/dateTimeHelper';
 
 import { SYNC_LIVE_OPTION } from './constants/SyncLive';
+import { MATCH_TYPE_OPTION } from './constants/MatchType';
 import { setFilterDate } from './reducer/tableReducer';
 
 const propTypes = {
@@ -37,6 +38,7 @@ class Filter extends PureComponent {
     this.state = {
       selectedMatchStatus: [],
       selectedSyncLive: SYNC_LIVE_OPTION[0].value,
+      selectedMatchType: MATCH_TYPE_OPTION,
       userName: '',
       userNameIsValid: true,
       isShowUnreadMessOnly: false
@@ -99,16 +101,23 @@ class Filter extends PureComponent {
     const {
       selectedMatchStatus,
       selectedSyncLive,
+      selectedMatchType,
       userName,
       userNameIsValid,
       isShowUnreadMessOnly
     } = this.state;
     const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
-    if (selectedMatchStatusIsValid && userNameIsValid) {
+    const selectedMatchTypeIsValid = selectedMatchType.length > 0;
+    if (
+      selectedMatchStatusIsValid &&
+      userNameIsValid &&
+      selectedMatchTypeIsValid
+    ) {
       const postModel = {
         selectedDate,
         userName,
         selectedMatchStatus: selectedMatchStatus.map(x => x.value),
+        selectedMatchType: selectedMatchType.map(ms => ms.value).join(),
         selectedSyncLive,
         showUnreadMessage: isShowUnreadMessOnly
       };
@@ -124,11 +133,13 @@ class Filter extends PureComponent {
       !selectedMatchStatusIsValid &&
         ToastrWrapper.showError('Please select at least one match status');
       !userNameIsValid && ToastrWrapper.showError('User not found');
+      !selectedMatchTypeIsValid &&
+        ToastrWrapper.showError('Please select at least one match type');
     }
   }
 
   render() {
-    const { selectedMatchStatus } = this.state;
+    const { selectedMatchStatus, selectedMatchType } = this.state;
     const {
       hasWrite,
       onToggleModal,
@@ -157,6 +168,18 @@ class Filter extends PureComponent {
           <UserSuggestion
             onHandleChange={(userName, userNameIsValid) =>
               this.getUserInfo(userName, userNameIsValid)
+            }
+          />
+        </div>
+        <div className='filter-control multiselect'>
+          <div className='label'>Match Type</div>
+          <MultiSelect
+            options={MATCH_TYPE_OPTION}
+            disableSearch
+            ClearSelectedIcon={null}
+            value={selectedMatchType}
+            onChange={selected =>
+              this.setState({ selectedMatchType: selected })
             }
           />
         </div>
@@ -195,6 +218,7 @@ class Filter extends PureComponent {
             isHostEventPicking={isHostEventPicking}
             selectedDate={selectedDate}
             selectedMatchStatus={selectedMatchStatus.map(x => x.value)}
+            selectedMatchType={selectedMatchType.map(ms => ms.value).join()}
             userName={this.state.userName}
             userNameIsValid={this.state.userNameIsValid}
             selectedSyncLive={this.state.selectedSyncLive}

@@ -13,15 +13,23 @@ const getEvents = createAsyncThunk(
   async ({
     userName,
     filterDate,
-    statusId
+    statusId,
+    matchType
   }: {
     userName: string;
     filterDate: Date;
     statusId: string;
+    matchType: string;
   }) => {
     const url = getUrl('query');
     const eventDate = Utils.formatDate(filterDate);
-    const response = await get({ url, userName, eventDate, statusId });
+    const response = await get({
+      url,
+      userName,
+      eventDate,
+      statusId,
+      matchType
+    });
     return response.data;
   }
 );

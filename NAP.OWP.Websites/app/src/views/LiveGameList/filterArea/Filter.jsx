@@ -1,6 +1,9 @@
 import React, { useState, createRef, useEffect } from 'react';
 import MultipleSelection from '../../Shared/MultipleSelection/MultipleSelection';
-import { DEFAULT_STATUS_OPTION } from '../LiveGameListConst.json';
+import {
+  DEFAULT_STATUS_OPTION,
+  MATCH_TYPE_OPTION
+} from '../LiveGameListConst.json';
 import useStableDispatch from './../../Shared/customHook/useStableDispatch';
 import { getEvents } from '../table/tableSlice/tableThunk';
 import CreateTicketButton from '../../Shared/createTicketNew/CreateTicketButton';
@@ -15,7 +18,9 @@ import { FunctionKeys, MatchStatuses } from '../../Shared/Constants';
 import { useSelector } from 'react-redux';
 import {
   filterByUnReadTicket,
-  setRefreshModel
+  setRefreshModel,
+  setUserNameFilter,
+  setUserNameFilterIsValid
 } from '../table/tableSlice/tableSlice';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import Utils from '../../Shared/Utils';
@@ -23,16 +28,18 @@ import { UserSuggestion } from '../../components/Assignment/UserSuggestion';
 
 const { LIVE_GAME } = BUTTON_TYPE;
 const Filter = () => {
-  const [userName, setUserName] = useState('');
-  const [userNameIsValid, setUserNameIsValid] = useState(true);
   const [selectedDate, setSelectedDate] = useState(buildDefaultLGLFilterDate());
   const [searchDisabled, setSearchDisabled] = useState(false);
   const datePicker = createRef();
   const [selectedMatchStatus, setSelectedMatchStatus] = useState(
     DEFAULT_STATUS_OPTION
   );
+  const [selectedMatchType, setSelectedMatchType] = useState(MATCH_TYPE_OPTION);
   const [statusOptions, setStatusOptions] = useState([]);
-  const { isShowUnReadTicketOnly } = useSelector(state => state.events);
+  const { isShowUnReadTicketOnly, userNameFilter, userNameFilterIsValid } =
+    useSelector(state => state.events);
+  const [userName, setUserName] = useState(userNameFilter);
+  const [userNameIsValid, setUserNameIsValid] = useState(userNameFilterIsValid);
   const dispatch = useStableDispatch();
 
   useEffect(() => {
@@ -52,7 +59,8 @@ const Filter = () => {
       if (!disable) {
         const model = {
           filterDate: selectedDate,
-          statusId: selectedMatchStatus.map(ms => ms.value).join()
+          statusId: selectedMatchStatus.map(ms => ms.value).join(),
+          matchType: selectedMatchType.map(ms => ms.value).join()
         };
         dispatch(getEvents(model));
         dispatch(setRefreshModel(model));
@@ -68,12 +76,22 @@ const Filter = () => {
       return;
     }
 
-    if (!searchDisabled && userNameIsValid) {
+    if (!selectedMatchType.length) {
+      ToastrWrapper.showError(
+        'Please select at least one option for Match Type'
+      );
+      return;
+    }
+
+    if (!searchDisabled && userNameFilterIsValid) {
       const model = {
         userName,
         filterDate: selectedDate,
-        statusId: selectedMatchStatus.map(ms => ms.value).join()
+        statusId: selectedMatchStatus.map(ms => ms.value).join(),
+        matchType: selectedMatchType.map(ms => ms.value).join()
       };
+      dispatch(setUserNameFilter(userName));
+      dispatch(setUserNameFilterIsValid(userNameFilterIsValid));
       dispatch(getEvents(model));
       dispatch(setRefreshModel(model));
     }
@@ -126,6 +144,12 @@ const Filter = () => {
         />
       </div>
 
+      <MultipleSelection
+        label='Match Type'
+        options={MATCH_TYPE_OPTION}
+        value={selectedMatchType}
+        onChange={value => setSelectedMatchType(value)}
+      />
       <MultipleSelection
         label='Match Status'
         options={statusOptions}

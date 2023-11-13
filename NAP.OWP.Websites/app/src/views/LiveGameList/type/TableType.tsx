@@ -82,6 +82,7 @@ interface MatchSettingInfo {
   BettypeId: number;
   Maxbet: number | null;
   Spread: number | null;
+  IsHasMaxbetSpread: boolean;
   MaxbetSpreadToDisplay: string;
 }
 
@@ -96,6 +97,15 @@ interface MatchSettingModel {
   Specific10Mins: MatchSettingInfo;
   Specific15Mins: MatchSettingInfo;
 }
+
+type ModelSpecialProduct = {
+  IsMajorBetType: boolean;
+  BetTypeName: string;
+  IsHasMaxbetSpread: boolean;
+  Maxbet: MatchSettingInfo | null;
+  MainAssignment: AssignmentInfo[];
+  OthersAssignment: AssignmentInfo[];
+};
 
 interface Television {
   OWPMatchId: number;
@@ -165,23 +175,14 @@ interface MatchInfo {
   HasTicket: boolean;
   IsRead: boolean;
   MatchStatus: MatchStatus;
-  LengthLeague: number;
-  LengthRemark: number;
-  LengthTraderHdp: number;
-  LengthTraderOu: number;
-  LengthOtherProductOneXTwo: number;
-  LengthOtherProduct1HOneXTwo: number;
-  LengthOtherProductFastMarket: number;
-  LengthOtherProductAllInOne: number;
-  LengthOtherProductTenMinutes: number;
-  LengthOtherProductFifteenMinutes: number;
-  LengthIpTv: number;
-  LengthProvider: number;
-  RowSpan: number;
+  Rowspan: number;
   KickOffTimeDisplay: string;
   InfoSiteTime: string;
   InfoSiteTimeDisplay: string;
   IsShowAbsenceIcon: boolean;
+}
+interface FilterAllColumn {
+  [x: string]: string;
 }
 interface FilterState {
   columnKey: string | undefined;
@@ -202,6 +203,7 @@ interface ISortState {
 }
 
 export {
+  FilterAllColumn,
   Column,
   ColumnSchema,
   CellModel,
@@ -215,5 +217,6 @@ export {
   AssignmentModel,
   PopupState,
   RefreshModel,
-  ISortState
+  ISortState,
+  ModelSpecialProduct
 };

@@ -106,25 +106,32 @@
             employeeCell.CellStyle.FillForegroundColor = HSSFColor.LightCornflowerBlue.Index;
             employeeCell.CellStyle.FillPattern = FillPattern.SolidForeground;
 
+            var matchTypeCell = CustomizedSheet.GetRow(0).CreateCell(6);
+            matchTypeCell.CellStyle = CustomizedSheet.Workbook.CreateCellStyle();
+            matchTypeCell.SetCellValue("MatchType");
+            CustomizedSheet.GetRow(0).CreateCell(7).SetCellValue(_model.MatchType);
+            matchTypeCell.CellStyle.FillForegroundColor = HSSFColor.LightCornflowerBlue.Index;
+            matchTypeCell.CellStyle.FillPattern = FillPattern.SolidForeground;
 
-            var matchStatusCell = CustomizedSheet.GetRow(0).CreateCell(6);
+
+            var matchStatusCell = CustomizedSheet.GetRow(0).CreateCell(9);
             matchStatusCell.CellStyle = CustomizedSheet.Workbook.CreateCellStyle();
             matchStatusCell.SetCellValue("MatchStatus");
-            CustomizedSheet.GetRow(0).CreateCell(7).SetCellValue(ConvertToString(_model.MatchStatusIds));
+            CustomizedSheet.GetRow(0).CreateCell(10).SetCellValue(ConvertToString(_model.MatchStatusIds));
             matchStatusCell.CellStyle.FillForegroundColor = HSSFColor.LightCornflowerBlue.Index;
             matchStatusCell.CellStyle.FillPattern = FillPattern.SolidForeground;
 
-            var syncLiveCell = CustomizedSheet.GetRow(0).CreateCell(9);
+            var syncLiveCell = CustomizedSheet.GetRow(0).CreateCell(12);
             syncLiveCell.CellStyle = CustomizedSheet.Workbook.CreateCellStyle();
             syncLiveCell.SetCellValue("SyncLive");
-            CustomizedSheet.GetRow(0).CreateCell(10).SetCellValue((SyncLiveFilter)_model.SyncLiveStatus);
+            CustomizedSheet.GetRow(0).CreateCell(13).SetCellValue((SyncLiveFilter)_model.SyncLiveStatus);
             syncLiveCell.CellStyle.FillForegroundColor = HSSFColor.LightCornflowerBlue.Index;
             syncLiveCell.CellStyle.FillPattern = FillPattern.SolidForeground;
 
-            var lastUpdatedCell = CustomizedSheet.GetRow(0).CreateCell(12);
+            var lastUpdatedCell = CustomizedSheet.GetRow(0).CreateCell(15);
             lastUpdatedCell.CellStyle = CustomizedSheet.Workbook.CreateCellStyle();
             lastUpdatedCell.SetCellValue("LastUpdated");
-            CustomizedSheet.GetRow(0).CreateCell(13).SetCellValue(_model.UploadDateTime.ToLastUpdatedFormat());
+            CustomizedSheet.GetRow(0).CreateCell(16).SetCellValue(_model.UploadDateTime.ToLastUpdatedFormat());
             lastUpdatedCell.CellStyle.FillForegroundColor = HSSFColor.LightCornflowerBlue.Index;
             lastUpdatedCell.CellStyle.FillPattern = FillPattern.SolidForeground;
 

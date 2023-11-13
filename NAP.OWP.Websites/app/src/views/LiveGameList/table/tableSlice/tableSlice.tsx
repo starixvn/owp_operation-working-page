@@ -1,22 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
-import { ORDER_ASC, ORDER_DESC, KOTime } from '../TableSchema.json';
+import { ORDER_ASC, ORDER_DESC } from '../TableSchema.json';
 import {
   FilterState,
   ISortState,
   MatchInfo,
   PopupState,
-  RefreshModel
+  RefreshModel,
+  FilterAllColumn
 } from '../../type/TableType';
-import { filterData, sortDataAsc, sortDataDesc } from '../LiveGameListTableHelper';
+import {
+  filterData,
+  sortDataAsc,
+  sortDataDesc
+} from '../LiveGameListTableHelper';
 import { getEvents } from './tableThunk';
 import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
-import { addOrReplaceFilterState } from '../../../Shared/Utils';
+import {
+  addOrReplaceFilterState,
+  pushOrUpdateObject
+} from '../../../Shared/Utils';
 import { isEqual } from 'lodash';
 
 const tableSlice = createSlice({
   name: 'EventInformation',
   initialState: {
+    userNameFilter: '',
+    userNameFilterIsValid: true,
+    valueFilterAllColumn: {} as FilterAllColumn,
+    columnKeyFilterCurrent: '',
+    isShowFilterHeader: false,
     loading: REQUEST_STATUS.idle,
     isShowUnReadTicketOnly: false,
     entitiesOriginal: [] as MatchInfo[],
@@ -28,12 +41,28 @@ const tableSlice = createSlice({
     } as PopupState,
     filterState: [] as FilterState[],
     sortState: {
-      columnKey: KOTime.columnKey,
+      columnKey: 'KO Time',
       orderType: ''
     } as ISortState,
     refreshModel: {} as RefreshModel
   },
   reducers: {
+    setUserNameFilter: (state, action) => {
+      state.userNameFilter = action.payload;
+    },
+    setUserNameFilterIsValid: (state, action) => {
+      state.userNameFilterIsValid = action.payload;
+    },
+    setValueFilter: (state, action) => {
+      const { valueFilterAllColumn } = state;
+      state.valueFilterAllColumn = pushOrUpdateObject(
+        valueFilterAllColumn,
+        action.payload
+      );
+    },
+    setColumnKeyValue: (state, action) => {
+      state.columnKeyFilterCurrent = action.payload;
+    },
     filterByUnReadTicket: (state, action) => {
       const { entitiesOriginal, filterState } = state;
       state.isShowUnReadTicketOnly = action.payload;
@@ -65,6 +94,7 @@ const tableSlice = createSlice({
     clearFilter: state => {
       const { entitiesOriginal } = state;
       state.filterState = [];
+      state.valueFilterAllColumn = {};
       state.entities = entitiesOriginal;
       const { orderType } = state.sortState;
       if (isEqual(orderType, ORDER_ASC)) {
@@ -117,28 +147,37 @@ const tableSlice = createSlice({
   },
 
   extraReducers: builder => {
-    builder.addCase(getEvents.pending, state => {
-      state.loading = REQUEST_STATUS.pending;
-    }).addCase(getEvents.fulfilled, (state, { payload }) => {
-      state.loading = REQUEST_STATUS.idle;
-      const { filterState, isShowUnReadTicketOnly } = state;
-      state.entitiesOriginal = payload;
-      state.entities = filterData(payload)(isShowUnReadTicketOnly)(filterState);
-      const { orderType } = state.sortState;
-      if (isEqual(orderType, ORDER_ASC)) {
-        state.entities = sortDataAsc(state.entities);
-      }
-      if (isEqual(orderType, ORDER_DESC)) {
-        state.entities = sortDataDesc(state.entities);
-      }
-    }).addCase(getEvents.rejected, state => {
-      state.loading = REQUEST_STATUS.idle;
-    });
+    builder
+      .addCase(getEvents.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(getEvents.fulfilled, (state, { payload }) => {
+        state.loading = REQUEST_STATUS.idle;
+        const { filterState, isShowUnReadTicketOnly } = state;
+        state.entitiesOriginal = payload;
+        state.entities = filterData(payload)(isShowUnReadTicketOnly)(
+          filterState
+        );
+        const { orderType } = state.sortState;
+        if (isEqual(orderType, ORDER_ASC)) {
+          state.entities = sortDataAsc(state.entities);
+        }
+        if (isEqual(orderType, ORDER_DESC)) {
+          state.entities = sortDataDesc(state.entities);
+        }
+      })
+      .addCase(getEvents.rejected, state => {
+        state.loading = REQUEST_STATUS.idle;
+      });
   }
 });
 
 const { actions, reducer } = tableSlice;
 const {
+  setUserNameFilter,
+  setUserNameFilterIsValid,
+  setValueFilter,
+  setColumnKeyValue,
   filterBySearchKey,
   clearFilter,
   setDataTable,
@@ -151,6 +190,10 @@ const {
   sortFunc
 } = actions;
 export {
+  setUserNameFilter,
+  setUserNameFilterIsValid,
+  setValueFilter,
+  setColumnKeyValue,
   filterBySearchKey,
   clearFilter,
   setDataTable,

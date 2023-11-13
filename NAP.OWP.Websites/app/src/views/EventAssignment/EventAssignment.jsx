@@ -184,6 +184,7 @@ class EventAssignment extends Component {
       {
         userName: e.userName || '',
         selectedDate: e.selectedDate || new Date(),
+        selectedMatchType: e.selectedMatchType,
         selectedMatchStatus: e.selectedMatchStatus || [],
         selectedSyncLive: e.selectedSyncLive || 0,
         matchIsScrollTo: matchId || 0,
@@ -204,7 +205,8 @@ class EventAssignment extends Component {
         policy,
         selectedSyncLive,
         notePolicy,
-        showUnreadMessage
+        showUnreadMessage,
+        selectedMatchType
       } = this.state;
       this.setState({
         isLoading: true
@@ -213,6 +215,7 @@ class EventAssignment extends Component {
         EventDate: Utils.formatDate(selectedDate),
         Username: userName || '',
         MatchStatusIds: selectedMatchStatus || [],
+        MatchType: selectedMatchType || [],
         SyncLiveStatus: selectedSyncLive,
         ShowUnreadMessage: showUnreadMessage
       };
@@ -224,9 +227,8 @@ class EventAssignment extends Component {
       const lastUpdate = await EventAssignmentService.getLastUpdated(
         postModel.EventDate
       );
-      const isYesterdayOrAfter = Utils.isYesterdayOrAfterForAssignment(
-        selectedDate
-      );
+      const isYesterdayOrAfter =
+        Utils.isYesterdayOrAfterForAssignment(selectedDate);
       policy.FullBetTypes.HasWrite =
         this.originalPolicy.FullBetTypes.HasWrite && isYesterdayOrAfter;
       policy.PHBetTypes.HasWrite =
@@ -239,7 +241,9 @@ class EventAssignment extends Component {
         isLoading: false,
         tableKey: uuidv4(),
         dateUpdated: lastUpdate
-          ? dayjs(lastUpdate.substring(0, lastUpdate.length - 6)).format('MMM DD, hh:mm A')
+          ? dayjs(lastUpdate.substring(0, lastUpdate.length - 6)).format(
+              'MMM DD, hh:mm A'
+            )
           : ''
       });
     })();
@@ -298,18 +302,14 @@ class EventAssignment extends Component {
   };
 
   onHideDetailInformation = () => {
-    const editGeneralInfo = this.iframeRef.current.getAttribute(
-      'edit-general-info'
-    );
-    const editMatchInfo = this.iframeRef.current.getAttribute(
-      'edit-match-info'
-    );
-    const editTradingInfo = this.iframeRef.current.getAttribute(
-      'edit-trading-info'
-    );
-    const editProviderInfo = this.iframeRef.current.getAttribute(
-      'edit-provider-info'
-    );
+    const editGeneralInfo =
+      this.iframeRef.current.getAttribute('edit-general-info');
+    const editMatchInfo =
+      this.iframeRef.current.getAttribute('edit-match-info');
+    const editTradingInfo =
+      this.iframeRef.current.getAttribute('edit-trading-info');
+    const editProviderInfo =
+      this.iframeRef.current.getAttribute('edit-provider-info');
 
     const isEditGeneralAndMatchInfo =
       editGeneralInfo === '1' || editMatchInfo === '1';

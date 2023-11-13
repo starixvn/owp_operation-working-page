@@ -1,50 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import CustomTable from '../../Shared/common/CustomTable/CustomTable';
-import {
-  selectTable,
-  calculateRowHeight,
-  buildColorRowTable
-} from './LiveGameListTableHelper';
-import { DefaultTableStyle } from './TableSchema.json';
+import React from 'react';
+import CustomTable from '../../Shared/tableCommon/CustomTable';
+import TableHeader from './tableHeader/TableHeader';
+import TableBody from './tableBody/TableBody';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/storeNative';
-import { sortFunc } from './tableSlice/tableSlice';
-
-const getTableSchema = () => {
-  const { innerWidth } = window;
-  return selectTable(innerWidth - DefaultTableStyle.widthResize);
-};
-
+import { isEqual } from 'lodash';
+import { REQUEST_STATUS } from '../../Shared/Constants';
+import Loading from '../../components/Loading';
 const LiveGameListTable = () => {
-  const [tableSchema, setTableSchema] = useState(getTableSchema());
   const model = useSelector((state: RootState) => state.events);
-  const config = {
-    ...tableSchema,
-    onCalculateRowHeight: (index: number) =>
-      calculateRowHeight(
-        model.entities[index],
-        window.innerWidth - DefaultTableStyle.widthResize
-      ),
-    onRowClassNameGetter: (index: number) =>
-      buildColorRowTable(model.entities[index]),
-    sortFunc
-  };
-
-  const handleResizeBrowser = () => {
-    const { innerWidth } = window;
-    setTableSchema(selectTable(innerWidth - DefaultTableStyle.widthResize));
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResizeBrowser);
-    return () => window.removeEventListener('resize', handleResizeBrowser);
-  }, []);
+  const { entities, loading } = model;
 
   return (
-    <CustomTable
-      model={model}
-      config={config}
-    />
+    <>
+      {isEqual(loading, REQUEST_STATUS.pending) && <Loading />}
+      <CustomTable
+        data={entities}
+        tableHeader={<TableHeader />}
+        classNameTable={'table-live-game-list'}>
+        <TableBody />
+      </CustomTable>
+    </>
   );
 };
 export default LiveGameListTable;

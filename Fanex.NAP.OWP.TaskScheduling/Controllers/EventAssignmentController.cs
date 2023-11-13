@@ -52,7 +52,7 @@ namespace Fanex.NAP.OWP.TaskScheduling.Controllers
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Reviewed. Suppression is OK here.")]
         [HttpGet]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
-        public async Task<FileResult> DownloadLiveGameAssignment(DateTime date, string userName, string matchStatusIds, int syncLiveStatus)
+        public async Task<FileResult> DownloadLiveGameAssignment(DateTime date, string userName, string matchStatusIds, int syncLiveStatus, string matchType)
         {
             var lastUpdated = (await eventAssignmentService.GetLastUpdated(date));
             var eventExportModel = new DownLoadExportModel
@@ -62,7 +62,8 @@ namespace Fanex.NAP.OWP.TaskScheduling.Controllers
                 MatchStatusIds = matchStatusIds,
                 UploadDateTime = lastUpdated.UploadDateTime,
                 SyncLiveStatus = syncLiveStatus,
-                PermissionModel = eventAssignmentPermission.BuildPermission()
+                PermissionModel = eventAssignmentPermission.BuildPermission(),
+                MatchType = matchType
             };
             await accessCounter.UpdateCounter(ConfigurationManager.AppSettings["LiveGameAssignment_Export"]);
             return await DownLoadExport(eventExportModel);

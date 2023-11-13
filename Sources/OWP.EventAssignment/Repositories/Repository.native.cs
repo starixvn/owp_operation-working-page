@@ -489,8 +489,8 @@ namespace OWP.EventAssignment.Repositories
 
                     var events = await MappingInfoToEventModel(matches, assignments, notes, matchSettings, televisions, matchOffers);
                     var eventsByUsers = FilterEventModelByUser(events, queryModel.Username);
-
-                    return FilterEventModelByLiveStatus(eventsByUsers, queryModel.SyncLiveStatus);
+                    var eventsByMatchType = FilterEventByMatchType(eventsByUsers, queryModel.MatchType);
+                    return FilterEventModelByLiveStatus(eventsByMatchType, queryModel.SyncLiveStatus);
                 }
             }
         }
@@ -536,6 +536,23 @@ namespace OWP.EventAssignment.Repositories
                 .Where(e => IsUserAssignedToEvent(username, e))
                 .ToList();
         }
+
+        private static IList<EventModel> FilterEventByMatchType(IEnumerable<EventModel> matchInfos, string matchType)
+        {
+            var types = matchType.Split(',').ToList();
+            if (IsSelectAllMatchType(types))
+            {
+                return matchInfos.ToList();
+            }
+
+            return types.Exists(x => x == EventAssignmentConst.MatchVirtual) ?
+                matchInfos.Where(x => x.IsSaBa).ToList() :
+                matchInfos.Where(x => !x.IsSaBa).ToList();
+        }
+
+        public static bool IsSelectAllMatchType(List<string> matchType)
+            => matchType.Exists(x => x == EventAssignmentConst.MatchReal)
+               && matchType.Exists(x => x == EventAssignmentConst.MatchVirtual);
 
         private static bool IsUserAssignedToEvent(string username, EventModel e)
         {

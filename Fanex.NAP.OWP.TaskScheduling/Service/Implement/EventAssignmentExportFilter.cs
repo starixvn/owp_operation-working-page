@@ -1,7 +1,7 @@
 ﻿namespace Fanex.NAP.OWP.TaskScheduling.Service.Implement
 {
-
     using global::OWP.Enumerations;
+    using global::OWP.EventAssignment.Const;
     using global::OWP.EventAssignment.Models;
     using global::OWP.Utils;
     using Models.EventAssignment;
@@ -12,7 +12,7 @@
 
     public interface EventAssignmentExportFilter
     {
-        List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus);
+        List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus, string matchType);
         List<EventModel> FilterEventModelByPermision(List<EventModel> events, EventAssignmentPermissionModel permission);
         List<EventModel> FilterEventModelByUser(List<EventModel> events, string username);
         List<EventModel> FilterMatchesByTimeRange(List<EventModel> matches);
@@ -21,14 +21,30 @@
     public class EventAssignmentExportFilterImp : EventAssignmentExportFilter
     {
 
-        public List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus)
+        public List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus, string matchType)
         {
             events = FilterEventModelByUser(events, username);
             events = FilterEventModelByPermision(events, permission);
             events = FilterEventModelBySyncLiveStatus(events, liveStatus);
-
+            events = FilterEventByMatchType(events, matchType);
             return events;
         }
+        private static List<EventModel> FilterEventByMatchType(IList<EventModel> matchInfos, string matchType)
+        {
+            var types = matchType.Split(',').ToList();
+            if (IsSelectAllMatchType(types))
+            {
+                return matchInfos.ToList();
+            }
+
+            return types.Exists(x => x == EventAssignmentConst.MatchVirtual) ?
+                matchInfos.Where(x => x.IsSaBa).ToList() :
+                matchInfos.Where(x => !x.IsSaBa).ToList();
+        }
+
+        public static bool IsSelectAllMatchType(List<string> matchType)
+            => matchType.Exists(x => x == EventAssignmentConst.MatchReal)
+               && matchType.Exists(x => x == EventAssignmentConst.MatchVirtual);
 
         public static List<EventModel> FilterEventModelBySyncLiveStatus(List<EventModel> events, int liveStatus)
         {
