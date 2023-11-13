@@ -32,9 +32,10 @@ const OtherSportManager = () => {
     <Provider store={store}>
       <OWPHeader className='other-sport'>
         <FilterHeader policy={policy} />
-        {HasWrite && <AssignmentUpload />}
-        <LastUpdated />
       </OWPHeader>
+      <div className='upload-wrapper'>
+        <LastUpdated />
+      </div>
       <OWPBody className='other-sport'>
         <OSTable className='other-sport-table' />
       </OWPBody>

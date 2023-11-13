@@ -121,13 +121,8 @@ const findAndUpdatePropHidenTranderMaxbetByosMatchId = (
 };
 
 const buildColumn = (width, column) => {
-  const {
-    headerName,
-    columnKey,
-    isCanFilter,
-    isCanSort,
-    isCanCollapseExpand
-  } = column;
+  const { headerName, columnKey, isCanFilter, isCanSort, isCanCollapseExpand } =
+    column;
   return {
     headerName,
     columnKey,
@@ -143,11 +138,11 @@ const selectTable = widthWindow => {
   const width = widthWindow < minWidth ? minWidth : widthWindow;
   return {
     columnSchema: [
-      buildColumn(width * 0.04, No),
+      buildColumn(width * 0.06, No),
       buildColumn(width * 0.054, KOTime),
       buildColumn(width * 0.064, Sport),
       buildColumn(width * 0.13, League),
-      buildColumn(width * 0.16, Match),
+      buildColumn(width * 0.14, Match),
       buildColumn(width * 0.08, Remark),
       buildColumn(width * 0.19, Trader),
       buildColumn(width * 0.07, MaxBet),
