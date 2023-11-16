@@ -23,6 +23,7 @@ const propTypes = {
   hasWrite: PropTypes.bool.isRequired,
   submit: PropTypes.func.isRequired,
   matchStatuses: PropTypes.array.isRequired,
+  offVRs: PropTypes.array.isRequired,
   onToggleModal: PropTypes.func.isRequired,
   isAllowAddEvent: PropTypes.bool.isRequired,
   isHostEventPicking: PropTypes.bool.isRequired,
@@ -37,6 +38,7 @@ class Filter extends PureComponent {
     super(props);
     this.state = {
       selectedMatchStatus: [],
+      selectedOffVRs: [],
       selectedSyncLive: SYNC_LIVE_OPTION[0].value,
       selectedMatchType: MATCH_TYPE_OPTION,
       userName: '',
@@ -45,6 +47,7 @@ class Filter extends PureComponent {
     };
 
     this.matchStatusOptions = [];
+    this.offVRs = [];
     this.datePicker = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleShowMessage = this.handleShowMessage.bind(this);
@@ -60,15 +63,17 @@ class Filter extends PureComponent {
   }
 
   componentDidMount() {
-    const { matchStatuses } = this.props;
+    const { matchStatuses, offVRs } = this.props;
     this.matchStatusOptions = Utils.buildMatchStatusOption(matchStatuses);
+    this.offVRs = Utils.buildMatchStatusOption(offVRs);
     const selectedMatchStatus = Utils.buildSelectedMatchStatus(
       this.matchStatusOptions
     );
 
     this.setState(
       {
-        selectedMatchStatus
+        selectedMatchStatus,
+        selectedOffVRs: this.offVRs
       },
       () => {
         this.handleSubmit();
@@ -100,6 +105,7 @@ class Filter extends PureComponent {
     const { submit } = this.props;
     const {
       selectedMatchStatus,
+      selectedOffVRs,
       selectedSyncLive,
       selectedMatchType,
       userName,
@@ -107,9 +113,11 @@ class Filter extends PureComponent {
       isShowUnreadMessOnly
     } = this.state;
     const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
+    const selectedOffVRIsValid = selectedOffVRs.length > 0;
     const selectedMatchTypeIsValid = selectedMatchType.length > 0;
     if (
       selectedMatchStatusIsValid &&
+      selectedOffVRIsValid &&
       userNameIsValid &&
       selectedMatchTypeIsValid
     ) {
@@ -117,6 +125,7 @@ class Filter extends PureComponent {
         selectedDate,
         userName,
         selectedMatchStatus: selectedMatchStatus.map(x => x.value),
+        selectedOffVRs: selectedOffVRs.map(x => x.value),
         selectedMatchType: selectedMatchType.map(ms => ms.value).join(),
         selectedSyncLive,
         showUnreadMessage: isShowUnreadMessOnly
@@ -135,11 +144,14 @@ class Filter extends PureComponent {
       !userNameIsValid && ToastrWrapper.showError('User not found');
       !selectedMatchTypeIsValid &&
         ToastrWrapper.showError('Please select at least one match type');
+      !selectedOffVRIsValid &&
+        ToastrWrapper.showError('Please select at least one off VR');
     }
   }
 
   render() {
-    const { selectedMatchStatus, selectedMatchType } = this.state;
+    const { selectedMatchStatus, selectedMatchType, selectedOffVRs } =
+      this.state;
     const {
       hasWrite,
       onToggleModal,
@@ -205,6 +217,16 @@ class Filter extends PureComponent {
             onChange={e => this.setState({ selectedSyncLive: e.value })}
           />
         </div>
+        <div className='filter-control multiselect off-vr'>
+          <div className='label'>OFF VR</div>
+          <MultiSelect
+            options={this.offVRs}
+            disableSearch
+            ClearSelectedIcon={null}
+            value={selectedOffVRs}
+            onChange={selected => this.setState({ selectedOffVRs: selected })}
+          />
+        </div>
         <div className='filter-control btn-block'>
           <button className='button-submit' onClick={this.handleSubmit}>
             Submit
@@ -224,6 +246,11 @@ class Filter extends PureComponent {
             selectedSyncLive={this.state.selectedSyncLive}
             lastUpdated={lastUpdated}
           />
+          <button
+            className='button-submit button-sync-off-vr'
+            onClick={this.handleSubmit}>
+            Sync OFF VR
+          </button>
         </div>
         <div className='filter-control-checkbox'>
           <label>

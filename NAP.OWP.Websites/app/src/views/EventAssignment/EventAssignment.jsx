@@ -29,6 +29,7 @@ import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';
 import { connect } from 'react-redux';
 import { setDataEvent, setUserId } from './reducer/tableReducer';
 import { queryPolicy } from '../Shared/permission/policySlice';
+import { selectOffVROptions } from './FilterHelper';
 const { INDIVIDUAL } = RECIPIENT_TYPE;
 class EventAssignment extends Component {
   constructor(props) {
@@ -101,6 +102,7 @@ class EventAssignment extends Component {
         oddsPolicy,
         eventPickingPolicy,
         matchStatuses,
+        offVR,
         myTicketPolicy
       ] = await axios.all([
         AuthorizeService.authorize(
@@ -112,6 +114,7 @@ class EventAssignment extends Component {
         AuthorizeService.authorize(FunctionKeys.OddsCompiler),
         AuthorizeService.authorize(FunctionKeys.EventPicking),
         ResourceManagementService.getByRefName('MatchStatus'),
+        ResourceManagementService.getByRefName('MatchOffer'),
         AuthorizeService.authorize(FunctionKeys.TicketCenter),
         UserService.dataSourceUsersFromServer()
       ]);
@@ -156,6 +159,7 @@ class EventAssignment extends Component {
         notePolicy,
         oddsPolicy,
         matchStatuses,
+        offVR: selectOffVROptions(offVR),
         isLoading: false,
         creatorInfo,
         userId: fullBetTypesPolicy.UserId
@@ -186,6 +190,7 @@ class EventAssignment extends Component {
         selectedDate: e.selectedDate || new Date(),
         selectedMatchType: e.selectedMatchType,
         selectedMatchStatus: e.selectedMatchStatus || [],
+        selectedOffVRs: e.selectedOffVRs || [],
         selectedSyncLive: e.selectedSyncLive || 0,
         matchIsScrollTo: matchId || 0,
         scrollLeft: 0,
@@ -202,6 +207,7 @@ class EventAssignment extends Component {
         selectedDate,
         userName,
         selectedMatchStatus,
+        selectedOffVRs,
         policy,
         selectedSyncLive,
         notePolicy,
@@ -215,6 +221,7 @@ class EventAssignment extends Component {
         EventDate: Utils.formatDate(selectedDate),
         Username: userName || '',
         MatchStatusIds: selectedMatchStatus || [],
+        SelectedOffVRs: selectedOffVRs || [],
         MatchType: selectedMatchType || [],
         SyncLiveStatus: selectedSyncLive,
         ShowUnreadMessage: showUnreadMessage
@@ -336,6 +343,7 @@ class EventAssignment extends Component {
       notePolicy,
       oddsPolicy,
       matchStatuses,
+      offVR: offVRs,
       events,
       userName,
       selectedDate,
@@ -360,10 +368,11 @@ class EventAssignment extends Component {
         <CreateTicketBoardOther creatorInfo={creatorInfo} />
         <CreateTicketLiveIncident creatorInfo={creatorInfo} />
         <TicketDetailBoard />
-        {matchStatuses && (
+        {matchStatuses && offVRs && (
           <div className='filter'>
             <Filter
               matchStatuses={matchStatuses}
+              offVRs={offVRs}
               hasWrite={policy.HasWrite}
               onChangeDate={this.onChangeDate}
               isHostEventPicking={policy.EventPicking.HasWrite}

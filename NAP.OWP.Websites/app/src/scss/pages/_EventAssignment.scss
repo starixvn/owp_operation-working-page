@@ -2217,11 +2217,11 @@ button.toast-close-button {
 .league-group {
   display: inline;
 }
-.league-badge{
+.league-badge {
   font-size: 13px;
   font-weight: bold;
   padding: 3px 3px;
-  background-color: #CBCBCB;
+  background-color: #cbcbcb;
   margin-right: 3px;
   border-radius: 2px;
 }
@@ -2414,7 +2414,7 @@ textarea.input-field.drag-able.form-control::placeholder {
   color: #5c6873 !important;
 }
 .rmsc.multi-select {
-  width: 200px;
+  width: 150px;
   .dropdown-container {
     border: 0;
     border-bottom: 1px solid #e1e1e1;
@@ -2481,4 +2481,13 @@ textarea.input-field.drag-able.form-control::placeholder {
 .btn-other-time-suggestion {
   color: #ff9f09;
   display: block;
+}
+.off-vr .rmsc.multi-select {
+  width: 200px;
+}
+.rmsc.multi-select .dropdown-content .select-item {
+  padding: 6px 5px;
+}
+.button-sync-off-vr {
+  background-color: #5b5fa4 !important;
 }
