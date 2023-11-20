@@ -6,6 +6,7 @@ import {
   UserWorkingSchedule
 } from '../../TypeNative';
 import TimeLineCell from '../Cell/TimeLineCell';
+import { uniqueId } from 'lodash';
 
 type Props = {
   index: number;
@@ -13,19 +14,28 @@ type Props = {
 };
 
 const WorkingShift = ({ index, data }: Props) => {
+  const assignmentTimeLine = (assignments: AssignmentCell[]) => (
+    <>
+      {assignments.map(assignment => (
+        <TimeLineCell
+          color={assignment?.color}
+          text={assignment?.text}
+          textColor={assignment?.textColor}
+          key={uniqueId()}></TimeLineCell>
+      ))}
+    </>
+  );
+
   return (
     <>
       {timeLineColumn.map((x: TimeLine) => {
-        const assignment = data[
+        const assignments = data[
           x.id as keyof UserWorkingSchedule
-        ] as AssignmentCell;
+        ] as AssignmentCell[];
+        const className = assignments?.length > 1 ? 'overlap-timeline ' : '';
         return (
-          <td key={`${index}-${x.id} `}>
-            <TimeLineCell
-              color={assignment?.color}
-              text={assignment?.text}
-              textColor={assignment?.textColor}
-              key={x.id}></TimeLineCell>
+          <td key={`${index}-${x.id}`} className={className}>
+            {assignments && assignmentTimeLine(assignments)}
           </td>
         );
       })}

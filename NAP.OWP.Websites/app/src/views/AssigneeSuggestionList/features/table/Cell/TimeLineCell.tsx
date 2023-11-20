@@ -5,7 +5,7 @@ type Props = AssignmentCell;
 
 const TimeLineCell = ({ text, color, textColor }: Props) => {
   return (
-    <div className='item' style={{ backgroundColor: color }}>
+    <div className='item' style={{ backgroundColor: color, flex: 1 }}>
       <span style={{ color: textColor }}>{text}</span>
     </div>
   );
