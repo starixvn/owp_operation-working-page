@@ -19,11 +19,13 @@ const TraderInfo = ({ index, userInfo }: Props) => {
         <ShiftCell
           index={index}
           value={userInfo?.shift}
-          shiftCode={userInfo?.shiftCode}></ShiftCell>
+          shiftCode={userInfo?.shiftCode}
+          otPostShift={userInfo?.otPostShift}
+          otPreShift={userInfo?.otPreShift} />
         <TraderCell
           index={index}
           value={userInfo?.username}
-          isManagement={userInfo?.isManagementRole}></TraderCell>
+          isManagement={userInfo?.isManagementRole} />
         <LevelCell index={index} value={userInfo?.levelLabel}></LevelCell>
         <MainBetTypeCell
           index={index}

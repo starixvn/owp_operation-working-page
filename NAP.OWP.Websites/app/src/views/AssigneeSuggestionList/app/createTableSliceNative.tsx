@@ -53,7 +53,12 @@ const crateTableSlice: StateCreator<
       searchText: keyword,
       workScheduleInfo: SearchAssigneeByKeyword(workScheduleInfoOrigin, keyword)
     });
-  }
+  },
+  filterOverTime: value => {
+    set({
+      filterOTValue: ""
+    })
+  },
 });
 
 export default crateTableSlice;

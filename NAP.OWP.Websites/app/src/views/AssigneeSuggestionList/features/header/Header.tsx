@@ -4,6 +4,7 @@ import { getLocaleDateTime } from '../../../Shared/DateTime/dateTimeHelper';
 import useStore from '../../app/useStoreNative';
 import SearchAssignee from './SearchAssignee';
 import ColorExplain from './ColorExplain';
+import Filter from './Filter';
 
 const Header = () => {
   const {
@@ -48,7 +49,11 @@ const Header = () => {
           </>
         )}
       </div>
-      <SearchAssignee />
+      <div className='filter__info'>
+        <Filter />
+        <SearchAssignee />
+      </div>
+
       <ColorExplain />
     </>
   );

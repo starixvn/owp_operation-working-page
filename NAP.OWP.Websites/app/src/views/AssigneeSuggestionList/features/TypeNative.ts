@@ -28,6 +28,8 @@ type UserInfo = {
   explanation: string;
   levelLabel: string;
   shiftCode: string;
+  otPreShift: boolean;
+  otPostShift: boolean;
 };
 
 type AssignmentCell = {
@@ -113,8 +115,10 @@ type TQueryWorkScheduleInfo = {
   workScheduleInfo: TAssigneeSuggestion;
   loadingDataTable: string;
   searchText: string;
+  filterOTValue: string;
   queryDataTable: (params: TQueryWorkScheduleType) => Promise<void>;
   searchDataTable: (keyword: string) => void;
+  filterOverTime: (valueType: string) => void;
 };
 
 type TQueryWorkScheduleType = {
