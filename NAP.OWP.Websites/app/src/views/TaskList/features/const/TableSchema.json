@@ -20,5 +20,6 @@
   "three": 3,
   "timeRefreshTable": [60, 90, 120],
   "timeRefresh": 1000,
-  "intervalInit": 0
+  "intervalInit": 0,
+  "OFF_VR": "OFF VR"
 }

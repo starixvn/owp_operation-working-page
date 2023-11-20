@@ -1,5 +1,6 @@
 import React from 'react';
 import { CellProps } from '../../../type/TTaskListTable';
+import { OFF_VR } from '../../const/TableSchema.json';
 
 const LeagueCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
   const { League, MatchOffers, NoOfHDP, NoOfHDPId, LeagueGroup } = dataSource;
@@ -15,7 +16,9 @@ const LeagueCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
     MatchOffers.map((x, index) => (
       <span
         key={`matchOffer-${x.MatchOfferValue}-${rowIndex}-${index}`}
-        className='badge-label match-offer'>
+        className={`badge-label ${
+          x.MatchOfferValue.includes(OFF_VR) ? 'off-vr-offer' : 'match-offer'
+        } `}>
         {x.MatchOfferValue}
       </span>
     ));

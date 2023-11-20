@@ -1,5 +1,6 @@
 import React from 'react';
 import { CellProps } from '../../../type/TableType';
+import { OFF_VR } from '../../../LiveGameListConst.json';
 
 const LeagueCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
   const { League, MatchOffers, NoOfHDP, NoOfHDPId, LeagueGroup } =
@@ -16,7 +17,9 @@ const LeagueCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
     MatchOffers.map(x => (
       <span
         key={`matchOffer-${x.OWPMatchId}-${x.MatchOfferValue}-${rowIndex}`}
-        className='badge-label match-offer'>
+        className={`badge-label ${
+          x.MatchOfferValue.includes(OFF_VR) ? 'off-vr-offer' : 'match-offer'
+        } `}>
         {x.MatchOfferValue}
       </span>
     ));
