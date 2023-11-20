@@ -1,4 +1,6 @@
-﻿namespace OWP.EventAssignment.Permission
+﻿using OWP.Services;
+
+namespace OWP.EventAssignment.Permission
 {
     using Constants;
     using Models;

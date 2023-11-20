@@ -1,4 +1,6 @@
-﻿namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
+﻿using OWP.EventAssignment.Models;
+
+namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
 {
     using Core.Extensions.ExcelExtensions;
     using Core.Extensions.XMLExtensions;
@@ -61,6 +63,10 @@
 
         [Column(ColumnName.MatchOffer)]
         public string MatchOffer { get; set; }
+
+        [ExcelIgnore]
+        [XmlIgnore]
+        public IEnumerable<MatchOffer> MatchOfferList { get; set; }
 
         [Column(ColumnName.LSTNote)]
         public string LSTNote { get; set; }

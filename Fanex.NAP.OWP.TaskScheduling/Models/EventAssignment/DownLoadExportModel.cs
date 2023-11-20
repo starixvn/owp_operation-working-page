@@ -16,6 +16,8 @@ namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
 
         public string MatchType { get; set; }
 
+        public string OffVRs { get; set; }
+
         public int SyncLiveStatus { get; set; }
 
         public EventAssignmentPermissionModel PermissionModel { get; set; }

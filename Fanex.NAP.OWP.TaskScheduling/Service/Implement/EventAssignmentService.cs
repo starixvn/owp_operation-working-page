@@ -52,7 +52,7 @@
             };
             var eventInfos = (await eventAssignmentRepository.GetEventInformationByEventDate(criteria)).ToList();
 
-            eventInfos = eventAssignmentExportFilter.Filter(eventInfos, model.PermissionModel, model.Username, model.SyncLiveStatus, model.MatchType);
+            eventInfos = eventAssignmentExportFilter.Filter(eventInfos, model.PermissionModel, model.Username, model.SyncLiveStatus, model.MatchType, model.OffVRs);
             var maxNote = eventInfos.Any() ? eventInfos.Max(n => n.Notes.Count()) : 0;
             var writer = new AssignmentWriter(maxNote, model);
 

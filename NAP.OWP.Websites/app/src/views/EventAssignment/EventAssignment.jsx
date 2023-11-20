@@ -221,7 +221,7 @@ class EventAssignment extends Component {
         EventDate: Utils.formatDate(selectedDate),
         Username: userName || '',
         MatchStatusIds: selectedMatchStatus || [],
-        SelectedOffVRs: selectedOffVRs || [],
+        OffVRs: selectedOffVRs || [],
         MatchType: selectedMatchType || [],
         SyncLiveStatus: selectedSyncLive,
         ShowUnreadMessage: showUnreadMessage

@@ -50,6 +50,7 @@ class Filter extends PureComponent {
     this.offVRs = [];
     this.datePicker = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSyncOffVR = this.handleSyncOffVR.bind(this);
     this.handleShowMessage = this.handleShowMessage.bind(this);
   }
 
@@ -65,7 +66,7 @@ class Filter extends PureComponent {
   componentDidMount() {
     const { matchStatuses, offVRs } = this.props;
     this.matchStatusOptions = Utils.buildMatchStatusOption(matchStatuses);
-    this.offVRs = Utils.buildMatchStatusOption(offVRs);
+    this.offVRs = Utils.buildOffVROption(offVRs);
     const selectedMatchStatus = Utils.buildSelectedMatchStatus(
       this.matchStatusOptions
     );
@@ -145,9 +146,11 @@ class Filter extends PureComponent {
       !selectedMatchTypeIsValid &&
         ToastrWrapper.showError('Please select at least one match type');
       !selectedOffVRIsValid &&
-        ToastrWrapper.showError('Please select at least one off VR');
+        ToastrWrapper.showError('Please select at least one OFF VR');
     }
   }
+
+  handleSyncOffVR() {}
 
   render() {
     const { selectedMatchStatus, selectedMatchType, selectedOffVRs } =
@@ -240,6 +243,7 @@ class Filter extends PureComponent {
             isHostEventPicking={isHostEventPicking}
             selectedDate={selectedDate}
             selectedMatchStatus={selectedMatchStatus.map(x => x.value)}
+            selectedOffVRs={selectedOffVRs.map(x => x.value)}
             selectedMatchType={selectedMatchType.map(ms => ms.value).join()}
             userName={this.state.userName}
             userNameIsValid={this.state.userNameIsValid}

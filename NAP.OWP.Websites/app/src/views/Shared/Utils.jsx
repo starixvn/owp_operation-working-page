@@ -154,6 +154,15 @@ const buildSelectedMatchStatus = matchStatusOptions =>
     x => x.label === MatchStatuses.Live || x.label === MatchStatuses.InPlay
   );
 
+const buildOffVROption = offVRs => {
+  const offVROptions = offVRs.map(x => ({
+    label: x.Value,
+    value: x.Id
+  }));
+
+  return offVROptions.concat({ label: 'None', value: null });
+};
+
 const handleOnDateChange = (matchStatusOptions, date) => {
   let selectedMatchStatus = [];
   const today = new Date();
@@ -220,6 +229,7 @@ const Utils = {
   requestOrGetSessionStorage,
   isYesterdayOrAfterForLiveDetail,
   buildMatchStatusOption,
+  buildOffVROption,
   buildSelectedMatchStatus,
   handleOnDateChange,
   requestOrGetLocalStorage

@@ -1,4 +1,5 @@
 ﻿using OWP.Application.DocumentTitle;
+using OWP.EventAssignment.Services;
 using NapUserService = Fanex.NAP.Core.Service.Impl.UserService;
 
 namespace NAP.OWP.Websites
@@ -155,6 +156,7 @@ namespace NAP.OWP.Websites
             container.Register<OrderMatchService, OrderMatchServiceImp>(Lifestyle.Transient);
             container.Register<global::OWP.EventAssignment.Repositories.Repository, global::OWP.EventAssignment.Repositories.RepositoryImp>(Lifestyle.Transient);
             container.Register<EventAssignmentPermission, EventAssignmentPermissionImp>(Lifestyle.Transient);
+            container.Register<SyncOffVRService, SyncOffVRServiceImp>(Lifestyle.Transient);
         }
 
         private static void InitializeNAPModules(Container container)

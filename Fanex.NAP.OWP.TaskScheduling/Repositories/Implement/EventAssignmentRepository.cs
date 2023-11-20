@@ -1,4 +1,6 @@
-﻿namespace Fanex.NAP.OWP.TaskScheduling.Repositories.Implement
+﻿using OWP.EventAssignment.Models;
+
+namespace Fanex.NAP.OWP.TaskScheduling.Repositories.Implement
 {
     using Core.Helpers;
     using Data;
@@ -33,7 +35,9 @@
                     var traders = reader.Read<MatchTrader>();
                     var notes = reader.Read<MatchNote>();
                     var matchSettings = reader.Read<MatchMoney>();
-                    var events = await GetInfo(matchInfos, traders, notes, matchSettings);
+                    var _ = reader.Read<Television>();
+                    var matchOffers = reader.Read<MatchOffer>();
+                    var events = await GetInfo(matchInfos, traders, notes, matchSettings, matchOffers);
                     return events;
                 }
             }
@@ -207,7 +211,8 @@
            IEnumerable<MatchInfo> matchInfos,
            IEnumerable<MatchTrader> traders,
            IEnumerable<MatchNote> notes,
-           IEnumerable<MatchMoney> matchSettings)
+           IEnumerable<MatchMoney> matchSettings,
+           IEnumerable<MatchOffer> matchOffers)
         {
             var matchList = new List<EventModel>();
             var adminSiteIds = string.Join(",", matchInfos.Select(x => x.ParentAdminSiteId).Distinct());
@@ -222,6 +227,7 @@
                     Time = matchInfo.KickOffTime.ToOWPTimeFormat(),
                     OtherTime = matchInfo.OtherTime.HasValue ? matchInfo.OtherTime.Value.ToOWPTimeFormat() : string.Empty,
                     MatchOffer = matchInfo.MatchOffer,
+                    MatchOfferList = matchOffers.Where(x => x.OWPMatchId == matchInfo.OWPMatchId).ToList(),
                     LeagueName = matchInfo.League,
                     HomeName = matchInfo.Home,
                     AwayName = matchInfo.Away,
