@@ -61,7 +61,7 @@
     "secondAcceptValue": {
       "name": "Second Accept Value",
       "id": "secondAcceptValue",
-      "subColWidth": 100,
+      "subColWidth": 130,
       "subColumn": [
         { "name": "Main", "id": "secondAccept_Main" },
         { "name": "Corner", "id": "secondAccept_Corner" },
@@ -72,7 +72,7 @@
     "lastUpdate": {
       "name": "Last Update",
       "id": "lastUpdatedBy",
-      "subColWidth": 100,
+      "subColWidth": 60,
       "fixed": "right",
       "subColumn": [{ "name": "", "id": "lastUpdatedBy" }]
     }
