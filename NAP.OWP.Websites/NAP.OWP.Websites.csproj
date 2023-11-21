@@ -1094,8 +1094,8 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\event-assignment\assets\ext\server-0fe56f90.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-2699240d.js" />
+    <Content Include="wwwroot\event-assignment\assets\ext\server-5324db14.css" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-f7ee20e0.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-feedback-57264197.svg" />
@@ -2759,7 +2759,7 @@
     <Content Include="wwwroot\live-detail\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\live-detail\assets\ext\server-78c390fe.css" />
-    <Content Include="wwwroot\live-detail\assets\js\main-2823db4a.js" />
+    <Content Include="wwwroot\live-detail\assets\js\main-e1c77be3.js" />
     <Content Include="wwwroot\live-detail\favicon.ico" />
     <Content Include="wwwroot\live-detail\server.html" />
     <Content Include="wwwroot\live-game-list\assets\ext\icon-feedback-57264197.svg" />
@@ -2835,8 +2835,8 @@
     <Content Include="wwwroot\odds-compiler\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\odds-compiler\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\odds-compiler\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\odds-compiler\assets\ext\server-e0f80593.css" />
-    <Content Include="wwwroot\odds-compiler\assets\js\main-5c8b3a53.js" />
+    <Content Include="wwwroot\odds-compiler\assets\ext\server-2506c942.css" />
+    <Content Include="wwwroot\odds-compiler\assets\js\main-a2497438.js" />
     <Content Include="wwwroot\odds-compiler\favicon.ico" />
     <Content Include="wwwroot\odds-compiler\server.html" />
     <Content Include="wwwroot\os-league-setting\assets\ext\icon-feedback-57264197.svg" />
@@ -2921,8 +2921,8 @@
     <Content Include="wwwroot\resource-management\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\resource-management\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\resource-management\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\resource-management\assets\ext\server-8c47ee88.css" />
-    <Content Include="wwwroot\resource-management\assets\js\main-b00ff734.js" />
+    <Content Include="wwwroot\resource-management\assets\ext\server-dfd48adc.css" />
+    <Content Include="wwwroot\resource-management\assets\js\main-9b0b950e.js" />
     <Content Include="wwwroot\resource-management\favicon.ico" />
     <Content Include="wwwroot\resource-management\server.html" />
     <Content Include="wwwroot\task-list\assets\ext\icon-feedback-57264197.svg" />
@@ -2980,10 +2980,6 @@
     <Content Include="wwwroot\notification-setting\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\notification-setting\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\notification-setting\server.cshtml" />
-    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\odds-compiler\server.cshtml" />
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-a7443744.ttf" />
@@ -3005,10 +3001,6 @@
     <Content Include="wwwroot\recipient-group\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\recipient-group\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\recipient-group\server.cshtml" />
-    <Content Include="wwwroot\resource-management\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\resource-management\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\resource-management\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\resource-management\server.cshtml" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a7443744.ttf" />
@@ -3061,14 +3053,6 @@
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\other-sport\server.cshtml" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-assignment\server.cshtml" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\live-detail\server.cshtml" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
@@ -3077,6 +3061,22 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-assignment\server.cshtml" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\live-detail\server.cshtml" />
+    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\odds-compiler\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\odds-compiler\server.cshtml" />
+    <Content Include="wwwroot\resource-management\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\resource-management\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\resource-management\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\resource-management\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
