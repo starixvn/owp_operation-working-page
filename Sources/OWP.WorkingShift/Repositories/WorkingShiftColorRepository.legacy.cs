@@ -11,7 +11,6 @@
     using Fanex.NAP.OWP.Core.Model;
     using Models;
     using OWP.Models;
-    using OWP.Utils;
     using Utils;
 
     public interface WorkingShiftColorRepository

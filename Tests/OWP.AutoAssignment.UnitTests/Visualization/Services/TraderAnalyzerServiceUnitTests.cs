@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using AutoAssignment.Visualization.Models;
-    using AutoMapper;
     using Models;
     using NSubstitute;
     using OWP.AutoAssignment.Visualization.Services;

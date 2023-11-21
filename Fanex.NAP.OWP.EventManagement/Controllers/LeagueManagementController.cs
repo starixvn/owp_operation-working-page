@@ -3,9 +3,7 @@
     using System.Web.Mvc;
     using Core.BaseClasses;
     using Core.BaseClasses.Interfaces;
-    using Criteria;
     using Criteria.League;
-    using Service;
     using Service.Interfaces;
 
     public class LeagueManagementController : OWPBaseController

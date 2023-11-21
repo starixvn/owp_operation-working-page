@@ -4,7 +4,6 @@ namespace OWP.EventAssignment.Permission
 {
     using Constants;
     using Models;
-    using Services;
     using Utils;
 
     public interface EventAssignmentPermission

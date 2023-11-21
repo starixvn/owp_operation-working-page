@@ -1,6 +1,5 @@
 ﻿namespace OWP.UserManagement.Criteria
 {
-    using System.Web.Mvc;
     using Fanex.Data.Repository;
 
     public class GetLevelBySectionIdCriteria : CriteriaBase

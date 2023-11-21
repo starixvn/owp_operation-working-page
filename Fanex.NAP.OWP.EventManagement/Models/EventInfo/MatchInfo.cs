@@ -4,7 +4,6 @@ namespace Fanex.NAP.OWP.EventManagement.Models.EventInfo
 {
     using System;
     using System.Collections.Generic;
-    using global::OWP.CopyMatchInfo;
     using Model;
 
     [Serializable]

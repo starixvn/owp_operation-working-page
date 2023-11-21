@@ -10,7 +10,6 @@
     using Models;
     using Olympus.WebApi.Results;
     using Services;
-    using Utils;
 
     [RoutePrefix("api/odds-compiler")]
     public class OddsCompilerApiController : ApiController

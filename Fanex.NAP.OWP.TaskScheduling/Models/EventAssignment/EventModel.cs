@@ -1,6 +1,4 @@
-﻿using OWP.EventAssignment.Models;
-
-namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
+﻿namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
 {
     using Core.Extensions.ExcelExtensions;
     using Core.Extensions.XMLExtensions;

@@ -1,6 +1,5 @@
 ﻿using OWP.EventAssignment.Models;
 using System;
-using System.Reflection.Emit;
 
 namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
 {

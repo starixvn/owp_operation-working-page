@@ -9,7 +9,6 @@
     using Models;
     using OWP.Criteria;
     using OWP.Models;
-    using OWP.Utils;
 
     public interface WorkingShiftTimezoneSettingRepository
     {

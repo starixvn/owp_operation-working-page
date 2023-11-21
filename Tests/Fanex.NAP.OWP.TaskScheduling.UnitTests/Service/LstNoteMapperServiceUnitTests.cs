@@ -6,7 +6,6 @@
     using Criteria.EventPicking;
     using Models.EventPicking;
     using NSubstitute;
-    using Olympus.InfoSiteClient.Models;
     using TaskScheduling.Misc;
     using TaskScheduling.Repositories.Implement;
     using TaskScheduling.Service.Implement;

@@ -6,14 +6,11 @@
     using Core.BaseClasses;
     using Core.BaseClasses.Interfaces;
     using Core.Criteria;
-    using Criteria;
     using Criteria.Filter;
     using Enumerations;
     using global::OWP.Constants;
     using Models.EventInfo;
-    using Service;
     using Service.Interfaces;
-    using ViewModels;
     using ViewModels.Filter;
 
     public class FilterController : OWPBaseController

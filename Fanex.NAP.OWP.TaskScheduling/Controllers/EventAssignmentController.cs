@@ -2,7 +2,6 @@
 
 namespace Fanex.NAP.OWP.TaskScheduling.Controllers
 {
-    using Fanex.NAP.Core.Web.Session;
     using global::OWP.Constants;
     using global::OWP.EventAssignment.Permission;
     using Models.EventAssignment;

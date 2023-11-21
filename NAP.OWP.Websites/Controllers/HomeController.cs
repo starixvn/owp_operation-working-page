@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using Newtonsoft.Json;
-using Olympus.InfoSiteClient.Extensions;
-using Olympus.InfoSiteClient.Models;
+﻿using System.Net.Http;
 
 namespace NAP.OWP.Websites.Controllers
 {

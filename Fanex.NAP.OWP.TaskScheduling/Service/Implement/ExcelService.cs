@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Fanex.NAP.OWP.TaskScheduling.Builder;
+﻿using System.Collections.Generic;
 using Fanex.NAP.OWP.TaskScheduling.Misc;
 using Fanex.NAP.OWP.TaskScheduling.Models.EventPicking;
 using StringExtension = OWP.Utils.StringExtension;

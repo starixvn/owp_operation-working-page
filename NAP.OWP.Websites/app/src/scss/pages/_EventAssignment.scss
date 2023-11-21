@@ -944,6 +944,7 @@
   position: relative;
   padding: 10px;
   z-index: 4;
+  justify-content: flex-end;
 
   .filter-control {
     display: inline-block;
@@ -954,7 +955,7 @@
 
       .button-submit,
       .btn-group {
-        margin-top: 10px;
+        margin-top: 5px;
       }
 
       .btn-group {
@@ -997,6 +998,7 @@
   .filter-control-checkbox {
     display: inline-block;
     margin-left: auto;
+    max-width: 100px;
 
     label {
       cursor: pointer;
@@ -1015,6 +1017,7 @@
     right: auto;
     display: flex;
     align-items: flex-end;
+    justify-content: flex-end;
 
     > * {
       margin-left: 10px;
@@ -1082,12 +1085,12 @@
 
   .button-submit {
     @include button-style(#fff, #1e88e5);
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   .button-export {
     @include button-style(#fff, #4dbd74);
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   .button-working-shift {

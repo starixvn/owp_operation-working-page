@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using Consts;
-    using Fanex.Common.Extensions;
     using Models;
     using Utils;
 
