@@ -221,7 +221,7 @@ class Filter extends PureComponent {
             }
           />
         </div>
-        <div className='filter-control multiselect'>
+        <div className='filter-control multiselect sync-live'>
           <div className='label'>Sync Live</div>
           <Select
             defaultValue={SYNC_LIVE_OPTION[0]}

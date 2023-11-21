@@ -948,7 +948,12 @@
 
   .filter-control {
     display: inline-block;
-    width: 150px;
+    //width: 150px;
+    &.calendar,
+    .sync-live,
+    .react-datepicker__input-container input {
+      width: 110px !important;
+    }
 
     &.btn-block {
       width: auto;
@@ -2682,12 +2687,18 @@ textarea.input-field.drag-able.form-control::placeholder {
 .rmsc.multi-select .dropdown-content .select-item {
   padding: 5px 5px;
 }
-
-.button-sync-off-vr {
-  background-color: #5b5fa4 !important;
+.sync-live {
+  min-width: 100px !important;
+  .select__menu {
+    min-width: 100px !important;
+  }
 }
 
 .sync-off-vr-last-update {
   margin-right: 5px;
   font-style: italic;
+}
+
+.button-sync-off-vr {
+  background-color: #5b5fa4 !important;
 }

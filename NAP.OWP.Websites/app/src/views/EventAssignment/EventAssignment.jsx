@@ -261,11 +261,7 @@ class EventAssignment extends Component {
               'MMM DD, hh:mm A'
             )
           : '',
-        syncOffVRLastUpdated: syncOffVRLastTime
-          ? dayjs(
-              syncOffVRLastTime.substring(0, syncOffVRLastTime.length - 6)
-            ).format('MMM DD, hh:mm A')
-          : '',
+        syncOffVRLastUpdated: syncOffVRLastTime,
         syncOffVRByUser
       });
     })();

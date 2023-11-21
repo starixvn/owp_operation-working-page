@@ -806,8 +806,10 @@ namespace OWP.EventAssignment.Repositories
         public async Task<(string, string)> GetSyncOffVRLastUpdate(DateTime eventDate)
         {
             var criteria = new GetLastUpdatedSyncOffVRCriteria { EventDate = eventDate };
-            var result = await dynamicRepository.FetchAsync<(string, string)>(criteria);
-            return result.FirstOrDefault();
+            var result = await dynamicRepository.FetchAsync<(DateTime, string)>(criteria);
+            var first = result.FirstOrDefault();
+
+            return (first.Item1.ToString("MMM dd, hh:mm tt"), first.Item2);
         }
     }
 }
