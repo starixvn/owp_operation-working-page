@@ -95,6 +95,7 @@ const ExportSelector = props => {
 
   const handleClickExportLiveGameAssignment = () => {
     const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
+    const selectedSyncOffVRIsValid = selectedOffVRs.length > 0;
     const selectedMatchTypeIsValid = selectedMatchType.length > 0;
     if (
       selectedMatchStatusIsValid &&
@@ -106,9 +107,11 @@ const ExportSelector = props => {
     } else {
       !selectedMatchStatusIsValid &&
         ToastrWrapper.showError('Please select at least one match status');
+      !selectedSyncOffVRIsValid &&
+        ToastrWrapper.showError('Please select at least one sync off VR');
       !userNameIsValid && ToastrWrapper.showError('User not found');
       !selectedMatchTypeIsValid &&
-        showError('Please select at least one match type');
+        ToastrWrapper.showError('Please select at least one match type');
     }
   };
 

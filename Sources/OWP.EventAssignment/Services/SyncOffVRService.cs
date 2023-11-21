@@ -26,7 +26,7 @@ namespace OWP.EventAssignment.Services
             var json = JsonConvert.SerializeObject(result);
 
             await repository.LogActionSyncOffVRMatches(date);
-            await Logger.Log.InfoAsync($"Syn-Off-VR: ${date}, ${json}");
+            await Logger.Log.InfoAsync($"Syn-Off-VR: {date}, {json}");
         }
     }
 
