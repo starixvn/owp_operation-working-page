@@ -85,7 +85,7 @@ const getSyncOffVRLastUpdated = async eventDate => {
     `api/event-assignment/get-sync-off-vr-last-updated?date=${eventDate}`
   );
 
-  return response.data.length === 0 ? null : response.data[0].SyncDateTime;
+  return response.data;
 };
 
 const Service = {

@@ -71,6 +71,7 @@
 		<Setting Key="OWP_LiveGame_GetLastUpdatedSync" SpName ="OWP_LiveGame_GetLastUpdatedSyncOffVR" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
 		<Setting Key="OWP_LiveGame_GetLastUpdatedSync" SpName ="OWP_LiveGame_GetLastUpdatedSyncOffVR" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
 		<Setting Key="OWP_LiveGame_LogActionSyncOffVR" SpName ="OWP_LiveGame_LogActionSyncOffVR" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
+		<Setting Key="OWP_LiveGame_GetOffVRMatches" SpName ="OWP_LiveGame_GetOffVRMatches" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
 	</Function>
 	<Function Name ="TaskScheduling">
 		<Setting Key="OWP_TaskListForTodayGet" SpName ="OWP_TaskListForTodayGet" DbName ="DBOWP.bodb_OWP.bodbOWPNet" />

@@ -494,7 +494,7 @@ namespace OWP.EventAssignment.Repositories
                     var events = await MappingInfoToEventModel(matches, assignments, notes, matchSettings, televisions, matchOffers);
                     var eventsByUsers = FilterEventModelByUser(events, queryModel.Username);
                     var eventsByMatchType = FilterEventByMatchType(eventsByUsers, queryModel.MatchType);
-                    var eventsByOffVR = FilterEventModelByOffVR(eventsByMatchType, queryModel.OffVRs);
+                    var eventsByOffVR = FilterEventModelByOffVR(eventsByMatchType, queryModel.SelectedOffVRs);
                     return FilterEventModelByLiveStatus(eventsByOffVR, queryModel.SyncLiveStatus);
                 }
             }

@@ -1,4 +1,6 @@
-﻿namespace OWP.EventAssignment.UnitTests.EventAssignment
+﻿using OWP.Services;
+
+namespace OWP.EventAssignment.UnitTests.EventAssignment
 {
     using System;
     using System.Collections.Generic;
@@ -17,6 +19,7 @@
         private readonly EventAssignmentPermission eventAssignmentPermission;
         private readonly EventAssignmentController controller;
         private readonly GetAdminSiteMatchIdService getAdminSiteMatchIdService;
+        private readonly SyncOffVRService syncOffVRService;
 
         public EventAssignmentControllerUnitTests()
         {
@@ -24,7 +27,8 @@
             var notificationService = Substitute.For<NotificationService>();
             eventAssignmentPermission = Substitute.For<EventAssignmentPermission>();
             getAdminSiteMatchIdService = Substitute.For<GetAdminSiteMatchIdService>();
-            controller = new EventAssignmentController(repository, notificationService, eventAssignmentPermission, getAdminSiteMatchIdService);
+            syncOffVRService = Substitute.For<SyncOffVRService>();
+            controller = new EventAssignmentController(repository, notificationService, eventAssignmentPermission, getAdminSiteMatchIdService, syncOffVRService);
         }
 
         [Fact]

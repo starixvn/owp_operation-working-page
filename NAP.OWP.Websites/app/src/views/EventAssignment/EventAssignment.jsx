@@ -67,7 +67,8 @@ class EventAssignment extends Component {
       columnFilters: [],
       tableKey: uuidv4(),
       dateUpdated: '',
-      syncOffVRLastUpdated: ''
+      syncOffVRLastUpdated: '',
+      syncOffVRByUser: ''
     };
     this.originalPolicy = {};
     this.originalNotePolicy = {};
@@ -235,10 +236,13 @@ class EventAssignment extends Component {
       const lastUpdate = await EventAssignmentService.getLastUpdated(
         postModel.EventDate
       );
-      const syncOffVRLastUpdate = '2023-11-21 10:00:00';
-      // await EventAssignmentService.getSyncOffVRLastUpdated(
-      //   postModel.EventDate
-      // );
+      const syncOffVRLastUpdate =
+        //'2023-11-21 10:00:00';
+        await EventAssignmentService.getSyncOffVRLastUpdated(
+          postModel.EventDate
+        );
+      const syncOffVRLastTime = syncOffVRLastUpdate.Item1;
+      const syncOffVRByUser = syncOffVRLastUpdate.Item2;
       const isYesterdayOrAfter =
         Utils.isYesterdayOrAfterForAssignment(selectedDate);
       policy.FullBetTypes.HasWrite =
@@ -257,11 +261,12 @@ class EventAssignment extends Component {
               'MMM DD, hh:mm A'
             )
           : '',
-        syncOffVRLastUpdated: syncOffVRLastUpdate
+        syncOffVRLastUpdated: syncOffVRLastTime
           ? dayjs(
-              syncOffVRLastUpdate.substring(0, syncOffVRLastUpdate.length - 6)
+              syncOffVRLastTime.substring(0, syncOffVRLastTime.length - 6)
             ).format('MMM DD, hh:mm A')
-          : ''
+          : '',
+        syncOffVRByUser
       });
     })();
   };
@@ -369,7 +374,8 @@ class EventAssignment extends Component {
       dailyWorkingShiftPolicy,
       tableKey,
       dateUpdated,
-      syncOffVRLastUpdated
+      syncOffVRLastUpdated,
+      syncOffVRByUser
     } = this.state;
 
     return (
@@ -396,9 +402,11 @@ class EventAssignment extends Component {
             <div className='filter-control-right'>
               <div className='top-info'>
                 <span className='sync-off-vr-last-update'>
-                  Sync Off VR: {syncOffVRLastUpdated}
+                  Sync Off VR by {syncOffVRByUser}: {syncOffVRLastUpdated}
                 </span>
-                <span className='lastupdate'> Last Updated: {dateUpdated}</span>
+                <span className='lastupdate'>
+                  | Last Updated: {dateUpdated}
+                </span>
                 <GoToMyTicket />
               </div>
               <FilterToggle
