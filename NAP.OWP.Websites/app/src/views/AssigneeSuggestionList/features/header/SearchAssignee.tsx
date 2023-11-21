@@ -3,17 +3,12 @@ import useStore from '../../app/useStoreNative';
 import { shallow } from 'zustand/shallow';
 
 const SearchAssignee = () => {
-  const { searchDataTable } = useStore(
-    state => ({
-      searchDataTable: state.searchDataTable
-    }),
-    shallow
-  );
+  const filterByAssignee = useStore(state => state.filterByAssignee, shallow);
 
   const [keyword, setKeyword] = useState('');
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
-    event.key === 'Enter' && searchDataTable(keyword);
+    event.key === 'Enter' && filterByAssignee(keyword);
 
   return (
     <div className='search-assignee'>

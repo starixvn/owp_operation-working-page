@@ -1,3 +1,10 @@
+enum OVER_TIME_OPTIONS_VALUE {
+  ALL = 'All',
+  OVERTIME_PRE_SHIFT = 'Overtime_Pre_Shift',
+  OVERTIME_POST_SHIFT = 'Overtime_Post_Shift',
+  NO_OVERTIME = 'No_OverTime'
+}
+
 type TMatchInfo = {
   owpMatchId: number;
   leagueName: string;
@@ -117,10 +124,10 @@ type TQueryWorkScheduleInfo = {
   workScheduleInfo: TAssigneeSuggestion;
   loadingDataTable: string;
   searchText: string;
-  filterOTValue: string;
+  filterOTValue: OVER_TIME_OPTIONS_VALUE;
   queryDataTable: (params: TQueryWorkScheduleType) => Promise<void>;
-  searchDataTable: (keyword: string) => void;
-  filterOverTime: (valueType: string) => void;
+  filterByAssignee(keyword: string): void;
+  filterByOtValue(value: OVER_TIME_OPTIONS_VALUE): void;
 };
 
 type TQueryWorkScheduleType = {
@@ -148,5 +155,6 @@ export {
   TimeLine,
   TQueryColorExplainInfo,
   TColorExplain,
-  TAssigneeSuggestion
+  TAssigneeSuggestion,
+  OVER_TIME_OPTIONS_VALUE
 };

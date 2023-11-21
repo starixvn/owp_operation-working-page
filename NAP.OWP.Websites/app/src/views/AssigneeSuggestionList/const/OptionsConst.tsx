@@ -1,28 +1,27 @@
+import { OVER_TIME_OPTIONS_VALUE } from "../features/TypeNative";
+
 const OVERT_TIME = {
-  ALL: "All",
-  OVERTIME_PRE_SHIFT: "Overtime_Pre_Shift",
-  OVERTIME_POST_SHIFT: "Overtime_Post_Shift",
-  NO_OVERTIME: "No_OverTime",
   OPTIONS: [
     {
-      "value": "all",
+      "value": OVER_TIME_OPTIONS_VALUE.ALL,
       "label": "All"
     },
     {
-      "value": "Overtime_Pre_Shift",
+      "value": OVER_TIME_OPTIONS_VALUE.OVERTIME_PRE_SHIFT,
       "label": "Overtime Pre-Shift"
     },
     {
-      "value": 3,
+      "value": OVER_TIME_OPTIONS_VALUE.OVERTIME_POST_SHIFT,
       "label": "Overtime Post-Shift"
     },
     {
-      "value": 4,
+      "value": OVER_TIME_OPTIONS_VALUE.NO_OVERTIME,
       "label": "No Overtime"
     }
   ]
 };
 
 export {
-  OVERT_TIME
+  OVERT_TIME,
+  OVER_TIME_OPTIONS_VALUE
 };

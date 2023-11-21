@@ -5,18 +5,7 @@ import { shallow } from 'zustand/shallow';
 import useStore from '../../app/useStoreNative';
 
 const Filter = () => {
-  const { filterOverTime } = useStore(
-    state => ({
-      filterOverTime: state.filterOverTime
-    }),
-    shallow
-  );
-
-  const handleChange = ({ value }) => {
-    const v = value;
-    debugger;
-    filterOverTime(value);
-  };
+  const filterByOtValue = useStore(state => state.filterByOtValue, shallow);
 
   return (
     <div className='overtime-dropdown'>
@@ -26,7 +15,7 @@ const Filter = () => {
           data-testId='select'
           options={OVERT_TIME.OPTIONS}
           defaultValue={OVERT_TIME.OPTIONS[0]}
-          onChange={handleChange}
+          onChange={({ value }) => filterByOtValue(value)}
           className='basic-filter-select'
         />
       </div>

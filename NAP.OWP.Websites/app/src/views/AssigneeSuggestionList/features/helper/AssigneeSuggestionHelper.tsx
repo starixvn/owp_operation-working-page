@@ -1,10 +1,13 @@
 import dayjs from 'dayjs';
 import { timeLineColumn, startHour, startMinute } from '../../const/Const.json';
 import {
+  OVER_TIME_OPTIONS_VALUE,
   TAssigneeSuggestion,
   TMatchInfo,
+  UserInfo,
   UserWorkingSchedule
 } from '../TypeNative';
+
 
 const getCurrentTimeLine = (filterDate: Date, koTime: Date) => {
   const currentDate = dayjs(koTime);
@@ -22,35 +25,46 @@ const getTotalRecords = ({
 }: TAssigneeSuggestion) =>
   fullyAvailable.length + partiallyAvailable.length + busy.length;
 
-const searchAssignee = (assignees: UserWorkingSchedule[], keyword: string) =>
-  assignees.filter(x => {
-    const normalizedKeyword = keyword.toLowerCase().trim();
-    return [
-      x.userInfo?.username,
-      x.userInfo?.levelLabel,
-      x.userInfo?.mainBetType,
-      x.userInfo?.maxMultipleGames
-    ].some(prop => prop?.toLowerCase().includes(normalizedKeyword));
-  });
+const searchByAssignee = (userInfo: UserInfo, keyword: string) => {
+  const normalizedKeyword = keyword.toLowerCase().trim();
+  return [
+    userInfo.username,
+    userInfo.levelLabel,
+    userInfo.mainBetType,
+    userInfo.maxMultipleGames
+  ].some(prop => prop.toLowerCase().includes(normalizedKeyword));
+};
+
+const searchByOtValue = (userInfo: UserInfo, otValue: OVER_TIME_OPTIONS_VALUE) => ({
+  [OVER_TIME_OPTIONS_VALUE.ALL]: true,
+  [OVER_TIME_OPTIONS_VALUE.OVERTIME_PRE_SHIFT]: userInfo.otPreShift,
+  [OVER_TIME_OPTIONS_VALUE.OVERTIME_POST_SHIFT]: userInfo.otPostShift,
+  [OVER_TIME_OPTIONS_VALUE.NO_OVERTIME]: !userInfo.otPreShift && !userInfo.otPostShift
+}[otValue]);
+
+const searchByAssigneeAndOtValue = (assignees: UserWorkingSchedule[], keyword: string, otValue: OVER_TIME_OPTIONS_VALUE) =>
+  assignees.filter(assignee => assignee.userInfo && searchByAssignee(assignee.userInfo, keyword) && searchByOtValue(assignee.userInfo, otValue)
+  );
 
 const isShowPartially = (matchInfo: TMatchInfo) =>
   !matchInfo.leagueName.includes('SABA ');
 
-const SearchAssigneeByKeyword = (
+const executeFilter = (
   data: TAssigneeSuggestion,
-  keyword: string
+  keyword: string,
+  otValue: OVER_TIME_OPTIONS_VALUE
 ) => {
   return {
     ...data,
-    fullyAvailable: searchAssignee(data.fullyAvailable, keyword),
-    partiallyAvailable: searchAssignee(data.partiallyAvailable, keyword),
-    busy: searchAssignee(data.busy, keyword)
+    fullyAvailable: searchByAssigneeAndOtValue(data.fullyAvailable, keyword, otValue),
+    partiallyAvailable: searchByAssigneeAndOtValue(data.partiallyAvailable, keyword, otValue),
+    busy: searchByAssigneeAndOtValue(data.busy, keyword, otValue)
   };
 };
 
 export {
   getCurrentTimeLine,
   getTotalRecords,
-  SearchAssigneeByKeyword,
+  executeFilter,
   isShowPartially
 };
