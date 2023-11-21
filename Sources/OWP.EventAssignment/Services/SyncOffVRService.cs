@@ -34,6 +34,6 @@ namespace OWP.EventAssignment.Services
     {
         public int OWPMatchId { get; set; }
         public int AdminSiteMatchId { get; set; }
-        public int OffVR { get; set; }
+        public string OffVR { get; set; }
     }
 }
