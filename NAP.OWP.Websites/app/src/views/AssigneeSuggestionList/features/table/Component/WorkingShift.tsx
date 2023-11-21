@@ -15,7 +15,7 @@ type Props = {
 
 const WorkingShift = ({ index, data }: Props) => {
   const assignmentTimeLine = (assignments: AssignmentCell[]) => (
-    <>
+    <div className='overlap-timeline'>
       {assignments.map(assignment => (
         <TimeLineCell
           color={assignment?.color}
@@ -23,7 +23,7 @@ const WorkingShift = ({ index, data }: Props) => {
           textColor={assignment?.textColor}
           key={uniqueId()}></TimeLineCell>
       ))}
-    </>
+    </div>
   );
 
   return (
@@ -32,9 +32,8 @@ const WorkingShift = ({ index, data }: Props) => {
         const assignments = data[
           x.id as keyof UserWorkingSchedule
         ] as AssignmentCell[];
-        const className = assignments?.length > 1 ? 'overlap-timeline ' : '';
         return (
-          <td key={`${index}-${x.id}`} className={className}>
+          <td key={`${index}-${x.id}`}>
             {assignments && assignmentTimeLine(assignments)}
           </td>
         );
