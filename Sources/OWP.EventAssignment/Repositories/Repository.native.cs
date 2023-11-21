@@ -39,6 +39,8 @@ namespace OWP.EventAssignment.Repositories
         Task<List<OffVRModel>> GetSyncOffVRMatches(DateTime eventDate);
 
         Task LogActionSyncOffVRMatches(DateTime eventDate);
+
+        Task<(DateTime, string)> GetSyncOffVRLastUpdate(DateTime eventDate);
     }
 
     public class RepositoryImp : Repository
@@ -800,6 +802,13 @@ namespace OWP.EventAssignment.Repositories
             };
 
             await dynamicRepository.ExecuteAsync(criteria);
+        }
+
+        public async Task<(DateTime, string)> GetSyncOffVRLastUpdate(DateTime eventDate)
+        {
+            var criteria = new GetLastUpdatedSyncOffVRCriteria { EventDate = eventDate };
+            var result = await dynamicRepository.FetchAsync<(DateTime, string)>(criteria);
+            return result.FirstOrDefault();
         }
     }
 }

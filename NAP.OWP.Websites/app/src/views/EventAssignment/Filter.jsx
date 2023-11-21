@@ -18,6 +18,8 @@ import {
 import { SYNC_LIVE_OPTION } from './constants/SyncLive';
 import { MATCH_TYPE_OPTION } from './constants/MatchType';
 import { setFilterDate } from './reducer/tableReducer';
+import EventAssignment from './EventAssignment';
+import Service from './Service';
 
 const propTypes = {
   hasWrite: PropTypes.bool.isRequired,
@@ -150,7 +152,16 @@ class Filter extends PureComponent {
     }
   }
 
-  handleSyncOffVR() {}
+  handleSyncOffVR() {
+    ToastrWrapper.confirm(
+      'Are you sure to TURN OFF VR for ALL the matches containing OFF VR?'
+    ).then(async confirmResult => {
+      if (confirmResult.value) {
+        const model = { date: selectedDate };
+        await Service.syncOffVRs(model);
+      }
+    });
+  }
 
   render() {
     const { selectedMatchStatus, selectedMatchType, selectedOffVRs } =
@@ -250,11 +261,13 @@ class Filter extends PureComponent {
             selectedSyncLive={this.state.selectedSyncLive}
             lastUpdated={lastUpdated}
           />
-          <button
-            className='button-submit button-sync-off-vr'
-            onClick={this.handleSubmit}>
-            Sync OFF VR
-          </button>
+          {hasWrite && (
+            <button
+              className='button-submit button-sync-off-vr'
+              onClick={this.handleSyncOffVR}>
+              Sync OFF VR
+            </button>
+          )}
         </div>
         <div className='filter-control-checkbox'>
           <label>

@@ -122,11 +122,26 @@ namespace OWP.EventAssignment.Controllers
         [Route("sync-off-vr")]
         [HttpPost]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Host)]
-        public async Task<IHttpActionResult> SyncOffVR(DateTime date)
+        public async Task<IHttpActionResult> SyncOffVR(Model model)
         {
-            await syncOffVrService.Sync(date);
+            await syncOffVrService.Sync(model.date);
 
             return Ok();
         }
+
+        [Route("get-sync-off-vr-last-updated")]
+        [HttpGet]
+        [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
+        public async Task<(DateTime, string)> GetSyncOffVRLastUpdate(DateTime date)
+        {
+            var result = await repository.GetSyncOffVRLastUpdate(date);
+
+            return result;
+        }
+    }
+
+    public class Model
+    {
+        public DateTime date { get; set; }
     }
 }

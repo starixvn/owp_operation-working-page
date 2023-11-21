@@ -27,7 +27,7 @@ namespace OWP.EventAssignment.Criteria
     {
         public DateTime EventDate { get; set; }
 
-        public override string GetSettingKey() => "OWP_LiveGame_GetLastUpdatedSyncOffVR";
+        public override string GetSettingKey() => "OWP_LiveGame_GetLastUpdatedSync";
 
         public override bool IsValid() => true;
     }
