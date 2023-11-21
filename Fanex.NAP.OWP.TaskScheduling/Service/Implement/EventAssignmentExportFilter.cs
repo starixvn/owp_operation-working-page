@@ -13,9 +13,6 @@
     public interface EventAssignmentExportFilter
     {
         List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus, string matchType, string offVRs);
-        List<EventModel> FilterEventModelByPermision(List<EventModel> events, EventAssignmentPermissionModel permission);
-        List<EventModel> FilterEventModelByUser(List<EventModel> events, string username);
-        List<EventModel> FilterMatchesByTimeRange(List<EventModel> matches);
     }
 
     public class EventAssignmentExportFilterImp : EventAssignmentExportFilter

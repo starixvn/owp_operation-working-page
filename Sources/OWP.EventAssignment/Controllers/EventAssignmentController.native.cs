@@ -132,7 +132,7 @@ namespace OWP.EventAssignment.Controllers
         [Route("get-sync-off-vr-last-updated")]
         [HttpGet]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
-        public async Task<(DateTime, string)> GetSyncOffVRLastUpdate(DateTime date)
+        public async Task<(string, string)> GetSyncOffVRLastUpdate(DateTime date)
         {
             var result = await repository.GetSyncOffVRLastUpdate(date);
 
