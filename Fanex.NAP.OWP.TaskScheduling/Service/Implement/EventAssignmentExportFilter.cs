@@ -29,6 +29,10 @@
         }
         private static List<EventModel> FilterEventByMatchType(IList<EventModel> matchInfos, string matchType)
         {
+            if (string.IsNullOrEmpty(matchType))
+            {
+                return matchInfos.ToList();
+            }
             var types = matchType.Split(',').ToList();
             if (IsSelectAllMatchType(types))
             {
@@ -123,6 +127,10 @@
 
         private List<EventModel> FilterEventByOffVRs(List<EventModel> events, string offVRs)
         {
+            if (string.IsNullOrEmpty(offVRs))
+            {
+                return events.ToList();
+            }
             var offVRList = offVRs.Split(',').ToList();
             return events
                 .Where(ev => offVRList.Exists(offVR => string.IsNullOrEmpty(offVR)
