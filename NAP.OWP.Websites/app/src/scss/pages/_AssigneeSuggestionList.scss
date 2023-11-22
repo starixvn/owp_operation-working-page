@@ -17,6 +17,7 @@
     position: relative;
     top: -2px;
     font-size: 1.2rem;
+    display: inline-block;
   }
   .maxbet-string {
     background: #889097;
@@ -29,6 +30,7 @@
     position: relative;
     top: -2px;
     font-size: 1.2rem;
+    display: inline-block;
   }
 }
 // Filter
@@ -41,6 +43,10 @@
 .filter__info {
   display: flex;
   align-items: flex-end;
+
+  .overtime__label {
+    margin-right: 10px;
+  }
 }
 
 .overtime-dropdown {
@@ -360,7 +366,7 @@ div.rt-tr:has(span.expand-section) {
     }
     .sticky-col {
       border-right: 0;
-      min-width: 480px;
+      min-width: 513px;
     }
     .item {
       text-align: center;
@@ -415,9 +421,13 @@ th:first-child,
       }
     }
     .shift-cell {
-      width: 147px;
-      min-width: 147px;
+      width: 180px;
+      min-width: 180px;
+      .ot__icon {
+        margin-bottom: 4px;
+      }
     }
+
     .trader,
     .trader-management {
       // justify-content: flex-end;
@@ -462,7 +472,7 @@ th:first-child,
 .color__explain_info {
   position: absolute;
   right: 10px;
-  top: 66px;
+  top: 72px;
   z-index: 4;
   .info {
     margin-bottom: 4px;
@@ -501,4 +511,5 @@ th:first-child,
 .overlap-timeline {
   display: flex;
   height: 100%;
+  border-left: 0.05px solid #c8ced3;
 }

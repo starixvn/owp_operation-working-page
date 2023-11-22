@@ -40,10 +40,9 @@ const Header = () => {
             </b>
             &nbsp;
             <span className="time">
-              Event Date:&nbsp;
-              {`${formattedDate}${otherTime ? ' - Other time:' : ''} ${formattedTime}`}&nbsp;
-              <span className="maxbet-string"> {maxbetHDPInString}</span>
+              {`Event Date: ${formattedDate}${otherTime ? ' - Other time:' : ''} ${formattedTime} `}
             </span>
+            <span className="maxbet-string"> {maxbetHDPInString}</span>
             &nbsp;
             <span className='bet-type'>{bettypeName}</span>
           </>
@@ -52,9 +51,10 @@ const Header = () => {
       <div className='filter__info'>
         <Filter />
         <SearchAssignee />
+        <ColorExplain />
       </div>
 
-      <ColorExplain />
+
     </>
   );
 };
