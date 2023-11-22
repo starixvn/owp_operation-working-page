@@ -26,13 +26,14 @@ const getTotalRecords = ({
   fullyAvailable.length + partiallyAvailable.length + busy.length;
 
 const searchByAssignee = (userInfo: UserInfo, keyword: string) => {
+
   const normalizedKeyword = keyword.toLowerCase().trim();
   return [
     userInfo.username,
     userInfo.levelLabel,
     userInfo.mainBetType,
     userInfo.maxMultipleGames
-  ].some(prop => prop.toLowerCase().includes(normalizedKeyword));
+  ].some(prop => prop?.toLowerCase().includes(normalizedKeyword));
 };
 
 const searchByOtValue = (userInfo: UserInfo, otValue: OVER_TIME_OPTIONS_VALUE) => ({

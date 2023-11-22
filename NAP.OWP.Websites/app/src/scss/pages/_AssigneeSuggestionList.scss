@@ -40,10 +40,11 @@
 }
 .filter__info {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
+
 .overtime-dropdown {
-  width: 130px;
+  min-width: 150px;
   margin-right: 10px;
   .label {
     margin-bottom: 5px;
@@ -83,12 +84,17 @@
 .search-assignee {
   input {
     background: #fafafa;
-    border: 1px solid #d3d3d3;
-    border-radius: 3px;
-    font-size: 12px;
+
     padding: 5px 8px;
     min-width: 200px;
     outline: none;
+    min-height: 28px;
+    line-height: 1;
+    font-size: 12px;
+    background-color: transparent;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid #e1e1e1;
     &:focus {
       outline: none;
     }

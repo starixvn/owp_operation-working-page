@@ -14,6 +14,7 @@ const SearchAssignee = () => {
     <div className='search-assignee'>
       <input
         type='text'
+        className='input-field'
         value={keyword}
         onChange={event => setKeyword(event.target.value)}
         onKeyDown={handleKeyDown}
