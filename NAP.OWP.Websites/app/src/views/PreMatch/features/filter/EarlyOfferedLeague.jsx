@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import { useDispatch } from 'react-redux';
 
@@ -8,20 +8,12 @@ import { updateFilterEarlyOffered } from '../filter/filterSlice';
 const EarlyOfferedLeague = () => {
   const dispatch = useDispatch();
   const stableDispatch = useCallback(dispatch, [dispatch]);
-
   const [selected, setSelected] = useState(EARLY_OFFERED);
 
   const handleChange = newMatchOffer => {
     setSelected(newMatchOffer);
     stableDispatch(updateFilterEarlyOffered(newMatchOffer.map(x => x.value)));
   };
-
-  useEffect(
-    () => () => {
-      stableDispatch(updateFilterEarlyOffered(selected.map(x => x.value)));
-    },
-    []
-  );
 
   return (
     <div className='multi-select-dropdown'>

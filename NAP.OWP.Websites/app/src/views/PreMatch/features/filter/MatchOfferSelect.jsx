@@ -16,13 +16,6 @@ const MatchOfferSelect = () => {
     stableDispatch(updateFilterMatchOffers(newMatchOffer.map(x => x.value)));
   };
 
-  useEffect(
-    () => () => {
-      stableDispatch(updateFilterMatchOffers(selected.map(x => x.value)));
-    },
-    []
-  );
-
   return (
     <div className='multi-select-dropdown'>
       <div className='label'>Match Offer</div>

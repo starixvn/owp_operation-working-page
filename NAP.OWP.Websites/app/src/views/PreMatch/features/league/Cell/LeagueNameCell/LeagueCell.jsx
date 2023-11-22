@@ -29,7 +29,7 @@ const LeagueCell = props => {
     <Cell key={nanoid()}>
       <div className='league-row'>
         <label id={`name${rowIndex}`}>{LeagueName}</label>
-        {IsEarlyOffered && <div class='green-dot'></div>}
+        {IsEarlyOffered && <div className='green-dot'></div>}
         <span>
           <b className='matchCount'>({MatchCount})</b>
           <span className='icon-expand' onClick={handleClickExpandCollapse}>
