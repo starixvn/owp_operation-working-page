@@ -32,14 +32,23 @@ const ViewFilterDayShift = () => {
     const employeeValue = getValueRef(employeeRef);
     const leagueNameValue = getValueRef(leagueRef);
     const matchOffersValue = model.matchOffers;
+    const earlyOfferedValue = model.earlyOffered;
     const eventDate = getMMDDYYYYStringFromDateTime(selectedDate);
 
     if (!matchOffersValue.length) {
       ToastrWrapper.showError('Please select at least one Match Offer');
       return;
     }
+
+    if (!earlyOfferedValue?.length) {
+      ToastrWrapper.showError(
+        'Please select at least one Early Offered League'
+      );
+      return;
+    }
     const filter = {
       matchOffers: matchOffersValue,
+      earlyOffered: earlyOfferedValue,
       EventDate: eventDate,
       Employee: employeeValue,
       LeagueName: leagueNameValue,

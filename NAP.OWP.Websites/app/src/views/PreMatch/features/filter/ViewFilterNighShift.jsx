@@ -55,7 +55,7 @@ const ViewFilterNighShift = () => {
     const employeeValue = getValueRef(employeeRef);
     const leagueNameValue = getValueRef(leagueRef);
     const matchOffersValue = model.matchOffers;
-
+    const earlyOfferedValue = model.earlyOffered;
     if (!matchOffersValue) {
       return;
     }
@@ -65,8 +65,16 @@ const ViewFilterNighShift = () => {
       return;
     }
 
+    if (!earlyOfferedValue?.length) {
+      ToastrWrapper.showError(
+        'Please select at least one Early Offered League'
+      );
+      return;
+    }
+
     const filterModel = {
       matchOffers: matchOffersValue,
+      earlyOffered: earlyOfferedValue,
       EventDate: getMMDDYYYYStringFromDateTime(selectedDate),
       Employee: employeeValue,
       LeagueName: leagueNameValue,
@@ -74,7 +82,6 @@ const ViewFilterNighShift = () => {
       url: URL_NIGHT_SHIFT,
       StartTime: getHourAndMinutes(startTimeOriginal) || ''
     };
-
     stableDispatch(updateFilterDate(selectedDate));
 
     if (startTimeOriginal) {

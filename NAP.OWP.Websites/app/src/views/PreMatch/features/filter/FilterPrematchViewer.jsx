@@ -11,6 +11,7 @@ import {
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { AccountCheckIcon } from 'mdi-react';
 import MatchOfferSelect from './MatchOfferSelect';
+import EarlyOfferedLeague from './EarlyOfferedLeague';
 
 const propTypes = {
   model: PropTypes.object.isRequired,
@@ -75,6 +76,7 @@ const FilterPrematchViewer = React.forwardRef((props, ref) => {
             />
           </div>
           <MatchOfferSelect />
+          <EarlyOfferedLeague />
         </DateTimeFilterCommon>
         <CollapseBtn />
         <ExpandBtn />

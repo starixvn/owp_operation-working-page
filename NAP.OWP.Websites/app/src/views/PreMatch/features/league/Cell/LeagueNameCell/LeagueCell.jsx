@@ -16,10 +16,8 @@ const propTypes = {
 
 const LeagueCell = props => {
   const { dataSource, rowIndex } = props;
-  const { LeagueName, PreMatchLeagueId, isExpand, MatchCount } = dataSource[
-    rowIndex
-  ];
-
+  const { LeagueName, PreMatchLeagueId, isExpand, MatchCount, IsEarlyOffered } =
+    dataSource[rowIndex];
   const stableDispatch = useStableDispatch();
   const handleClickExpandCollapse = () => {
     isExpand
@@ -31,6 +29,7 @@ const LeagueCell = props => {
     <Cell key={nanoid()}>
       <div className='league-row'>
         <label id={`name${rowIndex}`}>{LeagueName}</label>
+        {IsEarlyOffered && <div class='green-dot'></div>}
         <span>
           <b className='matchCount'>({MatchCount})</b>
           <span className='icon-expand' onClick={handleClickExpandCollapse}>
