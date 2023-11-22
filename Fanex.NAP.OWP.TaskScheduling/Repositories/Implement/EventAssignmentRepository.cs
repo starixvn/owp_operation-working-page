@@ -12,6 +12,7 @@ namespace Fanex.NAP.OWP.TaskScheduling.Repositories.Implement
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
 
     public class EventAssignmentRepository : IEventAssignmentRepository
@@ -226,7 +227,7 @@ namespace Fanex.NAP.OWP.TaskScheduling.Repositories.Implement
                     AdminSiteId = matchInfo.MatchId.HasValue ? matchInfo.MatchId.ToString() : string.Empty,
                     Time = matchInfo.KickOffTime.ToOWPTimeFormat(),
                     OtherTime = matchInfo.OtherTime.HasValue ? matchInfo.OtherTime.Value.ToOWPTimeFormat() : string.Empty,
-                    MatchOffer = matchInfo.MatchOffer,
+                    MatchOffer = WebUtility.HtmlDecode(matchInfo.MatchOffer),
                     MatchOfferList = matchOffers.Where(x => x.OWPMatchId == matchInfo.OWPMatchId).ToList(),
                     LeagueName = matchInfo.League,
                     HomeName = matchInfo.Home,
