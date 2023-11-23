@@ -1,6 +1,4 @@
 ﻿using Fanex.NAP.OWP.Core.Configuration;
-using Fanex.NAP.OWP.TaskScheduling.Misc;
-using Newtonsoft.Json;
 using Olympus.InfoSiteClient;
 using Olympus.InfoSiteClient.Models;
 
@@ -21,7 +19,6 @@ namespace Fanex.NAP.OWP.TaskScheduling.Controllers
     using OfficeOpenXml;
     using Service.Implement;
     using ViewModels.EventPicking;
-    using Builder;
     using System.Configuration;
 
     public class EventPickingController : Controller

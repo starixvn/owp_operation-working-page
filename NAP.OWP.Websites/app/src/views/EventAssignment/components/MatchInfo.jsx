@@ -20,7 +20,11 @@ const MatchInfo = ({ event, componentId }) => {
       {event.MatchOffers.map((element, index) => (
         <span
           key={`${componentId}${index}`}
-          className='badge-label match-offer'>
+          className={`badge-label ${
+            element.MatchOfferValue.includes('OFF VR')
+              ? 'off-vr-offer'
+              : 'match-offer'
+          } `}>
           {element.MatchOfferValue}
         </span>
       ))}

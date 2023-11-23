@@ -1,6 +1,5 @@
 ﻿namespace Fanex.NAP.OWP.TaskScheduling.Builder
 {
-    using System;
     using System.Linq;
 
     public static class ProviderBuilder

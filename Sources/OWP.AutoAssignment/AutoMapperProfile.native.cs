@@ -2,7 +2,6 @@
 {
     using AutoMapper;
     using Models;
-    using Visualization.Models;
     using assignModel = Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment;
 
     public class AutoMapperProfile : Profile

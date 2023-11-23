@@ -491,7 +491,7 @@
 }
 
 .badge-label {
-  padding: 0 2px;
+  padding: 2px 4px;
   margin-right: 3px;
   display: inline-block;
   color: #fff;
@@ -500,6 +500,10 @@
 
   &.match-offer {
     background: #70ad47;
+  }
+
+  &.off-vr-offer {
+    background: #5b5fa4;
   }
 
   &.cancel,

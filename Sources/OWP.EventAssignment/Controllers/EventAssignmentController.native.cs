@@ -1,19 +1,20 @@
-﻿namespace OWP.EventAssignment.Controllers
+﻿using System;
+using OWP.EventAssignment.Services;
+using OWP.Services;
+
+namespace OWP.EventAssignment.Controllers
 {
     using Fanex.Common.Extensions;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Web.Attribute;
-    using Fanex.NAP.OWP.Core.Extensions;
     using Models;
-    using OWP.Constants;
+    using Constants;
     using Permission;
     using Repositories;
-    using Services;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Http;
-    using Const;
 
     [RoutePrefix("api/event-assignment")]
     public class EventAssignmentController : ApiController
@@ -22,16 +23,19 @@
         private readonly NotificationService notificationService;
         private readonly EventAssignmentPermission eventAssignmentPermission;
         private readonly GetAdminSiteMatchIdService getAdminSiteMatchIdService;
+        private readonly SyncOffVRService syncOffVrService;
 
         public EventAssignmentController(Repository repository,
             NotificationService notificationService,
             EventAssignmentPermission eventAssignmentPermission,
-            GetAdminSiteMatchIdService getAdminSiteMatchIdService)
+            GetAdminSiteMatchIdService getAdminSiteMatchIdService,
+            SyncOffVRService syncOffVrService)
         {
             this.repository = repository;
             this.notificationService = notificationService;
             this.eventAssignmentPermission = eventAssignmentPermission;
             this.getAdminSiteMatchIdService = getAdminSiteMatchIdService;
+            this.syncOffVrService = syncOffVrService;
         }
 
         [Route("")]
@@ -114,5 +118,30 @@
 
             return Ok(result);
         }
+
+        [Route("sync-off-vr")]
+        [HttpPost]
+        [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Host)]
+        public async Task<IHttpActionResult> SyncOffVR(Model model)
+        {
+            await syncOffVrService.Sync(model.date);
+
+            return Ok();
+        }
+
+        [Route("get-sync-off-vr-last-updated")]
+        [HttpGet]
+        [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
+        public async Task<(string, string)> GetSyncOffVRLastUpdate(DateTime date)
+        {
+            var result = await repository.GetSyncOffVRLastUpdate(date);
+
+            return result;
+        }
+    }
+
+    public class Model
+    {
+        public DateTime date { get; set; }
     }
 }

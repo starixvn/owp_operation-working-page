@@ -16,7 +16,6 @@
     using OWP.Models;
     using Services;
     using Utils;
-    using static Dapper.SqlMapper;
 
     public interface Repository
     {

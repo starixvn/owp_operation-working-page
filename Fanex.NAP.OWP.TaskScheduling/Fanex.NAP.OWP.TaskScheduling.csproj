@@ -173,6 +173,7 @@
     <Compile Include="Misc\TruthRule.cs" />
     <Compile Include="Models\EventAssignment\AssignmentUploadHistoryModel.cs" />
     <Compile Include="Models\EventAssignment\ColumnStyle.cs" />
+    <Compile Include="Models\EventAssignment\MatchOffer.cs" />
     <Compile Include="Models\EventPicking\BlackList.cs" />
     <Compile Include="Models\EventPicking\Condition.cs" />
     <Compile Include="Models\EventAssignment\AIOAssignmentModel.cs" />

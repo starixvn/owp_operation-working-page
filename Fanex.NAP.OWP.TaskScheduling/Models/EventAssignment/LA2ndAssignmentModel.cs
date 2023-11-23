@@ -1,7 +1,6 @@
 ﻿namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
 {
     using System;
-    using Core.Extensions.ExcelExtensions;
     using global::OWP.Enumerations;
 
     [Serializable]

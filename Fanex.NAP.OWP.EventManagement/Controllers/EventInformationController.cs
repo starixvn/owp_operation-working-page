@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using OWP.Services;
-using OWP.Utils;
 
 namespace Fanex.NAP.OWP.EventManagement.Controllers
 {

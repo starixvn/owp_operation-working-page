@@ -10,7 +10,6 @@
     using Fanex.NAP.Core.Web.Session;
     using Models;
     using OWP.Models;
-    using OWP.Utils;
 
     public interface WorkingShiftPublishRepository
     {

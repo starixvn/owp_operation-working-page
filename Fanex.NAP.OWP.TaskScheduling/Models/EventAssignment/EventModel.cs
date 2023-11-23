@@ -62,6 +62,10 @@
         [Column(ColumnName.MatchOffer)]
         public string MatchOffer { get; set; }
 
+        [ExcelIgnore]
+        [XmlIgnore]
+        public IEnumerable<MatchOffer> MatchOfferList { get; set; }
+
         [Column(ColumnName.LSTNote)]
         public string LSTNote { get; set; }
 

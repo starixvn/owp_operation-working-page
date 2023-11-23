@@ -4,7 +4,6 @@
     using AutoMapper;
     using Fanex.Data.Repository;
     using Fanex.NAP.Core.Web.Session;
-    using Utils;
 
     public interface Repository
     {

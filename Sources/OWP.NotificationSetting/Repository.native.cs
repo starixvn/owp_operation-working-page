@@ -5,7 +5,6 @@
     using Criteria;
     using Fanex.Data.Repository;
     using Models;
-    using Utils;
 
     public interface Repository
     {

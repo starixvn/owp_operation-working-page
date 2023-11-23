@@ -18,11 +18,14 @@ import {
 import { SYNC_LIVE_OPTION } from './constants/SyncLive';
 import { MATCH_TYPE_OPTION } from './constants/MatchType';
 import { setFilterDate } from './reducer/tableReducer';
+import EventAssignment from './EventAssignment';
+import Service from './Service';
 
 const propTypes = {
   hasWrite: PropTypes.bool.isRequired,
   submit: PropTypes.func.isRequired,
   matchStatuses: PropTypes.array.isRequired,
+  offVRs: PropTypes.array.isRequired,
   onToggleModal: PropTypes.func.isRequired,
   isAllowAddEvent: PropTypes.bool.isRequired,
   isHostEventPicking: PropTypes.bool.isRequired,
@@ -37,6 +40,7 @@ class Filter extends PureComponent {
     super(props);
     this.state = {
       selectedMatchStatus: [],
+      selectedOffVRs: [],
       selectedSyncLive: SYNC_LIVE_OPTION[0].value,
       selectedMatchType: MATCH_TYPE_OPTION,
       userName: '',
@@ -45,8 +49,10 @@ class Filter extends PureComponent {
     };
 
     this.matchStatusOptions = [];
+    this.offVRs = [];
     this.datePicker = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSyncOffVR = this.handleSyncOffVR.bind(this);
     this.handleShowMessage = this.handleShowMessage.bind(this);
   }
 
@@ -60,15 +66,17 @@ class Filter extends PureComponent {
   }
 
   componentDidMount() {
-    const { matchStatuses } = this.props;
+    const { matchStatuses, offVRs } = this.props;
     this.matchStatusOptions = Utils.buildMatchStatusOption(matchStatuses);
+    this.offVRs = Utils.buildOffVROption(offVRs);
     const selectedMatchStatus = Utils.buildSelectedMatchStatus(
       this.matchStatusOptions
     );
 
     this.setState(
       {
-        selectedMatchStatus
+        selectedMatchStatus,
+        selectedOffVRs: this.offVRs
       },
       () => {
         this.handleSubmit();
@@ -100,6 +108,7 @@ class Filter extends PureComponent {
     const { submit } = this.props;
     const {
       selectedMatchStatus,
+      selectedOffVRs,
       selectedSyncLive,
       selectedMatchType,
       userName,
@@ -107,9 +116,11 @@ class Filter extends PureComponent {
       isShowUnreadMessOnly
     } = this.state;
     const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
+    const selectedOffVRIsValid = selectedOffVRs.length > 0;
     const selectedMatchTypeIsValid = selectedMatchType.length > 0;
     if (
       selectedMatchStatusIsValid &&
+      selectedOffVRIsValid &&
       userNameIsValid &&
       selectedMatchTypeIsValid
     ) {
@@ -117,6 +128,7 @@ class Filter extends PureComponent {
         selectedDate,
         userName,
         selectedMatchStatus: selectedMatchStatus.map(x => x.value),
+        selectedOffVRs: selectedOffVRs.map(x => x.value),
         selectedMatchType: selectedMatchType.map(ms => ms.value).join(),
         selectedSyncLive,
         showUnreadMessage: isShowUnreadMessOnly
@@ -135,11 +147,25 @@ class Filter extends PureComponent {
       !userNameIsValid && ToastrWrapper.showError('User not found');
       !selectedMatchTypeIsValid &&
         ToastrWrapper.showError('Please select at least one match type');
+      !selectedOffVRIsValid &&
+        ToastrWrapper.showError('Please select at least one OFF VR');
     }
   }
 
+  handleSyncOffVR() {
+    ToastrWrapper.confirm(
+      'Are you sure to TURN OFF VR for ALL the matches containing OFF VR?'
+    ).then(async confirmResult => {
+      if (confirmResult.value) {
+        const model = { date: selectedDate };
+        await Service.syncOffVRs(model);
+      }
+    });
+  }
+
   render() {
-    const { selectedMatchStatus, selectedMatchType } = this.state;
+    const { selectedMatchStatus, selectedMatchType, selectedOffVRs } =
+      this.state;
     const {
       hasWrite,
       onToggleModal,
@@ -195,7 +221,7 @@ class Filter extends PureComponent {
             }
           />
         </div>
-        <div className='filter-control multiselect'>
+        <div className='filter-control multiselect sync-live'>
           <div className='label'>Sync Live</div>
           <Select
             defaultValue={SYNC_LIVE_OPTION[0]}
@@ -203,6 +229,16 @@ class Filter extends PureComponent {
             classNamePrefix='select'
             options={SYNC_LIVE_OPTION}
             onChange={e => this.setState({ selectedSyncLive: e.value })}
+          />
+        </div>
+        <div className='filter-control multiselect off-vr'>
+          <div className='label'>OFF VR</div>
+          <MultiSelect
+            options={this.offVRs}
+            disableSearch
+            ClearSelectedIcon={null}
+            value={selectedOffVRs}
+            onChange={selected => this.setState({ selectedOffVRs: selected })}
           />
         </div>
         <div className='filter-control btn-block'>
@@ -218,12 +254,22 @@ class Filter extends PureComponent {
             isHostEventPicking={isHostEventPicking}
             selectedDate={selectedDate}
             selectedMatchStatus={selectedMatchStatus.map(x => x.value)}
+            selectedOffVRs={selectedOffVRs.map(x => x.value)}
             selectedMatchType={selectedMatchType.map(ms => ms.value).join()}
             userName={this.state.userName}
             userNameIsValid={this.state.userNameIsValid}
             selectedSyncLive={this.state.selectedSyncLive}
             lastUpdated={lastUpdated}
           />
+          {hasWrite && (
+            <button
+              hidden
+              disabled
+              className='button-submit button-sync-off-vr'
+              onClick={this.handleSyncOffVR}>
+              Sync OFF VR
+            </button>
+          )}
         </div>
         <div className='filter-control-checkbox'>
           <label>

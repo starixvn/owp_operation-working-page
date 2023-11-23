@@ -9,7 +9,6 @@
     using Fanex.NAP.Core.Web.Session;
     using Models;
     using OWP.Repositories;
-    using OWP.Utils;
     using Utils;
     using ViewLog.Models;
     using WorkingShift.Models;

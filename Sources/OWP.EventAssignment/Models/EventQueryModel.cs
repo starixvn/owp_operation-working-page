@@ -11,6 +11,8 @@
 
         public int[] MatchStatusIds { get; set; }
 
+        public int?[] SelectedOffVRs { get; set; }
+
         public int SyncLiveStatus { get; set; }
 
         public bool ShowUnreadMessage { get; set; }

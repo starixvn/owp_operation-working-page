@@ -41,7 +41,7 @@
       display: none;
     }
 
-    .btn-select .select__dropdown-indicator > svg {
+    .btn-select .select__dropdown-indicator>svg {
       height: 28px;
     }
   }
@@ -82,14 +82,14 @@
         line-height: 26px !important;
         cursor: pointer;
 
-        > span {
+        >span {
           color: #5e7485 !important;
         }
       }
     }
   }
 
- 
+
   .react-datepicker {
     font-size: 12px;
 
@@ -126,6 +126,7 @@
     z-index: 5;
   }
 }
+
 .button-submit {
   @include button-style(#fff, #1e88e5);
   margin-left: 10px;
@@ -184,7 +185,7 @@
   .select__value-container {
     padding: 0;
 
-    > div:last-child {
+    >div:last-child {
       margin: 0;
       padding: 0;
     }
@@ -204,7 +205,7 @@
 
   .select__multi-value {
     justify-content: space-between;
-    max-width: 100px;
+    max-width: 200px;
   }
 
   .select__multi-value__label {
@@ -221,7 +222,7 @@
   .select__dropdown-indicator {
     padding: 0;
 
-    > svg {
+    >svg {
       height: 20px;
       width: 12px;
       color: #666;
@@ -269,16 +270,16 @@
     }
   }
 
-  .switch-input:checked + .switch-slider::before {
+  .switch-input:checked+.switch-slider::before {
     background: #43a0f1;
   }
 
-  .switch-input:checked ~ .switch-slider::before {
+  .switch-input:checked~.switch-slider::before {
     transform: translateX(14px);
   }
 }
 
-.switch-primary .switch-input:checked + .switch-slider {
+.switch-primary .switch-input:checked+.switch-slider {
   background: #6ab9fc;
   border-color: #6ab9fc;
 }
@@ -303,12 +304,13 @@
 
 .option-wrapper {
   cursor: pointer;
+
   // hides the actual checkbox
   input[type="checkbox"] {
     display: none;
 
     // Label text
-    + label {
+    +label {
       display: inline-block;
       position: relative;
       height: 18px;
@@ -331,7 +333,7 @@
     }
 
     // Checked checkbox box border
-    &:checked + label {
+    &:checked+label {
       &::before {
         border: 2px solid #43a0f0;
         background: #43a0f0;
@@ -358,12 +360,13 @@
 
 .checkbox {
   cursor: pointer;
+
   // hides the actual checkbox
   input[type="checkbox"] {
     display: none;
 
     // Label text
-    + label {
+    +label {
       display: inline-block;
       position: relative;
       height: 18px;
@@ -387,7 +390,7 @@
     }
 
     // Checked checkbox box border
-    &:checked + label {
+    &:checked+label {
       &::before {
         border: 1px solid #43a0f0;
         background: #43a0f0;
@@ -541,15 +544,19 @@
     border-top-right-radius: 0;
     min-width: 150px !important;
   }
-  .select__menu .select__menu-list{
+
+  .select__menu .select__menu-list {
     max-height: 400px !important;
+
     .select__option {
       padding: 8px 10px;
       color: rgb(102, 102, 102);
+
       &:hover {
         cursor: pointer;
         background-color: rgb(235, 245, 255);
       }
+
       &.select__option--is-selected {
         background-color: rgb(235, 245, 255);
       }

@@ -72,6 +72,22 @@ const getLastUpdated = async eventDate => {
   return response.data.length === 0 ? null : response.data[0].UploadDateTime;
 };
 
+const syncOffVRs = async eventModel => {
+  const response = await axios.post(
+    'api/event-assignment/sync-off-vr',
+    eventModel
+  );
+  return response.data;
+};
+
+const getSyncOffVRLastUpdated = async eventDate => {
+  const response = await axios.get(
+    `api/event-assignment/get-sync-off-vr-last-updated?date=${eventDate}`
+  );
+
+  return response.data;
+};
+
 const Service = {
   queryDataExcel,
   query,
@@ -81,7 +97,9 @@ const Service = {
   getInfoSiteMatch,
   getBettypeForMatchInfo,
   getSpecialEventTemplate,
-  getLastUpdated
+  getLastUpdated,
+  syncOffVRs,
+  getSyncOffVRLastUpdated
 };
 
 export default Service;

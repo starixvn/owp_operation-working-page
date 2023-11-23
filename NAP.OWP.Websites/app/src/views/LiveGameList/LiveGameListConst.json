@@ -1,4 +1,5 @@
 {
+  "OFF_VR": "OFF VR",
   "DEFAULT_STATUS_OPTION": [
     { "label": "Live", "value": 1 },
     { "label": "In-play", "value": 2 }

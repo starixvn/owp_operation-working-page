@@ -2,11 +2,8 @@ import Utils from '../Shared/Utils';
 import { findIndex, includes, filter, find } from 'lodash';
 import isEqual from 'lodash.isequal';
 
-const {
-  convertThousandToK,
-  convertSpreadToPercent,
-  toLowerCaseForFilter
-} = Utils;
+const { convertThousandToK, convertSpreadToPercent, toLowerCaseForFilter } =
+  Utils;
 const filterMatchNo = (events, keyword) =>
   filter(events, event => {
     return (
@@ -278,6 +275,9 @@ const getKeyword = (columnFilters, columnName) => {
   return result ? result.keyword : '';
 };
 
+const selectOffVROptions = matchOffers =>
+  matchOffers.filter(x => x.Value.includes('OFF VR'));
+
 export {
   filterMatchNo,
   filterKickOffTime,
@@ -298,5 +298,6 @@ export {
   filterSpecific10Mins,
   filterFM,
   filterAIO,
-  getKeyword
+  getKeyword,
+  selectOffVROptions
 };

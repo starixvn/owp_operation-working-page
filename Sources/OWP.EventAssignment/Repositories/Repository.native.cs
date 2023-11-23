@@ -1,4 +1,5 @@
 ﻿using OWP.CopyMatchInfo;
+using OWP.EventAssignment.Services;
 
 namespace OWP.EventAssignment.Repositories
 {
@@ -15,7 +16,6 @@ namespace OWP.EventAssignment.Repositories
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using System.Xml.Linq;
     using Utils;
@@ -34,7 +34,12 @@ namespace OWP.EventAssignment.Repositories
         Task DetectEventHasTicket(IList<EventModel> eventModels);
 
         Task<IList<InfoSiteTimeModel>> GetInfoSiteTime(string ids);
-        
+
+        Task<List<OffVRModel>> GetSyncOffVRMatches(DateTime eventDate);
+
+        Task LogActionSyncOffVRMatches(DateTime eventDate);
+
+        Task<(string, string)> GetSyncOffVRLastUpdate(DateTime eventDate);
     }
 
     public class RepositoryImp : Repository
@@ -470,8 +475,6 @@ namespace OWP.EventAssignment.Repositories
                 MatchStatusIds = string.Join(",", queryModel.MatchStatusIds)
             };
 
-            
-
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = await db.QueryMultipleAsync(criteria))
@@ -490,10 +493,18 @@ namespace OWP.EventAssignment.Repositories
                     var events = await MappingInfoToEventModel(matches, assignments, notes, matchSettings, televisions, matchOffers);
                     var eventsByUsers = FilterEventModelByUser(events, queryModel.Username);
                     var eventsByMatchType = FilterEventByMatchType(eventsByUsers, queryModel.MatchType);
-                    return FilterEventModelByLiveStatus(eventsByMatchType, queryModel.SyncLiveStatus);
+                    var eventsByOffVR = FilterEventModelByOffVR(eventsByMatchType, queryModel.SelectedOffVRs);
+                    return FilterEventModelByLiveStatus(eventsByOffVR, queryModel.SyncLiveStatus);
                 }
             }
         }
+
+        private static IList<EventModel> FilterEventModelByOffVR(IList<EventModel> events, int?[] offVRs) 
+            => events
+                .Where(ev => offVRs.Any(offVR => offVR == null 
+                    ? ev.MatchOffers.All(x => !x.MatchOfferValue.IsContainsIgnoreCase("OFF VR")) 
+                    : ev.MatchOffers.Any(x => offVR == x.Id)))
+                .ToList();
 
         private static IList<EventModel> FilterEventModelByLiveStatus(IList<EventModel> events, int liveStatus)
         {
@@ -773,6 +784,32 @@ namespace OWP.EventAssignment.Repositories
                 ParentMatchIds = ids
             };
             return (await dynamicRepository.FetchAsync<InfoSiteTimeModel>(criteria)).ToList();
+        }
+
+        public async Task<List<OffVRModel>> GetSyncOffVRMatches(DateTime eventDate)
+        {
+            var criteria = new SyncOffVRCriteria { EventDate = eventDate };
+            return (await dynamicRepository.FetchAsync<OffVRModel>(criteria)).ToList();
+        }
+
+        public async Task LogActionSyncOffVRMatches(DateTime eventDate)
+        {
+            var criteria = new LogActionSyncOffVRCriteria
+            {
+                EventDate = eventDate,
+                ActorId = session.UserId
+            };
+
+            await dynamicRepository.ExecuteAsync(criteria);
+        }
+
+        public async Task<(string, string)> GetSyncOffVRLastUpdate(DateTime eventDate)
+        {
+            var criteria = new GetLastUpdatedSyncOffVRCriteria { EventDate = eventDate };
+            var result = await dynamicRepository.FetchAsync<(DateTime, string)>(criteria);
+            var first = result.FirstOrDefault();
+
+            return (first.Item1.ToString("MMM dd, hh:mm tt"), first.Item2);
         }
     }
 }

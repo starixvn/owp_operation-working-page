@@ -117,14 +117,9 @@ const convertSpreadToPercent = (number, needSymbolPercent) => {
 };
 
 const requestOrGetSessionStorage = async (key, url) => {
-  let data = JSON.parse(sessionStorage.getItem(key));
-  if (!data) {
-    const response = await axios.get(url);
-    data = response.data;
-    sessionStorage.setItem(key, JSON.stringify(data));
-  }
-
-  return data;
+  const response = await axios.get(url);
+  sessionStorage.setItem(key, JSON.stringify(response.data));
+  return response.data;
 };
 
 const requestOrGetLocalStorage = async props => {
@@ -153,6 +148,15 @@ const buildSelectedMatchStatus = matchStatusOptions =>
   matchStatusOptions.filter(
     x => x.label === MatchStatuses.Live || x.label === MatchStatuses.InPlay
   );
+
+const buildOffVROption = offVRs => {
+  const offVROptions = offVRs.map(x => ({
+    label: x.Value,
+    value: x.Id
+  }));
+
+  return offVROptions.concat({ label: 'None', value: null });
+};
 
 const handleOnDateChange = (matchStatusOptions, date) => {
   let selectedMatchStatus = [];
@@ -220,6 +224,7 @@ const Utils = {
   requestOrGetSessionStorage,
   isYesterdayOrAfterForLiveDetail,
   buildMatchStatusOption,
+  buildOffVROption,
   buildSelectedMatchStatus,
   handleOnDateChange,
   requestOrGetLocalStorage

@@ -9,7 +9,6 @@ namespace OWP.AutoAssignment.Builder
     using System.Threading.Tasks;
     using Enum;
     using Models;
-    using Services;
 
     public interface RequestBuilder
     {

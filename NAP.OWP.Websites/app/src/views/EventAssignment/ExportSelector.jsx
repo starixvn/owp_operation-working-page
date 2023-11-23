@@ -19,6 +19,7 @@ const propTypes = {
   userName: PropTypes.string.isRequired,
   selectedDate: PropTypes.object.isRequired,
   selectedMatchStatus: PropTypes.array.isRequired,
+  selectedOffVRs: PropTypes.array.isRequired,
   selectedMatchType: PropTypes.string.isRequired,
   isHostEventPicking: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.string.isRequired,
@@ -53,6 +54,7 @@ const ExportSelector = props => {
     isHostEventPicking,
     selectedDate,
     selectedMatchStatus,
+    selectedOffVRs,
     selectedMatchType,
     userName,
     userNameIsValid,
@@ -65,6 +67,7 @@ const ExportSelector = props => {
       EventDate: Utils.formatDate(selectedDate),
       Username: userName || '',
       MatchStatusIds: selectedMatchStatus || [],
+      OffVRIds: selectedOffVRs || [],
       MatchType: selectedMatchType || [],
       SelectedMatchType: selectedMatchType || [],
       SyncLiveStatus: selectedSyncLive || 0,
@@ -92,6 +95,7 @@ const ExportSelector = props => {
 
   const handleClickExportLiveGameAssignment = () => {
     const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
+    const selectedSyncOffVRIsValid = selectedOffVRs.length > 0;
     const selectedMatchTypeIsValid = selectedMatchType.length > 0;
     if (
       selectedMatchStatusIsValid &&
@@ -103,9 +107,11 @@ const ExportSelector = props => {
     } else {
       !selectedMatchStatusIsValid &&
         ToastrWrapper.showError('Please select at least one match status');
+      !selectedSyncOffVRIsValid &&
+        ToastrWrapper.showError('Please select at least one sync off VR');
       !userNameIsValid && ToastrWrapper.showError('User not found');
       !selectedMatchTypeIsValid &&
-        showError('Please select at least one match type');
+        ToastrWrapper.showError('Please select at least one match type');
     }
   };
 

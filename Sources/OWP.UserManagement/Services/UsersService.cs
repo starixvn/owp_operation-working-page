@@ -1,12 +1,10 @@
 ﻿namespace OWP.UserManagement.Services
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Constants;
     using Fanex.NAP.Core.Web.Session;
     using Models;
-    using OWP.Models;
     using Repositories;
 
     public interface UsersService

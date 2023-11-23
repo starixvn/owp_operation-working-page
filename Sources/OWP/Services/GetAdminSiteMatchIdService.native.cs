@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Fanex.Data.Repository;
-using OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers;
 using Olympus.OWP.Constants;
 using OWP.Criteria;
 

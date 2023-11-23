@@ -1,7 +1,5 @@
 ﻿namespace Fanex.NAP.OWP.TaskScheduling.Models.EventAssignment
 {
-    using Core.Extensions.ExcelExtensions;
-
     public class AIOAssignmentModel
     {
         [Column(ColumnName.Trader_AIO)]

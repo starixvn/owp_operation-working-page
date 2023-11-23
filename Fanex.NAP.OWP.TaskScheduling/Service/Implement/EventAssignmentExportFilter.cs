@@ -12,25 +12,27 @@
 
     public interface EventAssignmentExportFilter
     {
-        List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus, string matchType);
-        List<EventModel> FilterEventModelByPermision(List<EventModel> events, EventAssignmentPermissionModel permission);
-        List<EventModel> FilterEventModelByUser(List<EventModel> events, string username);
-        List<EventModel> FilterMatchesByTimeRange(List<EventModel> matches);
+        List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus, string matchType, string offVRs);
     }
 
     public class EventAssignmentExportFilterImp : EventAssignmentExportFilter
     {
 
-        public List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus, string matchType)
+        public List<EventModel> Filter(List<EventModel> events, EventAssignmentPermissionModel permission, string username, int liveStatus, string matchType, string offVRs)
         {
             events = FilterEventModelByUser(events, username);
             events = FilterEventModelByPermision(events, permission);
             events = FilterEventModelBySyncLiveStatus(events, liveStatus);
             events = FilterEventByMatchType(events, matchType);
+            events = FilterEventByOffVRs(events, offVRs);
             return events;
         }
         private static List<EventModel> FilterEventByMatchType(IList<EventModel> matchInfos, string matchType)
         {
+            if (string.IsNullOrEmpty(matchType))
+            {
+                return matchInfos.ToList();
+            }
             var types = matchType.Split(',').ToList();
             if (IsSelectAllMatchType(types))
             {
@@ -121,6 +123,20 @@
                     || e.Assignments.Specific10Mins.OtherTraders.Contains('#' + username)
                     || e.Assignments.LA2nd.MainTrader == username
                     || e.Assignments.LA2nd.OtherTraders.Contains('#' + username)).ToList();
+        }
+
+        private List<EventModel> FilterEventByOffVRs(List<EventModel> events, string offVRs)
+        {
+            if (string.IsNullOrEmpty(offVRs))
+            {
+                return events.ToList();
+            }
+            var offVRList = offVRs.Split(',').ToList();
+            return events
+                .Where(ev => offVRList.Exists(offVR => string.IsNullOrEmpty(offVR)
+                    ? ev.MatchOfferList.All(x => !x.MatchOfferValue.IsContainsIgnoreCase("OFF VR"))
+                    : ev.MatchOfferList.Any(x => offVR == x.Id.ToString())))
+                .ToList();
         }
     }
 }

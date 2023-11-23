@@ -16,11 +16,12 @@ export const liveGameAssignmentUrl = eventModel => {
     EventDate,
     Username,
     MatchStatusIds,
+    OffVRIds,
     LastUpdated,
     SyncLiveStatus,
     MatchType
   } = eventModel;
-  const params = `date=${EventDate}&userName=${Username}&matchStatusIds=${MatchStatusIds.toString()}&lastUpdated=${LastUpdated}&syncLiveStatus=${SyncLiveStatus}&matchType=${MatchType}`;
+  const params = `date=${EventDate}&userName=${Username}&matchStatusIds=${MatchStatusIds.toString()}&lastUpdated=${LastUpdated}&syncLiveStatus=${SyncLiveStatus}&matchType=${MatchType}&offVRs=${OffVRIds.toString()}`;
   const url = `TaskScheduling/EventAssignment/DownloadLiveGameAssignment/?${params}`;
   return url;
 };
