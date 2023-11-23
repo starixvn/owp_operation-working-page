@@ -263,6 +263,8 @@ class Filter extends PureComponent {
           />
           {hasWrite && (
             <button
+              hidden
+              disabled
               className='button-submit button-sync-off-vr'
               onClick={this.handleSyncOffVR}>
               Sync OFF VR
