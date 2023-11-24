@@ -7,6 +7,7 @@ import { RootState } from '../app/storeNative';
 import { isEqual } from 'lodash';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import Loading from '../../components/Loading';
+import { itemRowHeight } from './TableSchema.json';
 const LiveGameListTable = () => {
   const model = useSelector((state: RootState) => state.events);
   const { entities, loading } = model;
@@ -17,7 +18,8 @@ const LiveGameListTable = () => {
       <CustomTable
         data={entities}
         tableHeader={<TableHeader />}
-        classNameTable={'table-live-game-list'}>
+        classNameTable={'table-live-game-list'}
+        itemRowHeight={itemRowHeight}>
         <TableBody />
       </CustomTable>
     </>

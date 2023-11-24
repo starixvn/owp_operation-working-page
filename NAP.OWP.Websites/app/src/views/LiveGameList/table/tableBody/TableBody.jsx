@@ -20,9 +20,9 @@ import {
   buildSpecialListModel,
   buildColorRowTable
 } from '../LiveGameListTableHelper';
+import { itemRowHeight } from '../TableSchema.json';
 
 const TableBody = ({ data = '', displayStart = 0, displayEnd = 0 }) => {
-  const itemRowHeight = 100;
   const rows = [];
 
   rows.push(

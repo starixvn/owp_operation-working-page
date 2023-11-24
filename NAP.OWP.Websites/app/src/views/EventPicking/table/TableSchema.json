@@ -1,4 +1,65 @@
 {
+  "TABLE_HEADER": [
+    {
+      "headerName": "No #",
+      "size": 3,
+      "isFilter": true
+    },
+    {
+      "headerName": "KO Time",
+      "size": 4,
+      "isSort": true
+    },
+    {
+      "headerName": "League",
+      "size": 15,
+      "isFilter": true
+    },
+    {
+      "headerName": "Match",
+      "size": 14,
+      "isFilter": true
+    },
+    {
+      "headerName": "MB",
+      "size": 3
+    },
+    {
+      "headerName": "TV/IPTV",
+      "size": 11
+    },
+    {
+      "headerName": "Provider",
+      "size": 11,
+      "isFilter": true
+    },
+    {
+      "headerName": "Round",
+      "size": 11,
+      "isFilter": true
+    },
+    {
+      "headerName": "Remark",
+      "size": 11,
+      "isFilter": true
+    },
+    {
+      "headerName": "R&D Update",
+      "size": 7,
+      "isFilter": true
+    },
+    {
+      "headerName": "Checked",
+      "size": 5,
+      "isFilter": true
+    },
+    {
+      "headerName": "Action",
+      "size": 5,
+      "isFilter": true
+    }
+  ],
+  "itemRowHeight": 50,
   "DefaultTableStyle": {
     "rowHeight": 78,
     "rowHeightPlus": 120,
