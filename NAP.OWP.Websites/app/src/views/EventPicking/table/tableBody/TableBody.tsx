@@ -73,7 +73,6 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
       key='endRowFiller'
       style={{ height: (data.length - displayEnd) * itemRowHeight }}></tr>
   );
-  console.log(rows);
   return <>{rows}</>;
 };
 export default TableBody;

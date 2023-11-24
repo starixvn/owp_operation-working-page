@@ -3,11 +3,19 @@ import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { getEventPickings } from './eventSliceThunkNative';
 import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
 import updateConfirmedThunk from '../updateConfirmedThunkNative';
-import { updateNoOfferMatch, updateConfirmedMatch } from '../../helper/reducerHelper';
-import { TTableSlice, TFilterState } from '../../types/dataTableType';
+import {
+  updateNoOfferMatch,
+  updateConfirmedMatch
+} from '../../helper/reducerHelper';
+import {
+  TTableSlice,
+  TFilterState,
+  FilterAllColumn
+} from '../../types/dataTableType';
 import {
   addOrReplaceFilterState,
-  filterDataTable
+  filterDataTable,
+  pushOrUpdateObject
 } from '../../../Shared/Utils';
 import filterByKeyword from '../filterByKeyword';
 const EventPickingTableSlice = createSlice({
@@ -17,10 +25,22 @@ const EventPickingTableSlice = createSlice({
     entitiesOriginal: [],
     isNoOfferAll: false,
     isConfirmAll: false,
+    valueFilterAllColumn: {} as FilterAllColumn,
+    columnKeyFilterCurrent: '',
     filterState: [] as TFilterState[],
     loading: REQUEST_STATUS.idle
   } as TTableSlice,
   reducers: {
+    setColumnKeyValue: (state, action) => {
+      state.columnKeyFilterCurrent = action.payload;
+    },
+    setValueFilter: (state, action) => {
+      const { valueFilterAllColumn } = state;
+      state.valueFilterAllColumn = pushOrUpdateObject(
+        valueFilterAllColumn,
+        action.payload
+      );
+    },
     filterBySearchKey: (state, action) => {
       const { filterState } = state;
       state.filterState = addOrReplaceFilterState(filterState, action.payload);
@@ -37,6 +57,7 @@ const EventPickingTableSlice = createSlice({
     clearFilter: state => {
       const { entitiesOriginal } = state;
       state.filterState = [];
+      state.valueFilterAllColumn = {};
       state.entities = entitiesOriginal;
       if (state.entities.length) {
         state.isConfirmAll = state.entities.every(x => x.isCheck);
@@ -84,6 +105,7 @@ const EventPickingTableSlice = createSlice({
   }
 });
 const { reducer, actions } = EventPickingTableSlice;
-const { filterBySearchKey, clearFilter } = actions;
-export { filterBySearchKey, clearFilter };
+const { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter } =
+  actions;
+export { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter };
 export default reducer;

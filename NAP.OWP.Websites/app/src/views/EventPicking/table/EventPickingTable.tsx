@@ -13,6 +13,7 @@ import { itemRowHeight } from './TableSchema.json';
 const EventPickingTable = () => {
   const model = useSelector((state: RootState) => state.eventPickingTable);
   const { isNoOfferAll, isConfirmAll, entities, loading, ...rest } = model;
+  console.log(isNoOfferAll, isConfirmAll);
   // const [tableSchema, setTableSchema] = useState(
   //   selectTable(isNoOfferAll, isConfirmAll)
   // );

@@ -2,13 +2,11 @@
   "TABLE_HEADER": [
     {
       "headerName": "No #",
-      "size": 3,
-      "isFilter": true
+      "size": 3
     },
     {
       "headerName": "KO Time",
-      "size": 4,
-      "isSort": true
+      "size": 4
     },
     {
       "headerName": "League",
@@ -26,7 +24,8 @@
     },
     {
       "headerName": "TV/IPTV",
-      "size": 11
+      "size": 11,
+      "isFilter": true
     },
     {
       "headerName": "Provider",
@@ -45,18 +44,15 @@
     },
     {
       "headerName": "R&D Update",
-      "size": 7,
-      "isFilter": true
+      "size": 7
     },
     {
       "headerName": "Checked",
-      "size": 5,
-      "isFilter": true
+      "size": 5
     },
     {
       "headerName": "Action",
-      "size": 5,
-      "isFilter": true
+      "size": 5
     }
   ],
   "itemRowHeight": 50,
