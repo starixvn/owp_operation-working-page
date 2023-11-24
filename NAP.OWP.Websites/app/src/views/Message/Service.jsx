@@ -212,7 +212,11 @@ const customizePreMatchContent = (messageType, messageContent) => {
         .replace('Cancel', canceledSpan)
         .replace('Postponed', postponedSpan)
         .replace('Suspended', '<span class="match-suspended">SUSPENDED</span>')
-        .replace('Live', '<span class="match-live">LIVE</span>');
+        .replace('Live', '<span class="match-live">LIVE</span>')
+        .replace(
+          'MATCH STATUS',
+          '<span class="match-status-change">MATCH STATUS</span>'
+        );
     case PreMatchMessageTypes.LGAAddLiveMatch:
       return messageContent.replace(
         'ADD LIVE',
