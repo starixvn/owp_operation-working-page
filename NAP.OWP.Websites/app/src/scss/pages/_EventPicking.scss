@@ -213,55 +213,55 @@ input[type='checkbox'] {
   background-color: rgb(246, 190, 190);
 }
 
-.red-row {
-  background-color: transparent !important;
+// .red-row {
+//   background-color: transparent !important;
 
-  &:hover {
-    .public_fixedDataTableCell_main {
-      background-color: rgb(246, 190, 190) !important;
-    }
-  }
+//   &:hover {
+//     .public_fixedDataTableCell_main {
+//       background-color: rgb(246, 190, 190) !important;
+//     }
+//   }
 
-  .public_fixedDataTableCell_main {
-    background-color: rgb(246, 190, 190);
-  }
-}
+//   .public_fixedDataTableCell_main {
+//     background-color: rgb(246, 190, 190);
+//   }
+// }
 
 .gray-row {
   background-color: #a9a9ad;
 }
 
-.gray-row {
-  background-color: transparent !important;
+// .gray-row {
+//   background-color: transparent !important;
 
-  &:hover {
-    .public_fixedDataTableCell_main {
-      background-color: #a9a9ad !important;
-    }
-  }
+//   &:hover {
+//     .public_fixedDataTableCell_main {
+//       background-color: #a9a9ad !important;
+//     }
+//   }
 
-  .public_fixedDataTableCell_main {
-    background-color: #a9a9ad;
-  }
-}
+//   .public_fixedDataTableCell_main {
+//     background-color: #a9a9ad;
+//   }
+// }
 
 .white-row {
   background-color: rgb(255, 255, 255);
 }
 
-.white-row {
-  background-color: transparent !important;
+// .white-row {
+//   background-color: transparent !important;
 
-  &:hover {
-    .public_fixedDataTableCell_main {
-      background-color: rgb(255, 255, 255) !important;
-    }
-  }
+//   &:hover {
+//     .public_fixedDataTableCell_main {
+//       background-color: rgb(255, 255, 255) !important;
+//     }
+//   }
 
-  .public_fixedDataTableCell_main {
-    background-color: rgb(255, 255, 255);
-  }
-}
+//   .public_fixedDataTableCell_main {
+//     background-color: rgb(255, 255, 255);
+//   }
+// }
 
 .public_fixedDataTable_header .title-header .filter-table {
   margin-right: 5px;
@@ -410,7 +410,6 @@ input[type='checkbox'] {
           position: absolute;
         }
       }
-
     }
 
     &:nth-child(9),

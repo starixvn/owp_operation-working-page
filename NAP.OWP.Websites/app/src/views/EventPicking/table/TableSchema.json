@@ -2,7 +2,8 @@
   "TABLE_HEADER": [
     {
       "headerName": "No #",
-      "size": 3
+      "size": 3,
+      "isCheckBox": true
     },
     {
       "headerName": "KO Time",
@@ -48,7 +49,9 @@
     },
     {
       "headerName": "Checked",
-      "size": 5
+      "size": 5,
+      "className": "check-by-lst",
+      "isCheckBox": true
     },
     {
       "headerName": "Action",

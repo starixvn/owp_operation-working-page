@@ -1,6 +1,7 @@
 import React from 'react';
 import { TABLE_HEADER } from '../TableSchema.json';
 import FilterHeader from './FilterHeader';
+import CheckboxHeader from './CheckboxHeader';
 
 const TableHeader = () => {
   return (
@@ -12,6 +13,12 @@ const TableHeader = () => {
               <span>{item.headerName}</span>
               {item?.isFilter && <FilterHeader columnKey={item.headerName} />}
             </div>
+            {item?.isCheckBox && (
+              <CheckboxHeader
+                classNameProps={item?.className}
+                columnKey={item.headerName}
+              />
+            )}
           </th>
         );
       })}

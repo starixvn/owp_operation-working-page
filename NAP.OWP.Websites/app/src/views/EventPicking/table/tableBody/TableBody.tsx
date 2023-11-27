@@ -13,6 +13,7 @@ import CheckedByLstCell from '../Cell/CheckedByLstCell';
 import ActionCell from '../Cell/ActionCell';
 import { v4 as uuidv4 } from 'uuid';
 import { itemRowHeight } from '../TableSchema.json';
+import TDataTable from '../../types/dataTableType';
 
 const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   const rows = [];
@@ -22,11 +23,11 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
       style={{ height: displayStart * itemRowHeight }}></tr>
   );
   for (let i = displayStart; i < displayEnd; ++i) {
-    const row = data[i];
+    const row = data[i] as TDataTable;
     if (row != undefined) {
       rows.push(
         <Fragment key={uuidv4()}>
-          <tr>
+          <tr className={`${row.rowColor}-row`}>
             <td>
               <NoCell dataSource={data} rowIndex={i} />
             </td>

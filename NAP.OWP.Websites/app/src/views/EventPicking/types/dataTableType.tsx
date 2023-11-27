@@ -27,6 +27,7 @@ type TDataTable = {
   round: string;
   eTPK: string;
   isCheck: boolean;
+  rowColor: string;
 };
 
 type TTableSlice = {
@@ -49,5 +50,13 @@ interface FilterAllColumn {
   [x: string]: string;
 }
 
+type TPermission = {
+  UserName: string;
+  HasRead: boolean;
+  HasWrite: boolean;
+  ActorId: number;
+  SiteId: number;
+};
+
 export default TDataTable;
-export { TTableSlice, TFilterState, FilterAllColumn };
+export { TTableSlice, TFilterState, FilterAllColumn, TPermission };
