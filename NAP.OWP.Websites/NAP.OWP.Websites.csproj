@@ -1085,8 +1085,8 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\server-7530d479.css" />
-    <Content Include="wwwroot\day-shift-assignment\assets\js\main-40c2a327.js" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\server-eb256aba.css" />
+    <Content Include="wwwroot\day-shift-assignment\assets\js\main-092c9d5b.js" />
     <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\day-shift-assignment\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-feedback-57264197.svg" />
@@ -2817,8 +2817,8 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\server-7530d479.css" />
-    <Content Include="wwwroot\night-shift-assignment\assets\js\main-e9eb3824.js" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\server-eb256aba.css" />
+    <Content Include="wwwroot\night-shift-assignment\assets\js\main-d598b3d8.js" />
     <Content Include="wwwroot\night-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\night-shift-assignment\server.html" />
     <Content Include="wwwroot\notification-setting\assets\ext\icon-feedback-57264197.svg" />
@@ -3029,18 +3029,10 @@
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\la-kpi\server.cshtml" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
@@ -3073,6 +3065,14 @@
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-assignment\server.cshtml" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

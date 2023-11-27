@@ -75,6 +75,11 @@ const MATCH_OFFER = [
   { value: '', label: 'Waiting' }
 ];
 
+const EARLY_OFFERED = [
+  { value: 1, label: 'Offered' },
+  { value: 0, label: 'Have not Offered' }
+];
+
 const TradingPageUrl = 'http://deadball.oneops.net/Market/totalbet.aspx';
 
 const BetType = {
@@ -83,6 +88,7 @@ const BetType = {
 };
 
 export {
+  EARLY_OFFERED,
   ticketType,
   URL_QUERY_CHANGE_LOG,
   URL_QUERY_WORKING_SHIFT,

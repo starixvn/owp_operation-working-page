@@ -11,6 +11,7 @@ import {
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { AccountCheckIcon } from 'mdi-react';
 import MatchOfferSelect from './MatchOfferSelect';
+import EarlyOfferedLeague from './EarlyOfferedLeague';
 
 const propTypes = {
   model: PropTypes.object.isRequired,
@@ -21,20 +22,18 @@ const propTypes = {
 
 const FilterPrematchViewer = React.forwardRef((props, ref) => {
   const { model, onSubmit, isDisableEmp, onClickMyAssignee } = props;
+  const { filterDate, loading } = model;
   useEffect(() => {
     const handleSubmitWithCondition = () => {
-      if (model.filterDate) {
-        onSubmit(new Date(model.filterDate));
+      if (filterDate) {
+        onSubmit(new Date(filterDate));
       }
     };
-    handleSubmitWithCondition();
     const interval = setInterval(handleSubmitWithCondition, 300000);
     return () => clearInterval(interval);
-    // eslint-disable-next-line no-warning-comments
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [filterDate, onSubmit]);
 
-  if (!model.filterDate || isEqual(model.loading, REQUEST_STATUS.pending)) {
+  if (!filterDate || isEqual(loading, REQUEST_STATUS.pending)) {
     return <Loading />;
   }
 
@@ -42,7 +41,7 @@ const FilterPrematchViewer = React.forwardRef((props, ref) => {
     <div className='left-filter-dayshift'>
       <div className='inner'>
         <DateTimeFilterCommon
-          defaultDate={new Date(model.filterDate)}
+          defaultDate={new Date(filterDate)}
           onSubmit={onSubmit}
           isShowSubmitBtn>
           <div className='filter-control assignment'>
@@ -75,6 +74,7 @@ const FilterPrematchViewer = React.forwardRef((props, ref) => {
             />
           </div>
           <MatchOfferSelect />
+          <EarlyOfferedLeague />
         </DateTimeFilterCommon>
         <CollapseBtn />
         <ExpandBtn />

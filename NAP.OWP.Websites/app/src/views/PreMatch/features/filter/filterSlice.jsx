@@ -5,7 +5,7 @@ import {
   formatTime,
   getMMDDYYYYStringFromDateTime
 } from '../../../Shared/DateTime/dateTimeHelper';
-import { MATCH_OFFER } from '../../const/const';
+import { EARLY_OFFERED, MATCH_OFFER } from '../../const/const';
 
 const filterSlice = createSlice({
   name: 'filter',
@@ -16,7 +16,8 @@ const filterSlice = createSlice({
     currentRequestId: undefined, // NOSONAR
     error: null,
     backupFilterModel: null,
-    matchOffers: [...MATCH_OFFER.map(m => m.value)]
+    matchOffers: [...MATCH_OFFER.map(m => m.value)],
+    earlyOffered: [...EARLY_OFFERED.map(m => m.value)]
   },
   reducers: {
     updateFilterDate: {
@@ -39,6 +40,11 @@ const filterSlice = createSlice({
         state.matchOffers = action.payload;
       }
     },
+    updateFilterEarlyOffered: {
+      reducer: (state, action) => {
+        state.earlyOffered = action.payload;
+      }
+    },
     updateFilterEmployer: {
       reducer: (state, action) => {
         const { employer } = action.payload;
@@ -49,13 +55,18 @@ const filterSlice = createSlice({
 });
 
 const { actions, reducer } = filterSlice;
-const { updateFilterDate, updateFilterEmployer, updateFilterMatchOffers } =
-  actions;
+const {
+  updateFilterDate,
+  updateFilterEmployer,
+  updateFilterMatchOffers,
+  updateFilterEarlyOffered
+} = actions;
 export {
   actions,
   updateFilterDate,
   updateFilterEmployer,
-  updateFilterMatchOffers
+  updateFilterMatchOffers,
+  updateFilterEarlyOffered
 };
 
 export default reducer;
