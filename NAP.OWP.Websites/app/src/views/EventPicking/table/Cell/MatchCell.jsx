@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { UncontrolledTooltip } from 'reactstrap';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -10,19 +9,13 @@ const propTypes = {
 const MatchCell = props => {
   const { rowIndex, dataSource } = props;
   const { homeName, awayName } = dataSource[rowIndex];
-  const ref = useRef(null);
+
   return (
     <>
-      <div className='match-cell' ref={ref}>
+      <div className='match-cell'>
         <div className='home'>{homeName}</div>
         <div className='away'>{awayName}</div>
       </div>
-      <UncontrolledTooltip
-        className='tooltip-match'
-        placement='top-start'
-        target={ref}>
-        {homeName} vs {awayName}
-      </UncontrolledTooltip>
     </>
   );
 };

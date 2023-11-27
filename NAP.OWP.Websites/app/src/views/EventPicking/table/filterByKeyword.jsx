@@ -25,8 +25,8 @@ const checkMatch = (arraySource, keyWordFormat) =>
 const checkIpTV = (arraySource, keyWordFormat) =>
   arraySource.filter(
     item =>
-      item.tV?.toLowerCase().includes(keyWordFormat) ||
-      item.ipTv?.toLowerCase().includes(keyWordFormat) ||
+      item.tv?.toLowerCase().includes(keyWordFormat) ||
+      item.iptv?.toLowerCase().includes(keyWordFormat) ||
       item.channel?.toLowerCase().includes(keyWordFormat) ||
       item.wb?.toLowerCase().includes(keyWordFormat)
   );
@@ -66,12 +66,12 @@ const checkRemark = (arraySource, keyWordFormat) => {
 };
 
 const columnFilter = {
-  [League.columnKey]: checkLeague,
-  [Match.columnKey]: checkMatch,
-  [IPTvStreaming.columnKey]: checkIpTV,
-  [Provider.columnKey]: checkProvider,
-  [Round.columnKey]: checkRound,
-  [Remark.columnKey]: checkRemark
+  ['League']: checkLeague,
+  ['Match']: checkMatch,
+  ['TV/IPTV']: checkIpTV,
+  ['Provider']: checkProvider,
+  ['Round']: checkRound,
+  ['Remark']: checkRemark
 };
 
 const filterByKeyword = (
@@ -83,6 +83,7 @@ const filterByKeyword = (
   }
   if (columnKey in columnFilter) {
     const keyWordFormat = keyword.toLowerCase();
+    console.log(keyWordFormat);
     return columnFilter[columnKey](arraySource, keyWordFormat);
   }
 

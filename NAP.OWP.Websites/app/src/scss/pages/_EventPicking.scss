@@ -213,55 +213,15 @@ input[type='checkbox'] {
   background-color: rgb(246, 190, 190);
 }
 
-// .red-row {
-//   background-color: transparent !important;
-
-//   &:hover {
-//     .public_fixedDataTableCell_main {
-//       background-color: rgb(246, 190, 190) !important;
-//     }
-//   }
-
-//   .public_fixedDataTableCell_main {
-//     background-color: rgb(246, 190, 190);
-//   }
-// }
 
 .gray-row {
   background-color: #a9a9ad;
 }
 
-// .gray-row {
-//   background-color: transparent !important;
-
-//   &:hover {
-//     .public_fixedDataTableCell_main {
-//       background-color: #a9a9ad !important;
-//     }
-//   }
-
-//   .public_fixedDataTableCell_main {
-//     background-color: #a9a9ad;
-//   }
-// }
 
 .white-row {
   background-color: rgb(255, 255, 255);
 }
-
-// .white-row {
-//   background-color: transparent !important;
-
-//   &:hover {
-//     .public_fixedDataTableCell_main {
-//       background-color: rgb(255, 255, 255) !important;
-//     }
-//   }
-
-//   .public_fixedDataTableCell_main {
-//     background-color: rgb(255, 255, 255);
-//   }
-// }
 
 .public_fixedDataTable_header .title-header .filter-table {
   margin-right: 5px;
@@ -297,43 +257,6 @@ input[type='checkbox'] {
 .export__and--check-all {
   margin-top: 10px;
 }
-
-// .table {
-//   margin-top: 1rem;
-//   font-size: 11px;
-
-//   .fixedDataTableLayout_header {
-//     .fixedDataTableRowLayout_body {
-//       .fixedDataTableCellGroupLayout_cellGroupWrapper {
-//         .fixedDataTableCellGroupLayout_cellGroup {
-//           .fixedDataTableCellLayout_main {
-//             &:nth-child(1) {
-//               .public_fixedDataTableCell_cellContent {
-//                 padding: 0;
-//               }
-//             }
-//           }
-//         }
-//       }
-
-//       .header {
-//         border-bottom: 1px solid #d3d3d3;
-//       }
-//     }
-//   }
-
-//   .fixedDataTableRowLayout_main {
-//     overflow: visible;
-//   }
-
-//   .fixedDataTableCellGroupLayout_cellGroup {
-//     overflow: visible;
-//   }
-
-//   .fixedDataTableCellLayout_main {
-//     overflow: visible;
-//   }
-// }
 
 //table event picking
 .table-wrap {
