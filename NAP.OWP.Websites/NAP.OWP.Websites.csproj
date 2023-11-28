@@ -3072,6 +3072,10 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-picking\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
