@@ -1,12 +1,3 @@
-import {
-  Match,
-  League,
-  Remark,
-  IPTvStreaming,
-  Provider,
-  Round
-} from './TableSchema.json';
-
 const checkLeague = (arraySource, keyWordFormat) =>
   arraySource.filter(
     item =>

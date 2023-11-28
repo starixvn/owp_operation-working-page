@@ -1,13 +1,6 @@
 import handleNoOfferAllMatch from '../helper/noOfferAllMatchHelper';
 import updateConfirmAllEvent from '../helper/confirmedHelper';
 
-const passColorRowTable = dataSource => {
-  if (!dataSource) {
-    return '';
-  }
-  return `${dataSource.rowColor}-row`;
-};
-
 const buildColumnValueByColumnName = (
   columnKey,
   isNoOfferAll,
@@ -27,4 +20,4 @@ const buildColumnValueByColumnName = (
   return columnMappings[columnKey] || {};
 };
 
-export { passColorRowTable, buildColumnValueByColumnName };
+export { buildColumnValueByColumnName };

@@ -1,7 +1,6 @@
 import React from 'react';
 import CustomTable from '../../Shared/tableCommon/CustomTable';
 import { useSelector } from 'react-redux';
-import store from '../app/store';
 import TableHeader from './tableHeader/TableHeader';
 import TableBody from './tableBody/TableBody';
 import Loading from '../../components/Loading';
