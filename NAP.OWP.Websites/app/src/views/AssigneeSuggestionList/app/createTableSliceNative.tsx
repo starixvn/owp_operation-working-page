@@ -3,14 +3,16 @@ import {
   TAssigneeSuggestion,
   TQueryWorkScheduleInfo,
   UserWorkingSchedule,
-  TMatchInfo
+  TMatchInfo,
+  OVER_TIME_OPTIONS_VALUE
 } from '../features/TypeNative';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import { buildRequestURL } from '../utils';
 import axios from 'axios';
-import { SearchAssigneeByKeyword } from '../features/helper/AssigneeSuggestionHelper';
+import { executeFilter } from '../features/helper/AssigneeSuggestionHelper';
 
-const crateTableSlice: StateCreator<
+
+const createTableSlice: StateCreator<
   TQueryWorkScheduleInfo,
   [],
   [],
@@ -18,6 +20,7 @@ const crateTableSlice: StateCreator<
 > = (set, get) => ({
   loadingDataTable: REQUEST_STATUS.pending,
   searchText: '',
+  filterOTValue: OVER_TIME_OPTIONS_VALUE.ALL,
   workScheduleInfoOrigin: {
     matchInfo: {} as TMatchInfo,
     fullyAvailable: [] as UserWorkingSchedule[],
@@ -47,13 +50,20 @@ const crateTableSlice: StateCreator<
       loadingDataTable: REQUEST_STATUS.idle
     });
   },
-  searchDataTable: keyword => {
-    const { workScheduleInfoOrigin } = get();
+  filterByAssignee(keyword) {
+    const { workScheduleInfoOrigin, filterOTValue } = get();
     set({
       searchText: keyword,
-      workScheduleInfo: SearchAssigneeByKeyword(workScheduleInfoOrigin, keyword)
+      workScheduleInfo: executeFilter(workScheduleInfoOrigin, keyword, filterOTValue)
+    });
+  },
+  filterByOtValue(value) {
+    const { workScheduleInfoOrigin, searchText } = get();
+    set({
+      filterOTValue: value,
+      workScheduleInfo: executeFilter(workScheduleInfoOrigin, searchText, value)
     });
   }
 });
 
-export default crateTableSlice;
+export default createTableSlice;

@@ -17,6 +17,7 @@
     position: relative;
     top: -2px;
     font-size: 1.2rem;
+    display: inline-block;
   }
   .maxbet-string {
     background: #889097;
@@ -29,25 +30,78 @@
     position: relative;
     top: -2px;
     font-size: 1.2rem;
+    display: inline-block;
   }
 }
-// Filter 
-.suggestion-list-header{
+// Filter
+.suggestion-list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 90px 0 0;
 }
-.search-assignee{
-  input{
-    background: #FAFAFA;
-    border: 1px solid #D3D3D3;
-    border-radius: 3px;
-    font-size: 12px;
+.filter__info {
+  display: flex;
+  align-items: flex-end;
+
+  .overtime__label {
+    margin-right: 10px;
+  }
+}
+
+.overtime-dropdown {
+  min-width: 150px;
+  margin-right: 10px;
+  .label {
+    margin-bottom: 5px;
+  }
+  .css-2b097c-container {
+    z-index: 1000;
+  }
+  .css-yk16xz-control {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .css-yk16xz-control,
+  .css-1pahdxg-control {
+    height: 28px;
+    min-height: 28px;
+    background-color: transparent;
+    box-shadow: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+  .css-1okebmr-indicatorSeparator {
+    display: none;
+  }
+  .css-tlfecz-indicatorContainer,
+  .css-g1d714-ValueContainer,
+  .css-1gtu0rj-indicatorContainer {
+    padding: 0px 8px;
+  }
+  .css-6q0nyr-Svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+.search-assignee {
+  input {
+    background: #fafafa;
+
     padding: 5px 8px;
     min-width: 200px;
     outline: none;
-    &:focus{
+    min-height: 28px;
+    line-height: 1;
+    font-size: 12px;
+    background-color: transparent;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid #e1e1e1;
+    &:focus {
       outline: none;
     }
   }
@@ -312,7 +366,7 @@ div.rt-tr:has(span.expand-section) {
     }
     .sticky-col {
       border-right: 0;
-      min-width: 480px;
+      min-width: 513px;
     }
     .item {
       text-align: center;
@@ -367,9 +421,13 @@ th:first-child,
       }
     }
     .shift-cell {
-      width: 147px;
-      min-width: 147px;
+      width: 180px;
+      min-width: 180px;
+      .ot__icon {
+        margin-bottom: 4px;
+      }
     }
+
     .trader,
     .trader-management {
       // justify-content: flex-end;
@@ -414,7 +472,7 @@ th:first-child,
 .color__explain_info {
   position: absolute;
   right: 10px;
-  top: 66px;
+  top: 72px;
   z-index: 4;
   .info {
     margin-bottom: 4px;
@@ -449,4 +507,9 @@ th:first-child,
   font-family: monospace;
   margin-bottom: 7px;
   font-weight: 600;
+}
+.overlap-timeline {
+  display: flex;
+  height: 100%;
+  border-left: 0.05px solid #c8ced3;
 }

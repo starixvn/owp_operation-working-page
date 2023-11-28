@@ -4,6 +4,7 @@ import { getLocaleDateTime } from '../../../Shared/DateTime/dateTimeHelper';
 import useStore from '../../app/useStoreNative';
 import SearchAssignee from './SearchAssignee';
 import ColorExplain from './ColorExplain';
+import Filter from './Filter';
 
 const Header = () => {
   const {
@@ -39,17 +40,21 @@ const Header = () => {
             </b>
             &nbsp;
             <span className="time">
-              Event Date:&nbsp;
-              {`${formattedDate}${otherTime ? ' - Other time:' : ''} ${formattedTime}`}&nbsp;
-              <span className="maxbet-string"> {maxbetHDPInString}</span>
+              {`Event Date: ${formattedDate}${otherTime ? ' - Other time:' : ''} ${formattedTime} `}
             </span>
+            <span className="maxbet-string"> {maxbetHDPInString}</span>
             &nbsp;
             <span className='bet-type'>{bettypeName}</span>
           </>
         )}
       </div>
-      <SearchAssignee />
-      <ColorExplain />
+      <div className='filter__info'>
+        <Filter />
+        <SearchAssignee />
+        <ColorExplain />
+      </div>
+
+
     </>
   );
 };

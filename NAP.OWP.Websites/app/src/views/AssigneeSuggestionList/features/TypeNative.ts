@@ -1,3 +1,10 @@
+enum OVER_TIME_OPTIONS_VALUE {
+  ALL = 'All',
+  OVERTIME_PRE_SHIFT = 'Overtime_Pre_Shift',
+  OVERTIME_POST_SHIFT = 'Overtime_Post_Shift',
+  NO_OVERTIME = 'No_OverTime'
+}
+
 type TMatchInfo = {
   owpMatchId: number;
   leagueName: string;
@@ -28,12 +35,16 @@ type UserInfo = {
   explanation: string;
   levelLabel: string;
   shiftCode: string;
+  otPreShift: boolean;
+  otPostShift: boolean;
 };
 
 type AssignmentCell = {
   text: string;
   color: string;
   textColor?: string;
+  koAssignment?: Date;
+  IsShiftCell?: boolean;
 };
 
 type TimeLine = {
@@ -48,45 +59,45 @@ type TableCell = {
 };
 type UserWorkingSchedule = {
   userInfo?: UserInfo;
-  yesterday_02h?: AssignmentCell;
-  yesterday_03h?: AssignmentCell;
-  yesterday_04h?: AssignmentCell;
-  yesterday_05h?: AssignmentCell;
-  yesterday_06h?: AssignmentCell;
-  yesterday_07h?: AssignmentCell;
-  yesterday_08h?: AssignmentCell;
-  yesterday_09h?: AssignmentCell;
-  yesterday_10h?: AssignmentCell;
-  yesterday_11h?: AssignmentCell;
-  today_12h?: AssignmentCell;
-  today_13h?: AssignmentCell;
-  today_14h?: AssignmentCell;
-  today_15h?: AssignmentCell;
-  today_16h?: AssignmentCell;
-  today_17h?: AssignmentCell;
-  today_18h?: AssignmentCell;
-  today_19h?: AssignmentCell;
-  today_20h?: AssignmentCell;
-  today_21h?: AssignmentCell;
-  today_22h?: AssignmentCell;
-  today_23h?: AssignmentCell;
-  today_00h?: AssignmentCell;
-  today_01h?: AssignmentCell;
-  today_02h?: AssignmentCell;
-  today_03h?: AssignmentCell;
-  today_04h?: AssignmentCell;
-  today_05h?: AssignmentCell;
-  today_06h?: AssignmentCell;
-  today_07h?: AssignmentCell;
-  today_08h?: AssignmentCell;
-  today_09h?: AssignmentCell;
-  today_10h?: AssignmentCell;
-  today_11h?: AssignmentCell;
-  tomorrow_12h?: AssignmentCell;
-  tomorrow_13h?: AssignmentCell;
-  tomorrow_14h?: AssignmentCell;
-  tomorrow_15h?: AssignmentCell;
-  tomorrow_16h?: AssignmentCell;
+  yesterday_02h?: AssignmentCell[];
+  yesterday_03h?: AssignmentCell[];
+  yesterday_04h?: AssignmentCell[];
+  yesterday_05h?: AssignmentCell[];
+  yesterday_06h?: AssignmentCell[];
+  yesterday_07h?: AssignmentCell[];
+  yesterday_08h?: AssignmentCell[];
+  yesterday_09h?: AssignmentCell[];
+  yesterday_10h?: AssignmentCell[];
+  yesterday_11h?: AssignmentCell[];
+  today_12h?: AssignmentCell[];
+  today_13h?: AssignmentCell[];
+  today_14h?: AssignmentCell[];
+  today_15h?: AssignmentCell[];
+  today_16h?: AssignmentCell[];
+  today_17h?: AssignmentCell[];
+  today_18h?: AssignmentCell[];
+  today_19h?: AssignmentCell[];
+  today_20h?: AssignmentCell[];
+  today_21h?: AssignmentCell[];
+  today_22h?: AssignmentCell[];
+  today_23h?: AssignmentCell[];
+  today_00h?: AssignmentCell[];
+  today_01h?: AssignmentCell[];
+  today_02h?: AssignmentCell[];
+  today_03h?: AssignmentCell[];
+  today_04h?: AssignmentCell[];
+  today_05h?: AssignmentCell[];
+  today_06h?: AssignmentCell[];
+  today_07h?: AssignmentCell[];
+  today_08h?: AssignmentCell[];
+  today_09h?: AssignmentCell[];
+  today_10h?: AssignmentCell[];
+  today_11h?: AssignmentCell[];
+  tomorrow_12h?: AssignmentCell[];
+  tomorrow_13h?: AssignmentCell[];
+  tomorrow_14h?: AssignmentCell[];
+  tomorrow_15h?: AssignmentCell[];
+  tomorrow_16h?: AssignmentCell[];
 };
 
 type TAssigneeSuggestion = {
@@ -113,8 +124,10 @@ type TQueryWorkScheduleInfo = {
   workScheduleInfo: TAssigneeSuggestion;
   loadingDataTable: string;
   searchText: string;
+  filterOTValue: OVER_TIME_OPTIONS_VALUE;
   queryDataTable: (params: TQueryWorkScheduleType) => Promise<void>;
-  searchDataTable: (keyword: string) => void;
+  filterByAssignee(keyword: string): void;
+  filterByOtValue(value: OVER_TIME_OPTIONS_VALUE): void;
 };
 
 type TQueryWorkScheduleType = {
@@ -142,5 +155,6 @@ export {
   TimeLine,
   TQueryColorExplainInfo,
   TColorExplain,
-  TAssigneeSuggestion
+  TAssigneeSuggestion,
+  OVER_TIME_OPTIONS_VALUE
 };
