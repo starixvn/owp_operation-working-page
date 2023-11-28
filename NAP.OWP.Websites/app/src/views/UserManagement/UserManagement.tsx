@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Filter from './filterArea/Filter';
 
-const UserManagement = props => {
+const UserManagement = () => {
   return (
     <div>
-
+      <Filter />
     </div>
   );
 };
