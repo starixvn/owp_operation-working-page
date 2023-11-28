@@ -49,6 +49,14 @@ const FilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupProps>(
       handleClosedPopup();
     };
 
+    const handelOnKeyDown = (
+      e: React.KeyboardEvent<HTMLInputElement>
+    ): void => {
+      if (e.key === 'Enter' && e.currentTarget.value) {
+        handleOnSearchFilter();
+      }
+    };
+
     return (
       <div
         ref={ref}
@@ -65,6 +73,7 @@ const FilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupProps>(
           placeholder='Search'
           value={filterValue}
           autoFocus
+          onKeyDown={e => handelOnKeyDown(e)}
           onChange={e => handleOnchangeValue(e.target.value)}
         />
         <span className='clear-all' onClick={handleClearAllFilter}>

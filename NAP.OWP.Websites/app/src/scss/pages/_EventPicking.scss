@@ -467,6 +467,16 @@ input[type='checkbox'] {
   }
 }
 
+.table-event-picking::-webkit-scrollbar {
+  background-color: #f5f5f5;
+  width: 7px;
+}
+
+.table-event-picking::-webkit-scrollbar-thumb {
+  background-color: #8b8b8b;
+  border-radius: 10px;
+}
+
 .icon-filter.is-filter {
   color: #309f53 !important;
 }

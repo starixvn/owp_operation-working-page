@@ -41,6 +41,9 @@ const CustomTable = ({
   const onScrollTable = throttle(() => {
     const scrollTop = containerRef.current?.scrollTop;
     const scrollHeight = containerRef.current?.scrollHeight;
+    if (data.length === 0) {
+      setScrollPosition(0);
+    }
     if (data.length !== 0 && scrollTop < scrollHeight) {
       setScrollPosition(scrollTop);
       setDisplayPositions(scrollTop);
