@@ -1,1 +1,9 @@
-{}
+{
+  "optionsKey": [
+    "roles",
+    "sections",
+    "departments",
+    "categories",
+    "locationCodes"
+  ]
+}

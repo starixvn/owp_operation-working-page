@@ -63,7 +63,7 @@ const MultipleSelection = (props: IMultipleSelectProps) => {
     }
 
     const regex = new RegExp(filterKey, "i");
-    const result = options.filter((x: Option) => x.label && x.label.match(regex));
+    const result = options.filter((x: Option) => x.label?.match(regex));
     setSelected(result);
 
     return result;
