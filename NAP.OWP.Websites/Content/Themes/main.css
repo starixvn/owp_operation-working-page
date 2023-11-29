@@ -328,7 +328,8 @@
   overflow: visible; }
 
 .toast-bottom-right {
-  max-height: calc(100% - 70px); }
+  max-height: calc(100% - 70px);
+  position: unset !important; }
 
 #toast-container > .toast-info, #toast-container > .toast-error, #toast-container > .toast-success, #toast-container > .toast-warning {
   background-image: none !important; }
