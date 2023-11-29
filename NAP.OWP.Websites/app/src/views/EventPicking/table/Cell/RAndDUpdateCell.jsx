@@ -10,13 +10,15 @@ const propTypes = {
 const RAndDUpdateCell = props => {
   const { rowIndex, dataSource } = props;
   const { rAndDInfos } = dataSource[rowIndex];
-
+  const rAndDInfosUniqueByKey = [
+    ...new Map(rAndDInfos.map(item => [item.rAndDUpdate, item])).values()
+  ];
   return (
     <div className='r-and-d-update-cell'>
       <div className='r-and-d-update'>
         <ul className='r-and-d-update-list'>
-          {rAndDInfos.length > 0
-            ? rAndDInfos.map(info => (
+          {rAndDInfosUniqueByKey.length > 0
+            ? rAndDInfosUniqueByKey.map(info => (
                 <li
                   key={uniqueId()}
                   className='r-and-d-update-item'
