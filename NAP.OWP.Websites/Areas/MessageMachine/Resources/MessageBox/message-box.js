@@ -295,6 +295,7 @@ var messageBox = function ($) {
                     .replace('Postponed', '<span class="match-postponed">POSTPONED</span>')
                     .replace('Live', '<span class="match-live">LIVE</span>')
                     .replace('Suspended', '<span class="match-suspended">SUSPENDED</span>')
+                    .replace('MATCH STATUS', '<span class="match-status-change">MATCH STATUS</span>')
                     ;
                 break;
         }

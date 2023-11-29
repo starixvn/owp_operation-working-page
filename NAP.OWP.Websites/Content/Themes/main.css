@@ -1159,7 +1159,7 @@ main {
     font-size: 12px;
     padding: 0 7px; }
 
-.toast-message .message-content .match-postponed, .toast-message .message-content .match-cancel, .toast-message .message-content .match-suspended, .toast-message .message-content .cancel-live {
+.toast-message .message-content .match-postponed, .toast-message .message-content .match-cancel, .toast-message .message-content .match-suspended, .toast-message .message-content .cancel-live, .toast-message .message-content .match-status-change {
   padding: 0 2px;
   display: inline-block;
   color: #fff !important;
@@ -1188,6 +1188,10 @@ main {
 .toast-message .message-content .new-league {
   font-weight: 600;
   color: #4caf50; }
+
+.toast-message .message-content .match-status-change {
+  color: #000 !important;
+  background-color: #dda0dd !important; }
 
 .notification-content .message-content .match-postponed, .notification-content .message-content .match-cancel, .notification-content .message-content .match-suspended, .notification-content .message-content .cancel-live {
   padding: 0 2px;

@@ -162,7 +162,7 @@
 
 .toast-message {
     .message-content {
-        .match-postponed, .match-cancel, .match-suspended, .cancel-live {
+        .match-postponed, .match-cancel, .match-suspended, .cancel-live, .match-status-change {
             padding: 0 2px;
             display: inline-block;
             color: #fff !important;
@@ -194,6 +194,11 @@
         .new-league {
             font-weight: 600;
             color: #4caf50;
+        }
+
+        .match-status-change {
+            color: #000 !important;
+            background-color: #dda0dd !important;
         }
     }
 }
