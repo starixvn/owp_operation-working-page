@@ -1,2 +1,33 @@
 .button--sync__user {
 }
+
+.modal-content {
+  height: 80%;
+}
+
+.user-detail-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  thead {
+    th,
+    td {
+      background: #dedede;
+      border: 1px solid #0000002b;
+    }
+  }
+
+  tr {
+    th,
+    td {
+      border-collapse: collapse;
+      padding: 6px;
+      border: 1px solid #0000002b;
+    }
+  }
+}
+
+.total__user {
+  margin-bottom: 5px;
+  font-weight: bold;
+}

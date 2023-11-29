@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from 'reactstrap';
 import { TUserDetail, confirmSyncUserEnum } from '../type';
 
 const UserDetail = (props: TUserDetail) => {
@@ -17,7 +17,11 @@ const UserDetail = (props: TUserDetail) => {
   };
   return (
     <Modal isOpen scrollable className='user-detail-modal' size='sm' centered>
+      <ModalHeader>
+        <p className='total__user'>Find {dataSource.length} users</p>
+      </ModalHeader>
       <ModalBody className='modal-user-detail-table'>
+
         <table className='user-detail-table'>
           <thead>
             <tr>
@@ -30,11 +34,11 @@ const UserDetail = (props: TUserDetail) => {
       </ModalBody>
       <ModalFooter>
         <p>Are you sure you want to sync users from AdminSite to OWP?</p>
-        <Button className='btn-cancel btn' onClick={() => onToggle(confirmSyncUserEnum.cancel)}>
+        <Button className='swal2-cancel swal2-styled' onClick={() => onToggle(confirmSyncUserEnum.cancel)}>
           Cancel
         </Button>
         {hasWrite && (
-          <Button className='btn-add btn' onClick={() => onToggle(confirmSyncUserEnum.save)}>
+          <Button className='swal2-confirm swal2-styled' onClick={() => onToggle(confirmSyncUserEnum.save)}>
             OK
           </Button>
         )}

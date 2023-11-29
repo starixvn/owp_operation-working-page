@@ -4,8 +4,10 @@ import SyncUser from './syncUser/SyncUser';
 
 const UserManagement = () => {
   return (
-    <SyncUser />
+    <>
+      <SyncUser />
       <Filter />
+    </>
   );
 };
 
