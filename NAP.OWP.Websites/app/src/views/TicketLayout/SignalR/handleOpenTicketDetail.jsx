@@ -3,6 +3,7 @@ import {
   getTicketDetail,
   getTicketSubTypes
 } from '../../Shared/chatBoardNew/chatBoardThunkNative';
+import { onClickIssueModel } from './signalRSlice';
 import store from '../store';
 import { getDetailSegmentUrlByEventType } from '../../TicketCenter/Helper/TicketCenterHelper';
 
@@ -16,7 +17,7 @@ const handleOpenTicketDetail = async (ticketId, eventType) => {
     detailSegmentUrl: getDetailSegmentUrlByEventType(eventType),
     eventType
   };
-
+  store.dispatch(onClickIssueModel(requestDetailModel));
   const actionResult = await store.dispatch(
     getTicketDetail(requestDetailModel)
   );
@@ -26,4 +27,4 @@ const handleOpenTicketDetail = async (ticketId, eventType) => {
   }
 };
 
-export { handleOpenTicketDetail };
+export default handleOpenTicketDetail;

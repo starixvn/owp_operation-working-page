@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import TicketDetailLayout from './TicketDetailLayout';
 import '../../scss/components/_chatboard.scss';
-import useSignalRWrapper from './SignalR/SignalRWrapper';
+import useSignalRWrapper from './SignalR/useSignalRWrapper';
 import store from './store';
 
 const TicketLayoutWrapper = () => {

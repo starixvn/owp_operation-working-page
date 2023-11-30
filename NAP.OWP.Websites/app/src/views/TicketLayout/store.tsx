@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { isEqual } from 'lodash';
 import chatBoardReducer from '../Shared/chatBoardNew/chatBoardSlice';
 import createMultiplePolicySlice from '../Shared/permission/multiplePolicySlice';
+import signalRReducer from './SignalR/signalRSlice';
 const store = configureStore({
   reducer: {
     chatBoard: chatBoardReducer,
-    pagePolicy: createMultiplePolicySlice('pagePolicy')
+    pagePolicy: createMultiplePolicySlice('pagePolicy'),
+    signalR: signalRReducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
