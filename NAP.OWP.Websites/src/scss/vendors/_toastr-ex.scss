@@ -1,5 +1,6 @@
 ﻿.toast-bottom-right {
     max-height: calc(100% - 70px);
+    position: unset !important;
 }
 
 #toast-container > {

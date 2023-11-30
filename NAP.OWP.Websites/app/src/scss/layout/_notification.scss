@@ -85,6 +85,12 @@
       font-weight: 600;
       background-color: #4caf50;
     }
+    .match-status-change {
+      @include badge-label();
+      color: #000 !important;
+      font-weight: 600;
+      background: #dda0dd;
+    }
     .match-assigned,
     .match-unassigned {
       font-weight: 600;
