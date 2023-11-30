@@ -81,7 +81,7 @@ Header
 
 .cd-main-header {
   position: relative;
-  z-index: 5;
+  z-index: 101;
   height: 55px;
   background-color: #1c2933;
   -webkit-font-smoothing: antialiased;
