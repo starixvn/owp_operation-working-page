@@ -25,27 +25,27 @@
     },
     {
       "headerName": "TV/IPTV",
-      "size": 11,
+      "size": 10,
       "isFilter": true
     },
     {
       "headerName": "Provider",
-      "size": 11,
+      "size": 10,
       "isFilter": true
     },
     {
       "headerName": "Round",
-      "size": 11,
+      "size": 10,
       "isFilter": true
     },
     {
       "headerName": "Remark",
-      "size": 11,
+      "size": 10,
       "isFilter": true
     },
     {
       "headerName": "R&D Update",
-      "size": 7
+      "size": 13
     },
     {
       "headerName": "Checked",
@@ -58,5 +58,5 @@
       "size": 5
     }
   ],
-  "itemRowHeight": 50
+  "itemRowHeight": 80
 }
