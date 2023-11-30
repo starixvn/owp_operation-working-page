@@ -36,22 +36,21 @@ type TOptions = {
   languages: Array<Option>,
   userGroups: Array<Option>
 };
+type TFilterValue = {
+  userName: string,
+  role: Array<Option>,
+  section: Array<Option>,
+  department: Array<Option>,
+  category: Array<Option>,
+  locationCode: Array<Option>
+};
 
 type TFilter = {
   queryOptionsStatus: string,
-  filterValue: {
-    userName: string,
-    role: Array<Option>,
-    section: Array<Option>,
-    department: Array<Option>,
-    category: Array<Option>,
-    locationCode: Array<Option>,
-    level: Array<Option>,
-    language: Array<Option>,
-    userGroup: Array<Option>,
-  }
+  filterValue: TFilterValue,
   options: TOptions,
-  queryOptions(): Promise<void>
+  queryOptions(): Promise<void>,
+  setFilterValue(value: string | Array<Option>, key: keyof TFilterValue): void
 }
 
 type TPolicy = {

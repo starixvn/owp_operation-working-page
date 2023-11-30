@@ -4,17 +4,16 @@ import SyncUser from './syncUser/SyncUser';
 import useStore from './app/useStoreNative';
 import { REQUEST_STATUS } from '../Shared/Constants';
 import Loading from '../components/Loading';
+import { shallow } from 'zustand/shallow';
 
 const UserManagement = () => {
-  const { queryOptionsStatus, queryOptions } = useStore(state => ({
+  const { queryOptionsStatus, queryOptions, queryPermissionStatus, queryPermissions } = useStore(state => ({
     queryOptionsStatus: state.queryOptionsStatus,
-    queryOptions: state.queryOptions
-  }));
-
-  const { queryPermissionStatus, queryPermissions } = useStore(state => ({
+    queryOptions: state.queryOptions,
     queryPermissionStatus: state.queryPermissionStatus,
     queryPermissions: state.queryPermissions
-  }));
+  }), shallow);
+
 
   useEffect(() => {
     queryOptions();
@@ -27,10 +26,12 @@ const UserManagement = () => {
   }
 
   return (
-    <>
-      <SyncUser />
-      <Filter />
-    </>
+    <div className='user__management'>
+      <div className='user__management--header'>
+        <Filter />
+        <SyncUser />
+      </div>
+    </div>
   );
 };
 

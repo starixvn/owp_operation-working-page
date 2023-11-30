@@ -1,12 +1,18 @@
 import { create } from 'zustand';
-import createOptionsSlice from './createFilterSliceNative';
+import createFilterSlice from './createFilterSliceNative';
 import createPermissionSlice from './createPermissionSliceNative';
-
+import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { TFilter, TPermission } from '../type';
 
-export default create<TFilter & TPermission>()(
+const useStore = create<TFilter & TPermission>()(
   (...a) => ({
     ...createPermissionSlice(...a),
-    ...createOptionsSlice(...a)
+    ...createFilterSlice(...a)
   })
 );
+
+if (process.env.NODE_ENV === 'development') {
+  mountStoreDevtool('user-management', useStore);
+}
+
+export default useStore;

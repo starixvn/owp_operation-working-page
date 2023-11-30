@@ -28,7 +28,7 @@ const createPermissionSliceNative: StateCreator<
         queryPermissionStatus: { $set: REQUEST_STATUS.idle },
         permissions: { $set: response.data }
       }));
-    debugger
+
   }
 });
 
