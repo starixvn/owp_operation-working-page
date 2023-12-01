@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -1102,10 +1103,10 @@
     <Content Include="wwwroot\event-picking\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\event-picking\assets\ext\server-c4be8a07.css" />
+    <Content Include="wwwroot\event-picking\assets\ext\server-4945f789.css" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_check_all-1f6bb12a.png" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_only-49132f43.png" />
-    <Content Include="wwwroot\event-picking\assets\js\main-7d189edc.js" />
+    <Content Include="wwwroot\event-picking\assets\js\main-b03cc70d.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\event-upload\assets\ext\icon-feedback-57264197.svg" />
@@ -2766,8 +2767,8 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\live-game-list\assets\ext\server-e403710e.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-feb5e6f8.js" />
+    <Content Include="wwwroot\live-game-list\assets\ext\server-e975ba83.css" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-aab5d85b.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\lst-report\assets\ext\icon-feedback-57264197.svg" />
@@ -2971,10 +2972,6 @@
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-picking\server.cshtml" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-upload\assets\ext\OWP-a7443744.ttf" />
@@ -2999,18 +2996,10 @@
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\live-detail\server.cshtml" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\live-game-list\server.cshtml" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\lst-report\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\lst-report\server.cshtml" />
-    <Content Include="wwwroot\match-count-live-report\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\match-count-live-report\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\match-count-live-report\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\match-count-live-report\server.cshtml" />
     <Content Include="wwwroot\messagebox-management\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\messagebox-management\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\messagebox-management\assets\ext\OWP-a7443744.ttf" />
@@ -3072,6 +3061,10 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
+    <Content Include="wwwroot\match-count-live-report\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\match-count-live-report\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\match-count-live-report\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\match-count-live-report\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
