@@ -1,13 +1,15 @@
 import { create } from 'zustand';
 import createFilterSlice from './createFilterSliceNative';
 import createPermissionSlice from './createPermissionSliceNative';
+import createDataTableSliceNative from './createDataTableSliceNative';
 import { mountStoreDevtool } from 'simple-zustand-devtools';
-import { TFilter, TPermission } from '../type';
+import { TDataTable, TFilter, TPermission } from '../type';
 
-const useStore = create<TFilter & TPermission>()(
+const useStore = create<TFilter & TPermission & TDataTable>()(
   (...a) => ({
     ...createPermissionSlice(...a),
-    ...createFilterSlice(...a)
+    ...createFilterSlice(...a),
+    ...createDataTableSliceNative(...a)
   })
 );
 

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ExportNative from './ExportNative';
 import User from './User';
 import DropdownList from './DropdownList';
+import { getValueFilter } from '../utils';
+import store from '../app/useStoreNative';
 
 const Filter = () => {
+  const { queryUserInfo } = store.getState();
+  useEffect(() => {
+    const filterValue = getValueFilter();
+    queryUserInfo(filterValue);
+  }, [queryUserInfo]);
   return (
     <>
       <div className='filter'>

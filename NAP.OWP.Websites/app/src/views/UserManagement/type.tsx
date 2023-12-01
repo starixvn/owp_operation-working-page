@@ -73,6 +73,56 @@ enum confirmSyncUserEnum {
   cancel = 'cancel'
 };
 
+type TUserInfo = {
+  userId: number,
+  userName: string,
+  fullName: string,
+  nickName: string,
+  employeeId: string | null,
+  departmentId: number | null,
+  sectionId: number | null,
+  sectionName: string | null,
+  groupId: number | null,
+  groupName: string | null,
+  roleId: number | null,
+  roleName: string | null,
+  extension: string | null,
+  phone: string | null,
+  email: string | null,
+  skype: string | null,
+  categoryId: number | null,
+  categoryName: string | null,
+  locationCode: string | null,
+  level: number | null,
+  levelName: string | null,
+  pickup: boolean,
+  address: string | null,
+  isSecondAccount: boolean,
+  languageId: string | null,
+  languages: string | null,
+}
+
+type TQueryUserInfo = {
+  user: string;
+  roleId: (string | number | null)[];
+  SectionId: (string | number | null)[];
+  DepartmentId: (string | number | null)[];
+  CategoryId: (string | number | null)[];
+  LocationCode: (string | number | null)[];
+}
+
+type TDataTableResponse = {
+  users: Array<TUserInfo>
+  levelOfLiveTrading: Array<TRefResource>,
+  levelOfLiveAssistant: Array<TRefResource>,
+  levelOfOtherSection: Array<TRefResource>
+}
+
+type TDataTable = {
+  queryDataTableStatus: string,
+  dataSource: TDataTableResponse,
+  queryUserInfo(value: TQueryUserInfo): Promise<void>
+}
 
 export {
   TUserDetail,
@@ -82,5 +132,8 @@ export {
   TPolicy,
   TOptionsResponse,
   TRefResource,
-  TOptions
+  TOptions,
+  TDataTable,
+  TQueryUserInfo,
+  TDataTableResponse
 };
