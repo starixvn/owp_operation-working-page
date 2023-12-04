@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CustomInput from '../../../component/CustomInput';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
