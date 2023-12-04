@@ -20,7 +20,7 @@ const UserManagementTable = () => {
   const [tableSchema, setTableSchema] = useState(getTableSchema());
   const model = {
     loading: queryDataTableStatus,
-    entities: dataSource
+    entities: dataSource.users
   };
 
   const handleResizeBrowser = () => {

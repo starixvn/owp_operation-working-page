@@ -147,5 +147,6 @@ export {
   TQueryUserInfo,
   TDataTableResponse,
   ColumnSchema,
-  Column
+  Column,
+  TUserInfo
 };
