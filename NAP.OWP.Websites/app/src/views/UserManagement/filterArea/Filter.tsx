@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import ExportNative from './ExportNative';
 import User from './User';
 import DropdownList from './DropdownList';
 import { getValueFilter } from '../utils';
@@ -19,18 +18,13 @@ const Filter = () => {
         </div>
         <DropdownList />
         <div className='filter-control btn-block'>
-          <button
-            className='button-submit'
-            onClick={() => { }}>
+          <button className='button-submit' onClick={() => {}}>
             Search
           </button>
         </div>
       </div>
 
-      <div className='btn-upload-assignment'>
-
-      </div>
-
+      <div className='btn-upload-assignment'></div>
     </>
   );
 };

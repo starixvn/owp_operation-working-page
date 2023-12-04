@@ -5,23 +5,34 @@ import useStore from './app/useStoreNative';
 import { REQUEST_STATUS } from '../Shared/Constants';
 import Loading from '../components/Loading';
 import { shallow } from 'zustand/shallow';
+import ExportButton from './filterArea/ExportNative';
 
 const UserManagement = () => {
-  const { queryOptionsStatus, queryOptions, queryPermissionStatus, queryPermissions } = useStore(state => ({
-    queryOptionsStatus: state.queryOptionsStatus,
-    queryOptions: state.queryOptions,
-    queryPermissionStatus: state.queryPermissionStatus,
-    queryPermissions: state.queryPermissions
-  }), shallow);
-
+  const {
+    queryOptionsStatus,
+    queryOptions,
+    queryPermissionStatus,
+    queryPermissions
+  } = useStore(
+    state => ({
+      queryOptionsStatus: state.queryOptionsStatus,
+      queryOptions: state.queryOptions,
+      queryPermissionStatus: state.queryPermissionStatus,
+      queryPermissions: state.queryPermissions
+    }),
+    shallow
+  );
 
   useEffect(() => {
     queryOptions();
     queryPermissions();
-
   }, [queryOptions, queryPermissions]);
 
-  if ([queryOptionsStatus, queryPermissionStatus].some(status => status === REQUEST_STATUS.pending)) {
+  if (
+    [queryOptionsStatus, queryPermissionStatus].some(
+      status => status === REQUEST_STATUS.pending
+    )
+  ) {
     return <Loading />;
   }
 
@@ -30,6 +41,7 @@ const UserManagement = () => {
       <div className='user__management--header'>
         <Filter />
         <SyncUser />
+        <ExportButton />
       </div>
     </div>
   );
