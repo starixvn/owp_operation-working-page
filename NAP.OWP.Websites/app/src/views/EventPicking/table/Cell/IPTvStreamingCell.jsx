@@ -1,7 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { UncontrolledTooltip } from 'reactstrap';
-import { checkIsShow } from '../../helper/checkShowToolTipHelper';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -11,8 +9,6 @@ const propTypes = {
 const IPTvStreamingCell = props => {
   const { rowIndex, dataSource } = props;
   const { tv, iptv, channel, wb } = dataSource[rowIndex];
-  const ref = useRef(null);
-  const checkShowToolTip = checkIsShow({ tv, iptv, channel, wb });
 
   const renderTv = () =>
     tv && (
@@ -48,23 +44,12 @@ const IPTvStreamingCell = props => {
 
   return (
     <>
-      <div className='streaming-info-cell' ref={ref}>
+      <div className='streaming-info-cell'>
         {renderTv()}
         {renderIpTv()}
         {renderChanel()}
         {renderWb()}
       </div>
-      {checkShowToolTip && (
-        <UncontrolledTooltip
-          className='tooltip-content'
-          placement='top-start'
-          target={ref}>
-          {renderTv()}
-          {renderIpTv()}
-          {renderChanel()}
-          {renderWb()}
-        </UncontrolledTooltip>
-      )}
     </>
   );
 };

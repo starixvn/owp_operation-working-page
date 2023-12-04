@@ -7,16 +7,21 @@ import React, {
 } from 'react';
 import { throttle } from 'lodash';
 
-const CustomTable = ({ data, tableHeader, classNameTable, children }) => {
+const CustomTable = ({
+  data,
+  tableHeader,
+  classNameTable,
+  itemRowHeight,
+  children
+}) => {
   const containerRef = useRef(null);
   const [maxHeight, setMaxHeight] = useState(window.innerHeight - 200);
   const [displayStart, setDisplayStart] = useState(0);
   const [displayEnd, setDisplayEnd] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const itemRowHeight = 100;
   const screenHeight = maxHeight;
   const offset = screenHeight;
-  const rowsToRender = Math.floor((screenHeight + offset) / itemRowHeight);
+  const rowsToRender = 30;
 
   const setDisplayPositions = useCallback(
     scroll => {
@@ -36,7 +41,12 @@ const CustomTable = ({ data, tableHeader, classNameTable, children }) => {
   const onScrollTable = throttle(() => {
     const scrollTop = containerRef.current?.scrollTop;
     const scrollHeight = containerRef.current?.scrollHeight;
-    if (data.length !== 0 && scrollTop < scrollHeight) {
+    console.log('top', scrollTop);
+    console.log('height', scrollHeight);
+    console.log(containerRef);
+    if (data.length === 0) {
+      setScrollPosition(0);
+    } else {
       setScrollPosition(scrollTop);
       setDisplayPositions(scrollTop);
     }

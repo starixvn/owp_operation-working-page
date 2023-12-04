@@ -1,48 +1,60 @@
 import { isEqual } from 'lodash';
 import React, { forwardRef } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/storeNative';
-import { useAppDispatch } from '../../app/hookNative';
-import {
-  clearFilter,
-  filterBySearchKey,
-  setValueFilter
-} from '../tableSlice/tableSlice';
 import { CloseIcon } from 'mdi-react';
 import { Button } from 'reactstrap';
+import { TFilterState } from './typeCommon';
 
 type FilterPopupProps = {
   columnKey: string;
+  model: any;
   handleClosedPopup: () => void;
+  handleClearFilterCallback: () => void;
+  handleFilterBySearchKeyCallback: (filterState: TFilterState) => void;
+  handleValueFilterCallback: (filterState: TFilterState) => void;
 };
 
-const FilterPopup = forwardRef<HTMLDivElement, FilterPopupProps>(
-  ({ columnKey, handleClosedPopup }: FilterPopupProps, ref) => {
-    const model = useSelector((state: RootState) => state.events);
+const FilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupProps>(
+  (
+    {
+      model,
+      columnKey,
+      handleClosedPopup,
+      handleClearFilterCallback,
+      handleFilterBySearchKeyCallback,
+      handleValueFilterCallback
+    }: FilterPopupProps,
+    ref
+  ) => {
     const { columnKeyFilterCurrent, valueFilterAllColumn } = model;
     const filterValue = valueFilterAllColumn[columnKey] ?? '';
-    const dispatch = useAppDispatch();
-
     const handleClearAllFilter = () => {
       handleClosedPopup();
-      dispatch(clearFilter());
+      handleClearFilterCallback();
     };
     const handleOnSearchFilter = () => {
       const filterState = {
         columnKey,
         keyword: filterValue
       };
-      dispatch(filterBySearchKey(filterState));
+      handleFilterBySearchKeyCallback(filterState);
     };
     const handleOnchangeValue = (value: string) => {
       const columnHaveBeenFiltered = {
         columnKey,
         keyword: value
       };
-      dispatch(setValueFilter(columnHaveBeenFiltered));
+      handleValueFilterCallback(columnHaveBeenFiltered);
     };
     const onClickClosedIcon = () => {
       handleClosedPopup();
+    };
+
+    const handelOnKeyDown = (
+      e: React.KeyboardEvent<HTMLInputElement>
+    ): void => {
+      if (e.key === 'Enter' && e.currentTarget.value) {
+        handleOnSearchFilter();
+      }
     };
 
     return (
@@ -61,6 +73,7 @@ const FilterPopup = forwardRef<HTMLDivElement, FilterPopupProps>(
           placeholder='Search'
           value={filterValue}
           autoFocus
+          onKeyDown={e => handelOnKeyDown(e)}
           onChange={e => handleOnchangeValue(e.target.value)}
         />
         <span className='clear-all' onClick={handleClearAllFilter}>
@@ -77,4 +90,4 @@ const FilterPopup = forwardRef<HTMLDivElement, FilterPopupProps>(
   }
 );
 
-export default FilterPopup;
+export default FilterHeaderPopupCommon;

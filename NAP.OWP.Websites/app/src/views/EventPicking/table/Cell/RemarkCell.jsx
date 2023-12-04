@@ -1,7 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { checkIsShow } from '../../helper/checkShowToolTipHelper';
-import { UncontrolledTooltip } from 'reactstrap';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -11,13 +9,6 @@ const propTypes = {
 const RemarkCell = props => {
   const { rowIndex, dataSource } = props;
   const { lstNote, remark, homeRemark, awayRemark } = dataSource[rowIndex];
-  const ref = useRef(null);
-  const checkShowToolTip = checkIsShow({
-    lstNote,
-    remark,
-    homeRemark,
-    awayRemark
-  });
 
   const renderLstNote = () =>
     lstNote && (
@@ -53,23 +44,12 @@ const RemarkCell = props => {
 
   return (
     <>
-      <div className='remark-cell' ref={ref}>
+      <div className='remark-cell'>
         {renderLstNote()}
         {renderRemark()}
         {renderHomeRemark()}
         {renderAwayRemark()}
       </div>
-      {checkShowToolTip && (
-        <UncontrolledTooltip
-          className='tooltip-content'
-          placement='top-start'
-          target={ref}>
-          {renderLstNote()}
-          {renderRemark()}
-          {renderHomeRemark()}
-          {renderAwayRemark()}
-        </UncontrolledTooltip>
-      )}
     </>
   );
 };

@@ -27,6 +27,7 @@ type TDataTable = {
   round: string;
   eTPK: string;
   isCheck: boolean;
+  rowColor: string;
 };
 
 type TTableSlice = {
@@ -34,6 +35,8 @@ type TTableSlice = {
   entitiesOriginal: Array<TDataTable>;
   isNoOfferAll: boolean;
   isConfirmAll: boolean;
+  valueFilterAllColumn: FilterAllColumn;
+  columnKeyFilterCurrent: string;
   filterState: Array<TFilterState>;
   loading: string;
 };
@@ -42,5 +45,18 @@ type TFilterState = {
   columnKey: string | undefined;
   keyword: string | undefined;
 };
+
+interface FilterAllColumn {
+  [x: string]: string;
+}
+
+type TPermission = {
+  UserName: string;
+  HasRead: boolean;
+  HasWrite: boolean;
+  ActorId: number;
+  SiteId: number;
+};
+
 export default TDataTable;
-export { TTableSlice, TFilterState };
+export { TTableSlice, TFilterState, FilterAllColumn, TPermission };

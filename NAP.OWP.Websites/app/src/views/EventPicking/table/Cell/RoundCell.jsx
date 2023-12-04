@@ -1,7 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { checkIsShow } from '../../helper/checkShowToolTipHelper';
-import { UncontrolledTooltip } from 'reactstrap';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -11,8 +9,6 @@ const propTypes = {
 const RoundCell = props => {
   const { rowIndex, dataSource } = props;
   const { division, round, etpk, teamRound } = dataSource[rowIndex];
-  const ref = useRef(null);
-  const checkShowToolTip = checkIsShow({ division, round, etpk });
 
   const renderDivision = () =>
     division && (
@@ -48,22 +44,12 @@ const RoundCell = props => {
 
   return (
     <>
-      <div className='round-cell' ref={ref}>
+      <div className='round-cell'>
         {renderDivision()}
         {renderRound()}
         {renderTeamRound()}
         {renderEtPk()}
       </div>
-      {checkShowToolTip && (
-        <UncontrolledTooltip
-          className='tooltip-content'
-          placement='top-start'
-          target={ref}>
-          {renderDivision()}
-          {renderRound()}
-          {renderEtPk()}
-        </UncontrolledTooltip>
-      )}
     </>
   );
 };

@@ -59,6 +59,7 @@
       "isFilter": true
     }
   ],
+  "itemRowHeight": 100,
   "netCoreURL": "api-netcore/LiveGameList",
   "netFwURL": "api/LiveGameList",
   "ORDER_ASC": "ORDER_ASC",
