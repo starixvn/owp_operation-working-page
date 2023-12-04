@@ -32,7 +32,7 @@ const dynamicCell = (
     case No.columnKey:
       return <NoCell />;
     case EmployeeID.columnKey:
-      return <EmployeeIdCell />;
+      return <EmployeeIdCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Language.columnKey:
       return <LanguageCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Role.columnKey:

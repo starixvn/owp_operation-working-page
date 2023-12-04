@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CustomInput from '../../../component/CustomInput';
+import { TUserInfo } from '../../../type';
+import store from '../../../app/useStoreNative';
 
-const EmployeeIdCell = () => {
+type Props = {
+  dataSource: Array<TUserInfo>;
+  rowIndex: number;
+};
+
+const EmployeeIdCell = ({ dataSource, rowIndex }: Props) => {
+  const { updateValue } = store.getState();
+
+  const handleOnChange = (newValue: string) => {
+    updateValue(newValue, 'employeeId', rowIndex);
+  };
+
+  const updateInfo = () => {
+    //api
+  };
+
   return (
-    <>
-      <h1>1</h1>
-    </>
+    <CustomInput
+      value={dataSource[rowIndex].employeeId}
+      handleOnChange={handleOnChange}
+      handleOnBlur={updateInfo}
+    />
   );
 };
 

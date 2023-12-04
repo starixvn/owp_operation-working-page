@@ -12,7 +12,7 @@ const RoleCell = (props: {
   const { rowIndex, dataSource } = props;
   const { roleName } = dataSource[rowIndex];
   // const currentLocation = r.find(l => locationCode === l.label);
-  console.log(roleName);
+
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     /* const x = event.target.value
     updateValue()

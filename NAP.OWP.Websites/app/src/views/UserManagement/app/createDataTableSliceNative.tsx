@@ -14,21 +14,26 @@ const createDataTableSliceNative: StateCreator<
   dataSource: {
     users: []
   },
+
   async queryUserInfo(value) {
     set(state =>
       update(state, {
         queryDataTableStatus: { $set: REQUEST_STATUS.pending }
-      }));
-    const dataSource = (await post({
-      url: 'api-netcore/UserManagement/query-user',
-      ...value
-    })).data as TDataTableResponse;;
+      })
+    );
+    const dataSource = (
+      await post({
+        url: 'api-netcore/UserManagement/query-user',
+        ...value
+      })
+    ).data as TDataTableResponse;
 
     set(state =>
       update(state, {
         queryDataTableStatus: { $set: REQUEST_STATUS.idle },
         dataSource: { $set: dataSource }
-      }));
+      })
+    );
   },
   updateValue(newValue, key, rowIndex) {
     set(state =>
@@ -40,8 +45,9 @@ const createDataTableSliceNative: StateCreator<
             }
           }
         }
-      }));
-  },
+      })
+    );
+  }
 });
 
 export default createDataTableSliceNative;

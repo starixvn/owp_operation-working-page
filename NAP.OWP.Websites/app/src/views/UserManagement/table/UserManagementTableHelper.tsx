@@ -35,6 +35,7 @@ const selectTable = (widthWindow: number) => {
     initialWidth,
     NoSize,
     GroupSize,
+    EmployeeIdSize,
     RoleSize,
     ExtensionSize,
     PhoneSize,
@@ -53,6 +54,7 @@ const selectTable = (widthWindow: number) => {
   return {
     columnSchema: [
       buildColumn(width * NoSize, No),
+      buildColumn(width * EmployeeIdSize, EmployeeID),
       buildColumn(width * GroupSize, Group),
       buildColumn(width * RoleSize, Role),
       buildColumn(width * ExtensionSize, Extension),

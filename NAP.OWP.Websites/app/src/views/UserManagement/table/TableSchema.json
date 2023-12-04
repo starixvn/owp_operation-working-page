@@ -10,6 +10,7 @@
     "headerHeight": 38,
     "initialWidth": 15,
     "NoSize": 0.02,
+    "EmployeeIdSize": 0.08,
     "GroupSize": 0.06,
     "RoleSize": 0.06,
     "ExtensionSize": 0.06,

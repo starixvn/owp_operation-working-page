@@ -155,6 +155,13 @@ type Column = {
   columnKey: string;
 };
 
+type UpdateModel = {
+  ColumnName: string;
+  UserId: string;
+  Value: string | null;
+  apikey: string;
+};
+
 export {
   TUserDetail,
   confirmSyncUserEnum,
