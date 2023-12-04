@@ -6,10 +6,11 @@ import store from '../app/useStoreNative';
 
 const Filter = () => {
   const { queryUserInfo } = store.getState();
+
   useEffect(() => {
-    const filterValue = getValueFilter();
-    queryUserInfo(filterValue);
+    queryUserInfo(getValueFilter());
   }, [queryUserInfo]);
+
   return (
     <>
       <div className='filter'>
@@ -18,7 +19,7 @@ const Filter = () => {
         </div>
         <DropdownList />
         <div className='filter-control btn-block'>
-          <button className='button-submit' onClick={() => {}}>
+          <button className='button-submit' onClick={_ => queryUserInfo(getValueFilter())}>
             Search
           </button>
         </div>

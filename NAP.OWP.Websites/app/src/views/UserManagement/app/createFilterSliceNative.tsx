@@ -5,6 +5,16 @@ import axios from 'axios';
 import update from 'immutability-helper';
 import { normalizeOptions } from '../utils';
 
+const defaultNoneOption = {
+  value: 0,
+  label: "None"
+};
+
+const defaultLocationCodeNoneOption = {
+  value: 'None',
+  label: "None"
+};
+
 const createOptionsSliceNative: StateCreator<
   TFilter,
   [],
@@ -37,21 +47,21 @@ const createOptionsSliceNative: StateCreator<
       update(state, {
         queryOptionsStatus: { $set: REQUEST_STATUS.idle },
         options: {
-          roles: { $set: normalizeOptions(options.roles) },
-          sections: { $set: normalizeOptions(options.sections) },
-          departments: { $set: normalizeOptions(options.departments) },
-          categories: { $set: normalizeOptions(options.categories) },
-          locationCodes: { $set: normalizeOptions(options.locationCodes) },
-          levels: { $set: normalizeOptions(options.levels) },
-          languages: { $set: normalizeOptions(options.languages) },
-          userGroups: { $set: normalizeOptions(options.userGroups) }
+          roles: { $set: normalizeOptions(options.roles, defaultNoneOption) },
+          sections: { $set: normalizeOptions(options.sections, defaultNoneOption) },
+          departments: { $set: normalizeOptions(options.departments, defaultNoneOption) },
+          categories: { $set: normalizeOptions(options.categories, defaultNoneOption) },
+          locationCodes: { $set: normalizeOptions(options.locationCodes, defaultLocationCodeNoneOption) },
+          levels: { $set: normalizeOptions(options.levels, defaultNoneOption) },
+          languages: { $set: normalizeOptions(options.languages, defaultNoneOption) },
+          userGroups: { $set: normalizeOptions(options.userGroups, defaultNoneOption) }
         },
         filterValue: {
-          role: { $set: normalizeOptions(options.roles) },
-          section: { $set: normalizeOptions(options.sections) },
-          department: { $set: normalizeOptions(options.departments) },
-          category: { $set: normalizeOptions(options.categories) },
-          locationCode: { $set: normalizeOptions(options.locationCodes) }
+          role: { $set: normalizeOptions(options.roles, defaultNoneOption) },
+          section: { $set: normalizeOptions(options.sections, defaultNoneOption) },
+          department: { $set: normalizeOptions(options.departments, defaultNoneOption) },
+          category: { $set: normalizeOptions(options.categories, defaultNoneOption) },
+          locationCode: { $set: normalizeOptions(options.locationCodes, defaultLocationCodeNoneOption) }
         }
       }));
 

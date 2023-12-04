@@ -42,7 +42,7 @@ const UserManagement = () => {
       <div className='user__management--header'>
         <Filter />
         <SyncUser />
-        <ExportButton />
+
       </div>
       <div>
         <UserManagementTable />

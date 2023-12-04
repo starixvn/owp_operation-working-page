@@ -9,8 +9,8 @@ const createDataTableSliceNative: StateCreator<
   [],
   [],
   TDataTable
-> = (set, get) => ({
-  queryDataTableStatus: REQUEST_STATUS.pending,
+> = set => ({
+  queryDataTableStatus: REQUEST_STATUS.idle,
   dataSource: {
     users: [],
     levelOfLiveTrading: [],
@@ -18,11 +18,15 @@ const createDataTableSliceNative: StateCreator<
     levelOfOtherSection: []
   },
   async queryUserInfo(value) {
+    set(state =>
+      update(state, {
+        queryDataTableStatus: { $set: REQUEST_STATUS.pending }
+      }));
     const dataSource = (await post({
       url: 'api-netcore/UserManagement/query-user',
       ...value
     })).data as TDataTableResponse;;
-    debugger
+
     set(state =>
       update(state, {
         queryDataTableStatus: { $set: REQUEST_STATUS.idle },

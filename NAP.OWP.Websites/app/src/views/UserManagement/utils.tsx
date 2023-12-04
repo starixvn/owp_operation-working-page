@@ -2,11 +2,14 @@ import { TQueryUserInfo, TRefResource } from "./type";
 import { Option } from '../Shared/MultipleSelection/type';
 import store from './app/useStoreNative';
 
-const normalizeOptions = (optionsSource: Array<TRefResource>) =>
-  optionsSource.map(o => ({
+const normalizeOptions = (optionsSource: Array<TRefResource>, noneOption: Option) => {
+  const options = optionsSource.map(o => ({
     value: o.resourceId,
     label: o.value
   } as Option));
+  options.push(noneOption);
+  return options;
+};
 
 const getValueFilter = (): TQueryUserInfo => {
   const { userName, role, section, department, category, locationCode } = store.getState().filterValue;
