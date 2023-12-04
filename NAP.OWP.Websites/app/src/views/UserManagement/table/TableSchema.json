@@ -1,0 +1,106 @@
+{
+  "DefaultTableStyle": {
+    "rowHeight": 20,
+    "widthResize": 140,
+    "width": 2000,
+    "minWidth": 880,
+    "filterOffset": 180,
+    "height": 750,
+    "maxHeight": 750,
+    "headerHeight": 38,
+    "initialWidth": 15,
+    "NoSize": 0.02,
+    "CategorySize": 0.06,
+    "LeagueSize": 0.21,
+    "MaxBetSize": 0.08,
+    "SpreadSize": 0.06,
+    "RoundSize": 0.06,
+    "SummarySize": 0.47,
+    "ActionSize": 0.04,
+    "MaximumLengthOfText": 150
+  },
+  "No": {
+    "order": 1,
+    "headerName": "#",
+    "columnKey": "No",
+    "isFreeze": true
+  },
+  "EmployeeID": {
+    "headerName": "Employee ID",
+    "columnKey": "EmployeeID",
+    "isFreeze": true
+  },
+  "AccountName": {
+    "headerName": "Account Name",
+    "columnKey": "AccountName",
+    "isFreeze": true
+  },
+  "FullName": {
+    "headerName": "Full Name",
+    "columnKey": "FullName"
+  },
+  "NickName": {
+    "headerName": "Nick Name",
+    "columnKey": "NickName"
+  },
+  "Department": {
+    "headerName": "Department",
+    "columnKey": "Department"
+  },
+  "Section": {
+    "headerName": "Section",
+    "columnKey": "Section"
+  },
+  "Group": {
+    "headerName": "Group",
+    "columnKey": "Group"
+  },
+  "Role": {
+    "headerName": "Role",
+    "columnKey": "Role"
+  },
+  "Extension": {
+    "headerName": "Extension",
+    "columnKey": "Extension"
+  },
+  "Phone": {
+    "headerName": "Phone",
+    "columnKey": "Phone"
+  },
+  "Email": {
+    "headerName": "Email",
+    "columnKey": "Email"
+  },
+  "Skype": {
+    "headerName": "Skype",
+    "columnKey": "Skype"
+  },
+  "Category": {
+    "headerName": "Category",
+    "columnKey": "Category"
+  },
+  "Location": {
+    "headerName": "Location",
+    "columnKey": "Location"
+  },
+  "Level": {
+    "headerName": "Level",
+    "columnKey": "Level"
+  },
+  "Pickup": {
+    "headerName": "Pickup",
+    "columnKey": "Pickup"
+  },
+  "Address": {
+    "headerName": "Address",
+    "columnKey": "Address"
+  },
+  "SecondAccount": {
+    "headerName": "Second Account",
+    "columnKey": "SecondAccount"
+  },
+  "Language": {
+    "headerName": "Language",
+    "columnKey": "Language"
+  }
+}

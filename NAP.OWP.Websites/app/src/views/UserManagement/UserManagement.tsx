@@ -6,6 +6,7 @@ import { REQUEST_STATUS } from '../Shared/Constants';
 import Loading from '../components/Loading';
 import { shallow } from 'zustand/shallow';
 import ExportButton from './filterArea/ExportNative';
+import UserManagementTable from './table/UserManagementTable';
 
 const UserManagement = () => {
   const {
@@ -42,6 +43,9 @@ const UserManagement = () => {
         <Filter />
         <SyncUser />
         <ExportButton />
+      </div>
+      <div>
+        <UserManagementTable />
       </div>
     </div>
   );
