@@ -10,7 +10,8 @@ import {
   Pickup,
   SecondAccount,
   Role,
-  Category
+  Category,
+  Address
 } from './TableSchema.json';
 import LanguageCell from './cell/language/LanguageCell';
 import LocationCell from './cell/location/LocationCell';
@@ -18,6 +19,7 @@ import { TUserInfo } from '../type';
 import LevelCell from './cell/level/LevelCell';
 import PickupCell from './cell/pickup/PickupCell';
 import SecondAccountCell from './cell/secondAccount/SecondAccountCell';
+import AddressCell from './cell/address/AddressCell';
 //import { CellModel } from '../../typing/tableType';
 
 const dynamicCell = (
@@ -47,6 +49,8 @@ const dynamicCell = (
       return <PickupCell rowIndex={rowIndex} dataSource={dataSource} />;
     case SecondAccount.columnKey:
       return <SecondAccountCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Address.columnKey:
+      return <AddressCell rowIndex={rowIndex} dataSource={dataSource} />;
     // case Category.columnKey:
     //   return <CategoryCell dataSource={dataSource} rowIndex={rowIndex} />;
     // case League.columnKey:
