@@ -122,6 +122,7 @@ type TDataTable = {
   queryDataTableStatus: string;
   dataSource: TDataTableResponse;
   queryUserInfo(value: TQueryUserInfo): Promise<void>;
+  updateValue(newValue: string | number, key: keyof TUserInfo, rowIndex: Required<number>): void
 };
 
 type ColumnSchema = {

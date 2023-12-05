@@ -32,7 +32,19 @@ const createDataTableSliceNative: StateCreator<
         queryDataTableStatus: { $set: REQUEST_STATUS.idle },
         dataSource: { $set: dataSource }
       }));
-  }
+  },
+  updateValue(newValue, key, rowIndex) {
+    set(state =>
+      update(state, {
+        dataSource: {
+          users: {
+            [rowIndex]: {
+              [key]: { $set: newValue }
+            }
+          }
+        }
+      }));
+  },
 });
 
 export default createDataTableSliceNative;
