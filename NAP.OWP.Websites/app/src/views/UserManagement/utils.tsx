@@ -8,10 +8,10 @@ const normalizeOptions = (
 ) => {
   const options = optionsSource.map(
     o =>
-      ({
-        value: o.resourceId,
-        label: o.value
-      } as Option)
+    ({
+      value: o.resourceId,
+      label: o.value
+    } as Option)
   );
   options.push(noneOption);
   return options;
@@ -44,4 +44,4 @@ const urlExport =
     ? `api-netcore/UserManagement/export-excel`
     : `${window.netCoreRootUrl}/api/UserManagement/export-excel`;
 
-export { normalizeOptions, getValueFilter, urlExport };
+export { normalizeOptions, normalizeLocationCodeOptions, getValueFilter, urlExport };

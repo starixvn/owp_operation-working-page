@@ -102,7 +102,7 @@ type TUserInfo = {
   locationCode: string | null;
   level: number | null;
   levelName: string | null;
-  pickup: boolean;
+  pickup: string;
   address: string | null;
   isSecondAccount: boolean;
   languageId: string | null;
