@@ -104,7 +104,7 @@ type TUserInfo = {
   levelName: string | null;
   pickup: string;
   address: string | null;
-  isSecondAccount: boolean;
+  isSecondAccount: string;
   languageId: string | null;
   languages: string | null;
 };

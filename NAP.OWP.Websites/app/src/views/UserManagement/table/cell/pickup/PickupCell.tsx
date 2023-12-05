@@ -5,14 +5,14 @@ import SingleSelection from '../cellCommon/SingleSelection';
 
 const pickupOption = [{
   value: 'true',
-  label: 'yes'
+  label: 'Yes'
 },
 {
   value: 'false',
-  label: 'no'
+  label: 'No'
 }, {
   value: 'none',
-  label: 'none'
+  label: 'None'
 }];
 
 const PickupCell = (props: {
