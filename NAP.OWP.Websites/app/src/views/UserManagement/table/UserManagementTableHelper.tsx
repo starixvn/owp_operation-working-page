@@ -16,7 +16,7 @@ import {
   Location,
   Category
 } from './TableSchema.json';
-import { Column, ColumnSchema, TDataTableResponse } from '../type';
+import { Column, ColumnSchema } from '../type';
 import { dynamicCell } from './ConfigNative';
 import { calculateCustomTableWidth } from '../../Shared/common/CustomTable/Helper';
 

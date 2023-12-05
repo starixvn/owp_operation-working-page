@@ -5,7 +5,11 @@ import {
   EmployeeIdCell,
   RoleCell,
   CategoryCell,
-  GroupCell
+  GroupCell,
+  ExtensionCell,
+  PhoneCell,
+  EmailCell,
+  SkypeCell
 } from './cell';
 import {
   No,
@@ -18,7 +22,11 @@ import {
   Role,
   Category,
   Address,
-  Group
+  Group,
+  Extension,
+  Phone,
+  Email,
+  Skype
 } from './TableSchema.json';
 import LanguageCell from './cell/language/LanguageCell';
 import LocationCell from './cell/location/LocationCell';
@@ -48,6 +56,14 @@ const dynamicCell = (
       return <LanguageCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Role.columnKey:
       return <RoleCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Extension.columnKey:
+      return <ExtensionCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Phone.columnKey:
+      return <PhoneCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Email.columnKey:
+      return <EmailCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Skype.columnKey:
+      return <SkypeCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Category.columnKey:
       return <CategoryCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Location.columnKey:
