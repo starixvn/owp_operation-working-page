@@ -103,12 +103,12 @@ type TUserInfo = {
 };
 
 type TQueryUserInfo = {
-  user: string;
-  roleId: (string | number | null)[];
-  SectionId: (string | number | null)[];
-  DepartmentId: (string | number | null)[];
-  CategoryId: (string | number | null)[];
-  LocationCode: (string | number | null)[];
+  user: string | null;
+  roleId: string;
+  sectionId: string;
+  departmentId: string;
+  categoryId: string;
+  locationCode: string;
 };
 
 type TDataTableResponse = {
@@ -122,7 +122,11 @@ type TDataTable = {
   queryDataTableStatus: string;
   dataSource: TDataTableResponse;
   queryUserInfo(value: TQueryUserInfo): Promise<void>;
-  updateValue(newValue: string | number, key: keyof TUserInfo, rowIndex: Required<number>): void
+  updateValue(
+    newValue: string | number,
+    key: keyof TUserInfo,
+    rowIndex: Required<number>
+  ): void;
 };
 
 type ColumnSchema = {

@@ -1,17 +1,13 @@
 import React from 'react';
 import axios, { AxiosResponse } from 'axios';
 import { saveAs } from 'file-saver';
+import { getValueFilter, urlExport } from '../utils';
 
 const ExportButton: React.FC = () => {
   const handleExport = async () => {
-    const urlExport =
-      process.env.NODE_ENV === 'development'
-        ? `api-netcore/UserManagement/export-excel`
-        : `${window.netCoreRootUrl}/api/UserManagement/export-excel`;
-    const user = 'sa';
-    const roleId = '1';
-    const sectionId = '3';
-    const url = `${urlExport}?User=${user}&RoleId=${roleId}&SectionId=${sectionId}`;
+    const { user, roleId, sectionId, departmentId, categoryId, locationCode } =
+      getValueFilter();
+    const url = `${urlExport}?User=${user}&CategoryId=${categoryId}&DepartmentId=${departmentId}&LocationCode=${locationCode}&RoleId=${roleId}&SectionId=${sectionId}`;
 
     let instance = axios.create({
       baseURL: '/'
