@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { NoCell, EmployeeIdCell, RoleCell, CategoryCell } from './cell';
+import {
+  NoCell,
+  EmployeeIdCell,
+  RoleCell,
+  CategoryCell,
+  GroupCell
+} from './cell';
 import {
   No,
   EmployeeID,
@@ -11,7 +17,8 @@ import {
   SecondAccount,
   Role,
   Category,
-  Address
+  Address,
+  Group
 } from './TableSchema.json';
 import LanguageCell from './cell/language/LanguageCell';
 import LocationCell from './cell/location/LocationCell';
@@ -35,6 +42,8 @@ const dynamicCell = (
       return <NoCell />;
     case EmployeeID.columnKey:
       return <EmployeeIdCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Group.columnKey:
+      return <GroupCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Language.columnKey:
       return <LanguageCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Role.columnKey:
