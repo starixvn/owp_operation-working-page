@@ -1,9 +1,9 @@
 import { StateCreator } from 'zustand';
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { TFilter, TOptionsResponse } from '../type';
+import { TFilter, TFilterOptionsResponse } from '../type';
 import axios from 'axios';
 import update from 'immutability-helper';
-import { normalizeOptions } from '../utils';
+import { normalizeOptions, normalizeLocationCodeOptions } from '../utils';
 
 const defaultNoneOption = {
   value: 0,
@@ -21,7 +21,7 @@ const createOptionsSliceNative: StateCreator<
   [],
   TFilter
 > = (set, get) => ({
-  queryOptionsStatus: REQUEST_STATUS.pending,
+  queryFilterOptionsStatus: REQUEST_STATUS.pending,
   filterValue: {
     userName: '',
     role: [],
@@ -40,18 +40,18 @@ const createOptionsSliceNative: StateCreator<
     languages: [],
     userGroups: []
   },
-  async queryOptions() {
-    const options = (await axios.get('api-netcore/UserManagement/query-options')).data as TOptionsResponse;
+  async queryFilterOptions() {
+    const options = (await axios.get('api-netcore/UserManagement/query-filter-options')).data as TFilterOptionsResponse;
 
     set(state =>
       update(state, {
-        queryOptionsStatus: { $set: REQUEST_STATUS.idle },
+        queryFilterOptionsStatus: { $set: REQUEST_STATUS.idle },
         options: {
           roles: { $set: normalizeOptions(options.roles, defaultNoneOption) },
           sections: { $set: normalizeOptions(options.sections, defaultNoneOption) },
           departments: { $set: normalizeOptions(options.departments, defaultNoneOption) },
           categories: { $set: normalizeOptions(options.categories, defaultNoneOption) },
-          locationCodes: { $set: normalizeOptions(options.locationCodes, defaultLocationCodeNoneOption) },
+          locationCodes: { $set: normalizeLocationCodeOptions(options.locationCodes, defaultLocationCodeNoneOption) },
           levels: { $set: normalizeOptions(options.levels, defaultNoneOption) },
           languages: { $set: normalizeOptions(options.languages, defaultNoneOption) },
           userGroups: { $set: normalizeOptions(options.userGroups, defaultNoneOption) }

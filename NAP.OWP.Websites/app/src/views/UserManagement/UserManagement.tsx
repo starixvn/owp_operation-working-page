@@ -9,27 +9,32 @@ import UserManagementTable from './table/UserManagementTable';
 
 const UserManagement = () => {
   const {
-    queryOptionsStatus,
-    queryOptions,
+    queryFilterOptionsStatus,
     queryPermissionStatus,
+    queryLevelOptionStatus,
+    queryFilterOptions,
+    queryLevelOption,
     queryPermissions
   } = useStore(
     state => ({
-      queryOptionsStatus: state.queryOptionsStatus,
-      queryOptions: state.queryOptions,
+      queryFilterOptionsStatus: state.queryFilterOptionsStatus,
       queryPermissionStatus: state.queryPermissionStatus,
+      queryLevelOptionStatus: state.queryLevelOptionStatus,
+      queryFilterOptions: state.queryFilterOptions,
+      queryLevelOption: state.queryLevelOption,
       queryPermissions: state.queryPermissions
     }),
     shallow
   );
 
   useEffect(() => {
-    queryOptions();
+    queryFilterOptions();
     queryPermissions();
-  }, [queryOptions, queryPermissions]);
+    queryLevelOption();
+  }, [queryFilterOptions, queryLevelOption, queryPermissions]);
 
   if (
-    [queryOptionsStatus, queryPermissionStatus].some(
+    [queryFilterOptionsStatus, queryPermissionStatus, queryLevelOptionStatus].some(
       status => status === REQUEST_STATUS.pending
     )
   ) {

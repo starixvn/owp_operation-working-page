@@ -101,9 +101,7 @@
 	<Function Name="UserManagement">
 		<Setting Key="OWP_RefResource_GetMainBettypeBySectionId" SpName="OWP_RefResource_GetMainBettypeBySectionId" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
 		<Setting Key="OWP_RefResource_GetLevelBySectionId" SpName="OWP_RefResource_GetLevelBySectionId" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
-		<Setting Key="OWP_UserListGet" SpName="OWP_UserListGet" DbName="DBOWP.bodb_OWP.bodbOWPNet">
-			<Mapping DataField="ProfilePic" ObjectProperty="ProfilePicture" />
-		</Setting>
+		<Setting Key="OWP_UserListGet_Los" SpName="OWP_UserListGet_Los" DbName="DBOWP.bodb_OWP.bodbOWPNet"/>
 		<Setting Key="OWP_UserUpdate" SpName="OWP_UserUpdate" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
 		<Setting Key="OWP_API_SyncUsers_From_AdminSite" SpName="OWP_API_SyncUsers_From_AdminSite" DbName="DBOWP.bodb_OWP.bodbOWPNet" />
 		<Setting Key="OWP_API_SyncUsers_Get_Change_From_AdminSite" SpName="OWP_API_SyncUsers_Get_Change_From_AdminSite" DbName="DBOWP.bodb_OWP.bodbOWPNet" />

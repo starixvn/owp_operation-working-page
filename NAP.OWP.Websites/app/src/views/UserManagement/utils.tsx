@@ -17,6 +17,15 @@ const normalizeOptions = (
   return options;
 };
 
+const normalizeLocationCodeOptions = (optionsSource: Array<TRefResource>, noneOption: Option) => {
+  const options = optionsSource.map(o => ({
+    value: o.value,
+    label: o.value
+  } as Option));
+  options.push(noneOption);
+  return options;
+};
+
 const getValueFilter = (): TQueryUserInfo => {
   const { userName, role, section, department, category, locationCode } =
     store.getState().filterValue;

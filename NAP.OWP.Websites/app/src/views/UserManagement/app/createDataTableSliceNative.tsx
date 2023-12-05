@@ -12,10 +12,7 @@ const createDataTableSliceNative: StateCreator<
 > = set => ({
   queryDataTableStatus: REQUEST_STATUS.idle,
   dataSource: {
-    users: [],
-    levelOfLiveTrading: [],
-    levelOfLiveAssistant: [],
-    levelOfOtherSection: []
+    users: []
   },
   async queryUserInfo(value) {
     set(state =>

@@ -15,7 +15,7 @@ type TRefResource = {
   name: string;
 };
 
-type TOptionsResponse = {
+type TFilterOptionsResponse = {
   roles: Array<TRefResource>;
   sections: Array<TRefResource>;
   departments: Array<TRefResource>;
@@ -26,7 +26,7 @@ type TOptionsResponse = {
   userGroups: Array<TRefResource>;
 };
 
-type TOptions = {
+type TFilterOptions = {
   roles: Array<Option>;
   sections: Array<Option>;
   departments: Array<Option>;
@@ -36,6 +36,13 @@ type TOptions = {
   languages: Array<Option>;
   userGroups: Array<Option>;
 };
+
+type TLevelOptionsResponse = {
+  levelOfLiveAssistant: Array<TRefResource>;
+  levelOfLiveTrading: Array<TRefResource>;
+  levelOfOtherSection: Array<TRefResource>
+};
+
 type TFilterValue = {
   userName: string;
   role: Array<Option>;
@@ -46,10 +53,10 @@ type TFilterValue = {
 };
 
 type TFilter = {
-  queryOptionsStatus: string;
+  queryFilterOptionsStatus: string;
   filterValue: TFilterValue;
-  options: TOptions;
-  queryOptions(): Promise<void>;
+  options: TFilterOptions;
+  queryFilterOptions(): Promise<void>;
   setFilterValue(value: string | Array<Option>, key: keyof TFilterValue): void;
 };
 
@@ -112,10 +119,19 @@ type TQueryUserInfo = {
 };
 
 type TDataTableResponse = {
-  users: Array<TUserInfo>;
-  levelOfLiveTrading: Array<TRefResource>;
-  levelOfLiveAssistant: Array<TRefResource>;
-  levelOfOtherSection: Array<TRefResource>;
+  users: Array<TUserInfo>
+};
+
+type TLevelOption = {
+  queryLevelOptionStatus: string;
+  levelOptions:
+  {
+    levelOfLiveTrading: Array<Option>;
+    levelOfLiveAssistant: Array<Option>;
+    levelOfOtherSection: Array<Option>;
+  },
+  queryLevelOption(): Promise<void>;
+  selectOption(sectionId: number | null): Array<Option>;
 };
 
 type TDataTable = {
@@ -145,13 +161,14 @@ export {
   TFilter,
   TPermission,
   TPolicy,
-  TOptionsResponse,
+  TFilterOptionsResponse,
   TRefResource,
-  TOptions,
+  TLevelOptionsResponse,
   TDataTable,
   TQueryUserInfo,
   TDataTableResponse,
   ColumnSchema,
   Column,
-  TUserInfo
+  TUserInfo,
+  TLevelOption
 };

@@ -11,16 +11,15 @@ const LocationCell = (props: {
   const { locationCodes } = options;
   const { rowIndex, dataSource } = props;
   const { locationCode } = dataSource[rowIndex];
-  const currentLocation = locationCodes.find(l => locationCode === l.label);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    /* const x = event.target.value
+    const x = event.target.value;
     updateValue()
-    debugger */
+    debugger
   }
 
   return <SingleSelection
-    defaultValue={currentLocation?.value ?? undefined}
+    defaultValue={locationCode ?? undefined}
     onChange={handleChange}
     options={locationCodes}
   />;

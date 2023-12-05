@@ -28,6 +28,6 @@
 
         public override bool IsValid() => true;
 
-        public override string GetSettingKey() => "OWP_UserListGet";
+        public override string GetSettingKey() => "OWP_UserListGet_Los";
     }
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { NoCell, EmployeeIdCell } from './cell';
-import { No, EmployeeID, Language, Location } from './TableSchema.json';
+import { No, EmployeeID, Language, Location, Level } from './TableSchema.json';
 import LanguageCell from './cell/language/LanguageCell';
 import LocationCell from './cell/location/LocationCell';
 import { TUserInfo } from '../type';
+import LevelCell from './cell/level/LevelCell';
 //import { CellModel } from '../../typing/tableType';
 
 const dynamicCell = (rowIndex: number, cellModel: {
@@ -21,6 +22,8 @@ const dynamicCell = (rowIndex: number, cellModel: {
       return <LanguageCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Location.columnKey:
       return <LocationCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Level.columnKey:
+      return <LevelCell rowIndex={rowIndex} dataSource={dataSource} />;
     // case Category.columnKey:
     //   return <CategoryCell dataSource={dataSource} rowIndex={rowIndex} />;
     // case League.columnKey:
