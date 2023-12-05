@@ -1,7 +1,17 @@
 import React from 'react';
 
-import { NoCell, EmployeeIdCell } from './cell';
-import { No, EmployeeID, Language, Location, Level, Pickup, SecondAccount } from './TableSchema.json';
+import { NoCell, EmployeeIdCell, RoleCell, CategoryCell } from './cell';
+import {
+  No,
+  EmployeeID,
+  Language,
+  Location,
+  Level,
+  Pickup,
+  SecondAccount,
+  Role,
+  Category
+} from './TableSchema.json';
 import LanguageCell from './cell/language/LanguageCell';
 import LocationCell from './cell/location/LocationCell';
 import { TUserInfo } from '../type';
@@ -10,10 +20,13 @@ import PickupCell from './cell/pickup/PickupCell';
 import SecondAccountCell from './cell/secondAccount/SecondAccountCell';
 //import { CellModel } from '../../typing/tableType';
 
-const dynamicCell = (rowIndex: number, cellModel: {
-  dataSource: Array<TUserInfo>,
-  columnKey: string
-}) => {
+const dynamicCell = (
+  rowIndex: number,
+  cellModel: {
+    dataSource: Array<TUserInfo>;
+    columnKey: string;
+  }
+) => {
   const { columnKey, dataSource } = cellModel;
   switch (columnKey) {
     case No.columnKey:
@@ -22,6 +35,10 @@ const dynamicCell = (rowIndex: number, cellModel: {
       return <EmployeeIdCell />;
     case Language.columnKey:
       return <LanguageCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Role.columnKey:
+      return <RoleCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Category.columnKey:
+      return <CategoryCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Location.columnKey:
       return <LocationCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Level.columnKey:

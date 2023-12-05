@@ -1,3 +1,6 @@
 import NoCell from './noCell/NoCell';
 import EmployeeIdCell from './employeeIdCell/EmployeeIdCell';
-export { NoCell, EmployeeIdCell };
+import RoleCell from './role/RoleCell';
+import CategoryCell from './category/CategoryCell';
+
+export { NoCell, EmployeeIdCell, RoleCell, CategoryCell };
