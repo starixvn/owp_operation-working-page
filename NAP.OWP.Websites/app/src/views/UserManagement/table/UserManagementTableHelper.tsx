@@ -1,4 +1,21 @@
-import { No, EmployeeID, DefaultTableStyle, Language, SecondAccount, Address, Pickup, Level, Location } from './TableSchema.json';
+import {
+  No,
+  EmployeeID,
+  DefaultTableStyle,
+  Group,
+  Role,
+  Extension,
+  Phone,
+  Email,
+  Skype,
+  Language,
+  SecondAccount,
+  Address,
+  Pickup,
+  Level,
+  Location,
+  Category
+} from './TableSchema.json';
 import { Column, ColumnSchema, TDataTableResponse } from '../type';
 import { dynamicCell } from './ConfigNative';
 import { calculateCustomTableWidth } from '../../Shared/common/CustomTable/Helper';
@@ -17,13 +34,14 @@ const selectTable = (widthWindow: number) => {
     minWidth,
     initialWidth,
     NoSize,
+    GroupSize,
+    RoleSize,
+    ExtensionSize,
+    PhoneSize,
+    EmailSize,
+    SkypeSize,
     CategorySize,
-    LeagueSize,
-    MaxBetSize,
-    SpreadSize,
-    RoundSize,
-    SummarySize,
-    ActionSize,
+    LanguageSize,
     LocationSize,
     LevelSize,
     PickupSize,
@@ -35,13 +53,19 @@ const selectTable = (widthWindow: number) => {
   return {
     columnSchema: [
       buildColumn(width * NoSize, No),
-      buildColumn(width * CategorySize, EmployeeID),
+      buildColumn(width * GroupSize, Group),
+      buildColumn(width * RoleSize, Role),
+      buildColumn(width * ExtensionSize, Extension),
+      buildColumn(width * PhoneSize, Phone),
+      buildColumn(width * EmailSize, Email),
+      buildColumn(width * SkypeSize, Skype),
+      buildColumn(width * CategorySize, Category),
       buildColumn(width * LocationSize, Location),
       buildColumn(width * LevelSize, Level),
       buildColumn(width * PickupSize, Pickup),
       buildColumn(width * AddressSize, Address),
       buildColumn(width * SecondAccountSize, SecondAccount),
-      buildColumn(width * LeagueSize, Language),
+      buildColumn(width * LanguageSize, Language)
     ],
     tableStyle: DefaultTableStyle,
     dynamicCell,

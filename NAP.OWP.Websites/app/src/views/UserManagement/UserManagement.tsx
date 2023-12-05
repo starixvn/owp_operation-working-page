@@ -5,7 +5,6 @@ import useStore from './app/useStoreNative';
 import { REQUEST_STATUS } from '../Shared/Constants';
 import Loading from '../components/Loading';
 import { shallow } from 'zustand/shallow';
-import ExportButton from './filterArea/ExportNative';
 import UserManagementTable from './table/UserManagementTable';
 
 const UserManagement = () => {
@@ -42,7 +41,6 @@ const UserManagement = () => {
       <div className='user__management--header'>
         <Filter />
         <SyncUser />
-
       </div>
       <div>
         <UserManagementTable />

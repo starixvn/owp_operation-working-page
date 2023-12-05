@@ -1,6 +1,6 @@
 {
   "DefaultTableStyle": {
-    "rowHeight": 20,
+    "rowHeight": 30,
     "widthResize": 140,
     "width": 2000,
     "minWidth": 880,
@@ -10,18 +10,19 @@
     "headerHeight": 38,
     "initialWidth": 15,
     "NoSize": 0.02,
+    "GroupSize": 0.06,
+    "RoleSize": 0.06,
+    "ExtensionSize": 0.06,
+    "PhoneSize": 0.06,
+    "EmailSize": 0.06,
+    "SkypeSize": 0.06,
     "CategorySize": 0.06,
     "LocationSize": 0.08,
     "LevelSize": 0.08,
     "PickupSize": 0.08,
     "AddressSize": 0.15,
     "SecondAccountSize": 0.1,
-    "LeagueSize": 0.08,
-    "MaxBetSize": 0.08,
-    "SpreadSize": 0.06,
-    "RoundSize": 0.06,
-    "SummarySize": 0.47,
-    "ActionSize": 0.04,
+    "LanguageSize": 0.08,
     "MaximumLengthOfText": 150
   },
   "No": {

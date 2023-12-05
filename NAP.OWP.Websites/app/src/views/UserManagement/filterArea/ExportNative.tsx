@@ -33,7 +33,13 @@ const ExportButton: React.FC = () => {
     saveAs(fileUrl, filename);
   };
 
-  return <button onClick={handleExport}>Export Data</button>;
+  return (
+    <div className='filter-control btn-block'>
+      <button className='button-export' onClick={handleExport}>
+        Export Excel
+      </button>
+    </div>
+  );
 };
 
 export default ExportButton;
