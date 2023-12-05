@@ -7,18 +7,18 @@ import Loading from './components/Loading';
 import Header from './Header/Header';
 import HeaderService from './Header/Service';
 import AuthorizeService from './Authorize/Service';
-
 import { SpinnerContainer } from './components/Spinner';
 import { FunctionKeys } from './Shared/Constants';
 import { AppContext } from './Shared/Context';
-
+import TicketLayoutWrapper from './TicketLayout/TicketLayoutWrapper';
 import '../scss/fonts/icon-OWP/icon.scss';
 import '../scss/style.scss';
 import { setAxiosInterceptors } from './Shared/Service/ServiceCommon';
 
 const propTypes = {
   view: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  isUseTicketLayout: PropTypes.bool
 };
 class Layout extends Component {
   constructor(props) {
@@ -34,15 +34,12 @@ class Layout extends Component {
     setAxiosInterceptors();
 
     (async () => {
-      const [
-        header,
-        detailInformationPolicy,
-        quickSearchPolicy
-      ] = await axios.all([
-        HeaderService.query(this.props.title),
-        AuthorizeService.authorize(FunctionKeys.DetailsInformation),
-        AuthorizeService.authorize(FunctionKeys.QuickSearch)
-      ]);
+      const [header, detailInformationPolicy, quickSearchPolicy] =
+        await axios.all([
+          HeaderService.query(this.props.title),
+          AuthorizeService.authorize(FunctionKeys.DetailsInformation),
+          AuthorizeService.authorize(FunctionKeys.QuickSearch)
+        ]);
       this.setState({
         isLoading: false,
         header,
@@ -53,17 +50,13 @@ class Layout extends Component {
   }
 
   render() {
-    const {
-      isLoading,
-      header,
-      detailInformationPolicy,
-      quickSearchPolicy
-    } = this.state;
+    const { isLoading, header, detailInformationPolicy, quickSearchPolicy } =
+      this.state;
     if (isLoading) {
       return <Loading />;
     }
 
-    const { title, view } = this.props;
+    const { title, view, isUseTicketLayout = true } = this.props;
     const { username, navigation, logoutLink, notificationSetingLink } = header;
     navigation.items.forEach(element => {
       element.attributes = { title: element.name };
@@ -85,6 +78,7 @@ class Layout extends Component {
           </div>
           <ToastContainer position='bottom-right' hideProgressBar />
           <SpinnerContainer />
+          {isUseTicketLayout && <TicketLayoutWrapper />}
         </div>
       </AppContext.Provider>
     );

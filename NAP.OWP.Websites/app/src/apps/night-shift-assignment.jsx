@@ -9,5 +9,9 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <Layout view={<AppNightShiftManagement />} title='NightShift Assignment' />
+  <Layout
+    view={<AppNightShiftManagement />}
+    title='NightShift Assignment'
+    isUseTicketLayout={false}
+  />
 );
