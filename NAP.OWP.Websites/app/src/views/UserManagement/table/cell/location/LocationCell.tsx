@@ -1,36 +1,29 @@
 import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
+import SingleSelection from '../cellCommon/SingleSelection';
 
 const LocationCell = (props: {
   dataSource: Array<TUserInfo>,
   rowIndex: number
 }) => {
-  const { locationCodes } = store.getState().options;
+  const { options, updateValue } = store.getState();
+  const { locationCodes } = options;
   const { rowIndex, dataSource } = props;
   const { locationCode } = dataSource[rowIndex];
   const currentLocation = locationCodes.find(l => locationCode === l.label);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const x = event.target.value
-    debugger
+    /* const x = event.target.value
+    updateValue()
+    debugger */
   }
 
-  return (
-    <div className='select-wrapper-default'>
-      <select
-        disabled={false}
-        className='browser-default'
-        defaultValue={currentLocation?.label}
-        onChange={handleChange}>
-        {locationCodes.map(opt =>
-          <option key={opt.value} value={opt.label}>
-            {opt.label}
-          </option>
-        )}
-      </select>
-    </div>
-  );
+  return <SingleSelection
+    defaultValue={currentLocation?.value ?? undefined}
+    onChange={handleChange}
+    options={locationCodes}
+  />;
 };
 
 export default LocationCell;
