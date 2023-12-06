@@ -154,7 +154,7 @@ type Column = {
   columnKey: string;
 };
 
-type UpdateModel = {
+type TUpdateUserInfo = {
   ColumnName: string;
   UserId: string;
   Value: string | null;
@@ -182,5 +182,6 @@ export {
   Column,
   TUserInfo,
   TLevelOption,
-  CellProps
+  CellProps,
+  TUpdateUserInfo
 };

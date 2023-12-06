@@ -1,6 +1,8 @@
-import { TQueryUserInfo, TRefResource } from './type';
+import { TQueryUserInfo, TRefResource, TUpdateUserInfo } from './type';
 import { Option } from '../Shared/MultipleSelection/type';
 import store from './app/useStoreNative';
+import { post } from '../Shared/Service/Service';
+import { buildUpdateSimpleApi } from '../Shared/Constants';
 
 const normalizeOptions = (
   optionsSource: Array<TRefResource>,
@@ -44,4 +46,17 @@ const urlExport =
     ? `api-netcore/UserManagement/export-excel`
     : `${window.netCoreRootUrl}/api/UserManagement/export-excel`;
 
-export { normalizeOptions, normalizeLocationCodeOptions, getValueFilter, urlExport };
+const updateUserInfo = async (updateInfo: TUpdateUserInfo) => {
+  await post({
+    url: buildUpdateSimpleApi(),
+    ...updateInfo,
+    apiKey: 'OWP_UserUpdate'
+  });
+};
+
+export {
+  normalizeOptions,
+  normalizeLocationCodeOptions,
+  getValueFilter, urlExport,
+  updateUserInfo
+};

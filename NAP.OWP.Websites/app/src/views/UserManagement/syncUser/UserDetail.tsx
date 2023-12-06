@@ -21,7 +21,6 @@ const UserDetail = (props: TUserDetail) => {
         <p className='total__user'>Find {dataSource.length} users</p>
       </ModalHeader>
       <ModalBody className='modal-user-detail-table'>
-
         <table className='user-detail-table'>
           <thead>
             <tr>
