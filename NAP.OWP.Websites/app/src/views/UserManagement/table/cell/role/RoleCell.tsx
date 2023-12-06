@@ -10,18 +10,15 @@ const RoleCell = (props: {
   const { options, updateValue } = store.getState();
   const { roles } = options;
   const { rowIndex, dataSource } = props;
-  const { roleName } = dataSource[rowIndex];
-  // const currentLocation = r.find(l => locationCode === l.label);
+  const { roleId } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    /* const x = event.target.value
-    updateValue()
-    debugger */
+    updateValue(parseInt(event.target.value), 'roleId', rowIndex);
   };
 
   return (
     <SingleSelection
-      defaultValue={roleName ?? undefined}
+      defaultValue={roleId ?? undefined}
       onChange={handleChange}
       options={roles}
     />

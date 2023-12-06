@@ -11,8 +11,12 @@ const GroupCell = (props: {
   const { rowIndex, dataSource } = props;
   const { groupId } = dataSource[rowIndex];
 
+  const handleOnchangeOptions = (value: string) => {
+    updateValue(parseInt(value), 'groupId', rowIndex);
+  };
+
   const renderOptions = (startIndex: number, endIndex: number) => {
-    let options = [];
+    const options = [];
     for (let i = startIndex; i <= endIndex; i++) {
       options.push(
         <option
@@ -34,7 +38,7 @@ const GroupCell = (props: {
       <select
         disabled={false}
         defaultValue={groupId ?? undefined}
-        onChange={e => console.log(e.target.value)}
+        onChange={e => handleOnchangeOptions(e.target.value)}
         className='browser-default'>
         <option value=''></option>
         <optgroup label='CTI LA - Supervisor/Leader'>

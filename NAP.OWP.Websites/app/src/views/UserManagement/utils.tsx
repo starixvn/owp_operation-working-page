@@ -23,6 +23,15 @@ const normalizeOptions = (
   return options;
 };
 
+const buildOptions = (optionsSource: Array<TRefResource>) =>
+  optionsSource.map(
+    o =>
+      ({
+        value: o.resourceId,
+        label: o.value
+      } as Option)
+  );
+
 const normalizeLocationCodeOptions = (
   optionsSource: Array<TRefResource>,
   noneOption: Option
@@ -69,11 +78,16 @@ const updateUserInfo = async (updateInfo: TUpdateUserInfo) => {
     })
   ).data as TDataResponse;
 };
-
+const isValidEmail = (email: string | null) => {
+  var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return pattern.test(email ?? '');
+};
 export {
+  buildOptions,
   normalizeOptions,
   normalizeLocationCodeOptions,
   getValueFilter,
   urlExport,
-  updateUserInfo
+  updateUserInfo,
+  isValidEmail
 };

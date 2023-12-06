@@ -51,9 +51,10 @@ const dynamicCell = (
   cellModel: {
     dataSource: Array<TUserInfo>;
     columnKey: string;
+    handleShowTicket: (isOpen: boolean) => void;
   }
 ) => {
-  const { columnKey, dataSource } = cellModel;
+  const { columnKey, dataSource, handleShowTicket } = cellModel;
   switch (columnKey) {
     case No.columnKey:
       return <NoCell rowIndex={rowIndex} />;
@@ -72,7 +73,13 @@ const dynamicCell = (
     case Group.columnKey:
       return <GroupCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Language.columnKey:
-      return <LanguageCell rowIndex={rowIndex} dataSource={dataSource} />;
+      return (
+        <LanguageCell
+          rowIndex={rowIndex}
+          handleShowDropdown={handleShowTicket}
+          dataSource={dataSource}
+        />
+      );
     case Role.columnKey:
       return <RoleCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Extension.columnKey:
