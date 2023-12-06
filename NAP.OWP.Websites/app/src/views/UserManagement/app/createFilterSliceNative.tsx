@@ -61,7 +61,7 @@ const createOptionsSliceNative: StateCreator<
           section: { $set: normalizeOptions(options.sections, defaultNoneOption) },
           department: { $set: normalizeOptions(options.departments, defaultNoneOption) },
           category: { $set: normalizeOptions(options.categories, defaultNoneOption) },
-          locationCode: { $set: normalizeOptions(options.locationCodes, defaultLocationCodeNoneOption) }
+          locationCode: { $set: normalizeLocationCodeOptions(options.locationCodes, defaultLocationCodeNoneOption) }
         }
       }));
 

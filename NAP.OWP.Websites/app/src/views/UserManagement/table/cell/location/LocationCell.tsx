@@ -13,9 +13,7 @@ const LocationCell = (props: {
   const { locationCode } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const x = event.target.value;
-    updateValue()
-    debugger
+    // TODO
   }
 
   return <SingleSelection
