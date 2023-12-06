@@ -70,7 +70,7 @@ const createOptionsSliceNative: StateCreator<TFilter, [], [], TFilter> = (
           levels: { $set: normalizeOptions(options.levels, defaultNoneOption) },
           languages: { $set: buildOptions(options.languages) },
           userGroups: {
-            $set: normalizeOptions(options.userGroups, defaultNoneOption)
+            $set: buildOptions(options.userGroups)
           }
         },
         filterValue: {
@@ -85,7 +85,7 @@ const createOptionsSliceNative: StateCreator<TFilter, [], [], TFilter> = (
             $set: normalizeOptions(options.categories, defaultNoneOption)
           },
           locationCode: {
-            $set: normalizeOptions(
+            $set: normalizeLocationCodeOptions(
               options.locationCodes,
               defaultLocationCodeNoneOption
             )

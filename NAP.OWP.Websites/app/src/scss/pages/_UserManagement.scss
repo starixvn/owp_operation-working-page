@@ -252,12 +252,16 @@
   }
 }
 
+.fixedDataTableCellLayout_main {
+  padding: 5px;
+}
+
 .fixedDataTableCellLayout_main input {
   background: transparent;
   min-height: 2rem;
   line-height: 1;
   font-size: 1.2rem;
-  padding: 0;
+  padding: 0px;
   border-radius: 0;
   border: 0;
   border-bottom: 1px solid #e1e1e1;
@@ -271,10 +275,12 @@
 .fixedDataTableCellLayout_main input:focus {
   border-bottom: 1px solid #1e88e5;
 }
+
 .fixedDataTableCellLayout_main .no-cell {
   display: flex;
   justify-content: center;
 }
+
 .account-name-icon {
   background-color: #80cbc4;
   display: inline-block;
@@ -288,6 +294,7 @@
   border-radius: 50%;
   color: #fff !important;
 }
+
 .is-show-note {
   z-index: 3 !important;
 }
@@ -320,9 +327,11 @@
 }
 
 .dropdown-multi-language li label {
+  color: black;
   display: flex;
   align-items: center;
 }
+
 
 .dropdown-multi-language li input {
   margin-right: 8px;
@@ -331,9 +340,12 @@
 
 .language-cell {
   display: flex;
+  height: 100%;
 
   .language-label {
     width: 85%;
+    display: flex;
+    align-items: center;
   }
 
   .language-dropdown-icon {

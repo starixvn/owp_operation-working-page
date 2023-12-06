@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import DropdownIcon from '../../../../../assets/svg-element/DropdownIcon';
+import { updateUserInfo } from '../../../utils';
 
 const LanguageCell = (props: {
   handleShowDropdown: (isOpen: boolean) => void;
@@ -10,7 +11,8 @@ const LanguageCell = (props: {
 }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-  const { languages } = store.getState().options;
+  const { options, updateValue } = store.getState();
+  const { languages } = options;
   const { rowIndex, dataSource, handleShowDropdown } = props;
   const languageValue =
     dataSource[rowIndex].languageId?.split(',').map(item => item.trim()) ?? [];
@@ -41,14 +43,21 @@ const LanguageCell = (props: {
   }, [isOpenDropdown]);
 
   const toggleLanguage = (language: string) => {
-    setSelectedLanguages(prevSelected => {
-      if (prevSelected?.includes(language)) {
-        return prevSelected.filter(l => l !== language);
-      } else {
-        return [...prevSelected, language];
-      }
-    });
+    setSelectedLanguages(prevSelected =>
+      prevSelected?.includes(language)
+        ? prevSelected.filter(l => l !== language)
+        : [...prevSelected, language]
+    );
   };
+  useEffect(() => {
+    updateUserInfo({
+      ColumnName: 'Language',
+      UserId: `${dataSource[rowIndex].userId}`,
+      Value: selectedLanguages.join(',')
+    });
+
+    updateValue(selectedLanguages.join(','), 'languageId', rowIndex);
+  }, [selectedLanguages, dataSource, rowIndex]);
 
   return (
     <>
