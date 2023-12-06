@@ -21,19 +21,24 @@ const createDataTableSliceNative: StateCreator<
         queryDataTableStatus: { $set: REQUEST_STATUS.pending }
       })
     );
-    const dataSource = (
-      await post({
+    try {
+      const dataSource = await post({
         url: 'api-netcore/UserManagement/query-user',
         ...value
-      })
-    ).data as TDataTableResponse;
-
-    set(state =>
-      update(state, {
-        queryDataTableStatus: { $set: REQUEST_STATUS.idle },
-        dataSource: { $set: dataSource }
-      })
-    );
+      }).then(response => response.data as TDataTableResponse)
+      set(state =>
+        update(state, {
+          queryDataTableStatus: { $set: REQUEST_STATUS.idle },
+          dataSource: { $set: dataSource }
+        })
+      );
+    } catch (error) {
+      set(state =>
+        update(state, {
+          queryDataTableStatus: { $set: REQUEST_STATUS.idle }
+        })
+      );
+    }
   },
   updateValue(newValue, key, rowIndex) {
     set(state =>

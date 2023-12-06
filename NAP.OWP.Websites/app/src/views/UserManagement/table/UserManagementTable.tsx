@@ -7,6 +7,7 @@ import { selectTable } from './UserManagementTableHelper';
 import useStore from '../app/useStoreNative';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import Loading from '../../components/Loading';
+import Spinner from '../../components/Spinner';
 const getTableSchema = () => {
   const { innerWidth } = window;
   return selectTable(innerWidth - DefaultTableStyle.widthResize);
@@ -33,9 +34,8 @@ const UserManagementTable = () => {
     return () => window.removeEventListener('resize', handleResizeBrowser);
   }, []);
 
-  if (queryDataTableStatus === REQUEST_STATUS.pending) {
-    return <Loading />;
-  }
+  queryDataTableStatus === REQUEST_STATUS.pending && Spinner.show();
+  queryDataTableStatus !== REQUEST_STATUS.pending && Spinner.hide();
 
   return <CustomTable config={tableSchema} model={model} />;
 };

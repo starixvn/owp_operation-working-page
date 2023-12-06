@@ -52,6 +52,7 @@ const setAxiosInterceptors = () => {
       } else if (response.statusText) {
         message = response.responseText;
       }
+
       Spinner.hide();
       ToastrWrapper.showError(message);
       return Promise.reject(error);
