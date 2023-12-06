@@ -40,7 +40,7 @@ type TFilterOptions = {
 type TLevelOptionsResponse = {
   levelOfLiveAssistant: Array<TRefResource>;
   levelOfLiveTrading: Array<TRefResource>;
-  levelOfOtherSection: Array<TRefResource>
+  levelOfOtherSection: Array<TRefResource>;
 };
 
 type TFilterValue = {
@@ -119,17 +119,16 @@ type TQueryUserInfo = {
 };
 
 type TDataTableResponse = {
-  users: Array<TUserInfo>
+  users: Array<TUserInfo>;
 };
 
 type TLevelOption = {
   queryLevelOptionStatus: string;
-  levelOptions:
-  {
+  levelOptions: {
     levelOfLiveTrading: Array<Option>;
     levelOfLiveAssistant: Array<Option>;
     levelOfOtherSection: Array<Option>;
-  },
+  };
   queryLevelOption(): Promise<void>;
   selectOption(sectionId: number | null): Array<Option>;
 };
@@ -162,6 +161,11 @@ type UpdateModel = {
   apikey: string;
 };
 
+type CellProps = {
+  dataSource: Array<TUserInfo>;
+  rowIndex: number;
+};
+
 export {
   TUserDetail,
   confirmSyncUserEnum,
@@ -177,5 +181,6 @@ export {
   ColumnSchema,
   Column,
   TUserInfo,
-  TLevelOption
+  TLevelOption,
+  CellProps
 };

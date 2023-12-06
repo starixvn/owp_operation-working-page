@@ -9,8 +9,13 @@
     "maxHeight": 750,
     "headerHeight": 38,
     "initialWidth": 15,
-    "NoSize": 0.02,
+    "NoSize": 0.03,
     "EmployeeIdSize": 0.08,
+    "AccountNameSize": 0.08,
+    "FullNameSize": 0.08,
+    "NickNameSize": 0.08,
+    "DepartmentSize": 0.08,
+    "SectionSize": 0.08,
     "GroupSize": 0.06,
     "RoleSize": 0.06,
     "ExtensionSize": 0.06,
@@ -28,7 +33,7 @@
   },
   "No": {
     "order": 1,
-    "headerName": "#",
+    "headerName": "No",
     "columnKey": "No",
     "isFreeze": true
   },

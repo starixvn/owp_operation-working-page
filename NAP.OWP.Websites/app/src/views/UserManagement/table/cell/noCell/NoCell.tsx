@@ -1,11 +1,11 @@
 import React from 'react';
 
-const NoCell = () => {
-  return (
-    <>
-      <h1>1</h1>
-    </>
-  );
+type Props = {
+  rowIndex: number;
+};
+
+const NoCell = ({ rowIndex }: Props) => {
+  return <span className='no-cell'>{rowIndex} </span>;
 };
 
 export default NoCell;

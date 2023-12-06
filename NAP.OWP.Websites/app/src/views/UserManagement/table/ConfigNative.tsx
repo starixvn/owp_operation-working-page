@@ -5,6 +5,9 @@ import {
   EmployeeIdCell,
   RoleCell,
   CategoryCell,
+  AccountNameCell,
+  FullNameCell,
+  NickNameCell,
   GroupCell,
   ExtensionCell,
   PhoneCell,
@@ -14,6 +17,9 @@ import {
 import {
   No,
   EmployeeID,
+  AccountName,
+  FullName,
+  NickName,
   Language,
   Location,
   Level,
@@ -35,7 +41,6 @@ import LevelCell from './cell/level/LevelCell';
 import PickupCell from './cell/pickup/PickupCell';
 import SecondAccountCell from './cell/secondAccount/SecondAccountCell';
 import AddressCell from './cell/address/AddressCell';
-//import { CellModel } from '../../typing/tableType';
 
 const dynamicCell = (
   rowIndex: number,
@@ -47,9 +52,15 @@ const dynamicCell = (
   const { columnKey, dataSource } = cellModel;
   switch (columnKey) {
     case No.columnKey:
-      return <NoCell />;
+      return <NoCell rowIndex={rowIndex} />;
     case EmployeeID.columnKey:
       return <EmployeeIdCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case AccountName.columnKey:
+      return <AccountNameCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case FullName.columnKey:
+      return <FullNameCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case NickName.columnKey:
+      return <NickNameCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Group.columnKey:
       return <GroupCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Language.columnKey:
