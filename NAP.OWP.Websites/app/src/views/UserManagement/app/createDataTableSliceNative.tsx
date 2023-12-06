@@ -25,7 +25,7 @@ const createDataTableSliceNative: StateCreator<
       const dataSource = await post({
         url: 'api-netcore/UserManagement/query-user',
         ...value
-      }).then(response => response.data as TDataTableResponse)
+      }).then(response => response.data as TDataTableResponse);
       set(state =>
         update(state, {
           queryDataTableStatus: { $set: REQUEST_STATUS.idle },

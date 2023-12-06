@@ -7,7 +7,9 @@ const SectionCell = ({ dataSource, rowIndex }: CellProps) => {
   const { options, updateValue } = store.getState();
   const { sections } = options;
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {};
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    updateValue(event.target.value, 'sectionId', rowIndex);
+  };
 
   return (
     <SingleSelection
