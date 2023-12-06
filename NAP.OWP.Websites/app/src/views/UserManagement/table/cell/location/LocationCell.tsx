@@ -2,6 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
+import { updateUserInfo } from '../../../utils';
 
 const LocationCell = (props: {
   dataSource: Array<TUserInfo>,
@@ -10,11 +11,17 @@ const LocationCell = (props: {
   const { options, updateValue } = store.getState();
   const { locationCodes } = options;
   const { rowIndex, dataSource } = props;
-  const { locationCode } = dataSource[rowIndex];
+  const { locationCode, userId } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    // TODO
-  }
+    const { value } = event.target;
+    updateUserInfo({
+      ColumnName: "LocationCode",
+      UserId: `${userId}`,
+      Value: value
+    });
+    updateValue(value, 'locationCode', rowIndex);
+  };
 
   return <SingleSelection
     defaultValue={locationCode ?? undefined}

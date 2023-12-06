@@ -18,6 +18,7 @@ const UserManagementTable = () => {
     queryDataTableStatus: state.queryDataTableStatus,
     dataSource: state.dataSource
   }), shallow);
+
   const [tableSchema, setTableSchema] = useState(getTableSchema());
   const model = {
     loading: queryDataTableStatus,

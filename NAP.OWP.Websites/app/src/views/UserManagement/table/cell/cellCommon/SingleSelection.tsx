@@ -10,9 +10,9 @@ const SingleSelection = (props: {
     <select
       disabled={false}
       className='browser-default'
-      defaultValue={props.defaultValue}
+      value={props.defaultValue}
       onChange={props.onChange}>
-      {props.options.map(opt => opt.value
+      {props.options.map(opt => opt.value !== null
         ? <option key={opt.value} value={opt.value}>
           {opt.label}
         </option>

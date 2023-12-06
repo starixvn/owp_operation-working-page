@@ -2,6 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
+import { updateUserInfo } from '../../../utils';
 
 const secondAccountOption = [{
   value: 'true',
@@ -21,8 +22,16 @@ const SecondAccountCell = (props: {
   const user = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    // TODO
-  }
+    const { value } = event.target;
+
+    updateUserInfo({
+      ColumnName: "IsSecondAccount",
+      UserId: `${user.userId}`,
+      Value: value
+    });
+
+    updateValue(value, 'isSecondAccount', rowIndex);
+  };
 
   return <SingleSelection
     defaultValue={user.isSecondAccount ?? undefined}

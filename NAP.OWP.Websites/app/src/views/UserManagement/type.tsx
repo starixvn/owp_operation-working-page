@@ -157,8 +157,7 @@ type Column = {
 type TUpdateUserInfo = {
   ColumnName: string;
   UserId: string;
-  Value: string | null;
-  apikey: string;
+  Value: string | null
 };
 
 type CellProps = {

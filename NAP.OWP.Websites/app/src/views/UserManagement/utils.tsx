@@ -47,10 +47,13 @@ const urlExport =
     : `${window.netCoreRootUrl}/api/UserManagement/export-excel`;
 
 const updateUserInfo = async (updateInfo: TUpdateUserInfo) => {
+  const url = process.env.NODE_ENV === 'development'
+    ? `api-netcore/UserManagement/update-user-info`
+    : `${window.netCoreRootUrl}/api/UserManagement/update-user-info`;
+
   await post({
-    url: buildUpdateSimpleApi(),
-    ...updateInfo,
-    apiKey: 'OWP_UserUpdate'
+    url,
+    ...updateInfo
   });
 };
 

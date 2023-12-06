@@ -8,6 +8,7 @@ type Props = {
 
 const CustomInput = ({ value, handleOnChange, handleOnBlur }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       event.preventDefault();

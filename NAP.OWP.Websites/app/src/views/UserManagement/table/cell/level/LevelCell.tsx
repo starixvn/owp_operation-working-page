@@ -2,25 +2,29 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
+import { updateUserInfo } from '../../../utils';
 
 const LevelCell = (props: {
   dataSource: Array<TUserInfo>,
   rowIndex: number
 }) => {
-  const state = store.getState();
+  const { updateValue, selectOption } = store.getState();
   const user = props.dataSource[props.rowIndex];
 
-  if (user.employeeId === 'L0378') {
-    debugger
-  }
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    // TODO
+    const { value } = event.target;
+    updateUserInfo({
+      ColumnName: "Level",
+      UserId: `${user.userId}`,
+      Value: value
+    });
+    updateValue(value, 'level', props.rowIndex);
   };
 
   return <SingleSelection
     defaultValue={user.level ?? undefined}
     onChange={handleChange}
-    options={state.selectOption(user.sectionId)}
+    options={selectOption(user.sectionId)}
   />;
 };
 

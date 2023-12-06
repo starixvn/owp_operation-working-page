@@ -2,6 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
+import { updateUserInfo } from '../../../utils';
 
 const pickupOption = [{
   value: 'true',
@@ -25,8 +26,16 @@ const PickupCell = (props: {
 
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    // TODO
-  }
+    const { value } = event.target;
+
+    updateUserInfo({
+      ColumnName: "Pickup",
+      UserId: `${user.userId}`,
+      Value: value !== 'none' ? value : ''
+    });
+
+    updateValue(value, 'pickup', rowIndex);
+  };
 
   return <SingleSelection
     defaultValue={user.pickup ?? undefined}
