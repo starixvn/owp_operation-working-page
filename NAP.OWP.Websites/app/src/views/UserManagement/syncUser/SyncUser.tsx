@@ -29,6 +29,7 @@ const SyncUser = () => {
         url: buildQuerySimpleApi(),
         apiKey: 'sync-user-change-from-admin-site'
       });
+      ToastrWrapper.showInfo("Sync users successful");
     }
     setDisplayUserDetail(false);
   };
