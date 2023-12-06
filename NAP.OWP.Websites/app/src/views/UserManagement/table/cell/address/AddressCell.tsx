@@ -1,20 +1,29 @@
 import React from 'react';
 import { TUserInfo } from '../../../type';
 import CustomInput from '../../../component/CustomInput';
+import store from '../../../app/useStoreNative';
+import { updateUserInfo } from '../../../utils';
 
 const AddressCell = (props: {
   dataSource: Array<TUserInfo>;
   rowIndex: number;
 }) => {
   const { dataSource, rowIndex } = props;
+  const { updateValue } = store.getState();
+
   const user = dataSource[rowIndex];
 
-  return (
-    <CustomInput
-      value={user.address}
-      handleOnChange={() => { }}
-      handleOnBlur={() => { }} />
-  );
+  const updateInfo = (newValue: string) => {
+    updateUserInfo({
+      ColumnName: 'Address',
+      UserId: `${user.userId}`,
+      Value: newValue
+    });
+
+    updateValue(newValue, 'address', rowIndex);
+  };
+  return <CustomInput value={user.address} handleOnBlur={updateInfo} />;
+
 };
 
 export default AddressCell;

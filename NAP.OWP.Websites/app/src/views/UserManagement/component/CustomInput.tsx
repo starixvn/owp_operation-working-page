@@ -1,18 +1,17 @@
+import { uniqueId } from 'lodash';
 import React, { useRef } from 'react';
 
 type Props = {
   value: string | null;
-  handleOnChange: (newValue: string) => void;
-  handleOnBlur: () => void;
+  handleOnBlur: (newValue: string) => void;
 };
 
-const CustomInput = ({ value, handleOnChange, handleOnBlur }: Props) => {
+const CustomInput = ({ value, handleOnBlur }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      handleOnBlur();
       inputRef.current?.blur();
     }
   };
@@ -20,10 +19,10 @@ const CustomInput = ({ value, handleOnChange, handleOnBlur }: Props) => {
   return (
     <div>
       <input
+        key={uniqueId()}
         type='text'
-        value={value ?? ''}
-        onChange={e => handleOnChange(e.target.value)}
-        onBlur={handleOnBlur}
+        defaultValue={value ?? ''}
+        onBlur={e => handleOnBlur(e.target.value)}
         onKeyDown={handleKeyPress}
         style={{ display: 'block' }}
         ref={inputRef}

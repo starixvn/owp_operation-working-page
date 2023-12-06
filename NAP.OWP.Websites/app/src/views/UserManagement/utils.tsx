@@ -1,8 +1,12 @@
-import { TQueryUserInfo, TRefResource, TUpdateUserInfo } from './type';
+import {
+  TDataResponse,
+  TQueryUserInfo,
+  TRefResource,
+  TUpdateUserInfo
+} from './type';
 import { Option } from '../Shared/MultipleSelection/type';
 import store from './app/useStoreNative';
 import { post } from '../Shared/Service/Service';
-import { buildUpdateSimpleApi } from '../Shared/Constants';
 
 const normalizeOptions = (
   optionsSource: Array<TRefResource>,
@@ -10,20 +14,26 @@ const normalizeOptions = (
 ) => {
   const options = optionsSource.map(
     o =>
-    ({
-      value: o.resourceId,
-      label: o.value
-    } as Option)
+      ({
+        value: o.resourceId,
+        label: o.value
+      } as Option)
   );
   options.push(noneOption);
   return options;
 };
 
-const normalizeLocationCodeOptions = (optionsSource: Array<TRefResource>, noneOption: Option) => {
-  const options = optionsSource.map(o => ({
-    value: o.value,
-    label: o.value
-  } as Option));
+const normalizeLocationCodeOptions = (
+  optionsSource: Array<TRefResource>,
+  noneOption: Option
+) => {
+  const options = optionsSource.map(
+    o =>
+      ({
+        value: o.value,
+        label: o.value
+      } as Option)
+  );
   options.push(noneOption);
   return options;
 };
@@ -47,19 +57,23 @@ const urlExport =
     : `${window.netCoreRootUrl}/api/UserManagement/export-excel`;
 
 const updateUserInfo = async (updateInfo: TUpdateUserInfo) => {
-  const url = process.env.NODE_ENV === 'development'
-    ? `api-netcore/UserManagement/update-user-info`
-    : `${window.netCoreRootUrl}/api/UserManagement/update-user-info`;
+  const url =
+    process.env.NODE_ENV === 'development'
+      ? `api-netcore/UserManagement/update-user-info`
+      : `${window.netCoreRootUrl}/api/UserManagement/update-user-info`;
 
-  await post({
-    url,
-    ...updateInfo
-  });
+  return (
+    await post({
+      url,
+      ...updateInfo
+    })
+  ).data as TDataResponse;
 };
 
 export {
   normalizeOptions,
   normalizeLocationCodeOptions,
-  getValueFilter, urlExport,
+  getValueFilter,
+  urlExport,
   updateUserInfo
 };

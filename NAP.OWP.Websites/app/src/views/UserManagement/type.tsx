@@ -80,6 +80,11 @@ enum confirmSyncUserEnum {
   cancel = 'cancel'
 }
 
+type TDataResponse = {
+  errCode: number;
+  errMsg: string | null;
+} & TUpdateUserInfo;
+
 type TUserInfo = {
   userId: number;
   userName: string;
@@ -157,7 +162,7 @@ type Column = {
 type TUpdateUserInfo = {
   ColumnName: string;
   UserId: string;
-  Value: string | null
+  Value: string | null;
 };
 
 type CellProps = {
@@ -182,5 +187,6 @@ export {
   TUserInfo,
   TLevelOption,
   CellProps,
-  TUpdateUserInfo
+  TUpdateUserInfo,
+  TDataResponse
 };

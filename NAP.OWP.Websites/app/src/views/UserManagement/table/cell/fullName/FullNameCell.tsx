@@ -2,24 +2,23 @@ import React from 'react';
 import { CellProps } from '../../../type';
 import CustomInput from '../../../component/CustomInput';
 import store from '../../../app/useStoreNative';
+import { updateUserInfo } from '../../../utils';
+
 const FullNameCell = ({ dataSource, rowIndex }: CellProps) => {
   const { updateValue } = store.getState();
+  const { fullName, userId } = dataSource[rowIndex];
 
-  const handleOnChange = (newValue: string) => {
+  const updateInfo = (newValue: string) => {
+    updateUserInfo({
+      ColumnName: 'FullName',
+      UserId: `${userId}`,
+      Value: newValue
+    });
+
     updateValue(newValue, 'fullName', rowIndex);
   };
 
-  const updateInfo = () => {
-    //api
-  };
-
-  return (
-    <CustomInput
-      value={dataSource[rowIndex].fullName}
-      handleOnChange={handleOnChange}
-      handleOnBlur={updateInfo}
-    />
-  );
+  return <CustomInput value={fullName} handleOnBlur={updateInfo} />;
 };
 
 export default FullNameCell;
