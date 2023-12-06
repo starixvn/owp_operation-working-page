@@ -1,6 +1,7 @@
 import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
+import { updateUserInfo } from '../../../utils';
 
 const GroupCell = (props: {
   dataSource: Array<TUserInfo>;
@@ -9,9 +10,14 @@ const GroupCell = (props: {
   const { options, updateValue } = store.getState();
   const { userGroups } = options;
   const { rowIndex, dataSource } = props;
-  const { groupId } = dataSource[rowIndex];
+  const { groupId, userId } = dataSource[rowIndex];
 
   const handleOnchangeOptions = (value: string) => {
+    updateUserInfo({
+      ColumnName: "GroupId",
+      UserId: `${userId}`,
+      Value: value !== '0' ? value : ''
+    });
     updateValue(parseInt(value), 'groupId', rowIndex);
   };
 
@@ -37,10 +43,10 @@ const GroupCell = (props: {
     <div className='select-wrapper-default'>
       <select
         disabled={false}
-        defaultValue={groupId ?? undefined}
+        value={groupId ?? 0}
         onChange={e => handleOnchangeOptions(e.target.value)}
         className='browser-default'>
-        <option value=''></option>
+        <option value={0}></option>
         <optgroup label='CTI LA - Supervisor/Leader'>
           {renderCTISupervisor()}
         </optgroup>
