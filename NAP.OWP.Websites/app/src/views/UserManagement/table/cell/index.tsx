@@ -1,5 +1,5 @@
 import NoCell from './noCell/NoCell';
-import EmployeeIdCell from './employeeIdCell/EmployeeIdCell';
+import EmployeeIdCell from './employeeId/EmployeeIdCell';
 import RoleCell from './role/RoleCell';
 import CategoryCell from './category/CategoryCell';
 import GroupCell from './group/GroupCell';
@@ -10,6 +10,8 @@ import SkypeCell from './skype/SkypeCell';
 import AccountNameCell from './accountName/AccountNameCell';
 import FullNameCell from './fullName/FullNameCell';
 import NickNameCell from './nickName/NickNameCell';
+import DepartmentCell from './department/DepartmentCell';
+import SectionCell from './section/SectionCell';
 export {
   NoCell,
   EmployeeIdCell,
@@ -22,5 +24,7 @@ export {
   ExtensionCell,
   PhoneCell,
   EmailCell,
-  SkypeCell
+  SkypeCell,
+  DepartmentCell,
+  SectionCell
 };

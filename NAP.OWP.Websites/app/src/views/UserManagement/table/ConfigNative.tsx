@@ -8,6 +8,8 @@ import {
   AccountNameCell,
   FullNameCell,
   NickNameCell,
+  DepartmentCell,
+  SectionCell,
   GroupCell,
   ExtensionCell,
   PhoneCell,
@@ -20,6 +22,8 @@ import {
   AccountName,
   FullName,
   NickName,
+  Department,
+  Section,
   Language,
   Location,
   Level,
@@ -61,6 +65,10 @@ const dynamicCell = (
       return <FullNameCell rowIndex={rowIndex} dataSource={dataSource} />;
     case NickName.columnKey:
       return <NickNameCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Department.columnKey:
+      return <DepartmentCell rowIndex={rowIndex} dataSource={dataSource} />;
+    case Section.columnKey:
+      return <SectionCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Group.columnKey:
       return <GroupCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Language.columnKey:
