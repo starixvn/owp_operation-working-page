@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CellProps } from '../../../type';
 import CustomInput from '../../../component/CustomInput';
 import Toast from '../../../../components/ToastrWrapper';
@@ -7,10 +7,12 @@ import { updateUserInfo } from '../../../utils';
 
 const NickNameCell = ({ dataSource, rowIndex }: CellProps) => {
   const { updateValue } = store.getState();
+  const [isError, setIsError] = useState(false);
   const { nickName, userId } = dataSource[rowIndex];
 
   const updateInfo = async (newValue: string) => {
     if (/\s/.test(newValue)) {
+      setIsError(true);
       return Toast.showError('Nickname cannot contain a space');
     }
     const response = await updateUserInfo({
@@ -19,12 +21,18 @@ const NickNameCell = ({ dataSource, rowIndex }: CellProps) => {
       Value: newValue
     });
 
-    return response.errCode
-      ? Toast.showError(response.errMsg)
-      : updateValue(newValue, 'nickName', rowIndex);
+    if (response.errCode) {
+      setIsError(true);
+      return Toast.showError(response.errMsg);
+    } else {
+      setIsError(false);
+      return updateValue(newValue, 'nickName', rowIndex);
+    }
   };
 
-  return <CustomInput value={nickName} handleOnBlur={updateInfo} />;
+  return (
+    <CustomInput value={nickName} handleOnBlur={updateInfo} isError={isError} />
+  );
 };
 
 export default NickNameCell;

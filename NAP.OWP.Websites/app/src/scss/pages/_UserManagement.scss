@@ -322,6 +322,12 @@
 .fixedDataTableCellLayout_main input:focus {
   border-bottom: 1px solid #1e88e5;
 }
+.fixedDataTableCellLayout_main .input-error {
+  border-bottom: 1px solid rgb(229, 30, 90);
+}
+.fixedDataTableCellLayout_main .input-error:focus {
+  border-bottom: 1px solid rgb(229, 30, 90);
+}
 
 .fixedDataTableCellLayout_main .no-cell {
   display: flex;
