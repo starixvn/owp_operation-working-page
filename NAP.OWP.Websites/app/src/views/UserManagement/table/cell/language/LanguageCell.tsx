@@ -49,15 +49,6 @@ const LanguageCell = (props: {
         : [...prevSelected, language]
     );
   };
-  useEffect(() => {
-    updateUserInfo({
-      ColumnName: 'Language',
-      UserId: `${dataSource[rowIndex].userId}`,
-      Value: selectedLanguages.join(',')
-    });
-
-    updateValue(selectedLanguages.join(','), 'languageId', rowIndex);
-  }, [selectedLanguages, dataSource, rowIndex]);
 
   return (
     <>

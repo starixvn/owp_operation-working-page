@@ -4,6 +4,7 @@ import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import { isValidEmail, updateUserInfo } from '../../../utils';
 import Toast from '../../../../components/ToastrWrapper';
+import { isEmpty } from 'lodash';
 
 type Props = {
   dataSource: Array<TUserInfo>;
@@ -14,6 +15,9 @@ const EmailCell = ({ dataSource, rowIndex }: Props) => {
   const { updateValue } = store.getState();
 
   const updateInfo = (newValue: string) => {
+    if (isEmpty(newValue)) {
+      return;
+    }
     if (!isValidEmail(newValue)) {
       Toast.showError('The format email is invalid');
       return;
