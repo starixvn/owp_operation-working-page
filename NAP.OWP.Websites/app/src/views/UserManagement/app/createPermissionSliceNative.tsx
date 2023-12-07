@@ -22,7 +22,11 @@ const createPermissionSliceNative: StateCreator<
     userManagementAllSections: defaultPolicy
   },
   async queryPermissions() {
-    const response = await axios.get('api-netcore/UserManagement/query-permission');
+    const url =
+      process.env.NODE_ENV === 'development'
+        ? `api-netcore/UserManagement/query-permission`
+        : `${window.netCoreRootUrl}/api/UserManagement/query-permission`;
+    const response = await axios.get(url);
     set(state =>
       update(state, {
         queryPermissionStatus: { $set: REQUEST_STATUS.idle },

@@ -22,8 +22,12 @@ const createDataTableSliceNative: StateCreator<
       })
     );
     try {
+      const url =
+        process.env.NODE_ENV === 'development'
+          ? `api-netcore/UserManagement/query-user`
+          : `${window.netCoreRootUrl}/api/UserManagement/query-user`;
       const dataSource = await post({
-        url: 'api-netcore/UserManagement/query-user',
+        url,
         ...value
       }).then(response => response.data as TDataTableResponse);
       set(state =>

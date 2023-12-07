@@ -17,7 +17,7 @@ namespace OWP.UserManagement.Controllers
     using Repositories;
     using Services;
 
-    public class UserManagementController : Controller
+    public class TempUserManagementController : Controller
     {
         private readonly ResourceRepository resourceRepository;
         private readonly ExportService exportService;
@@ -26,7 +26,7 @@ namespace OWP.UserManagement.Controllers
         private readonly ICurrentSession currentSession;
         private readonly AccessCounter accessCounter;
 
-        public UserManagementController(ResourceRepository resourceRepository, ExportService exportService,
+        public TempUserManagementController(ResourceRepository resourceRepository, ExportService exportService,
             ModelService modelService,
             Repository repository, ICurrentSession currentSession, AccessCounter accessCounter)
         {

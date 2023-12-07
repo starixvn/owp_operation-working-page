@@ -43,8 +43,12 @@ const createOptionsSliceNative: StateCreator<TFilter, [], [], TFilter> = (
     userGroups: []
   },
   async queryFilterOptions() {
+    const url =
+      process.env.NODE_ENV === 'development'
+        ? `api-netcore/UserManagement/query-filter-options`
+        : `${window.netCoreRootUrl}/api/UserManagement/query-filter-options`;
     const options = (
-      await axios.get('api-netcore/UserManagement/query-filter-options')
+      await axios.get(url)
     ).data as TFilterOptionsResponse;
 
     set(state =>
