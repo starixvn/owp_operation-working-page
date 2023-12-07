@@ -37,11 +37,13 @@ const SyncUser = () => {
   return (
     <>
       <div className='sync__user'>
-        <button
-          className='button--sync__user'
-          onClick={handleQueryUserFromAdminSite}>
-          Sync User
-        </button>
+        <div className='sync__user__block'>
+          <button
+            className='button--sync__user'
+            onClick={handleQueryUserFromAdminSite}>
+            Sync User
+          </button>
+        </div>
       </div>
       {displayUserDetail &&
         <UserDetail

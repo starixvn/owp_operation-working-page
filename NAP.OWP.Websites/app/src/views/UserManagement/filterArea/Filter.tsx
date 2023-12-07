@@ -13,24 +13,20 @@ const Filter = () => {
   }, [queryUserInfo]);
 
   return (
-    <>
-      <div className='filter'>
-        <div className='filter-control'>
-          <User />
-        </div>
-        <DropdownList />
-        <div className='filter-control btn-block'>
-          <button
-            className='button-submit'
-            onClick={_ => queryUserInfo(getValueFilter())}>
-            Search
-          </button>
-        </div>
-        <ExportButton />
+    <div className='filter'>
+      <div className='filter-control'>
+        <User />
       </div>
-
-      <div className='btn-upload-assignment'></div>
-    </>
+      <DropdownList />
+      <div className='filter-control btn-block'>
+        <button
+          className='button-submit'
+          onClick={_ => queryUserInfo(getValueFilter())}>
+          Search
+        </button>
+      </div>
+      <ExportButton />
+    </div>
   );
 };
 export default Filter;
