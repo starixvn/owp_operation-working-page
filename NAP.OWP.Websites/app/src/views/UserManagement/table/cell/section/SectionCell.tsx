@@ -17,6 +17,7 @@ const SectionCell = ({ dataSource, rowIndex }: CellProps) => {
       Value: value === '0' ? '' : value
     });
     updateValue(value, 'sectionId', rowIndex);
+    updateValue(0, 'level', rowIndex);
   };
 
   return (

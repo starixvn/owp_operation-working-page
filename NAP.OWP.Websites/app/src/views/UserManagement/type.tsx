@@ -157,7 +157,6 @@ type ColumnSchema = {
 type Column = {
   headerName: string;
   columnKey: string;
-  isFreeze?: boolean;
 };
 
 type TUpdateUserInfo = {

@@ -11,6 +11,7 @@ const LevelCell = (props: {
   const { updateValue, selectOption } = store.getState();
   const user = props.dataSource[props.rowIndex];
 
+  const options = selectOption(user.sectionId);
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     updateUserInfo({
@@ -22,9 +23,9 @@ const LevelCell = (props: {
   };
 
   return <SingleSelection
-    defaultValue={user.level ?? undefined}
+    defaultValue={user.level ?? 0}
     onChange={handleChange}
-    options={selectOption(user.sectionId)}
+    options={options}
   />;
 };
 

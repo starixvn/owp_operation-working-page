@@ -341,8 +341,8 @@ namespace NAP.OWP.Websites.Controllers
         [NapAuth(FunctionKey = FunctionKeys.OWPEventManagement, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> UserManagement()
         {
-            var functionName = ConfigurationManager.AppSettings["TaskListNew"];
-            await accessCounter.UpdateCounter(functionName);
+            //var functionName = ConfigurationManager.AppSettings["TaskListNew"];
+            //await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/user-management/server.cshtml");
         }
     }
