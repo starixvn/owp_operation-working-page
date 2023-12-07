@@ -43,12 +43,23 @@ const LanguageCell = (props: {
   }, [isOpenDropdown]);
 
   const toggleLanguage = (language: string) => {
+    let newValue = [...selectedLanguages];
+    newValue = handleAddLanguageId(newValue, language);
+    updateUserInfo({
+      ColumnName: 'Language',
+      UserId: `${dataSource[rowIndex].userId}`,
+      Value: newValue.join(',')
+    });
+
+    updateValue(newValue.join(','), 'languageId', rowIndex);
     setSelectedLanguages(prevSelected =>
-      prevSelected?.includes(language)
-        ? prevSelected.filter(l => l !== language)
-        : [...prevSelected, language]
+      handleAddLanguageId(prevSelected, language)
     );
   };
+  const handleAddLanguageId = (prevSelected: Array<string>, language: string) =>
+    prevSelected?.includes(language)
+      ? prevSelected.filter(l => l !== language)
+      : [...prevSelected, language];
 
   return (
     <>
