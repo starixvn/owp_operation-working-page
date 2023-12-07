@@ -26,11 +26,13 @@ import { dynamicCell } from './ConfigNative';
 import { calculateCustomTableWidth } from '../../Shared/common/CustomTable/Helper';
 
 const buildColumn = (width: number, column: Column) => {
-  const { headerName, columnKey } = column;
+  const { headerName, columnKey, isFreeze } = column;
+
   return {
     headerName,
     columnKey,
-    width
+    width,
+    isFreeze
   };
 };
 
