@@ -2,6 +2,8 @@ import React from 'react';
 import CustomInput from '../../../component/CustomInput';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
+import { isValidEmail, updateUserInfo } from '../../../utils';
+import Toast from '../../../../components/ToastrWrapper';
 
 type Props = {
   dataSource: Array<TUserInfo>;
@@ -11,20 +13,22 @@ type Props = {
 const EmailCell = ({ dataSource, rowIndex }: Props) => {
   const { updateValue } = store.getState();
 
-  const handleOnChange = (newValue: string) => {
+  const updateInfo = (newValue: string) => {
+    if (!isValidEmail(newValue)) {
+      Toast.showError('The format email is invalid');
+      return;
+    }
+    updateUserInfo({
+      ColumnName: 'Email',
+      UserId: `${dataSource[rowIndex].userId}`,
+      Value: newValue
+    });
+
     updateValue(newValue, 'email', rowIndex);
   };
 
-  const updateInfo = () => {
-    //api
-  };
-
   return (
-    <CustomInput
-      value={dataSource[rowIndex].email}
-      handleOnChange={handleOnChange}
-      handleOnBlur={updateInfo}
-    />
+    <CustomInput value={dataSource[rowIndex].email} handleOnBlur={updateInfo} />
   );
 };
 

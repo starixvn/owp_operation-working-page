@@ -2,6 +2,7 @@ import React from 'react';
 import CustomInput from '../../../component/CustomInput';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
+import { updateUserInfo } from '../../../utils';
 
 type Props = {
   dataSource: Array<TUserInfo>;
@@ -11,18 +12,19 @@ type Props = {
 const ExtensionCell = ({ dataSource, rowIndex }: Props) => {
   const { updateValue } = store.getState();
 
-  const handleOnChange = (newValue: string) => {
-    updateValue(newValue, 'extension', rowIndex);
-  };
+  const updateInfo = (newValue: string) => {
+    updateUserInfo({
+      ColumnName: 'Extension',
+      UserId: `${dataSource[rowIndex].userId}`,
+      Value: newValue
+    });
 
-  const updateInfo = () => {
-    //api
+    updateValue(newValue, 'extension', rowIndex);
   };
 
   return (
     <CustomInput
       value={dataSource[rowIndex].extension}
-      handleOnChange={handleOnChange}
       handleOnBlur={updateInfo}
     />
   );
