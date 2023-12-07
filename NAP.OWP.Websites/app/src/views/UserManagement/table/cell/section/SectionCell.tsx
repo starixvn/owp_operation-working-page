@@ -10,12 +10,13 @@ const SectionCell = ({ dataSource, rowIndex }: CellProps) => {
   const { userId } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target;
     updateUserInfo({
       ColumnName: 'SectionId',
       UserId: `${userId}`,
-      Value: event.target.value
+      Value: value === '0' ? '' : value
     });
-    updateValue(event.target.value, 'sectionId', rowIndex);
+    updateValue(value, 'sectionId', rowIndex);
   };
 
   return (

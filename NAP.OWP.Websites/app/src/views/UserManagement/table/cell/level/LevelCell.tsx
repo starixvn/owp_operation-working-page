@@ -16,7 +16,7 @@ const LevelCell = (props: {
     updateUserInfo({
       ColumnName: "Level",
       UserId: `${user.userId}`,
-      Value: value
+      Value: value === '0' ? '' : value
     });
     updateValue(value, 'level', props.rowIndex);
   };

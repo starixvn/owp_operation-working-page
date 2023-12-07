@@ -10,13 +10,14 @@ const DepartmentCell = ({ dataSource, rowIndex }: CellProps) => {
   const { userId } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target;
     updateUserInfo({
       ColumnName: 'DepartmentId',
       UserId: `${userId}`,
-      Value: event.target.value
+      Value: value === '0' ? '' : value
     });
 
-    updateValue(event.target.value, 'departmentId', rowIndex);
+    updateValue(value, 'departmentId', rowIndex);
   };
 
   return (

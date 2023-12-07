@@ -14,13 +14,14 @@ const CategoryCell = (props: {
   const { categoryId, userId } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target;
     updateUserInfo({
       ColumnName: 'CategoryId',
       UserId: `${userId}`,
-      Value: event.target.value
+      Value: value === '0' ? '' : value
     });
 
-    updateValue(event.target.value, 'categoryId', rowIndex);
+    updateValue(value, 'categoryId', rowIndex);
   };
 
   return (

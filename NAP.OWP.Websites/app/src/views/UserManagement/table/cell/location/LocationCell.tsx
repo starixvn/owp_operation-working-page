@@ -18,7 +18,7 @@ const LocationCell = (props: {
     updateUserInfo({
       ColumnName: "LocationCode",
       UserId: `${userId}`,
-      Value: value
+      Value: value === 'None' ? '' : value
     });
     updateValue(value, 'locationCode', rowIndex);
   };
