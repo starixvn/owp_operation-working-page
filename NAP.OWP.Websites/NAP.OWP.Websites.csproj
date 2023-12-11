@@ -2960,8 +2960,8 @@
     <Content Include="wwwroot\user-management\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\user-management\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\user-management\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\user-management\assets\ext\server-b0114f56.css" />
-    <Content Include="wwwroot\user-management\assets\js\main-787b89d6.js" />
+    <Content Include="wwwroot\user-management\assets\ext\server-4ec428e3.css" />
+    <Content Include="wwwroot\user-management\assets\js\main-3db55195.js" />
     <Content Include="wwwroot\user-management\favicon.ico" />
     <Content Include="wwwroot\user-management\server.html" />
     <Content Include="wwwroot\web.config" />

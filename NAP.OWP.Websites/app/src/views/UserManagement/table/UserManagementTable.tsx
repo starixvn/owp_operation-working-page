@@ -7,17 +7,19 @@ import { selectTable } from './UserManagementTableHelper';
 import useStore from '../app/useStoreNative';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import Loading from '../../components/Loading';
-import Spinner from '../../components/Spinner';
 const getTableSchema = () => {
   const { innerWidth } = window;
   return selectTable(innerWidth - DefaultTableStyle.widthResize);
 };
 
 const UserManagementTable = () => {
-  const { queryDataTableStatus, dataSource } = useStore(state => ({
-    queryDataTableStatus: state.queryDataTableStatus,
-    dataSource: state.dataSource
-  }), shallow);
+  const { queryDataTableStatus, dataSource } = useStore(
+    state => ({
+      queryDataTableStatus: state.queryDataTableStatus,
+      dataSource: state.dataSource
+    }),
+    shallow
+  );
 
   const [tableSchema, setTableSchema] = useState(getTableSchema());
   const model = {
@@ -35,8 +37,9 @@ const UserManagementTable = () => {
     return () => window.removeEventListener('resize', handleResizeBrowser);
   }, []);
 
-  queryDataTableStatus === REQUEST_STATUS.pending && Spinner.show();
-  queryDataTableStatus !== REQUEST_STATUS.pending && Spinner.hide();
+  if (queryDataTableStatus === REQUEST_STATUS.pending) {
+    return <Loading />;
+  }
 
   return <CustomTable config={tableSchema} model={model} />;
 };
