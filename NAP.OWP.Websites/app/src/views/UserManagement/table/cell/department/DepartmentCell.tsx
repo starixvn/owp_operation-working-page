@@ -22,7 +22,7 @@ const DepartmentCell = ({ dataSource, rowIndex }: CellProps) => {
 
   return (
     <SingleSelection
-      defaultValue={dataSource[rowIndex].departmentId ?? undefined}
+      defaultValue={dataSource[rowIndex].departmentId ?? 0}
       onChange={handleChange}
       options={departments}
     />

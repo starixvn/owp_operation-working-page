@@ -22,7 +22,7 @@ const SectionCell = ({ dataSource, rowIndex }: CellProps) => {
 
   return (
     <SingleSelection
-      defaultValue={dataSource[rowIndex].sectionId ?? undefined}
+      defaultValue={dataSource[rowIndex].sectionId ?? 0}
       onChange={handleChange}
       options={sections}
     />

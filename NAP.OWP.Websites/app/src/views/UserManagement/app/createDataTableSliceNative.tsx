@@ -11,16 +11,14 @@ const createDataTableSliceNative: StateCreator<
   TDataTable
 > = set => ({
   queryDataTableStatus: REQUEST_STATUS.idle,
-  dataSource: {
-    users: []
-  },
-
+  dataSource: [],
   async queryUserInfo(value) {
     set(state =>
       update(state, {
         queryDataTableStatus: { $set: REQUEST_STATUS.pending }
       })
     );
+
     try {
       const url =
         process.env.NODE_ENV === 'development'
@@ -30,6 +28,7 @@ const createDataTableSliceNative: StateCreator<
         url,
         ...value
       }).then(response => response.data as TDataTableResponse);
+
       set(state =>
         update(state, {
           queryDataTableStatus: { $set: REQUEST_STATUS.idle },
@@ -48,10 +47,8 @@ const createDataTableSliceNative: StateCreator<
     set(state =>
       update(state, {
         dataSource: {
-          users: {
-            [rowIndex]: {
-              [key]: { $set: newValue }
-            }
+          [rowIndex]: {
+            [key]: { $set: newValue }
           }
         }
       })

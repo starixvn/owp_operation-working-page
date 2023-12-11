@@ -24,7 +24,7 @@ const LocationCell = (props: {
   };
 
   return <SingleSelection
-    defaultValue={locationCode ?? undefined}
+    defaultValue={locationCode ?? 'None'}
     onChange={handleChange}
     options={locationCodes}
   />;

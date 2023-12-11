@@ -26,7 +26,7 @@ const RoleCell = (props: {
 
   return (
     <SingleSelection
-      defaultValue={roleId ?? undefined}
+      defaultValue={roleId ?? 0}
       onChange={handleChange}
       options={roles}
     />

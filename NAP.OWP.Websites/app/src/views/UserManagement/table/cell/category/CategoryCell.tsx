@@ -26,7 +26,7 @@ const CategoryCell = (props: {
 
   return (
     <SingleSelection
-      defaultValue={categoryId ?? undefined}
+      defaultValue={categoryId ?? 0}
       onChange={handleChange}
       options={categories}
     />
