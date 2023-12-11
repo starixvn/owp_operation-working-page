@@ -123,9 +123,7 @@ type TQueryUserInfo = {
   locationCode: string;
 };
 
-type TDataTableResponse = {
-  users: Array<TUserInfo>;
-};
+type TDataTableResponse = Array<TUserInfo>;
 
 type TLevelOption = {
   queryLevelOptionStatus: string;
