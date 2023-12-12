@@ -8,7 +8,7 @@
     using Models;
     using Services;
 
-    [RoutePrefix("Temp/api/user-management")]
+    [RoutePrefix("temp/api/user-management")]
     public class TempUserManagementApiController : ApiController
     {
         private readonly UsersService usersService;

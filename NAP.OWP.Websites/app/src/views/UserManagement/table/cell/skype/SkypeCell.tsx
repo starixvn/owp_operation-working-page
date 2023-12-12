@@ -2,7 +2,7 @@ import React from 'react';
 import CustomInput from '../../../component/CustomInput';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 type Props = {
   dataSource: Array<TUserInfo>;
@@ -23,7 +23,10 @@ const SkypeCell = ({ dataSource, rowIndex }: Props) => {
   };
 
   return (
-    <CustomInput value={dataSource[rowIndex].skype} handleOnBlur={updateInfo} />
+    <CustomInput
+      value={dataSource[rowIndex].skype}
+      handleOnBlur={updateInfo}
+      disabled={!hasPermissionUser(dataSource[rowIndex].sectionName)} />
   );
 };
 

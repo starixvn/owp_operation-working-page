@@ -14,7 +14,8 @@ const UserManagement = () => {
     queryLevelOptionStatus,
     queryFilterOptions,
     queryLevelOption,
-    queryPermissions
+    queryPermissions,
+    querySectionName
   } = useStore(
     state => ({
       queryFilterOptionsStatus: state.queryFilterOptionsStatus,
@@ -22,16 +23,18 @@ const UserManagement = () => {
       queryLevelOptionStatus: state.queryLevelOptionStatus,
       queryFilterOptions: state.queryFilterOptions,
       queryLevelOption: state.queryLevelOption,
-      queryPermissions: state.queryPermissions
+      queryPermissions: state.queryPermissions,
+      querySectionName: state.querySectionName
     }),
     shallow
   );
 
   useEffect(() => {
+    querySectionName();
     queryFilterOptions();
     queryPermissions();
     queryLevelOption();
-  }, [queryFilterOptions, queryLevelOption, queryPermissions]);
+  }, [queryFilterOptions, queryLevelOption, queryPermissions, querySectionName]);
 
   if (
     [queryFilterOptionsStatus, queryPermissionStatus, queryLevelOptionStatus].some(

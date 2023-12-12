@@ -2,12 +2,12 @@ import React from 'react';
 import { CellProps } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const DepartmentCell = ({ dataSource, rowIndex }: CellProps) => {
   const { options, updateValue } = store.getState();
   const { departments } = options;
-  const { userId } = dataSource[rowIndex];
+  const { userId, sectionName, departmentId } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
@@ -22,9 +22,10 @@ const DepartmentCell = ({ dataSource, rowIndex }: CellProps) => {
 
   return (
     <SingleSelection
-      defaultValue={dataSource[rowIndex].departmentId ?? 0}
+      defaultValue={departmentId ?? 0}
       onChange={handleChange}
       options={departments}
+      disabled={!hasPermissionUser(sectionName)}
     />
   );
 };

@@ -75,6 +75,12 @@ type TPermission = {
   queryPermissions(): Promise<void>;
 };
 
+type TSectionName = {
+  querySectionNameStatus: string;
+  sectionName: string;
+  querySectionName(): Promise<void>;
+};
+
 enum confirmSyncUserEnum {
   save = 'save',
   cancel = 'cancel'
@@ -186,5 +192,6 @@ export {
   TLevelOption,
   CellProps,
   TUpdateUserInfo,
-  TDataResponse
+  TDataResponse,
+  TSectionName
 };

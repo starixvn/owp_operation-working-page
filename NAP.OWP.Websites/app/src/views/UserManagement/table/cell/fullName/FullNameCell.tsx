@@ -2,11 +2,11 @@ import React from 'react';
 import { CellProps } from '../../../type';
 import CustomInput from '../../../component/CustomInput';
 import store from '../../../app/useStoreNative';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const FullNameCell = ({ dataSource, rowIndex }: CellProps) => {
   const { updateValue } = store.getState();
-  const { fullName, userId } = dataSource[rowIndex];
+  const { fullName, userId, sectionName } = dataSource[rowIndex];
 
   const updateInfo = (newValue: string) => {
     updateUserInfo({
@@ -18,7 +18,7 @@ const FullNameCell = ({ dataSource, rowIndex }: CellProps) => {
     updateValue(newValue, 'fullName', rowIndex);
   };
 
-  return <CustomInput value={fullName} handleOnBlur={updateInfo} />;
+  return <CustomInput value={fullName} handleOnBlur={updateInfo} disabled={!hasPermissionUser(sectionName)} />;
 };
 
 export default FullNameCell;

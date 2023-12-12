@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import DropdownIcon from '../../../../../assets/svg-element/DropdownIcon';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const LanguageCell = (props: {
   handleShowDropdown: (isOpen: boolean) => void;
@@ -14,8 +14,9 @@ const LanguageCell = (props: {
   const { options, updateValue } = store.getState();
   const { languages } = options;
   const { rowIndex, dataSource, handleShowDropdown } = props;
+  const user = dataSource[rowIndex];
   const languageValue =
-    dataSource[rowIndex].languageId?.split(',').map(item => item.trim()) ?? [];
+    user.languageId?.split(',').map(item => item.trim()) ?? [];
   const [selectedLanguages, setSelectedLanguages] =
     useState<string[]>(languageValue);
   const languageLabel = languages
@@ -47,7 +48,7 @@ const LanguageCell = (props: {
     newValue = handleAddLanguageId(newValue, language);
     updateUserInfo({
       ColumnName: 'Language',
-      UserId: `${dataSource[rowIndex].userId}`,
+      UserId: `${user.userId}`,
       Value: newValue.join(',')
     });
 
@@ -71,7 +72,7 @@ const LanguageCell = (props: {
           <DropdownIcon colorDropdown='#282d38' />
         </span>
       </div>
-      {isOpenDropdown && (
+      {isOpenDropdown && !hasPermissionUser(user.sectionName) && (
         <div ref={dropdownRef} className='dropdown-multi-language is-show'>
           <ul>
             {languages.map(language => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const CategoryCell = (props: {
   dataSource: Array<TUserInfo>;
@@ -11,7 +11,7 @@ const CategoryCell = (props: {
   const { options, updateValue } = store.getState();
   const { categories } = options;
   const { rowIndex, dataSource } = props;
-  const { categoryId, userId } = dataSource[rowIndex];
+  const { categoryId, userId, sectionName } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
@@ -29,6 +29,7 @@ const CategoryCell = (props: {
       defaultValue={categoryId ?? 0}
       onChange={handleChange}
       options={categories}
+      disabled={!hasPermissionUser(sectionName)}
     />
   );
 };

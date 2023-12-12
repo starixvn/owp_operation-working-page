@@ -2,7 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const LevelCell = (props: {
   dataSource: Array<TUserInfo>,
@@ -26,6 +26,7 @@ const LevelCell = (props: {
     defaultValue={user.level ?? 0}
     onChange={handleChange}
     options={options}
+    disabled={!hasPermissionUser(user.sectionName)}
   />;
 };
 

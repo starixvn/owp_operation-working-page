@@ -1,7 +1,7 @@
 import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const GroupCell = (props: {
   dataSource: Array<TUserInfo>;
@@ -10,7 +10,7 @@ const GroupCell = (props: {
   const { options, updateValue } = store.getState();
   const { userGroups } = options;
   const { rowIndex, dataSource } = props;
-  const { groupId, userId } = dataSource[rowIndex];
+  const { groupId, userId, sectionName } = dataSource[rowIndex];
 
   const handleOnchangeOptions = (value: string) => {
     updateUserInfo({
@@ -42,7 +42,7 @@ const GroupCell = (props: {
   return (
     <div className='select-wrapper-default'>
       <select
-        disabled={false}
+        disabled={!hasPermissionUser(sectionName)}
         value={groupId ?? 0}
         onChange={e => handleOnchangeOptions(e.target.value)}
         className='browser-default'>

@@ -46,6 +46,8 @@
             result.LevelOfLiveAssistant = levelLiveAssistant;
             result.LevelOfOtherSection = levelDefault;
 
+
+
             return result;
         }
     }

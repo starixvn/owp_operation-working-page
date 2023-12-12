@@ -88,9 +88,11 @@ var userManagement = function ($) {
             temp = userSection;
         }
         return permission.UserManagementAllSections.IsHost ||
+        
             permission.UserManagementOwnSection.IsHost &&
             permission.UserManagementAllSections.IsRead &&
             curSection === temp ||
+
             permission.UserManagementOwnSection.IsHost && !permission.UserManagementAllSections.IsRead;
     }
 
@@ -98,6 +100,7 @@ var userManagement = function ($) {
         var text = "";
 
         if (checkPermissionUser(permission, curSection, userSection)) {
+            debugger
             var languageIdsArr = languageIds.split(",");
             var languageTextsArr = languageTexts.split(",");
             var options = "";
@@ -587,6 +590,7 @@ var userManagement = function ($) {
         var rows = [],
             rowIndex = (response.CurrentPage - 1) * response.ItemsPerPage;
         var totalColumn = response.UserColumnModels.length;
+
         for (var index = 0; index < response.Users.length; index++) {
             var user = response.Users[index];
             var levels = buildLevelBySection(response, user.SectionId);

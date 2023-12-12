@@ -14,10 +14,10 @@ const normalizeOptions = (
 ) => {
   const options = optionsSource.map(
     o =>
-      ({
-        value: o.resourceId,
-        label: o.value
-      } as Option)
+    ({
+      value: o.resourceId,
+      label: o.value
+    } as Option)
   );
   options.push(noneOption);
   return options;
@@ -26,10 +26,10 @@ const normalizeOptions = (
 const buildOptions = (optionsSource: Array<TRefResource>) =>
   optionsSource.map(
     o =>
-      ({
-        value: o.resourceId,
-        label: o.value
-      } as Option)
+    ({
+      value: o.resourceId,
+      label: o.value
+    } as Option)
   );
 
 const normalizeLocationCodeOptions = (
@@ -38,10 +38,10 @@ const normalizeLocationCodeOptions = (
 ) => {
   const options = optionsSource.map(
     o =>
-      ({
-        value: o.value,
-        label: o.value
-      } as Option)
+    ({
+      value: o.value,
+      label: o.value
+    } as Option)
   );
   options.push(noneOption);
   return options;
@@ -79,9 +79,24 @@ const updateUserInfo = async (updateInfo: TUpdateUserInfo) => {
   ).data as TDataResponse;
 };
 const isValidEmail = (email: string | null) => {
-  var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   return pattern.test(email ?? '');
 };
+
+const hasPermissionUser = (userSection: string | null) => {
+  const { permissions, sectionName } = store.getState();
+  const { userManagementOwnSection, userManagementAllSections } = permissions;
+  let temp = null;
+  if (userSection) {
+    temp = userSection;
+  }
+  return userManagementAllSections.isHost ||
+    userManagementOwnSection.isHost &&
+    userManagementAllSections.isRead &&
+    sectionName === temp ||
+    userManagementOwnSection.isHost && !userManagementAllSections.isRead;
+};
+
 export {
   buildOptions,
   normalizeOptions,
@@ -89,5 +104,6 @@ export {
   getValueFilter,
   urlExport,
   updateUserInfo,
-  isValidEmail
+  isValidEmail,
+  hasPermissionUser
 };

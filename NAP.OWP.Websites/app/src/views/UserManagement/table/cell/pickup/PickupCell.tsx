@@ -2,7 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const pickupOption = [{
   value: 'true',
@@ -41,6 +41,7 @@ const PickupCell = (props: {
     defaultValue={user.pickup ?? undefined}
     onChange={handleChange}
     options={pickupOption}
+    disabled={!hasPermissionUser(user.sectionName)}
   />;
 };
 

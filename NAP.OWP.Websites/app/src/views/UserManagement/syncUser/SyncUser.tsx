@@ -4,10 +4,13 @@ import { buildQuerySimpleApi } from '../../Shared/Constants';
 import UserDetail from './UserDetail';
 import { confirmSyncUserEnum } from '../type';
 import ToastrWrapper from '../../components/ToastrWrapper';
+import store from '../app/useStoreNative';
 
 const SyncUser = () => {
   const [displayUserDetail, setDisplayUserDetail] = useState(false);
   const [userDetail, setUserDetail] = useState([]);
+  const { permissions } = store.getState();
+  const { userManagementAllSections } = permissions;
 
   const handleQueryUserFromAdminSite = async () => {
     const response = await post({
@@ -36,7 +39,7 @@ const SyncUser = () => {
 
   return (
     <>
-      <div className='sync__user'>
+      {userManagementAllSections.isHost && <div className='sync__user'>
         <div className='sync__user__block'>
           <button
             className='button--sync__user'
@@ -44,7 +47,7 @@ const SyncUser = () => {
             Sync User
           </button>
         </div>
-      </div>
+      </div>}
       {displayUserDetail &&
         <UserDetail
           onToggle={handleSyncUser}

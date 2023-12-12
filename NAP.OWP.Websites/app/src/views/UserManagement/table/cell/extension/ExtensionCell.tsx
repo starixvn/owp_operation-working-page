@@ -2,7 +2,7 @@ import React from 'react';
 import CustomInput from '../../../component/CustomInput';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 type Props = {
   dataSource: Array<TUserInfo>;
@@ -11,11 +11,11 @@ type Props = {
 
 const ExtensionCell = ({ dataSource, rowIndex }: Props) => {
   const { updateValue } = store.getState();
-
+  const { userId, extension, sectionName } = dataSource[rowIndex];
   const updateInfo = (newValue: string) => {
     updateUserInfo({
       ColumnName: 'Extension',
-      UserId: `${dataSource[rowIndex].userId}`,
+      UserId: `${userId}`,
       Value: newValue
     });
 
@@ -24,8 +24,9 @@ const ExtensionCell = ({ dataSource, rowIndex }: Props) => {
 
   return (
     <CustomInput
-      value={dataSource[rowIndex].extension}
+      value={extension}
       handleOnBlur={updateInfo}
+      disabled={!hasPermissionUser(sectionName)}
     />
   );
 };

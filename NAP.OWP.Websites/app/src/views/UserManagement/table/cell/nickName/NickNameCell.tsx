@@ -3,12 +3,12 @@ import { CellProps } from '../../../type';
 import CustomInput from '../../../component/CustomInput';
 import Toast from '../../../../components/ToastrWrapper';
 import store from '../../../app/useStoreNative';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const NickNameCell = ({ dataSource, rowIndex }: CellProps) => {
   const { updateValue } = store.getState();
   const [isError, setIsError] = useState(false);
-  const { nickName, userId } = dataSource[rowIndex];
+  const { nickName, userId, sectionName } = dataSource[rowIndex];
 
   const updateInfo = async (newValue: string) => {
     if (/\s/.test(newValue)) {
@@ -31,7 +31,11 @@ const NickNameCell = ({ dataSource, rowIndex }: CellProps) => {
   };
 
   return (
-    <CustomInput value={nickName} handleOnBlur={updateInfo} isError={isError} />
+    <CustomInput
+      value={nickName}
+      handleOnBlur={updateInfo}
+      isError={isError}
+      disabled={!hasPermissionUser(sectionName)} />
   );
 };
 

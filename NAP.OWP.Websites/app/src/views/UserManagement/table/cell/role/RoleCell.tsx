@@ -2,7 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const RoleCell = (props: {
   dataSource: Array<TUserInfo>;
@@ -11,7 +11,7 @@ const RoleCell = (props: {
   const { options, updateValue } = store.getState();
   const { roles } = options;
   const { rowIndex, dataSource } = props;
-  const { roleId, userId } = dataSource[rowIndex];
+  const { roleId, userId, sectionName } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
@@ -29,6 +29,7 @@ const RoleCell = (props: {
       defaultValue={roleId ?? 0}
       onChange={handleChange}
       options={roles}
+      disabled={!hasPermissionUser(sectionName)}
     />
   );
 };

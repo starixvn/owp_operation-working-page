@@ -2,7 +2,7 @@ import React from 'react';
 import CustomInput from '../../../component/CustomInput';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
-import { isValidEmail, updateUserInfo } from '../../../utils';
+import { hasPermissionUser, isValidEmail, updateUserInfo } from '../../../utils';
 import Toast from '../../../../components/ToastrWrapper';
 import { isEmpty } from 'lodash';
 
@@ -32,7 +32,10 @@ const EmailCell = ({ dataSource, rowIndex }: Props) => {
   };
 
   return (
-    <CustomInput value={dataSource[rowIndex].email} handleOnBlur={updateInfo} />
+    <CustomInput
+      value={dataSource[rowIndex].email}
+      handleOnBlur={updateInfo}
+      disabled={!hasPermissionUser(dataSource[rowIndex].sectionName)} />
   );
 };
 

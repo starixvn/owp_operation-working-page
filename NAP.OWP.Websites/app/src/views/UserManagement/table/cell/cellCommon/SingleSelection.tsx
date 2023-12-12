@@ -4,11 +4,12 @@ import { Option } from '../../../../Shared/MultipleSelection/type';
 const SingleSelection = (props: {
   defaultValue: string | number | undefined,
   onChange: React.ChangeEventHandler<HTMLSelectElement>,
-  options: Option[]
+  options: Option[],
+  disabled: boolean
 }) =>
   <div className='select-wrapper-default'>
     <select
-      disabled={false}
+      disabled={props.disabled}
       className='browser-default'
       value={props.defaultValue}
       onChange={props.onChange}>

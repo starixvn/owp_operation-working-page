@@ -2,7 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const secondAccountOption = [{
   value: 'true',
@@ -37,6 +37,7 @@ const SecondAccountCell = (props: {
     defaultValue={user.isSecondAccount ?? undefined}
     onChange={handleChange}
     options={secondAccountOption}
+    disabled={!hasPermissionUser(user.sectionName)}
   />;
 };
 

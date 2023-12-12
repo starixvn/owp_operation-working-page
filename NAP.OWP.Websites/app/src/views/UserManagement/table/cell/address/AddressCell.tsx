@@ -2,7 +2,7 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import CustomInput from '../../../component/CustomInput';
 import store from '../../../app/useStoreNative';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 const AddressCell = (props: {
   dataSource: Array<TUserInfo>;
@@ -22,7 +22,10 @@ const AddressCell = (props: {
 
     updateValue(newValue, 'address', rowIndex);
   };
-  return <CustomInput value={user.address} handleOnBlur={updateInfo} />;
+  return <CustomInput
+    value={user.address}
+    handleOnBlur={updateInfo}
+    disabled={!hasPermissionUser(user.sectionName)} />;
 
 };
 

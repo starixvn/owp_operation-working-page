@@ -2,7 +2,7 @@ import React from 'react';
 import CustomInput from '../../../component/CustomInput';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
-import { updateUserInfo } from '../../../utils';
+import { hasPermissionUser, updateUserInfo } from '../../../utils';
 
 type Props = {
   dataSource: Array<TUserInfo>;
@@ -11,11 +11,11 @@ type Props = {
 
 const PhoneCell = ({ dataSource, rowIndex }: Props) => {
   const { updateValue } = store.getState();
-
+  const { userId, sectionName, phone } = dataSource[rowIndex];
   const updateInfo = (newValue: string) => {
     updateUserInfo({
       ColumnName: 'Phone',
-      UserId: `${dataSource[rowIndex].userId}`,
+      UserId: `${userId}`,
       Value: newValue
     });
 
@@ -23,7 +23,10 @@ const PhoneCell = ({ dataSource, rowIndex }: Props) => {
   };
 
   return (
-    <CustomInput value={dataSource[rowIndex].phone} handleOnBlur={updateInfo} />
+    <CustomInput
+      value={phone}
+      handleOnBlur={updateInfo}
+      disabled={!hasPermissionUser(sectionName)} />
   );
 };
 

@@ -1,13 +1,13 @@
-import { uniqueId } from 'lodash';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
 type Props = {
   value: string | null;
   handleOnBlur: (newValue: string) => void;
+  disabled?: boolean;
   isError?: boolean;
 };
 
-const CustomInput = ({ value, handleOnBlur, isError = false }: Props) => {
+const CustomInput = ({ value, handleOnBlur, disabled = false, isError = false }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -25,6 +25,7 @@ const CustomInput = ({ value, handleOnBlur, isError = false }: Props) => {
         onBlur={e => handleOnBlur(e.target.value)}
         onKeyDown={handleKeyPress}
         style={{ display: 'block' }}
+        disabled={disabled}
         ref={inputRef}
         className={isError ? 'input-error' : ''}
       />
