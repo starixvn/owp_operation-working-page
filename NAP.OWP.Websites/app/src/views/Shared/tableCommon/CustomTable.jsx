@@ -32,7 +32,11 @@ const CustomTable = ({
       const displayEndPosition = Math.round(
         Math.min(displayStartPosition + rowsToRender, data.length)
       );
-      setDisplayStart(displayStartPosition);
+      if (displayStartPosition + rowsToRender - 1 <= displayEndPosition) {
+        setDisplayStart(displayStartPosition);
+      } else {
+        setDisplayStart(previous => previous);
+      }
       setDisplayEnd(displayEndPosition);
     },
     [data.length]
@@ -40,13 +44,7 @@ const CustomTable = ({
 
   const onScrollTable = throttle(() => {
     const scrollTop = containerRef.current?.scrollTop;
-    const scrollHeight = containerRef.current?.scrollHeight;
-    console.log('top', scrollTop);
-    console.log('height', scrollHeight);
-    console.log(containerRef);
-    if (data.length === 0) {
-      setScrollPosition(0);
-    } else {
+    if (data.length !== 0) {
       setScrollPosition(scrollTop);
       setDisplayPositions(scrollTop);
     }
@@ -76,6 +74,15 @@ const CustomTable = ({
   useEffect(() => {
     setDisplayPositions(scrollPosition);
   }, [scrollPosition, setDisplayPositions]);
+
+  useEffect(() => {
+    if (data.length === 0) {
+      setDisplayStart(0);
+      setDisplayEnd(0);
+      setScrollPosition(0);
+    }
+    containerRef.current?.scrollTo(0, 0);
+  }, [data.length]);
 
   return (
     <>
