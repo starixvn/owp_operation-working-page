@@ -3,7 +3,7 @@ import createFilterSlice from './createFilterSliceNative';
 import createPermissionSlice from './createPermissionSliceNative';
 import createDataTableSliceNative from './createDataTableSliceNative';
 import createLevelSliceNative from './createLevelSliceNative';
-import createSectionNameSliceNative from './createSectionNameSliceNative';
+import createSectionNameSliceNative from './createCurrentSectionSliceNative';
 import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { TDataTable, TFilter, TLevelOption, TPermission, TSectionName } from '../type';
 

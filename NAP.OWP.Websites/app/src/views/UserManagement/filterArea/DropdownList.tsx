@@ -1,10 +1,11 @@
 import React from 'react';
 import MultipleSelection from '../../Shared/MultipleSelection/MultipleSelection';
 import store from '../app/useStoreNative';
+import renderSection from './renderSection';
 
 const DropdownList = () => {
   const { options, filterValue, setFilterValue } = store.getState();
-  const { roles, sections, departments, categories, locationCodes } = options;
+  const { roles, departments, categories, locationCodes } = options;
 
   return (
     <>
@@ -19,17 +20,7 @@ const DropdownList = () => {
           onChange={value => setFilterValue(value, 'role')}
         />
       </div>
-      <div className='filter-control multiselect'>
-        <MultipleSelection
-          label='Section'
-          className='section'
-          disabled={false}
-          options={sections}
-          value={filterValue.section}
-          disableSearch
-          onChange={value => setFilterValue(value, 'section')}
-        />
-      </div>
+      {renderSection()}
       <div className='filter-control multiselect'>
         <MultipleSelection
           label='Department'

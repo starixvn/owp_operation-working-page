@@ -72,7 +72,7 @@ const LanguageCell = (props: {
           <DropdownIcon colorDropdown='#282d38' />
         </span>
       </div>
-      {isOpenDropdown && !hasPermissionUser(user.sectionName) && (
+      {isOpenDropdown && hasPermissionUser(user.sectionName) && (
         <div ref={dropdownRef} className='dropdown-multi-language is-show'>
           <ul>
             {languages.map(language => {

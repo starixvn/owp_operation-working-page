@@ -11,7 +11,7 @@ const LocationCell = (props: {
   const { options, updateValue } = store.getState();
   const { locationCodes } = options;
   const { rowIndex, dataSource } = props;
-  const { locationCode, userId, sectionName } = dataSource[rowIndex];
+  const { locationCode, userId, sectionName, flagCode } = dataSource[rowIndex];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
@@ -23,12 +23,18 @@ const LocationCell = (props: {
     updateValue(value, 'locationCode', rowIndex);
   };
 
-  return <SingleSelection
-    defaultValue={locationCode ?? 'None'}
-    onChange={handleChange}
-    options={locationCodes}
-    disabled={!hasPermissionUser(sectionName)}
-  />;
+  return hasPermissionUser(sectionName)
+    ? <SingleSelection
+      defaultValue={locationCode ?? 'None'}
+      onChange={handleChange}
+      options={locationCodes}
+    />
+    : <div className='location-cell'>
+      <a className="flag-item" href="#!">
+        <i className={`flag-icon flag-icon-${flagCode}`} />
+      </a>
+      {locationCode ?? 'None'}
+    </div>;
 };
 
 export default LocationCell;

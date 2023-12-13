@@ -5,7 +5,7 @@ const SingleSelection = (props: {
   defaultValue: string | number | undefined,
   onChange: React.ChangeEventHandler<HTMLSelectElement>,
   options: Option[],
-  disabled: boolean
+  disabled?: boolean
 }) =>
   <div className='select-wrapper-default'>
     <select

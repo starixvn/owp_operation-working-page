@@ -77,7 +77,7 @@ type TPermission = {
 
 type TSectionName = {
   querySectionNameStatus: string;
-  sectionName: string;
+  currentSection: TRefResource | null;
   querySectionName(): Promise<void>;
 };
 
@@ -118,6 +118,7 @@ type TUserInfo = {
   isSecondAccount: string;
   languageId: string | null;
   languages: string | null;
+  flagCode: string | null
 };
 
 type TQueryUserInfo = {

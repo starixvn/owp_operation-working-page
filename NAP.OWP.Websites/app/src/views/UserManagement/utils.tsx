@@ -48,12 +48,16 @@ const normalizeLocationCodeOptions = (
 };
 
 const getValueFilter = (): TQueryUserInfo => {
-  const { userName, role, section, department, category, locationCode } =
-    store.getState().filterValue;
+  const { filterValue, permissions, currentSection } = store.getState();
+  const { userManagementAllSections } = permissions;
+  const { userName, role, section, department, category, locationCode } = filterValue;
+  const sectionId = userManagementAllSections.isRead
+    ? section.map(r => r.value).join(',')
+    : `${currentSection?.resourceId}`;
   return {
     user: userName,
     roleId: role.map(r => r.value).join(','),
-    sectionId: section.map(r => r.value).join(','),
+    sectionId,
     departmentId: department.map(r => r.value).join(','),
     categoryId: category.map(r => r.value).join(','),
     locationCode: locationCode.map(r => r.value).join(',')
@@ -84,16 +88,14 @@ const isValidEmail = (email: string | null) => {
 };
 
 const hasPermissionUser = (userSection: string | null) => {
-  const { permissions, sectionName } = store.getState();
+  const { permissions, currentSection } = store.getState();
   const { userManagementOwnSection, userManagementAllSections } = permissions;
-  let temp = null;
-  if (userSection) {
-    temp = userSection;
-  }
+  const temp = userSection ?? null;
+
   return userManagementAllSections.isHost ||
     userManagementOwnSection.isHost &&
     userManagementAllSections.isRead &&
-    sectionName === temp ||
+    currentSection?.value === temp ||
     userManagementOwnSection.isHost && !userManagementAllSections.isRead;
 };
 
