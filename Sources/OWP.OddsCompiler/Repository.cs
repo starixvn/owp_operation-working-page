@@ -102,7 +102,7 @@
 
             foreach (var match in matches)
             {
-                var infoSite = result.FirstOrDefault(x => x.ParentMatchId == match.ParentMatchId);
+                var infoSite = result.Find(x => x.ParentMatchId == match.ParentMatchId);
                 match.InfoSiteTime = infoSite?.KickOffTime;
                 match.InfoSiteTimeDisplay = infoSite?.KickOffTimeDisplay;
             }
@@ -231,21 +231,21 @@
 
         private static MatchOddsRow GetMatchOddRow(int owpMatchId, List<MatchOdds> matchOdds)
         {
-            var handicap = matchOdds.FirstOrDefault(x => x.Bettype == (int)MajorBettype.Handicap);
+            var handicap = matchOdds.Find(x => x.Bettype == (int)MajorBettype.Handicap);
             handicap = handicap ?? new MatchOdds
             {
                 OWPMatchId = owpMatchId,
                 Bettype = (int)MajorBettype.Handicap
             };
 
-            var overUnder = matchOdds.FirstOrDefault(x => x.Bettype == (int)MajorBettype.OverUnder);
+            var overUnder = matchOdds.Find(x => x.Bettype == (int)MajorBettype.OverUnder);
             overUnder = overUnder ?? new MatchOdds
             {
                 OWPMatchId = owpMatchId,
                 Bettype = (int)MajorBettype.OverUnder
             };
 
-            var oneXTwo = matchOdds.FirstOrDefault(x => x.Bettype == (int)MajorBettype.OneXTwo);
+            var oneXTwo = matchOdds.Find(x => x.Bettype == (int)MajorBettype.OneXTwo);
             oneXTwo = oneXTwo ?? new MatchOdds
             {
                 OWPMatchId = owpMatchId,

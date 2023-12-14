@@ -2,7 +2,13 @@ import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import { hasPermissionUser, updateUserInfo } from '../../../utils';
-
+import {
+  SELECT_CTI_SUPERVISOR_OPTION,
+  SELECT_CTI_STAFF_OPTION,
+  SELECT_SMS_SUPERVISOR_OPTION,
+  SELECT_SMS_STAFF_OPTION,
+  SELECT_OTHER_OPTION
+} from '../../../Const.json';
 const GroupCell = (props: {
   dataSource: Array<TUserInfo>;
   rowIndex: number;
@@ -22,9 +28,9 @@ const GroupCell = (props: {
   };
 
   const renderOptions = (startIndex: number, endIndex: number) => {
-    const options = [];
+    const dropdownOptions = [];
     for (let i = startIndex; i <= endIndex; i++) {
-      options.push(
+      dropdownOptions.push(
         <option
           key={userGroups[i]?.value}
           value={userGroups[i]?.value ?? undefined}>
@@ -32,13 +38,18 @@ const GroupCell = (props: {
         </option>
       );
     }
-    return options;
+    return dropdownOptions;
   };
-  const renderCTISupervisor = () => renderOptions(0, 1);
-  const renderCTIStaff = () => renderOptions(2, 3);
-  const renderSMSSupervisor = () => renderOptions(4, 9);
-  const renderSMSStaff = () => renderOptions(10, 14);
-  const renderOther = () => renderOptions(15, userGroups.length - 1);
+  const renderCTISupervisor = () => renderOptions(
+    SELECT_CTI_SUPERVISOR_OPTION.startIndex, SELECT_CTI_SUPERVISOR_OPTION.endIndex
+  );
+  const renderCTIStaff = () => renderOptions(
+    SELECT_CTI_STAFF_OPTION.startIndex, SELECT_CTI_STAFF_OPTION.endIndex);
+  const renderSMSSupervisor = () => renderOptions(
+    SELECT_SMS_SUPERVISOR_OPTION.startIndex, SELECT_SMS_SUPERVISOR_OPTION.endIndex);
+  const renderSMSStaff = () => renderOptions(
+    SELECT_SMS_STAFF_OPTION.startIndex, SELECT_SMS_STAFF_OPTION.endIndex);
+  const renderOther = () => renderOptions(SELECT_OTHER_OPTION.startIndex, userGroups.length - 1);
   return (
     <div className='select-wrapper-default'>
       <select
