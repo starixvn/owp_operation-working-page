@@ -268,6 +268,26 @@ input::-ms-input-placeholder {
     }
   }
 
+  .show-league {
+    width: 300px;
+
+    .form-check-label {
+      width: 40%;
+    }
+
+    .label-after-before {
+      font-size: 13px;
+      padding-bottom: 4px;
+      width: 20%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .input-field {
+      width: 40%;
+    }
+  }
+
   .filter-area {
     display: flex;
     justify-content: center;
@@ -405,7 +425,7 @@ input::-ms-input-placeholder {
       margin-left: 20px;
       width: 10px;
       height: 10px;
-      background-color: rgb(26, 190, 26);
+      background-color: #63AF50;
       border-radius: 50%;
       display: inline-block;
     }
@@ -453,7 +473,12 @@ input::-ms-input-placeholder {
               cursor: pointer;
 
               .matchCount {
+                font-size: 12px;
+                color: rgba(255, 255, 255, 1);
                 margin-right: 5px;
+                padding: 2px 3px 2px 3px;
+                border-radius: 5px;
+                background-color: rgba(88, 129, 87, 1);
               }
 
               .icon-expand {

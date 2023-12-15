@@ -18,7 +18,7 @@ const ShowLeague = props => {
     console.log('abc');
   };
   return (
-    <div className='checkbox'>
+    <div className='checkbox show-league'>
       <Input
         id='prematch-filter-issuse-message'
         type='checkbox'
@@ -31,7 +31,9 @@ const ShowLeague = props => {
         htmlFor='prematch-filter-issuse-message'>
         Show league
       </label>
-      {isNightShift ? <label>After</label> : <label>Before</label>}
+      <label className='label-after-before'>
+        {isNightShift ? 'after' : 'before'}
+      </label>
       <TimePicker
         inputReadOnly
         className='input-field'
