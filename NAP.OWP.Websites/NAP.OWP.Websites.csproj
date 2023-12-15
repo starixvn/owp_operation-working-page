@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -2885,8 +2884,8 @@
     <Content Include="wwwroot\prematch-report\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\prematch-report\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\prematch-report\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\prematch-report\assets\ext\server-9d6a59e1.css" />
-    <Content Include="wwwroot\prematch-report\assets\js\main-7af4f9c1.js" />
+    <Content Include="wwwroot\prematch-report\assets\ext\server-dc0e3ff4.css" />
+    <Content Include="wwwroot\prematch-report\assets\js\main-008ac4e3.js" />
     <Content Include="wwwroot\prematch-report\favicon.ico" />
     <Content Include="wwwroot\prematch-report\server.html" />
     <Content Include="wwwroot\product-preference\assets\ext\icon-feedback-57264197.svg" />
@@ -3050,10 +3049,6 @@
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\overtime-report\server.cshtml" />
     <Content Include="wwwroot\popup-container\server.cshtml" />
-    <Content Include="wwwroot\prematch-report\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\prematch-report\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\prematch-report\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\prematch-report\server.cshtml" />
     <Content Include="wwwroot\product-preference\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\product-preference\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\product-preference\assets\ext\OWP-a7443744.ttf" />
@@ -3086,6 +3081,10 @@
     <Content Include="wwwroot\user-management\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\user-management\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\user-management\server.cshtml" />
+    <Content Include="wwwroot\prematch-report\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\prematch-report\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\prematch-report\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\prematch-report\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
