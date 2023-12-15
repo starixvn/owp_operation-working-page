@@ -7,7 +7,7 @@ import { normalizeOptions } from '../utils';
 
 const defaultNoneOption = {
   value: 0,
-  label: "None"
+  label: ""
 };
 
 const createLevelSliceNative: StateCreator<

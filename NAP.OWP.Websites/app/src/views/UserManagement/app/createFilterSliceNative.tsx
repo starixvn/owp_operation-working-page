@@ -11,12 +11,12 @@ import {
 
 const defaultNoneOption = {
   value: 0,
-  label: 'None'
+  label: ''
 };
 
 const defaultLocationCodeNoneOption = {
   value: 'None',
-  label: 'None'
+  label: ''
 };
 
 const createOptionsSliceNative: StateCreator<TFilter, [], [], TFilter> = (

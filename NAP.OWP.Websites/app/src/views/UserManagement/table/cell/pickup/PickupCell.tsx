@@ -13,7 +13,7 @@ const pickupOption = [{
   label: 'No'
 }, {
   value: 'none',
-  label: 'None'
+  label: ''
 }];
 
 const PickupCell = (props: {

@@ -24,11 +24,11 @@
     "SkypeSize": 0.06,
     "CategorySize": 0.06,
     "LocationSize": 0.08,
-    "LevelSize": 0.08,
-    "PickupSize": 0.08,
+    "LevelSize": 0.07,
+    "PickupSize": 0.06,
     "AddressSize": 0.15,
-    "SecondAccountSize": 0.1,
-    "LanguageSize": 0.08,
+    "SecondAccountSize": 0.06,
+    "LanguageSize": 0.06,
     "MaximumLengthOfText": 150
   },
   "No": {
