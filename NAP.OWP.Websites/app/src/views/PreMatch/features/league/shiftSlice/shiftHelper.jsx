@@ -28,8 +28,13 @@ const getUnreadMessagePreMatchLeagueIds = (matches, leagues) => {
   return { PreMatchLeagueIds, InfoSiteMatchId };
 };
 
-const mergeMatchesToLeagues = (matches, leagues, filterUnreadMessage) => {
-  const leaguesCloned = cloneDeep(leagues);
+const mergeMatchesToLeagues = (
+  matches,
+  leagues,
+  filterUnreadMessage,
+  filterByTimeCondition
+) => {
+  let leaguesCloned = cloneDeep(leagues);
   const matchesCloned = cloneDeep(matches);
   matchesCloned.reverse().forEach(m => {
     const index = leaguesCloned.findIndex(
@@ -42,16 +47,41 @@ const mergeMatchesToLeagues = (matches, leagues, filterUnreadMessage) => {
   if (filterUnreadMessage) {
     const { PreMatchLeagueIds, InfoSiteMatchId } =
       getUnreadMessagePreMatchLeagueIds(matches, leagues);
-    return leaguesCloned.filter(
+    leaguesCloned = leaguesCloned.filter(
       e =>
         PreMatchLeagueIds.includes(e.PreMatchLeagueId) &&
         !InfoSiteMatchId.includes(e.InfoSiteMatchId)
     );
   }
 
+  if (filterByTimeCondition?.isShow) {
+    const { leagueInfos } = filterByTimeCondition;
+    const leagueIds = leagueInfos.map(x => x.conditionLeagueId);
+    leaguesCloned = leaguesCloned.filter(x => {
+      return leagueIds.includes(x.PreMatchLeagueId);
+    });
+  }
   return leaguesCloned;
 };
 
+const getLeagueInfosByTimeCondition = (matches, datetime) => {
+  const matchesWithTimeCondition = matches.filter(
+    item => new Date(item.EventDateTime) >= datetime
+  );
+  return Object.values(
+    matchesWithTimeCondition.reduce((leagueInfo, item) => {
+      if (leagueInfo[item.PreMatchLeagueId]) {
+        leagueInfo[item.PreMatchLeagueId].totalMatch++;
+      } else {
+        leagueInfo[item.PreMatchLeagueId] = {
+          conditionLeagueId: item.PreMatchLeagueId,
+          totalMatch: 1
+        };
+      }
+      return leagueInfo;
+    }, {})
+  );
+};
 const changeExpandStateAllLeague = (leagues, expandState) => {
   leagues.forEach(l => changeValue(l, 'isExpand', expandState));
 };
@@ -294,5 +324,6 @@ export {
   pasteCopied,
   pasteMultipleValue,
   sortLeaguesByDefault,
-  clearState
+  clearState,
+  getLeagueInfosByTimeCondition
 };

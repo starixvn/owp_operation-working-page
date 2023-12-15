@@ -103,7 +103,7 @@ const PreMatchTable = ({ isEditing, isNightShift }) => {
         headerHeight={headerHeight}>
         {ColumnsFactory(data, newProps, columnWidth)}
       </Table>
-      <div className='total'>Total Leagues: {model.leagues.length}</div>
+      <div className='total'>Total Leagues: {data.length}</div>
     </div>
   );
 };

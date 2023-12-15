@@ -14,14 +14,16 @@ const NoCell = props => {
   const { No, MatchOffer } = dataSource[rowIndex];
   return (
     <Cell key={nanoid()} className='header-no'>
-      {No && <div className='no'>{No}</div>}
+      {No && <div className='no'>{rowIndex + 1}</div>}
       <div className='match-offer'>
-        {MatchOffer && isEqual(MatchOffer, 'Opened') &&
-          <span className='icon-completed' />}
-        {MatchOffer && !isEqual(MatchOffer, 'Opened') &&
-          <span>{MatchOffer}</span>}
+        {MatchOffer && isEqual(MatchOffer, 'Opened') && (
+          <span className='icon-completed' />
+        )}
+        {MatchOffer && !isEqual(MatchOffer, 'Opened') && (
+          <span>{MatchOffer}</span>
+        )}
       </div>
-    </Cell >
+    </Cell>
   );
 };
 
