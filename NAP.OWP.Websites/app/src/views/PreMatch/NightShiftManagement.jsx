@@ -54,7 +54,7 @@ const NightShiftManagement = () => {
 
   const renderFilterViewer = () => (
     <>
-      <ViewFilterNighShift />
+      <ViewFilterNighShift isNightShift={props.isNightShift} />
       {permission.HasWrite && <CreateTicketButton buttonType={PRE_MATCH} />}
       {permission.HasWrite && <EditComponent />}
     </>

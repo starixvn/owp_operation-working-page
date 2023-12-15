@@ -12,16 +12,19 @@ import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { AccountCheckIcon } from 'mdi-react';
 import MatchOfferSelect from './MatchOfferSelect';
 import EarlyOfferedLeague from './EarlyOfferedLeague';
+import ShowLeague from './ShowLeague';
 
 const propTypes = {
   model: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onClickMyAssignee: PropTypes.func.isRequired,
-  isDisableEmp: PropTypes.bool.isRequired
+  isDisableEmp: PropTypes.bool.isRequired,
+  isNightShift: PropTypes.bool
 };
 
 const FilterPrematchViewer = React.forwardRef((props, ref) => {
-  const { model, onSubmit, isDisableEmp, onClickMyAssignee } = props;
+  const { model, onSubmit, isDisableEmp, onClickMyAssignee, isNightShift } =
+    props;
   const { filterDate, loading } = model;
   useEffect(() => {
     const handleSubmitWithCondition = () => {
@@ -79,7 +82,7 @@ const FilterPrematchViewer = React.forwardRef((props, ref) => {
         <CollapseBtn />
         <ExpandBtn />
       </div>
-
+      <ShowLeague isNightShift={isNightShift} />
       <ShowUnreadMessageCheckBox />
     </div>
   );
