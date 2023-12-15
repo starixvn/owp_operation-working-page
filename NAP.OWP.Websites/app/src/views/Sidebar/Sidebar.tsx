@@ -1,5 +1,5 @@
 import { CNavItem, CNavTitle, CSidebar, CSidebarNav } from '@coreui/react';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import logo from '../../assets/img/brand/logo_none.svg';
 import logoText from '../../assets/img/brand/logo_text.svg';
 import Utils from '../Shared/Utils';
@@ -27,7 +27,7 @@ type Wrapper = {
   attributes: Attributes;
 };
 
-export interface Attributes {}
+export interface Attributes { }
 
 export interface Attributes2 {
   title: string;
@@ -51,8 +51,21 @@ const NavItem = (item: Item) => {
 };
 
 const Sidebar = (navigation: Root) => {
+  const sideBarRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutSide = (event: MouseEvent) => {
+      sideBarRef.current &&
+        !sideBarRef.current.contains(event.target as Node) &&
+        document.body.classList.remove('sidebar-lg-show');
+    };
+    document.addEventListener('mousedown', handleClickOutSide);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutSide);
+    };
+  }, [sideBarRef]);
   return (
-    <CSidebar>
+    <CSidebar
+      ref={sideBarRef}>
       <a href={Utils.rootUrl} className='brand-logo'>
         <span className='logo-img'>
           <img src={logo} alt='OWP logo' />
