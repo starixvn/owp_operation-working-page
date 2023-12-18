@@ -336,5 +336,14 @@ namespace NAP.OWP.Websites.Controllers
             await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/feedback/server.cshtml");
         }
+
+        [Route("UserManagement_New")]
+        [NapAuth(FunctionKey = FunctionKeys.OWPEventManagement, Policy = Constant.Policy.Read)]
+        public async Task<ActionResult> UserManagement()
+        {
+            var functionName = ConfigurationManager.AppSettings["UserManagement"];
+            await accessCounter.UpdateCounter(functionName);
+            return View("~/wwwroot/user-management/server.cshtml");
+        }
     }
 }

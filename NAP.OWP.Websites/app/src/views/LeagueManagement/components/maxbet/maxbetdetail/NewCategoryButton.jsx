@@ -14,11 +14,11 @@ const NewCategoryButton = () => {
     event.preventDefault();
     (async () => {
       const addModel = {
-        OWPLeagueId: parseInt(id),
+        OWPLeagueId: parseInt(id, 10),
         apiKey: MaxbetConst.leagueManagementInsertLeagueSettingAPIKey
       };
       const queryModel = {
-        OWPLeagueId: parseInt(id),
+        OWPLeagueId: parseInt(id, 10),
         apiKey: MaxbetConst.leagueManagementGetLeagueSettingAPIKey
       };
       await Service.addNewLeague(addModel);

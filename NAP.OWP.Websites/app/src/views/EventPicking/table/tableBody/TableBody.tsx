@@ -24,7 +24,7 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   );
   for (let i = displayStart; i < displayEnd; ++i) {
     const row = data[i] as TDataTable;
-    if (row != undefined) {
+    if (row) {
       rows.push(
         <Fragment key={uuidv4()}>
           <tr className={`${row.rowColor}-row`}>

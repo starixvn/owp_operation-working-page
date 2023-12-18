@@ -57,12 +57,12 @@ const checkRemark = (arraySource, keyWordFormat) => {
 };
 
 const columnFilter = {
-  ['League']: checkLeague,
-  ['Match']: checkMatch,
-  ['TV/IPTV']: checkIpTV,
-  ['Provider']: checkProvider,
-  ['Round']: checkRound,
-  ['Remark']: checkRemark
+  'League': checkLeague,
+  'Match': checkMatch,
+  'TV/IPTV': checkIpTV,
+  'Provider': checkProvider,
+  'Round': checkRound,
+  'Remark': checkRemark
 };
 
 const filterByKeyword = (
@@ -74,7 +74,6 @@ const filterByKeyword = (
   }
   if (columnKey in columnFilter) {
     const keyWordFormat = keyword.toLowerCase();
-    console.log(keyWordFormat);
     return columnFilter[columnKey](arraySource, keyWordFormat);
   }
 

@@ -23,7 +23,6 @@ const OtherSportManager = () => {
     })(FunctionKeys.OSLiveGameAssignment);
   }, []);
 
-  const { HasWrite } = policy;
   if (loading) {
     return <Loading />;
   }

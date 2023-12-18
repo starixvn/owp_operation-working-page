@@ -26,6 +26,7 @@ const StatusCell = props => {
   const linkRef = useRef();
   const offerRef = useRef();
   const dropdownRef = useRef();
+
   if (!offerLive) {
     return null;
   }
@@ -38,9 +39,8 @@ const StatusCell = props => {
     canceled: '#EB5757'
   };
 
-  const buildOfferLiveBorderColor = () => {
-    return offerLiveColors[offerLiveLowerCase] || null;
-  };
+  const buildOfferLiveBorderColor = () =>
+    offerLiveColors[offerLiveLowerCase] || null;
 
   const buildOfferLive = () => {
     return offerLiveLowerCase === 'live' ? 'LIVE' : '';

@@ -35,7 +35,7 @@ const Condition = ({ leagueSettingId, onClose }) => {
           postData(
             buildQuerySimpleApi(),
             {
-              OWPLeagueId: parseInt(id),
+              OWPLeagueId: parseInt(id, 10),
               apiKey: MaxbetConst.leagueManagementGetLeagueSettingAPIKey
             },
             QUERY_LEAGUE_DETAIL
