@@ -289,6 +289,12 @@ const shiftSlice = createSlice({
           state.isShowUnreadMessage,
           state.leagueWithTimeCondition
         );
+        state.leagueWithTimeCondition = {
+          isShow: false,
+          datetime: null,
+          isNightShift: false,
+          leagueInfos: []
+        };
       }
     },
 

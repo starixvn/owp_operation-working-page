@@ -8,6 +8,8 @@ import {
   collapseOneLeague,
   expandOneLeague
 } from '../../shiftSlice/shiftSlice';
+import { getMatchActiveByCondition } from '../../shiftSlice/shiftHelper';
+import { useSelector } from 'react-redux';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -18,6 +20,13 @@ const LeagueCell = props => {
   const { dataSource, rowIndex } = props;
   const { LeagueName, PreMatchLeagueId, isExpand, MatchCount, IsEarlyOffered } =
     dataSource[rowIndex];
+  const { leagueWithTimeCondition } = useSelector(state => state.dayShift);
+
+  const matchActiveByCondition = getMatchActiveByCondition(
+    leagueWithTimeCondition,
+    PreMatchLeagueId
+  );
+
   const stableDispatch = useStableDispatch();
   const handleClickExpandCollapse = () => {
     isExpand
@@ -31,7 +40,14 @@ const LeagueCell = props => {
         <label id={`name${rowIndex}`}>{LeagueName}</label>
         {IsEarlyOffered && <div className='green-dot'></div>}
         <span>
-          <b className='matchCount'>({MatchCount})</b>
+          {leagueWithTimeCondition.leagueInfos.length > 0 ? (
+            <b className='matchCountActive'>
+              {`${matchActiveByCondition}/${MatchCount}`}
+            </b>
+          ) : (
+            <b className='matchCount'>({MatchCount})</b>
+          )}
+
           <span className='icon-expand' onClick={handleClickExpandCollapse}>
             {isExpand ? '\u25BC' : '\u25BA'}
           </span>

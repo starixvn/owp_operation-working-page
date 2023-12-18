@@ -312,6 +312,19 @@ const clearState = state => {
   state.prematchIdDeleted.length = 0;
   state.sortState = {};
 };
+const getMatchActiveByCondition = (
+  leagueWithTimeCondition,
+  preMatchLeagueId
+) => {
+  if (leagueWithTimeCondition.leagueInfos.length > 0) {
+    return (
+      leagueWithTimeCondition.leagueInfos.find(
+        x => x.conditionLeagueId === preMatchLeagueId
+      )?.totalActiveMatch ?? null
+    );
+  }
+  return null;
+};
 
 export {
   getUnreadMessagePreMatchLeagueIds,
@@ -326,5 +339,6 @@ export {
   pasteMultipleValue,
   sortLeaguesByDefault,
   clearState,
-  getLeagueInfosByTimeCondition
+  getLeagueInfosByTimeCondition,
+  getMatchActiveByCondition
 };
