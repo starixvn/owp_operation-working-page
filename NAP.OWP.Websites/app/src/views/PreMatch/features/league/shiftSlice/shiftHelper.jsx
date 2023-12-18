@@ -44,6 +44,7 @@ const mergeMatchesToLeagues = (
       leaguesCloned.splice(index + 1, 0, m);
     }
   });
+
   if (filterUnreadMessage) {
     const { PreMatchLeagueIds, InfoSiteMatchId } =
       getUnreadMessagePreMatchLeagueIds(matches, leagues);
@@ -64,18 +65,18 @@ const mergeMatchesToLeagues = (
   return leaguesCloned;
 };
 
-const getLeagueInfosByTimeCondition = (matches, datetime) => {
-  const matchesWithTimeCondition = matches.filter(
-    item => new Date(item.EventDateTime) >= datetime
-  );
+const getLeagueInfosByTimeCondition = (matches, datetime, isNightShift) => {
+  const matchesWithTimeCondition = isNightShift
+    ? matches.filter(item => new Date(item.EventDateTime) >= datetime)
+    : matches.filter(item => new Date(item.EventDateTime) <= datetime);
   return Object.values(
     matchesWithTimeCondition.reduce((leagueInfo, item) => {
       if (leagueInfo[item.PreMatchLeagueId]) {
-        leagueInfo[item.PreMatchLeagueId].totalMatch++;
+        leagueInfo[item.PreMatchLeagueId].totalActiveMatch++;
       } else {
         leagueInfo[item.PreMatchLeagueId] = {
           conditionLeagueId: item.PreMatchLeagueId,
-          totalMatch: 1
+          totalActiveMatch: 1
         };
       }
       return leagueInfo;

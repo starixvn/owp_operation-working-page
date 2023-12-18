@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Input } from 'reactstrap';
 import { TimePicker } from 'antd';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
+import {
+  unShowLeaguesWithTimeCondition,
+  showLeaguesWithTimeCondition
+} from '../../features/league/shiftSlice/shiftSlice';
+import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 
 const propTypes = {
   isNightShift: PropTypes.bool
@@ -10,25 +16,57 @@ const propTypes = {
 const format = 'h:mm A';
 const ShowLeague = props => {
   const { isNightShift } = props;
+  const stableDispatch = useStableDispatch();
+
+  const { filterDate } = useSelector(state => state.filter);
+
+  const { isShow } = useSelector(
+    state => state.dayShift?.leagueWithTimeCondition
+  );
+
   const defaultTime = isNightShift
     ? dayjs('10:59 PM', format)
-    : dayjs('05:31 AM', format);
+    : dayjs('05:31 PM', format);
+
   const [startTimeSelected, setStartTimeSelected] = useState(defaultTime);
   const handleClick = () => {
-    console.log('abc');
+    const datetime = getDateTimeCondition();
+    isShow
+      ? stableDispatch(unShowLeaguesWithTimeCondition())
+      : stableDispatch(
+          showLeaguesWithTimeCondition({ datetime, isNightShift })
+        );
   };
+
+  const handleOnBlur = () => {
+    if (isShow === true) {
+      const datetime = getDateTimeCondition();
+      stableDispatch(showLeaguesWithTimeCondition({ datetime }));
+    }
+  };
+
+  const getDateTimeCondition = () => {
+    const timeArray = startTimeSelected.format('HH:mm').split(':');
+    const date = new Date(Date.parse(filterDate));
+    date.setHours(timeArray[0], timeArray[1]);
+    if (date.getHours() >= 0 && date.getHours() < 12) {
+      date.setDate(date.getDate() + 1);
+    }
+    return date;
+  };
+
   return (
     <div className='checkbox show-league'>
       <Input
-        id='prematch-filter-issuse-message'
+        id='prematch-filter-time-condition-message'
         type='checkbox'
-        defaultChecked={false}
+        defaultValue={isShow}
         className='form-check-input'
         onClick={handleClick}
       />
       <label
         className='form-check-label'
-        htmlFor='prematch-filter-issuse-message'>
+        htmlFor='prematch-filter-time-condition-message'>
         Show league
       </label>
       <label className='label-after-before'>
@@ -39,12 +77,12 @@ const ShowLeague = props => {
         className='input-field'
         id='startTime'
         use12Hours
-        defaultValue={startTimeSelected}
-        // onSelect={value => setStartTimeSelected(value)}
-        // value={startTimeSelected}
+        onSelect={value => setStartTimeSelected(value)}
+        value={startTimeSelected}
         format={format}
         allowClear={false}
         showNow={false}
+        onBlur={handleOnBlur}
       />
     </div>
   );

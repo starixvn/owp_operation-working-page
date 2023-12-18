@@ -1,4 +1,4 @@
-import { createSlice, current, nanoid } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { isEqual } from 'lodash';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
 import { NOTE_TYPE } from '../../../const/const';
@@ -46,6 +46,7 @@ const shiftSlice = createSlice({
     leagueWithTimeCondition: {
       isShow: false,
       datetime: null,
+      isNightShift: false,
       leagueInfos: []
     }
   },
@@ -242,38 +243,6 @@ const shiftSlice = createSlice({
         );
       }
     },
-    showLeaguesWithTimeCondition: {
-      reducer: (state, action) => {
-        console.log('hehe');
-        const { datetime } = action.payload;
-        const leagueInfos = getLeagueInfosByTimeCondition(
-          state.matches,
-          datetime
-        );
-        state.leagueWithTimeCondition = {
-          datetime,
-          leagueInfos,
-          isShow: true
-        };
-        state.entities = mergeMatchesToLeagues(
-          state.matches,
-          state.leagues,
-          state.isShowUnreadMessage,
-          state.leagueWithTimeCondition
-        );
-      }
-    },
-    unShowLeaguesWithTimeCondition: {
-      reducer: state => {
-        state.leagueWithTimeCondition = null;
-        state.entities = mergeMatchesToLeagues(
-          state.matches,
-          state.leagues,
-          state.isShowUnreadMessage,
-          null
-        );
-      }
-    },
     unShowUnreadMessageOnly: {
       reducer: state => {
         state.isExpandAll = false;
@@ -287,6 +256,42 @@ const shiftSlice = createSlice({
         );
       }
     },
+    showLeaguesWithTimeCondition: {
+      reducer: (state, action) => {
+        const { datetime, isNightShift } = action.payload;
+
+        const leagueInfos = getLeagueInfosByTimeCondition(
+          state.matches,
+          datetime,
+          isNightShift
+        );
+        state.leagueWithTimeCondition = {
+          datetime,
+          leagueInfos,
+          isShow: true,
+          isNightShift
+        };
+
+        state.entities = mergeMatchesToLeagues(
+          state.matches,
+          state.leagues,
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
+        );
+      }
+    },
+    unShowLeaguesWithTimeCondition: {
+      reducer: state => {
+        state.leagueWithTimeCondition.isShow = false;
+        state.entities = mergeMatchesToLeagues(
+          state.matches,
+          state.leagues,
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
+        );
+      }
+    },
+
     updatedIconIssueLeagueRow: {
       reducer: (state, action) => {
         const { PreMatchLeagueId, TicketId } = action.payload;

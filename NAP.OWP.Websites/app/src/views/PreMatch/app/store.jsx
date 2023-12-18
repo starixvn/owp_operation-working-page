@@ -31,6 +31,10 @@ const store = configureStore({
     note: noteSlice,
     createTicketBoard: createTicketBoardReducerNew
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    }),
   devTools: !isEqual(process.env.NODE_ENV, 'production')
 });
 
