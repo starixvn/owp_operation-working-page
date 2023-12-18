@@ -41,7 +41,7 @@ const ShowLeague = props => {
   const handleOnBlur = () => {
     if (isShow === true) {
       const datetime = getDateTimeCondition();
-      stableDispatch(showLeaguesWithTimeCondition({ datetime }));
+      stableDispatch(showLeaguesWithTimeCondition({ datetime, isNightShift }));
     }
   };
 
@@ -52,6 +52,7 @@ const ShowLeague = props => {
     if (date.getHours() >= 0 && date.getHours() < 12) {
       date.setDate(date.getDate() + 1);
     }
+
     return date;
   };
 
