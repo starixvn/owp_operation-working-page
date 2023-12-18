@@ -109,7 +109,8 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
       : onRowClassNameGetter(index, entities);
 
   const handleRowClick = (_, index) =>
-    isEqual(typeof onRowClick, 'undefined') && onRowClick(index, entities);
+    !isEqual(typeof onRowClick, 'undefined') && onRowClick(index, entities);
+
   return (
     <div className='table' ref={ref}>
       {isEqual(loading, REQUEST_STATUS.pending) && <Loading />}

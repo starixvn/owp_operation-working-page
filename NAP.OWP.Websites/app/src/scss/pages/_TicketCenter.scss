@@ -323,11 +323,6 @@
         }
         .comment-message {
           .is-file {
-            color: #1e88e5;
-            cursor: pointer;
-            &:hover {
-              text-decoration: underline;
-            }
             &.not-available {
               cursor: default;
               color: #828282;
@@ -369,14 +364,6 @@
             overflow: hidden;
             max-width: 330px;
             display: inline-block;
-          }
-          &:hover {
-            color: rgb(31, 112, 233);
-            text-decoration: underline;
-            cursor: pointer;
-            span {
-              text-decoration: underline;
-            }
           }
         }
       }

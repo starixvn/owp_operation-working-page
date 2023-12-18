@@ -13,21 +13,12 @@ const TicketCenterTable = () => {
     setTableSchema(newConfig);
   };
 
-  const onRowClick = index => {};
   useEffect(() => {
     window.addEventListener('resize', handleResizeBrowser);
     return () => window.removeEventListener('resize', handleResizeBrowser);
   }, []);
 
-  return (
-    <CustomTable
-      model={model}
-      config={{
-        ...tableSchema,
-        onRowClick
-      }}
-    />
-  );
+  return <CustomTable model={model} config={tableSchema} />;
 };
 
 export default TicketCenterTable;

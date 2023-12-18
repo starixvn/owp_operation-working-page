@@ -50,7 +50,7 @@ TicketDetailHeader.propTypes = {
   subject: PropTypes.string,
   homeName: PropTypes.string,
   awayName: PropTypes.string,
-  owpLeagueName: PropTypes.string,
+  eventName: PropTypes.string,
   koTime: PropTypes.instanceOf(Date)
 };
 

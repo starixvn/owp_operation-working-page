@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   subject: PropTypes.string.isRequired,
-  isRead: PropTypes.bool.isRequired,
-  onClick: PropTypes.func
+  isRead: PropTypes.bool.isRequired
 };
 
-const OtherIssueCell = ({ subject = '', isRead = false, onClick = f => f }) => {
+const OtherIssueCell = ({ subject = '', isRead = false }) => {
   return (
     <Cell
       className={
@@ -17,7 +16,7 @@ const OtherIssueCell = ({ subject = '', isRead = false, onClick = f => f }) => {
           ? 'new-add-info-cell has-unread conversation-cell'
           : 'new-add-info-cell cell conversation-cell'
       }>
-      <OtherIssueContent subject={subject} onClick={onClick} />
+      <OtherIssueContent subject={subject} />
     </Cell>
   );
 };

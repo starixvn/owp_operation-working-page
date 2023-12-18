@@ -5,14 +5,13 @@ const propTypes = {
   evenDate: PropTypes.string,
   koTime: PropTypes.string,
   leagueName: PropTypes.string,
-  matchName: PropTypes.object,
-  onClick: PropTypes.func
+  matchName: PropTypes.object
 };
 
 const MatchContent = props => {
-  const { evenDate, koTime, matchName, leagueName, onClick } = props;
+  const { evenDate, koTime, matchName, leagueName } = props;
   return (
-    <span role='link' onClick={onClick} className='ticket-title-link'>
+    <span className='ticket-title-link'>
       {leagueName ? (
         <>
           <span>{leagueName} </span>

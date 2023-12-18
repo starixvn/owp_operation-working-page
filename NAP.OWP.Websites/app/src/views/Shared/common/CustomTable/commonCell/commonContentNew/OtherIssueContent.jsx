@@ -2,19 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  subject: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  subject: PropTypes.string.isRequired
 };
 
 const OtherIssueContent = props => {
-  const { subject, onClick } = props;
+  const { subject } = props;
   return (
-    <span
-      className='new-add-league-name ticket-title-link'
-      role='link'
-      onClick={onClick}>
-      {subject}
-    </span>
+    <span className='new-add-league-name ticket-title-link'>{subject}</span>
   );
 };
 OtherIssueContent.propTypes = propTypes;

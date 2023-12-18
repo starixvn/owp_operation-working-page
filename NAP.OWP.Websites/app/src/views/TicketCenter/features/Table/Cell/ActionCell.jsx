@@ -30,10 +30,15 @@ const ActionCell = props => {
   const [isOpenStatusHistory, setIsOpenStatusHistory] = useState(false);
   const dispatch = useStableDispatch();
 
-  const handleOpenStatusHistory = () => setIsOpenStatusHistory(true);
+  const handleOpenStatusHistory = event => {
+    event.stopPropagation();
+    setIsOpenStatusHistory(true);
+  };
+
   const handleCloseStatusHistory = () => setIsOpenStatusHistory(false);
 
-  const handlePinTicket = isPinnedToTop => {
+  const handlePinTicket = (event, isPinnedToTop) => {
+    event.stopPropagation();
     const model = {
       actorId: ActorId,
       ticketId,
@@ -44,7 +49,8 @@ const ActionCell = props => {
     dispatch(refreshEventTickets(filterModel));
   };
 
-  const handleDeleteTicket = async () => {
+  const handleDeleteTicket = async event => {
+    event.stopPropagation();
     const confirm = await ToastsWrapper.confirm(
       `Are you sure that you want to delete this ticket ID:${ticketId}?`
     );
@@ -60,51 +66,43 @@ const ActionCell = props => {
   };
 
   return (
-    <>
-      <Cell className={!isRead ? 'has-unread' : 'cell'}>
-        <div className='action-cell'>
-          {isPinned ? (
-            <>
-              <span
-                id={`pin-icon-${ticketId}`}
-                className='icon-unpin'
-                onClick={() => handlePinTicket(false)}
-              />
-            </>
-          ) : (
-            <>
-              <span
-                id={`unpin-icon-${ticketId}`}
-                className='icon-pin'
-                onClick={() => handlePinTicket(true)}
-              />
-            </>
-          )}
-          <>
-            <span
-              className='icon-history'
-              id={`history-icon-${ticketId}`}
-              size={16}
-              onClick={handleOpenStatusHistory}
-            />
-            {HasWrite && (
-              <span
-                className='icon-delete'
-                id={`delete-icon-${ticketId}`}
-                size={16}
-                onClick={handleDeleteTicket}
-              />
-            )}
-          </>
-          {isOpenStatusHistory && (
-            <StatusPopup
-              ticketId={ticketId}
-              handleClosePopup={handleCloseStatusHistory}
-            />
-          )}
-        </div>
-      </Cell>
-    </>
+    <Cell className={!isRead ? 'has-unread' : 'cell'}>
+      <div className='action-cell'>
+        {isPinned ? (
+          <span
+            id={`pin-icon-${ticketId}`}
+            className='icon-unpin'
+            onClick={event => handlePinTicket(event, false)}
+          />
+        ) : (
+          <span
+            id={`unpin-icon-${ticketId}`}
+            className='icon-pin'
+            onClick={event => handlePinTicket(event, true)}
+          />
+        )}
+        <span
+          className='icon-history'
+          id={`history-icon-${ticketId}`}
+          size={16}
+          onClick={handleOpenStatusHistory}
+        />
+        {HasWrite && (
+          <span
+            className='icon-delete'
+            id={`delete-icon-${ticketId}`}
+            size={16}
+            onClick={handleDeleteTicket}
+          />
+        )}
+        {isOpenStatusHistory && (
+          <StatusPopup
+            ticketId={ticketId}
+            handleClosePopup={handleCloseStatusHistory}
+          />
+        )}
+      </div>
+    </Cell>
   );
 };
 

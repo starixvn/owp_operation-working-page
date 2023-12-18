@@ -6,11 +6,10 @@ import MatchCell from './MatchCell';
 import LogWorkCell from './LogWorkCell';
 
 const propTypes = {
-  data: PropTypes.object.isRequired,
-  onClick: PropTypes.func
+  data: PropTypes.object.isRequired
 };
 
-const LeagueCellFactory = ({ data, onClick }) => {
+const LeagueCellFactory = ({ data }) => {
   const {
     homeName,
     owpLeagueName,
@@ -23,13 +22,7 @@ const LeagueCellFactory = ({ data, onClick }) => {
 
   switch (eventType) {
     case 1:
-      return (
-        <LeagueCell
-          leagueName={owpLeagueName}
-          isRead={isRead}
-          onClick={onClick}
-        />
-      );
+      return <LeagueCell leagueName={owpLeagueName} isRead={isRead} />;
     case 2:
     case 5:
       return (
@@ -39,19 +32,12 @@ const LeagueCellFactory = ({ data, onClick }) => {
           awayName={awayName}
           koTime={koTime}
           isRead={isRead}
-          onClick={onClick}
         />
       );
     case 6:
-      return <LogWorkCell data={data} onClick={onClick} />;
+      return <LogWorkCell data={data} />;
     default:
-      return (
-        <OtherIssueCell
-          subject={subject || ''}
-          isRead={isRead}
-          onClick={onClick}
-        />
-      );
+      return <OtherIssueCell subject={subject || ''} isRead={isRead} />;
   }
 };
 

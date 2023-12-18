@@ -2,9 +2,18 @@ import { calculateCustomTableWidth } from '../../../Shared/common/CustomTable/He
 import DynamicCell from './Cell/DynamicCell';
 import { sort } from './eventSlice/eventCheckingSlice';
 import store from '../../app/storeNative';
-import { getTicketDetail } from '../../../Shared/chatBoardNew/chatBoardSlice';
+import {
+  getTicketDetail,
+  getTicketSubTypes
+} from '../../../Shared/chatBoardNew/chatBoardSlice';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import { getDetailSegmentUrlByEventType } from '../../Helper/TicketCenterHelper';
+import { updatedIsReadOneRow } from '../../ImportTicketCenterHelperNative';
+import {
+  closeCreatePopup,
+  changeErrorRecipient
+} from '../../../Shared/createTicketNew/createTicketBoardSliceNew';
+import { onClickIssueModel } from '../signalR/signalRSlice';
 
 const DefaultTableStyle = {
   rowHeight: 70,
@@ -92,7 +101,6 @@ const getConfigTicketsTab = containerWidth => {
       const { permission } = pagePolicy;
       const { ticketId, eventType, ticketType } =
         eventChecking.entities[rowIndex];
-
       const requestDetailModel = {
         ticketId,
         actorId: permission.ActorId,
