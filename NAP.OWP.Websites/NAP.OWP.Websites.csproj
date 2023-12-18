@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -450,6 +449,9 @@
     <Content Include="App_Configurations\Web.SIT.AppSettings.config">
       <DependentUpon>Web.DEV.AppSettings.config</DependentUpon>
     </Content>
+    <Content Include="App_Configurations\Web.KDLR.AppSettings.config">
+      <DependentUpon>Web.DEV.AppSettings.config</DependentUpon>
+    </Content>
     <Content Include="App_Configurations\Web.DEV.ConnectionStrings.config" />
     <Content Include="App_Configurations\Web.AWS.ConnectionStrings.config">
       <DependentUpon>Web.DEV.ConnectionStrings.config</DependentUpon>
@@ -464,6 +466,9 @@
       <DependentUpon>Web.DEV.ConnectionStrings.config</DependentUpon>
     </Content>
     <Content Include="App_Configurations\Web.UAT.ConnectionStrings.config">
+      <DependentUpon>Web.DEV.ConnectionStrings.config</DependentUpon>
+    </Content>
+    <Content Include="App_Configurations\Web.KLDR.ConnectionStrings.config">
       <DependentUpon>Web.DEV.ConnectionStrings.config</DependentUpon>
     </Content>
     <Content Include="App_Data\Files\Readme.txt" />
@@ -536,6 +541,9 @@
     <Content Include="libman.json" />
     <Content Include="App_Data\Templates\TraderAutoAssignmentTimeTableTemplate.xlsx" />
     <Content Include="App_Configurations\Web.AWS.config">
+      <DependentUpon>Web.Config.tt</DependentUpon>
+    </Content>
+    <Content Include="App_Configurations\Web.KLDR.config">
       <DependentUpon>Web.Config.tt</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
@@ -3080,6 +3088,8 @@
     <Content Include="wwwroot\user-management\server.cshtml" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a631227d.woff" />
+    <Content Include="T4.FileManager.VisualStudio19.ttinclude" />
+    <Content Include="T4.FileManager.VisualStudio.ttinclude" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\la-kpi\server.cshtml" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-7daa37ca.eot" />

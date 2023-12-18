@@ -1,0 +1,108 @@
+{
+  "FilesToGenerate": [
+    {
+      "Filename": "Web.DEV.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.LOCAL.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.LOCAL1.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.LOCAL2.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.LOCAL3.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.UAT.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.UAT1.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.UAT2.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.UAT3.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.SIT.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.PRO.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.AWS.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    },
+    {
+      "Filename": "Web.KLDR.config",
+      "Project": "NAP.OWP.Websites",
+      "Path": "App_Configurations",
+      "Properties": {
+        "BuildAction": 2
+      }
+    }
+  ]
+}
