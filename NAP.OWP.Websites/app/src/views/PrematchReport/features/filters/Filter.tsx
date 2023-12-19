@@ -28,7 +28,7 @@ const Filter = () => {
   const handleSearch = () => {
     if (!isValidTimeRange(fromDate, toDate)) {
       ToastrWrapper.showError(
-        <h4>Please select date range within 365 days</h4>
+        <h4>Please select date range within 366 days</h4>
       );
       return;
     }

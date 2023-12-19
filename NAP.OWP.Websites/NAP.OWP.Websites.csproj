@@ -2885,7 +2885,7 @@
     <Content Include="wwwroot\prematch-report\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\prematch-report\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\prematch-report\assets\ext\server-dc0e3ff4.css" />
-    <Content Include="wwwroot\prematch-report\assets\js\main-008ac4e3.js" />
+    <Content Include="wwwroot\prematch-report\assets\js\main-1ef43e47.js" />
     <Content Include="wwwroot\prematch-report\favicon.ico" />
     <Content Include="wwwroot\prematch-report\server.html" />
     <Content Include="wwwroot\product-preference\assets\ext\icon-feedback-57264197.svg" />
