@@ -270,9 +270,11 @@ input::-ms-input-placeholder {
 
   .show-league {
     width: 250px;
+    margin-left: 150px;
 
     .form-check-label {
       width: 45%;
+      color: #444444 !important;
     }
 
     .label-after-before {
@@ -473,7 +475,7 @@ input::-ms-input-placeholder {
               cursor: pointer;
 
               .matchCountActive {
-                font-size: 12px;
+                font-size: 11px;
                 color: rgba(255, 255, 255, 1);
                 margin-right: 5px;
                 padding: 2px 3px 2px 3px;
