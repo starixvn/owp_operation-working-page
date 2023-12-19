@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { changeMode } from '../edit/editSlice';
 import { resetCopyInfo } from '../copy/copySlice';
+import { reloadDataAfterEdit } from '../filter/filterSlice';
 import { clearStateDayShift } from '../league/shiftSlice/shiftSlice';
 import Spinner from '../../../components/Spinner';
 import { filterPrematchUpdated } from '../../helper/preMatchHelper';
@@ -24,6 +25,7 @@ const DayShiftSaver = () => {
     dispatch(resetCopyInfo());
     dispatch(clearStateDayShift());
     dispatch(changeMode({ isEdit: false }));
+    dispatch(reloadDataAfterEdit());
   };
 
   const handleCancel = e => {

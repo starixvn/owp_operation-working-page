@@ -20,8 +20,8 @@ const ShowLeague = props => {
 
   const { filterDate } = useSelector(state => state.filter);
 
-  const { isShow } = useSelector(
-    state => state.dayShift?.leagueWithTimeCondition
+  const isShow = useSelector(
+    state => state.dayShift?.leagueWithTimeCondition.isShow
   );
 
   const defaultTime = isNightShift
@@ -61,7 +61,7 @@ const ShowLeague = props => {
       <Input
         id='prematch-filter-time-condition-message'
         type='checkbox'
-        defaultValue={isShow}
+        defaultChecked={isShow}
         className='form-check-input'
         onClick={handleClick}
       />

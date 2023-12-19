@@ -67,8 +67,8 @@ const mergeMatchesToLeagues = (
 
 const getLeagueInfosByTimeCondition = (matches, datetime, isNightShift) => {
   const matchesWithTimeCondition = isNightShift
-    ? matches.filter(item => new Date(item.EventDateTime) >= datetime)
-    : matches.filter(item => new Date(item.EventDateTime) <= datetime);
+    ? matches.filter(item => new Date(item.EventDateTime) > datetime)
+    : matches.filter(item => new Date(item.EventDateTime) < datetime);
   return Object.values(
     matchesWithTimeCondition.reduce((leagueInfo, item) => {
       if (leagueInfo[item.PreMatchLeagueId]) {
