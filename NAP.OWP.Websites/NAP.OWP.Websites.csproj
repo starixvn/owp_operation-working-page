@@ -449,7 +449,7 @@
     <Content Include="App_Configurations\Web.SIT.AppSettings.config">
       <DependentUpon>Web.DEV.AppSettings.config</DependentUpon>
     </Content>
-    <Content Include="App_Configurations\Web.KDLR.AppSettings.config">
+    <Content Include="App_Configurations\Web.KLDR.AppSettings.config">
       <DependentUpon>Web.DEV.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="App_Configurations\Web.DEV.ConnectionStrings.config" />
