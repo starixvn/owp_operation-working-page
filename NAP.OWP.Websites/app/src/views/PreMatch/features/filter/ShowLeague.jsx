@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Input } from 'reactstrap';
 import { TimePicker } from 'antd';
@@ -8,6 +8,7 @@ import {
   unShowLeaguesWithTimeCondition,
   showLeaguesWithTimeCondition
 } from '../../features/league/shiftSlice/shiftSlice';
+import { updateStartTimeSelected } from '../../features/filter/filterSlice';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 
 const propTypes = {
@@ -18,17 +19,20 @@ const ShowLeague = props => {
   const { isNightShift } = props;
   const stableDispatch = useStableDispatch();
 
-  const { filterDate } = useSelector(state => state.filter);
+  const { filterDate, startTimeSelected } = useSelector(state => state.filter);
 
   const isShow = useSelector(
     state => state.dayShift?.leagueWithTimeCondition.isShow
   );
 
-  const defaultTime = isNightShift
-    ? dayjs('10:59 PM', format)
-    : dayjs('05:31 PM', format);
+  useEffect(() => {
+    const defaultTime = isNightShift
+      ? dayjs('10:59 PM', format)
+      : dayjs('05:31 PM', format);
+    !startTimeSelected &&
+      stableDispatch(updateStartTimeSelected({ startTime: defaultTime }));
+  }, []);
 
-  const [startTimeSelected, setStartTimeSelected] = useState(defaultTime);
   const handleClick = () => {
     const datetime = getDateTimeCondition();
     isShow
@@ -78,7 +82,9 @@ const ShowLeague = props => {
         className='input-field'
         id='startTime'
         use12Hours
-        onSelect={value => setStartTimeSelected(value)}
+        onSelect={value =>
+          stableDispatch(updateStartTimeSelected({ startTime: value }))
+        }
         value={startTimeSelected}
         format={format}
         allowClear={false}
