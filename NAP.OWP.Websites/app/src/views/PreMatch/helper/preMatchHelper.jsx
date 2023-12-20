@@ -2,7 +2,8 @@ import { isEqual } from 'lodash';
 import {
   TAKE_OVER_API_KEY,
   TradingPageUrl,
-  simpleApiQueryUrl
+  simpleApiQueryUrl,
+  localStoreKeyTime
 } from '../const/const';
 import { formatTime } from '../../Shared/DateTime/dateTimeHelper';
 import dayjs from 'dayjs';
@@ -64,12 +65,21 @@ const buildStartTimeQueryModel = evenDate => {
 const buildGoToTradingPageLink = (betType, assignedLeagueIds) =>
   `${TradingPageUrl}?bt=${betType}&rng=T&c=${assignedLeagueIds}&lge=&lgt=${assignedLeagueIds}&lgl=&lgc=&fcSite=0&fcSource=4`;
 
+const getLocalKey = isNightShift =>
+  isNightShift ? localStoreKeyTime.night : localStoreKeyTime.day;
+
 const getDefaultTimeCondition = isNightShift => {
   const format = 'h:mm A';
-  const prevTime = localStorage.getItem('PreMatchTimeCondition');
+  const localKey = getLocalKey(isNightShift);
+  const prevTime = localStorage.getItem(localKey);
   return prevTime
     ? dayjs(prevTime, format)
     : dayjs(isNightShift ? '10:59 PM' : '05:31 PM', format);
+};
+
+const saveTimeConditionToLocalStorage = (isNightShift, startTimeSelected) => {
+  const localKey = getLocalKey(isNightShift);
+  localStorage.setItem(localKey, startTimeSelected.format('h:mm A'));
 };
 
 export {
@@ -80,5 +90,6 @@ export {
   buildLAST_UPDATEDFormatter,
   buildLastUpdate,
   buildGoToTradingPageLink,
-  getDefaultTimeCondition
+  getDefaultTimeCondition,
+  saveTimeConditionToLocalStorage
 };

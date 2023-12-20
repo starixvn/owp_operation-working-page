@@ -86,6 +86,10 @@ const BetType = {
   HDP: 1,
   OU: 3
 };
+const localStoreKeyTime = {
+  day: 'DayShift-PreMatchTimeCondition',
+  night: 'NightShift-PreMatchTimeCondition'
+};
 
 export {
   EARLY_OFFERED,
@@ -112,5 +116,6 @@ export {
   URL_QUERY_ASSIGNED_LEAGUE_ID,
   simpleApiQueryUrl,
   simpleApiUpdateUrl,
-  URL_QUERY_TICKET_LIST
+  URL_QUERY_TICKET_LIST,
+  localStoreKeyTime
 };

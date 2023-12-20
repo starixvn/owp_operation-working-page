@@ -9,7 +9,10 @@ import {
   showLeaguesWithTimeCondition
 } from '../../features/league/shiftSlice/shiftSlice';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
-import { getDefaultTimeCondition } from '../../helper/preMatchHelper';
+import {
+  getDefaultTimeCondition,
+  saveTimeConditionToLocalStorage
+} from '../../helper/preMatchHelper';
 
 const propTypes = {
   isNightShift: PropTypes.bool
@@ -39,10 +42,7 @@ const ShowLeague = props => {
   };
 
   const handleOnBlur = () => {
-    localStorage.setItem(
-      'PreMatchTimeCondition',
-      startTimeSelected.format('h:mm A')
-    );
+    saveTimeConditionToLocalStorage(isNightShift, startTimeSelected);
     if (isShow === true) {
       const datetime = getDateTimeCondition();
       stableDispatch(showLeaguesWithTimeCondition({ datetime, isNightShift }));
