@@ -4,6 +4,7 @@ import { ColumnModels } from './constants/preMatchConst';
 const ColumnsFactory = (dataSource, props, columnWidth) => {
   const {
     NoColumn,
+    LeagueGroupColumn,
     LeagueColumn,
     HDPColumn,
     OUColumn,
@@ -49,6 +50,7 @@ const ColumnsFactory = (dataSource, props, columnWidth) => {
   const columns = [];
 
   const columnSchemaStaticInfo = [
+    { ...LeagueGroupColumn, width: columnWidth.LeagueGroup, ...SortableColumn },
     { ...LeagueColumn, width: columnWidth.League, ...SortableColumn },
     { ...IssuesColumn, width: columnWidth.Issues, ...column },
     {
@@ -92,15 +94,15 @@ const ColumnsFactory = (dataSource, props, columnWidth) => {
 
   isEditing
     ? columnSchemaStaticInfo.unshift({
-      ...ActionColumn,
-      width: columnWidth.Action,
-      ...column
-    })
+        ...ActionColumn,
+        width: columnWidth.Action,
+        ...column
+      })
     : columnSchemaStaticInfo.unshift({
-      ...NoColumn,
-      width: columnWidth.No,
-      ...SortableColumn
-    });
+        ...NoColumn,
+        width: columnWidth.No,
+        ...SortableColumn
+      });
 
   columnSchemaStaticInfo.forEach(col =>
     columns.push(createColumn(dataSource, col))
