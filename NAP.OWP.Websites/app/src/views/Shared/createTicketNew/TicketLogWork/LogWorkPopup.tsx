@@ -43,7 +43,7 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
   const [subject, setSubject] = useState('');
   const [errorSubject, setErrorSubject] = useState('');
   const [subTypeOption, setSubTypeOption] = useState<SubTypeOption[]>([]);
-  const [subTypeSelected, setSubtypeSelected] = useState<SubTypeOption>();
+  const [subTypeSelected, setSubTypeSelected] = useState<SubTypeOption>();
   const [statusSelected, setStatusSelected] = useState<StatusOption>(STATUS[1]);
   const [recipient, setRecipient] = useState<TRecipient[]>([]);
   const [comment, setComment] = useState('');
@@ -65,21 +65,21 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
       const subTypeDefault = option.find(x => x.value === subtypeTicketCheck);
       const recipientDefault = await getRecipientDefaultBySubType(
         subTypeDefault?.value
-      );
+      ) as TRecipient[];
       setSubTypeOption(option);
-      setSubtypeSelected(subTypeDefault);
-      setRecipient(recipientDefault);
+      setSubTypeSelected(subTypeDefault);
+      setRecipient(recipientDefault.concat([creatorInfo]));
       subTypeDefault && setSubject(subTypeDefault.label);
     })();
   }, []);
 
   const handleOnChangeSubtype = async (subtype: SubTypeOption | null) => {
     if (subtype) {
-      setSubtypeSelected(subtype);
+      setSubTypeSelected(subtype);
       const recipientBySubtype = await getRecipientDefaultBySubType(
         subtype?.value
-      );
-      setRecipient(recipientBySubtype);
+      ) as TRecipient[];
+      setRecipient(recipientBySubtype.concat([creatorInfo]));
       setSubject(getSubjectBySubtype(subtype));
       setErrorSubject('');
       setErrorRecipient(false);

@@ -42,9 +42,12 @@ const ShareOfChatBoardTicket = props => {
   };
   const dispatch = useStableDispatch();
   const [subTypeOption, setSubTypeOption] = useState([]);
-  const { errorRecipient, subTypeSelected, selectedRecipients } = useSelector(
-    state => state.createTicketBoard
-  );
+  const {
+    errorRecipient,
+    subTypeSelected,
+    selectedRecipients,
+    defaultRecipients
+  } = useSelector(state => state.createTicketBoard);
 
   useEffect(() => {
     (async () => {
@@ -61,7 +64,7 @@ const ShareOfChatBoardTicket = props => {
   const handleChangeSubType = async select => {
     dispatch(setSubTypeSelected(select));
     const recipient = await getRecipientDefaultBySubType(select.value);
-    dispatch(setSelectedRecipients(recipient));
+    dispatch(setSelectedRecipients(recipient.concat(defaultRecipients)));
   };
 
   return (

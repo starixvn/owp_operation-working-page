@@ -4,12 +4,11 @@ import ViewFilterDayShift from './features/filter/ViewFilterDayShift';
 import EditComponent from './features/edit/EditComponent';
 import WorkingShiftComponent from './features/workingShift/WorkingShiftComponent';
 import { useSelector } from 'react-redux';
-import { FunctionKeys, REQUEST_STATUS } from '../Shared/Constants';
+import { FunctionKeys } from '../Shared/Constants';
 import HeaderDayShift from './features/header/HeaderDayShift';
 import usePermission from '../Shared/customHook/usePermission';
 import EditFilterDayShift from './features/filter/EditFilterDayShift';
 import DayShiftSaver from './features/save/DayShiftSaver';
-import { isEqual } from 'lodash';
 import Loading from '../components/Loading';
 import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';
 import SortDefault from './features/edit/SortDefault';
@@ -42,7 +41,8 @@ const DayShiftManagement = () => {
     isEditing: modelEditor.isEdit,
     isNightShift: false
   };
-  if (isEqual(modelPermission.loading, REQUEST_STATUS.pending)) {
+
+  if (!permission.Username) {
     return <Loading />;
   }
 

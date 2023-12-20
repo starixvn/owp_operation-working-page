@@ -67,12 +67,14 @@ const CreateTicketBoardEvent = props => {
       const selected = selectedRecipients
         .concat(recipientAssigned)
         .concat(recipientLGA);
-      const reformattedArray = formatRecipientModel(selected, creatorInfo);
+
+      const recipients = formatRecipientModel(selected, creatorInfo);
+
       const resultSaveFile =
         selectedFiles.length && (await saveFileToBackEnd(selectedFiles));
       const addModel = {
         CreatorId: creatorInfo.recipientId,
-        Recipients: reformattedArray,
+        Recipients: recipients,
         Message: message,
         TicketType: ticketType,
         SubType: subTypeSelected.value,

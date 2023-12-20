@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   closeCreatePopup,
   changeErrorRecipient,
   changeErrorOther,
   otherSubject,
   setSelectedRecipients,
-  changeErrorTextField
+  changeErrorTextField,
+  setDefaultRecipients
 } from './createTicketBoardSliceNew';
 import { urlRequestOther, urlRequestSupport } from './const/const';
 import Spinner from '../../components/Spinner';
@@ -21,6 +22,7 @@ import {
 import ShareOfChatBoardTicket from './ShareOfChatBoardTicket/ShareOfChatBoardTicket';
 import PropTypes from 'prop-types';
 import { TICKET_TYPE } from '../TicketCenterPrematch/const/const.json';
+import Loading from '../../components/Loading';
 
 const { TICKET_SUPPORT, GROUP_CHAT } = TICKET_TYPE;
 
@@ -103,6 +105,15 @@ const CreateTicketBoardOther = props => {
     dispatch(closeCreatePopup());
     setSelectedFiles([]);
   };
+
+  useEffect(() => {
+    creatorInfo.userName && dispatch(setDefaultRecipients([creatorInfo]));
+  }, [creatorInfo, dispatch]);
+
+  if (!creatorInfo.userName) {
+    return <Loading />;
+  }
+
   return (
     <>
       {isOthers && (

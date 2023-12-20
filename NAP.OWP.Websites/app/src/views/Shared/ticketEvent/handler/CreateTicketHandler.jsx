@@ -15,12 +15,7 @@ const CreateTicketHandler = props => {
   }
 
   return (
-    <PlusCircleIcon
-      onClick={() => {
-        handleOpenCreateTicket();
-      }}
-      className='icon-plus'
-    />
+    <PlusCircleIcon onClick={handleOpenCreateTicket} className='icon-plus' />
   );
 };
 
