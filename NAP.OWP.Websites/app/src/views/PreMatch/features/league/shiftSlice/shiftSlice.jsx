@@ -95,6 +95,10 @@ const shiftSlice = createSlice({
         state.leagueWithTimeCondition
       );
     },
+    setIsShowLeague: state => {
+      state.leagueWithTimeCondition.isShow = false;
+      state.leagueWithTimeCondition.leagueInfos = [];
+    },
     deleteRow: {
       reducer: (state, action) => {
         const { preMatchLeagueId } = action.payload;
@@ -259,7 +263,6 @@ const shiftSlice = createSlice({
     showLeaguesWithTimeCondition: {
       reducer: (state, action) => {
         const { datetime, isNightShift } = action.payload;
-
         const leagueInfos = getLeagueInfosByTimeCondition(
           state.matches,
           datetime,
@@ -555,6 +558,7 @@ const shiftSlice = createSlice({
 
 const { actions, reducer } = shiftSlice;
 const {
+  setIsShowLeague,
   sortByColumnKey,
   pasteCopiedValue,
   pasteCopiedMultipleValue,
@@ -587,6 +591,7 @@ const {
 } = actions;
 export {
   actions,
+  setIsShowLeague,
   addIssueIdToLeague,
   addIssueIdToMatch,
   addNoteIdToLeague,

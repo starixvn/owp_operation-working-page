@@ -20,7 +20,9 @@ const LeagueCell = props => {
   const { dataSource, rowIndex } = props;
   const { LeagueName, PreMatchLeagueId, isExpand, MatchCount, IsEarlyOffered } =
     dataSource[rowIndex];
-  const { leagueWithTimeCondition } = useSelector(state => state.dayShift);
+  const leagueWithTimeCondition = useSelector(
+    state => state.dayShift?.leagueWithTimeCondition
+  );
 
   const matchActiveByCondition = getMatchActiveByCondition(
     leagueWithTimeCondition,
