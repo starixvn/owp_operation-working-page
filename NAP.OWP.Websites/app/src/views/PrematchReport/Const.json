@@ -1,7 +1,6 @@
 {
   "dateRangeDefault": 30,
-  "dateRangeValid": 180,
-  "time": 86400000,
+  "dateRangeValid": 366,
   "netCoreURL": "api-netcore/PrematchReport",
   "netFwURL": "api/PrematchReport",
   "getPrematchReportRoute": "get-prematch-report",

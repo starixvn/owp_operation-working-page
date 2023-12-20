@@ -8,7 +8,7 @@ import ToastrWrapper from '../../../components/ToastrWrapper';
 import { displayTable } from '../table/reportSlice';
 import {
   buildRequestURL,
-  validDateRange,
+  isValidTimeRange,
   toDateDefault,
   fromDateDefault
 } from '../helpers/helpers';
@@ -26,9 +26,9 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const handleSearch = () => {
-    if (validDateRange(fromDate, toDate)) {
+    if (!isValidTimeRange(fromDate, toDate)) {
       ToastrWrapper.showError(
-        <h4>Please select date range within 180 days</h4>
+        <h4>Please select date range within 366 days</h4>
       );
       return;
     }

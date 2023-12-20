@@ -2,8 +2,7 @@ import {
   netCoreURL,
   netFwURL,
   dateRangeDefault,
-  dateRangeValid,
-  time
+  dateRangeValid
 } from '../../Const.json';
 
 const buildRequestURL = (key: string) =>
@@ -17,16 +16,18 @@ const fromDateDefault = new Date(
   curr.setDate(curr.getDate() - dateRangeDefault)
 );
 
-const validDateRange = (fromDate: Date, toDate: Date) => {
-  const dateRange = (toDate.getTime() - fromDate.getTime()) / time;
-  return dateRange > dateRangeValid;
+const isValidTimeRange = (fromDate: Date, toDate: Date): boolean => {
+  const timeDifference = toDate.getTime() - fromDate.getTime();
+  const oneYearInMilliseconds = dateRangeValid * 24 * 60 * 60 * 1000;
+
+  return timeDifference <= oneYearInMilliseconds;
 };
 
 const getKeyValue = <T, K extends keyof T>(obj: T, key: K): T[K] => obj[key];
 
 export {
   buildRequestURL,
-  validDateRange,
+  isValidTimeRange,
   toDateDefault,
   fromDateDefault,
   getKeyValue
