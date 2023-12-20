@@ -5,7 +5,7 @@ import {
   simpleApiQueryUrl
 } from '../const/const';
 import { formatTime } from '../../Shared/DateTime/dateTimeHelper';
-
+import dayjs from 'dayjs';
 const filterPrematchUpdated = (allPrematch, prematchIdUpdated) =>
   allPrematch.filter(
     p =>
@@ -64,6 +64,14 @@ const buildStartTimeQueryModel = evenDate => {
 const buildGoToTradingPageLink = (betType, assignedLeagueIds) =>
   `${TradingPageUrl}?bt=${betType}&rng=T&c=${assignedLeagueIds}&lge=&lgt=${assignedLeagueIds}&lgl=&lgc=&fcSite=0&fcSource=4`;
 
+const getDefaultTimeCondition = isNightShift => {
+  const format = 'h:mm A';
+  const prevTime = localStorage.getItem('PreMatchTimeCondition');
+  return prevTime
+    ? dayjs(prevTime, format)
+    : dayjs(isNightShift ? '10:59 PM' : '05:31 PM', format);
+};
+
 export {
   filterPrematchUpdated,
   buildClassNameAssignmentCell,
@@ -71,5 +79,6 @@ export {
   buildStartTimeQueryModel,
   buildLAST_UPDATEDFormatter,
   buildLastUpdate,
-  buildGoToTradingPageLink
+  buildGoToTradingPageLink,
+  getDefaultTimeCondition
 };

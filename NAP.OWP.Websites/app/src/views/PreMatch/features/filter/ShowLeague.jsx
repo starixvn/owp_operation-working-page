@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Input } from 'reactstrap';
 import { TimePicker } from 'antd';
 import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
+
 import {
   unShowLeaguesWithTimeCondition,
   showLeaguesWithTimeCondition
 } from '../../features/league/shiftSlice/shiftSlice';
-import { updateStartTimeSelected } from '../../features/filter/filterSlice';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
+import { getDefaultTimeCondition } from '../../helper/preMatchHelper';
 
 const propTypes = {
   isNightShift: PropTypes.bool
@@ -19,19 +19,15 @@ const ShowLeague = props => {
   const { isNightShift } = props;
   const stableDispatch = useStableDispatch();
 
-  const { filterDate, startTimeSelected } = useSelector(state => state.filter);
+  const { filterDate } = useSelector(state => state.filter);
 
   const isShow = useSelector(
     state => state.dayShift?.leagueWithTimeCondition.isShow
   );
 
-  useEffect(() => {
-    const defaultTime = isNightShift
-      ? dayjs('10:59 PM', format)
-      : dayjs('05:31 PM', format);
-    !startTimeSelected &&
-      stableDispatch(updateStartTimeSelected({ startTime: defaultTime }));
-  }, []);
+  const defaultTime = getDefaultTimeCondition(isNightShift);
+
+  const [startTimeSelected, setStartTimeSelected] = useState(defaultTime);
 
   const handleClick = () => {
     const datetime = getDateTimeCondition();
@@ -43,6 +39,10 @@ const ShowLeague = props => {
   };
 
   const handleOnBlur = () => {
+    localStorage.setItem(
+      'PreMatchTimeCondition',
+      startTimeSelected.format('h:mm A')
+    );
     if (isShow === true) {
       const datetime = getDateTimeCondition();
       stableDispatch(showLeaguesWithTimeCondition({ datetime, isNightShift }));
@@ -82,9 +82,7 @@ const ShowLeague = props => {
         className='input-field'
         id='startTime'
         use12Hours
-        onSelect={value =>
-          stableDispatch(updateStartTimeSelected({ startTime: value }))
-        }
+        onSelect={value => setStartTimeSelected(value)}
         value={startTimeSelected}
         format={format}
         allowClear={false}
