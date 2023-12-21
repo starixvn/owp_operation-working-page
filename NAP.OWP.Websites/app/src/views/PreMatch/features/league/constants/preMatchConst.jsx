@@ -34,7 +34,7 @@ const LeagueColumn = {
 const IssuesColumn = {
   headerName: 'EST',
   columnKey: 'Message',
-  width: 60
+  width: 50
 };
 
 const MaxbetOUColumn = {
