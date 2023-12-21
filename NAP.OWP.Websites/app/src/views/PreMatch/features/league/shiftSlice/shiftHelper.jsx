@@ -58,10 +58,11 @@ const mergeMatchesToLeagues = (
   if (filterByTimeCondition?.isShow) {
     const { leagueInfos } = filterByTimeCondition;
     const leagueIds = leagueInfos.map(x => x.conditionLeagueId);
-    leaguesCloned = leaguesCloned.filter(x => {
-      return leagueIds.includes(x.PreMatchLeagueId);
-    });
+    leaguesCloned = leaguesCloned.filter(x =>
+      leagueIds.includes(x.PreMatchLeagueId)
+    );
   }
+  updateRowLeagues(leaguesCloned);
   return leaguesCloned;
 };
 
@@ -325,6 +326,17 @@ const getMatchActiveByCondition = (
   }
   return null;
 };
+const getTotalLeagues = data => data.filter(x => x?.No)?.length;
+
+const updateRowLeagues = data => {
+  let index = 1;
+  data.forEach(x => {
+    if (x.No) {
+      x.No = index;
+      index++;
+    }
+  });
+};
 
 export {
   getUnreadMessagePreMatchLeagueIds,
@@ -340,5 +352,7 @@ export {
   sortLeaguesByDefault,
   clearState,
   getLeagueInfosByTimeCondition,
-  getMatchActiveByCondition
+  getMatchActiveByCondition,
+  getTotalLeagues,
+  updateRowLeagues
 };

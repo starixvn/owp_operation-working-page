@@ -12,9 +12,10 @@ const propTypes = {
 const NoCell = props => {
   const { rowIndex, dataSource } = props;
   const { No, MatchOffer } = dataSource[rowIndex];
+
   return (
     <Cell key={nanoid()} className='header-no'>
-      {No && <div className='no'>{rowIndex + 1}</div>}
+      {No && <div className='no'>{No}</div>}
       <div className='match-offer'>
         {MatchOffer && isEqual(MatchOffer, 'Opened') && (
           <span className='icon-completed' />
