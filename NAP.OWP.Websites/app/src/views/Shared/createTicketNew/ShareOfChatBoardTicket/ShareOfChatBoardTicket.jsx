@@ -95,6 +95,7 @@ const ShareOfChatBoardTicket = props => {
         </div>
         <div className='right-form'>
           <RecipientsSelect
+            ticketType={ticketType}
             defaultValue={selectedRecipients || []}
             onChange={value => dispatch(setSelectedRecipients(value))}
             errorSubmit={errorRecipient}

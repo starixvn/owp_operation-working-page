@@ -7,7 +7,7 @@ import Service from '../createTicketNew/Service';
 import '../../../scss/components/_recipientSelect.scss';
 import ToastsWrapper from '../../components/ToastrWrapper';
 import useOnClickOutside from 'use-onclickoutside';
-import { size } from 'lodash';
+import { RECIPIENT_HINT } from './const.json';
 
 const propTypes = {
   defaultValue: PropTypes.array,
@@ -17,7 +17,8 @@ const propTypes = {
   errorSubmit: PropTypes.bool,
   edit: PropTypes.bool,
   hasWrite: PropTypes.bool,
-  onChangeErrorSubmit: PropTypes.func
+  onChangeErrorSubmit: PropTypes.func,
+  ticketType: PropTypes.number
 };
 
 const RecipientsSelect = ({
@@ -28,7 +29,8 @@ const RecipientsSelect = ({
   errorSubmit,
   onChangeErrorSubmit = f => f,
   hasWrite = true,
-  edit
+  edit,
+  ticketType = 0
 }) => {
   const [showSuggest, setShowSuggest] = useState(false);
   const [search, setSearch] = useState('');
@@ -162,7 +164,7 @@ const RecipientsSelect = ({
         style={{
           color: 'gray'
         }}>
-        (The match assignees are automatically added after creating ticket)
+        {RECIPIENT_HINT[ticketType]}
       </p>
     </>
   );
