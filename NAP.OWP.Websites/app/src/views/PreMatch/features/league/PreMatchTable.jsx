@@ -18,6 +18,7 @@ import { resetCopyInfo } from '../copy/copySlice';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { getMMDDYYYYStringFromDateTime } from '../../../Shared/DateTime/dateTimeHelper';
 import { withResizeDetector } from 'react-resize-detector';
+import { getTotalLeagues } from '../../features/league/shiftSlice/shiftHelper';
 
 const { rowHeight, headerHeight } = DefaultTableStyle;
 
@@ -103,7 +104,7 @@ const PreMatchTable = ({ isEditing, isNightShift }) => {
         headerHeight={headerHeight}>
         {ColumnsFactory(data, newProps, columnWidth)}
       </Table>
-      <div className='total'>Total Leagues: {model.leagues.length}</div>
+      <div className='total'>Total Leagues: {getTotalLeagues(data)}</div>
     </div>
   );
 };

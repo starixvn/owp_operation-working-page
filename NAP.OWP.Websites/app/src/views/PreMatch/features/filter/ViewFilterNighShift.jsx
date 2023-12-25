@@ -19,8 +19,13 @@ import { getDisableRef, getValueRef } from '../../../Shared/Utils';
 import useAssignToMe from './useAssignToMe';
 import FilterPrematchFactory from './FilterPrematchFactory';
 import ToastrWrapper from '../../../components/ToastrWrapper';
+import PropTypes from 'prop-types';
 
-const ViewFilterNighShift = () => {
+const propTypes = {
+  isNightShift: PropTypes.bool
+};
+const ViewFilterNighShift = props => {
+  const { isNightShift } = props;
   const employeeRef = useRef();
   const leagueRef = useRef();
   const multiSelectRef = useRef();
@@ -98,6 +103,7 @@ const ViewFilterNighShift = () => {
 
   return (
     <FilterPrematchFactory
+      isNightShift={isNightShift}
       model={model}
       policy={policy}
       ref={{
@@ -112,4 +118,5 @@ const ViewFilterNighShift = () => {
   );
 };
 
+ViewFilterNighShift.propTypes = propTypes;
 export default ViewFilterNighShift;

@@ -17,9 +17,13 @@ const filterSlice = createSlice({
     error: null,
     backupFilterModel: null,
     matchOffers: [...MATCH_OFFER.map(m => m.value)],
-    earlyOffered: [...EARLY_OFFERED.map(m => m.value)]
+    earlyOffered: [...EARLY_OFFERED.map(m => m.value)],
+    isReloadEdit: false
   },
   reducers: {
+    reloadDataAfterEdit: state => {
+      state.isReloadEdit = !state.isReloadEdit;
+    },
     updateFilterDate: {
       reducer: (state, action) => {
         const { selectedDate } = action.payload;
@@ -56,6 +60,7 @@ const filterSlice = createSlice({
 
 const { actions, reducer } = filterSlice;
 const {
+  reloadDataAfterEdit,
   updateFilterDate,
   updateFilterEmployer,
   updateFilterMatchOffers,
@@ -63,6 +68,7 @@ const {
 } = actions;
 export {
   actions,
+  reloadDataAfterEdit,
   updateFilterDate,
   updateFilterEmployer,
   updateFilterMatchOffers,

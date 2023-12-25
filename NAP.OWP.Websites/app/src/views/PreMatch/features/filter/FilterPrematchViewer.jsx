@@ -12,17 +12,20 @@ import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { AccountCheckIcon } from 'mdi-react';
 import MatchOfferSelect from './MatchOfferSelect';
 import EarlyOfferedLeague from './EarlyOfferedLeague';
+import ShowLeague from './ShowLeague';
 
 const propTypes = {
   model: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onClickMyAssignee: PropTypes.func.isRequired,
-  isDisableEmp: PropTypes.bool.isRequired
+  isDisableEmp: PropTypes.bool.isRequired,
+  isNightShift: PropTypes.bool
 };
 
 const FilterPrematchViewer = React.forwardRef((props, ref) => {
-  const { model, onSubmit, isDisableEmp, onClickMyAssignee } = props;
-  const { filterDate, loading } = model;
+  const { model, onSubmit, isDisableEmp, onClickMyAssignee, isNightShift } =
+    props;
+  const { filterDate, loading, isReloadEdit } = model;
   useEffect(() => {
     const handleSubmitWithCondition = () => {
       if (filterDate) {
@@ -32,6 +35,12 @@ const FilterPrematchViewer = React.forwardRef((props, ref) => {
     const interval = setInterval(handleSubmitWithCondition, 300000);
     return () => clearInterval(interval);
   }, [filterDate, onSubmit]);
+
+  useEffect(() => {
+    if (filterDate) {
+      onSubmit(new Date(filterDate));
+    }
+  }, [isReloadEdit]);
 
   if (!filterDate || isEqual(loading, REQUEST_STATUS.pending)) {
     return <Loading />;
@@ -79,7 +88,7 @@ const FilterPrematchViewer = React.forwardRef((props, ref) => {
         <CollapseBtn />
         <ExpandBtn />
       </div>
-
+      <ShowLeague isNightShift={isNightShift} />
       <ShowUnreadMessageCheckBox />
     </div>
   );

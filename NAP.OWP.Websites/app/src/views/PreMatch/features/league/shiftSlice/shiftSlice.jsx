@@ -13,7 +13,8 @@ import {
   pasteMultipleValue,
   sortLeaguesByColumnKey,
   sortLeaguesByDefault,
-  updateLeagueData
+  updateLeagueData,
+  getLeagueInfosByTimeCondition
 } from './shiftHelper';
 import {
   getAssignedLeagueId,
@@ -41,7 +42,13 @@ const shiftSlice = createSlice({
     isExpandAll: false,
     isShowUnreadMessage: false,
     tableKey: nanoid(),
-    assignedLeagueId: {}
+    assignedLeagueId: {},
+    leagueWithTimeCondition: {
+      isShow: false,
+      datetime: null,
+      isNightShift: false,
+      leagueInfos: []
+    }
   },
 
   reducers: {
@@ -74,7 +81,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -83,8 +91,13 @@ const shiftSlice = createSlice({
       state.entities = mergeMatchesToLeagues(
         state.matches,
         state.leagues,
-        state.isShowUnreadMessage
+        state.isShowUnreadMessage,
+        state.leagueWithTimeCondition
       );
+    },
+    setIsShowLeague: state => {
+      state.leagueWithTimeCondition.isShow = false;
+      state.leagueWithTimeCondition.leagueInfos = [];
     },
     deleteRow: {
       reducer: (state, action) => {
@@ -151,7 +164,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -167,7 +181,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -178,7 +193,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -189,7 +205,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -200,7 +217,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -211,7 +229,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -223,7 +242,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -235,10 +255,52 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
+    showLeaguesWithTimeCondition: {
+      reducer: (state, action) => {
+        const { datetime, isNightShift } = action.payload;
+        const leagueInfos = getLeagueInfosByTimeCondition(
+          state.matches,
+          datetime,
+          isNightShift
+        );
+        state.leagueWithTimeCondition = {
+          datetime,
+          leagueInfos,
+          isShow: true,
+          isNightShift
+        };
+
+        state.entities = mergeMatchesToLeagues(
+          state.matches,
+          state.leagues,
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
+        );
+      }
+    },
+    unShowLeaguesWithTimeCondition: {
+      reducer: state => {
+        state.leagueWithTimeCondition.isShow = false;
+        state.entities = mergeMatchesToLeagues(
+          state.matches,
+          state.leagues,
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
+        );
+        state.leagueWithTimeCondition = {
+          isShow: false,
+          datetime: null,
+          isNightShift: false,
+          leagueInfos: []
+        };
+      }
+    },
+
     updatedIconIssueLeagueRow: {
       reducer: (state, action) => {
         const { PreMatchLeagueId, TicketId } = action.payload;
@@ -250,7 +312,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -265,7 +328,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -281,7 +345,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -299,7 +364,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -315,7 +381,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -330,7 +397,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -344,7 +412,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -361,7 +430,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     },
@@ -391,7 +461,8 @@ const shiftSlice = createSlice({
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
-          state.isShowUnreadMessage
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
         );
       }
     }
@@ -419,12 +490,23 @@ const shiftSlice = createSlice({
           state.matches = [...[], ...InfoSiteMatches];
 
           changeExpandStateAllLeague(state.leagues, state.isShowUnreadMessage);
-
+          if (
+            state.leagueWithTimeCondition?.isShow &&
+            !state.leagueWithTimeCondition?.leagueInfos.length
+          ) {
+            state.leagueWithTimeCondition.leagueInfos =
+              getLeagueInfosByTimeCondition(
+                state.matches,
+                state.leagueWithTimeCondition?.datetime
+              );
+          }
           state.entities = mergeMatchesToLeagues(
             state.matches,
             state.leagues,
-            state.isShowUnreadMessage
+            state.isShowUnreadMessage,
+            state.leagueWithTimeCondition
           );
+
           state.currentRequestId = null;
         }
       })
@@ -456,7 +538,8 @@ const shiftSlice = createSlice({
             state.entities = mergeMatchesToLeagues(
               state.matches,
               state.leagues,
-              state.isShowUnreadMessage
+              state.isShowUnreadMessage,
+              state.leagueWithTimeCondition
             );
           }
         }
@@ -475,6 +558,7 @@ const shiftSlice = createSlice({
 
 const { actions, reducer } = shiftSlice;
 const {
+  setIsShowLeague,
   sortByColumnKey,
   pasteCopiedValue,
   pasteCopiedMultipleValue,
@@ -501,10 +585,13 @@ const {
   changeStatePopupMatchNote,
   updateIconNoteToPencil,
   sortByDefault,
-  reloadTicketInTable
+  reloadTicketInTable,
+  showLeaguesWithTimeCondition,
+  unShowLeaguesWithTimeCondition
 } = actions;
 export {
   actions,
+  setIsShowLeague,
   addIssueIdToLeague,
   addIssueIdToMatch,
   addNoteIdToLeague,
@@ -533,7 +620,9 @@ export {
   updateIconNoteToPencil,
   updatePrematch,
   updatedIconIssueLeagueRow,
-  updatedIconIssueMatchRow
+  updatedIconIssueMatchRow,
+  showLeaguesWithTimeCondition,
+  unShowLeaguesWithTimeCondition
 };
 
 export default reducer;

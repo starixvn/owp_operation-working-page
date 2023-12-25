@@ -28,8 +28,13 @@ const getUnreadMessagePreMatchLeagueIds = (matches, leagues) => {
   return { PreMatchLeagueIds, InfoSiteMatchId };
 };
 
-const mergeMatchesToLeagues = (matches, leagues, filterUnreadMessage) => {
-  const leaguesCloned = cloneDeep(leagues);
+const mergeMatchesToLeagues = (
+  matches,
+  leagues,
+  filterUnreadMessage,
+  filterByTimeCondition
+) => {
+  let leaguesCloned = cloneDeep(leagues);
   const matchesCloned = cloneDeep(matches);
   matchesCloned.reverse().forEach(m => {
     const index = leaguesCloned.findIndex(
@@ -39,19 +44,46 @@ const mergeMatchesToLeagues = (matches, leagues, filterUnreadMessage) => {
       leaguesCloned.splice(index + 1, 0, m);
     }
   });
+
   if (filterUnreadMessage) {
     const { PreMatchLeagueIds, InfoSiteMatchId } =
       getUnreadMessagePreMatchLeagueIds(matches, leagues);
-    return leaguesCloned.filter(
+    leaguesCloned = leaguesCloned.filter(
       e =>
         PreMatchLeagueIds.includes(e.PreMatchLeagueId) &&
         !InfoSiteMatchId.includes(e.InfoSiteMatchId)
     );
   }
 
+  if (filterByTimeCondition?.isShow) {
+    const { leagueInfos } = filterByTimeCondition;
+    const leagueIds = leagueInfos.map(x => x.conditionLeagueId);
+    leaguesCloned = leaguesCloned.filter(x =>
+      leagueIds.includes(x.PreMatchLeagueId)
+    );
+  }
+  updateRowLeagues(leaguesCloned);
   return leaguesCloned;
 };
 
+const getLeagueInfosByTimeCondition = (matches, datetime, isNightShift) => {
+  const matchesWithTimeCondition = isNightShift
+    ? matches.filter(item => new Date(item.EventDateTime) > datetime)
+    : matches.filter(item => new Date(item.EventDateTime) < datetime);
+  return Object.values(
+    matchesWithTimeCondition.reduce((leagueInfo, item) => {
+      if (leagueInfo[item.PreMatchLeagueId]) {
+        leagueInfo[item.PreMatchLeagueId].totalActiveMatch++;
+      } else {
+        leagueInfo[item.PreMatchLeagueId] = {
+          conditionLeagueId: item.PreMatchLeagueId,
+          totalActiveMatch: 1
+        };
+      }
+      return leagueInfo;
+    }, {})
+  );
+};
 const changeExpandStateAllLeague = (leagues, expandState) => {
   leagues.forEach(l => changeValue(l, 'isExpand', expandState));
 };
@@ -281,6 +313,30 @@ const clearState = state => {
   state.prematchIdDeleted.length = 0;
   state.sortState = {};
 };
+const getMatchActiveByCondition = (
+  leagueWithTimeCondition,
+  preMatchLeagueId
+) => {
+  if (leagueWithTimeCondition.leagueInfos.length > 0) {
+    return (
+      leagueWithTimeCondition.leagueInfos.find(
+        x => x.conditionLeagueId === preMatchLeagueId
+      )?.totalActiveMatch ?? null
+    );
+  }
+  return null;
+};
+const getTotalLeagues = data => data.filter(x => x?.No)?.length;
+
+const updateRowLeagues = data => {
+  let index = 1;
+  data.forEach(x => {
+    if (x.No) {
+      x.No = index;
+      index++;
+    }
+  });
+};
 
 export {
   getUnreadMessagePreMatchLeagueIds,
@@ -294,5 +350,9 @@ export {
   pasteCopied,
   pasteMultipleValue,
   sortLeaguesByDefault,
-  clearState
+  clearState,
+  getLeagueInfosByTimeCondition,
+  getMatchActiveByCondition,
+  getTotalLeagues,
+  updateRowLeagues
 };
