@@ -1,6 +1,7 @@
 import { cloneDeep, isEqual, orderBy } from 'lodash';
 import { ORDERBY } from '../../../../Shared/Constants';
 import compareValues from '../../../../Shared/Order/compareValues';
+import { LeagueGroupColumn } from '../constants/preMatchConst';
 
 const changeValue = (element, key, value) => (element[key] = value);
 
@@ -107,6 +108,9 @@ const sortLeaguesByColumnKey = (leagues, columnKey, orderType) => {
   } else {
     rowsValue.sort(compareValues(columnKey, 'desc'));
     rowsValueContainHint.sort(compareValues(`${columnKey}Hint`, 'desc'));
+  }
+  if (isEqual(columnKey, LeagueGroupColumn.columnKey)) {
+    return [...rowsValueContainHint, ...rowsValue, ...rowsValueNull];
   }
   return [...rowsValueContainHint, ...rowsValueNull, ...rowsValue];
 };

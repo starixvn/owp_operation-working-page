@@ -17,17 +17,24 @@ const NoColumn = {
   fixed: true
 };
 
+const LeagueGroupColumn = {
+  headerName: 'League Group',
+  columnKey: 'LeagueGroupOrder',
+  width: 120,
+  fixed: true
+};
+
 const LeagueColumn = {
   headerName: 'League Name',
   columnKey: 'LeagueName',
-  width: 560,
+  width: 520,
   fixed: true
 };
 
 const IssuesColumn = {
   headerName: 'EST',
   columnKey: 'Message',
-  width: 60
+  width: 50
 };
 
 const MaxbetOUColumn = {
@@ -45,35 +52,35 @@ const MaxbetHDPColumn = {
 const BlacklistColumn = {
   headerName: 'Black list',
   columnKey: 'Blacklist',
-  width: 100
+  width: 90
 };
 
 const HDPColumn = {
   order: 1,
   headerName: 'HDP',
   columnKey: 'HDP',
-  width: 150
+  width: 140
 };
 
 const OUColumn = {
   order: 2,
   headerName: 'O/U',
   columnKey: 'OU',
-  width: 150
+  width: 140
 };
 
 const HDPTakeOverColumn = {
   order: 3,
   headerName: 'HDP T.Over',
   columnKey: 'HDPTakeOver',
-  width: 150
+  width: 140
 };
 
 const OUTakeOverColumn = {
   order: 4,
   headerName: 'O/U T.Over',
   columnKey: 'OUTakeOver',
-  width: 150
+  width: 140
 };
 const NoteColumn = {
   headerName: 'Note',
@@ -84,7 +91,7 @@ const NoteColumn = {
 const RemarkColumn = {
   headerName: 'Remark',
   columnKey: 'Remark',
-  width: 200
+  width: 180
 };
 
 const ActionColumn = {
@@ -115,6 +122,7 @@ const BettypeOuOverColumn = {
 
 const ColumnModels = {
   NoColumn,
+  LeagueGroupColumn,
   LeagueColumn,
   IssuesColumn,
   HDPColumn,
@@ -151,6 +159,7 @@ const API_KEY = {
 export {
   TableConst,
   NoColumn,
+  LeagueGroupColumn,
   ColumnModels,
   logAction,
   DefaultTableStyle,

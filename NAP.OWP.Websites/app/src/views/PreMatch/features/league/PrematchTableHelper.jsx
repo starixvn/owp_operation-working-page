@@ -23,17 +23,32 @@ const mapRowLevelToHight = rowLevel => {
   }
 };
 
-const selectOtherBettype = (isEdited, source1, source2) => !isEdited
-  ? source1
-  : (source1 || source2);
+const selectOtherBettype = (isEdited, source1, source2) =>
+  !isEdited ? source1 : source1 || source2;
 
 const calculateRowHeight = (row, isEdited) => {
   const hights = [];
   if (row) {
-    const otherHdpTarget = selectOtherBettype(isEdited, row.OtherHDP, row.OtherHDPHint);
-    const otherOuTarget = selectOtherBettype(isEdited, row.OtherOU, row.OtherOUHint);
-    const otherHdpTakeOverTarget = selectOtherBettype(isEdited, row.OtherHDPTakeOver, row.OtherHDPTakeOverHint);
-    const otherOuTakeOverTarget = selectOtherBettype(isEdited, row.OtherOUTakeOver, row.OtherOUTakeOverHint);
+    const otherHdpTarget = selectOtherBettype(
+      isEdited,
+      row.OtherHDP,
+      row.OtherHDPHint
+    );
+    const otherOuTarget = selectOtherBettype(
+      isEdited,
+      row.OtherOU,
+      row.OtherOUHint
+    );
+    const otherHdpTakeOverTarget = selectOtherBettype(
+      isEdited,
+      row.OtherHDPTakeOver,
+      row.OtherHDPTakeOverHint
+    );
+    const otherOuTakeOverTarget = selectOtherBettype(
+      isEdited,
+      row.OtherOUTakeOver,
+      row.OtherOUTakeOverHint
+    );
 
     if (row.InfoSiteMatchId > 0) {
       hights.push(calculateRowLevel(`${row.HomeName}${row.AwayName}`, 60));
@@ -57,6 +72,7 @@ const calculateTableHeight = dataLength =>
 
 const {
   NoColumn,
+  LeagueGroupColumn,
   LeagueColumn,
   IssuesColumn,
   HDPColumn,
@@ -74,6 +90,7 @@ const {
 const calculateColumnWidth = (isEditing, containerWidth) => {
   const ratio = containerWidth > 1750 ? containerWidth / 1800 : 1750 / 1800;
   const widthColumn = {
+    LeagueGroup: LeagueGroupColumn.width * ratio,
     League: LeagueColumn.width * ratio,
     HDP: HDPColumn.width * ratio,
     Issues: IssuesColumn.width * ratio,

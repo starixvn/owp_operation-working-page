@@ -6,21 +6,18 @@ import MaxbetHDPCell from './MaxbetHDPCell';
 import BlacklistCell from './BlacklistCell';
 import RemarkCellFactory from './RemarkCell/RemarkCellFactory';
 import ActionCell from './ActionCell';
+import LeagueGroupCell from './LeagueGroupCell';
 import { LeagueCellFactory } from '../../../ImportPrematchHelperNative';
 import AssignmentCellFactory from './AssignmentCell/AssignmentCellFactory';
 import NoteCell from '../../note/NoteCell';
 import IssuesCell from './IssuesCell';
 
 const DynamicCell = (rowIndex, cellModel) => {
-  const {
-    dataSource,
-    columnKey,
-    isEditing,
-    handleShowNote,
-    handleShowTicket
-  } = cellModel;
+  const { dataSource, columnKey, isEditing, handleShowNote, handleShowTicket } =
+    cellModel;
   const {
     NoColumn,
+    LeagueGroupColumn,
     LeagueColumn,
     IssuesColumn,
     MaxbetOUColumn,
@@ -33,6 +30,8 @@ const DynamicCell = (rowIndex, cellModel) => {
   switch (columnKey) {
     case NoColumn.columnKey:
       return <NoCell dataSource={dataSource} rowIndex={rowIndex} />;
+    case LeagueGroupColumn.columnKey:
+      return <LeagueGroupCell dataSource={dataSource} rowIndex={rowIndex} />;
     case LeagueColumn.columnKey:
       return <LeagueCellFactory dataSource={dataSource} rowIndex={rowIndex} />;
     case IssuesColumn.columnKey:
