@@ -11,8 +11,7 @@ const propTypes = {
   koTime: PropTypes.string,
   leagueName: PropTypes.string,
   isChild: PropTypes.bool,
-  isRead: PropTypes.bool,
-  onClick: PropTypes.func
+  isRead: PropTypes.bool
 };
 
 const MatchCell = ({
@@ -21,19 +20,10 @@ const MatchCell = ({
   koTime = '',
   leagueName = '',
   isChild = false,
-  isRead = false,
-  onClick = f => f
+  isRead = false
 }) => {
-  const kickOffTime = formatTime(
-    koTime,
-    'minute',
-    'h:mm A'
-  );
-  const evenDate = formatTime(
-    koTime,
-    'minute',
-    'MMM DD, YYYY'
-  );
+  const kickOffTime = formatTime(koTime, 'minute', 'h:mm A');
+  const evenDate = formatTime(koTime, 'minute', 'MMM DD, YYYY');
   let matchClass = '';
   if (!isUndefined(isChild) && isChild) {
     matchClass = ' child-match';
@@ -50,7 +40,6 @@ const MatchCell = ({
         koTime={kickOffTime}
         matchName={{ homeName, awayName }}
         leagueName={leagueName}
-        onClick={onClick}
       />
     </Cell>
   );

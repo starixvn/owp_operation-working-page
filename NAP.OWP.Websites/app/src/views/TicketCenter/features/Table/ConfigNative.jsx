@@ -1,6 +1,19 @@
 import { calculateCustomTableWidth } from '../../../Shared/common/CustomTable/Helper';
 import DynamicCell from './Cell/DynamicCell';
 import { sort } from './eventSlice/eventCheckingSlice';
+import store from '../../app/storeNative';
+import {
+  getTicketDetail,
+  getTicketSubTypes
+} from '../../../Shared/chatBoardNew/chatBoardSlice';
+import ToastrWrapper from '../../../components/ToastrWrapper';
+import { getDetailSegmentUrlByEventType } from '../../Helper/TicketCenterHelper';
+import { updatedIsReadOneRow } from '../../ImportTicketCenterHelperNative';
+import {
+  closeCreatePopup,
+  changeErrorRecipient
+} from '../../../Shared/createTicketNew/createTicketBoardSliceNew';
+import { onClickIssueModel } from '../signalR/signalRSlice';
 
 const DefaultTableStyle = {
   rowHeight: 70,
@@ -81,7 +94,35 @@ const getConfigTicketsTab = containerWidth => {
     tableStyle: DefaultTableStyle,
     dynamicCell: DynamicCell,
     sortFunc: sort,
-    tableWidth: bonusWidth
+    tableWidth: bonusWidth,
+    onRowClick: async rowIndex => {
+      const { pagePolicy, eventChecking } = store.getState();
+      const { dispatch } = store;
+      const { permission } = pagePolicy;
+      const { ticketId, eventType, ticketType } =
+        eventChecking.entities[rowIndex];
+      const requestDetailModel = {
+        ticketId,
+        actorId: permission.ActorId,
+        detailSegmentUrl: getDetailSegmentUrlByEventType(eventType),
+        eventType
+      };
+
+      dispatch(changeErrorRecipient(false));
+      dispatch(closeCreatePopup());
+      dispatch(updatedIsReadOneRow(rowIndex));
+      dispatch(onClickIssueModel(requestDetailModel));
+      dispatch(getTicketSubTypes(ticketType));
+      const actionResult = await dispatch(
+        getTicketDetail({
+          ...requestDetailModel,
+          isQueryMessageInLastTwoDay: true
+        })
+      );
+      if (getTicketDetail.rejected.match(actionResult)) {
+        ToastrWrapper.showError(actionResult.payload);
+      }
+    }
   };
 };
 

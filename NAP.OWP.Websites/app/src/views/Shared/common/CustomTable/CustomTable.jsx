@@ -26,6 +26,7 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
     tableWidth,
     onCalculateRowHeight,
     onRowClassNameGetter,
+    onRowClick,
     collapseAllRowFunc,
     expandAllRowFunc
   } = config;
@@ -102,15 +103,19 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
       ? rowHeight
       : onCalculateRowHeight(index);
   };
-  const handleRowClassNameGetter = index => {
-    return isEqual(typeof onRowClassNameGetter, 'undefined')
+  const handleRowClassNameGetter = index =>
+    isEqual(typeof onRowClassNameGetter, 'undefined')
       ? ''
       : onRowClassNameGetter(index, entities);
-  };
+
+  const handleRowClick = (_, index) =>
+    !isEqual(typeof onRowClick, 'undefined') && onRowClick(index, entities);
+
   return (
     <div className='table' ref={ref}>
       {isEqual(loading, REQUEST_STATUS.pending) && <Loading />}
       <Table
+        onRowClick={handleRowClick}
         ref={tableRef}
         rowHeight={rowHeight}
         rowHeightGetter={handleCalculateActualHeight}

@@ -4,11 +4,10 @@ import MatchCell from './MatchCell';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  data: PropTypes.object.isRequired,
-  onClick: PropTypes.func
+  data: PropTypes.object.isRequired
 };
 
-const LogWorkCell = ({ data, onClick }) => {
+const LogWorkCell = ({ data }) => {
   const { homeName, leagueName, awayName, koTime, subject, isRead } = data;
 
   return leagueName ? (
@@ -18,10 +17,9 @@ const LogWorkCell = ({ data, onClick }) => {
       awayName={awayName}
       koTime={koTime}
       isRead={isRead}
-      onClick={onClick}
     />
   ) : (
-    <OtherIssueCell subject={subject || ''} isRead={isRead} onClick={onClick} />
+    <OtherIssueCell subject={subject || ''} isRead={isRead} />
   );
 };
 

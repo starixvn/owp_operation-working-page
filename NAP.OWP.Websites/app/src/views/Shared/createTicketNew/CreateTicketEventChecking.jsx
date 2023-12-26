@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CreateTicketBoardEvent from './CreateTicketBoardEvent';
 import { urlRequestEvent, urlRequestLeague } from './const/const';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TICKET_TYPE } from '../TicketCenterPrematch/const/const.json';
+import useStableDispatch from '../../Shared/customHook/useStableDispatch';
+import { setDefaultRecipients } from '../../Shared/createTicketNew/createTicketBoardSliceNew';
+import Loading from '../../components/Loading';
 
 const { EVENT_CHECKING } = TICKET_TYPE;
 const propTypes = {
@@ -11,10 +14,19 @@ const propTypes = {
 };
 
 const CreateTicketEventChecking = props => {
+  const stableDispatch = useStableDispatch();
   const { creatorInfo } = props;
   const { isEventChecking, valueEvent } = useSelector(
     state => state.createTicketBoard
   );
+
+  useEffect(() => {
+    creatorInfo.userName && stableDispatch(setDefaultRecipients([creatorInfo]));
+  }, [creatorInfo, stableDispatch]);
+
+  if (!creatorInfo.userName) {
+    return <Loading />;
+  }
   const handleBuildModel = () => {
     return {
       InfoSiteMatchId: valueEvent.infoSiteMatchId,

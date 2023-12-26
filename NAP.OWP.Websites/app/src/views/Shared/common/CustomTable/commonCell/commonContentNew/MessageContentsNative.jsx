@@ -40,14 +40,8 @@ const MessageContentsNative = props => {
   const getMessageContent = () => {
     return (
       <>
-        {!fileId && (
-          <Linkify properties={{ target: '_blank' }}>{message}</Linkify>
-        )}
-        {fileId && isFile && (
-          <span className={className} onClick={handleOnClick}>
-            {message}
-          </span>
-        )}
+        {!fileId && <span>{message}</span>}
+        {fileId && isFile && <span className={className}>{message}</span>}
         {fileId && !isFile && (
           <>
             <span className={`${className} not-available`}>{message}</span>

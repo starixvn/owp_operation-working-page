@@ -11,6 +11,7 @@ import {
 import {
   changeErrorRecipient,
   closeCreatePopup,
+  setSelectedRecipients,
   setSubTypeSelected
 } from '../../../../Shared/createTicketNew/createTicketBoardSliceNew';
 import store from '../../../app/store';
@@ -83,6 +84,8 @@ const TicketListPopup = props => {
     }
   };
   const handleOpenCreateTicket = () => {
+    const { defaultRecipients } = store.getState().createTicketBoard;
+    stableDispatch(setSelectedRecipients(defaultRecipients));
     stableDispatch(getModelByRowIndex(model));
     stableDispatch(backupGetIssueModel(model));
     stableDispatch(closePopup());

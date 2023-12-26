@@ -6,22 +6,17 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   leagueName: PropTypes.string.isRequired,
-  isRead: PropTypes.bool.isRequired,
-  onClick: PropTypes.func
+  isRead: PropTypes.bool.isRequired
 };
 
-const LeagueCell = ({ leagueName = '', isRead = false, onClick = f => f }) => {
+const LeagueCell = ({ leagueName = '', isRead = false }) => {
   return (
     <Cell
       key={nanoid()}
       className={`league-info-cell conversation-cell ${
         !isRead ? 'has-unread' : 'cell'
       }`}>
-      <LeagueContent
-        leagueName={leagueName}
-        onClick={onClick}
-        className='conversation-cell'
-      />
+      <LeagueContent leagueName={leagueName} className='conversation-cell' />
     </Cell>
   );
 };

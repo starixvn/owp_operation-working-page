@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import ShareOfChatBoardTicket from './ShareOfChatBoardTicket/ShareOfChatBoardTicket';
@@ -10,7 +10,8 @@ import Spinner from '../../components/Spinner';
 import {
   changeErrorRecipient,
   setSelectedRecipients,
-  closePopupCreateTicketInLGA
+  closePopupCreateTicketInLGA,
+  setDefaultRecipients
 } from './createTicketBoardSliceNew';
 import {
   formatRecipientModel,
@@ -19,6 +20,7 @@ import {
 } from './Helper/HelperCreateTicket';
 import { urlRequestLiveIncident } from './const/const';
 import { TICKET_TYPE } from '../TicketCenterPrematch/const/const.json';
+import Loading from '../../components/Loading';
 
 const { LIVE_INCIDENT } = TICKET_TYPE;
 
@@ -82,6 +84,15 @@ const CreateTicketLGAView = props => {
     dispatch(closePopupCreateTicketInLGA());
     setSelectedFiles([]);
   };
+
+  useEffect(() => {
+    creatorInfo.userName && dispatch(setDefaultRecipients([creatorInfo]));
+  }, [creatorInfo, dispatch]);
+
+  if (!creatorInfo.userName) {
+    return <Loading />;
+  }
+
   return (
     isOpenCreateTicketInLGA && (
       <div className='chat-board-popup' id='create-ticket-popup'>

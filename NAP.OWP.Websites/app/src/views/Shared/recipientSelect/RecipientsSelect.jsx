@@ -7,6 +7,7 @@ import Service from '../createTicketNew/Service';
 import '../../../scss/components/_recipientSelect.scss';
 import ToastsWrapper from '../../components/ToastrWrapper';
 import useOnClickOutside from 'use-onclickoutside';
+import { RECIPIENT_HINT } from './const.json';
 
 const propTypes = {
   defaultValue: PropTypes.array,
@@ -16,7 +17,8 @@ const propTypes = {
   errorSubmit: PropTypes.bool,
   edit: PropTypes.bool,
   hasWrite: PropTypes.bool,
-  onChangeErrorSubmit: PropTypes.func
+  onChangeErrorSubmit: PropTypes.func,
+  ticketType: PropTypes.number
 };
 
 const RecipientsSelect = ({
@@ -27,7 +29,8 @@ const RecipientsSelect = ({
   errorSubmit,
   onChangeErrorSubmit = f => f,
   hasWrite = true,
-  edit
+  edit,
+  ticketType = 0
 }) => {
   const [showSuggest, setShowSuggest] = useState(false);
   const [search, setSearch] = useState('');
@@ -121,41 +124,49 @@ const RecipientsSelect = ({
   };
 
   return (
-    <div id='recipient-select' ref={wrapperRef}>
-      <RecipientsSelectedList
-        items={selectedRecipients}
-        hasWrite={hasWrite}
-        onDeleteItem={item => handleDeleteItem(item)}
-        onToggleList={value => setCollapsed(value)}
-        collapsed={collapsed}
-      />
-      {hasWrite && (
-        <div className='search-bar'>
-          <TextField
-            onClick={() => {
-              setError(false);
-              onChangeErrorSubmit(false);
-            }}
-            placeholder={
-              selectedRecipients.length === 0
-                ? 'Add by individual, group or section'
-                : 'Add New'
-            }
-            value={search}
-            onChange={e => handleSearch(e.currentTarget.value)}
-            error={error}
-            helperText={error ? 'Please select at least one recipient' : ''}
-            variant='standard'
-          />
-        </div>
-      )}
-      {showSuggest && (
-        <RecipientOptions
-          options={recipientOptions}
-          onAddItem={item => handleAddItem(item)}
+    <>
+      <div id='recipient-select' ref={wrapperRef}>
+        <RecipientsSelectedList
+          items={selectedRecipients}
+          hasWrite={hasWrite}
+          onDeleteItem={item => handleDeleteItem(item)}
+          onToggleList={value => setCollapsed(value)}
+          collapsed={collapsed}
         />
-      )}
-    </div>
+        {hasWrite && (
+          <div className='search-bar'>
+            <TextField
+              onClick={() => {
+                setError(false);
+                onChangeErrorSubmit(false);
+              }}
+              placeholder={
+                selectedRecipients.length === 0
+                  ? 'Add by individual, group or section'
+                  : 'Add New'
+              }
+              value={search}
+              onChange={e => handleSearch(e.currentTarget.value)}
+              error={error}
+              helperText={error ? 'Please select at least one recipient' : ''}
+              variant='standard'
+            />
+          </div>
+        )}
+        {showSuggest && (
+          <RecipientOptions
+            options={recipientOptions}
+            onAddItem={item => handleAddItem(item)}
+          />
+        )}
+      </div>
+      <p
+        style={{
+          color: 'gray'
+        }}>
+        {RECIPIENT_HINT[ticketType]}
+      </p>
+    </>
   );
 };
 

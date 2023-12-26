@@ -1,69 +1,67 @@
-@using Fanex.NAP.OWP.Core.Configuration;
-@{
-  var baseHref =  Request.ApplicationPath;
-  if (baseHref != "/") { baseHref = baseHref + "/"; }
-}
-  <!DOCTYPE html>
-  <html lang="en">
+@using Fanex.NAP.OWP.Core.Configuration; @{ var baseHref =
+Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
+<!DOCTYPE html>
+<html lang="en">
   <head>
-      <meta charset="utf-8" >
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" >
-      <meta name="theme-color" content="#000000" >
-      
-      <link rel="shortcut icon" href="/wwwroot/auto-assignment/favicon.ico" >
-      
-      <title>Operation Working Page</title>
-      <base href="@baseHref" >
-      <script type="text/javascript">
-          var iconUrl = '@baseHref + "favicon.ico"';
-          document.addEventListener('DOMContentLoaded', function () {
-              if (!Notification) {
-                  alert(
-                      'Desktop notifications not available in your browser. Try Chromium.'
-                  );
-                  return;
-              }
-              if (Notification.permission !== 'granted')
-                  Notification.requestPermission();
-          });
-          function pushNotification(messageContent) {
-              if (!Notification || Notification.permission !== 'granted') {
-                  return;
-              }
-              var notification = new Notification('OWP Notification', {
-                  icon: '@baseHref' + 'favicon.ico',
-                  body: messageContent
-              });
-              notification.onclick = () => {
-                  window.open('@baseHref' + 'MessageBoxManagement');
-              };
-          }
-      </script>
-      @Styles.Render("~/styles/fonts") @Scripts.Render("~/scripts/core")
-      @Scripts.Render("~/scripts/common")
-      <script src="~/Areas/Copy/copy.js"></script>
-    <script type="module" crossorigin src="/wwwroot/auto-assignment/assets/js/main-aa8b0b46.js"></script>
-    <link rel="stylesheet" href="/wwwroot/auto-assignment/assets/ext/server-758d74ed.css">
+    <meta charset="utf-8" >
+    <meta 
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    >
+    <meta name="theme-color" content="#000000" >
+    
+    <link rel="shortcut icon" href="/wwwroot/auto-assignment/favicon.ico" >
+    
+    <title>Operation Working Page</title>
+    <base href="@baseHref" >
+    <script type="text/javascript">
+      var iconUrl = '@baseHref + "favicon.ico"';
+      document.addEventListener('DOMContentLoaded', function () {
+        if (!Notification) {
+          alert(
+            'Desktop notifications not available in your browser. Try Chromium.'
+          );
+          return;
+        }
+        if (Notification.permission !== 'granted')
+          Notification.requestPermission();
+      });
+      function pushNotification(messageContent) {
+        if (!Notification || Notification.permission !== 'granted') {
+          return;
+        }
+        var notification = new Notification('OWP Notification', {
+          icon: '@baseHref' + 'favicon.ico',
+          body: messageContent
+        });
+        notification.onclick = () => {
+          window.open('@baseHref' + 'MessageBoxManagement');
+        };
+      }
+    </script>
+    @Styles.Render("~/styles/fonts") @Scripts.Render("~/scripts/core")
+    @Scripts.Render("~/scripts/common")
+    <script src="~/Areas/Copy/copy.js"></script>
+    <link href="~/Content/Themes/fonts/flags/flag-icon.css" rel="stylesheet" >
+    <script type="module" crossorigin src="/wwwroot/auto-assignment/assets/js/main-88c186c3.js"></script>
+    <link rel="stylesheet" href="/wwwroot/auto-assignment/assets/ext/server-c9e85428.css">
   </head>
 
   <body>
-      <noscript>
-          You need to enable JavaScript to run this app.
-      </noscript>
-      <div id="root"></div>
-      <script src="signalr/hubs"></script>
-      
-      @{
-        var currentUsername = HttpContext.Current.User.Identity.Name;
-        var environment = Fanex.NAP.Core.Configuration.NapSettings.Settings.Environment;
-        var netCoreRootUrl = Fanex.NAP.OWP.Core.Configuration.AppSettings.NetCoreRootUrl;
-      }
-      <script>
-          documentTitle.CountUnreadMessage();
-          window.netCoreRootUrl = '@netCoreRootUrl';
-      </script>
-      <input type="hidden" value="@currentUsername" >
-      @Html.Hidden("RootURL", Url.Content("~/"))
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="root"></div>
+    <script src="signalr/hubs"></script>
+    
+    @{ var currentUsername = HttpContext.Current.User.Identity.Name; var
+    environment = Fanex.NAP.Core.Configuration.NapSettings.Settings.Environment;
+    var netCoreRootUrl =
+    Fanex.NAP.OWP.Core.Configuration.AppSettings.NetCoreRootUrl; }
+    <script>
+      documentTitle.CountUnreadMessage();
+      window.netCoreRootUrl = '@netCoreRootUrl';
+    </script>
+    <input type="hidden" value="@currentUsername" >
+    @Html.Hidden("RootURL", Url.Content("~/"))
   
 </body>
-  </html>
+</html>
