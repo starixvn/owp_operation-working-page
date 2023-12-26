@@ -35,8 +35,9 @@ const IconOpenMessage = props => {
           rowIndex={rowIndex}
           dataSource={dataSource}
           ticketList={TicketList}
-          onCloseTicketList={() => setIsOpenTicketList(false)} />)
-      }
+          onCloseTicketList={() => setIsOpenTicketList(false)}
+        />
+      )}
     </>
   );
 };

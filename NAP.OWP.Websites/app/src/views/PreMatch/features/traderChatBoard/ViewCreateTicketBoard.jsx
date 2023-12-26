@@ -48,9 +48,7 @@ const ViewCreateTicketBoard = props => {
   const { selectedRecipients, modelByRowIndex, creatorInfo, subTypeSelected } =
     props;
   const { InfoSiteMatchId, PreMatchLeagueId, LeagueId } = modelByRowIndex;
-  const renderHeader = () => (
-    <span className='close-chat-board-popup' onClick={handleOnClose} />
-  );
+
   const dispatchActionRecipient = value => {
     if (value.length === 0) {
       dispatch(changeErrorRecipient(true));
@@ -119,7 +117,7 @@ const ViewCreateTicketBoard = props => {
 
   return (
     <div className='chat-board-popup' id='create-ticket-popup'>
-      {renderHeader()}
+      <span className='close-chat-board-popup' onClick={handleOnClose} />
       <div className='header-popup'>
         <h1> Type: Event Checking </h1>
       </div>
@@ -152,11 +150,9 @@ const ViewCreateTicketBoard = props => {
               </div>
             </>
           ) : (
-            <>
-              <div className='league-name-create'>
-                {modelByRowIndex.LeagueName}
-              </div>
-            </>
+            <div className='league-name-create'>
+              {modelByRowIndex.LeagueName}
+            </div>
           )}
         </div>
       </div>

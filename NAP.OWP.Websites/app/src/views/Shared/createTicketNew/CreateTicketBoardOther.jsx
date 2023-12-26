@@ -43,9 +43,6 @@ const CreateTicketBoardOther = props => {
   const isTicKetSupport = typeTicketText === 'Ticket Support';
   const ticketType = isTicKetSupport ? TICKET_SUPPORT : GROUP_CHAT;
   const [selectedFiles, setSelectedFiles] = useState([]);
-  const renderHeader = () => (
-    <span className='close-chat-board-popup' onClick={handleOnClose} />
-  );
 
   const dispatchActionOther = value => {
     if (value === '') {
@@ -118,7 +115,7 @@ const CreateTicketBoardOther = props => {
     <>
       {isOthers && (
         <div className='chat-board-popup' id='create-ticket-other-popup'>
-          {renderHeader()}
+          <span className='close-chat-board-popup' onClick={handleOnClose} />
           <Other />
           <ShareOfChatBoardTicket
             handleOnSubmit={handleOnSubmit}
