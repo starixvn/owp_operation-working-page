@@ -4,5 +4,9 @@
     "TO_DATE_KEY": "toDate"
   },
   "netCoreURL": "api-netcore/kpi/la",
-  "netFwURL": "api/kpi/la"
+  "netFwURL": "api/kpi/la",
+  "USER_STATUS": [
+    { "value": "active", "label": "Active" },
+    { "value": "resigned", "label": "Resigned" }
+  ]
 }

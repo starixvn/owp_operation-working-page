@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import DatePicker from 'react-datepicker';
 import CalendarIcon from 'mdi-react/CalendarIcon';
 import ToggleColumnHook from './common/ToggleColumnHook';
-import { TableConst, FilterConst } from '../constants/reportConst';
+import { TableConst, FilterConst, USER_STATUS } from '../constants/reportConst';
 import { isEqual } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { serverTimeSelector } from '../selector/serverTimeSelector';
@@ -25,7 +25,7 @@ import {
 } from '../../Shared/DateTime/dateTimeHelper';
 import { isDateRangeValid } from '../helper/filterHelper';
 import ToastrWrapper from '../../components/ToastrWrapper';
-
+import { MultiSelect } from 'react-multi-select-component';
 
 const urlGetLaData =
   process.env.NODE_ENV === 'development'
@@ -37,9 +37,8 @@ const urlExportLa =
     ? `api-netcore/report/la/export-excel`
     : `${window.netCoreRootUrl}/api/report/la/export-excel`;
 
-
-const exportUrl = (fromDate, toDate) => {
-  const url = `${urlExportLa}?fromDate=${fromDate}&toDate=${toDate}`;
+const exportUrl = (fromDate, toDate, activeUser, resignUser) => {
+  const url = `${urlExportLa}?fromDate=${fromDate}&toDate=${toDate}&activeUser=${activeUser}&resignUser=${resignUser}`;
   return url;
 };
 
@@ -49,6 +48,9 @@ const propTypes = {
 
 const Filter = ({ onShowColumnChange }) => {
   const [dateModel, setDateModel] = useState(FilterConst.defaultDateModel);
+  const [userStatusSelected, setUserStatusSelected] = useState([
+    USER_STATUS[0]
+  ]);
   const dispatch = useDispatch();
   const stableDispatch = useCallback(dispatch, []);
   const toDatePicker = useRef(null);
@@ -84,10 +86,16 @@ const Filter = ({ onShowColumnChange }) => {
       );
       return;
     }
+    if (!userStatusSelected.length) {
+      ToastrWrapper.showError(<h4>Please select least one item</h4>);
+      return;
+    }
 
     const postModel = {
       FromDate: getMMDDYYYYStringFromDateTime(fromDate),
-      ToDate: getMMDDYYYYStringFromDateTime(toDate)
+      ToDate: getMMDDYYYYStringFromDateTime(toDate),
+      activeUser: userStatusSelected.some(s => s.value === 'active'),
+      resignUser: userStatusSelected.some(s => s.value === 'resigned')
     };
     stableDispatch(queryDataWithParams(urlGetLaData, postModel, QUERY_LA));
   };
@@ -96,7 +104,12 @@ const Filter = ({ onShowColumnChange }) => {
     event.preventDefault();
     const fromDateString = getMMDDYYYYStringFromDateTime(fromDate);
     const toDateString = getMMDDYYYYStringFromDateTime(toDate);
-    window.location.href = exportUrl(fromDateString, toDateString);
+    window.location.href = exportUrl(
+      fromDateString,
+      toDateString,
+      userStatusSelected.some(s => s.value === 'active'),
+      userStatusSelected.some(s => s.value === 'resigned')
+    );
   };
 
   useEffect(() => {
@@ -116,68 +129,78 @@ const Filter = ({ onShowColumnChange }) => {
   }
 
   return (
-    <>
-      <div className='top-control'>
-        <div className='left-control'>
-          <div className='filter-control calendar'>
-            <div className='label'>From Date</div>
-            <DatePicker
-              selected={fromDate}
-              dateFormat='MMM dd, yyyy'
-              ref={fromDatePicker}
-              onChange={date =>
-                setDateModel(preDate => ({
-                  ...preDate,
-                  fromDate: date
-                }))
-              }
-            />
-            <span
-              className='icon-calendar'
-              onClick={() => fromDatePicker.current.setOpen(true)}>
-              <CalendarIcon size={14} />
-            </span>
-          </div>
-          <div className='filter-control calendar'>
-            <div className='label'>To Date</div>
-            <DatePicker
-              selected={toDate}
-              dateFormat='MMM dd, yyyy'
-              ref={toDatePicker}
-              onChange={date =>
-                setDateModel(preDate => ({
-                  ...preDate,
-                  toDate: date
-                }))
-              }
-            />
-            <span
-              className='icon-calendar'
-              onClick={() => toDatePicker.current.setOpen(true)}>
-              <CalendarIcon size={14} />
-            </span>
-          </div>
-          <div className='filter-control btn-block'>
-            <button className='button-submit' onClick={handleSearch}>
-              Search
-            </button>
-            <button className='button-export' onClick={handleExport}>
-              Export
-            </button>
-          </div>
+    <div className='top-control'>
+      <div className='left-control'>
+        <div className='filter-control calendar'>
+          <div className='label'>From Date</div>
+          <DatePicker
+            selected={fromDate}
+            dateFormat='MMM dd, yyyy'
+            ref={fromDatePicker}
+            onChange={date =>
+              setDateModel(preDate => ({
+                ...preDate,
+                fromDate: date
+              }))
+            }
+          />
+          <span
+            className='icon-calendar'
+            onClick={() => fromDatePicker.current.setOpen(true)}>
+            <CalendarIcon size={14} />
+          </span>
         </div>
-
-        {isDisplayTable && (
-          <div className='right-control'>
-            <ToggleColumnHook
-              options={selectOption()}
-              localStorageKey={`${laPolicy.Username}${FunctionKeys.La_Report}`}
-              onSelected={handleShowColumnChange}
-            />
-          </div>
-        )}
+        <div className='filter-control calendar'>
+          <div className='label'>To Date</div>
+          <DatePicker
+            selected={toDate}
+            dateFormat='MMM dd, yyyy'
+            ref={toDatePicker}
+            onChange={date =>
+              setDateModel(preDate => ({
+                ...preDate,
+                toDate: date
+              }))
+            }
+          />
+          <span
+            className='icon-calendar'
+            onClick={() => toDatePicker.current.setOpen(true)}>
+            <CalendarIcon size={14} />
+          </span>
+        </div>
+        <div className='filter-control multi-select-dropdown'>
+          <div className='label'>User status</div>
+          <MultiSelect
+            labelledBy='Select user status'
+            className='status'
+            options={USER_STATUS}
+            value={userStatusSelected}
+            disableSearch
+            ClearSelectedIcon={null}
+            onChange={setUserStatusSelected}
+          />
+        </div>
+        <div className='filter-control btn-block'>
+          <button className='button-submit' onClick={handleSearch}>
+            Search
+          </button>
+          <button className='button-export' onClick={handleExport}>
+            Export
+          </button>
+        </div>
       </div>
-    </>
+
+      {isDisplayTable && (
+        <div className='right-control'>
+          <ToggleColumnHook
+            options={selectOption()}
+            localStorageKey={`${laPolicy.Username}${FunctionKeys.La_Report}`}
+            onSelected={handleShowColumnChange}
+          />
+        </div>
+      )}
+    </div>
   );
 };
 

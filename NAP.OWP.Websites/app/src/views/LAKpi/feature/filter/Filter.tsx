@@ -13,6 +13,7 @@ import InfoConditionExplainIcon from '../tableConditionConfig/InfoConditionExpla
 import EditTarget from './EditTarget';
 import SectionOption from './SectionOption';
 import { buildSectionInString } from '../../helper/LaKpiHelper';
+import UserStatus from './UserStatus';
 
 const { defaultFromDate, defaultToDate } = initDefaultFilterDate();
 
@@ -24,6 +25,7 @@ const Filter = () => {
   const queryLevelOption = useStore(state => state.queryLevelOption);
   const queryDataTable = useStore(state => state.queryDataTable);
   const sectionSelected = useStore(state => state.sectionSelected);
+  const userStatusSelected = useStore(state => state.userStatusSelected);
 
   const [filterDate, setFilterDate] = useState({
     fromDate: defaultFromDate,
@@ -42,7 +44,9 @@ const Filter = () => {
     exportDataTable(
       filterDate.fromDate,
       filterDate.toDate,
-      buildSectionInString(sectionSelected)
+      buildSectionInString(sectionSelected),
+      userStatusSelected.some(s => s.value === 'active'),
+      userStatusSelected.some(s => s.value === 'resigned')
     );
   };
 
@@ -71,18 +75,26 @@ const Filter = () => {
       ToastrWrapper.showError('Please select at least one section');
       return;
     }
+    if (!userStatusSelected.length) {
+      ToastrWrapper.showError('Please select at least one user status');
+      return;
+    }
     queryDataTable(
       filterDate.fromDate,
       filterDate.toDate,
-      buildSectionInString(sectionSelected)
+      buildSectionInString(sectionSelected),
+      userStatusSelected.some(s => s.value === 'active'),
+      userStatusSelected.some(s => s.value === 'resigned')
     );
   };
 
   useEffect(() => {
-    queryDataTable(
+    sectionSelected.length && queryDataTable(
       filterDate.fromDate,
       filterDate.toDate,
-      buildSectionInString(sectionSelected)
+      buildSectionInString(sectionSelected),
+      userStatusSelected.some(s => s.value === 'active'),
+      userStatusSelected.some(s => s.value === 'resigned')
     );
     queryConditionData();
     queryLevelOption();
@@ -128,7 +140,9 @@ const Filter = () => {
         <div className='filter-control'>
           <SectionOption />
         </div>
-
+        <div className='filter-control'>
+          <UserStatus />
+        </div>
         <div className='filter-control btn-block'>
           <button className='button-submit' onClick={handleOnSearch}>
             Search
