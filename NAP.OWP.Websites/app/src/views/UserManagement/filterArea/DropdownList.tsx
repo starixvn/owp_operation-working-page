@@ -11,6 +11,17 @@ const DropdownList = () => {
     <>
       <div className='filter-control multiselect'>
         <MultipleSelection
+          label='Department'
+          disabled={false}
+          className='department'
+          options={departments}
+          value={filterValue.department}
+          onChange={value => setFilterValue(value, 'department')}
+        />
+      </div>
+      {renderSection()}
+      <div className='filter-control multiselect'>
+        <MultipleSelection
           label='Role'
           className='role'
           disabled={false}
@@ -18,17 +29,6 @@ const DropdownList = () => {
           value={filterValue.role}
           disableSearch
           onChange={value => setFilterValue(value, 'role')}
-        />
-      </div>
-      {renderSection()}
-      <div className='filter-control multiselect'>
-        <MultipleSelection
-          label='Department'
-          disabled={false}
-          className='department'
-          options={departments}
-          value={filterValue.department}
-          onChange={value => setFilterValue(value, 'department')}
         />
       </div>
       <div className='filter-control multiselect'>
@@ -55,8 +55,6 @@ const DropdownList = () => {
   );
 };
 
-DropdownList.propTypes = {
-
-};
+DropdownList.propTypes = {};
 
 export default DropdownList;
