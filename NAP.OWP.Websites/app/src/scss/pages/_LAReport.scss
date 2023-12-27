@@ -28,6 +28,10 @@
     border-radius: 0;
   }
   .rmsc.status {
+    .dropdown-content {
+      z-index: 8 !important;
+      max-height: 400px !important;
+    }
     .dropdown-container {
       border: 0;
       border-bottom: 1px solid #cccccc;
@@ -73,37 +77,6 @@
   }
   .rmsc .dropdown-container {
     background-color: transparent !important;
-  }
-  .multi-select {
-    display: inline-block;
-    height: 26px;
-    min-width: 200px;
-    margin-left: 10px;
-    font-size: 12px;
-    background: #f1f1f1;
-    color: #5e7485;
-    border-color: #f1f1f1;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 3px 2px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    vertical-align: middle;
-    border-radius: 2px;
-    cursor: pointer;
-    .dropdown-content {
-      z-index: 5 !important;
-      max-height: 400px !important;
-    }
-    .dropdown-heading {
-      height: 26px !important;
-      border-radius: 2px !important;
-      border-bottom: 0 !important;
-      background: #f1f1f1 !important;
-      .dropdown-heading-value {
-        padding-left: 8px !important;
-        padding-right: 8px !important;
-        line-height: 26px !important;
-        cursor: pointer;
-      }
-    }
   }
 }
 .table-content {

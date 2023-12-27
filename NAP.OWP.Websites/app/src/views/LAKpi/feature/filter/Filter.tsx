@@ -76,7 +76,7 @@ const Filter = () => {
       return;
     }
     if (!userStatusSelected.length) {
-      ToastrWrapper.showError('Please select at least one user status');
+      ToastrWrapper.showError('Please select at least one Account Type');
       return;
     }
     queryDataTable(

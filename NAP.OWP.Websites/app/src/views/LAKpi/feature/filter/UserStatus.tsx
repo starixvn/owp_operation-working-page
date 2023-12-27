@@ -9,9 +9,9 @@ const UserStatus = () => {
 
   return (
     <div className='multi-select-dropdown'>
-      <div className='label'>User</div>
+      <div className='label'>Account Type</div>
       <MultiSelect
-        labelledBy='Select user status'
+        labelledBy='Select Account Type'
         className='status'
         options={userStatusOption}
         value={statusSelected}

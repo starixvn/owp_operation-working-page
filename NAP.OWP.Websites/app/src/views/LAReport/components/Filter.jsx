@@ -87,7 +87,7 @@ const Filter = ({ onShowColumnChange }) => {
       return;
     }
     if (!userStatusSelected.length) {
-      ToastrWrapper.showError(<h4>Please select least one item</h4>);
+      ToastrWrapper.showError(<h4>Please select at least one Account Type</h4>);
       return;
     }
 
@@ -170,9 +170,9 @@ const Filter = ({ onShowColumnChange }) => {
           </span>
         </div>
         <div className='filter-control multi-select-dropdown'>
-          <div className='label'>User status</div>
+          <div className='label'>Account Type</div>
           <MultiSelect
-            labelledBy='Select user status'
+            labelledBy='Select Account Type'
             className='status'
             options={USER_STATUS}
             value={userStatusSelected}
