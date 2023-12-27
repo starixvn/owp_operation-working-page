@@ -7,6 +7,6 @@
   "netFwURL": "api/kpi/la",
   "USER_STATUS": [
     { "value": "active", "label": "Active" },
-    { "value": "resigned", "label": "Resigned" }
+    { "value": "resigned", "label": "Inactive" }
   ]
 }

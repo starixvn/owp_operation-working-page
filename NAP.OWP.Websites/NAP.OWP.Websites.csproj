@@ -2733,7 +2733,7 @@
     <Content Include="wwwroot\la-kpi\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\la-kpi\assets\ext\server-f85dc32e.css" />
-    <Content Include="wwwroot\la-kpi\assets\js\main-c9fc0f57.js" />
+    <Content Include="wwwroot\la-kpi\assets\js\main-1e884a1b.js" />
     <Content Include="wwwroot\la-kpi\favicon.ico" />
     <Content Include="wwwroot\la-kpi\server.html" />
     <Content Include="wwwroot\la-report\assets\ext\icon-feedback-57264197.svg" />
@@ -2741,8 +2741,8 @@
     <Content Include="wwwroot\la-report\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\la-report\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\la-report\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\la-report\assets\ext\server-6006e4a0.css" />
-    <Content Include="wwwroot\la-report\assets\js\main-2b96377f.js" />
+    <Content Include="wwwroot\la-report\assets\ext\server-8663b219.css" />
+    <Content Include="wwwroot\la-report\assets\js\main-a62af8ae.js" />
     <Content Include="wwwroot\la-report\favicon.ico" />
     <Content Include="wwwroot\la-report\server.html" />
     <Content Include="wwwroot\league-management\assets\ext\icon-feedback-57264197.svg" />

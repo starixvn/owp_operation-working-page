@@ -133,7 +133,7 @@ const FilterConst = {
 
 const USER_STATUS = [
   { 'value': 'active', 'label': 'Active' },
-  { 'value': 'resigned', 'label': 'Resigned' }
+  { 'value': 'resigned', 'label': 'Inactive' }
 ];
 
 export { TableConst, FilterConst, COLUMN_ID_HIGHLIGHT, USER_STATUS };
