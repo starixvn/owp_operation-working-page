@@ -10,17 +10,17 @@ const DropdownList = () => {
   return (
     <>
       <div className='filter-control multiselect'>
-        <div className='filter-control multiselect'>
-          <MultipleSelection
-            label='Department'
-            disabled={false}
-            className='department'
-            options={departments}
-            value={filterValue.department}
-            onChange={value => setFilterValue(value, 'department')}
-          />
-        </div>
-        {renderSection()}
+        <MultipleSelection
+          label='Department'
+          disabled={false}
+          className='department'
+          options={departments}
+          value={filterValue.department}
+          onChange={value => setFilterValue(value, 'department')}
+        />
+      </div>
+      {renderSection()}
+      <div className='filter-control multiselect'>
         <MultipleSelection
           label='Role'
           className='role'
