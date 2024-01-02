@@ -29,6 +29,8 @@ type TState = {
   permission: null | TPermission;
   sectionOption: Array<TSectionOption>;
   sectionSelected: Array<TSectionOption>;
+  userStatusOption: Array<TSectionOption>;
+  userStatusSelected: Array<TSectionOption>;
   loading: string;
 };
 
@@ -42,12 +44,16 @@ type TAction = {
   queryDataTable: (
     fromDate: Required<Date>,
     toDate: Required<Date>,
-    section: string
+    section: string,
+    userActive: boolean,
+    userResign: boolean
   ) => Promise<void>;
   exportDataTable: (
     fromDate: Required<Date>,
     toDate: Required<Date>,
-    section: string
+    section: string,
+    userActive: boolean,
+    userResign: boolean
   ) => Promise<void>;
   queryConditionData: () => Promise<void>;
   queryLevelOption: () => Promise<void>;
@@ -56,6 +62,7 @@ type TAction = {
   sortDataSources: (sortState: SortState) => void;
   setFilterHeader: (value: string) => void;
   setSectionSelected: (value: Array<TSectionOption>) => void;
+  setUserStatusSelected: (value: Array<TSectionOption>) => void;
   queryPermissionsAndSections: () => Promise<void>;
   getPermission: () => TPermission | null;
 };

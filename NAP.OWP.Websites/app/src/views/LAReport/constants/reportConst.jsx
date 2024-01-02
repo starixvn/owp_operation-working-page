@@ -131,4 +131,9 @@ const FilterConst = {
   dateRange
 };
 
-export { TableConst, FilterConst, COLUMN_ID_HIGHLIGHT };
+const USER_STATUS = [
+  { 'value': 'active', 'label': 'Active' },
+  { 'value': 'resigned', 'label': 'Inactive' }
+];
+
+export { TableConst, FilterConst, COLUMN_ID_HIGHLIGHT, USER_STATUS };

@@ -11,7 +11,9 @@ const buildRequestURL = (key: string | null) =>
 const queryDataTable = async (
   filterFromDate: Date,
   filterToDate: Date,
-  sectionIds: string
+  sectionIds: string,
+  activeUser: boolean,
+  resignUser: boolean
 ) => {
   const url = buildRequestURL('');
   const fromDate = Utils.formatDate(filterFromDate);
@@ -21,7 +23,9 @@ const queryDataTable = async (
     url,
     fromDate,
     toDate,
-    sectionIds
+    sectionIds,
+    activeUser,
+    resignUser
   });
   return response.data;
 };
@@ -29,12 +33,14 @@ const queryDataTable = async (
 const exportDataTable = async (
   filterFromDate: Date,
   filterToDate: Date,
-  sectionIds: string
+  sectionIds: string,
+  activeUser: boolean,
+  resignUser: boolean
 ) => {
   const url = buildRequestURL('export');
   const fromDate = Utils.formatDate(filterFromDate);
   const toDate = Utils.formatDate(filterToDate);
-  window.location.href = `${url}?fromDate=${fromDate}&toDate=${toDate}&sectionIds=${sectionIds}`;
+  window.location.href = `${url}?fromDate=${fromDate}&toDate=${toDate}&sectionIds=${sectionIds}&activeUser=${activeUser}&resignUser=${resignUser}`;
 };
 
 const queryConditionData = async () => {

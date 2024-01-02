@@ -20,6 +20,7 @@ import {
 } from '../service';
 import { filterData, sortData } from '../helper/LaKpiHelper';
 import getPermission from '../../Shared/permission/getPermission';
+import { USER_STATUS } from '../const.json';
 
 const useStore = create<TState & TAction>((set, get) => ({
   dataTable: {
@@ -34,6 +35,8 @@ const useStore = create<TState & TAction>((set, get) => ({
   levelOption: [],
   sectionOption: [],
   sectionSelected: [],
+  userStatusOption: USER_STATUS,
+  userStatusSelected: [USER_STATUS[0]],
   loading: REQUEST_STATUS.idle,
   sortState: {
     columnKeySelected: '',
@@ -49,9 +52,11 @@ const useStore = create<TState & TAction>((set, get) => ({
   exportDataTable: async (
     fromDate: Required<Date>,
     toDate: Required<Date>,
-    section: string
+    section: string,
+    userActive: boolean,
+    userResign: boolean
   ) => {
-    await exportDataTable(fromDate, toDate, section);
+    await exportDataTable(fromDate, toDate, section, userActive, userResign);
   },
   queryLevelOption: async () => {
     const data = await queryLevelOption();
@@ -65,7 +70,9 @@ const useStore = create<TState & TAction>((set, get) => ({
   queryDataTable: async (
     fromDate: Required<Date>,
     toDate: Required<Date>,
-    section: string
+    section: string,
+    activeUser: boolean,
+    resignUser: boolean
   ) => {
     const { filterHeaderValue } = get();
     set((state: TState) =>
@@ -76,7 +83,7 @@ const useStore = create<TState & TAction>((set, get) => ({
       })
     );
 
-    const data = await queryDataTable(fromDate, toDate, section);
+    const data = await queryDataTable(fromDate, toDate, section, activeUser, resignUser);
     const dataFiltered = filterData(data.kpiLa, filterHeaderValue);
     set((state: TState) =>
       update(state, {
@@ -129,7 +136,13 @@ const useStore = create<TState & TAction>((set, get) => ({
       })
     );
   },
-
+  setUserStatusSelected(value: Array<TSectionOption>) {
+    set((state: TState) =>
+      update(state, {
+        userStatusSelected: { $set: value }
+      })
+    );
+  },
   queryPermissionsAndSections: async () => {
     set((state: TState) =>
       update(state, {

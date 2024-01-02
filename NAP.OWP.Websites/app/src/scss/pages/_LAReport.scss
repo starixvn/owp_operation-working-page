@@ -22,36 +22,61 @@
     right: 10px;
     bottom: 10px;
   }
-  .multi-select {
-    display: inline-block;
-    height: 26px;
-    min-width: 200px;
-    margin-left: 10px;
-    font-size: 12px;
-    background: #f1f1f1;
-    color: #5e7485;
-    border-color: #f1f1f1;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 3px 2px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    vertical-align: middle;
-    border-radius: 2px;
-    cursor: pointer;
+  .rmsc.status .dropdown-container {
+    border: 0;
+    border-bottom: 1px solid #cccccc;
+    border-radius: 0;
+  }
+  .rmsc.status {
     .dropdown-content {
-      z-index: 5 !important;
+      z-index: 8 !important;
       max-height: 400px !important;
     }
-    .dropdown-heading {
-      height: 26px !important;
-      border-radius: 2px !important;
-      border-bottom: 0 !important;
-      background: #f1f1f1 !important;
-      .dropdown-heading-value {
-        padding-left: 8px !important;
-        padding-right: 8px !important;
-        line-height: 26px !important;
-        cursor: pointer;
+    .dropdown-container {
+      border: 0;
+      border-bottom: 1px solid #cccccc;
+      border-radius: 0;
+      &:focus-within {
+        box-shadow: none;
       }
     }
+    .dropdown-heading {
+      height: 28px;
+      border: 0 !important;
+      .dropdown-heading-dropdown-arrow {
+        display: none;
+      }
+      &:after {
+        position: absolute;
+        top: 50%;
+        margin-top: -2px;
+        right: 0;
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 4px 4.5px 0 4.5px;
+        border-color: gray transparent transparent transparent;
+      }
+    }
+    .dropdown-content {
+      .select-item {
+        outline: none;
+        &.selected,
+        &:hover {
+          background: #ebf5ff;
+        }
+      }
+      .item-renderer {
+        input[type='checkbox'] {
+          position: relative;
+          top: 2px;
+        }
+      }
+    }
+  }
+  .rmsc .dropdown-container {
+    background-color: transparent !important;
   }
 }
 .table-content {
@@ -100,17 +125,17 @@
             text-align: left;
             display: flex;
             align-items: center;
-            .col-total{
-              &:after{
+            .col-total {
+              &:after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 top: 0;
                 left: 0;
                 background-color: #fbe79e;
               }
-              *{
+              * {
                 position: relative;
                 z-index: 10;
               }
@@ -129,7 +154,6 @@
             &:nth-child(22),
             &:nth-child(25),
             &:nth-child(32) {
-            
               text-align: center;
             }
             &:nth-child(15) {
@@ -211,55 +235,55 @@
     left: 10px;
   }
 }
-.rmsc.multi-select{
+.rmsc.multi-select {
   width: 200px;
-  .dropdown-container{
+  .dropdown-container {
     border: 0;
     border-bottom: 1px solid #e1e1e1;
     border-radius: 0;
     background: transparent;
-    &:focus-within{
+    &:focus-within {
       box-shadow: none;
     }
   }
-  .dropdown-heading{
+  .dropdown-heading {
     height: 28px;
-    border: 0!important;
-    .dropdown-heading-dropdown-arrow{
+    border: 0 !important;
+    .dropdown-heading-dropdown-arrow {
       display: none;
     }
-    &:after{
+    &:after {
       position: absolute;
       top: 50%;
       margin-top: -2px;
       right: 5px;
-      content: "";
+      content: '';
       width: 0;
       height: 0;
       border-style: solid;
       border-width: 4px 4.5px 0 4.5px;
       border-color: gray transparent transparent transparent;
     }
-
   }
-  .dropdown-content{
-    .select-item{
+  .dropdown-content {
+    .select-item {
       outline: none;
-      
-      &.selected, &:hover{
-        background: #EBF5FF;
+
+      &.selected,
+      &:hover {
+        background: #ebf5ff;
       }
     }
     .item-renderer {
-      span{
-        &:before{
-          margin-right: 10px!important;
+      span {
+        &:before {
+          margin-right: 10px !important;
         }
-        &:after{
-          left: 6px!important;
-          top: 3px!important;
+        &:after {
+          left: 6px !important;
+          top: 3px !important;
         }
-      }     
+      }
     }
   }
 }
