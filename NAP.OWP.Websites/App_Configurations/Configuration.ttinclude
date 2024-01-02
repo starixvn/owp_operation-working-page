@@ -48,6 +48,10 @@
         new SiteInfo
         {
             Environment = SiteEnvironment.AWS
+        },
+        new SiteInfo
+        {
+            Environment = SiteEnvironment.KLDR
         }
     };
 #>
@@ -65,7 +69,8 @@
 		UAT3,
 		SIT,
         PRO,
-        AWS
+        AWS,
+        KLDR
     }
     class SiteInfo
     {
@@ -81,6 +86,7 @@
                 {
                     case SiteEnvironment.PRO:
                     case SiteEnvironment.AWS:
+                    case SiteEnvironment.KLDR:
                         return "LIVE";
                     default:
                         return "TEST";
@@ -96,6 +102,7 @@
                 {
                     case SiteEnvironment.PRO:
                     case SiteEnvironment.AWS:
+                    case SiteEnvironment.KLDR:
                         return "LIVE";
                     default:
                         return "UAT";
@@ -116,6 +123,7 @@
 					case SiteEnvironment.UAT2:
 					case SiteEnvironment.UAT3:
 					case SiteEnvironment.SIT:
+                    case SiteEnvironment.KLDR:
                         return "28";
                     default:
                         return "99";
@@ -131,6 +139,7 @@
                 {
                     case SiteEnvironment.PRO:
                     case SiteEnvironment.AWS:
+                    case SiteEnvironment.KLDR:
                         return "false";
                     default:
                         return "false";
@@ -148,6 +157,8 @@
                         return "http://10.2.27.8:8788";
                     case SiteEnvironment.AWS:
                         return "http://vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com:8788";
+                    case SiteEnvironment.KLDR:
+                        return "http://10.143.8.200:1710";
 					case SiteEnvironment.UAT:
                     case SiteEnvironment.UAT1:
 					case SiteEnvironment.UAT2:
@@ -172,6 +183,8 @@
                         return "http://10.2.27.8:7446/api";
                     case SiteEnvironment.AWS:
                         return "http://vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com:8889/api";
+                    case SiteEnvironment.KLDR:
+                        return "http://10.143.8.200:8889/api";
 					case SiteEnvironment.UAT:
                     case SiteEnvironment.UAT1:
 					case SiteEnvironment.UAT2:
@@ -193,6 +206,7 @@
                 {
                     case SiteEnvironment.PRO:
                     case SiteEnvironment.AWS:
+                    case SiteEnvironment.KLDR:
                         return "true";
                     default:
                         return "false";
@@ -237,7 +251,9 @@
                     case SiteEnvironment.PRO:
                         return "tcpip=10.2.27.8:42424";
                     case SiteEnvironment.AWS:
-                        return "tcpip=vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com:43434";
+                        return "tcpip=vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com:43434"; 
+                    case SiteEnvironment.KLDR:
+                        return "tcpip=10.143.8.200:42424";
 					case SiteEnvironment.UAT:
                     case SiteEnvironment.UAT1:
 					case SiteEnvironment.UAT2:
@@ -262,7 +278,8 @@
 					case SiteEnvironment.UAT2:
 					case SiteEnvironment.UAT3:
                     case SiteEnvironment.PRO:
-                        return "http://10.99.99.51:7724/TGRS";                   
+                    case SiteEnvironment.KLDR:
+                        return "http://10.99.99.51:7724/TGRS";   
                     default:
                         return "http://ha.nexdev.net:7724/TGRS";
                 }
@@ -288,7 +305,9 @@
                     case SiteEnvironment.PRO:
                         return "PRO";  
                     case SiteEnvironment.AWS:
-                        return "AWS";  
+                        return "AWS";
+                    case SiteEnvironment.KLDR:
+                        return "KLDR";  
                     default:
                         return "DEV";
                 }
@@ -316,7 +335,9 @@
                     case SiteEnvironment.PRO:
                         return "/n1/Auth/Propagation";  
                     case SiteEnvironment.AWS:
-                        return "/n1/Auth/Propagation";  
+                        return "/n1/Auth/Propagation";
+                    case SiteEnvironment.KLDR:
+                        return "/n1/Auth/Propagation";
                     default:
                         return "";
                 }
@@ -344,9 +365,9 @@
 					case SiteEnvironment.UAT3:
 						return "/n3";
                     case SiteEnvironment.PRO:
-                        return "/n1";  
                     case SiteEnvironment.AWS:
-                        return "/n1";  
+                    case SiteEnvironment.KLDR:
+                        return "/n1";
                     default:
                         return "";
                 }
@@ -373,6 +394,8 @@
                         return "10.99.99.51";  
                     case SiteEnvironment.AWS:
                         return "vn-net-lb-fb2f50db9dc92512.elb.ap-northeast-1.amazonaws.com";
+                    case SiteEnvironment.KLDR:
+                        return "10.143.8.200";
                     default:
                         return "";
                 }
@@ -395,6 +418,7 @@
 					case SiteEnvironment.UAT3:
                     case SiteEnvironment.PRO:
                     case SiteEnvironment.AWS:
+                    case SiteEnvironment.KLDR:
                         return "/OWP";  
                     default:
                         return "";
@@ -418,6 +442,7 @@
 					case SiteEnvironment.UAT3:
                     case SiteEnvironment.PRO:
                     case SiteEnvironment.AWS:
+                    case SiteEnvironment.KLDR:
                         return "owp";  
                     default:
                         return "";
@@ -441,6 +466,7 @@
 					case SiteEnvironment.UAT3:
                     case SiteEnvironment.PRO:
                     case SiteEnvironment.AWS:
+                    case SiteEnvironment.KLDR:
                         return "1234aa";  
                     default:
                         return "";
@@ -476,6 +502,7 @@
                             return "OWP.Request.Queue.3";
                         case SiteEnvironment.PRO:
                         case SiteEnvironment.AWS:
+                        case SiteEnvironment.KLDR:
                             return "OWP.Request.Queue";
                         default:
                             return "";

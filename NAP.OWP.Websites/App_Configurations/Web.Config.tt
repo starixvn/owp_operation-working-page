@@ -1,13 +1,15 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ output extension=".txt" #>
-<#@ include file="$(SolutionDir)\Packages\T4.TemplateFileManager.2.2.1\tools\ttinc\TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="$(ProjectDir)\T4.FileManager.VisualStudio19.ttinclude" #>
 <#@ include file="Configuration.ttinclude" #>
 <#
     var manager = TemplateFileManager.Create(this);
     foreach(var site in sites) 
     {
         var fileName = string.Format("Web.{0}.config", site.Environment);
-        manager.StartNewFile(fileName);
+        var settings = new FileProperties();
+        settings.BuildAction = BuildAction.Content;
+        manager.StartNewFile(fileName, "NAP.OWP.Websites", "App_Configurations", settings);
 #>
 <?xml version="1.0"?>
 <!--
