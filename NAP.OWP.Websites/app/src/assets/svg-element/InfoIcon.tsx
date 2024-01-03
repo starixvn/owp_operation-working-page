@@ -30,10 +30,6 @@ const InfoIcon = () => {
             Filter match:
             <ul>
               <li>Gray: A match belongs to Black list</li>
-              <li>
-                Red: A match has a maxbet value of less than 6K (except for SABA
-                and Child matches)
-              </li>
               <li>White: Other cases</li>
             </ul>
           </li>
