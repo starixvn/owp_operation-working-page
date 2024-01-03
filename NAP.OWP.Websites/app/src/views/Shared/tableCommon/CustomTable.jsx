@@ -35,7 +35,11 @@ const CustomTable = ({
       if (displayStartPosition + rowsToRender - 1 <= displayEndPosition) {
         setDisplayStart(displayStartPosition);
       } else {
-        setDisplayStart(previous => previous);
+        if (displayStartPosition > displayEndPosition) {
+          setDisplayStart(0);
+        } else {
+          setDisplayStart(previous => previous);
+        }
       }
       setDisplayEnd(displayEndPosition);
     },
