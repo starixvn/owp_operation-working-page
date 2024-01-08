@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
-import { SELECT_TURNOVER_OPTIONS } from './filterConst.json';
+import React from 'react';
+import { SELECT_TURNOVER_OPTIONS, TURNOVER_MARGIN } from './filterConst.json';
 import SingleSelection from '../../Shared/SingleSelection/SingleSelection';
 import { TurnoverMarginSelection } from '../types/filterType';
+import useStableDispatch from '../../Shared/customHook/useStableDispatch';
+import { setFilter } from './slice/filterSlice';
+import Utils from '../../Shared/Utils';
 
 const TurnoverMargin = () => {
+  const dispatch = useStableDispatch();
+
   const handleOnChange = (event: TurnoverMarginSelection) => {
-    console.log(event);
+    const curDate = new Date();
+    const dateByFilter = new Date(
+      curDate.setDate(curDate.getDate() - event.value)
+    );
+    dispatch(
+      setFilter({
+        key: TURNOVER_MARGIN,
+        value: Utils.formatDate(dateByFilter)
+      })
+    );
   };
 
   return (

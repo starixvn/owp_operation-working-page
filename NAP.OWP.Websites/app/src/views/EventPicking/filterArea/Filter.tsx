@@ -16,10 +16,18 @@ import Utils from '../../Shared/Utils';
 import ExportNative from './ExportNative';
 import UserGuideWrapper from '../userGuide/UserGuideWrapper';
 import TurnoverMargin from './TurnoverMargin';
+import usePermission from '../../Shared/customHook/usePermission';
+import { FunctionKeys } from '../../Shared/Constants';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const { date } = useSelector((state: RootState) => state.filter.param);
+  const turnoverMarginPermissionModel = usePermission(
+    FunctionKeys.EventPickingTurnoverMargin,
+    'pagePolicy'
+  );
+  const isPermission = turnoverMarginPermissionModel.permission.HasRead;
+
   useEffect(() => {
     dispatch(getLeagues(Utils.formatDate(date)));
   }, [date, dispatch]);
@@ -37,7 +45,7 @@ const Filter = () => {
       <HasProvider />
       <HasOtherProvider />
       <MatchCategory />
-      <TurnoverMargin />
+      {isPermission && <TurnoverMargin />}
       <UpdateType />
       <Command />
       <ExportNative />

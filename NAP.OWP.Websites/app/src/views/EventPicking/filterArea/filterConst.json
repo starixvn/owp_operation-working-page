@@ -7,6 +7,7 @@
   "HAS_PROVIDER": "hasProvider",
   "HAS_OTHER_PROVIDER": "hasOtherProvider",
   "UPDATE_TYPE": "updateType",
+  "TURNOVER_MARGIN": "turnoverMarginDate",
   "SELECT_TURNOVER_OPTIONS": [
     {
       "value": 90,
