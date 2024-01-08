@@ -15,6 +15,7 @@ import { getLeagues, getUpdateTypes } from './slice/filterThunkNative';
 import Utils from '../../Shared/Utils';
 import ExportNative from './ExportNative';
 import UserGuideWrapper from '../userGuide/UserGuideWrapper';
+import TurnoverMargin from './TurnoverMargin';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const Filter = () => {
       <HasProvider />
       <HasOtherProvider />
       <MatchCategory />
+      <TurnoverMargin />
       <UpdateType />
       <Command />
       <ExportNative />

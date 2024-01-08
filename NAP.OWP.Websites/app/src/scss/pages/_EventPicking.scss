@@ -163,6 +163,37 @@ input[type='checkbox'] {
         }
       }
     }
+
+    .css-2613qy-menu {
+      z-index: 100;
+    }
+
+    .css-yk16xz-control,
+    .css-1pahdxg-control {
+      height: 28px;
+      min-height: 28px;
+      background-color: transparent;
+      box-shadow: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+
+    .css-1okebmr-indicatorSeparator {
+      display: none;
+    }
+
+    .css-tlfecz-indicatorContainer,
+    .css-g1d714-ValueContainer,
+    .css-1gtu0rj-indicatorContainer {
+      padding: 0px 8px;
+    }
+
+    .css-6q0nyr-Svg {
+      width: 15px;
+      height: 15px;
+    }
   }
 
   .button-submit,

@@ -7,6 +7,11 @@ import { FunctionKeys } from '../Shared/Constants';
 
 const EventPickingManagementNative = () => {
   usePermission(FunctionKeys.EventPickingNew, 'pagePolicy');
+
+  const turnoverMarginPermissionModel = usePermission(
+    FunctionKeys.EventPickingTurnoverMargin,
+    'pagePolicy'
+  );
   return (
     <div className='event-picking'>
       <OWPPage className='event-picking-page'>
