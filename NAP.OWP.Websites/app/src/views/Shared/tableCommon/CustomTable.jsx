@@ -6,6 +6,15 @@ import React, {
   useRef
 } from 'react';
 import { throttle } from 'lodash';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  data: PropTypes.array,
+  tableHeader: PropTypes.element,
+  classNameTable: PropTypes.string,
+  itemRowHeight: PropTypes.number,
+  children: PropTypes.element
+};
 
 const CustomTable = ({
   data,
@@ -34,12 +43,10 @@ const CustomTable = ({
       );
       if (displayStartPosition + rowsToRender - 1 <= displayEndPosition) {
         setDisplayStart(displayStartPosition);
+      } else if (displayStartPosition > displayEndPosition) {
+        setDisplayStart(0);
       } else {
-        if (displayStartPosition > displayEndPosition) {
-          setDisplayStart(0);
-        } else {
-          setDisplayStart(previous => previous);
-        }
+        setDisplayStart(previous => previous);
       }
       setDisplayEnd(displayEndPosition);
     },
@@ -63,8 +70,8 @@ const CustomTable = ({
     if (React.isValidElement(child)) {
       return React.cloneElement(child, {
         data,
-        displayStart: displayStart,
-        displayEnd: displayEnd
+        displayStart,
+        displayEnd
       });
     }
     return child;
@@ -104,4 +111,6 @@ const CustomTable = ({
     </>
   );
 };
+
+CustomTable.propTypes = propTypes;
 export default CustomTable;

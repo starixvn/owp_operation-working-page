@@ -43,14 +43,12 @@ const IPTvStreamingCell = props => {
     );
 
   return (
-    <>
-      <div className='streaming-info-cell'>
-        {renderTv()}
-        {renderIpTv()}
-        {renderChanel()}
-        {renderWb()}
-      </div>
-    </>
+    <div className='streaming-info-cell'>
+      {renderTv()}
+      {renderIpTv()}
+      {renderChanel()}
+      {renderWb()}
+    </div>
   );
 };
 

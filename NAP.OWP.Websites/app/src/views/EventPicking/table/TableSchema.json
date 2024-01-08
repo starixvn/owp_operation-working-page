@@ -29,6 +29,14 @@
       "isFilter": true
     },
     {
+      "headerName": "Turnover",
+      "size": 10
+    },
+    {
+      "headerName": "Margin",
+      "size": 10
+    },
+    {
       "headerName": "Provider",
       "size": 10,
       "isFilter": true
