@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { itemRowHeight } from '../TableSchema.json';
 import TDataTable from '../../types/dataTableType';
 import PropTypes from 'prop-types';
+import store from '../../app/store';
 
 const propTypes = {
   data: PropTypes.array,
@@ -26,6 +27,9 @@ const propTypes = {
 
 const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   const rows = [];
+  const { turnOverMarginPolicy: {
+    permission: { HasRead }
+  } } = store.getState();
   rows.push(
     <tr
       key='startRowFiller'
@@ -55,12 +59,12 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
             <td>
               <IPTvStreamingCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            {HasRead && <><td>
               <TurnOverCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
-              <MarginCell dataSource={data} rowIndex={i} />
-            </td>
+              <td>
+                <MarginCell dataSource={data} rowIndex={i} />
+              </td></>}
             <td>
               <ProviderCell dataSource={data} rowIndex={i} />
             </td>

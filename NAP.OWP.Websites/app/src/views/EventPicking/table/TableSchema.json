@@ -29,6 +29,65 @@
       "isFilter": true
     },
     {
+      "headerName": "Provider",
+      "size": 10,
+      "isFilter": true
+    },
+    {
+      "headerName": "Round",
+      "size": 10,
+      "isFilter": true
+    },
+    {
+      "headerName": "Remark",
+      "size": 10,
+      "isFilter": true
+    },
+    {
+      "headerName": "R&D Update",
+      "size": 13
+    },
+    {
+      "headerName": "Checked",
+      "size": 5,
+      "className": "check-by-lst",
+      "isCheckBox": true
+    },
+    {
+      "headerName": "Action",
+      "size": 5
+    }
+  ],
+  "TABLE_HEADER_TURN_OVER_MARGIN": [
+    {
+      "headerName": "No #",
+      "size": 3,
+      "isCheckBox": true
+    },
+    {
+      "headerName": "KO Time",
+      "size": 4
+    },
+    {
+      "headerName": "League",
+      "size": 15,
+      "isFilter": true
+    },
+    {
+      "headerName": "Match",
+      "size": 14,
+      "isFilter": true
+    },
+    {
+      "headerName": "MB",
+      "size": 3
+    },
+    {
+      "headerName": "TV/IPTV",
+      "size": 10,
+      "isFilter": true
+    },
+    {
       "headerName": "Turnover",
       "size": 10,
       "isSort": true

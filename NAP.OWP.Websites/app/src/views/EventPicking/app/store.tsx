@@ -8,6 +8,7 @@ const store = configureStore({
   reducer: {
     eventPickingTable: EventPickingTableSlice,
     pagePolicy: createMultiplePolicySlice('pagePolicy'),
+    turnOverMarginPolicy: createMultiplePolicySlice('turnOverMarginPolicy'),
     filter: filterSlice
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({

@@ -6,22 +6,26 @@ const createMultiplePolicySlice = (sliceName = 'policy') =>
   createSlice({
     name: sliceName,
     initialState: {
-      permission: {},
+      permission: {
+        Username: undefined,
+        HasRead: false
+      },
       loading: REQUEST_STATUS.idle,
       error: null
     },
-    extraReducers: builder=>{
-      builder.addCase(queryPolicy(sliceName).pending, state => {
-        state.loading = REQUEST_STATUS.pending;
-      })
-      .addCase(queryPolicy(sliceName).fulfilled, (state, action) => {
-        state.loading = REQUEST_STATUS.idle;
-        state.permission = action.payload;
-      })
-      .addCase(queryPolicy(sliceName).rejected, (state, action) => {
-        state.loading = REQUEST_STATUS.idle;
-        state.error = action.error;
-      });
+    extraReducers: builder => {
+      builder
+        .addCase(queryPolicy(sliceName).pending, state => {
+          state.loading = REQUEST_STATUS.pending;
+        })
+        .addCase(queryPolicy(sliceName).fulfilled, (state, action) => {
+          state.loading = REQUEST_STATUS.idle;
+          state.permission = action.payload;
+        })
+        .addCase(queryPolicy(sliceName).rejected, (state, action) => {
+          state.loading = REQUEST_STATUS.idle;
+          state.error = action.error;
+        });
     }
   });
 
