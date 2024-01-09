@@ -2759,9 +2759,9 @@
     <Content Include="wwwroot\league-management\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\league-management\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\league-management\assets\ext\server-fd95c6b7.css" />
-    <Content Include="wwwroot\league-management\assets\js\main-3a9ecbc0.js" />
-    <Content Include="wwwroot\league-management\assets\js\TeamInfo-95f668e9.js" />
+    <Content Include="wwwroot\league-management\assets\ext\server-f0c929dd.css" />
+    <Content Include="wwwroot\league-management\assets\js\main-7a6b4c6f.js" />
+    <Content Include="wwwroot\league-management\assets\js\TeamInfo-80bfb379.js" />
     <Content Include="wwwroot\league-management\favicon.ico" />
     <Content Include="wwwroot\league-management\server.html" />
     <Content Include="wwwroot\live-detail\assets\ext\icon-feedback-57264197.svg" />
