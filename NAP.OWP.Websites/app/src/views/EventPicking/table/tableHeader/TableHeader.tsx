@@ -2,6 +2,7 @@ import React from 'react';
 import { TABLE_HEADER } from '../TableSchema.json';
 import FilterHeader from './FilterHeader';
 import CheckboxHeader from './CheckboxHeader';
+import SortHeader from './SortHeader';
 
 const TableHeader = () => {
   return (
@@ -12,6 +13,7 @@ const TableHeader = () => {
             <div className='header-table'>
               <span>{item.headerName}</span>
               {item?.isFilter && <FilterHeader columnKey={item.headerName} />}
+              {item?.isSort && <SortHeader columnKey={item.headerName} />}
             </div>
             {item?.isCheckBox && (
               <CheckboxHeader

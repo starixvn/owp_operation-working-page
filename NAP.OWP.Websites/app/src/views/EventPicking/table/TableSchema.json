@@ -30,11 +30,13 @@
     },
     {
       "headerName": "Turnover",
-      "size": 10
+      "size": 10,
+      "isSort": true
     },
     {
       "headerName": "Margin",
-      "size": 10
+      "size": 10,
+      "isSort": true
     },
     {
       "headerName": "Provider",
@@ -66,5 +68,7 @@
       "size": 5
     }
   ],
-  "itemRowHeight": 100
+  "itemRowHeight": 100,
+  "ORDER_ASC": "ORDER_ASC",
+  "ORDER_DESC": "ORDER_DESC"
 }

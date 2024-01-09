@@ -10,7 +10,8 @@ import {
 import {
   TTableSlice,
   TFilterState,
-  FilterAllColumn
+  FilterAllColumn,
+  ISortState
 } from '../../types/dataTableType';
 import {
   addOrReplaceFilterState,
@@ -18,6 +19,10 @@ import {
   pushOrUpdateObject
 } from '../../../Shared/Utils';
 import filterByKeyword from '../filterByKeyword';
+import { isEqual } from 'lodash';
+import { sortDataAsc, sortDataDesc } from '../EventPickingTableHelper';
+import { ORDER_ASC, ORDER_DESC } from '../TableSchema.json';
+
 const EventPickingTableSlice = createSlice({
   name: 'EventPickingTableSlice',
   initialState: {
@@ -28,7 +33,11 @@ const EventPickingTableSlice = createSlice({
     valueFilterAllColumn: {} as FilterAllColumn,
     columnKeyFilterCurrent: '',
     filterState: [] as TFilterState[],
-    loading: REQUEST_STATUS.idle
+    loading: REQUEST_STATUS.idle,
+    sortState: {
+      columnKeySelected: '',
+      orderType: ''
+    } as ISortState
   } as TTableSlice,
   reducers: {
     setColumnKeyValue: (state, action) => {
@@ -62,6 +71,16 @@ const EventPickingTableSlice = createSlice({
       if (state.entities.length) {
         state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
+      }
+    },
+    sortFunc: (state, action) => {
+      state.sortState = action.payload;
+      const { orderType } = action.payload;
+      if (isEqual(orderType, ORDER_ASC)) {
+        state.entities = sortDataAsc(state.entities);
+      }
+      if (isEqual(orderType, ORDER_DESC)) {
+        state.entities = sortDataDesc(state.entities);
       }
     }
   },
@@ -105,7 +124,18 @@ const EventPickingTableSlice = createSlice({
   }
 });
 const { reducer, actions } = EventPickingTableSlice;
-const { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter } =
-  actions;
-export { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter };
+const {
+  filterBySearchKey,
+  clearFilter,
+  setColumnKeyValue,
+  setValueFilter,
+  sortFunc
+} = actions;
+export {
+  filterBySearchKey,
+  clearFilter,
+  setColumnKeyValue,
+  setValueFilter,
+  sortFunc
+};
 export default reducer;

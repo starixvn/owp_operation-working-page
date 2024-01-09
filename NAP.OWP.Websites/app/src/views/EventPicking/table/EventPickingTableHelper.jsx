@@ -20,4 +20,10 @@ const buildColumnValueByColumnName = (
   return columnMappings[columnKey] || {};
 };
 
-export { buildColumnValueByColumnName };
+const sortDataAsc = (entities, columnKey) =>
+  [...entities].sort((src, dest) => src[columnKey] - dest[columnKey]);
+
+const sortDataDesc = (entities, columnKey) =>
+  [...entities].sort((src, dest) => dest[columnKey] - src[columnKey]);
+
+export { buildColumnValueByColumnName, sortDataAsc, sortDataDesc };
