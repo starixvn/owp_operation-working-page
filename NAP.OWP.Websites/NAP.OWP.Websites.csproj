@@ -2759,9 +2759,9 @@
     <Content Include="wwwroot\league-management\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\league-management\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\league-management\assets\ext\server-3afdd010.css" />
-    <Content Include="wwwroot\league-management\assets\js\main-06785de2.js" />
-    <Content Include="wwwroot\league-management\assets\js\TeamInfo-adc168c6.js" />
+    <Content Include="wwwroot\league-management\assets\ext\server-fd95c6b7.css" />
+    <Content Include="wwwroot\league-management\assets\js\main-3a9ecbc0.js" />
+    <Content Include="wwwroot\league-management\assets\js\TeamInfo-95f668e9.js" />
     <Content Include="wwwroot\league-management\favicon.ico" />
     <Content Include="wwwroot\league-management\server.html" />
     <Content Include="wwwroot\live-detail\assets\ext\icon-feedback-57264197.svg" />
@@ -2994,10 +2994,6 @@
     <Content Include="wwwroot\feedback\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\feedback\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\feedback\server.cshtml" />
-    <Content Include="wwwroot\league-management\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\league-management\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\league-management\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\league-management\server.cshtml" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
@@ -3097,6 +3093,10 @@
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\league-management\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\league-management\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
