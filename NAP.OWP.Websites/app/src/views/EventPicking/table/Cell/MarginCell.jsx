@@ -10,7 +10,15 @@ const MarginCell = props => {
   const { rowIndex, dataSource } = props;
   const { margin } = dataSource[rowIndex];
 
-  return <div className='margin-cell'>{margin}</div>;
+  return (
+    <div
+      className='margin-cell'
+      style={{
+        color: margin.color
+      }}>
+      {margin.value}
+    </div>
+  );
 };
 
 MarginCell.propTypes = propTypes;

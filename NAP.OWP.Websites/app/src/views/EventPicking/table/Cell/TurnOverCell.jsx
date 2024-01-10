@@ -8,9 +8,17 @@ const propTypes = {
 
 const TurnOverCell = props => {
   const { rowIndex, dataSource } = props;
-  const { turnOver } = dataSource[rowIndex];
+  const { turnover } = dataSource[rowIndex];
 
-  return <div className='turn-over-cell'>{turnOver}</div>;
+  return (
+    <div
+      className='margin-cell'
+      style={{
+        color: turnover.color
+      }}>
+      {turnover.value}
+    </div>
+  );
 };
 
 TurnOverCell.propTypes = propTypes;
