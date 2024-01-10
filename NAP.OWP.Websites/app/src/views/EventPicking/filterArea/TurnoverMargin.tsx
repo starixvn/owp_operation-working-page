@@ -1,5 +1,9 @@
 import React from 'react';
-import { SELECT_TURNOVER_OPTIONS, TURNOVER_MARGIN } from './filterConst.json';
+import {
+  SELECT_TURNOVER_OPTIONS,
+  FROM_DATE,
+  TO_DATE
+} from './filterConst.json';
 import SingleSelection from '../../Shared/SingleSelection/SingleSelection';
 import { TurnoverMarginSelection } from '../types/filterType';
 import useStableDispatch from '../../Shared/customHook/useStableDispatch';
@@ -11,13 +15,11 @@ const TurnoverMargin = () => {
 
   const handleOnChange = (event: TurnoverMarginSelection) => {
     const curDate = new Date();
-    const dateByFilter = new Date(
-      curDate.setDate(curDate.getDate() - event.value)
-    );
+    const fromDate = new Date(curDate.setDate(curDate.getDate() - event.value));
     dispatch(
       setFilter({
-        key: TURNOVER_MARGIN,
-        value: Utils.formatDate(dateByFilter)
+        key: FROM_DATE,
+        value: Utils.formatDate(fromDate)
       })
     );
   };

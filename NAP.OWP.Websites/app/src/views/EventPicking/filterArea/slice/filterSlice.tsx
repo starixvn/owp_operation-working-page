@@ -15,7 +15,8 @@ import {
   SELECT_GAME_OPTIONS,
   UPDATE_TYPE,
   NONE_OPTION,
-  TURNOVER_MARGIN,
+  FROM_DATE,
+  TO_DATE,
   SELECT_TURNOVER_OPTIONS
 } from '../filterConst.json';
 import { getLeagues, getUpdateTypes } from './filterThunkNative';
@@ -40,7 +41,8 @@ const filterSlice = createSlice({
       [FILTER_MATCH_CATEGORY]: FILTER_MATCH_CATEGORY_OPTIONS.map(m => m.value),
       [LEAGUE]: [],
       [UPDATE_TYPE]: [],
-      [TURNOVER_MARGIN]: Utils.formatDate(defaultDate)
+      [FROM_DATE]: Utils.formatDate(defaultDate),
+      [TO_DATE]: Utils.formatDate(new Date())
     } as TFilter
   },
   reducers: {
