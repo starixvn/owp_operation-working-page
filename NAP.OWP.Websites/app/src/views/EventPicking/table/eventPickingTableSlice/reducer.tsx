@@ -51,23 +51,36 @@ const EventPickingTableSlice = createSlice({
       );
     },
     filterBySearchKey: (state, action) => {
-      const { filterState } = state;
+      const { filterState, sortState } = state;
+      const { orderType, columnKeySelected } = sortState;
       state.filterState = addOrReplaceFilterState(filterState, action.payload);
       state.entities = filterDataTable(
         state.entitiesOriginal,
         state.filterState,
         filterByKeyword
       );
+      if (isEqual(orderType, ORDER_ASC)) {
+        state.entities = sortDataAsc(state.entities, columnKeySelected);
+      }
+      if (isEqual(orderType, ORDER_DESC)) {
+        state.entities = sortDataDesc(state.entities, columnKeySelected);
+      }
       if (state.entities.length) {
         state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
       }
     },
     clearFilter: state => {
-      const { entitiesOriginal } = state;
+      const { entitiesOriginal, sortState } = state;
+      const { orderType, columnKeySelected } = sortState;
       state.filterState = [];
       state.valueFilterAllColumn = {};
-      state.entities = entitiesOriginal;
+      if (isEqual(orderType, ORDER_ASC)) {
+        state.entities = sortDataAsc(entitiesOriginal, columnKeySelected);
+      }
+      if (isEqual(orderType, ORDER_DESC)) {
+        state.entities = sortDataDesc(entitiesOriginal, columnKeySelected);
+      }
       if (state.entities.length) {
         state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
@@ -75,12 +88,12 @@ const EventPickingTableSlice = createSlice({
     },
     sortFunc: (state, action) => {
       state.sortState = action.payload;
-      const { orderType } = action.payload;
+      const { orderType, columnKeySelected } = action.payload;
       if (isEqual(orderType, ORDER_ASC)) {
-        state.entities = sortDataAsc(state.entities);
+        state.entities = sortDataAsc(state.entities, columnKeySelected);
       }
       if (isEqual(orderType, ORDER_DESC)) {
-        state.entities = sortDataDesc(state.entities);
+        state.entities = sortDataDesc(state.entities, columnKeySelected);
       }
     }
   },

@@ -21,9 +21,18 @@ const buildColumnValueByColumnName = (
 };
 
 const sortDataAsc = (entities, columnKey) =>
-  [...entities].sort((src, dest) => src[columnKey] - dest[columnKey]);
+  [...entities].sort(
+    (src, dest) =>
+      src[capitalizeFirstLetter(columnKey)] -
+      dest[capitalizeFirstLetter(columnKey)]
+  );
 
 const sortDataDesc = (entities, columnKey) =>
-  [...entities].sort((src, dest) => dest[columnKey] - src[columnKey]);
-
+  [...entities].sort(
+    (src, dest) =>
+      dest[capitalizeFirstLetter(columnKey)] -
+      src[capitalizeFirstLetter(columnKey)]
+  );
+const capitalizeFirstLetter = value =>
+  value.charAt(0).toLowerCase() + value.slice(1);
 export { buildColumnValueByColumnName, sortDataAsc, sortDataDesc };

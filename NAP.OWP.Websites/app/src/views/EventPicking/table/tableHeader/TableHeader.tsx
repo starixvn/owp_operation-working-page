@@ -1,14 +1,19 @@
 import React from 'react';
-import { TABLE_HEADER, TABLE_HEADER_TURN_OVER_MARGIN } from '../TableSchema.json';
+import {
+  TABLE_HEADER,
+  TABLE_HEADER_TURN_OVER_MARGIN
+} from '../TableSchema.json';
 import FilterHeader from './FilterHeader';
 import CheckboxHeader from './CheckboxHeader';
 import SortHeader from './SortHeader';
 import store from '../../app/store';
 
 const TableHeader = () => {
-  const { turnOverMarginPolicy: {
-    permission: { HasRead }
-  } } = store.getState();
+  const {
+    turnOverMarginPolicy: {
+      permission: { HasRead }
+    }
+  } = store.getState();
 
   return (
     <tr>
@@ -20,13 +25,13 @@ const TableHeader = () => {
           <th style={{ width: `${item.size}%` }} key={index}>
             <div className='header-table'>
               <span>{item.headerName}</span>
-              {item?.isFilter && <FilterHeader columnKey={item.headerName} />}
-              {item?.isSort && <SortHeader columnKey={item.headerName} />}
+              {item?.isFilter && <FilterHeader columnKey={item.columnKey} />}
+              {item?.isSort && <SortHeader columnKey={item.columnKey} />}
             </div>
             {item?.isCheckBox && (
               <CheckboxHeader
                 classNameProps={item?.className}
-                columnKey={item.headerName}
+                columnKey={item.columnKey}
               />
             )}
           </th>
