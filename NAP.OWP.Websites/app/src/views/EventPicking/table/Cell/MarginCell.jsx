@@ -14,7 +14,8 @@ const MarginCell = props => {
     <div
       className='margin-cell'
       style={{
-        color: margin.color
+        color: margin.color,
+        textAlign: 'center'
       }}>
       {margin.value}
     </div>

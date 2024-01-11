@@ -14,7 +14,8 @@ const TurnOverCell = props => {
     <div
       className='margin-cell'
       style={{
-        color: turnover.color
+        color: turnover.color,
+        textAlign: 'center'
       }}>
       {turnover.value}
     </div>
