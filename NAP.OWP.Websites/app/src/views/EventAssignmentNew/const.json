@@ -1,0 +1,37 @@
+{
+  "TABLE": {
+    "HEADER": {
+      "MATCH_NO": {
+        "COLUMN_KEY": "MatchNo",
+        "FIXED": true,
+        "NAME": "MatchNo",
+        "HEADER_NAME": "No#",
+        "WIDTH": 60,
+        "IS_CAN_FILTER": false
+      },
+      "KO_TIME": {
+        "COLUMN_KEY": "KickOffTime",
+        "FIXED": true,
+        "NAME": "KickOffTime",
+        "HEADER_NAME": "KO Time",
+        "WIDTH": 72,
+        "IS_CAN_FILTER": false
+      },
+      "EVENT": {
+        "COLUMN_KEY": "Event",
+        "FIXED": true,
+        "NAME": "Event",
+        "HEADER_NAME": "Event",
+        "WIDTH": 300,
+        "IS_CAN_FILTER": false
+      }
+    },
+    "ROW_HEIGHT": 100,
+    "WIDTH": 1810,
+    "DEFAULT_HEIGHT": 125,
+    "HEIGHT": 750,
+    "MAX_HEIGHT": 750,
+    "HEADER_HEIGHT": 30,
+    "FILTER_OFFSET": 200
+  }
+}

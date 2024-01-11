@@ -27,7 +27,7 @@ function DateTimePicker() {
   };
 
   return (
-    <div key={uuidv4()} className='calendar'>
+    <div className='calendar'>
       <div className='label'>Date</div>
       <DatePicker
         selected={date}
@@ -36,6 +36,7 @@ function DateTimePicker() {
         dateFormat='MMM dd, yyyy'
         className='from-date-picker'
         open={openCalendar}
+        openToDate={date}
         onClickOutside={_ => setOpenCalendar(false)}
         onChange={handleDateChange}
       />
