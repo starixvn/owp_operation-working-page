@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 
 import createTableSlice from './createTableSlice';
+import createPolicySlice from './createPolicySlice';
 
-import { TQueryLiveGameAssignment } from '../type/type';
+import { TQueryLiveGameAssignment, TQueryPolicy } from '../type/type';
 
-export default create<TQueryLiveGameAssignment>()(
+export default create<TQueryPolicy & TQueryLiveGameAssignment>()(
   (...a) => ({
+    ...createPolicySlice(...a),
     ...createTableSlice(...a)
   })
 );

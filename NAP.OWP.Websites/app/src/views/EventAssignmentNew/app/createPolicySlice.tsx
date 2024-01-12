@@ -1,6 +1,8 @@
 import { StateCreator } from 'zustand';
-import { TQueryLiveGameAssignment, TQueryPolicy } from '../type/type';
-import { REQUEST_STATUS } from '../../Shared/Constants';
+import { TQueryPolicy } from '../type/type';
+import { REQUEST_STATUS, FunctionKeys } from '../../Shared/Constants';
+import axios from 'axios';
+import AuthorizeService from '../../Authorize/Service';
 
 const createPolicySlice: StateCreator<
   TQueryPolicy,
@@ -9,33 +11,25 @@ const createPolicySlice: StateCreator<
   TQueryPolicy
 > = (set, get) => ({
   loadingPolicy: REQUEST_STATUS.pending,
-  policy: {
-    FullBetTypes: {
-      HasWrite: true
-    },
-    PHBetTypes: {
-      HasWrite: true
-    },
-    detailInformationPolicy: {
-      HasRead: true,
-      HasWrite: true
-    }
-  },
+  policy: null,
   queryPolicy: async () => {
     set({ loadingPolicy: REQUEST_STATUS.pending });
-    // TODO
+    const [
+      fullBetTypesPolicy,
+      pHBetTypesPolicy,
+      detailInformationPolicy
+    ] = await axios.all([
+      AuthorizeService.authorize(FunctionKeys.LiveGameAssignment_FullBetTypes),
+      AuthorizeService.authorize(FunctionKeys.LiveGameAssignment_PHBetTypes),
+      AuthorizeService.authorize(FunctionKeys.DetailsInformation)
+    ]);
     set({
       policy: {
-        FullBetTypes: {
-          HasWrite: true
-        },
-        PHBetTypes: {
-          HasWrite: true
-        },
-        detailInformationPolicy: {
-          HasRead: true,
-          HasWrite: true
-        }
+        UserId: fullBetTypesPolicy.UserId,
+        Username: fullBetTypesPolicy.Username,
+        FullBetTypes: fullBetTypesPolicy,
+        PHBetTypes: pHBetTypesPolicy,
+        detailInformationPolicy
       },
       loadingPolicy: REQUEST_STATUS.idle
     });

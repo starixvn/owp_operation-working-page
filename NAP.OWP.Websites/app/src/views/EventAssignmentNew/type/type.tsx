@@ -49,7 +49,9 @@ type TQueryLiveGameAssignment = {
 
 type TQueryPolicy = {
   loadingPolicy: string,
-  policy: {
+  policy: null | {
+    UserId: number,
+    Username: string,
     FullBetTypes: {
       HasWrite: boolean
     },
