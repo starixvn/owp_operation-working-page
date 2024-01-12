@@ -1,4 +1,12 @@
 {
+  "MATCH_STATUS": {
+    "LIVE": "Live",
+    "IN_PLAY": "In-play",
+    "COMPLETED": "Completed",
+    "CANCEL": "Cancel",
+    "SUSPENDED": "Suspended",
+    "POSTPONED": "Postponed"
+  },
   "TABLE": {
     "HEADER": {
       "MATCH_NO": {

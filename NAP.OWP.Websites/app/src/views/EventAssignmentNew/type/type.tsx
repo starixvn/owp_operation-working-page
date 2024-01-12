@@ -16,19 +16,28 @@ type TCellModel = {
 };
 
 type TDataTable = Array<{
-  matchNo: string,
-  KickOffTime: string,
-  KickOffTimeStr: Date,
-  OtherTime: string,
-  OtherTimeStr: Date,
+  oWPMatchId: number,
+  parentMatchId: number,
+  matchStatus: string,
+  infoSiteMatchId: null | number,
+  isInfoSiteLinked: boolean,
+  isLiveStatusSynchronized: boolean,
+  isShowAbsenceIcon: boolean,
+  matchNo: string | null,
+  kickOffTime: string,
+  kickOffTimeStr: string,
+  infoSiteTime: string | null,
+  infoSiteTimeDisplay: string | null
+  otherTime: string,
+  otherTimeStr: string,
   home: string,
   away: string,
   league: string,
-  leagueGroup: string,
-  noOfHDP: string,
+  leagueGroup: string | null,
+  noOfHDP: string | null,
   matchOffers: Array<{
     id: number,
-    OWPMatchId: string,
+    OWPMatchId: number,
     matchOfferValue: string
   }>
 }>
@@ -36,12 +45,30 @@ type TQueryLiveGameAssignment = {
   loadingDataTable: string;
   dataTable: TDataTable,
   queryDataTable(): Promise<void>
+};
 
+type TQueryPolicy = {
+  loadingPolicy: string,
+  policy: {
+    FullBetTypes: {
+      HasWrite: boolean
+    },
+    PHBetTypes: {
+      HasWrite: boolean
+    },
+    detailInformationPolicy: {
+      HasRead: boolean,
+      HasWrite: boolean
+    }
+  },
+  queryPolicy(): Promise<void>
 }
+
 export {
   TDataTable,
   TQueryLiveGameAssignment,
   TColumn,
   TPickCellModel,
-  TCellModel
+  TCellModel,
+  TQueryPolicy
 };
