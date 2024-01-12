@@ -4,12 +4,10 @@ import { TColumn, TPickCellModel } from '../type/type';
 import NoCell from './cell/NoCell';
 import KOTimeCell from './cell/KOTimeCell';
 import EventCell from './cell/EventCell';
+import TicketCell from './cell/TicketCell';
 
-const { HEADER: {
-  MATCH_NO,
-  KO_TIME,
-  EVENT
-},
+const {
+  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET },
   WIDTH,
   ROW_HEIGHT,
   DEFAULT_HEIGHT,
@@ -18,11 +16,7 @@ const { HEADER: {
 } = TABLE;
 
 const buildColumn = (column: TColumn) => {
-  const { HEADER_NAME,
-    COLUMN_KEY,
-    IS_CAN_FILTER,
-    WIDTH } =
-    column;
+  const { HEADER_NAME, COLUMN_KEY, IS_CAN_FILTER, WIDTH } = column;
   return {
     headerName: HEADER_NAME,
     columnKey: COLUMN_KEY,
@@ -35,7 +29,8 @@ const buildTableInfo = () => ({
   columnSchema: [
     buildColumn(MATCH_NO),
     buildColumn(KO_TIME),
-    buildColumn(EVENT)
+    buildColumn(EVENT),
+    buildColumn(TICKET)
   ],
   tableStyle: {
     rowHeight: ROW_HEIGHT,
@@ -44,13 +39,12 @@ const buildTableInfo = () => ({
     filterOffset: FILTER_OFFSET
   },
   dynamicCell,
-  filterFunc: () => { },
-  clearFilterFunc: () => { },
+  filterFunc: () => {},
+  clearFilterFunc: () => {},
   tableWidth: () => WIDTH
 });
 
-const dynamicCell = (rowIndex: Required<number>,
-  cellModel: TPickCellModel) => {
+const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
   const { dataSource, columnKey } = cellModel;
   const cellInfo = {
     rowIndex,
@@ -61,14 +55,13 @@ const dynamicCell = (rowIndex: Required<number>,
     case MATCH_NO.COLUMN_KEY:
       return <NoCell {...cellInfo} />;
     case KO_TIME.COLUMN_KEY:
-      return <KOTimeCell  {...cellInfo} />;
+      return <KOTimeCell {...cellInfo} />;
     case EVENT.COLUMN_KEY:
-      return <EventCell  {...cellInfo} />;
+      return <EventCell {...cellInfo} />;
+    case TICKET.COLUMN_KEY:
+      return <TicketCell {...cellInfo} />;
   }
   return null;
 };
 
-export {
-  buildTableInfo
-};
-
+export { buildTableInfo };

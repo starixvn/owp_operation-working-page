@@ -1,18 +1,18 @@
 type TColumn = {
-  HEADER_NAME: string,
-  COLUMN_KEY: string,
-  IS_CAN_FILTER: boolean
-  WIDTH: number
+  HEADER_NAME: string;
+  COLUMN_KEY: string;
+  IS_CAN_FILTER: boolean;
+  WIDTH: number;
 };
 
 type TPickCellModel = {
-  dataSource: TDataTable,
-  columnKey: string
+  dataSource: TDataTable;
+  columnKey: string;
 };
 
 type TCellModel = {
-  dataSource: TDataTable,
-  rowIndex: number,
+  dataSource: TDataTable;
+  rowIndex: number;
 };
 
 type TDataTable = Array<{
@@ -22,62 +22,67 @@ type TDataTable = Array<{
   iPTVCopy: string;
   provider: string;
   AdminSiteId: number;
-  oWPMatchId: number,
-  parentMatchId: number,
-  matchStatus: string,
-  infoSiteMatchId: null | number,
-  isInfoSiteLinked: boolean,
-  isLiveStatusSynchronized: boolean,
-  isShowAbsenceIcon: boolean,
-  matchNo: string | null,
-  kickOffTime: string,
-  kickOffTimeStr: string,
-  infoSiteTime: string | null,
-  infoSiteTimeDisplay: string | null
-  otherTime: string,
-  otherTimeStr: string,
-  home: string,
-  away: string,
-  league: string,
-  leagueGroup: string | null,
-  noOfHDP: string | null,
-  isAllowedToViewDetail: boolean,
+  oWPMatchId: number;
+  parentMatchId: number;
+  matchStatus: string;
+  infoSiteMatchId: null | number;
+  isInfoSiteLinked: boolean;
+  isLiveStatusSynchronized: boolean;
+  isShowAbsenceIcon: boolean;
+  matchNo: string | null;
+  kickOffTime: string;
+  kickOffTimeStr: string;
+  infoSiteTime: string | null;
+  infoSiteTimeDisplay: string | null;
+  otherTime: string;
+  otherTimeStr: string;
+  home: string;
+  away: string;
+  league: string;
+  leagueGroup: string | null;
+  noOfHDP: string | null;
+  isAllowedToViewDetail: boolean;
   matchOffers: Array<{
-    id: number,
-    OWPMatchId: number,
-    matchOfferValue: string
-  }>
-}>
+    id: number;
+    OWPMatchId: number;
+    matchOfferValue: string;
+  }>;
+}>;
 type TQueryLiveGameAssignment = {
   loading: string;
-  entities: TDataTable
+  entities: TDataTable;
 };
 
 type TPolicy = {
-  UserId: number,
-  Username: string,
+  UserId: number;
+  Username: string;
   FullBetTypes: {
-    HasWrite: boolean
-  },
+    HasWrite: boolean;
+  };
   PHBetTypes: {
-    HasWrite: boolean
-  },
+    HasWrite: boolean;
+  };
   detailInformationPolicy: {
-    HasRead: boolean,
-    HasWrite: boolean
-  }
+    HasRead: boolean;
+    HasWrite: boolean;
+  };
 };
 
 type TQueryPolicy = {
-  loading: string,
-  entities: TPolicy
+  loading: string;
+  entities: TPolicy;
 };
 
 type TFilter = {
   entities: {
-    selectedDate: Date
-  }
-}
+    selectedDate: Date;
+  };
+};
+
+type TTicketCell = TCellModel & {
+  onShowTicketList: () => void;
+  updateDataSources: () => void;
+};
 
 export {
   TDataTable,
@@ -87,5 +92,6 @@ export {
   TCellModel,
   TQueryPolicy,
   TFilter,
-  TPolicy
+  TPolicy,
+  TTicketCell
 };

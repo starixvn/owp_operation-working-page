@@ -33,6 +33,14 @@
         "HEADER_NAME": "Event",
         "WIDTH": 300,
         "IS_CAN_FILTER": false
+      },
+      "TICKET": {
+        "COLUMN_KEY": "Ticket",
+        "FIXED": true,
+        "NAME": "Ticket",
+        "HEADER_NAME": "Ticket",
+        "WIDTH": 60,
+        "IS_CAN_FILTER": false
       }
     },
     "ROW_HEIGHT": 100,
