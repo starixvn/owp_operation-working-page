@@ -108,13 +108,13 @@
     },
     {
       "headerName": "Turnover",
-      "size": 10,
+      "size": 6,
       "isSort": true,
       "columnKey": "TurnoverExport"
     },
     {
       "headerName": "Margin",
-      "size": 10,
+      "size": 4,
       "isSort": true,
       "columnKey": "MarginExport"
     },
