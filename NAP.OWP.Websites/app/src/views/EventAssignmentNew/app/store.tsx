@@ -1,13 +1,22 @@
-import { create } from 'zustand';
+import { configureStore } from '@reduxjs/toolkit';
+import eventAssignmentTableSlice from '../table/eventAssignmentTableSlice';
+import policySlice from '../policy/policySlice';
+import filterSlice from '../filter/filterSlice';
 
-import createTableSlice from './createTableSlice';
-import createPolicySlice from './createPolicySlice';
+const store = configureStore({
+  reducer: {
+    eventAssignmentTable: eventAssignmentTableSlice,
+    policy: policySlice,
+    filter: filterSlice
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware({
+    serializableCheck: false
+  }),
+  devTools: true
+});
 
-import { TQueryLiveGameAssignment, TQueryPolicy } from '../type/type';
+export type RootState = ReturnType<typeof store.getState>;
 
-export default create<TQueryPolicy & TQueryLiveGameAssignment>()(
-  (...a) => ({
-    ...createPolicySlice(...a),
-    ...createTableSlice(...a)
-  })
-);
+export type AppDispatch = typeof store.dispatch;
+
+export default store;

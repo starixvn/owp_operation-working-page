@@ -1,4 +1,5 @@
 {
+  "NET_CORE_URL": "api-netcore/event-assignment",
   "MATCH_STATUS": {
     "LIVE": "Live",
     "IN_PLAY": "In-play",

@@ -16,6 +16,12 @@ type TCellModel = {
 };
 
 type TDataTable = Array<{
+  matchCode: JSX.Element;
+  noOfHDPId: any;
+  adminSiteId: string;
+  iPTVCopy: string;
+  provider: string;
+  AdminSiteId: number;
   oWPMatchId: number,
   parentMatchId: number,
   matchStatus: string,
@@ -35,6 +41,7 @@ type TDataTable = Array<{
   league: string,
   leagueGroup: string | null,
   noOfHDP: string | null,
+  isAllowedToViewDetail: boolean,
   matchOffers: Array<{
     id: number,
     OWPMatchId: number,
@@ -42,28 +49,34 @@ type TDataTable = Array<{
   }>
 }>
 type TQueryLiveGameAssignment = {
-  loadingDataTable: string;
-  dataTable: TDataTable,
-  queryDataTable(): Promise<void>
+  loading: string;
+  entities: TDataTable
+};
+
+type TPolicy = {
+  UserId: number,
+  Username: string,
+  FullBetTypes: {
+    HasWrite: boolean
+  },
+  PHBetTypes: {
+    HasWrite: boolean
+  },
+  detailInformationPolicy: {
+    HasRead: boolean,
+    HasWrite: boolean
+  }
 };
 
 type TQueryPolicy = {
-  loadingPolicy: string,
-  policy: null | {
-    UserId: number,
-    Username: string,
-    FullBetTypes: {
-      HasWrite: boolean
-    },
-    PHBetTypes: {
-      HasWrite: boolean
-    },
-    detailInformationPolicy: {
-      HasRead: boolean,
-      HasWrite: boolean
-    }
-  },
-  queryPolicy(): Promise<void>
+  loading: string,
+  entities: TPolicy
+};
+
+type TFilter = {
+  entities: {
+    selectedDate: Date
+  }
 }
 
 export {
@@ -72,5 +85,7 @@ export {
   TColumn,
   TPickCellModel,
   TCellModel,
-  TQueryPolicy
+  TQueryPolicy,
+  TFilter,
+  TPolicy
 };

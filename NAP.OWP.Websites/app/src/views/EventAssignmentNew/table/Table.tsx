@@ -1,18 +1,11 @@
 import React from 'react';
 import CustomTable from '../../Shared/common/CustomTable/CustomTable';
 import { buildTableInfo } from './tableHelper';
-import useStore from '../app/store';
-import { shallow } from 'zustand/shallow';
-
+import { useAppSelector } from '../app/hooks';
 
 const Table = () => {
-  const { entities, loadingDataTable } = useStore(state => ({
-    loadingDataTable: state.loadingDataTable,
-    entities: state.dataTable
-  }), shallow);
-
+  const entities = useAppSelector(state => state.eventAssignmentTable.entities);
   return <CustomTable model={{ entities }} config={buildTableInfo()} />;
-  ;
 };
 
 export default Table;
