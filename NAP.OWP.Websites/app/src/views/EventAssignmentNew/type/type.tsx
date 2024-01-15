@@ -85,7 +85,13 @@ type TTicketCell = TCellModel & {
   onShowTicketList: () => void;
   updateDataSources: () => void;
 };
-
+type CreatorInfo = {
+  groupName: null | string;
+  nickName: null | string;
+  recipientId: number;
+  recipientType: number;
+  userName: string;
+};
 export {
   TDataTable,
   TQueryLiveGameAssignment,
@@ -95,5 +101,6 @@ export {
   TQueryPolicy,
   TFilter,
   TPolicy,
-  TTicketCell
+  TTicketCell,
+  CreatorInfo
 };

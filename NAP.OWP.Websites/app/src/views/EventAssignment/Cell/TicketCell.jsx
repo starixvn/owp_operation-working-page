@@ -10,14 +10,14 @@ const propTypes = {
 };
 
 const TicketCell = props => {
-  const {
-    dataSource,
-    rowIndex,
-    onShowTicketList = false,
-    updateDataSources = () => {}
-  } = props;
+  const { dataSource, rowIndex, onShowTicketList, updateDataSources } = props;
   return (
-  
+    <TicketCellCommon
+      dataSource={dataSource}
+      rowIndex={rowIndex}
+      onShowTicketList={onShowTicketList}
+      updateDataSources={updateDataSources}
+    />
   );
 };
 

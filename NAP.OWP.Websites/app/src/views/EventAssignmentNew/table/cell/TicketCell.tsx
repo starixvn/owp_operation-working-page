@@ -4,6 +4,7 @@ import TicketCellCommon from '../../../Shared/ticketEvent/component/TicketCellCo
 
 const TicketCell = (props: TTicketCell) => {
   const { dataSource, rowIndex, onShowTicketList, updateDataSources } = props;
+
   return (
     <TicketCellCommon
       dataSource={dataSource}

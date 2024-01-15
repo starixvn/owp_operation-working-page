@@ -39,8 +39,8 @@ const buildTableInfo = () => ({
     filterOffset: FILTER_OFFSET
   },
   dynamicCell,
-  filterFunc: () => { },
-  clearFilterFunc: () => { },
+  filterFunc: () => {},
+  clearFilterFunc: () => {},
   tableWidth: () => WIDTH
 });
 
@@ -58,7 +58,8 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
       return <KOTimeCell {...cellInfo} />;
     case EVENT.COLUMN_KEY:
       return <EventCell {...cellInfo} />;
-
+    case TICKET.COLUMN_KEY:
+      return <TicketCell {...cellInfo} />;
   }
   return null;
 };

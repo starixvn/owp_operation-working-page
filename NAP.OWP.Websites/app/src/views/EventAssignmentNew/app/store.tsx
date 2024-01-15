@@ -2,16 +2,24 @@ import { configureStore } from '@reduxjs/toolkit';
 import eventAssignmentTableSlice from '../table/eventAssignmentTableSlice';
 import policySlice from '../policy/policySlice';
 import filterSlice from '../filter/filterSlice';
-
+import ticketListSlice from '../../Shared/ticketEvent/component/ticketListSlice';
+import createMultiplePolicySlice from '../../Shared/permission/multiplePolicySlice';
+import chatBoardNew from '../../Shared/chatBoardNew/chatBoardSlice';
+import createTicketBoardReducer from '../../Shared/createTicketNew/createTicketBoardSliceNew';
 const store = configureStore({
   reducer: {
     eventAssignmentTable: eventAssignmentTableSlice,
     policy: policySlice,
-    filter: filterSlice
+    pagePolicy: createMultiplePolicySlice('pagePolicy'),
+    filter: filterSlice,
+    ticketList: ticketListSlice,
+    chatBoard: chatBoardNew,
+    createTicketBoard: createTicketBoardReducer
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware({
-    serializableCheck: false
-  }),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    }),
   devTools: true
 });
 
