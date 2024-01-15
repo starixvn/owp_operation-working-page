@@ -1112,10 +1112,10 @@
     <Content Include="wwwroot\event-picking\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\event-picking\assets\ext\server-31a9140b.css" />
+    <Content Include="wwwroot\event-picking\assets\ext\server-8b89fcbc.css" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_check_all-1f6bb12a.png" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_only-49132f43.png" />
-    <Content Include="wwwroot\event-picking\assets\js\main-342138db.js" />
+    <Content Include="wwwroot\event-picking\assets\js\main-9c445538.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\event-upload\assets\ext\icon-feedback-57264197.svg" />

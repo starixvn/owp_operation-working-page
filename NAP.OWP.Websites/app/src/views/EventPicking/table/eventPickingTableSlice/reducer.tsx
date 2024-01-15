@@ -115,6 +115,14 @@ const EventPickingTableSlice = createSlice({
           state.filterState,
           filterByKeyword
         );
+        const { orderType, columnKeySelected } = state.sortState;
+        if (columnKeySelected !== '') {
+          state.entities = sortData(
+            orderType,
+            state.entities,
+            columnKeySelected
+          );
+        }
         if (state.entities.length) {
           state.isConfirmAll = state.entities.every(x => x.isCheck);
           state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
