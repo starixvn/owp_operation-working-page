@@ -35,6 +35,9 @@ const queryDataTableThunk = createAsyncThunk<TDataTable>(
       away: "ATeam",
       leagueGroup: null,
       noOfHDP: '1 line 11',
+      noOfHDPId: 11,
+      matchCode: "matchCode",
+      adminSiteId: 123,
       matchOffers: [{
         id: 2,
         OWPMatchId: 1235463,

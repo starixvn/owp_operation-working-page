@@ -6,6 +6,8 @@ import { Button } from 'reactstrap';
 import store from '../../app/store';
 import Utils from '../../../Shared/Utils';
 import MatchInfo from '../../components/MatchInfo';
+import EventPopup from '../../../Shared/EventPopup';
+import dayjs from 'dayjs';
 
 const EventCell = (props: TCellModel) => {
   const {
@@ -20,6 +22,9 @@ const EventCell = (props: TCellModel) => {
   const event = dataSource[rowIndex];
   const isYesterdayOrAfter =
     Utils.isYesterdayOrAfterForAssignment(selectedDate);
+  const today = new Date();
+  const yesterDay = dayjs(today).subtract(1, 'day');
+  const isAllowAddEvent = Utils.isSameOrAfter(selectedDate, yesterDay);
 
   const handleCopy = () => {
     const kickOffTime = `K.O Time: ${event.kickOffTime}`;
@@ -32,13 +37,18 @@ const EventCell = (props: TCellModel) => {
     window.executeCopy(kickOffTime, league, match, matchNo, iptv, provider);
   };
 
-  // TODO
-  //isAllowAddEvent
   const allowToAddMinorMatch =
-    true &&
+    isAllowAddEvent &&
     FullBetTypes.HasWrite &&
     event.oWPMatchId === event.parentMatchId &&
     isYesterdayOrAfter;
+
+  const dataLength = dataSource.length;
+  const threeLastRow = [dataLength - 1, dataLength - 2, dataLength - 3];
+  const className = threeLastRow.some(i => i === rowIndex)
+    ? 'last-popup'
+    : null;
+
   return (
     <div className='table-cell' key={`Event${uuidv4()}${rowIndex}`}>
       {event.leagueGroup && (
@@ -74,18 +84,18 @@ const EventCell = (props: TCellModel) => {
         componentId={uuidv4()}
       />
 
-      {event.AdminSiteId > 0 && (
+      {event.adminSiteId && (
         <>
           <Button className='button-link-trader' id={`Event${rowIndex}`}>
             <span className='icon-link'></span>
           </Button>
-          {/* <EventPopup
+          <EventPopup
             className={className}
             adminSiteId={event.AdminSiteId}
-            isFantasy={event.IsFantasy}
+            isFantasy={event.isFantasy}
             rowIndex={rowIndex}
-            minorBettypeId={event.MinorBettypeId}
-          /> */}
+            minorBettypeId={event.minorBettypeId}
+          />
         </>
       )}
       <Button className='btn-copy-content' onClick={handleCopy}>

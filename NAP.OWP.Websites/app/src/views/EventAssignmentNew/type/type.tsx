@@ -16,9 +16,11 @@ type TCellModel = {
 };
 
 type TDataTable = Array<{
+  isFantasy: boolean;
+  minorBettypeId: number | null | undefined;
   matchCode: JSX.Element;
   noOfHDPId: any;
-  adminSiteId: string;
+  adminSiteId: number | null;
   iPTVCopy: string;
   provider: string;
   AdminSiteId: number;
