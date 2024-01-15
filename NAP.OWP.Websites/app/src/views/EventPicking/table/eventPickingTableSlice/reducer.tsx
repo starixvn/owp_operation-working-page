@@ -20,7 +20,11 @@ import {
 } from '../../../Shared/Utils';
 import filterByKeyword from '../filterByKeyword';
 import { isEqual } from 'lodash';
-import { sortDataAsc, sortDataDesc } from '../EventPickingTableHelper';
+import {
+  sortDataAsc,
+  sortDataDesc,
+  sortData
+} from '../EventPickingTableHelper';
 import { ORDER_ASC, ORDER_DESC } from '../TableSchema.json';
 
 const EventPickingTableSlice = createSlice({
@@ -59,12 +63,7 @@ const EventPickingTableSlice = createSlice({
         state.filterState,
         filterByKeyword
       );
-      if (isEqual(orderType, ORDER_ASC)) {
-        state.entities = sortDataAsc(state.entities, columnKeySelected);
-      }
-      if (isEqual(orderType, ORDER_DESC)) {
-        state.entities = sortDataDesc(state.entities, columnKeySelected);
-      }
+      state.entities = sortData(orderType, state.entities, columnKeySelected);
       if (state.entities.length) {
         state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
@@ -75,12 +74,7 @@ const EventPickingTableSlice = createSlice({
       const { orderType, columnKeySelected } = sortState;
       state.filterState = [];
       state.valueFilterAllColumn = {};
-      if (isEqual(orderType, ORDER_ASC)) {
-        state.entities = sortDataAsc(entitiesOriginal, columnKeySelected);
-      }
-      if (isEqual(orderType, ORDER_DESC)) {
-        state.entities = sortDataDesc(entitiesOriginal, columnKeySelected);
-      }
+      state.entities = sortData(orderType, entitiesOriginal, columnKeySelected);
       if (state.entities.length) {
         state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
@@ -89,12 +83,7 @@ const EventPickingTableSlice = createSlice({
     sortFunc: (state, action) => {
       state.sortState = action.payload;
       const { orderType, columnKeySelected } = action.payload;
-      if (isEqual(orderType, ORDER_ASC)) {
-        state.entities = sortDataAsc(state.entities, columnKeySelected);
-      }
-      if (isEqual(orderType, ORDER_DESC)) {
-        state.entities = sortDataDesc(state.entities, columnKeySelected);
-      }
+      state.entities = sortData(orderType, state.entities, columnKeySelected);
     }
   },
   extraReducers: builder => {

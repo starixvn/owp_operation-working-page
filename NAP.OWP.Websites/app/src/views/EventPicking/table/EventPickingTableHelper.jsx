@@ -1,6 +1,7 @@
 import handleNoOfferAllMatch from '../helper/noOfferAllMatchHelper';
 import updateConfirmAllEvent from '../helper/confirmedHelper';
-
+import { ORDER_ASC, ORDER_DESC } from './TableSchema.json';
+import { isEqual } from 'lodash';
 const buildColumnValueByColumnName = (
   columnKey,
   isNoOfferAll,
@@ -20,6 +21,24 @@ const buildColumnValueByColumnName = (
   return columnMappings[columnKey] || {};
 };
 
+const sortData = (orderType, entities, columnKey) => {
+  const hasValue = entities.filter(
+    x => x[capitalizeFirstLetter(columnKey)] !== null
+  );
+  const hasNullValue = entities.filter(
+    x => x[capitalizeFirstLetter(columnKey)] === null
+  );
+  let hasValueSorted = [];
+  if (isEqual(orderType, ORDER_ASC)) {
+    hasValueSorted = sortDataAsc(hasValue, columnKey);
+  }
+  if (isEqual(orderType, ORDER_DESC)) {
+    hasValueSorted = sortDataDesc(hasValue, columnKey);
+  }
+
+  return [...hasValueSorted, ...hasNullValue];
+};
+
 const sortDataAsc = (entities, columnKey) =>
   [...entities].sort(
     (src, dest) =>
@@ -35,4 +54,4 @@ const sortDataDesc = (entities, columnKey) =>
   );
 const capitalizeFirstLetter = value =>
   value.charAt(0).toLowerCase() + value.slice(1);
-export { buildColumnValueByColumnName, sortDataAsc, sortDataDesc };
+export { buildColumnValueByColumnName, sortDataAsc, sortDataDesc, sortData };
