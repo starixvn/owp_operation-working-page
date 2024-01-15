@@ -21,7 +21,7 @@
     },
     {
       "value": 365,
-      "label": "Last year"
+      "label": "Last 12 months"
     }
   ],
   "SELECT_GAME_OPTIONS": [

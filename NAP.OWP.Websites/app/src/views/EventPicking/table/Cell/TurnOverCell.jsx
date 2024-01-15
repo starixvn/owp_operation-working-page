@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Utils from '../../../Shared/Utils';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -17,7 +18,7 @@ const TurnOverCell = props => {
         color: turnover.color,
         textAlign: 'center'
       }}>
-      {turnover.value}
+      {Utils.formatNumberWithCommas(turnover.value)}
     </div>
   );
 };

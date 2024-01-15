@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Utils from '../../../Shared/Utils';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -17,7 +18,7 @@ const MarginCell = props => {
         color: margin.color,
         textAlign: 'center'
       }}>
-      {margin.value}
+      {Utils.formatNumberWithCommas(margin.value)}
     </div>
   );
 };

@@ -109,4 +109,9 @@ describe('Utils', () => {
     const result = Utils.getDataFromLocalStore(localStorageKey);
     expect(result).toBe(data);
   });
+
+  it('test formatNumberWithCommas return undefined when input is null', () => {
+    const result = Utils.formatNumberWithCommas(null);
+    expect(result).toBe(undefined);
+  });
 });

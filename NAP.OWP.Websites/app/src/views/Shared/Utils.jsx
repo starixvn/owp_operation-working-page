@@ -204,6 +204,9 @@ const addOrReplaceFilterState = (currentState, newFilter) => {
 const filterDataTable = (data, filterState, callback) =>
   filterState.reduce((matches, filter) => callback(matches, filter), data);
 
+const formatNumberWithCommas = source =>
+  source?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
 const Utils = {
   rootUrl: getRootUrl(),
   resolveUrl,
@@ -227,7 +230,8 @@ const Utils = {
   buildOffVROption,
   buildSelectedMatchStatus,
   handleOnDateChange,
-  requestOrGetLocalStorage
+  requestOrGetLocalStorage,
+  formatNumberWithCommas
 };
 export {
   getValueRef,
