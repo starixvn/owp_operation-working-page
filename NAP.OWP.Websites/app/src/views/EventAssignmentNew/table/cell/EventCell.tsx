@@ -8,22 +8,18 @@ import Utils from '../../../Shared/Utils';
 import MatchInfo from '../../components/MatchInfo';
 
 const EventCell = (props: TCellModel) => {
-  const { filter:
-    {
-      entities: {
-        selectedDate
-      }
+  const {
+    filter: {
+      filterState: { selectedDate }
     },
     policy: {
-      entities: {
-        FullBetTypes,
-        detailInformationPolicy
-      }
+      entities: { FullBetTypes, detailInformationPolicy }
     }
   } = store.getState();
   const { rowIndex, dataSource } = props;
   const event = dataSource[rowIndex];
-  const isYesterdayOrAfter = Utils.isYesterdayOrAfterForAssignment(selectedDate);
+  const isYesterdayOrAfter =
+    Utils.isYesterdayOrAfterForAssignment(selectedDate);
 
   const handleCopy = () => {
     const kickOffTime = `K.O Time: ${event.kickOffTime}`;
@@ -72,7 +68,11 @@ const EventCell = (props: TCellModel) => {
         </a>
       )}
 
-      <MatchInfo dataSource={dataSource} rowIndex={rowIndex} componentId={uuidv4()} />
+      <MatchInfo
+        dataSource={dataSource}
+        rowIndex={rowIndex}
+        componentId={uuidv4()}
+      />
 
       {event.AdminSiteId > 0 && (
         <>

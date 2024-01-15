@@ -74,9 +74,9 @@ type TQueryPolicy = {
 };
 
 type TFilter = {
-  entities: {
-    selectedDate: Date;
-  };
+  selectedDate: Date;
+  userNameFilter: string;
+  userNameFilterIsValid: boolean;
 };
 
 type TTicketCell = TCellModel & {

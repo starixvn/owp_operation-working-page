@@ -9,7 +9,10 @@ import Loading from '../components/Loading';
 
 const EventAssignment = () => {
   const stableDispatch = useAppDispatch();
-  const loading = useAppSelector(state => state.policy.loading, (previous, next) => isEquals(previous, next));
+  const loading = useAppSelector(
+    state => state.policy.loading,
+    (previous, next) => isEquals(previous, next)
+  );
 
   useEffect(() => {
     stableDispatch(queryPolicyThunk());
@@ -20,8 +23,10 @@ const EventAssignment = () => {
   }
 
   return (
-    <div>
-      <Filter />
+    <div className='event-assignment'>
+      <div className='filter'>
+        <Filter />
+      </div>
       <Table />
     </div>
   );

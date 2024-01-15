@@ -1,16 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { TFilter } from '../type/type';
+import update from 'immutability-helper';
 
 const filterSlice = createSlice({
   name: 'filterSlice',
   initialState: {
-    entities: {
-      selectedDate: new Date()
+    filterState: {
+      selectedDate: new Date(),
+      userNameFilter: '',
+      userNameFilterIsValid: true
+    } as TFilter
+  },
+  reducers: {
+    updateFilterState: (state, action) => {
+      const { filterState } = state;
+      const { key, value } = action.payload;
+      const newFilter = update(filterState, {
+        [key]: {
+          $set: value
+        }
+      });
+      state.filterState = newFilter;
     }
-  } as TFilter,
-  reducers: {},
-  extraReducers: builder => { }
+  },
+  extraReducers: builder => {}
 });
-const { reducer } = filterSlice;
-
+const { reducer, actions } = filterSlice;
+const { updateFilterState } = actions;
+export { updateFilterState };
 export default reducer;
