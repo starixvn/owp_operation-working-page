@@ -1,25 +1,22 @@
 import React, { createRef, useState } from 'react';
 import DatePicker, { ReactDatePicker } from 'react-datepicker';
 import CalendarIcon from 'mdi-react/CalendarIcon';
-import {
-  buildDefaultFilterDate,
-  buildTimeRangeLast30Day
-} from '../../Shared/DateTime/dateTimeHelper';
+import { buildTimeRangeLast30Day } from '../../Shared/DateTime/dateTimeHelper';
 import { useAppDispatch } from '../app/hooks';
 import { updateFilterState } from './filterSlice';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 
 const DatePickerFilter = () => {
   const dispatch = useAppDispatch();
-  const [selectedDate, setSelectedDate] = useState<Date>(
-    buildDefaultFilterDate()
-  );
+  const { filterState } = useSelector((state: RootState) => state.filter);
+  const { selectedDate } = filterState;
   const datePicker = createRef<ReactDatePicker>();
   const Latest30Days = buildTimeRangeLast30Day(new Date());
   const openCalendar = () => {
     datePicker.current && datePicker.current.setOpen(true);
   };
   const handleChangeDate = (date: Date) => {
-    setSelectedDate(date);
     const model = {
       key: 'selectedDate',
       value: date

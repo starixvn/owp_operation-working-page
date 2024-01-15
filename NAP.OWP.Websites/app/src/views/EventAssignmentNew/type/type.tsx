@@ -70,6 +70,22 @@ type TPolicy = {
   };
 };
 
+type TFilterQueryOptions = {
+  MatchStatus: TMatchStatus;
+  OffVR: TMatchOffer;
+};
+
+type TMatchStatus = {
+  RefName: string;
+  Value: string;
+};
+
+type TMatchOffer = {
+  Id: number;
+  RefName: string;
+  Value: string;
+};
+
 type TQueryPolicy = {
   loading: string;
   entities: TPolicy;
@@ -79,6 +95,12 @@ type TFilter = {
   selectedDate: Date;
   userNameFilter: string;
   userNameFilterIsValid: boolean;
+  selectedMatchStatus: TOptions[];
+};
+
+type TOptions = {
+  label: string;
+  value: string;
 };
 
 type TTicketCell = TCellModel & {
@@ -93,6 +115,9 @@ type CreatorInfo = {
   userName: string;
 };
 export {
+  TOptions,
+  TFilterQueryOptions,
+  TMatchOffer,
   TDataTable,
   TQueryLiveGameAssignment,
   TColumn,
