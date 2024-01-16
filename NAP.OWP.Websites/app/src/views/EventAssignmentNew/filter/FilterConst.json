@@ -5,16 +5,16 @@
   ],
   "SYNC_LIVE_OPTION": [
     {
-      "value": 0,
-      "label": "All"
+      "label": "All",
+      "value": 0
     },
     {
-      "value": 1,
-      "label": "Live"
+      "label": "Live",
+      "value": 1
     },
     {
-      "value": 2,
-      "label": "Non-Live"
+      "label": "Non-Live",
+      "value": 2
     }
   ]
 }

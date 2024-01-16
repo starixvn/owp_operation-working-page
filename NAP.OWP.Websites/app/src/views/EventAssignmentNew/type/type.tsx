@@ -95,13 +95,15 @@ type TFilter = {
   selectedDate: Date;
   userNameFilter: string;
   userNameFilterIsValid: boolean;
+  selectedMatchType: TOptions[];
   selectedMatchStatus: TOptions[];
+  selectedSyncLive: TOptions;
   selectedOffVRs: TOptions[];
 };
 
 type TOptions = {
   label: string;
-  value: string;
+  value: string | number;
 };
 
 type TTicketCell = TCellModel & {

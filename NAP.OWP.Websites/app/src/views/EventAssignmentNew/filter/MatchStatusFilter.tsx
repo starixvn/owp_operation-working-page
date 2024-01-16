@@ -1,20 +1,20 @@
 import React from 'react';
 import { MultiSelect } from 'react-multi-select-component';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../app/store';
+import { useAppSelector, useAppDispatch } from '../app/hooks';
 import Utils from '../../Shared/Utils';
 import { updateFilterState } from './filterSlice';
 import { TOptions } from '../type/type';
 
 const MatchStatusFilter = () => {
-  const dispatch = useDispatch();
-  const { filterOptions, filterState } = useSelector(
-    (state: RootState) => state.filter
+  const dispatch = useAppDispatch();
+  const matchStatus = useAppSelector(
+    state => state.filter.filterOptions.MatchStatus
   );
-  const { MatchStatus } = filterOptions;
-  const { selectedMatchStatus } = filterState;
-  const matchStatusOptions: TOptions[] =
-    Utils.buildMatchStatusOption(MatchStatus);
+  const selectedMatchStatus = useAppSelector(
+    state => state.filter.filterState.selectedMatchStatus
+  );
+
+  const matchStatusOptions = Utils.buildMatchStatusOption(matchStatus);
   const handleOnChange = (value: TOptions[]) => {
     const model = {
       key: 'selectedMatchStatus',
@@ -22,6 +22,7 @@ const MatchStatusFilter = () => {
     };
     dispatch(updateFilterState(model));
   };
+
   return (
     <div className='filter-control multiselect'>
       <div className='label'>Match Status</div>

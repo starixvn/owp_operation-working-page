@@ -5,6 +5,7 @@ import { REQUEST_STATUS } from '../../Shared/Constants';
 import queryFilterOptionsThunk from './queryFilterOptionsThunk';
 import { buildDefaultFilterDate } from '../../Shared/DateTime/dateTimeHelper';
 import Utils from '../../Shared/Utils';
+import { MATCH_TYPE_OPTION, SYNC_LIVE_OPTION } from './FilterConst.json';
 
 const filterSlice = createSlice({
   name: 'filterSlice',
@@ -13,7 +14,9 @@ const filterSlice = createSlice({
       selectedDate: buildDefaultFilterDate(),
       userNameFilter: '',
       userNameFilterIsValid: true,
+      selectedMatchType: MATCH_TYPE_OPTION,
       selectedMatchStatus: [] as TOptions[],
+      selectedSyncLive: SYNC_LIVE_OPTION[0] as TOptions,
       selectedOffVRs: [] as TOptions[]
     } as TFilter,
     loading: REQUEST_STATUS.pending,

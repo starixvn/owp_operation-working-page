@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import { MATCH_TYPE_OPTION } from './FilterConst.json';
+import { useAppSelector, useAppDispatch } from '../app/hooks';
+import { updateFilterState } from './filterSlice';
+
 const MatchTypeFilter = () => {
-  const [selectedMatchType, setSelectedMatchType] = useState(MATCH_TYPE_OPTION);
+  const dispatch = useAppDispatch();
+  const selectedMatchType = useAppSelector(
+    state => state.filter.filterState.selectedMatchType
+  );
+
   const handleOnChange = (value: any) => {
-    console.log(value);
+    const model = {
+      key: 'selectedMatchType',
+      value: value
+    };
+    dispatch(updateFilterState(model));
   };
+
   return (
     <div className='filter-control multiselect'>
       <div className='label'>Match Type</div>

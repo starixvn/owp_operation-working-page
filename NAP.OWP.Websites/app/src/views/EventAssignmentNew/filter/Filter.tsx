@@ -13,9 +13,10 @@ import queryFilterOptionsThunk from './queryFilterOptionsThunk';
 import MatchStatusFilter from './MatchStatusFilter';
 import SyncLiveFilter from './SyncLiveFilter';
 import OffVRFilter from './OffVRFilter';
+import MatchTypeFilter from './MatchTypeFilter';
 
 const Filter = () => {
-  const { loading } = useSelector((state: RootState) => state.filter);
+  const loading = useSelector((state: RootState) => state.filter.loading);
   const stableDispatch = useAppDispatch();
   useEffect(() => {
     stableDispatch(queryFilterOptionsThunk());
@@ -28,6 +29,7 @@ const Filter = () => {
     <>
       <DatePickerFilter />
       <UserSuggestionFilter />
+      <MatchTypeFilter />
       <MatchStatusFilter />
       <SyncLiveFilter />
       <OffVRFilter />
