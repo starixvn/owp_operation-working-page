@@ -5,28 +5,33 @@ import { FunctionKeys } from '../../Shared/Constants';
 import axios from 'axios';
 import AuthorizeService from '../../Authorize/Service';
 
+const queryPolicyThunk = createAsyncThunk<TPolicy>('policy/query', async () => {
+  const [
+    fullBetTypesPolicy,
+    pHBetTypesPolicy,
+    detailInformationPolicy,
+    eventPickingPolicy,
+    dailyWorkingShiftPolicy,
+    ticketCenterPolicy
+  ] = await axios.all([
+    AuthorizeService.authorize(FunctionKeys.LiveGameAssignment_FullBetTypes),
+    AuthorizeService.authorize(FunctionKeys.LiveGameAssignment_PHBetTypes),
+    AuthorizeService.authorize(FunctionKeys.DetailsInformation),
+    AuthorizeService.authorize(FunctionKeys.EventPicking),
+    AuthorizeService.authorize(FunctionKeys.DailyWorkingShift),
+    AuthorizeService.authorize(FunctionKeys.TicketCenter)
+  ]);
 
-const queryPolicyThunk = createAsyncThunk<TPolicy>(
-  'policy/query',
-  async () => {
-    const [
-      fullBetTypesPolicy,
-      pHBetTypesPolicy,
-      detailInformationPolicy
-    ] = await axios.all([
-      AuthorizeService.authorize(FunctionKeys.LiveGameAssignment_FullBetTypes),
-      AuthorizeService.authorize(FunctionKeys.LiveGameAssignment_PHBetTypes),
-      AuthorizeService.authorize(FunctionKeys.DetailsInformation)
-    ]);
-
-    return {
-      UserId: fullBetTypesPolicy.UserId,
-      Username: fullBetTypesPolicy.Username,
-      FullBetTypes: fullBetTypesPolicy,
-      PHBetTypes: pHBetTypesPolicy,
-      detailInformationPolicy
-    };
-  }
-);
+  return {
+    UserId: fullBetTypesPolicy.UserId,
+    Username: fullBetTypesPolicy.Username,
+    FullBetTypes: fullBetTypesPolicy,
+    PHBetTypes: pHBetTypesPolicy,
+    detailInformationPolicy,
+    EventPicking: eventPickingPolicy,
+    dailyWorkingShiftPolicy,
+    MyTicket: ticketCenterPolicy
+  };
+});
 
 export default queryPolicyThunk;

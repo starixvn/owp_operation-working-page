@@ -1,9 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../app/hooks';
 import { RootState } from '../app/store';
+import ExportSelector from './ExportSelector';
 
 const ButtonGroupFilter = () => {
-  const { filterState } = useSelector((state: RootState) => state.filter);
+  const filterState = useAppSelector(
+    (state: RootState) => state.filter.filterState
+  );
   const handleSubmit = () => {
     console.log(filterState);
   };
@@ -12,6 +15,7 @@ const ButtonGroupFilter = () => {
       <button className='button-submit' onClick={handleSubmit}>
         Submit
       </button>
+      <ExportSelector />
     </div>
   );
 };

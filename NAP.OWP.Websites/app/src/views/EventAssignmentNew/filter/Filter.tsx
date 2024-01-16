@@ -14,6 +14,8 @@ import MatchStatusFilter from './MatchStatusFilter';
 import SyncLiveFilter from './SyncLiveFilter';
 import OffVRFilter from './OffVRFilter';
 import MatchTypeFilter from './MatchTypeFilter';
+import ControlRightFilter from './ControlRightFilter';
+import ShowUnreadMessage from './ShowUnreadMessage';
 
 const Filter = () => {
   const loading = useSelector((state: RootState) => state.filter.loading);
@@ -34,6 +36,8 @@ const Filter = () => {
       <SyncLiveFilter />
       <OffVRFilter />
       <ButtonGroupFilter />
+      <ShowUnreadMessage />
+      <ControlRightFilter />
     </>
   );
 };

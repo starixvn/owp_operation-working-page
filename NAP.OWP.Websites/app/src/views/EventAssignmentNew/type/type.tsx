@@ -68,6 +68,18 @@ type TPolicy = {
     HasRead: boolean;
     HasWrite: boolean;
   };
+  EventPicking: {
+    HasRead: boolean;
+    HasWrite: boolean;
+  };
+  dailyWorkingShiftPolicy: {
+    HasRead: boolean;
+    HasWrite: boolean;
+  };
+  MyTicket: {
+    HasRead: boolean;
+    HasWrite: boolean;
+  };
 };
 
 type TFilterQueryOptions = {
@@ -99,6 +111,7 @@ type TFilter = {
   selectedMatchStatus: TOptions[];
   selectedSyncLive: TOptions;
   selectedOffVRs: TOptions[];
+  showUnreadMessage: boolean;
 };
 
 type TOptions = {
