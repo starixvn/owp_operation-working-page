@@ -2,5 +2,19 @@
   "MATCH_TYPE_OPTION": [
     { "label": "Real", "value": "real" },
     { "label": "Virtual", "value": "virtual" }
+  ],
+  "SYNC_LIVE_OPTION": [
+    {
+      "value": 0,
+      "label": "All"
+    },
+    {
+      "value": 1,
+      "label": "Live"
+    },
+    {
+      "value": 2,
+      "label": "Non-Live"
+    }
   ]
 }

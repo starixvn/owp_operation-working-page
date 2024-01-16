@@ -11,6 +11,8 @@ import Loading from '../../components/Loading';
 import { isEquals } from 'immutability-helper';
 import queryFilterOptionsThunk from './queryFilterOptionsThunk';
 import MatchStatusFilter from './MatchStatusFilter';
+import SyncLiveFilter from './SyncLiveFilter';
+import OffVRFilter from './OffVRFilter';
 
 const Filter = () => {
   const { loading } = useSelector((state: RootState) => state.filter);
@@ -27,6 +29,8 @@ const Filter = () => {
       <DatePickerFilter />
       <UserSuggestionFilter />
       <MatchStatusFilter />
+      <SyncLiveFilter />
+      <OffVRFilter />
       <ButtonGroupFilter />
     </>
   );

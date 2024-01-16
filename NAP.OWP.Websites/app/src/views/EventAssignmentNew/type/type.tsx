@@ -96,6 +96,7 @@ type TFilter = {
   userNameFilter: string;
   userNameFilterIsValid: boolean;
   selectedMatchStatus: TOptions[];
+  selectedOffVRs: TOptions[];
 };
 
 type TOptions = {

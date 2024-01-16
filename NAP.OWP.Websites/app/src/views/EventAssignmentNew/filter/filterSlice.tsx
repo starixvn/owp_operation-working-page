@@ -13,7 +13,8 @@ const filterSlice = createSlice({
       selectedDate: buildDefaultFilterDate(),
       userNameFilter: '',
       userNameFilterIsValid: true,
-      selectedMatchStatus: [] as TOptions[]
+      selectedMatchStatus: [] as TOptions[],
+      selectedOffVRs: [] as TOptions[]
     } as TFilter,
     loading: REQUEST_STATUS.pending,
     filterOptions: {} as TFilterQueryOptions
@@ -41,8 +42,10 @@ const filterSlice = createSlice({
         const matchStatusOptions = Utils.buildMatchStatusOption(
           payload.MatchStatus
         );
+        const offVROptions = Utils.buildOffVROption(payload.OffVR);
         state.filterState.selectedMatchStatus =
           Utils.buildSelectedMatchStatus(matchStatusOptions);
+        state.filterState.selectedOffVRs = offVROptions;
       })
       .addCase(queryFilterOptionsThunk.rejected, state => {
         state.loading = REQUEST_STATUS.pending;
