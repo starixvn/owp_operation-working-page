@@ -9,7 +9,7 @@ import Loading from '../components/Loading';
 const EventPickingManagementNative = () => {
   const pagePolicy = usePermission(FunctionKeys.EventPickingNew, 'pagePolicy');
   const turnOverMarginPolicy = usePermission(
-    FunctionKeys.EventPicking_ShowSensitiveColumn,
+    FunctionKeys.EventPickingNew_EventAndPerformance,
     'turnOverMarginPolicy'
   );
 

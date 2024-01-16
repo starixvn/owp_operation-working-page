@@ -115,7 +115,7 @@ export const FunctionKeys = {
   LeagueManagement_TVList: 'LeagueManagement_TVList',
   EventPicking: 'EventPicking',
   EventPickingNew: 'EventPickingNew',
-  EventPicking_ShowSensitiveColumn: 'EventPickingNew_ShowSensitiveColumn',
+  EventPickingNew_EventAndPerformance: 'EventPickingNew_EventAndPerformance',
   La_Report: 'LA_Report',
   DayShiftAssignment: 'DayShiftAssignment',
   NightShiftAssignment: 'NightShiftAssignment',
