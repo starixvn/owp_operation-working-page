@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import queryDataTableThunk from '../table/queryDataTableThunk';
 import DatePickerFilter from './DatePickerFilter';
 import UserSuggestionFilter from './UserSuggestionFilter';
@@ -18,10 +18,11 @@ import ControlRightFilter from './ControlRightFilter';
 import ShowUnreadMessage from './ShowUnreadMessage';
 
 const Filter = () => {
-  const loading = useSelector((state: RootState) => state.filter.loading);
+  const loading = useAppSelector(state => state.filter.loading);
   const stableDispatch = useAppDispatch();
   useEffect(() => {
     stableDispatch(queryFilterOptionsThunk());
+    stableDispatch(queryDataTableThunk());
   }, [stableDispatch]);
 
   if (isEquals(loading, REQUEST_STATUS.pending)) {
