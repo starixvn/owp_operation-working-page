@@ -13,6 +13,9 @@ type TPickCellModel = {
 type TCellModel = {
   dataSource: TDataTable;
   rowIndex: number;
+  notePolicy?: object;
+  onShowNote?: (show: any) => void;
+  closePopup?: boolean;
 };
 
 type TDataTable = Array<{

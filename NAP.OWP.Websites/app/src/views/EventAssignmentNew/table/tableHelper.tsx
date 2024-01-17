@@ -5,9 +5,10 @@ import NoCell from './cell/NoCell';
 import KOTimeCell from './cell/KOTimeCell';
 import EventCell from './cell/EventCell';
 import TicketCell from './cell/TicketCell';
+import NoteCell from './cell/NoteCell';
 
 const {
-  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET },
+  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET, NOTE },
   WIDTH,
   ROW_HEIGHT,
   DEFAULT_HEIGHT,
@@ -30,7 +31,8 @@ const buildTableInfo = () => ({
     buildColumn(MATCH_NO),
     buildColumn(KO_TIME),
     buildColumn(EVENT),
-    buildColumn(TICKET)
+    buildColumn(TICKET),
+    buildColumn(NOTE)
   ],
   tableStyle: {
     rowHeight: ROW_HEIGHT,
@@ -60,6 +62,8 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
       return <EventCell {...cellInfo} />;
     case TICKET.COLUMN_KEY:
       return <TicketCell {...cellInfo} />;
+    case NOTE.COLUMN_KEY:
+      return <NoteCell {...cellInfo} />;
   }
   return null;
 };

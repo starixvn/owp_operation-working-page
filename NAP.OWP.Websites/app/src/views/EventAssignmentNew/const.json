@@ -41,6 +41,14 @@
         "HEADER_NAME": "Ticket",
         "WIDTH": 60,
         "IS_CAN_FILTER": false
+      },
+      "NOTE": {
+        "COLUMN_KEY": "Note",
+        "FIXED": false,
+        "NAME": "Note",
+        "HEADER_NAME": "Note",
+        "WIDTH": 60,
+        "IS_CAN_FILTER": false
       }
     },
     "ROW_HEIGHT": 100,
