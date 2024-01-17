@@ -1,4 +1,3 @@
-
 type TColumn = {
   HEADER_NAME: string;
   COLUMN_KEY: string;
@@ -9,14 +8,16 @@ type TColumn = {
 type TPickCellModel = {
   dataSource: TDataTable;
   columnKey: string;
+  handleShowTicket: (show: any) => void;
+};
+
+type TNoteCell = TCellModel & {
+  onShowNote: (show: any) => void;
 };
 
 type TCellModel = {
   dataSource: TDataTable;
   rowIndex: number;
-  notePolicy?: object;
-  onShowNote?: (show: any) => void;
-  closePopup?: boolean;
 };
 
 type TAssignment = {
@@ -25,12 +26,12 @@ type TAssignment = {
   assignmentType: number;
   oWPMatchId: number;
   parentMatchId: number;
-  bettype: number,
+  bettype: number;
   minorBettypeId: number | null;
   userId: number;
-  username: string
-}
-type TDataTable = Array<{
+  username: string;
+};
+type TDataSource = {
   isFantasy: boolean;
   minorBettypeId: number;
   matchCode: JSX.Element;
@@ -63,19 +64,30 @@ type TDataTable = Array<{
     id: number;
     OWPMatchId: number;
     matchOfferValue: string;
-  }>,
-  handicap: Array<TAssignment>,
-  handicap1st: Array<TAssignment>,
-  overUnder: Array<TAssignment>,
-  overUnder1st: Array<TAssignment>,
-  oneXTwo: Array<TAssignment>,
-  oneXTwo1st: Array<TAssignment>,
-  specific15Mins: Array<TAssignment>,
-  specific10Mins: Array<TAssignment>,
-  fM: Array<TAssignment>,
-  aIO: Array<TAssignment>,
-  lA: Array<TAssignment>
-}>;
+  }>;
+  Notes: Array<TNote>;
+  handicap: Array<TAssignment>;
+  handicap1st: Array<TAssignment>;
+  overUnder: Array<TAssignment>;
+  overUnder1st: Array<TAssignment>;
+  oneXTwo: Array<TAssignment>;
+  oneXTwo1st: Array<TAssignment>;
+  specific15Mins: Array<TAssignment>;
+  specific10Mins: Array<TAssignment>;
+  fM: Array<TAssignment>;
+  aIO: Array<TAssignment>;
+  lA: Array<TAssignment>;
+};
+
+type TDataTable = Array<TDataSource>;
+type TNote = {
+  LastUpdated: string;
+  MatchNoteId: number;
+  Note: string;
+  OWPMatchId: number;
+  UserId: number;
+  Username: string;
+};
 type TQueryLiveGameAssignment = {
   loading: string;
   entities: TDataTable;
@@ -106,34 +118,39 @@ type TPolicy = {
     HasRead: boolean;
     HasWrite: boolean;
   };
+  Note: {
+    HasRead: boolean;
+    HasWrite: boolean;
+  };
 };
 
-type TBettype = "handicap" |
-  "handicap1st" |
-  "overUnder" |
-  "overUnder1st" |
-  "oneXTwo" |
-  "oneXTwo1st" |
-  "specific15Mins" |
-  "specific10Mins" |
-  "fM" |
-  "aIO" |
-  "lA";
+type TBettype =
+  | 'handicap'
+  | 'handicap1st'
+  | 'overUnder'
+  | 'overUnder1st'
+  | 'oneXTwo'
+  | 'oneXTwo1st'
+  | 'specific15Mins'
+  | 'specific10Mins'
+  | 'fM'
+  | 'aIO'
+  | 'lA';
 
 type TAssignmentBuilder = {
-  data: TDataTable,
-  rowIndex: number,
-  bettypeName: TBettype
-  policy: TPolicy,
-  onSavedAssignment: () => void,
-  onDeletedAssignment: () => void
-}
+  data: TDataTable;
+  rowIndex: number;
+  bettypeName: TBettype;
+  policy: TPolicy;
+  onSavedAssignment: () => void;
+  onDeletedAssignment: () => void;
+};
 
 type TUpdateAssignment = {
   assignment: TAssignment;
   bettypeName: TBettype;
-  rowIndex: number
-}
+  rowIndex: number;
+};
 type TFilterQueryOptions = {
   MatchStatus: TMatchStatus;
   OffVR: TMatchOffer;
@@ -186,6 +203,7 @@ type CreatorInfo = {
 type TMainAssignment = TAssignment | undefined | { oWPMatchId: number };
 type TOthersAssignment = TAssignment[] | undefined;
 export {
+  TDataSource,
   TOptions,
   TFilterQueryOptions,
   TMatchOffer,
@@ -201,6 +219,8 @@ export {
   CreatorInfo,
   TAssignmentBuilder,
   TBettype,
+  TNoteCell,
+  TNote,
   TAssignment,
   TMainAssignment,
   TOthersAssignment,

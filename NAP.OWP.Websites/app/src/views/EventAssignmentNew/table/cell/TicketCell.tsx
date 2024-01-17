@@ -6,13 +6,12 @@ const TicketCell = (props: TTicketCell) => {
   const { dataSource, rowIndex, onShowTicketList, updateDataSources } = props;
 
   return (
-    // <TicketCellCommon
-    //   dataSource={dataSource}
-    //   rowIndex={rowIndex}
-    //   onShowTicketList={onShowTicketList}
-    //   updateDataSources={updateDataSources}
-    // />
-    <h1>abc</h1>
+    <TicketCellCommon
+      dataSource={dataSource}
+      rowIndex={rowIndex}
+      onShowTicketList={onShowTicketList}
+      updateDataSources={updateDataSources}
+    />
   );
 };
 

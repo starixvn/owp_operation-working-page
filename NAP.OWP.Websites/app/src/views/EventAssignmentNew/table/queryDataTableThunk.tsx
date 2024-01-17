@@ -16,14 +16,68 @@ const queryDataTableThunk = createAsyncThunk<TDataTable>(
 
     return [
       {
-        notes: [
+        Notes: [
           {
-            lastUpdated: '2024-01-17T14:14:41.673-04:00',
-            matchNoteId: 8313768,
-            note: 'test',
-            oWPMatchId: 1235463,
-            userId: 360418,
-            username: 'starix1'
+            LastUpdated: '2024-01-17T14:14:41.673-04:00',
+            MatchNoteId: 8313768,
+            Note: 'test',
+            OWPMatchId: 1235463,
+            UserId: 360418,
+            Username: 'starix1'
+          },
+          {
+            LastUpdated: '2024-01-17T14:14:41.673-04:00',
+            MatchNoteId: 8313769,
+            Note: 'test2',
+            OWPMatchId: 1235463,
+            UserId: 360418,
+            Username: 'starix1'
+          }
+        ],
+        oWPMatchId: 1235463,
+        parentMatchId: 1235463,
+        matchStatus: 'Completed',
+        infoSiteMatchId: 123456,
+        isInfoSiteLinked: false,
+        isLiveStatusSynchronized: false,
+        isShowAbsenceIcon: false,
+        matchNo: '001',
+        kickOffTime: '01:00 AM',
+        kickOffTimeStr: '01:00:00',
+        infoSiteTime: '01:00 AM',
+        infoSiteTimeDisplay: '01:00:00',
+        otherTime: '02:00 PM',
+        otherTimeStr: '14:00:00',
+        league: 'LeagueTest',
+        home: 'HTeam',
+        away: 'ATeam',
+        leagueGroup: null,
+        noOfHDP: '1 line 11',
+        noOfHDPId: 11,
+        matchCode: 'matchCode',
+        adminSiteId: 123,
+        matchOffers: [
+          {
+            id: 2,
+            OWPMatchId: 1235463,
+            matchOfferValue: 'Fast Market'
+          },
+          {
+            id: 11,
+            OWPMatchId: 1235463,
+            matchOfferValue: '100s Accept'
+          }
+        ]
+      },
+      {
+        Notes: [
+          {
+            LastUpdated: '2024-01-17T14:14:41.673-04:00',
+            MatchNoteId: 8313768,
+            Note: 'test',
+            OWPMatchId: 1235463,
+            UserId: 360418,
+            Username: 'starix1'
           }
         ],
         oWPMatchId: 1235463,

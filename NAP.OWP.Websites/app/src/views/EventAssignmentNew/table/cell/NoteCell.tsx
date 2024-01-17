@@ -1,28 +1,21 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import NotePopover from '../../components/NotePopover';
-import { TCellModel } from '../../type/type';
+import { TNoteCell } from '../../type/type';
+import { useAppSelector } from '../../app/hooks';
 
-const NoteCell: React.FC<TCellModel> = ({
-  notePolicy,
+const NoteCell: React.FC<TNoteCell> = ({
   dataSource,
   rowIndex,
-  closePopup,
   onShowNote
 }) => {
-  const policyDefault = {
-    HasWrite: false,
-    HasRead: false
-  };
-  const handleShowNote = (show: any) => {
-    onShowNote && onShowNote(show);
-  };
+  const notePolicy = useAppSelector(state => state.policy.entities.Note);
   return (
     <NotePopover
-      key={closePopup ? uuidv4() : rowIndex}
-      policy={notePolicy ?? policyDefault}
+      key={uuidv4()}
+      policy={notePolicy}
       event={dataSource[rowIndex]}
-      onShowNote={handleShowNote}
+      onShowNote={onShowNote}
     />
   );
 };

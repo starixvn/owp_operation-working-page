@@ -1,6 +1,6 @@
 import React from 'react';
 import { TABLE, ASSIGNMENT_BETTYPE } from '../const.json';
-import { TColumn, TPickCellModel } from '../type/type';
+import { TColumn, TNoteCell, TPickCellModel } from '../type/type';
 import NoCell from './cell/NoCell';
 import KOTimeCell from './cell/KOTimeCell';
 import EventCell from './cell/EventCell';
@@ -50,10 +50,16 @@ const buildTableInfo = () => ({
 });
 
 const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
-  const { dataSource, columnKey } = cellModel;
+  const { dataSource, columnKey, handleShowTicket } = cellModel;
   const cellInfo = {
     rowIndex,
     dataSource
+  };
+
+  const noteCellInfo: TNoteCell = {
+    rowIndex,
+    dataSource,
+    onShowNote: handleShowTicket
   };
 
   switch (columnKey) {
@@ -66,7 +72,7 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
     case TICKET.COLUMN_KEY:
       return <TicketCell {...cellInfo} />;
     case NOTE.COLUMN_KEY:
-      return <NoteCell {...cellInfo} />;
+      return <NoteCell {...noteCellInfo} />;
     case HDP.COLUMN_KEY:
       return <HdpCell {...cellInfo} />;
   }
