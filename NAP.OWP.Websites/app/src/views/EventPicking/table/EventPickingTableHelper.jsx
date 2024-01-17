@@ -22,6 +22,9 @@ const buildColumnValueByColumnName = (
 };
 
 const sortData = (orderType, entities, columnKey) => {
+  if (columnKey === '') {
+    return entities;
+  }
   const hasValue = entities.filter(
     x => x[capitalizeFirstLetter(columnKey)] !== null
   );
