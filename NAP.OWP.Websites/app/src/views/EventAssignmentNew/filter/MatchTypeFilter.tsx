@@ -9,11 +9,10 @@ const MatchTypeFilter = () => {
   const selectedMatchType = useAppSelector(
     state => state.filter.filterState.selectedMatchType
   );
-
   const handleOnChange = (value: any) => {
     const model = {
       key: 'selectedMatchType',
-      value: value
+      value
     };
     dispatch(updateFilterState(model));
   };

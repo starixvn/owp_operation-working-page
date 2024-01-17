@@ -13,6 +13,7 @@ import usePermission from '../Shared/customHook/usePermission';
 import { RECIPIENT_TYPE } from '../Shared/createTicketNew/const/const';
 import { CreatorInfo } from './type/type';
 import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';
+import queryDataTableThunk from './table/queryDataTableThunk';
 
 const EventAssignment = () => {
   const stableDispatch = useAppDispatch();
@@ -39,9 +40,10 @@ const EventAssignment = () => {
 
   useEffect(() => {
     stableDispatch(queryPolicyThunk());
+    stableDispatch(queryDataTableThunk());
   }, [stableDispatch]);
 
-  if (isEquals(loading, REQUEST_STATUS.pending)) {
+  if (isEquals(loading, REQUEST_STATUS.pending) || !Username) {
     return <Loading />;
   }
 

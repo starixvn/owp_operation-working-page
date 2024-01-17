@@ -18,7 +18,7 @@ const MatchStatusFilter = () => {
   const handleOnChange = (value: TOptions[]) => {
     const model = {
       key: 'selectedMatchStatus',
-      value: value
+      value
     };
     dispatch(updateFilterState(model));
   };

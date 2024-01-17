@@ -1,3 +1,4 @@
+
 type TColumn = {
   HEADER_NAME: string;
   COLUMN_KEY: string;
@@ -18,9 +19,20 @@ type TCellModel = {
   closePopup?: boolean;
 };
 
+type TAssignment = {
+  assignmentId: number | null;
+  assignmentNote: string | null;
+  assignmentType: number;
+  oWPMatchId: number;
+  parentMatchId: number;
+  bettype: number,
+  minorBettypeId: number | null;
+  userId: number;
+  username: string
+}
 type TDataTable = Array<{
   isFantasy: boolean;
-  minorBettypeId: number | null | undefined;
+  minorBettypeId: number;
   matchCode: JSX.Element;
   noOfHDPId: any;
   adminSiteId: number | null;
@@ -51,7 +63,18 @@ type TDataTable = Array<{
     id: number;
     OWPMatchId: number;
     matchOfferValue: string;
-  }>;
+  }>,
+  handicap: Array<TAssignment>,
+  handicap1st: Array<TAssignment>,
+  overUnder: Array<TAssignment>,
+  overUnder1st: Array<TAssignment>,
+  oneXTwo: Array<TAssignment>,
+  oneXTwo1st: Array<TAssignment>,
+  specific15Mins: Array<TAssignment>,
+  specific10Mins: Array<TAssignment>,
+  fM: Array<TAssignment>,
+  aIO: Array<TAssignment>,
+  lA: Array<TAssignment>
 }>;
 type TQueryLiveGameAssignment = {
   loading: string;
@@ -85,6 +108,32 @@ type TPolicy = {
   };
 };
 
+type TBettype = "handicap" |
+  "handicap1st" |
+  "overUnder" |
+  "overUnder1st" |
+  "oneXTwo" |
+  "oneXTwo1st" |
+  "specific15Mins" |
+  "specific10Mins" |
+  "fM" |
+  "aIO" |
+  "lA";
+
+type TAssignmentBuilder = {
+  data: TDataTable,
+  rowIndex: number,
+  bettypeName: TBettype
+  policy: TPolicy,
+  onSavedAssignment: () => void,
+  onDeletedAssignment: () => void
+}
+
+type TUpdateAssignment = {
+  assignment: TAssignment;
+  bettypeName: TBettype;
+  rowIndex: number
+}
 type TFilterQueryOptions = {
   MatchStatus: TMatchStatus;
   OffVR: TMatchOffer;
@@ -133,6 +182,9 @@ type CreatorInfo = {
   recipientType: number;
   userName: string;
 };
+
+type TMainAssignment = TAssignment | undefined | { oWPMatchId: number };
+type TOthersAssignment = TAssignment[] | undefined;
 export {
   TOptions,
   TFilterQueryOptions,
@@ -146,5 +198,11 @@ export {
   TFilter,
   TPolicy,
   TTicketCell,
-  CreatorInfo
+  CreatorInfo,
+  TAssignmentBuilder,
+  TBettype,
+  TAssignment,
+  TMainAssignment,
+  TOthersAssignment,
+  TUpdateAssignment
 };

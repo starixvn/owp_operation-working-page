@@ -8,6 +8,19 @@
     "SUSPENDED": "Suspended",
     "POSTPONED": "Postponed"
   },
+  "ASSIGNMENT_BETTYPE": {
+    "handicap": 1,
+    "handicap1st": 7,
+    "overUnder": 3,
+    "overUnder1st": 8,
+    "oneXTwo": 5,
+    "oneXTwo1st": 15,
+    "specific15Mins": 1,
+    "specific10Mins": 1,
+    "fM": 1,
+    "aIO": 1,
+    "lA": -1002
+  },
   "TABLE": {
     "HEADER": {
       "MATCH_NO": {
@@ -36,9 +49,15 @@
       },
       "TICKET": {
         "COLUMN_KEY": "Ticket",
-        "FIXED": true,
         "NAME": "Ticket",
         "HEADER_NAME": "Ticket",
+        "WIDTH": 60,
+        "IS_CAN_FILTER": false
+      },
+      "HDP": {
+        "COLUMN_KEY": "hdp",
+        "NAME": "hdp",
+        "HEADER_NAME": "HDP",
         "WIDTH": 60,
         "IS_CAN_FILTER": false
       },

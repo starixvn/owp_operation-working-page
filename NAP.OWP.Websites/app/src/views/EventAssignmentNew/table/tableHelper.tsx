@@ -1,14 +1,15 @@
 import React from 'react';
-import { TABLE } from '../const.json';
+import { TABLE, ASSIGNMENT_BETTYPE } from '../const.json';
 import { TColumn, TPickCellModel } from '../type/type';
 import NoCell from './cell/NoCell';
 import KOTimeCell from './cell/KOTimeCell';
 import EventCell from './cell/EventCell';
 import TicketCell from './cell/TicketCell';
 import NoteCell from './cell/NoteCell';
+import HdpCell from './cell/HdpCell';
 
 const {
-  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET, NOTE },
+  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET,NOTE, HDP },
   WIDTH,
   ROW_HEIGHT,
   DEFAULT_HEIGHT,
@@ -32,7 +33,9 @@ const buildTableInfo = () => ({
     buildColumn(KO_TIME),
     buildColumn(EVENT),
     buildColumn(TICKET),
-    buildColumn(NOTE)
+    buildColumn(NOTE),
+    buildColumn(HDP)
+
   ],
   tableStyle: {
     rowHeight: ROW_HEIGHT,
@@ -41,8 +44,8 @@ const buildTableInfo = () => ({
     filterOffset: FILTER_OFFSET
   },
   dynamicCell,
-  filterFunc: () => {},
-  clearFilterFunc: () => {},
+  filterFunc: () => { },
+  clearFilterFunc: () => { },
   tableWidth: () => WIDTH
 });
 
@@ -64,8 +67,12 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
       return <TicketCell {...cellInfo} />;
     case NOTE.COLUMN_KEY:
       return <NoteCell {...cellInfo} />;
+    case HDP.COLUMN_KEY:
+      return <HdpCell {...cellInfo} />;
   }
   return null;
 };
+
+
 
 export { buildTableInfo };

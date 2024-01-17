@@ -1,7 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { TQueryLiveGameAssignment } from '../type/type';
+import { TQueryLiveGameAssignment, TUpdateAssignment } from '../type/type';
 import queryDataTableThunk from './queryDataTableThunk';
+import { findIndex, filter, find, remove, isEqual } from 'lodash';
 
 const eventAssignmentTableSlice = createSlice({
   name: 'eventAssignmentTableSlice',
@@ -9,7 +10,41 @@ const eventAssignmentTableSlice = createSlice({
     entities: [],
     loading: REQUEST_STATUS.idle
   } as TQueryLiveGameAssignment,
-  reducers: {},
+  reducers: {
+    saveAssignment: (state, action: PayloadAction<TUpdateAssignment>) => {
+      const { assignment, bettypeName, rowIndex } = action.payload;
+      if (assignment && bettypeName) {
+        let assignments = state.entities[rowIndex][bettypeName];
+        if (assignments) {
+          const index = assignments.findIndex(
+            el =>
+              isEqual(el.assignmentId, assignment.assignmentId) &&
+              isEqual(el.oWPMatchId, assignment.oWPMatchId)
+          );
+          if (index === -1) {
+            assignments.push(assignment);
+          } else {
+            assignments[index] = assignment;
+          }
+
+          assignments = assignments.filter(a => a.assignmentId === 0 || a.assignmentId === null);
+        }
+      }
+    },
+    onDeletedAssignment: (state, action: PayloadAction<TUpdateAssignment>) => {
+      const { assignment, bettypeName, rowIndex } = action.payload;
+      if (assignment && bettypeName) {
+        const event = state.entities[rowIndex];
+        if (assignment.assignmentType === 1) {
+          event[bettypeName] = [];
+        } else {
+          let assignments = event[bettypeName];
+          assignments = assignments.filter(a => a.assignmentId);
+          event[bettypeName] = assignments;
+        }
+      }
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(queryDataTableThunk.pending, state => {
