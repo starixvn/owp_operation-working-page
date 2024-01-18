@@ -129,6 +129,19 @@ const queryDataTableThunk = createAsyncThunk<TDataTable>(
             'AssignmentNote': null
           }
         ],
+        lA: [
+          {
+            'AssignmentId': 0,
+            'OWPMatchId': 1238730,
+            'ParentMatchId': 1238728,
+            'Bettype': 1,
+            'MinorBettypeId': -2,
+            'AssignmentType': 0,
+            'UserId': 0,
+            'Username': null,
+            'AssignmentNote': null
+          }
+        ],
         matchOffers: [
           {
             id: 2,

@@ -1,10 +1,6 @@
 import React from 'react';
 import { TABLE, COLUMN_FULL_BETTYPE } from '../const.json';
-import {
-  TBettype,
-  TColumn,
-  TPickCellModel
-} from '../type/type';
+import { TBettype, TColumn, TPickCellModel, TNoteCell } from '../type/type';
 import NoCell from './cell/NoCell';
 import KOTimeCell from './cell/KOTimeCell';
 import EventCell from './cell/EventCell';
@@ -86,8 +82,5 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
     <BettypeCell {...cellInfo} bettypeName={cellModel.columnKey as TBettype} />
   );
 };
-
-
-
 
 export { buildTableInfo };

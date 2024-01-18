@@ -148,6 +148,13 @@
       "HEADER_NAME": "AIO",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
+    },
+    {
+      "COLUMN_KEY": "lA",
+      "NAME": "LA",
+      "HEADER_NAME": "LA",
+      "WIDTH": 80,
+      "IS_CAN_FILTER": true
     }
   ]
 }
