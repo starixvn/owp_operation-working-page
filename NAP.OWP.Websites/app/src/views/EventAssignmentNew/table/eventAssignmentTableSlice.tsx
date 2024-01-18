@@ -29,7 +29,9 @@ const eventAssignmentTableSlice = createSlice({
             assignments[index] = assignment;
           }
 
-          assignments = assignments.filter(a => a.assignmentId === 0 || a.assignmentId === null);
+          assignments = assignments.filter(
+            a => a.assignmentId === 0 || a.assignmentId === null
+          );
         }
       }
     },
@@ -61,6 +63,8 @@ const eventAssignmentTableSlice = createSlice({
       });
   }
 });
-const { reducer } = eventAssignmentTableSlice;
 
+const { reducer, actions } = eventAssignmentTableSlice;
+const { onDeletedAssignment, saveAssignment } = actions;
+export { onDeletedAssignment, saveAssignment };
 export default reducer;

@@ -23,7 +23,6 @@ const checkAllowAddAssignmentSpecific15Mins = (
   return true;
 };
 
-
 const checkAllowAddAssignmentSpecific10Mins = (
   minorBettypeId: number,
   bettypeName: string,
@@ -118,7 +117,6 @@ const checkAllowAddAssignment = (
   }
 };
 
-
 const buildWritePermission = (bettypeName: string, policy: TPolicy) => {
   const { FullBetTypes, PHBetTypes } = policy;
 
@@ -129,9 +127,9 @@ const buildWritePermission = (bettypeName: string, policy: TPolicy) => {
   );
 };
 
-const buildAssignment = (props: TAssignmentBuilder) => {
-  const { data, rowIndex, bettypeName, policy } = props;
-  const event = data[rowIndex];
+const buildAssignment = (props: TAssignmentBuilder, policy: TPolicy) => {
+  const { dataSource, rowIndex, bettypeName } = props;
+  const event = dataSource[rowIndex];
   const otherTime = event.otherTime;
   const assignments = event[bettypeName];
   let main = null;
@@ -141,7 +139,7 @@ const buildAssignment = (props: TAssignmentBuilder) => {
     others = assignments.filter(a => a.assignmentType === 2);
   }
   if (!main) {
-    main = assignments.find(a => a.assignmentType === 0);;
+    main = assignments.find(a => a.assignmentType === 0);
   }
   if (!main) {
     main = { oWPMatchId: event.oWPMatchId };
