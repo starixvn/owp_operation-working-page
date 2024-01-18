@@ -89,6 +89,7 @@ type TNote = {
   Username: string;
 };
 type TQueryLiveGameAssignment = {
+  filterState: any[],
   loading: string;
   entities: TDataTable;
 };

@@ -29,15 +29,15 @@
         "NAME": "MatchNo",
         "HEADER_NAME": "No#",
         "WIDTH": 60,
-        "IS_CAN_FILTER": false
+        "IS_CAN_FILTER": true
       },
       "KO_TIME": {
         "COLUMN_KEY": "KickOffTime",
         "FIXED": true,
         "NAME": "KickOffTime",
         "HEADER_NAME": "KO Time",
-        "WIDTH": 72,
-        "IS_CAN_FILTER": false
+        "WIDTH": 90,
+        "IS_CAN_FILTER": true
       },
       "EVENT": {
         "COLUMN_KEY": "Event",
@@ -45,21 +45,20 @@
         "NAME": "Event",
         "HEADER_NAME": "Event",
         "WIDTH": 300,
-        "IS_CAN_FILTER": false
+        "IS_CAN_FILTER": true
       },
       "TICKET": {
         "COLUMN_KEY": "Ticket",
         "NAME": "Ticket",
         "HEADER_NAME": "Ticket",
-        "WIDTH": 60,
-        "IS_CAN_FILTER": false
+        "WIDTH": 60
       },
       "HDP": {
         "COLUMN_KEY": "hdp",
         "NAME": "hdp",
         "HEADER_NAME": "HDP",
         "WIDTH": 60,
-        "IS_CAN_FILTER": false
+        "IS_CAN_FILTER": true
       },
       "NOTE": {
         "COLUMN_KEY": "Note",
@@ -67,7 +66,7 @@
         "NAME": "Note",
         "HEADER_NAME": "Note",
         "WIDTH": 60,
-        "IS_CAN_FILTER": false
+        "IS_CAN_FILTER": true
       }
     },
     "ROW_HEIGHT": 100,

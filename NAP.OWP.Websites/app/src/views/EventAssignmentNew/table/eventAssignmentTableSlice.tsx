@@ -1,12 +1,14 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import { TQueryLiveGameAssignment, TUpdateAssignment } from '../type/type';
 import queryDataTableThunk from './queryDataTableThunk';
-import { findIndex, filter, find, remove, isEqual } from 'lodash';
+import { isEqual } from 'lodash';
 
 const eventAssignmentTableSlice = createSlice({
   name: 'eventAssignmentTableSlice',
   initialState: {
+    filterState: [],
     entities: [],
     loading: REQUEST_STATUS.idle
   } as TQueryLiveGameAssignment,
