@@ -82,11 +82,7 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
       return <HdpCell {...cellInfo} />;
   }
   return (
-    <BettypeCell
-      {...cellInfo}
-      bettypeName={cellModel.columnKey as TBettype}
-      columnKey={cellModel.columnKey}
-    />
+    <BettypeCell {...cellInfo} bettypeName={cellModel.columnKey as TBettype} />
   );
 };
 

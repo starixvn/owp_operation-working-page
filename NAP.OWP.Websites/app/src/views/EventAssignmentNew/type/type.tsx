@@ -31,6 +31,7 @@ type TAssignment = {
   userId: number;
   username: string;
 };
+
 type TDataSource = {
   isFantasy: boolean;
   minorBettypeId: number;
@@ -89,7 +90,7 @@ type TNote = {
   Username: string;
 };
 type TQueryLiveGameAssignment = {
-  filterState: Array<TColumnFilter>,
+  filterState: Array<TColumnFilter>;
   loading: string;
   entities: TDataTable;
 };
@@ -139,12 +140,9 @@ type TBettype =
   | 'lA';
 
 type TAssignmentBuilder = {
-  data: TDataTable;
+  dataSource: TDataTable;
   rowIndex: number;
   bettypeName: TBettype;
-  policy: TPolicy;
-  onSavedAssignment: () => void;
-  onDeletedAssignment: () => void;
 };
 
 type TUpdateAssignment = {
