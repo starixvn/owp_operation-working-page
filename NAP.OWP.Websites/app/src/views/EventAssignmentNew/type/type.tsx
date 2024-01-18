@@ -89,7 +89,7 @@ type TNote = {
   Username: string;
 };
 type TQueryLiveGameAssignment = {
-  filterState: any[],
+  filterState: Array<TColumnFilter>,
   loading: string;
   entities: TDataTable;
 };
@@ -152,6 +152,12 @@ type TUpdateAssignment = {
   bettypeName: TBettype;
   rowIndex: number;
 };
+
+type TColumnFilter = {
+  keyword: string;
+  columnKey: string;
+};
+
 type TFilterQueryOptions = {
   MatchStatus: TMatchStatus;
   OffVR: TMatchOffer;
@@ -225,5 +231,6 @@ export {
   TAssignment,
   TMainAssignment,
   TOthersAssignment,
-  TUpdateAssignment
+  TUpdateAssignment,
+  TColumnFilter
 };

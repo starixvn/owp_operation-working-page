@@ -49,8 +49,8 @@ const buildTableInfo = () => ({
     filterOffset: FILTER_OFFSET
   },
   dynamicCell,
-  filterFunc: () => {},
-  clearFilterFunc: () => {},
+  filterFunc: filterBySearchKey,
+  clearFilterFunc: clearFilter,
   tableWidth: () => WIDTH
 });
 

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { TQueryLiveGameAssignment, TUpdateAssignment } from '../type/type';
+import { TColumnFilter, TQueryLiveGameAssignment, TUpdateAssignment } from '../type/type';
 import queryDataTableThunk from './queryDataTableThunk';
 import { isEqual } from 'lodash';
 
@@ -47,6 +47,21 @@ const eventAssignmentTableSlice = createSlice({
           event[bettypeName] = assignments;
         }
       }
+    },
+    onFilterBySearchKey: (state, action: PayloadAction<TColumnFilter>) => {
+      state.filterState = addOrReplaceFilterState(
+        state.filterState,
+        action.payload
+      );
+      state.entities = filterDataTable(
+        state.entitiesOriginal,
+        state.filterState,
+        filterHomeOrAwayByKeyword
+      );
+    },
+    onClearFilter: state => {
+      state.filterState = [];
+      state.entities = state.entitiesOriginal;
     }
   },
   extraReducers: builder => {
@@ -63,8 +78,14 @@ const eventAssignmentTableSlice = createSlice({
       });
   }
 });
-
 const { reducer, actions } = eventAssignmentTableSlice;
+const {
+  onDeletedAssignment,
+  onUpdatedAssignment,
+  onFilterBySearchKey,
+  onClearFilter,
+
+} = actions;
 const { onDeletedAssignment, saveAssignment } = actions;
 export { onDeletedAssignment, saveAssignment };
 export default reducer;
