@@ -77,7 +77,7 @@
     "HEADER_HEIGHT": 30,
     "FILTER_OFFSET": 200
   },
-  "COLUMNFULLBETTYPES": [
+  "COLUMN_FULL_BETTYPE": [
     {
       "COLUMN_KEY": "handicap",
       "NAME": "Handicap",

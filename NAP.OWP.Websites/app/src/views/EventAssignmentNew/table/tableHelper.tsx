@@ -1,7 +1,6 @@
 import React from 'react';
-import { TABLE, COLUMNFULLBETTYPES } from '../const.json';
+import { TABLE, COLUMN_FULL_BETTYPE } from '../const.json';
 import {
-  TAssignmentBuilder,
   TBettype,
   TColumn,
   TPickCellModel
@@ -13,6 +12,8 @@ import TicketCell from './cell/TicketCell';
 import NoteCell from './cell/NoteCell';
 import HdpCell from './cell/HdpCell';
 import BettypeCell from '../components/BettypeCell';
+import { onClearFilter, onColumnFilter } from './eventAssignmentTableSlice';
+
 const {
   HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET, NOTE, HDP },
   WIDTH,
@@ -40,7 +41,7 @@ const buildTableInfo = () => ({
     buildColumn(TICKET),
     buildColumn(NOTE),
     buildColumn(HDP),
-    ...COLUMNFULLBETTYPES.map(x => buildColumn(x))
+    ...COLUMN_FULL_BETTYPE.map(x => buildColumn(x))
   ],
   tableStyle: {
     rowHeight: ROW_HEIGHT,
@@ -49,8 +50,8 @@ const buildTableInfo = () => ({
     filterOffset: FILTER_OFFSET
   },
   dynamicCell,
-  /* filterFunc: filterBySearchKey,
-  clearFilterFunc: clearFilter, */
+  filterFunc: onColumnFilter,
+  clearFilterFunc: onClearFilter,
   tableWidth: () => WIDTH
 });
 
@@ -85,5 +86,8 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
     <BettypeCell {...cellInfo} bettypeName={cellModel.columnKey as TBettype} />
   );
 };
+
+
+
 
 export { buildTableInfo };

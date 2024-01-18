@@ -33,6 +33,13 @@ type TAssignment = {
 };
 
 type TDataSource = {
+  channel: boolean;
+  phone: string;
+  watchBet: string;
+  otherProvider: string;
+  round: any;
+  division: any;
+  remark: any;
   isFantasy: boolean;
   minorBettypeId: number;
   matchCode: JSX.Element;
@@ -78,8 +85,22 @@ type TDataSource = {
   fM: Array<TAssignment>;
   aIO: Array<TAssignment>;
   lA: Array<TAssignment>;
+  handicapSetting: TMaxbetSpread,
+  overUnderSetting: TMaxbetSpread,
+  televisions: Array<{ tVCode: string }>
 };
-
+type TColumnFilterByMbc = {
+  maxbetHDP: number | string,
+  spreadHDP: number | string,
+  spreadOU: number | string,
+  maxBetToDisplay: string,
+  keyword: string
+}
+type TMaxbetSpread = {
+  maxbet: number;
+  spread: number;
+  maxBetToDisplay: string
+}
 type TDataTable = Array<TDataSource>;
 type TNote = {
   LastUpdated: string;
@@ -93,6 +114,7 @@ type TQueryLiveGameAssignment = {
   filterState: Array<TColumnFilter>;
   loading: string;
   entities: TDataTable;
+  entitiesOriginal: TDataTable;
 };
 
 type TPolicy = {
@@ -230,5 +252,6 @@ export {
   TMainAssignment,
   TOthersAssignment,
   TUpdateAssignment,
-  TColumnFilter
+  TColumnFilter,
+  TColumnFilterByMbc
 };

@@ -4,11 +4,13 @@ import { REQUEST_STATUS } from '../../Shared/Constants';
 import { TColumnFilter, TQueryLiveGameAssignment, TUpdateAssignment } from '../type/type';
 import queryDataTableThunk from './queryDataTableThunk';
 import { isEqual } from 'lodash';
+import { handleFilterByColumn, updateColumnFilter } from './columnFilter';
 
 const eventAssignmentTableSlice = createSlice({
   name: 'eventAssignmentTableSlice',
   initialState: {
     filterState: [],
+    entitiesOriginal: [],
     entities: [],
     loading: REQUEST_STATUS.idle
   } as TQueryLiveGameAssignment,
@@ -48,16 +50,9 @@ const eventAssignmentTableSlice = createSlice({
         }
       }
     },
-    onFilterBySearchKey: (state, action: PayloadAction<TColumnFilter>) => {
-      /* state.filterState = addOrReplaceFilterState(
-        state.filterState,
-        action.payload
-      );
-      state.entities = filterDataTable(
-        state.entitiesOriginal,
-        state.filterState,
-        filterHomeOrAwayByKeyword
-      ); */
+    onColumnFilter: (state, action: PayloadAction<TColumnFilter>) => {
+      updateColumnFilter(state.filterState, action.payload);
+      state.entities = handleFilterByColumn(state.entitiesOriginal, state.filterState) || [];
     },
     onClearFilter: state => {
       state.filterState = [];
@@ -72,6 +67,7 @@ const eventAssignmentTableSlice = createSlice({
       .addCase(queryDataTableThunk.fulfilled, (state, { payload }) => {
         state.loading = REQUEST_STATUS.idle;
         state.entities = payload;
+        state.entitiesOriginal = payload;
       })
       .addCase(queryDataTableThunk.rejected, state => {
         state.loading = REQUEST_STATUS.idle;
@@ -82,10 +78,12 @@ const { reducer, actions } = eventAssignmentTableSlice;
 const {
   onDeletedAssignment,
   onUpdatedAssignment,
-  onFilterBySearchKey,
-  onClearFilter,
-
+  onColumnFilter,
+  onClearFilter
 } = actions;
 
-export { onDeletedAssignment, onUpdatedAssignment };
+export {
+  onDeletedAssignment, onUpdatedAssignment, onColumnFilter,
+  onClearFilter,
+};
 export default reducer;
