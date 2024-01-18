@@ -13,7 +13,7 @@ const eventAssignmentTableSlice = createSlice({
     loading: REQUEST_STATUS.idle
   } as TQueryLiveGameAssignment,
   reducers: {
-    saveAssignment: (state, action: PayloadAction<TUpdateAssignment>) => {
+    onUpdatedAssignment: (state, action: PayloadAction<TUpdateAssignment>) => {
       const { assignment, bettypeName, rowIndex } = action.payload;
       if (assignment && bettypeName) {
         let assignments = state.entities[rowIndex][bettypeName];
@@ -49,7 +49,7 @@ const eventAssignmentTableSlice = createSlice({
       }
     },
     onFilterBySearchKey: (state, action: PayloadAction<TColumnFilter>) => {
-      state.filterState = addOrReplaceFilterState(
+      /* state.filterState = addOrReplaceFilterState(
         state.filterState,
         action.payload
       );
@@ -57,11 +57,11 @@ const eventAssignmentTableSlice = createSlice({
         state.entitiesOriginal,
         state.filterState,
         filterHomeOrAwayByKeyword
-      );
+      ); */
     },
     onClearFilter: state => {
       state.filterState = [];
-      state.entities = state.entitiesOriginal;
+      /*state.entities = state.entitiesOriginal; */
     }
   },
   extraReducers: builder => {
@@ -86,6 +86,6 @@ const {
   onClearFilter,
 
 } = actions;
-const { onDeletedAssignment, saveAssignment } = actions;
-export { onDeletedAssignment, saveAssignment };
+
+export { onDeletedAssignment, onUpdatedAssignment };
 export default reducer;

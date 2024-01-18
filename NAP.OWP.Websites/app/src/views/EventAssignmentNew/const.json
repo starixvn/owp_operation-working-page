@@ -83,49 +83,49 @@
       "NAME": "Handicap",
       "HEADER_NAME": "HDP",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "overUnder",
       "NAME": "OverUnder",
       "HEADER_NAME": "O/U",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "handicap1st",
       "NAME": "Handicap1st",
       "HEADER_NAME": "1H HDP",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "overUnder1st",
       "NAME": "OverUnder1st",
       "HEADER_NAME": "1H O/U",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "oneXTwo",
       "NAME": "OneXTwo",
       "HEADER_NAME": "1X2",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "oneXTwo1st",
       "NAME": "OneXTwo1st",
       "HEADER_NAME": "1H 1X2",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "specific15Mins",
       "NAME": "Specific15Mins",
       "HEADER_NAME": "15 mins",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
 
     {
@@ -133,21 +133,21 @@
       "NAME": "Specific10Mins",
       "HEADER_NAME": "10 mins",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "fM",
       "NAME": "FM",
       "HEADER_NAME": "FM",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "aIO",
       "NAME": "AIO",
       "HEADER_NAME": "AIO",
       "WIDTH": 80,
-      "IS_CAN_FILTER": false
+      "IS_CAN_FILTER": true
     }
   ]
 }
