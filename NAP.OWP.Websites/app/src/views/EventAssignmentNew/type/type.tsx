@@ -32,6 +32,19 @@ type TAssignment = {
   Username: string;
 };
 
+type TBettype =
+  | 'Handicap'
+  | 'Handicap1st'
+  | 'OverUnder'
+  | 'OverUnder1st'
+  | 'OneXTwo'
+  | 'OneXTwo1st'
+  | 'Specific15Mins'
+  | 'Specific10Mins'
+  | 'FM'
+  | 'AIO'
+  | 'LA';
+
 type TDataSource = {
   Channel: boolean;
   Phone: string;
@@ -162,19 +175,6 @@ type TPolicy = {
     HasWrite: boolean;
   };
 };
-
-type TBettype =
-  | 'handicap'
-  | 'handicap1st'
-  | 'overUnder'
-  | 'overUnder1st'
-  | 'oneXTwo'
-  | 'oneXTwo1st'
-  | 'specific15Mins'
-  | 'specific10Mins'
-  | 'fM'
-  | 'aIO'
-  | 'lA';
 
 type TAssignmentBuilder = {
   dataSource: TDataTable;

@@ -15,7 +15,7 @@ const OffVRFilter = () => {
   const handleOnChange = (value: TOptions[]) => {
     const model = {
       key: 'selectedOffVRs',
-      value: value
+      value
     };
     dispatch(updateFilterState(model));
   };

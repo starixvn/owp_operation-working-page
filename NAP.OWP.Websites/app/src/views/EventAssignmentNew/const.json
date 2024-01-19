@@ -9,17 +9,17 @@
     "POSTPONED": "Postponed"
   },
   "ASSIGNMENT_BETTYPE": {
-    "handicap": 1,
-    "handicap1st": 7,
-    "overUnder": 3,
-    "overUnder1st": 8,
-    "oneXTwo": 5,
-    "oneXTwo1st": 15,
-    "specific15Mins": 1,
-    "specific10Mins": 1,
-    "fM": 1,
-    "aIO": 1,
-    "lA": -1002
+    "Handicap": 1,
+    "Handicap1st": 7,
+    "OverUnder": 3,
+    "OverUnder1st": 8,
+    "OneXTwo": 5,
+    "OneXTwo1st": 15,
+    "Specific15Mins": 1,
+    "Specific10Mins": 1,
+    "FM": 1,
+    "AIO": 1,
+    "LA": -1002
   },
   "TABLE": {
     "HEADER": {

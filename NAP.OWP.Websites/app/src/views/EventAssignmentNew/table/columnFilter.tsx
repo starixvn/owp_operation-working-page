@@ -6,6 +6,13 @@ import {
   TColumnFilterByMbc,
   TDataTable
 } from '../type/type';
+import { TABLE, COLUMN_FULL_BETTYPE } from '../const.json';
+const {
+  HEADER: { MATCH_NO, KO_TIME, EVENT, NOTE, IP_TV,
+    PROVIDER,
+    MB,
+    REMARK }
+} = TABLE;
 
 const { convertThousandToK, convertSpreadToPercent, toLowerCaseForFilter } =
   Utils;
@@ -282,21 +289,21 @@ const filterByColumn = (events: TDataTable, column: TColumnFilter) => {
     return events;
   }
   switch (column.columnKey) {
-    case 'MatchNo':
+    case MATCH_NO.COLUMN_KEY:
       return filterMatchNo(events, keyword);
-    case 'KickOffTime':
+    case KO_TIME.COLUMN_KEY:
       return filterKickOffTime(events, keyword);
-    case 'Event':
+    case EVENT.COLUMN_KEY:
       return filterEvent(events, keyword);
-    case 'TV':
+    case IP_TV.COLUMN_KEY:
       return filterTV(events, keyword);
-    case 'Provider':
+    case PROVIDER.COLUMN_KEY:
       return filterProvider(events, keyword);
-    case 'MaxBet_Spread':
+    case MB.COLUMN_KEY:
       return filterMaxbetSpread(events, keyword);
-    case 'Remark':
+    case REMARK.COLUMN_KEY:
       return filterRemark(events, keyword);
-    case 'Note':
+    case NOTE.COLUMN_KEY:
       return filterNote(events, keyword);
     case 'LA':
       return filterLA(events, keyword);

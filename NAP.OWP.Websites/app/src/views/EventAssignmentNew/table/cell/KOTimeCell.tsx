@@ -15,8 +15,8 @@ const KOTimeCell = (props: TCellModel) => {
   const propsTime = {
     KickOffTimeDisplay: KickOffTime,
     KickOffTime: KickOffTimeStr,
-    InfoSiteTimeDisplay: InfoSiteTimeDisplay,
-    InfoSiteTime: InfoSiteTime,
+    InfoSiteTimeDisplay,
+    InfoSiteTime,
     OtherTimeDisplay: OtherTime,
     OtherTime: OtherTimeStr,
     rowIndex

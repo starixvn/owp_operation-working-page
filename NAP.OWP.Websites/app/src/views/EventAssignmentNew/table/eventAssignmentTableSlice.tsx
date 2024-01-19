@@ -29,8 +29,8 @@ const eventAssignmentTableSlice = createSlice({
         if (assignments) {
           const index = assignments.findIndex(
             el =>
-              isEqual(el.assignmentId, assignment.AssignmentId) &&
-              isEqual(el.oWPMatchId, assignment.OWPMatchId)
+              isEqual(el.AssignmentId, assignment.AssignmentId) &&
+              isEqual(el.OWPMatchId, assignment.OWPMatchId)
           );
           if (index === -1) {
             assignments.push(assignment);
@@ -39,7 +39,7 @@ const eventAssignmentTableSlice = createSlice({
           }
 
           assignments = assignments.filter(
-            a => a.assignmentId === 0 || a.assignmentId === null
+            a => a.AssignmentId === 0 || a.AssignmentId === null
           );
         }
       }
@@ -52,7 +52,7 @@ const eventAssignmentTableSlice = createSlice({
           event[bettypeName] = [];
         } else {
           let assignments = event[bettypeName];
-          assignments = assignments.filter(a => a.assignmentId);
+          assignments = assignments.filter(a => a.AssignmentId);
           event[bettypeName] = assignments;
         }
       }
@@ -64,7 +64,7 @@ const eventAssignmentTableSlice = createSlice({
     },
     onClearFilter: state => {
       state.filterState = [];
-      /*state.entities = state.entitiesOriginal; */
+      state.entities = state.entitiesOriginal;
     },
     setDataTable: (state, action) => {
       state.entities = action.payload;

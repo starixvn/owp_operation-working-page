@@ -64,7 +64,7 @@ const BettypeCell = (props: TAssignmentBuilder) => {
       filterDate={Utils.formatDate(filterDate)}
       main={main}
       others={others}
-      matchId={main.oWPMatchId}
+      matchId={main.OWPMatchId}
       betType={assignmentBetType}
       isAllowAdd={isAllowAdd}
       index={keyIndex}

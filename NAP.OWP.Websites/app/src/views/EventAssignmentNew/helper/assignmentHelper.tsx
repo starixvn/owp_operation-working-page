@@ -135,14 +135,14 @@ const buildAssignment = (props: TAssignmentBuilder, policy: TPolicy) => {
   let main = null;
   let others = null;
   if (assignments) {
-    main = assignments.find(a => a.assignmentType === 1);
-    others = assignments.filter(a => a.assignmentType === 2);
+    main = assignments.find(a => a.AssignmentType === 1);
+    others = assignments.filter(a => a.AssignmentType === 2);
   }
   if (!main) {
-    main = assignments.find(a => a.assignmentType === 0);
+    main = assignments.find(a => a.AssignmentType === 0);
   }
   if (!main) {
-    main = { oWPMatchId: event.OWPMatchId };
+    main = { OWPMatchId: event.OWPMatchId };
   }
 
   const assignmentBetType = ASSIGNMENT_BETTYPE[bettypeName];

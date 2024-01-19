@@ -60,6 +60,7 @@ const EventCell = (props: TCellModel) => {
         <a
           onClick={e => {
             e.preventDefault();
+            // TODO
             //addSpecialEvent(event);
           }}
           rel='noopener noreferrer'
@@ -71,6 +72,7 @@ const EventCell = (props: TCellModel) => {
         <a
           onClick={e => {
             e.preventDefault();
+            // TODO
             //openDetailInformation(event.OWPMatchId);
           }}
           className='link-livedetail'>

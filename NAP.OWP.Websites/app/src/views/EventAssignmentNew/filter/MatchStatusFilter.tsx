@@ -16,11 +16,10 @@ const MatchStatusFilter = () => {
 
   const matchStatusOptions = Utils.buildMatchStatusOption(matchStatus);
   const handleOnChange = (value: TOptions[]) => {
-    const model = {
+    dispatch(updateFilterState({
       key: 'selectedMatchStatus',
       value
-    };
-    dispatch(updateFilterState(model));
+    }));
   };
 
   return (
