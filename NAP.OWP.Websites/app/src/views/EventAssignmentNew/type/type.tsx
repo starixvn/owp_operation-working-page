@@ -21,76 +21,75 @@ type TCellModel = {
 };
 
 type TAssignment = {
-  assignmentId: number | null;
-  assignmentNote: string | null;
-  assignmentType: number;
-  oWPMatchId: number;
-  parentMatchId: number;
-  bettype: number;
-  minorBettypeId: number | null;
-  userId: number;
-  username: string;
+  AssignmentId: number | null;
+  AssignmentNote: string | null;
+  AssignmentType: number;
+  OWPMatchId: number;
+  ParentMatchId: number;
+  Bettype: number;
+  MinorBettypeId: number | null;
+  UserId: number;
+  Username: string;
 };
 
 type TDataSource = {
-  channel: boolean;
-  phone: string;
-  watchBet: string;
-  otherProvider: string;
-  round: string;
-  division: string;
-  teamRound: string,
-  remark: string;
-  isFantasy: boolean;
-  minorBettypeId: number;
-  matchCode: string;
-  noOfHDPId: number | null;
-  adminSiteId: number | null;
-  iPTVCopy: string;
-  provider: string;
-  AdminSiteId: number;
-  owpMatchId: number;
-  parentMatchId: number;
-  matchStatus: string;
-  infoSiteMatchId: null | number;
-  isInfoSiteLinked: boolean;
-  isLiveStatusSynchronized: boolean;
-  isShowAbsenceIcon: boolean;
-  matchNo: string | null;
-  kickOffTime: string;
-  kickOffTimeStr: string;
-  infoSiteTime: string | null;
-  infoSiteTimeDisplay: string | null;
-  otherTime: string;
-  otherTimeStr: string;
-  home: string;
-  away: string;
-  league: string;
-  leagueGroup: string | null;
-  noOfHDP: string | null;
-  isAllowedToViewDetail: boolean;
-  matchOffers: Array<{
-    id: number;
+  Channel: boolean;
+  Phone: string;
+  WatchBet: string;
+  OtherProvider: string;
+  Round: string;
+  Division: string;
+  TeamRound: string;
+  Remark: string;
+  IsFantasy: boolean;
+  MinorBettypeId: number;
+  MatchCode: JSX.Element;
+  MatchCode: string;
+  NoOfHDPId: number | null;
+  IPTVCopy: string;
+  Provider: string;
+  OWPMatchId: number;
+  ParentMatchId: number;
+  MatchStatus: string;
+  InfoSiteMatchId: null | number;
+  IsInfoSiteLinked: boolean;
+  IsLiveStatusSynchronized: boolean;
+  IsShowAbsenceIcon: boolean;
+  MatchNo: string | null;
+  KickOffTime: string;
+  KickOffTimeStr: string;
+  InfoSiteTime: string | null;
+  InfoSiteTimeDisplay: string | null;
+  OtherTime: string;
+  OtherTimeStr: string;
+  Home: string;
+  Away: string;
+  League: string;
+  LeagueGroup: string | null;
+  NoOfHDP: string | null;
+  IsAllowedToViewDetail: boolean;
+  MatchOffers: Array<{
+    Id: number;
     OWPMatchId: number;
-    matchOfferValue: string;
+    MatchOfferValue: string;
   }>;
-  notes: Array<TNote>;
-  handicap: Array<TAssignment>;
-  handicap1st: Array<TAssignment>;
-  overUnder: Array<TAssignment>;
-  overUnder1st: Array<TAssignment>;
-  oneXTwo: Array<TAssignment>;
-  oneXTwo1st: Array<TAssignment>;
-  specific15Mins: Array<TAssignment>;
-  specific10Mins: Array<TAssignment>;
-  fm: Array<TAssignment>;
-  aio: Array<TAssignment>;
-  la: Array<TAssignment>;
-  handicapSetting: TMaxbetSpread;
-  overUnderSetting: TMaxbetSpread;
-  televisions: Array<{
-    tvCode: string,
-    color: string
+  Notes: Array<TNote>;
+  Handicap: Array<TAssignment>;
+  Handicap1st: Array<TAssignment>;
+  OverUnder: Array<TAssignment>;
+  OverUnder1st: Array<TAssignment>;
+  OneXTwo: Array<TAssignment>;
+  OneXTwo1st: Array<TAssignment>;
+  Specific15Mins: Array<TAssignment>;
+  Specific10Mins: Array<TAssignment>;
+  FM: Array<TAssignment>;
+  AIO: Array<TAssignment>;
+  LA: Array<TAssignment>;
+  HandicapSetting: TMaxbetSpread;
+  OverUnderSetting: TMaxbetSpread;
+  Televisions: Array<{
+    TVCode: string,
+    Color: string
   }>;
 };
 type TColumnFilterByMbc = {
@@ -101,9 +100,9 @@ type TColumnFilterByMbc = {
   keyword: string;
 };
 type TMaxbetSpread = {
-  maxbet: number;
-  spread: number;
-  maxBetToDisplay: string;
+  Maxbet: number;
+  Spread: number;
+  MaxBetToDisplay: string;
   spreadToDisplay: string;
 };
 type TDataTable = Array<TDataSource>;
@@ -116,12 +115,12 @@ type TQueryData = {
   };
 };
 type TNote = {
-  lastUpdated: string;
-  matchNoteId: number;
-  note: string;
-  owpMatchId: number;
-  userId: number;
-  username: string;
+  LastUpdated: string;
+  MatchNoteId: number;
+  Note: string;
+  OWPMatchId: number;
+  UserId: number;
+  Username: string;
 };
 type TQueryLiveGameAssignment = {
   dateUpdated: string;
