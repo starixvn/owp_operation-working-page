@@ -21,8 +21,12 @@ const Filter = () => {
   const loading = useAppSelector(state => state.filter.loading);
   const stableDispatch = useAppDispatch();
   useEffect(() => {
-    stableDispatch(queryFilterOptionsThunk());
-    stableDispatch(queryDataTableThunk());
+    const fetchMyAPI = async () => {
+      await stableDispatch(queryFilterOptionsThunk());
+      await stableDispatch(queryDataTableThunk());
+    };
+
+    fetchMyAPI();
   }, [stableDispatch]);
 
   if (isEquals(loading, REQUEST_STATUS.pending)) {

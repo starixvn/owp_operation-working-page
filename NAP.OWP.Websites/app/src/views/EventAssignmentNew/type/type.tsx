@@ -48,7 +48,7 @@ type TDataSource = {
   iPTVCopy: string;
   provider: string;
   AdminSiteId: number;
-  oWPMatchId: number;
+  owpMatchId: number;
   parentMatchId: number;
   matchStatus: string;
   infoSiteMatchId: null | number;
@@ -73,7 +73,7 @@ type TDataSource = {
     OWPMatchId: number;
     matchOfferValue: string;
   }>;
-  Notes: Array<TNote>;
+  notes: Array<TNote>;
   handicap: Array<TAssignment>;
   handicap1st: Array<TAssignment>;
   overUnder: Array<TAssignment>;
@@ -82,33 +82,33 @@ type TDataSource = {
   oneXTwo1st: Array<TAssignment>;
   specific15Mins: Array<TAssignment>;
   specific10Mins: Array<TAssignment>;
-  fM: Array<TAssignment>;
-  aIO: Array<TAssignment>;
-  lA: Array<TAssignment>;
-  handicapSetting: TMaxbetSpread,
-  overUnderSetting: TMaxbetSpread,
-  televisions: Array<{ tVCode: string }>
+  fm: Array<TAssignment>;
+  aio: Array<TAssignment>;
+  la: Array<TAssignment>;
+  handicapSetting: TMaxbetSpread;
+  overUnderSetting: TMaxbetSpread;
+  televisions: Array<{ tVCode: string }>;
 };
 type TColumnFilterByMbc = {
-  maxbetHDP: number | string,
-  spreadHDP: number | string,
-  spreadOU: number | string,
-  maxBetToDisplay: string,
-  keyword: string
-}
+  maxbetHDP: number | string;
+  spreadHDP: number | string;
+  spreadOU: number | string;
+  maxBetToDisplay: string;
+  keyword: string;
+};
 type TMaxbetSpread = {
   maxbet: number;
   spread: number;
-  maxBetToDisplay: string
-}
+  maxBetToDisplay: string;
+};
 type TDataTable = Array<TDataSource>;
 type TNote = {
-  LastUpdated: string;
-  MatchNoteId: number;
-  Note: string;
-  OWPMatchId: number;
-  UserId: number;
-  Username: string;
+  lastUpdated: string;
+  matchNoteId: number;
+  note: string;
+  owpMatchId: number;
+  userId: number;
+  username: string;
 };
 type TQueryLiveGameAssignment = {
   filterState: Array<TColumnFilter>;

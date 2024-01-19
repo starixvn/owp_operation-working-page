@@ -136,25 +136,27 @@
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "fM",
+      "COLUMN_KEY": "fm",
       "NAME": "FM",
       "HEADER_NAME": "FM",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "aIO",
+      "COLUMN_KEY": "aio",
       "NAME": "AIO",
       "HEADER_NAME": "AIO",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "lA",
+      "COLUMN_KEY": "la",
       "NAME": "LA",
       "HEADER_NAME": "LA",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     }
-  ]
+  ],
+  "netCoreURL": "api-netcore/event-assignment",
+  "netFwURL": "api/event-assignment"
 }

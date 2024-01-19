@@ -18,13 +18,21 @@ const NotePopover: React.FC<NotePopoverProps> = ({
 }) => {
   const popupRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const notesUpperCase = event.notes.map(x => ({
+    LastUpdated: x.lastUpdated,
+    MatchNoteId: x.matchNoteId,
+    Note: x.note,
+    OWPMatchId: x.owpMatchId,
+    UserId: x.userId,
+    Username: x.username
+  }));
   const handleToggle = () => {
     setIsOpen(true);
     onShowNote(true);
   };
 
   const handleSave = (notes: TNote[]) => {
-    event.Notes = notes;
+    event.notes = notes;
   };
 
   useEffect(() => {
@@ -51,7 +59,7 @@ const NotePopover: React.FC<NotePopoverProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  const hasNote = event.Notes.length > 0;
+  const hasNote = event.notes.length > 0;
 
   return (
     <div className={`note-cell${hasNote ? ' has-note' : ''}`}>
@@ -70,9 +78,9 @@ const NotePopover: React.FC<NotePopoverProps> = ({
             <CloseIcon size={14} />
           </span>
           <NoteTable
-            matchId={event.oWPMatchId}
+            matchId={event.owpMatchId}
             policy={policy}
-            rows={event.Notes}
+            rows={notesUpperCase}
             onSave={handleSave}
           />
         </div>
