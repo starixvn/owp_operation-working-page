@@ -102,6 +102,14 @@ type TMaxbetSpread = {
   maxBetToDisplay: string;
 };
 type TDataTable = Array<TDataSource>;
+type TQueryData = {
+  data: TDataTable;
+  dateUpdated: string;
+  syncOffVRLastUpdated: {
+    item1: string;
+    item2: string;
+  };
+};
 type TNote = {
   lastUpdated: string;
   matchNoteId: number;
@@ -111,6 +119,9 @@ type TNote = {
   username: string;
 };
 type TQueryLiveGameAssignment = {
+  dateUpdated: string;
+  syncOffVRLastTime: string;
+  syncOffVRByUser: string;
   filterState: Array<TColumnFilter>;
   loading: string;
   entities: TDataTable;
@@ -230,6 +241,7 @@ type CreatorInfo = {
 type TMainAssignment = TAssignment | undefined | { oWPMatchId: number };
 type TOthersAssignment = TAssignment[] | undefined;
 export {
+  TQueryData,
   TDataSource,
   TOptions,
   TFilterQueryOptions,

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { QUERY_SIMPLE_API } from '../../Shared/Constants';
 import { buildRequestURL as buildRequestURLForLiveDetail } from '../../LiveDetail/buildUrlHelper';
 import { buildRequestURLForLGA } from '../helper/apiHelper';
+import { syncOffVRKey, lastUpdateSyncOffVRKey } from '../const.json';
 
 const queryDataExcel = async (url: string) => {
   const response = await axios.get(url, { responseType: 'blob' });
@@ -75,25 +76,24 @@ const query = async (eventModel: any) => {
 //   return response.data.length === 0 ? null : response.data[0].UploadDateTime;
 // };
 
-// const syncOffVRs = async eventModel => {
-//   const response = await axios.post(
-//     'api/event-assignment/sync-off-vr',
-//     eventModel
-//   );
-//   return response.data;
-// };
+const syncOffVRs = async (eventModel: any) => {
+  const url = buildRequestURLForLGA(syncOffVRKey);
+  const response = await axios.post(url, eventModel);
+  return response.data;
+};
 
-// const getSyncOffVRLastUpdated = async eventDate => {
-//   const response = await axios.get(
-//     `api/event-assignment/get-sync-off-vr-last-updated?date=${eventDate}`
-//   );
+const getSyncOffVRLastUpdated = async (eventDate: any) => {
+  const url = `${buildRequestURLForLGA(
+    lastUpdateSyncOffVRKey
+  )}?date=${eventDate}`;
+  const response = await axios.get(url);
 
-//   return response.data;
-// };
+  return response.data;
+};
 
 const Service = {
   queryDataExcel,
-  query
+  query,
   // addNew,
   // editEvent,
   // getBettypeForTraderInfo,
@@ -101,8 +101,8 @@ const Service = {
   // getBettypeForMatchInfo,
   // getSpecialEventTemplate,
   // getLastUpdated,
-  // syncOffVRs,
-  // getSyncOffVRLastUpdated
+  syncOffVRs,
+  getSyncOffVRLastUpdated
 };
 
 export default Service;

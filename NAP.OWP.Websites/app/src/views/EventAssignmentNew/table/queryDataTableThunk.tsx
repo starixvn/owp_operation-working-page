@@ -1,11 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { NET_CORE_URL } from '../const.json';
-import { TDataTable } from '../type/type';
+import { TQueryData } from '../type/type';
 import Service from '../service/Service';
 import store from '../app/store';
 import Utils from '../../Shared/Utils';
 
-const queryDataTableThunk = createAsyncThunk<TDataTable>(
+const queryDataTableThunk = createAsyncThunk<TQueryData>(
   'dataTable/query',
   async () => {
     const filterState = store.getState().filter.filterState;
@@ -20,9 +19,18 @@ const queryDataTableThunk = createAsyncThunk<TDataTable>(
       ShowUnreadMessage: filterState.showUnreadMessage
     };
 
-    const res = await Service.query(eventModel);
-    console.log(res);
-    return res;
+    const dataQuery = await Service.query(eventModel);
+    // const lastUpdate = await EventAssignmentService.getLastUpdated(
+    //   postModel.EventDate
+    // );
+    const syncOffVRLastUpdated = await Service.getSyncOffVRLastUpdated(
+      eventModel.EventDate
+    );
+    return {
+      data: dataQuery,
+      syncOffVRLastUpdated,
+      dateUpdated: ''
+    };
   }
 );
 

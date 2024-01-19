@@ -4,8 +4,6 @@ import queryDataTableThunk from '../table/queryDataTableThunk';
 import DatePickerFilter from './DatePickerFilter';
 import UserSuggestionFilter from './UserSuggestionFilter';
 import ButtonGroupFilter from './ButtonGroupFilter';
-import { useSelector } from 'react-redux';
-import { RootState } from '../app/store';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import Loading from '../../components/Loading';
 import { isEquals } from 'immutability-helper';

@@ -151,5 +151,7 @@
     }
   ],
   "netCoreURL": "api-netcore/event-assignment",
-  "netFwURL": "api/event-assignment"
+  "netFwURL": "api/event-assignment",
+  "syncOffVRKey": "/sync-off-vr",
+  "lastUpdateSyncOffVRKey": "/get-sync-off-vr-last-updated"
 }

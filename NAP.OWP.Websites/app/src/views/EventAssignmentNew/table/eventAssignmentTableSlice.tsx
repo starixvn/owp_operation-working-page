@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from "@reduxjs/toolkit";
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { TColumnFilter, TQueryLiveGameAssignment, TUpdateAssignment } from '../type/type';
+import {
+  TColumnFilter,
+  TQueryLiveGameAssignment,
+  TUpdateAssignment
+} from '../type/type';
 import queryDataTableThunk from './queryDataTableThunk';
 import { isEqual } from 'lodash';
 import { handleFilterByColumn, updateColumnFilter } from './columnFilter';
@@ -9,6 +13,9 @@ import { handleFilterByColumn, updateColumnFilter } from './columnFilter';
 const eventAssignmentTableSlice = createSlice({
   name: 'eventAssignmentTableSlice',
   initialState: {
+    dateUpdated: '',
+    syncOffVRLastTime: '',
+    syncOffVRByUser: '',
     filterState: [],
     entitiesOriginal: [],
     entities: [],
@@ -52,7 +59,8 @@ const eventAssignmentTableSlice = createSlice({
     },
     onColumnFilter: (state, action: PayloadAction<TColumnFilter>) => {
       updateColumnFilter(state.filterState, action.payload);
-      state.entities = handleFilterByColumn(state.entitiesOriginal, state.filterState) || [];
+      state.entities =
+        handleFilterByColumn(state.entitiesOriginal, state.filterState) || [];
     },
     onClearFilter: state => {
       state.filterState = [];
@@ -66,8 +74,10 @@ const eventAssignmentTableSlice = createSlice({
       })
       .addCase(queryDataTableThunk.fulfilled, (state, { payload }) => {
         state.loading = REQUEST_STATUS.idle;
-        state.entities = payload;
-        state.entitiesOriginal = payload;
+        state.entities = payload.data;
+        state.entitiesOriginal = payload.data;
+        state.syncOffVRLastTime = payload.syncOffVRLastUpdated.item1;
+        state.syncOffVRByUser = payload.syncOffVRLastUpdated.item2;
       })
       .addCase(queryDataTableThunk.rejected, state => {
         state.loading = REQUEST_STATUS.idle;
@@ -83,7 +93,9 @@ const {
 } = actions;
 
 export {
-  onDeletedAssignment, onUpdatedAssignment, onColumnFilter,
-  onClearFilter,
+  onDeletedAssignment,
+  onUpdatedAssignment,
+  onColumnFilter,
+  onClearFilter
 };
 export default reducer;
