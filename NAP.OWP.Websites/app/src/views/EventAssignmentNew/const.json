@@ -53,13 +53,6 @@
         "HEADER_NAME": "Ticket",
         "WIDTH": 60
       },
-      "HDP": {
-        "COLUMN_KEY": "hdp",
-        "NAME": "hdp",
-        "HEADER_NAME": "HDP",
-        "WIDTH": 60,
-        "IS_CAN_FILTER": true
-      },
       "NOTE": {
         "COLUMN_KEY": "Note",
         "FIXED": false,
@@ -80,7 +73,7 @@
   "COLUMN_FULL_BETTYPE": [
     {
       "COLUMN_KEY": "handicap",
-      "NAME": "Handicap",
+      "NAME": "handicap",
       "HEADER_NAME": "HDP",
       "WIDTH": 80,
       "IS_CAN_FILTER": true

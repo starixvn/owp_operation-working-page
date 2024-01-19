@@ -6,12 +6,11 @@ import KOTimeCell from './cell/KOTimeCell';
 import EventCell from './cell/EventCell';
 import TicketCell from './cell/TicketCell';
 import NoteCell from './cell/NoteCell';
-import HdpCell from './cell/HdpCell';
 import BettypeCell from '../components/BettypeCell';
 import { onClearFilter, onColumnFilter } from './eventAssignmentTableSlice';
 
 const {
-  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET, NOTE, HDP },
+  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET, NOTE },
   WIDTH,
   ROW_HEIGHT,
   DEFAULT_HEIGHT,
@@ -36,7 +35,6 @@ const buildTableInfo = () => ({
     buildColumn(EVENT),
     buildColumn(TICKET),
     buildColumn(NOTE),
-    buildColumn(HDP),
     ...COLUMN_FULL_BETTYPE.map(x => buildColumn(x))
   ],
   tableStyle: {
@@ -75,8 +73,6 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
       return <TicketCell {...cellInfo} />;
     case NOTE.COLUMN_KEY:
       return <NoteCell {...noteCellInfo} />;
-    case HDP.COLUMN_KEY:
-      return <HdpCell {...cellInfo} />;
   }
   return (
     <BettypeCell {...cellInfo} bettypeName={cellModel.columnKey as TBettype} />
