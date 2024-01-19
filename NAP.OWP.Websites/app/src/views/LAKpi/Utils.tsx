@@ -1,14 +1,14 @@
 /* eslint-disable no-warning-comments */
 const initDefaultFilterFromDate = () => {
-  const fromYear = new Date().getFullYear() - 2; // NOSONAR
-  const fromDate = new Date(fromYear, 11, 1); // NOSONAR
+  const fromYear = new Date().getFullYear() - 1; // NOSONAR
+  const fromDate = new Date(fromYear, 0, 1); // NOSONAR
 
   return fromDate;
 };
 
 const initDefaultFilterToDate = () => {
   const currentYear = new Date().getFullYear();
-  return new Date(currentYear, 10, 30); // NOSONAR
+  return new Date(currentYear, 11, 30); // NOSONAR
 };
 
 const initDefaultFilterDate = () => ({
