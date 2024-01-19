@@ -37,13 +37,14 @@ type TDataSource = {
   phone: string;
   watchBet: string;
   otherProvider: string;
-  round: any;
-  division: any;
-  remark: any;
+  round: string;
+  division: string;
+  teamRound: string,
+  remark: string;
   isFantasy: boolean;
   minorBettypeId: number;
-  matchCode: JSX.Element;
-  noOfHDPId: any;
+  matchCode: string;
+  noOfHDPId: number | null;
   adminSiteId: number | null;
   iPTVCopy: string;
   provider: string;
@@ -87,7 +88,10 @@ type TDataSource = {
   la: Array<TAssignment>;
   handicapSetting: TMaxbetSpread;
   overUnderSetting: TMaxbetSpread;
-  televisions: Array<{ tVCode: string }>;
+  televisions: Array<{
+    tvCode: string,
+    color: string
+  }>;
 };
 type TColumnFilterByMbc = {
   maxbetHDP: number | string;
@@ -100,6 +104,7 @@ type TMaxbetSpread = {
   maxbet: number;
   spread: number;
   maxBetToDisplay: string;
+  spreadToDisplay: string;
 };
 type TDataTable = Array<TDataSource>;
 type TQueryData = {
@@ -265,5 +270,6 @@ export {
   TOthersAssignment,
   TUpdateAssignment,
   TColumnFilter,
-  TColumnFilterByMbc
+  TColumnFilterByMbc,
+  TMaxbetSpread
 };

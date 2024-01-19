@@ -53,6 +53,34 @@
         "HEADER_NAME": "Ticket",
         "WIDTH": 60
       },
+      "IP_TV": {
+        "COLUMN_KEY": "TV",
+        "NAME": "TV/IPTV",
+        "HEADER_NAME": "TV/IPTV",
+        "WIDTH": 150,
+        "IS_CAN_FILTER": true
+      },
+      "PROVIDER": {
+        "COLUMN_KEY": "Provider",
+        "NAME": "Provider",
+        "HEADER_NAME": "Provider",
+        "WIDTH": 180,
+        "IS_CAN_FILTER": true
+      },
+      "MB": {
+        "COLUMN_KEY": "MaxBet_Spread",
+        "NAME": "MaxBet_Spread",
+        "HEADER_NAME": "MB",
+        "WIDTH": 115,
+        "IS_CAN_FILTER": true
+      },
+      "REMARK": {
+        "COLUMN_KEY": "Remark",
+        "NAME": "Remark",
+        "HEADER_NAME": "Remark",
+        "WIDTH": 200,
+        "IS_CAN_FILTER": true
+      },
       "NOTE": {
         "COLUMN_KEY": "Note",
         "FIXED": false,

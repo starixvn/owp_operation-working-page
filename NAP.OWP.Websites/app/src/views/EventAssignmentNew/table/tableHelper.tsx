@@ -8,9 +8,16 @@ import TicketCell from './cell/TicketCell';
 import NoteCell from './cell/NoteCell';
 import BettypeCell from '../components/BettypeCell';
 import { onClearFilter, onColumnFilter } from './eventAssignmentTableSlice';
+import IPTVCell from './cell/IPTVCell';
+import ProviderCell from './cell/ProviderCell';
+import MBCell from './cell/MBCell';
+import RemarkCell from './cell/RemarkCell';
 
 const {
-  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET, NOTE },
+  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET, NOTE, IP_TV,
+    PROVIDER,
+    MB,
+    REMARK },
   WIDTH,
   ROW_HEIGHT,
   DEFAULT_HEIGHT,
@@ -34,6 +41,10 @@ const buildTableInfo = () => ({
     buildColumn(KO_TIME),
     buildColumn(EVENT),
     buildColumn(TICKET),
+    buildColumn(IP_TV),
+    buildColumn(PROVIDER),
+    buildColumn(MB),
+    buildColumn(REMARK),
     buildColumn(NOTE),
     ...COLUMN_FULL_BETTYPE.map(x => buildColumn(x))
   ],
@@ -73,6 +84,14 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
       return <TicketCell {...cellInfo} />;
     case NOTE.COLUMN_KEY:
       return <NoteCell {...noteCellInfo} />;
+    case IP_TV.COLUMN_KEY:
+      return <IPTVCell {...noteCellInfo} />;
+    case PROVIDER.COLUMN_KEY:
+      return <ProviderCell {...noteCellInfo} />;
+    case MB.COLUMN_KEY:
+      return <MBCell {...noteCellInfo} />;
+    case REMARK.COLUMN_KEY:
+      return <RemarkCell {...noteCellInfo} />;
   }
   return (
     <BettypeCell {...cellInfo} bettypeName={cellModel.columnKey as TBettype} />
