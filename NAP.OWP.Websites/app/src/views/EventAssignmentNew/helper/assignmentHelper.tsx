@@ -130,7 +130,7 @@ const buildWritePermission = (bettypeName: string, policy: TPolicy) => {
 const buildAssignment = (props: TAssignmentBuilder, policy: TPolicy) => {
   const { dataSource, rowIndex, bettypeName } = props;
   const event = dataSource[rowIndex];
-  const otherTime = event.otherTime;
+  const otherTime = event.OtherTime;
   const assignments = event[bettypeName];
   let main = null;
   let others = null;
@@ -142,12 +142,12 @@ const buildAssignment = (props: TAssignmentBuilder, policy: TPolicy) => {
     main = assignments.find(a => a.assignmentType === 0);
   }
   if (!main) {
-    main = { oWPMatchId: event.oWPMatchId };
+    main = { oWPMatchId: event.OWPMatchId };
   }
 
   const assignmentBetType = ASSIGNMENT_BETTYPE[bettypeName];
   const isAllowAdd = checkAllowAddAssignment(
-    event.minorBettypeId,
+    event.MinorBettypeId,
     bettypeName,
     assignments,
     policy

@@ -1,6 +1,11 @@
 import Utils from '../../Shared/Utils';
 import { findIndex, includes, filter } from 'lodash';
-import { TAssignment, TColumnFilter, TColumnFilterByMbc, TDataTable } from '../type/type';
+import {
+  TAssignment,
+  TColumnFilter,
+  TColumnFilterByMbc,
+  TDataTable
+} from '../type/type';
 
 const { convertThousandToK, convertSpreadToPercent, toLowerCaseForFilter } =
   Utils;
@@ -8,17 +13,17 @@ const { convertThousandToK, convertSpreadToPercent, toLowerCaseForFilter } =
 const filterMatchNo = (events: TDataTable, keyword: string) =>
   filter(events, event => {
     return (
-      includes(toLowerCaseForFilter(event.matchNo), keyword) ||
-      includes(toLowerCaseForFilter(event.matchStatus), keyword)
+      includes(toLowerCaseForFilter(event.MatchNo), keyword) ||
+      includes(toLowerCaseForFilter(event.MatchStatus), keyword)
     );
   });
 
 const filterKickOffTime = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.kickOffTime || event.otherTime) {
+    if (event.KickOffTime || event.OtherTime) {
       return (
-        includes(toLowerCaseForFilter(event.kickOffTime), keyword) ||
-        includes(toLowerCaseForFilter(event.otherTime), keyword)
+        includes(toLowerCaseForFilter(event.KickOffTime), keyword) ||
+        includes(toLowerCaseForFilter(event.OtherTime), keyword)
       );
     }
     return false;
@@ -28,17 +33,17 @@ const filterKickOffTime = (events: TDataTable, keyword: string) => {
 const filterEvent = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
     const isIncludeEventInfo =
-      includes(toLowerCaseForFilter(event.league), keyword) ||
-      includes(toLowerCaseForFilter(event.home), keyword) ||
-      includes(toLowerCaseForFilter(event.away), keyword);
+      includes(toLowerCaseForFilter(event.League), keyword) ||
+      includes(toLowerCaseForFilter(event.Home), keyword) ||
+      includes(toLowerCaseForFilter(event.Away), keyword);
     const isIncludeNoOfHDP =
-      event.noOfHDP && includes(toLowerCaseForFilter(event.noOfHDP), keyword);
+      event.NoOfHDP && includes(toLowerCaseForFilter(event.NoOfHDP), keyword);
 
     return (
       isIncludeEventInfo ||
       (isIncludeNoOfHDP ??
-        findIndex(event.matchOffers, mo =>
-          includes(toLowerCaseForFilter(mo.matchOfferValue), keyword)
+        findIndex(event.MatchOffers, mo =>
+          includes(toLowerCaseForFilter(mo.MatchOfferValue), keyword)
         ) >= 0)
     );
   });
@@ -47,10 +52,10 @@ const filterEvent = (events: TDataTable, keyword: string) => {
 const filterTV = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
     return (
-      (event.channel &&
-        includes(toLowerCaseForFilter(event.channel), keyword)) ||
-      findIndex(event.televisions, tv =>
-        includes(toLowerCaseForFilter(tv.tVCode), keyword)
+      (event.Channel &&
+        includes(toLowerCaseForFilter(event.Channel), keyword)) ||
+      findIndex(event.Televisions, tv =>
+        includes(toLowerCaseForFilter(tv.TVCode), keyword)
       ) >= 0
     );
   });
@@ -59,16 +64,16 @@ const filterTV = (events: TDataTable, keyword: string) => {
 const filterProvider = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
     if (
-      event.provider ||
-      event.otherProvider ||
-      event.watchBet ||
-      event.phone
+      event.Provider ||
+      event.OtherProvider ||
+      event.WatchBet ||
+      event.Phone
     ) {
       return (
-        includes(toLowerCaseForFilter(event.provider), keyword) ||
-        includes(toLowerCaseForFilter(event.otherProvider), keyword) ||
-        includes(toLowerCaseForFilter(event.watchBet), keyword) ||
-        includes(toLowerCaseForFilter(event.phone), keyword)
+        includes(toLowerCaseForFilter(event.Provider), keyword) ||
+        includes(toLowerCaseForFilter(event.OtherProvider), keyword) ||
+        includes(toLowerCaseForFilter(event.WatchBet), keyword) ||
+        includes(toLowerCaseForFilter(event.Phone), keyword)
       );
     }
     return false;
@@ -91,15 +96,15 @@ const filterMaxbetSpread = (events: TDataTable, keyword: string) => {
     let spreadHDP = '';
     let spreadOU = '';
     let maxBetToDisplay = '';
-    if (event.handicapSetting) {
-      maxbetHDP = convertThousandToK(event.handicapSetting.maxbet, true);
-      spreadHDP = convertSpreadToPercent(event.handicapSetting.spread, true);
+    if (event.HandicapSetting) {
+      maxbetHDP = convertThousandToK(event.HandicapSetting.Maxbet, true);
+      spreadHDP = convertSpreadToPercent(event.HandicapSetting.Spread, true);
 
-      maxBetToDisplay = event.handicapSetting.maxBetToDisplay;
+      maxBetToDisplay = event.HandicapSetting.MaxBetToDisplay;
     }
 
-    if (event.overUnderSetting) {
-      spreadOU = convertSpreadToPercent(event.overUnderSetting.spread, true);
+    if (event.OverUnderSetting) {
+      spreadOU = convertSpreadToPercent(event.OverUnderSetting.Spread, true);
     }
 
     const isMBCValid = maxbetHDP || spreadHDP || spreadOU;
@@ -121,16 +126,16 @@ const filterMaxbetSpread = (events: TDataTable, keyword: string) => {
   });
 };
 const isContainsAssignment = (assignment: TAssignment, keyword: string) =>
-  includes(toLowerCaseForFilter(assignment.username), keyword) ||
-  includes(toLowerCaseForFilter(assignment.assignmentNote), keyword);
+  includes(toLowerCaseForFilter(assignment.Username), keyword) ||
+  includes(toLowerCaseForFilter(assignment.AssignmentNote), keyword);
 
 const filterRemark = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.remark || event.division || event.round) {
+    if (event.Remark || event.Division || event.Round) {
       return (
-        includes(toLowerCaseForFilter(event.remark), keyword) ||
-        includes(toLowerCaseForFilter(event.division), keyword) ||
-        includes(toLowerCaseForFilter(event.round), keyword)
+        includes(toLowerCaseForFilter(event.Remark), keyword) ||
+        includes(toLowerCaseForFilter(event.Division), keyword) ||
+        includes(toLowerCaseForFilter(event.Round), keyword)
       );
     }
     return false;
@@ -149,8 +154,8 @@ const filterNote = (events: TDataTable, keyword: string) => {
 };
 const filterLA = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.lA) {
-      const assignments = filter(event.lA, assignment =>
+    if (event.LA) {
+      const assignments = filter(event.LA, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -160,8 +165,8 @@ const filterLA = (events: TDataTable, keyword: string) => {
 };
 const filterHandicap = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.handicap) {
-      const assignments = filter(event.handicap, assignment =>
+    if (event.Handicap) {
+      const assignments = filter(event.Handicap, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -171,8 +176,8 @@ const filterHandicap = (events: TDataTable, keyword: string) => {
 };
 const filterOverUnder = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.overUnder) {
-      const assignments = filter(event.overUnder, assignment =>
+    if (event.OverUnder) {
+      const assignments = filter(event.OverUnder, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -182,8 +187,8 @@ const filterOverUnder = (events: TDataTable, keyword: string) => {
 };
 const filterHandicap1st = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.handicap1st) {
-      const assignments = filter(event.handicap1st, assignment =>
+    if (event.Handicap1st) {
+      const assignments = filter(event.Handicap1st, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -193,8 +198,8 @@ const filterHandicap1st = (events: TDataTable, keyword: string) => {
 };
 const filterOverUnder1st = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.overUnder1st) {
-      const assignments = filter(event.overUnder1st, assignment =>
+    if (event.OverUnder1st) {
+      const assignments = filter(event.OverUnder1st, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -204,8 +209,8 @@ const filterOverUnder1st = (events: TDataTable, keyword: string) => {
 };
 const filterOneXTwo = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.oneXTwo) {
-      const assignments = filter(event.oneXTwo, assignment =>
+    if (event.OneXTwo) {
+      const assignments = filter(event.OneXTwo, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -215,8 +220,8 @@ const filterOneXTwo = (events: TDataTable, keyword: string) => {
 };
 const filterOneXTwo1st = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.oneXTwo1st) {
-      const assignments = filter(event.oneXTwo1st, assignment =>
+    if (event.OneXTwo1st) {
+      const assignments = filter(event.OneXTwo1st, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -227,8 +232,8 @@ const filterOneXTwo1st = (events: TDataTable, keyword: string) => {
 
 const filterSpecific15Mins = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.specific15Mins) {
-      const assignments = filter(event.specific15Mins, assignment =>
+    if (event.Specific15Mins) {
+      const assignments = filter(event.Specific15Mins, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -239,8 +244,8 @@ const filterSpecific15Mins = (events: TDataTable, keyword: string) => {
 
 const filterSpecific10Mins = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.specific10Mins) {
-      const assignments = filter(event.specific10Mins, assignment =>
+    if (event.Specific10Mins) {
+      const assignments = filter(event.Specific10Mins, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -250,8 +255,8 @@ const filterSpecific10Mins = (events: TDataTable, keyword: string) => {
 };
 const filterFM = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.fM) {
-      const assignments = filter(event.fM, assignment =>
+    if (event.FM) {
+      const assignments = filter(event.FM, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -261,8 +266,8 @@ const filterFM = (events: TDataTable, keyword: string) => {
 };
 const filterAIO = (events: TDataTable, keyword: string) => {
   return filter(events, event => {
-    if (event.aIO) {
-      const assignments = filter(event.aIO, assignment =>
+    if (event.AIO) {
+      const assignments = filter(event.AIO, assignment =>
         isContainsAssignment(assignment, keyword)
       );
       return assignments.length > 0;
@@ -319,14 +324,20 @@ const filterByColumn = (events: TDataTable, column: TColumnFilter) => {
   return null;
 };
 
-const handleFilterByColumn = (events: TDataTable, columnFilters: Array<TColumnFilter>) => {
+const handleFilterByColumn = (
+  events: TDataTable,
+  columnFilters: Array<TColumnFilter>
+) => {
   columnFilters.forEach(column => {
     events = filterByColumn(events, column);
   });
   return events;
 };
 
-const updateColumnFilter = (currentState: TColumnFilter[], newFilter: TColumnFilter) => {
+const updateColumnFilter = (
+  currentState: TColumnFilter[],
+  newFilter: TColumnFilter
+) => {
   const { columnKey, keyword } = newFilter;
   const columnFilter = currentState.find(a => a.columnKey === columnKey);
   if (columnFilter) {
@@ -336,7 +347,4 @@ const updateColumnFilter = (currentState: TColumnFilter[], newFilter: TColumnFil
   }
 };
 
-export {
-  handleFilterByColumn,
-  updateColumnFilter
-};
+export { handleFilterByColumn, updateColumnFilter };

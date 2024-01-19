@@ -43,9 +43,9 @@ type TDataSource = {
   Remark: string;
   IsFantasy: boolean;
   MinorBettypeId: number;
-  MatchCode: JSX.Element;
   MatchCode: string;
   NoOfHDPId: number | null;
+  AdminSiteId: number | null;
   IPTVCopy: string;
   Provider: string;
   OWPMatchId: number;
@@ -88,8 +88,8 @@ type TDataSource = {
   HandicapSetting: TMaxbetSpread;
   OverUnderSetting: TMaxbetSpread;
   Televisions: Array<{
-    TVCode: string,
-    Color: string
+    TVCode: string;
+    Color: string;
   }>;
 };
 type TColumnFilterByMbc = {

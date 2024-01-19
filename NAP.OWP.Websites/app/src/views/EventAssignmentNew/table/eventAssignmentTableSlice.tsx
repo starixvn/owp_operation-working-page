@@ -29,8 +29,8 @@ const eventAssignmentTableSlice = createSlice({
         if (assignments) {
           const index = assignments.findIndex(
             el =>
-              isEqual(el.assignmentId, assignment.assignmentId) &&
-              isEqual(el.oWPMatchId, assignment.oWPMatchId)
+              isEqual(el.assignmentId, assignment.AssignmentId) &&
+              isEqual(el.oWPMatchId, assignment.OWPMatchId)
           );
           if (index === -1) {
             assignments.push(assignment);
@@ -48,7 +48,7 @@ const eventAssignmentTableSlice = createSlice({
       const { assignment, bettypeName, rowIndex } = action.payload;
       if (assignment && bettypeName) {
         const event = state.entities[rowIndex];
-        if (assignment.assignmentType === 1) {
+        if (assignment.AssignmentType === 1) {
           event[bettypeName] = [];
         } else {
           let assignments = event[bettypeName];

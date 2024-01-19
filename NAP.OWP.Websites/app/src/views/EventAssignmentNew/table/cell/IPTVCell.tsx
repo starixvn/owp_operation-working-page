@@ -1,29 +1,25 @@
 import React from 'react';
-import {
-  Button,
-  UncontrolledPopover,
-  PopoverBody
-} from 'reactstrap';
+import { Button, UncontrolledPopover, PopoverBody } from 'reactstrap';
 
 import { v4 as uuidv4 } from 'uuid';
 import { TCellModel } from '../../type/type';
 import { nanoid } from '@reduxjs/toolkit';
 const IPTVCell = (props: TCellModel) => {
   const { dataSource, rowIndex } = props;
-  const { televisions, channel, watchBet } = dataSource[rowIndex];
+  const { Televisions, Channel, WatchBet } = dataSource[rowIndex];
   return (
     <div className='tv-cell'>
-      {televisions.length > 0 && (
+      {Televisions.length > 0 && (
         <div>
-          {televisions.map(t => (
-            <span key={`${nanoid()}`} style={{ color: t.color }}>
-              {t.tvCode}
+          {Televisions.map(t => (
+            <span key={`${nanoid()}`} style={{ color: t.Color }}>
+              {t.TVCode}
             </span>
           )).reduce((prev, curr) => [prev, ', ', curr])}
         </div>
       )}
 
-      {channel && (
+      {Channel && (
         <React.Fragment key={`Channel${nanoid()}${rowIndex}`}>
           <Button id={`Channel${rowIndex}`} className='button-channel'>
             IPTV/Channel
@@ -33,11 +29,11 @@ const IPTVCell = (props: TCellModel) => {
             trigger='legacy'
             placement='right'
             target={`Channel${rowIndex}`}>
-            <PopoverBody>{channel}</PopoverBody>
+            <PopoverBody>{Channel}</PopoverBody>
           </UncontrolledPopover>
         </React.Fragment>
       )}
-      {watchBet && (
+      {WatchBet && (
         <React.Fragment key={`WatchBet${uuidv4()}${rowIndex}`}>
           <Button id={`WatchBet${rowIndex}`} className='button-watchbet'>
             Streaming
@@ -47,7 +43,7 @@ const IPTVCell = (props: TCellModel) => {
             trigger='legacy'
             placement='right'
             target={`WatchBet${rowIndex}`}>
-            <PopoverBody>{watchBet}</PopoverBody>
+            <PopoverBody>{WatchBet}</PopoverBody>
           </UncontrolledPopover>
         </React.Fragment>
       )}

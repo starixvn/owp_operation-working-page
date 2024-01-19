@@ -5,28 +5,26 @@ import { v4 as uuidv4 } from 'uuid';
 
 const MBCell = (props: TCellModel) => {
   const { dataSource, rowIndex } = props;
-  const { owpMatchId, handicapSetting, overUnderSetting } = dataSource[rowIndex];
+  const { OWPMatchId, HandicapSetting, OverUnderSetting } =
+    dataSource[rowIndex];
 
   const renderMaxbetSpreadMbc = () => {
-    const uuidKey = `${owpMatchId}_${uuidv4()}`;
-    const isDisplayHDPSetting = (
-      handicapSetting?.spreadToDisplay ||
-      overUnderSetting?.spreadToDisplay
-    );
-    const isHDPSpreadExisting =
-      handicapSetting?.spreadToDisplay;
+    const uuidKey = `${OWPMatchId}_${uuidv4()}`;
+    const isDisplayHDPSetting =
+      HandicapSetting?.spreadToDisplay || OverUnderSetting?.spreadToDisplay;
+    const isHDPSpreadExisting = HandicapSetting?.spreadToDisplay;
 
     return (
       <div>
         <span data-for={uuidKey} data-tip='Maxbet/Spread of MBC'>
-          {handicapSetting?.maxBetToDisplay}
+          {HandicapSetting?.MaxBetToDisplay}
           {isDisplayHDPSetting && (
-            <span>({handicapSetting?.spreadToDisplay}</span>
+            <span>({HandicapSetting?.spreadToDisplay}</span>
           )}
-          {overUnderSetting?.spreadToDisplay && (
+          {OverUnderSetting?.spreadToDisplay && (
             <>
               {isHDPSpreadExisting && <span>-</span>}
-              {overUnderSetting.spreadToDisplay}
+              {OverUnderSetting.spreadToDisplay}
             </>
           )}
           {isDisplayHDPSetting && <span>)</span>}
@@ -36,11 +34,7 @@ const MBCell = (props: TCellModel) => {
     );
   };
 
-  return (
-    <div className='maxbet-cell'>
-      {renderMaxbetSpreadMbc()}
-    </div>
-  );
+  return <div className='maxbet-cell'>{renderMaxbetSpreadMbc()}</div>;
 };
 
 export default MBCell;

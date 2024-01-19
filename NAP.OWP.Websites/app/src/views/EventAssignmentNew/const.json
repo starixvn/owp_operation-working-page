@@ -100,49 +100,49 @@
   },
   "COLUMN_FULL_BETTYPE": [
     {
-      "COLUMN_KEY": "handicap",
-      "NAME": "handicap",
+      "COLUMN_KEY": "Handicap",
+      "NAME": "Handicap",
       "HEADER_NAME": "HDP",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "overUnder",
+      "COLUMN_KEY": "OverUnder",
       "NAME": "OverUnder",
       "HEADER_NAME": "O/U",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "handicap1st",
+      "COLUMN_KEY": "Handicap1st",
       "NAME": "Handicap1st",
       "HEADER_NAME": "1H HDP",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "overUnder1st",
+      "COLUMN_KEY": "OverUnder1st",
       "NAME": "OverUnder1st",
       "HEADER_NAME": "1H O/U",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "oneXTwo",
+      "COLUMN_KEY": "OneXTwo",
       "NAME": "OneXTwo",
       "HEADER_NAME": "1X2",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "oneXTwo1st",
+      "COLUMN_KEY": "OneXTwo1st",
       "NAME": "OneXTwo1st",
       "HEADER_NAME": "1H 1X2",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "specific15Mins",
+      "COLUMN_KEY": "Specific15Mins",
       "NAME": "Specific15Mins",
       "HEADER_NAME": "15 mins",
       "WIDTH": 80,
@@ -150,28 +150,28 @@
     },
 
     {
-      "COLUMN_KEY": "specific10Mins",
+      "COLUMN_KEY": "Specific10Mins",
       "NAME": "Specific10Mins",
       "HEADER_NAME": "10 mins",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "fm",
+      "COLUMN_KEY": "FM",
       "NAME": "FM",
       "HEADER_NAME": "FM",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "aio",
+      "COLUMN_KEY": "AIO",
       "NAME": "AIO",
       "HEADER_NAME": "AIO",
       "WIDTH": 80,
       "IS_CAN_FILTER": true
     },
     {
-      "COLUMN_KEY": "la",
+      "COLUMN_KEY": "LA",
       "NAME": "LA",
       "HEADER_NAME": "LA",
       "WIDTH": 80,

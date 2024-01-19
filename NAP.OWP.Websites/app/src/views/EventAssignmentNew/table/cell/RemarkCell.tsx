@@ -4,29 +4,28 @@ import { v4 as uuidv4 } from 'uuid';
 
 const RemarkCell = (props: TCellModel) => {
   const { dataSource, rowIndex } = props;
-  const { round, division, teamRound, remark } = dataSource[rowIndex];
+  const { Round, Division, TeamRound, Remark } = dataSource[rowIndex];
   const arrayCombine = [];
-  remark &&
-    arrayCombine.push(<p className='remark-note'>{remark}</p>);
-  round &&
+  Remark && arrayCombine.push(<p className='remark-note'>{Remark}</p>);
+  Round &&
     arrayCombine.push(
       <p className='round-note'>
         <b>Round:</b>
-        {round}
+        {Round}
       </p>
     );
-  teamRound &&
+  TeamRound &&
     arrayCombine.push(
       <p className='team-round-note'>
         <b>Round (H-A/T):</b>
-        {teamRound}
+        {TeamRound}
       </p>
     );
-  division &&
+  Division &&
     arrayCombine.push(
       <p className='division-note'>
         <b>Division:</b>
-        {division}
+        {Division}
       </p>
     );
   if (!arrayCombine.length) {

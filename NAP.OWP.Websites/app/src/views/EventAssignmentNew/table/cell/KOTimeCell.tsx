@@ -5,20 +5,20 @@ import TimeOfMatch from '../../../Shared/LiveGameShared/TimeOfMatch';
 const KOTimeCell = (props: TCellModel) => {
   const { rowIndex, dataSource } = props;
   const {
-    otherTime,
-    otherTimeStr,
-    kickOffTime,
-    kickOffTimeStr,
-    infoSiteTime,
-    infoSiteTimeDisplay
+    OtherTime,
+    OtherTimeStr,
+    KickOffTime,
+    KickOffTimeStr,
+    InfoSiteTime,
+    InfoSiteTimeDisplay
   } = dataSource[rowIndex];
   const propsTime = {
-    KickOffTimeDisplay: kickOffTime,
-    KickOffTime: kickOffTimeStr,
-    InfoSiteTimeDisplay: infoSiteTimeDisplay,
-    InfoSiteTime: infoSiteTime,
-    OtherTimeDisplay: otherTime,
-    OtherTime: otherTimeStr,
+    KickOffTimeDisplay: KickOffTime,
+    KickOffTime: KickOffTimeStr,
+    InfoSiteTimeDisplay: InfoSiteTimeDisplay,
+    InfoSiteTime: InfoSiteTime,
+    OtherTimeDisplay: OtherTime,
+    OtherTime: OtherTimeStr,
     rowIndex
   };
   return (

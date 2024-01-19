@@ -6,56 +6,55 @@ import { isEqual } from 'lodash';
 import { MATCH_STATUS } from '../../const.json';
 import { LinkIcon, LinkOffIcon } from 'mdi-react';
 
-const {
-  LIVE,
-  IN_PLAY,
-  POSTPONED
-} = MATCH_STATUS;
+const { LIVE, IN_PLAY, POSTPONED } = MATCH_STATUS;
 
 const NoCell = (props: TCellModel) => {
   const { rowIndex, dataSource } = props;
-  const { isShowAbsenceIcon,
-    matchNo,
-    matchStatus,
-    infoSiteMatchId,
-    isInfoSiteLinked,
-    isLiveStatusSynchronized
+  const {
+    IsShowAbsenceIcon,
+    MatchNo,
+    MatchStatus,
+    InfoSiteMatchId,
+    IsInfoSiteLinked,
+    IsLiveStatusSynchronized
   } = dataSource[rowIndex];
 
   const renderInfoSiteLinked = () => {
-    if (isLiveStatusSynchronized &&
-      [IN_PLAY, LIVE, POSTPONED].some(status => isEqual(matchStatus, status))
+    if (
+      IsLiveStatusSynchronized &&
+      [IN_PLAY, LIVE, POSTPONED].some(status => isEqual(MatchStatus, status))
     ) {
       return <span className='badge-label match-status'>LIVE</span>;
     }
 
-    return isInfoSiteLinked ?
+    return IsInfoSiteLinked ? (
       <LinkIcon color='#00920A' size={15} />
-      :
-      <LinkOffIcon color='#FF0000' size={15} />;
+    ) : (
+      <LinkOffIcon color='#FF0000' size={15} />
+    );
   };
 
   return (
     <div className='match-no'>
-      {isShowAbsenceIcon && <AbsencePersonIcon />}
-      <span className='match-number'>{matchNo}</span>
+      {IsShowAbsenceIcon && <AbsencePersonIcon />}
+      <span className='match-number'>{MatchNo}</span>
       <span id={`InfoSite${rowIndex}`} className='icon-validInfoSiteId'>
         {renderInfoSiteLinked()}
       </span>
       <UncontrolledTooltip placement='right' target={`InfoSite${rowIndex}`}>
-        InfositeId: {infoSiteMatchId}
+        InfositeId: {InfoSiteMatchId}
       </UncontrolledTooltip>
 
-      {!isEqual(matchStatus, LIVE) && (
+      {!isEqual(MatchStatus, LIVE) && (
         <>
           <span
             id={`MatchStatus${rowIndex}`}
-            className={`icon-status icon-${matchStatus.toLowerCase()}`}
+            className={`icon-status icon-${MatchStatus.toLowerCase()}`}
           />
           <UncontrolledTooltip
             placement='right'
             target={`MatchStatus${rowIndex}`}>
-            {matchStatus}
+            {MatchStatus}
           </UncontrolledTooltip>
         </>
       )}

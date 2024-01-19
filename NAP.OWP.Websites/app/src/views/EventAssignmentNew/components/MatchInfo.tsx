@@ -7,24 +7,25 @@ const MatchInfo = (props: TCellModel & { componentId: string }) => {
   return (
     <>
       <p className='match-name'>
-        {event.home} -vs- {event.away}
+        {event.Home} -vs- {event.Away}
       </p>
-      {event.noOfHDP && (
-        <span className={`badge-label badge-hdp-${event.noOfHDPId}`}>
-          {event.noOfHDP}
+      {event.NoOfHDP && (
+        <span className={`badge-label badge-hdp-${event.NoOfHDPId}`}>
+          {event.NoOfHDP}
         </span>
       )}
-      {event.matchOffers.map((element, index) => (
+      {event.MatchOffers.map((element, index) => (
         <span
           key={`${componentId}`}
-          className={`badge-label ${element.matchOfferValue.includes('OFF VR')
-            ? 'off-vr-offer'
-            : 'match-offer'
-            } `}>
-          {element.matchOfferValue}
+          className={`badge-label ${
+            element.MatchOfferValue.includes('OFF VR')
+              ? 'off-vr-offer'
+              : 'match-offer'
+          } `}>
+          {element.MatchOfferValue}
         </span>
       ))}
-      {event.matchCode && <span className='match-code'>{event.matchCode}</span>}
+      {event.MatchCode && <span className='match-code'>{event.MatchCode}</span>}
     </>
   );
 };

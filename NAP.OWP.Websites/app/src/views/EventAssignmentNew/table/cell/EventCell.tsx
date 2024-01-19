@@ -27,12 +27,12 @@ const EventCell = (props: TCellModel) => {
   const isAllowAddEvent = Utils.isSameOrAfter(selectedDate, yesterDay);
 
   const handleCopy = () => {
-    const kickOffTime = `K.O Time: ${event.kickOffTime}`;
-    const league = `League: ${event.league}`;
-    const match = `Match: ${event.home} -vs- ${event.away}`;
-    const matchNo = `Match ID: ${event.adminSiteId ?? ''}`;
-    const iptv = `TV/IPTV: ${event.iPTVCopy ?? ''} `;
-    const provider = `Provider: ${event.provider ?? ''}`;
+    const kickOffTime = `K.O Time: ${event.KickOffTime}`;
+    const league = `League: ${event.League}`;
+    const match = `Match: ${event.Home} -vs- ${event.Away}`;
+    const matchNo = `Match ID: ${event.AdminSiteId ?? ''}`;
+    const iptv = `TV/IPTV: ${event.IPTVCopy ?? ''} `;
+    const provider = `Provider: ${event.Provider ?? ''}`;
 
     window.executeCopy(kickOffTime, league, match, matchNo, iptv, provider);
   };
@@ -40,7 +40,7 @@ const EventCell = (props: TCellModel) => {
   const allowToAddMinorMatch =
     isAllowAddEvent &&
     FullBetTypes.HasWrite &&
-    event.oWPMatchId === event.parentMatchId &&
+    event.OWPMatchId === event.ParentMatchId &&
     isYesterdayOrAfter;
 
   const dataLength = dataSource.length;
@@ -51,10 +51,10 @@ const EventCell = (props: TCellModel) => {
 
   return (
     <div className='table-cell' key={`Event${uuidv4()}${rowIndex}`}>
-      {event.leagueGroup && (
-        <h4 className='league-group league-badge'>{event.leagueGroup}</h4>
+      {event.LeagueGroup && (
+        <h4 className='league-group league-badge'>{event.LeagueGroup}</h4>
       )}
-      <h4 className='league-group league-name'>{event.league}</h4>
+      <h4 className='league-group league-name'>{event.League}</h4>
 
       {allowToAddMinorMatch && (
         <a
@@ -67,7 +67,7 @@ const EventCell = (props: TCellModel) => {
           <PlusIcon size={13} />
         </a>
       )}
-      {detailInformationPolicy.HasRead && event.isAllowedToViewDetail && (
+      {detailInformationPolicy.HasRead && event.IsAllowedToViewDetail && (
         <a
           onClick={e => {
             e.preventDefault();
@@ -84,7 +84,7 @@ const EventCell = (props: TCellModel) => {
         componentId={uuidv4()}
       />
 
-      {event.adminSiteId && (
+      {event.AdminSiteId && (
         <>
           <Button className='button-link-trader' id={`Event${rowIndex}`}>
             <span className='icon-link'></span>
@@ -92,9 +92,9 @@ const EventCell = (props: TCellModel) => {
           <EventPopup
             className={className}
             adminSiteId={event.AdminSiteId}
-            isFantasy={event.isFantasy}
+            isFantasy={event.IsFantasy}
             rowIndex={rowIndex}
-            minorBettypeId={event.minorBettypeId}
+            minorBettypeId={event.MinorBettypeId}
           />
         </>
       )}
