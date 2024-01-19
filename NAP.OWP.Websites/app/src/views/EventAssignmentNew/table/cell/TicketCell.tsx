@@ -1,16 +1,18 @@
 import React from 'react';
 import { TTicketCell } from '../../type/type';
 import TicketCellCommon from '../../../Shared/ticketEvent/component/TicketCellCommon';
-
+import { useAppDispatch } from '../../app/hooks';
+import { setDataTable } from '../eventAssignmentTableSlice';
 const TicketCell = (props: TTicketCell) => {
-  const { dataSource, rowIndex, onShowTicketList, updateDataSources } = props;
+  const stableDispatch = useAppDispatch();
+  const { dataSource, rowIndex, onShowTicketList } = props;
 
   return (
     <TicketCellCommon
       dataSource={dataSource}
       rowIndex={rowIndex}
       onShowTicketList={onShowTicketList}
-      updateDataSources={updateDataSources}
+      updateDataSources={data => stableDispatch(setDataTable(data))}
     />
   );
 };

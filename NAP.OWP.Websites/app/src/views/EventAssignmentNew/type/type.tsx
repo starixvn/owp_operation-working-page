@@ -231,8 +231,7 @@ type TOptions = {
 };
 
 type TTicketCell = TCellModel & {
-  onShowTicketList: () => void;
-  updateDataSources: () => void;
+  onShowTicketList: (show: any) => void;
 };
 type CreatorInfo = {
   groupName: null | string;

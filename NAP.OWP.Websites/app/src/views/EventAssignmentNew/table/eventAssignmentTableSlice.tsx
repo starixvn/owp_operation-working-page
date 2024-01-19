@@ -65,6 +65,9 @@ const eventAssignmentTableSlice = createSlice({
     onClearFilter: state => {
       state.filterState = [];
       /*state.entities = state.entitiesOriginal; */
+    },
+    setDataTable: (state, action) => {
+      state.entities = action.payload;
     }
   },
   extraReducers: builder => {
@@ -89,13 +92,15 @@ const {
   onDeletedAssignment,
   onUpdatedAssignment,
   onColumnFilter,
-  onClearFilter
+  onClearFilter,
+  setDataTable
 } = actions;
 
 export {
   onDeletedAssignment,
   onUpdatedAssignment,
   onColumnFilter,
-  onClearFilter
+  onClearFilter,
+  setDataTable
 };
 export default reducer;

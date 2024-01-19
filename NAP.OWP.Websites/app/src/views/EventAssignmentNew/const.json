@@ -51,6 +51,7 @@
         "COLUMN_KEY": "Ticket",
         "NAME": "Ticket",
         "HEADER_NAME": "Ticket",
+        "IS_CAN_FILTER": false,
         "WIDTH": 60
       },
       "IP_TV": {

@@ -81,7 +81,7 @@ const dynamicCell = (rowIndex: Required<number>, cellModel: TPickCellModel) => {
     case EVENT.COLUMN_KEY:
       return <EventCell {...cellInfo} />;
     case TICKET.COLUMN_KEY:
-      return <TicketCell {...cellInfo} />;
+      return <TicketCell {...cellInfo} onShowTicketList={handleShowTicket} />;
     case NOTE.COLUMN_KEY:
       return <NoteCell {...noteCellInfo} />;
     case IP_TV.COLUMN_KEY:
