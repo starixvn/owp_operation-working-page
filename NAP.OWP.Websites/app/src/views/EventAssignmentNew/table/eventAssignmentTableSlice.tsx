@@ -3,12 +3,14 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import {
   TColumnFilter,
+  TDataSource,
   TQueryLiveGameAssignment,
   TUpdateAssignment
 } from '../type/type';
 import queryDataTableThunk from './queryDataTableThunk';
 import { isEqual } from 'lodash';
 import { handleFilterByColumn, updateColumnFilter } from './columnFilter';
+import { buildIsReadValue } from '../../Shared/ticketEvent/helper/ticketHelper';
 
 const eventAssignmentTableSlice = createSlice({
   name: 'eventAssignmentTableSlice',
@@ -68,6 +70,15 @@ const eventAssignmentTableSlice = createSlice({
     },
     setDataTable: (state, action) => {
       state.entities = action.payload;
+    },
+    setDataSignalR: (state, action) => {
+      const { actorId, owpMatchId, userId } = action.payload;
+      state.entities.forEach((item: TDataSource) => {
+        if (item.OWPMatchId === owpMatchId) {
+          item.IsRead = buildIsReadValue(actorId, userId, item.IsRead);
+          item.HasTicket = true;
+        }
+      });
     }
   },
   extraReducers: builder => {
@@ -93,7 +104,8 @@ const {
   onUpdatedAssignment,
   onColumnFilter,
   onClearFilter,
-  setDataTable
+  setDataTable,
+  setDataSignalR
 } = actions;
 
 export {
@@ -101,6 +113,7 @@ export {
   onUpdatedAssignment,
   onColumnFilter,
   onClearFilter,
-  setDataTable
+  setDataTable,
+  setDataSignalR
 };
 export default reducer;

@@ -6,6 +6,8 @@ import ticketListSlice from '../../Shared/ticketEvent/component/ticketListSlice'
 import createMultiplePolicySlice from '../../Shared/permission/multiplePolicySlice';
 import chatBoardNew from '../../Shared/chatBoardNew/chatBoardSlice';
 import createTicketBoardReducer from '../../Shared/createTicketNew/createTicketBoardSliceNew';
+import signalREventTicketSlice from '../../Shared/ticketEvent/signalR/signalREventTicketSlice';
+
 const store = configureStore({
   reducer: {
     eventAssignmentTable: eventAssignmentTableSlice,
@@ -14,7 +16,8 @@ const store = configureStore({
     filter: filterSlice,
     ticketList: ticketListSlice,
     chatBoard: chatBoardNew,
-    createTicketBoard: createTicketBoardReducer
+    createTicketBoard: createTicketBoardReducer,
+    signalREventTicket: signalREventTicketSlice
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -79,6 +79,8 @@ type TDataSource = {
   Away: string;
   League: string;
   LeagueGroup: string | null;
+  IsRead: boolean;
+  HasTicket: boolean;
   NoOfHDP: string | null;
   IsAllowedToViewDetail: boolean;
   MatchOffers: Array<{
