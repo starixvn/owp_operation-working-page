@@ -92,6 +92,7 @@ const eventAssignmentTableSlice = createSlice({
         state.entitiesOriginal = payload.data;
         state.syncOffVRLastTime = payload.syncOffVRLastUpdated.item1;
         state.syncOffVRByUser = payload.syncOffVRLastUpdated.item2;
+        state.dateUpdated = payload.dateUpdated;
       })
       .addCase(queryDataTableThunk.rejected, state => {
         state.loading = REQUEST_STATUS.idle;

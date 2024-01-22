@@ -182,5 +182,6 @@
   "netCoreURL": "api-netcore/event-assignment",
   "netFwURL": "api/event-assignment",
   "syncOffVRKey": "/sync-off-vr",
-  "lastUpdateSyncOffVRKey": "/get-sync-off-vr-last-updated"
+  "lastUpdateSyncOffVRKey": "/get-sync-off-vr-last-updated",
+  "lastUpdateEventAssignment": "/get-last-updated"
 }

@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { QUERY_SIMPLE_API } from '../../Shared/Constants';
-import { buildRequestURL as buildRequestURLForLiveDetail } from '../../LiveDetail/buildUrlHelper';
 import { buildRequestURLForLGA } from '../helper/apiHelper';
-import { syncOffVRKey, lastUpdateSyncOffVRKey } from '../const.json';
+import {
+  syncOffVRKey,
+  lastUpdateSyncOffVRKey,
+  lastUpdateEventAssignment
+} from '../const.json';
 
 const queryDataExcel = async (url: string) => {
   const response = await axios.get(url, { responseType: 'blob' });
@@ -15,66 +18,14 @@ const query = async (eventModel: any) => {
   return response.data;
 };
 
-// const addNew = async formModel => {
-//   const response = await axios.post(
-//     'api/event-assignment/add-event',
-//     formModel
-//   );
-//   return response.data;
-// };
+const getLastUpdated = async (eventDate: string) => {
+  const url = `${buildRequestURLForLGA(
+    lastUpdateEventAssignment
+  )}?date=${eventDate}`;
+  const response = await axios.get(url);
 
-// const editEvent = async formModel => {
-//   const response = await axios.post(
-//     'api/event-assignment/edit-event',
-//     formModel
-//   );
-//   return response.data;
-// };
-
-// const getBettypeForTraderInfo = async () => {
-//   const postModel = {
-//     apiKey: 'live-game-assignment-get-bettype-for-trading-info'
-//   };
-//   const response = await axios.post(QUERY_SIMPLE_API, postModel);
-//   return response.data;
-// };
-
-// const getInfoSiteMatch = async postModel => {
-//   const response = await axios.post(
-//     buildRequestURLForLiveDetail('infosite-match/get'),
-//     postModel
-//   );
-//   return response.data;
-// };
-
-// const getBettypeForMatchInfo = async parentMatchId => {
-//   const postModel = {
-//     ApiKey: 'live-game-assignment-get-bettype-for-special-event',
-//     ParentMatchId: parentMatchId
-//   };
-//   const response = await axios.post(QUERY_SIMPLE_API, postModel);
-//   return response.data;
-// };
-
-// const getSpecialEventTemplate = async (parentMatchId, minorBettypeId) => {
-//   const postModel = {
-//     ApiKey: 'live-game-assignment-get-special-event-template',
-//     ParentMatchId: parentMatchId,
-//     MinorBettypeId: minorBettypeId
-//   };
-//   const response = await axios.post(QUERY_SIMPLE_API, postModel);
-//   return response.data[0];
-// };
-
-// const getLastUpdated = async eventDate => {
-//   const postModel = {
-//     ApiKey: 'get-last-updated',
-//     EventDate: eventDate
-//   };
-//   const response = await axios.post(QUERY_SIMPLE_API, postModel);
-
-//   return response.data.length === 0 ? null : response.data[0].UploadDateTime;
-// };
+  return response.data.uploadDateTime;
+};
 
 const syncOffVRs = async (eventModel: any) => {
   const url = buildRequestURLForLGA(syncOffVRKey);
@@ -94,13 +45,7 @@ const getSyncOffVRLastUpdated = async (eventDate: any) => {
 const Service = {
   queryDataExcel,
   query,
-  // addNew,
-  // editEvent,
-  // getBettypeForTraderInfo,
-  // getInfoSiteMatch,
-  // getBettypeForMatchInfo,
-  // getSpecialEventTemplate,
-  // getLastUpdated,
+  getLastUpdated,
   syncOffVRs,
   getSyncOffVRLastUpdated
 };

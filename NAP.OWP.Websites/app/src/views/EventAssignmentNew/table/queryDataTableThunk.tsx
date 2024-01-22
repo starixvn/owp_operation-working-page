@@ -20,16 +20,14 @@ const queryDataTableThunk = createAsyncThunk<TQueryData>(
     };
 
     const dataQuery = await Service.query(eventModel);
-    // const lastUpdate = await EventAssignmentService.getLastUpdated(
-    //   postModel.EventDate
-    // );
+    const lastUpdate = await Service.getLastUpdated(eventModel.EventDate);
     const syncOffVRLastUpdated = await Service.getSyncOffVRLastUpdated(
       eventModel.EventDate
     );
     return {
       data: dataQuery,
       syncOffVRLastUpdated,
-      dateUpdated: ''
+      dateUpdated: lastUpdate
     };
   }
 );
