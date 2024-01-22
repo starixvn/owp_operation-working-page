@@ -4,15 +4,11 @@ import ExportSelector from './ExportSelector';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import Service from '../service/Service';
 import queryDataTableThunk from '../table/queryDataTableThunk';
-import { isEquals } from 'immutability-helper';
-import { REQUEST_STATUS } from '../../Shared/Constants';
-import Loading from '../../components/Loading';
 
 const ButtonGroupFilter = () => {
   const dispatch = useAppDispatch();
   const filterState = useAppSelector(state => state.filter.filterState);
   const policy = useAppSelector(state => state.policy.entities.FullBetTypes);
-  const loading = useAppSelector(state => state.eventAssignmentTable.loading);
 
   const handleSubmit = () => {
     dispatch(queryDataTableThunk());
@@ -29,9 +25,6 @@ const ButtonGroupFilter = () => {
     });
   };
 
-  if (isEquals(loading, REQUEST_STATUS.pending)) {
-    return <Loading />;
-  }
   return (
     <div className='filter-control btn-block'>
       <button className='button-submit' onClick={handleSubmit}>

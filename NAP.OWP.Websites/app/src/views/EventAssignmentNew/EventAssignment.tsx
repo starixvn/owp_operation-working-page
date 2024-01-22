@@ -14,6 +14,7 @@ import { RECIPIENT_TYPE } from '../Shared/createTicketNew/const/const';
 import { CreatorInfo } from './type/type';
 import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';
 import queryDataTableThunk from './table/queryDataTableThunk';
+import queryFilterOptionsThunk from './filter/queryFilterOptionsThunk';
 
 const EventAssignment = () => {
   const stableDispatch = useAppDispatch();
@@ -39,8 +40,13 @@ const EventAssignment = () => {
   };
 
   useEffect(() => {
-    stableDispatch(queryPolicyThunk());
-    stableDispatch(queryDataTableThunk());
+    const fetchApi = async () => {
+      await stableDispatch(queryPolicyThunk());
+      await stableDispatch(queryFilterOptionsThunk());
+      await stableDispatch(queryDataTableThunk());
+    };
+
+    fetchApi();
   }, [stableDispatch]);
 
   if (isEquals(loading, REQUEST_STATUS.pending) || !Username) {

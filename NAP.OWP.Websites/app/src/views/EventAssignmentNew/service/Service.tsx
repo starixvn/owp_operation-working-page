@@ -28,7 +28,7 @@ const getLastUpdated = async (eventDate: string) => {
   return response.data.uploadDateTime;
 };
 
-const syncOffVRs = async (eventModel: Date) => {
+const syncOffVRs = async (eventModel: { date: Date }) => {
   const url = buildRequestURLForLGA(syncOffVRKey);
   const response = await axios.post(url, eventModel);
   return response.data;
