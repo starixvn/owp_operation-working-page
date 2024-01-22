@@ -1,5 +1,5 @@
 import React from 'react';
-import { TCellModel } from '../../type/type';
+import { TCellModel, TDataSource } from '../../type/type';
 import { PlusIcon, ArrowRightIcon } from 'mdi-react';
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from 'reactstrap';
@@ -8,8 +8,11 @@ import Utils from '../../../Shared/Utils';
 import MatchInfo from '../../components/MatchInfo';
 import EventPopup from '../../../Shared/EventPopup';
 import dayjs from 'dayjs';
+import { useAppDispatch } from '../../app/hooks';
+import { setEventDetailInfo } from '../../newEvent/eventDetailSlice';
 
 const EventCell = (props: TCellModel) => {
+  const dispatch = useAppDispatch();
   const {
     filter: {
       filterState: { selectedDate }
@@ -59,9 +62,9 @@ const EventCell = (props: TCellModel) => {
       {allowToAddMinorMatch && (
         <a
           onClick={e => {
+            debugger
             e.preventDefault();
-            // TODO
-            //addSpecialEvent(event);
+            dispatch(setEventDetailInfo(event));
           }}
           rel='noopener noreferrer'
           className='add-specialEvent'>

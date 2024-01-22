@@ -13,7 +13,8 @@ const queryPolicyThunk = createAsyncThunk<TPolicy>('policy/query', async () => {
     eventPickingPolicy,
     dailyWorkingShiftPolicy,
     ticketCenterPolicy,
-    notePolicy
+    notePolicy,
+    oddsPolicy
   ] = await axios.all([
     AuthorizeService.authorize(FunctionKeys.LiveGameAssignment_FullBetTypes),
     AuthorizeService.authorize(FunctionKeys.LiveGameAssignment_PHBetTypes),
@@ -21,7 +22,8 @@ const queryPolicyThunk = createAsyncThunk<TPolicy>('policy/query', async () => {
     AuthorizeService.authorize(FunctionKeys.EventPicking),
     AuthorizeService.authorize(FunctionKeys.DailyWorkingShift),
     AuthorizeService.authorize(FunctionKeys.TicketCenter),
-    AuthorizeService.authorize(FunctionKeys.Note)
+    AuthorizeService.authorize(FunctionKeys.Note),
+    AuthorizeService.authorize(FunctionKeys.OddsCompiler)
   ]);
 
   return {
@@ -33,7 +35,8 @@ const queryPolicyThunk = createAsyncThunk<TPolicy>('policy/query', async () => {
     EventPicking: eventPickingPolicy,
     dailyWorkingShiftPolicy,
     MyTicket: ticketCenterPolicy,
-    Note: notePolicy
+    Note: notePolicy,
+    Odds: oddsPolicy
   };
 });
 

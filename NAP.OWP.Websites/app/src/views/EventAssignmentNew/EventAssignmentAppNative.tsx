@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import EventAssignment from './EventAssignment';
 import useSignalRWrapper from './signalR/useSignalRWrapper';
-const EventPickingAppNative = () => {
+const EventAssignmentAppNative = () => {
   return (
     <Provider store={store}>
       <EventAssignment />
@@ -11,4 +11,4 @@ const EventPickingAppNative = () => {
     </Provider>
   );
 };
-export default EventPickingAppNative;
+export default EventAssignmentAppNative;

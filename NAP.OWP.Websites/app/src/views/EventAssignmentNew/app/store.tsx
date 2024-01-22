@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import eventAssignmentTableSlice from '../table/eventAssignmentTableSlice';
 import policySlice from '../policy/policySlice';
 import filterSlice from '../filter/filterSlice';
+import eventDetailSlice from '../newEvent/eventDetailSlice';
 import ticketListSlice from '../../Shared/ticketEvent/component/ticketListSlice';
 import createMultiplePolicySlice from '../../Shared/permission/multiplePolicySlice';
 import chatBoardNew from '../../Shared/chatBoardNew/chatBoardSlice';
@@ -16,6 +17,7 @@ const store = configureStore({
     filter: filterSlice,
     ticketList: ticketListSlice,
     chatBoard: chatBoardNew,
+    eventDetail: eventDetailSlice,
     createTicketBoard: createTicketBoardReducer,
     signalREventTicket: signalREventTicketSlice
   },

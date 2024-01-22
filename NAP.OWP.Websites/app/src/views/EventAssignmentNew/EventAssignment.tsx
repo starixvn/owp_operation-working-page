@@ -15,6 +15,7 @@ import { CreatorInfo } from './type/type';
 import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';
 import queryDataTableThunk from './table/queryDataTableThunk';
 import queryFilterOptionsThunk from './filter/queryFilterOptionsThunk';
+import NewSpecialEvent from './newEvent/NewSpecialEvent';
 
 const EventAssignment = () => {
   const stableDispatch = useAppDispatch();
@@ -52,7 +53,7 @@ const EventAssignment = () => {
   if (isEquals(loading, REQUEST_STATUS.pending) || !Username) {
     return <Loading />;
   }
-
+  debugger
   return (
     <div className='event-assignment'>
       <div className='filter'>
@@ -63,6 +64,7 @@ const EventAssignment = () => {
       <CreateTicketBoardOther creatorInfo={creatorInfo} />
       <CreateTicketLiveIncident creatorInfo={creatorInfo} />
       <TicketDetailBoard />
+      <NewSpecialEvent />
     </div>
   );
 };

@@ -7,8 +7,8 @@ import {
   MatchStatuses,
   TimePickerDisplayFormat,
   TimePickerOutputFormat
-} from '../Shared/Constants';
-import EventAssignmentService from './Service';
+} from '../../Shared/Constants';
+import { getSpecialEventTemplate } from '../helper/apiHelper';
 
 import { TimePicker } from 'antd';
 import dayjs from 'dayjs';
@@ -67,8 +67,8 @@ class FormMatchInfo extends Component {
       ).format(TimePickerOutputFormat);
       defaultModel.OtherTime = props.parentEvent.OtherTime
         ? dayjs(props.parentEvent.OtherTime, TimePickerDisplayFormat).format(
-          TimePickerOutputFormat
-        )
+            TimePickerOutputFormat
+          )
         : '';
       defaultModel.MatchNo = props.parentEvent.MatchNo;
       defaultModel.Remark = props.parentEvent.Remark;
@@ -217,7 +217,7 @@ class FormMatchInfo extends Component {
   getSpecialEventTemplate = async minorBettypeId => {
     const { parentEvent } = this.props;
     const { model } = this.state;
-    const specialEventTemplateData = await EventAssignmentService.getSpecialEventTemplate(
+    const specialEventTemplateData = await getSpecialEventTemplate(
       parentEvent.OWPMatchId,
       minorBettypeId
     );
@@ -314,7 +314,6 @@ class FormMatchInfo extends Component {
     });
   };
 
-
   renderInfoSiteId = (model, parentEvent) => {
     const { getInfoSiteMatch } = this.props;
     return (
@@ -327,8 +326,8 @@ class FormMatchInfo extends Component {
             className={`${inputFieldClass} form-control`}
             format='0'
             value={model.InfoSiteId}
-            onChange={
-              e => this.updateModel({ target: { name: 'InfoSiteId', value: e } })
+            onChange={e =>
+              this.updateModel({ target: { name: 'InfoSiteId', value: e } })
             }
             min={0}
             max={9999999999}
@@ -359,14 +358,15 @@ class FormMatchInfo extends Component {
               type='text'
               name='KOTime'
               className={
-                inputKoTime + inputFieldClass +
+                inputKoTime +
+                inputFieldClass +
                 (isValidating && model.KOTime === '' ? invalidInputClass : '')
               }
               value={
                 model.KOTime
                   ? dayjs(model.KOTime, TimePickerOutputFormat).format(
-                    TimePickerDisplayFormat
-                  )
+                      TimePickerDisplayFormat
+                    )
                   : ''
               }
               readOnly={!isNil(parentEvent)}
@@ -511,26 +511,29 @@ class FormMatchInfo extends Component {
           </div>
           {this.renderInputCanReadOnlyField(
             model.LeagueName,
-            inputLeagueName + inputFieldClass +
-            (isValidating && model.LeagueName === ''
-              ? invalidInputClass
-              : ''),
+            inputLeagueName +
+              inputFieldClass +
+              (isValidating && model.LeagueName === ''
+                ? invalidInputClass
+                : ''),
             'League',
             !isNil(parentEvent),
             'LeagueName'
           )}
           {this.renderInputCanReadOnlyField(
             model.HomeName,
-            inputHomeName + inputFieldClass +
-            (isValidating && model.HomeName === '' ? invalidInputClass : ''),
+            inputHomeName +
+              inputFieldClass +
+              (isValidating && model.HomeName === '' ? invalidInputClass : ''),
             'Home Team',
             !isNil(parentEvent),
             'HomeName'
           )}
           {this.renderInputCanReadOnlyField(
             model.AwayName,
-            inputAwayName + inputFieldClass +
-            (isValidating && model.AwayName === '' ? invalidInputClass : ''),
+            inputAwayName +
+              inputFieldClass +
+              (isValidating && model.AwayName === '' ? invalidInputClass : ''),
             'Away Team',
             !isNil(parentEvent),
             'AwayName'

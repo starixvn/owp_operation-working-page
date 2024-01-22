@@ -176,6 +176,10 @@ type TPolicy = {
     HasRead: boolean;
     HasWrite: boolean;
   };
+  Odds: {
+    HasRead: boolean;
+    HasWrite: boolean;
+  };
 };
 
 type TAssignmentBuilder = {
@@ -252,6 +256,24 @@ type TQueryDataModel = {
   SyncLiveStatus: number | string;
   ShowUnreadMessage: boolean;
 };
+type TEventDetail = {
+  OWPMatchId: number;
+  KickOffTime: string | Date;
+  OtherTime: string | Date;
+  MatchNo: string | null | undefined;
+  Remark: string | null | undefined;
+  Round: string | null | undefined;
+  League: string | null | undefined;
+  Division: string | null | undefined;
+  Home: string | null | undefined;
+  Away: string | null | undefined;
+  Website1: string | null | undefined;
+  Website2: string | null | undefined;
+  Website3: string | null | undefined;
+  Website4: string | null | undefined;
+
+};
+
 type TMainAssignment = TAssignment | undefined | { oWPMatchId: number };
 type TOthersAssignment = TAssignment[] | undefined;
 export {
@@ -281,5 +303,6 @@ export {
   TUpdateAssignment,
   TColumnFilter,
   TColumnFilterByMbc,
-  TMaxbetSpread
+  TMaxbetSpread,
+  TEventDetail
 };
