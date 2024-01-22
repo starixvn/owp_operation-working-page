@@ -1,6 +1,7 @@
 import React from 'react';
 import DropdownNative from '../../Shared/common/Dropdown/DropdownNative';
 import { useAppSelector } from '../app/hooks';
+import { eventPickingListUrlNew, eventPickingOldUrl, liveGameAssignmentUrl } from '../helper/exportExcelHelpper';
 
 const ExportSelector = () => {
   const policy = useAppSelector(state => state.policy);
@@ -9,11 +10,14 @@ const ExportSelector = () => {
     // TODO
   };
   const handleClickExportEventPickingList = () => {
-    // TODO
+    const url = buildRequestURLForLGA(eventPickingOldUrl(filterState));
   };
+
   const handleClickExportEventPickingListNew = () => {
-    // TODO
+    const url = eventPickingListUrlNew(filterState);
+    exportExcel(url);
   };
+
   if (isHostEventPicking) {
     const items = [
       {
