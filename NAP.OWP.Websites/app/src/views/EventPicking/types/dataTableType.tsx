@@ -38,6 +38,7 @@ type TTableSlice = {
   valueFilterAllColumn: FilterAllColumn;
   columnKeyFilterCurrent: string;
   filterState: Array<TFilterState>;
+  sortState: ISortState;
   loading: string;
 };
 
@@ -58,5 +59,10 @@ type TPermission = {
   SiteId: number;
 };
 
+interface ISortState {
+  columnKeySelected: Required<string>;
+  orderType: string;
+}
+
 export default TDataTable;
-export { TTableSlice, TFilterState, FilterAllColumn, TPermission };
+export { TTableSlice, TFilterState, FilterAllColumn, TPermission, ISortState };

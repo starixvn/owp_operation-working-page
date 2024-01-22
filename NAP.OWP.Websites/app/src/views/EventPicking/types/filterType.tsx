@@ -18,8 +18,13 @@ type TPayloadFilter = {
 type TMultipleSelectionTemplate = IMultipleSelectProps & {
   filterKey: Required<string>;
 };
+type TurnoverMarginSelection = {
+  key: string;
+  value: number;
+};
 
 export {
+  TurnoverMarginSelection,
   TFilter,
   TPayloadFilter,
   TMultipleSelectionTemplate,

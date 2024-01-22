@@ -3,60 +3,158 @@
     {
       "headerName": "No #",
       "size": 3,
-      "isCheckBox": true
+      "isCheckBox": true,
+      "columnKey": "No #",
+      "isSort": false
     },
     {
       "headerName": "KO Time",
-      "size": 4
+      "size": 4,
+      "columnKey": "KO Time"
     },
     {
       "headerName": "League",
       "size": 15,
-      "isFilter": true
+      "isFilter": true,
+      "columnKey": "League"
     },
     {
       "headerName": "Match",
       "size": 14,
-      "isFilter": true
+      "isFilter": true,
+      "columnKey": "Match"
     },
     {
       "headerName": "MB",
-      "size": 3
+      "size": 3,
+      "columnKey": "MB"
     },
     {
       "headerName": "TV/IPTV",
       "size": 10,
-      "isFilter": true
+      "isFilter": true,
+      "columnKey": "TV/IPTV"
     },
     {
       "headerName": "Provider",
       "size": 10,
-      "isFilter": true
+      "isFilter": true,
+      "columnKey": "Provider"
     },
     {
       "headerName": "Round",
       "size": 10,
-      "isFilter": true
+      "isFilter": true,
+      "columnKey": "Round"
     },
     {
       "headerName": "Remark",
       "size": 10,
-      "isFilter": true
+      "isFilter": true,
+      "columnKey": "Remark"
     },
     {
       "headerName": "R&D Update",
-      "size": 13
+      "size": 13,
+      "columnKey": "R&D Update"
     },
     {
       "headerName": "Checked",
       "size": 5,
       "className": "check-by-lst",
-      "isCheckBox": true
+      "isCheckBox": true,
+      "columnKey": "Checked"
     },
     {
       "headerName": "Action",
-      "size": 5
+      "size": 5,
+      "columnKey": "Action"
     }
   ],
-  "itemRowHeight": 100
+  "TABLE_HEADER_TURN_OVER_MARGIN": [
+    {
+      "headerName": "No #",
+      "size": 3,
+      "isCheckBox": true,
+      "columnKey": "No #"
+    },
+    {
+      "headerName": "KO Time",
+      "size": 4,
+      "columnKey": "KO Time"
+    },
+    {
+      "headerName": "League",
+      "size": 15,
+      "isFilter": true,
+      "columnKey": "League"
+    },
+    {
+      "headerName": "Match",
+      "size": 14,
+      "isFilter": true,
+      "columnKey": "Match"
+    },
+    {
+      "headerName": "MB",
+      "size": 3,
+      "columnKey": "MB"
+    },
+    {
+      "headerName": "TV/IPTV",
+      "size": 10,
+      "isFilter": true,
+      "columnKey": "TV/IPTV"
+    },
+    {
+      "headerName": "Turnover",
+      "size": 6,
+      "isSort": true,
+      "columnKey": "TurnoverSort"
+    },
+    {
+      "headerName": "Margin",
+      "size": 4,
+      "isSort": true,
+      "columnKey": "MarginSort"
+    },
+    {
+      "headerName": "Provider",
+      "size": 10,
+      "isFilter": true,
+      "columnKey": "Provider"
+    },
+    {
+      "headerName": "Round",
+      "size": 10,
+      "isFilter": true,
+      "columnKey": "Round"
+    },
+    {
+      "headerName": "Remark",
+      "size": 10,
+      "isFilter": true,
+      "columnKey": "Remark"
+    },
+    {
+      "headerName": "R&D Update",
+      "size": 13,
+      "columnKey": "R&D Update"
+    },
+    {
+      "headerName": "Checked",
+      "size": 5,
+      "className": "check-by-lst",
+      "isCheckBox": true,
+      "columnKey": "Checked"
+    },
+    {
+      "headerName": "Action",
+      "size": 5,
+      "columnKey": "Action"
+    }
+  ],
+  "itemRowHeight": 100,
+  "ORDER_ASC": "ORDER_ASC",
+  "ORDER_DESC": "ORDER_DESC"
 }

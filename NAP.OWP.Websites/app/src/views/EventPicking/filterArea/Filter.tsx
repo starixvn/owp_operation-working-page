@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InfoIcon from '../../../assets/svg-element/InfoIcon';
-import { RootState } from '../app/store';
+import store, { RootState } from '../app/store';
 import Command from './Command';
 import DateTimePicker from './DateTimePicker';
 import FilterMatch from './FilterMatch';
@@ -15,10 +15,16 @@ import { getLeagues, getUpdateTypes } from './slice/filterThunkNative';
 import Utils from '../../Shared/Utils';
 import ExportNative from './ExportNative';
 import UserGuideWrapper from '../userGuide/UserGuideWrapper';
+import TurnoverMargin from './TurnoverMargin';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const { date } = useSelector((state: RootState) => state.filter.param);
+
+  const { turnOverMarginPolicy: {
+    permission: { HasRead }
+  } } = store.getState();
+
   useEffect(() => {
     dispatch(getLeagues(Utils.formatDate(date)));
   }, [date, dispatch]);
@@ -36,6 +42,7 @@ const Filter = () => {
       <HasProvider />
       <HasOtherProvider />
       <MatchCategory />
+      {HasRead && <TurnoverMargin />}
       <UpdateType />
       <Command />
       <ExportNative />

@@ -5,6 +5,8 @@ import LeagueCell from '../Cell/LeagueCell';
 import MatchCell from '../Cell/MatchCell';
 import MaxBetCell from '../Cell/MaxBetCell';
 import IPTvStreamingCell from '../Cell/IPTvStreamingCell';
+import TurnOverCell from '../Cell/TurnOverCell';
+import MarginCell from '../Cell/MarginCell';
 import ProviderCell from '../Cell/ProviderCell';
 import RoundCell from '../Cell/RoundCell';
 import RemarkCell from '../Cell/RemarkCell';
@@ -14,9 +16,20 @@ import ActionCell from '../Cell/ActionCell';
 import { v4 as uuidv4 } from 'uuid';
 import { itemRowHeight } from '../TableSchema.json';
 import TDataTable from '../../types/dataTableType';
+import PropTypes from 'prop-types';
+import store from '../../app/store';
+
+const propTypes = {
+  data: PropTypes.array,
+  displayStart: PropTypes.number,
+  displayEnd: PropTypes.number,
+};
 
 const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   const rows = [];
+  const { turnOverMarginPolicy: {
+    permission: { HasRead }
+  } } = store.getState();
   rows.push(
     <tr
       key='startRowFiller'
@@ -46,6 +59,12 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
             <td>
               <IPTvStreamingCell dataSource={data} rowIndex={i} />
             </td>
+            {HasRead && <><td>
+              <TurnOverCell dataSource={data} rowIndex={i} />
+            </td>
+              <td>
+                <MarginCell dataSource={data} rowIndex={i} />
+              </td></>}
             <td>
               <ProviderCell dataSource={data} rowIndex={i} />
             </td>
@@ -76,4 +95,6 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   );
   return <>{rows}</>;
 };
+
+TableBody.propTypes = propTypes;
 export default TableBody;

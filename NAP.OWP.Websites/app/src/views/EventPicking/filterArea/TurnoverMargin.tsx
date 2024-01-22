@@ -1,0 +1,38 @@
+import React from 'react';
+import {
+  SELECT_TURNOVER_OPTIONS,
+  FROM_DATE,
+  TO_DATE
+} from './filterConst.json';
+import SingleSelection from '../../Shared/SingleSelection/SingleSelection';
+import { TurnoverMarginSelection } from '../types/filterType';
+import useStableDispatch from '../../Shared/customHook/useStableDispatch';
+import { setFilter } from './slice/filterSlice';
+import Utils from '../../Shared/Utils';
+
+const TurnoverMargin = () => {
+  const dispatch = useStableDispatch();
+
+  const handleOnChange = (event: TurnoverMarginSelection) => {
+    const curDate = new Date();
+    const fromDate = new Date(curDate.setDate(curDate.getDate() - event.value));
+    dispatch(
+      setFilter({
+        key: FROM_DATE,
+        value: Utils.formatDate(fromDate)
+      })
+    );
+  };
+
+  return (
+    <div className='multi-select-dropdown'>
+      <div className='label'>Turnover & Margin Period</div>
+      <SingleSelection
+        option={SELECT_TURNOVER_OPTIONS}
+        onSelectedChange={handleOnChange}
+      />
+    </div>
+  );
+};
+
+export default TurnoverMargin;
