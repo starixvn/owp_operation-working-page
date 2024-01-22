@@ -6,13 +6,14 @@ import {
   lastUpdateSyncOffVRKey,
   lastUpdateEventAssignment
 } from '../const.json';
+import { TQueryDataModel } from '../type/type';
 
 const queryDataExcel = async (url: string) => {
   const response = await axios.get(url, { responseType: 'blob' });
   return response.data;
 };
 
-const query = async (eventModel: any) => {
+const query = async (eventModel: TQueryDataModel) => {
   const url = buildRequestURLForLGA('');
   const response = await axios.post(url, eventModel);
   return response.data;
@@ -27,13 +28,13 @@ const getLastUpdated = async (eventDate: string) => {
   return response.data.uploadDateTime;
 };
 
-const syncOffVRs = async (eventModel: any) => {
+const syncOffVRs = async (eventModel: Date) => {
   const url = buildRequestURLForLGA(syncOffVRKey);
   const response = await axios.post(url, eventModel);
   return response.data;
 };
 
-const getSyncOffVRLastUpdated = async (eventDate: any) => {
+const getSyncOffVRLastUpdated = async (eventDate: string) => {
   const url = `${buildRequestURLForLGA(
     lastUpdateSyncOffVRKey
   )}?date=${eventDate}`;

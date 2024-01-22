@@ -121,7 +121,7 @@ type TMaxbetSpread = {
   spreadToDisplay: string;
 };
 type TDataTable = Array<TDataSource>;
-type TQueryData = {
+type TQueryDataResult = {
   data: TDataTable;
   dateUpdated: string;
   syncOffVRLastUpdated: {
@@ -243,10 +243,20 @@ type CreatorInfo = {
   userName: string;
 };
 
+type TQueryDataModel = {
+  EventDate: string;
+  Username: string;
+  MatchStatusIds: Array<number | string>;
+  SelectedOffVRs: Array<number | string>;
+  MatchType: string;
+  SyncLiveStatus: number | string;
+  ShowUnreadMessage: boolean;
+};
 type TMainAssignment = TAssignment | undefined | { oWPMatchId: number };
 type TOthersAssignment = TAssignment[] | undefined;
 export {
-  TQueryData,
+  TQueryDataModel,
+  TQueryDataResult,
   TDataSource,
   TOptions,
   TFilterQueryOptions,
