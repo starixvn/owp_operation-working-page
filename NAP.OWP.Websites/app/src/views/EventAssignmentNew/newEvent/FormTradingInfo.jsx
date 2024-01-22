@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import { cloneDeep } from 'lodash';
-import Converter from '../Shared/Converter';
+import Converter from '../../Shared/Converter';
 import TradingInfoTable from './TradingInfoTable';
 import PropTypes from 'prop-types';
 
@@ -57,7 +57,8 @@ class FormTradingInfo extends Component {
   }
 
   validateAndGetData = () => {
-    const matchSettingsValidateResult = this.tableRef.current.validateAndGetData();
+    const matchSettingsValidateResult =
+      this.tableRef.current.validateAndGetData();
     if (matchSettingsValidateResult.code) {
       return {
         code: matchSettingsValidateResult.code,

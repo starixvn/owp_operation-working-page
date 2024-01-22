@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PlusIcon from 'mdi-react/PlusIcon';
 import PropTypes from 'prop-types';
 import { noop } from 'lodash';
-import OddTable from '../LiveDetail/MatchOdd/OddTable';
-import { MajorBetTypes } from '../Shared/Constants';
-import service from '../LiveDetail/MatchOdd/Service';
+import OddTable from '../../LiveDetail/MatchOdd/OddTable';
+import { MajorBetTypes } from '../../Shared/Constants';
+import service from '../../LiveDetail/MatchOdd/Service';
 
 const propTypes = {
   policy: PropTypes.object.isRequired
@@ -121,13 +121,8 @@ class FormRecommendOdds extends Component {
 
   render() {
     const { policy } = this.props;
-    const {
-      isCreating,
-      isEditing,
-      editingIndex,
-      isMultipleEdit,
-      rows
-    } = this.state;
+    const { isCreating, isEditing, editingIndex, isMultipleEdit, rows } =
+      this.state;
 
     return (
       <div className='card-item recommend-odds'>

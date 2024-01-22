@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import AsyncSelect from 'react-select/async';
 import Animated from 'react-select/animated';
 import { cloneDeep, join } from 'lodash';
-import Converter from '../Shared/Converter';
-import AgentService from '../LiveDetail/Agent/Service';
-import TelevisionService from '../LiveDetail/Television/Service';
+import Converter from '../../Shared/Converter';
+import {
+  getSuggestionAgentsOptions,
+  getSuggestionTVsOptions
+} from '../helper/apiHelper';
 
 const propTypes = {
   parentMatchInfo: PropTypes.object
@@ -74,21 +76,21 @@ class FormProviderInfo extends Component {
         ...model,
         TVIds: model.TVs
           ? join(
-            model.TVs.map(item => item.value),
-            ','
-          )
+              model.TVs.map(item => item.value),
+              ','
+            )
           : null,
         AgentIds: model.Agents
           ? join(
-            model.Agents.map(item => item.value),
-            ','
-          )
+              model.Agents.map(item => item.value),
+              ','
+            )
           : null
       }
     };
   };
 
-  renderTV = model =>
+  renderTV = model => (
     <div className='info-item'>
       <div className='label'>TV</div>
       <div className='content'>
@@ -99,18 +101,20 @@ class FormProviderInfo extends Component {
           isMulti
           cacheOptions
           defaultOptions
-          loadOptions={TelevisionService.getSuggestionOptions}
+          loadOptions={getSuggestionTVsOptions}
           value={model.TVs}
           onChange={selectedValues =>
-            this.onSelectedChange('TVs', selectedValues)}
+            this.onSelectedChange('TVs', selectedValues)
+          }
           components={Animated}
           placeholder='Please input search'
           noOptionsMessage={() => null}
         />
       </div>
-    </div>;
+    </div>
+  );
 
-  renderIPTV = model =>
+  renderIPTV = model => (
     <div className='info-item'>
       <div className='label'>IPTV/Channel</div>
       <div className='content'>
@@ -123,9 +127,10 @@ class FormProviderInfo extends Component {
           maxLength='100'
         />
       </div>
-    </div>;
+    </div>
+  );
 
-  renderWB = model =>
+  renderWB = model => (
     <div className='info-item'>
       <div className='label'>WB</div>
       <div className='content'>
@@ -138,9 +143,10 @@ class FormProviderInfo extends Component {
           maxLength='100'
         />
       </div>
-    </div>;
+    </div>
+  );
 
-  renderProvider = model =>
+  renderProvider = model => (
     <div className='info-item'>
       <div className='label'>Provider</div>
       <div className='content'>
@@ -153,9 +159,10 @@ class FormProviderInfo extends Component {
           maxLength='900'
         />
       </div>
-    </div>;
+    </div>
+  );
 
-  renderOtherProvider = model =>
+  renderOtherProvider = model => (
     <div className='info-item'>
       <div className='label'>Other Provider</div>
       <div className='content'>
@@ -168,9 +175,10 @@ class FormProviderInfo extends Component {
           maxLength='900'
         />
       </div>
-    </div>;
+    </div>
+  );
 
-  renderAgent = model =>
+  renderAgent = model => (
     <div className='info-item'>
       <div className='label'>Agent</div>
       <div className='content'>
@@ -181,18 +189,20 @@ class FormProviderInfo extends Component {
           isMulti
           cacheOptions
           defaultOptions
-          loadOptions={AgentService.getSuggestionOptions}
+          loadOptions={getSuggestionAgentsOptions}
           value={model.Agents}
           onChange={selectedValues =>
-            this.onSelectedChange('Agents', selectedValues)}
+            this.onSelectedChange('Agents', selectedValues)
+          }
           components={Animated}
           placeholder='Please input search'
           noOptionsMessage={() => null}
         />
       </div>
-    </div>;
+    </div>
+  );
 
-  renderPhone = model =>
+  renderPhone = model => (
     <div className='info-item'>
       <div className='label'>Phone</div>
       <div className='content'>
@@ -205,7 +215,8 @@ class FormProviderInfo extends Component {
           maxLength='200'
         />
       </div>
-    </div>;
+    </div>
+  );
 
   setInfoSiteMatchData = dataModel => {
     const { model } = this.state;

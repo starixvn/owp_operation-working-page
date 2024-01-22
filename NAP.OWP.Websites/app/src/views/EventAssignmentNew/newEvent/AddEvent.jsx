@@ -6,14 +6,19 @@ import FormProviderInfo from './FormProviderInfo';
 import FormTradingInfo from './FormTradingInfo';
 import FormRecommendOdds from './FormRecommendOdds';
 import PropTypes from 'prop-types';
-import ResourceService from '../ResourceManagement/Service';
-import EventAssignmentService from './Service';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Utils from '../../Shared/Utils';
 import Spinner from '../../components/Spinner';
 import dayjs from 'dayjs';
-import MatchInfoService from '../LiveDetail/MatchInfo/Service';
+import {
+  addNew,
+  getBettypeForMatchInfo,
+  getBettypeForTraderInfo,
+  getByRefName,
+  getInfoSiteMatch,
+  queryMatchInfo
+} from '../helper/apiHelper';
 import ToastrWrapper from '../../components/ToastrWrapper';
 
 const Toastr = withReactContent(Swal);
@@ -70,7 +75,7 @@ class AddEvent extends Component {
       matchInfo.parentMatchId = parentEvent.OWPMatchId;
     }
 
-    const result = await EventAssignmentService.addNew(matchInfo);
+    const result = await addNew(matchInfo);
     Spinner.hide();
     if (result.IsSuccess) {
       matchId = result.Data;
@@ -179,7 +184,7 @@ class AddEvent extends Component {
       EventDate: this.props.selectedDate
     };
 
-    const response = await EventAssignmentService.getInfoSiteMatch(postModel);
+    const response = await getInfoSiteMatch(postModel);
     if (response.Code > 0) {
       showError(response.Message);
       if (response.Code === 2) {
@@ -201,15 +206,13 @@ class AddEvent extends Component {
       let bettypeData = [];
       Spinner.show();
       const [matchOffers, noOfHDPs, bettypesForTraderInfo] = await axios.all([
-        ResourceService.getByRefName('MatchOffer'),
-        ResourceService.getByRefName('NoOfHDP'),
-        EventAssignmentService.getBettypeForTraderInfo()
+        getByRefName('MatchOffer'),
+        getByRefName('NoOfHDP'),
+        getBettypeForTraderInfo()
       ]);
       if (parentEvent) {
-        bettypeData = await EventAssignmentService.getBettypeForMatchInfo(
-          parentEvent.OWPMatchId
-        );
-        parentMatchInfo = await MatchInfoService.query(parentEvent.OWPMatchId);
+        bettypeData = await getBettypeForMatchInfo(parentEvent.OWPMatchId);
+        parentMatchInfo = await queryMatchInfo(parentEvent.OWPMatchId);
       } else {
         parentMatchInfo = null;
       }
