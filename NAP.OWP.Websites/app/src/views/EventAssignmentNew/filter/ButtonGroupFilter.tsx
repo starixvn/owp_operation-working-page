@@ -9,9 +9,28 @@ const ButtonGroupFilter = () => {
   const dispatch = useAppDispatch();
   const filterState = useAppSelector(state => state.filter.filterState);
   const policy = useAppSelector(state => state.policy.entities.FullBetTypes);
+  const { selectedMatchStatus, selectedOffVRs, selectedMatchType, userNameFilterIsValid } = filterState;
 
   const handleSubmit = () => {
-    dispatch(queryDataTableThunk());
+    const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
+    const selectedSyncOffVRIsValid = selectedOffVRs.length > 0;
+    const selectedMatchTypeIsValid = selectedMatchType.length > 0;
+    if (
+      selectedMatchStatusIsValid &&
+      userNameFilterIsValid &&
+      selectedMatchTypeIsValid &&
+      selectedSyncOffVRIsValid
+    ) {
+      dispatch(queryDataTableThunk());
+    } else {
+      !selectedMatchStatusIsValid &&
+        ToastrWrapper.showError('Please select at least one match status');
+      !selectedSyncOffVRIsValid &&
+        ToastrWrapper.showError('Please select at least one sync off VR');
+      !userNameFilterIsValid && ToastrWrapper.showError('User not found');
+      !selectedMatchTypeIsValid &&
+        ToastrWrapper.showError('Please select at least one match type');
+    }
   };
 
   const handleSyncOffVR = () => {
