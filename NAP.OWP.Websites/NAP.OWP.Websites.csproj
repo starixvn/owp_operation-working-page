@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -1103,8 +1102,8 @@
     <Content Include="wwwroot\event-assignment-new\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\server-75752fd9.css" />
-    <Content Include="wwwroot\event-assignment-new\assets\js\main-df3ef56f.js" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\server-9cba589f.css" />
+    <Content Include="wwwroot\event-assignment-new\assets\js\main-d6dbcbc6.js" />
     <Content Include="wwwroot\event-assignment-new\favicon.ico" />
     <Content Include="wwwroot\event-assignment-new\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-feedback-57264197.svg" />
