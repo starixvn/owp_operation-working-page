@@ -15,9 +15,9 @@ const ExportSelector = () => {
 
   const exportExcel = (url: string) => {
     (async () => {
-      Spinner.show();
+      await Spinner.show();
       window.location.href = url;
-      Spinner.hide();
+      await Spinner.hide();
     })();
   };
 
