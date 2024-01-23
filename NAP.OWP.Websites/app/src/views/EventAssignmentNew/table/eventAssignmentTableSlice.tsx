@@ -79,7 +79,13 @@ const eventAssignmentTableSlice = createSlice({
           item.HasTicket = true;
         }
       });
-    }
+    },
+    setOnLoading: state => {
+      state.loading = REQUEST_STATUS.pending;
+    },
+    setOffLoading: state => {
+      state.loading = REQUEST_STATUS.idle;
+    },
   },
   extraReducers: builder => {
     builder
@@ -106,7 +112,9 @@ const {
   onColumnFilter,
   onClearFilter,
   setDataTable,
-  setDataSignalR
+  setDataSignalR,
+  setOnLoading,
+  setOffLoading
 } = actions;
 
 export {
@@ -115,6 +123,8 @@ export {
   onColumnFilter,
   onClearFilter,
   setDataTable,
-  setDataSignalR
+  setDataSignalR,
+  setOnLoading,
+  setOffLoading
 };
 export default reducer;

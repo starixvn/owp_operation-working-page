@@ -1,24 +1,23 @@
 import React from 'react';
 import DropdownNative from '../../Shared/common/Dropdown/DropdownNative';
-import { useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import store from '../app/store';
-import Spinner from '../../components/Spinner';
 import { buildRequestURLForLGA } from '../helper/apiHelper';
 import { eventPickingListUrlNew, eventPickingOldUrl, liveGameAssignmentUrl } from '../helper/exportExcelHelpper';
 import ToastrWrapper from '../../components/ToastrWrapper';
+import { setOffLoading, setOnLoading } from '../table/eventAssignmentTableSlice';
 
 const ExportSelector = () => {
   const policy = useAppSelector(state => state.policy);
   const isHostEventPicking = policy.entities.EventPicking.HasWrite;
   const filterState = store.getState().filter.filterState;
   const { selectedMatchStatus, selectedOffVRs, selectedMatchType, userNameFilterIsValid } = filterState;
+  const dispatch = useAppDispatch();
 
   const exportExcel = (url: string) => {
-    (async () => {
-      await Spinner.show();
-      window.location.href = url;
-      await Spinner.hide();
-    })();
+    dispatch(setOnLoading());
+    window.location.href = url;
+    dispatch(setOffLoading());
   };
 
   const handleClickExportLiveGameAssignment = () => {
