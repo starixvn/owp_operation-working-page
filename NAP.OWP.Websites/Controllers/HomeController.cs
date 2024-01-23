@@ -113,6 +113,15 @@ namespace NAP.OWP.Websites.Controllers
             return View("~/wwwroot/event-assignment/server.cshtml");
         }
 
+        [Route("EventAssignmentNew")]
+        [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
+        public async Task<ActionResult> EventAssignmentNew()
+        {
+            var functionName = ConfigurationManager.AppSettings["LiveGameAssignment"];
+            await accessCounter.UpdateCounter(functionName);
+            return View("~/wwwroot/event-assignment-new/server.cshtml");
+        }
+
         [Route("EventUpload")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Host)]
         public async Task<ActionResult> EventUpload()
