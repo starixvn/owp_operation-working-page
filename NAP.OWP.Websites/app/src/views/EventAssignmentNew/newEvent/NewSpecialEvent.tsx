@@ -1,29 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AddEvent from './AddEvent';
 import store from '../app/store';
-import { useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { setEventDetailInfo } from './eventDetailSlice';
+import { TDataSource } from '../type/type';
 
 const NewSpecialEvent = () => {
-  const [show, setShow] = useState(false);
+  const dispatch = useAppDispatch();
   const { policy, filter } = store.getState();
   const { entities: { Odds } } = policy;
   const { filterState: { selectedDate }, filterOptions: { MatchStatus } } = filter;
-  const eventDetail = useAppSelector(x => x.eventDetail);
+  const { event } = useAppSelector(x => x.eventDetail);
 
-  // TODO
-  const onSaved = () => {
-
-  };
-
-  return show
+  return event.OWPMatchId
     ? <AddEvent
       oddsPolicy={Odds}
-      parentEvent={eventDetail}
+      parentEvent={event}
       selectedDate={selectedDate}
       matchStatuses={MatchStatus}
       policy={policy}
-      onToggleModal={() => setShow(!show)}
-      onSaved={onSaved}
+      onToggleModal={() => dispatch(setEventDetailInfo({} as TDataSource))}
+      onSaved={() => dispatch(setEventDetailInfo({} as TDataSource))}
     />
     : null;
 };

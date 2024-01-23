@@ -59,7 +59,6 @@ class FormMatchInfo extends Component {
     defaultModel.Website2 = '';
     defaultModel.Website3 = '';
     defaultModel.Website4 = '';
-
     if (props.parentEvent) {
       defaultModel.KOTime = dayjs(
         props.parentEvent.KickOffTime,

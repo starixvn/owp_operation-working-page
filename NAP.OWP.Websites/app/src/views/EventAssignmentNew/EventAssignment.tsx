@@ -53,7 +53,6 @@ const EventAssignment = () => {
   if (isEquals(loading, REQUEST_STATUS.pending) || !Username) {
     return <Loading />;
   }
-  debugger
   return (
     <div className='event-assignment'>
       <div className='filter'>

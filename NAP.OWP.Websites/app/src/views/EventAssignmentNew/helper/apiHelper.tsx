@@ -3,6 +3,7 @@ import { netCoreURL, netFwURL } from '../const.json';
 import axios from 'axios';
 import Converter from '../../Shared/Converter';
 import { buildQuerySimpleApi } from '../../Shared/Constants';
+import { buildRequestURL } from '../../LiveDetail/buildUrlHelper';
 
 const buildRequestURLForLGA = (key: string) =>
   process.env.NODE_ENV === 'development'
@@ -10,16 +11,11 @@ const buildRequestURLForLGA = (key: string) =>
     : `${window.netCoreRootUrl}/${netFwURL}${key}`;
 
 const queryMatchInfo = async (owpMatchId: number) => {
-  const response = await axios.get(buildRequestURLForLGA('match-info'), {
+  const response = await axios.get(buildRequestURL('match-info'), {
     params: {
       owpMatchId
     }
   });
-  return response.data;
-};
-
-const query = async eventModel => {
-  const response = await axios.post('api/event-assignment', eventModel);
   return response.data;
 };
 
@@ -124,7 +120,6 @@ export {
   buildRequestURLForLGA,
   queryMatchInfo,
   getInfoSiteMatch,
-  query,
   addNew,
   editEvent,
   getBettypeForTraderInfo,

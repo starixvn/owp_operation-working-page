@@ -107,6 +107,10 @@ type TDataSource = {
     TVCode: string;
     Color: string;
   }>;
+  Website1: string | null | undefined;
+  Website2: string | null | undefined;
+  Website3: string | null | undefined;
+  Website4: string | null | undefined;
 };
 type TColumnFilterByMbc = {
   maxbetHDP: number | string;

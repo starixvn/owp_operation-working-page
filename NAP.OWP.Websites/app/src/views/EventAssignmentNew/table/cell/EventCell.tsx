@@ -62,7 +62,6 @@ const EventCell = (props: TCellModel) => {
       {allowToAddMinorMatch && (
         <a
           onClick={e => {
-            debugger
             e.preventDefault();
             dispatch(setEventDetailInfo(event));
           }}
