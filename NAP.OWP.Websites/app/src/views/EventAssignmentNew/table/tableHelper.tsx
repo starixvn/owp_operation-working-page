@@ -14,10 +14,17 @@ import MBCell from './cell/MBCell';
 import RemarkCell from './cell/RemarkCell';
 
 const {
-  HEADER: { MATCH_NO, KO_TIME, EVENT, TICKET, NOTE, IP_TV,
+  HEADER: {
+    MATCH_NO,
+    KO_TIME,
+    EVENT,
+    TICKET,
+    NOTE,
+    IP_TV,
     PROVIDER,
     MB,
-    REMARK },
+    REMARK
+  },
   WIDTH,
   ROW_HEIGHT,
   DEFAULT_HEIGHT,
@@ -26,12 +33,13 @@ const {
 } = TABLE;
 
 const buildColumn = (column: TColumn) => {
-  const { HEADER_NAME, COLUMN_KEY, IS_CAN_FILTER, WIDTH } = column;
+  const { HEADER_NAME, COLUMN_KEY, IS_CAN_FILTER, WIDTH, IS_FREEZE } = column;
   return {
     headerName: HEADER_NAME,
     columnKey: COLUMN_KEY,
     isCanFilter: IS_CAN_FILTER,
-    width: WIDTH
+    width: WIDTH,
+    isFreeze: IS_FREEZE
   };
 };
 

@@ -29,7 +29,8 @@
         "NAME": "MatchNo",
         "HEADER_NAME": "No#",
         "WIDTH": 60,
-        "IS_CAN_FILTER": true
+        "IS_CAN_FILTER": true,
+        "IS_FREEZE": true
       },
       "KO_TIME": {
         "COLUMN_KEY": "KickOffTime",
@@ -37,7 +38,8 @@
         "NAME": "KickOffTime",
         "HEADER_NAME": "KO Time",
         "WIDTH": 90,
-        "IS_CAN_FILTER": true
+        "IS_CAN_FILTER": true,
+        "IS_FREEZE": true
       },
       "EVENT": {
         "COLUMN_KEY": "Event",
@@ -45,7 +47,8 @@
         "NAME": "Event",
         "HEADER_NAME": "Event",
         "WIDTH": 300,
-        "IS_CAN_FILTER": true
+        "IS_CAN_FILTER": true,
+        "IS_FREEZE": true
       },
       "TICKET": {
         "COLUMN_KEY": "Ticket",
@@ -104,49 +107,49 @@
       "COLUMN_KEY": "Handicap",
       "NAME": "Handicap",
       "HEADER_NAME": "HDP",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "OverUnder",
       "NAME": "OverUnder",
       "HEADER_NAME": "O/U",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "Handicap1st",
       "NAME": "Handicap1st",
       "HEADER_NAME": "1H HDP",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "OverUnder1st",
       "NAME": "OverUnder1st",
       "HEADER_NAME": "1H O/U",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "OneXTwo",
       "NAME": "OneXTwo",
       "HEADER_NAME": "1X2",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "OneXTwo1st",
       "NAME": "OneXTwo1st",
       "HEADER_NAME": "1H 1X2",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "Specific15Mins",
       "NAME": "Specific15Mins",
       "HEADER_NAME": "15 mins",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
 
@@ -154,28 +157,28 @@
       "COLUMN_KEY": "Specific10Mins",
       "NAME": "Specific10Mins",
       "HEADER_NAME": "10 mins",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "FM",
       "NAME": "FM",
       "HEADER_NAME": "FM",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "AIO",
       "NAME": "AIO",
       "HEADER_NAME": "AIO",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     },
     {
       "COLUMN_KEY": "LA",
       "NAME": "LA",
       "HEADER_NAME": "LA",
-      "WIDTH": 80,
+      "WIDTH": 140,
       "IS_CAN_FILTER": true
     }
   ],

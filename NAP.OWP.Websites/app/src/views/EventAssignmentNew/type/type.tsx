@@ -3,6 +3,7 @@ type TColumn = {
   COLUMN_KEY: string;
   IS_CAN_FILTER: boolean;
   WIDTH: number;
+  IS_FREEZE?: boolean;
 };
 
 type TPickCellModel = {
@@ -271,7 +272,6 @@ type TEventDetail = {
   Website2: string | null | undefined;
   Website3: string | null | undefined;
   Website4: string | null | undefined;
-
 };
 
 type TMainAssignment = TAssignment | undefined | { oWPMatchId: number };

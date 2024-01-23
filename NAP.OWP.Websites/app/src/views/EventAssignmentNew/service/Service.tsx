@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { QUERY_SIMPLE_API } from '../../Shared/Constants';
 import { buildRequestURLForLGA } from '../helper/apiHelper';
 import {
   syncOffVRKey,
