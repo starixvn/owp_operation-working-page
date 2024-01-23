@@ -1098,6 +1098,15 @@
     <Content Include="wwwroot\day-shift-assignment\assets\js\main-7bcef9ce.js" />
     <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\day-shift-assignment\server.html" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\server-75752fd9.css" />
+    <Content Include="wwwroot\event-assignment-new\assets\js\main-df3ef56f.js" />
+    <Content Include="wwwroot\event-assignment-new\favicon.ico" />
+    <Content Include="wwwroot\event-assignment-new\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\logo_none-232840bc.svg" />
@@ -3097,6 +3106,10 @@
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-assignment-new\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
