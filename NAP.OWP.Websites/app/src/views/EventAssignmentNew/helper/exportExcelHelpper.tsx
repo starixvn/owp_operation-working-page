@@ -1,5 +1,6 @@
 import { TFilter } from '../type/type';
 import Utils from '../../Shared/Utils';
+import dayjs from 'dayjs';
 
 export const createModel = (eventModel: TFilter) => {
   return {
@@ -45,3 +46,9 @@ export const eventPickingListUrlNew = (eventModel: TFilter) => {
       : `${window.netCoreRootUrl}/api/EventPicking/export-misc-match`;
   return `${url}?date=${Utils.formatDate(selectedDate)}`;
 };
+
+export const eventPickingListFileName = (date: Date) =>
+  `Event Picking-${dayjs(Utils.formatDate(date)).format('YYYY-MM-DD')}.xlsx`;
+
+export const liveGameAssignmentFileName = (date: Date) =>
+  `Assignment - ${dayjs(Utils.formatDate(date)).format('YYYYMMDD')}.xlsx`;
