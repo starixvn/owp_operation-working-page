@@ -7,11 +7,9 @@ import {
   TDataTable
 } from '../type/type';
 import { TABLE, COLUMN_FULL_BETTYPE } from '../const.json';
+import { bool } from 'prop-types';
 const {
-  HEADER: { MATCH_NO, KO_TIME, EVENT, NOTE, IP_TV,
-    PROVIDER,
-    MB,
-    REMARK }
+  HEADER: { MATCH_NO, KO_TIME, EVENT, NOTE, IP_TV, PROVIDER, MB, REMARK }
 } = TABLE;
 
 const { convertThousandToK, convertSpreadToPercent, toLowerCaseForFilter } =
@@ -341,6 +339,15 @@ const handleFilterByColumn = (
   return events;
 };
 
+const handleDataByTicket = (events: TDataTable, isUnread: boolean) =>
+  events.filter(x => x.IsRead === false || !isUnread);
+
+const handleFilter =
+  (events: TDataTable) =>
+  (columnFilters: Array<TColumnFilter>) =>
+  (isUnread: boolean) =>
+    handleDataByTicket(handleFilterByColumn(events, columnFilters), isUnread);
+
 const updateColumnFilter = (
   currentState: TColumnFilter[],
   newFilter: TColumnFilter
@@ -354,4 +361,4 @@ const updateColumnFilter = (
   }
 };
 
-export { handleFilterByColumn, updateColumnFilter };
+export { handleFilter, handleFilterByColumn, updateColumnFilter };

@@ -15,8 +15,7 @@ const queryDataTableThunk = createAsyncThunk<TQueryDataResult>(
       SelectedOffVRs: filterState.selectedOffVRs.map(x => x.value) || [],
       MatchType:
         filterState.selectedMatchType.map(x => x.value).join(',') || '',
-      SyncLiveStatus: filterState.selectedSyncLive.value,
-      ShowUnreadMessage: filterState.showUnreadMessage
+      SyncLiveStatus: filterState.selectedSyncLive.value
     };
 
     const dataQuery = await Service.query(eventModel);

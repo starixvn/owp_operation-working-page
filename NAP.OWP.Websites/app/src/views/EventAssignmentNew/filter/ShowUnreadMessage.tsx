@@ -1,19 +1,15 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { updateFilterState } from './filterSlice';
+import { handleShowUnreadMessage } from '../table/eventAssignmentTableSlice';
 
 const ShowUnreadMessage = () => {
   const dispatch = useAppDispatch();
   const showUnreadMessage = useAppSelector(
-    state => state.filter.filterState.showUnreadMessage
+    state => state.eventAssignmentTable.isShowUnreadMsg
   );
 
   const handleOnChange = () => {
-    const model = {
-      key: 'selectedOffVRs',
-      value: !showUnreadMessage
-    };
-    dispatch(updateFilterState(model));
+    dispatch(handleShowUnreadMessage());
   };
 
   return (

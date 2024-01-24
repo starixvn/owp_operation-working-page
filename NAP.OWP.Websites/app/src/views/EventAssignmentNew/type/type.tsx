@@ -80,7 +80,7 @@ type TDataSource = {
   Away: string;
   League: string;
   LeagueGroup: string | null;
-  IsRead: boolean;
+  IsRead: boolean | null;
   HasTicket: boolean;
   NoOfHDP: string | null;
   IsAllowedToViewDetail: boolean;
@@ -150,6 +150,7 @@ type TQueryLiveGameAssignment = {
   loading: string;
   entities: TDataTable;
   entitiesOriginal: TDataTable;
+  isShowUnreadMsg: boolean;
 };
 
 type TPolicy = {
@@ -233,7 +234,6 @@ type TFilter = {
   selectedMatchStatus: TOptions[];
   selectedSyncLive: TOptions;
   selectedOffVRs: TOptions[];
-  showUnreadMessage: boolean;
 };
 
 type TOptions = {
@@ -259,7 +259,6 @@ type TQueryDataModel = {
   SelectedOffVRs: Array<number | string>;
   MatchType: string;
   SyncLiveStatus: number | string;
-  ShowUnreadMessage: boolean;
 };
 type TEventDetail = {
   OWPMatchId: number;

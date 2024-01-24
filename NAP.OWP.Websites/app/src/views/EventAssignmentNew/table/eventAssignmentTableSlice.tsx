@@ -9,7 +9,11 @@ import {
 } from '../type/type';
 import queryDataTableThunk from './queryDataTableThunk';
 import { isEqual } from 'lodash';
-import { handleFilterByColumn, updateColumnFilter } from './columnFilter';
+import {
+  handleFilterByColumn,
+  handleFilter,
+  updateColumnFilter
+} from './columnFilter';
 import { buildIsReadValue } from '../../Shared/ticketEvent/helper/ticketHelper';
 
 const eventAssignmentTableSlice = createSlice({
@@ -21,6 +25,7 @@ const eventAssignmentTableSlice = createSlice({
     filterState: [],
     entitiesOriginal: [],
     entities: [],
+    isShowUnreadMsg: false,
     loading: REQUEST_STATUS.idle
   } as TQueryLiveGameAssignment,
   reducers: {
@@ -62,12 +67,23 @@ const eventAssignmentTableSlice = createSlice({
     onColumnFilter: (state, action: PayloadAction<TColumnFilter>) => {
       updateColumnFilter(state.filterState, action.payload);
       state.entities =
-        handleFilterByColumn(state.entitiesOriginal, state.filterState) || [];
+        handleFilter(state.entitiesOriginal)(state.filterState)(
+          state.isShowUnreadMsg
+        ) || [];
     },
     onClearFilter: state => {
       state.filterState = [];
       state.entities = state.entitiesOriginal;
     },
+    handleShowUnreadMessage: state => {
+      const { isShowUnreadMsg } = state;
+      const currentValue = !isShowUnreadMsg;
+      state.isShowUnreadMsg = currentValue;
+      state.entities =
+        handleFilter(state.entitiesOriginal)(state.filterState)(currentValue) ||
+        [];
+    },
+
     setDataTable: (state, action) => {
       state.entities = action.payload;
     },
@@ -88,7 +104,10 @@ const eventAssignmentTableSlice = createSlice({
       })
       .addCase(queryDataTableThunk.fulfilled, (state, { payload }) => {
         state.loading = REQUEST_STATUS.idle;
-        state.entities = handleFilterByColumn(payload.data, state.filterState) || [];
+        state.entities =
+          handleFilter(payload.data)(state.filterState)(
+            state.isShowUnreadMsg
+          ) || [];
         state.entitiesOriginal = payload.data;
         state.syncOffVRLastTime = payload.syncOffVRLastUpdated.item1;
         state.syncOffVRByUser = payload.syncOffVRLastUpdated.item2;
@@ -106,7 +125,8 @@ const {
   onColumnFilter,
   onClearFilter,
   setDataTable,
-  setDataSignalR
+  setDataSignalR,
+  handleShowUnreadMessage
 } = actions;
 
 export {
@@ -115,6 +135,7 @@ export {
   onColumnFilter,
   onClearFilter,
   setDataTable,
-  setDataSignalR
+  setDataSignalR,
+  handleShowUnreadMessage
 };
 export default reducer;

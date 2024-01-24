@@ -17,8 +17,7 @@ const filterSlice = createSlice({
       selectedMatchType: MATCH_TYPE_OPTION,
       selectedMatchStatus: [] as TOptions[],
       selectedSyncLive: SYNC_LIVE_OPTION[0] as TOptions,
-      selectedOffVRs: [] as TOptions[],
-      showUnreadMessage: false
+      selectedOffVRs: [] as TOptions[]
     } as TFilter,
     loading: REQUEST_STATUS.pending,
     filterOptions: {} as TFilterQueryOptions
