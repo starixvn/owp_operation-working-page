@@ -54,7 +54,9 @@ namespace OWP.Constants
 
 				public const string LiveGameAssignment = "Live Game Assignment";
 
-				public const string LiveGameList = "Live Game List";
+                public const string LiveGameAssignmentNew = "Live Game Assignment New";
+
+                public const string LiveGameList = "Live Game List";
 
 				public const string MatchCountLiveReport = "Match Count Live Report";
 
