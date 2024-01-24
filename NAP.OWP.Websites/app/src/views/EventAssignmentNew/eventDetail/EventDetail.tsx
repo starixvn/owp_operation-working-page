@@ -5,6 +5,7 @@ import queryDataTableThunk from '../table/queryDataTableThunk';
 import Utils from '../../Shared/Utils';
 import { nanoid } from '@reduxjs/toolkit';
 import ToastrWrapper from '../../components/ToastrWrapper';
+import { setDetailEventInfo } from './eventDetailSlice';
 
 const EventDetail = () => {
   const dispatch = useAppDispatch();
@@ -13,35 +14,40 @@ const EventDetail = () => {
   const { OwpMatchId } = useAppSelector(x => x.eventDetail);
 
   const onHideDetailInformation = async () => {
-    if (iframeRef.current) {
-      const editGeneralInfo = iframeRef.current.getAttribute(
-        'edit-general-info'
-      );
-      const editMatchInfo = iframeRef.current.getAttribute('edit-match-info');
-      const editTradingInfo = iframeRef.current.getAttribute(
-        'edit-trading-info'
-      );
-      const editProviderInfo = iframeRef.current.getAttribute(
-        'edit-provider-info'
-      );
+    const editGeneralInfo =
+      iframeRef?.current?.getAttribute('edit-general-info');
+    const editMatchInfo =
+      iframeRef?.current?.getAttribute('edit-match-info');
+    const editTradingInfo =
+      iframeRef?.current?.getAttribute('edit-trading-info');
+    const editProviderInfo =
+      iframeRef?.current?.getAttribute('edit-provider-info');
 
-      const isEditGeneralAndMatchInfo =
-        editGeneralInfo === '1' || editMatchInfo === '1';
-      const isEditTradingAndProviderInfo =
-        editTradingInfo === '1' || editProviderInfo === '1';
-      if (isEditGeneralAndMatchInfo || isEditTradingAndProviderInfo) {
-        const confirmResult = await ToastrWrapper.confirm('Your unsaved changes will be lost. Are you sure?');
-        confirmResult.value && onCloseModal();
-      } else {
-        onCloseModal();
-      }
+    const isEditGeneralAndMatchInfo =
+      editGeneralInfo === '1' || editMatchInfo === '1';
+    const isEditTradingAndProviderInfo =
+      editTradingInfo === '1' || editProviderInfo === '1';
+    if (isEditGeneralAndMatchInfo || isEditTradingAndProviderInfo) {
+      ToastrWrapper.confirm('Your unsaved changes will be lost. Are you sure?').then(
+        confirmResult => {
+          if (confirmResult.value) {
+            onCloseModal();
+          }
+        }
+      );
+    } else {
+      onCloseModal();
     }
   };
 
   const onCloseModal = () => {
     const attributeUpdateValue = iframeRef?.current?.getAttribute('updated');
     const updateResult = attributeUpdateValue && parseInt(attributeUpdateValue, 10);
-    updateResult && updateResult > 0 && dispatch(queryDataTableThunk());
+    dispatch(setDetailEventInfo(0));
+    if (updateResult && updateResult > 0) {
+      iframeRef?.current?.setAttribute('updated', '0');
+      dispatch(queryDataTableThunk());
+    }
   };
 
   return OwpMatchId
