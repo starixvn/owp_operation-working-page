@@ -88,7 +88,7 @@ const eventAssignmentTableSlice = createSlice({
       })
       .addCase(queryDataTableThunk.fulfilled, (state, { payload }) => {
         state.loading = REQUEST_STATUS.idle;
-        state.entities = payload.data;
+        state.entities = handleFilterByColumn(payload.data, state.filterState) || [];
         state.entitiesOriginal = payload.data;
         state.syncOffVRLastTime = payload.syncOffVRLastUpdated.item1;
         state.syncOffVRByUser = payload.syncOffVRLastUpdated.item2;
