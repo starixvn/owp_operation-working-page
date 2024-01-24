@@ -16,6 +16,7 @@ import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';
 import queryDataTableThunk from './table/queryDataTableThunk';
 import queryFilterOptionsThunk from './filter/queryFilterOptionsThunk';
 import NewSpecialEvent from './newEvent/NewSpecialEvent';
+import EventDetail from './eventDetail/EventDetail';
 
 const EventAssignment = () => {
   const stableDispatch = useAppDispatch();
@@ -64,6 +65,7 @@ const EventAssignment = () => {
       <CreateTicketLiveIncident creatorInfo={creatorInfo} />
       <TicketDetailBoard />
       <NewSpecialEvent />
+      <EventDetail />
     </div>
   );
 };

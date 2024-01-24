@@ -1,5 +1,5 @@
 import React from 'react';
-import { TCellModel, TDataSource } from '../../type/type';
+import { TCellModel } from '../../type/type';
 import { PlusIcon, ArrowRightIcon } from 'mdi-react';
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from 'reactstrap';
@@ -9,7 +9,8 @@ import MatchInfo from '../../components/MatchInfo';
 import EventPopup from '../../../Shared/EventPopup';
 import dayjs from 'dayjs';
 import { useAppDispatch } from '../../app/hooks';
-import { setEventDetailInfo } from '../../newEvent/eventDetailSlice';
+import { setNewEventInfo } from '../../newEvent/newEventSlice';
+import { setDetailEventInfo } from '../../eventDetail/eventDetailSlice';
 
 const EventCell = (props: TCellModel) => {
   const dispatch = useAppDispatch();
@@ -63,7 +64,7 @@ const EventCell = (props: TCellModel) => {
         <a
           onClick={e => {
             e.preventDefault();
-            dispatch(setEventDetailInfo(event));
+            dispatch(setNewEventInfo(event));
           }}
           rel='noopener noreferrer'
           className='add-specialEvent'>
@@ -74,8 +75,7 @@ const EventCell = (props: TCellModel) => {
         <a
           onClick={e => {
             e.preventDefault();
-            // TODO
-            //openDetailInformation(event.OWPMatchId);
+            dispatch(setDetailEventInfo(event.OWPMatchId));
           }}
           className='link-livedetail'>
           <ArrowRightIcon size={13} />

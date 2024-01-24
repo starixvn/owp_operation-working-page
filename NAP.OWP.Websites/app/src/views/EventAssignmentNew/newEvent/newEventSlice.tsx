@@ -2,19 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { TDataSource } from '../type/type';
 
-const eventDetailSlice = createSlice({
-  name: 'eventDetailSlice',
+const newEventSlice = createSlice({
+  name: 'newEventSlice',
   initialState: {
     event: {} as TDataSource,
   },
   reducers: {
-    setEventDetailInfo: (state, action: PayloadAction<TDataSource>) => {
-      debugger
+    setNewEventInfo: (state, action: PayloadAction<TDataSource>) => {
       state.event = action.payload;
     }
   }
 });
-const { reducer, actions } = eventDetailSlice;
-const { setEventDetailInfo } = actions;
-export { setEventDetailInfo };
+const { reducer, actions } = newEventSlice;
+const { setNewEventInfo } = actions;
+export { setNewEventInfo };
 export default reducer;
