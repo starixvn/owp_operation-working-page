@@ -125,6 +125,13 @@ type TMaxbetSpread = {
   MaxBetToDisplay: string;
   spreadToDisplay: string;
 };
+type TCellSchema = {
+  columnKey: string,
+  dataSource: TDataTable,
+  rowIndex: number,
+  onShowPopup: (show: boolean) => void
+};
+
 type TDataTable = Array<TDataSource>;
 type TQueryDataResult = {
   data: TDataTable;
@@ -142,6 +149,11 @@ type TNote = {
   UserId: number;
   Username: string;
 };
+type TAllowAddEvent = {
+  isYesterdayOrAfter: boolean,
+  isAllowAddEvent: boolean
+};
+
 type TQueryLiveGameAssignment = {
   dateUpdated: string;
   syncOffVRLastTime: string;
@@ -264,8 +276,7 @@ type TQueryDataModel = {
 type TEventDetail = {
   OWPMatchId: number;
 };
-type TMainAssignment = TAssignment | undefined | { oWPMatchId: number };
-type TOthersAssignment = TAssignment[] | undefined;
+
 export {
   TQueryDataModel,
   TQueryDataResult,
@@ -288,11 +299,11 @@ export {
   TNoteCell,
   TNote,
   TAssignment,
-  TMainAssignment,
-  TOthersAssignment,
   TUpdateAssignment,
   TColumnFilter,
   TColumnFilterByMbc,
   TMaxbetSpread,
-  TEventDetail
+  TEventDetail,
+  TAllowAddEvent,
+  TCellSchema
 };

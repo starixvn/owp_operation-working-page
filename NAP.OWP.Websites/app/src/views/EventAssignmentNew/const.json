@@ -29,8 +29,7 @@
         "NAME": "MatchNo",
         "HEADER_NAME": "No#",
         "WIDTH": 60,
-        "IS_CAN_FILTER": true,
-        "IS_FREEZE": true
+        "IS_CAN_FILTER": true
       },
       "KO_TIME": {
         "COLUMN_KEY": "KickOffTime",
@@ -38,8 +37,7 @@
         "NAME": "KickOffTime",
         "HEADER_NAME": "KO Time",
         "WIDTH": 90,
-        "IS_CAN_FILTER": true,
-        "IS_FREEZE": true
+        "IS_CAN_FILTER": true
       },
       "EVENT": {
         "COLUMN_KEY": "Event",
@@ -47,43 +45,47 @@
         "NAME": "Event",
         "HEADER_NAME": "Event",
         "WIDTH": 300,
-        "IS_CAN_FILTER": true,
-        "IS_FREEZE": true
+        "IS_CAN_FILTER": true
       },
       "TICKET": {
         "COLUMN_KEY": "Ticket",
         "NAME": "Ticket",
         "HEADER_NAME": "Ticket",
         "IS_CAN_FILTER": false,
-        "WIDTH": 60
+        "WIDTH": 60,
+        "FIXED": false
       },
       "IP_TV": {
         "COLUMN_KEY": "TV",
         "NAME": "TV/IPTV",
         "HEADER_NAME": "TV/IPTV",
         "WIDTH": 150,
-        "IS_CAN_FILTER": true
+        "IS_CAN_FILTER": true,
+        "FIXED": false
       },
       "PROVIDER": {
         "COLUMN_KEY": "Provider",
         "NAME": "Provider",
         "HEADER_NAME": "Provider",
         "WIDTH": 180,
-        "IS_CAN_FILTER": true
+        "IS_CAN_FILTER": true,
+        "FIXED": false
       },
       "MB": {
         "COLUMN_KEY": "MaxBet_Spread",
         "NAME": "MaxBet_Spread",
         "HEADER_NAME": "MB",
         "WIDTH": 115,
-        "IS_CAN_FILTER": true
+        "IS_CAN_FILTER": true,
+        "FIXED": false
       },
       "REMARK": {
         "COLUMN_KEY": "Remark",
         "NAME": "Remark",
         "HEADER_NAME": "Remark",
         "WIDTH": 200,
-        "IS_CAN_FILTER": true
+        "IS_CAN_FILTER": true,
+        "FIXED": false
       },
       "NOTE": {
         "COLUMN_KEY": "Note",
@@ -92,6 +94,94 @@
         "HEADER_NAME": "Note",
         "WIDTH": 60,
         "IS_CAN_FILTER": true
+      },
+      "HDP": {
+        "COLUMN_KEY": "Handicap",
+        "NAME": "Handicap",
+        "HEADER_NAME": "HDP",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "OU": {
+        "COLUMN_KEY": "OverUnder",
+        "NAME": "OverUnder",
+        "HEADER_NAME": "O/U",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "FIRST_HALF_HDP": {
+        "COLUMN_KEY": "Handicap1st",
+        "NAME": "Handicap1st",
+        "HEADER_NAME": "1H HDP",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "FIRST_HALF_OU": {
+        "COLUMN_KEY": "OverUnder1st",
+        "NAME": "OverUnder1st",
+        "HEADER_NAME": "1H O/U",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "ONE_X_TWO": {
+        "COLUMN_KEY": "OneXTwo",
+        "NAME": "OneXTwo",
+        "HEADER_NAME": "1X2",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "FIRST_HALF_ONE_X_TWO": {
+        "COLUMN_KEY": "OneXTwo1st",
+        "NAME": "OneXTwo1st",
+        "HEADER_NAME": "1H 1X2",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "FIFTEEN_MINS": {
+        "COLUMN_KEY": "Specific15Mins",
+        "NAME": "Specific15Mins",
+        "HEADER_NAME": "15 mins",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "TEN_MINS": {
+        "COLUMN_KEY": "Specific10Mins",
+        "NAME": "Specific10Mins",
+        "HEADER_NAME": "10 mins",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "FM": {
+        "COLUMN_KEY": "FM",
+        "NAME": "FM",
+        "HEADER_NAME": "FM",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "AIO": {
+        "COLUMN_KEY": "AIO",
+        "NAME": "AIO",
+        "HEADER_NAME": "AIO",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
+      },
+      "LA": {
+        "COLUMN_KEY": "LA",
+        "NAME": "LA",
+        "HEADER_NAME": "LA",
+        "WIDTH": 140,
+        "IS_CAN_FILTER": true,
+        "FIXED": false
       }
     },
     "ROW_HEIGHT": 100,

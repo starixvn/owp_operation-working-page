@@ -1,6 +1,5 @@
 import React from 'react';
 import { TCellModel } from '../../type/type';
-import { v4 as uuidv4 } from 'uuid';
 
 const RemarkCell = (props: TCellModel) => {
   const { dataSource, rowIndex } = props;
@@ -33,8 +32,8 @@ const RemarkCell = (props: TCellModel) => {
   }
   return (
     <div className='remark-col'>
-      {arrayCombine.map(v => (
-        <React.Fragment key={uuidv4()}>{v}</React.Fragment>
+      {arrayCombine.map((v, index) => (
+        <React.Fragment key={`remark_${index}`}>{v}</React.Fragment>
       ))}
     </div>
   );

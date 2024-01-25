@@ -1,7 +1,6 @@
 import React from 'react';
 import { TCellModel } from '../../type/type';
 import ReactTooltip from 'react-tooltip';
-import { v4 as uuidv4 } from 'uuid';
 
 const MBCell = (props: TCellModel) => {
   const { dataSource, rowIndex } = props;
@@ -9,7 +8,7 @@ const MBCell = (props: TCellModel) => {
     dataSource[rowIndex];
 
   const renderMaxbetSpreadMbc = () => {
-    const uuidKey = `${OWPMatchId}_${uuidv4()}`;
+    const uuidKey = `mb_${OWPMatchId}_${rowIndex}`;
     const isDisplayHDPSetting =
       HandicapSetting?.spreadToDisplay || OverUnderSetting?.spreadToDisplay;
     const isHDPSpreadExisting = HandicapSetting?.spreadToDisplay;

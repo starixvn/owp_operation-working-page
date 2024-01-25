@@ -1,13 +1,10 @@
 import React from 'react';
 import { TCellModel } from '../../type/type';
 import { PlusIcon, ArrowRightIcon } from 'mdi-react';
-import { v4 as uuidv4 } from 'uuid';
 import { Button } from 'reactstrap';
 import store from '../../app/store';
-import Utils from '../../../Shared/Utils';
 import MatchInfo from '../../components/MatchInfo';
 import EventPopup from '../../../Shared/EventPopup';
-import dayjs from 'dayjs';
 import { useAppDispatch } from '../../app/hooks';
 import { setNewEventInfo } from '../../newEvent/newEventSlice';
 import { setDetailEventInfo } from '../../eventDetail/eventDetailSlice';
@@ -15,20 +12,16 @@ import { setDetailEventInfo } from '../../eventDetail/eventDetailSlice';
 const EventCell = (props: TCellModel) => {
   const dispatch = useAppDispatch();
   const {
-    filter: {
-      filterState: { selectedDate }
-    },
     policy: {
       entities: { FullBetTypes, detailInformationPolicy }
+    },
+    allowAddEvent: {
+      isAllowAddEvent,
+      isYesterdayOrAfter
     }
   } = store.getState();
   const { rowIndex, dataSource } = props;
   const event = dataSource[rowIndex];
-  const isYesterdayOrAfter =
-    Utils.isYesterdayOrAfterForAssignment(selectedDate);
-  const today = new Date();
-  const yesterDay = dayjs(today).subtract(1, 'day');
-  const isAllowAddEvent = Utils.isSameOrAfter(selectedDate, yesterDay);
 
   const handleCopy = () => {
     const kickOffTime = `K.O Time: ${event.KickOffTime}`;
@@ -54,7 +47,7 @@ const EventCell = (props: TCellModel) => {
     : null;
 
   return (
-    <div className='table-cell' key={`Event${uuidv4()}${rowIndex}`}>
+    <div className='table-cell' key={`Event${rowIndex}`}>
       {event.LeagueGroup && (
         <h4 className='league-group league-badge'>{event.LeagueGroup}</h4>
       )}
@@ -85,7 +78,6 @@ const EventCell = (props: TCellModel) => {
       <MatchInfo
         dataSource={dataSource}
         rowIndex={rowIndex}
-        componentId={uuidv4()}
       />
 
       {event.AdminSiteId && (

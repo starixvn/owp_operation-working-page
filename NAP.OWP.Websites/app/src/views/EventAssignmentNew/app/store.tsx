@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import eventAssignmentTableSlice from '../table/eventAssignmentTableSlice';
+import allowAddEventSlice from '../table/allowAddEventSlice';
 import policySlice from '../policy/policySlice';
 import filterSlice from '../filter/filterSlice';
 import newEventSlice from '../newEvent/newEventSlice';
@@ -13,6 +14,7 @@ import signalREventTicketSlice from '../../Shared/ticketEvent/signalR/signalREve
 const store = configureStore({
   reducer: {
     eventAssignmentTable: eventAssignmentTableSlice,
+    allowAddEvent: allowAddEventSlice,
     policy: policySlice,
     pagePolicy: createMultiplePolicySlice('pagePolicy'),
     filter: filterSlice,

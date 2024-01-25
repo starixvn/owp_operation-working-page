@@ -1,8 +1,8 @@
 import React from 'react';
 import { TCellModel } from '../type/type';
 
-const MatchInfo = (props: TCellModel & { componentId: string }) => {
-  const { rowIndex, dataSource, componentId } = props;
+const MatchInfo = (props: TCellModel) => {
+  const { rowIndex, dataSource } = props;
   const event = dataSource[rowIndex];
   return (
     <>
@@ -16,12 +16,11 @@ const MatchInfo = (props: TCellModel & { componentId: string }) => {
       )}
       {event.MatchOffers.map((element, index) => (
         <span
-          key={`${componentId}`}
-          className={`badge-label ${
-            element.MatchOfferValue.includes('OFF VR')
+          key={`${element.MatchOfferValue}-${index}`}
+          className={`badge-label ${element.MatchOfferValue.includes('OFF VR')
               ? 'off-vr-offer'
               : 'match-offer'
-          } `}>
+            } `}>
           {element.MatchOfferValue}
         </span>
       ))}

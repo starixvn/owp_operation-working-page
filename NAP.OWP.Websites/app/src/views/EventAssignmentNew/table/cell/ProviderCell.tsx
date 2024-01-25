@@ -1,7 +1,6 @@
 import React from 'react';
 import { TCellModel } from '../../type/type';
 import { Button, UncontrolledPopover, PopoverBody } from 'reactstrap';
-import { v4 as uuidv4 } from 'uuid';
 import { PhoneIcon } from 'mdi-react';
 
 const ProviderCell = (props: TCellModel) => {
@@ -13,7 +12,7 @@ const ProviderCell = (props: TCellModel) => {
     <div className='provider-cell'>
       {Provider && <p className='runner'>{Provider}</p>}
       {OtherProvider && (
-        <React.Fragment key={`OtherProvider${uuidv4()}${rowIndex}`}>
+        <React.Fragment key={`OtherProvider${rowIndex}`}>
           <Button id={buttonIdOtherProvider} className='button-provider'>
             Other Provider
           </Button>
@@ -27,7 +26,7 @@ const ProviderCell = (props: TCellModel) => {
         </React.Fragment>
       )}
       {Phone && (
-        <React.Fragment key={`Phone${uuidv4()}${rowIndex}`}>
+        <React.Fragment key={`Phone${rowIndex}`}>
           <Button id={buttonIdPhone} className='button-provider'>
             <PhoneIcon size={11} /> Phone
           </Button>
