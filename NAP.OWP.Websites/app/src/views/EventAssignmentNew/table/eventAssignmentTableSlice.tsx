@@ -26,7 +26,7 @@ const eventAssignmentTableSlice = createSlice({
     entitiesOriginal: [],
     entities: [],
     isShowUnreadMsg: false,
-    loading: REQUEST_STATUS.idle
+    loading: REQUEST_STATUS.pending
   } as TQueryLiveGameAssignment,
   reducers: {
     onUpdatedAssignment: (state, action: PayloadAction<TUpdateAssignment>) => {

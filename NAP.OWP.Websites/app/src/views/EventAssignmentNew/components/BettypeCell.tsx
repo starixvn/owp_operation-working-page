@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { buildAssignment } from '../helper/assignmentHelper';
-import EditableButtonGroup from '../../components/Assignment/EditableButtonGroup';
 import { TAssignment, TAssignmentBuilder, TBettype } from '../type/type';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch } from '../app/hooks';
 import EditableButtonBase from '../../components/Assignment/EditableButtonBase';
 import {
   onUpdatedAssignment,
   onDeletedAssignment
 } from '../table/eventAssignmentTableSlice';
 import Utils from '../../Shared/Utils';
+import store from '../app/store';
 
 const BettypeCell = (props: TAssignmentBuilder) => {
-  const policy = useAppSelector(state => state.policy.entities);
   const dispatch = useAppDispatch();
-  const filterDate = useAppSelector(
-    state => state.filter.filterState.selectedDate
-  );
 
-  const assignment = buildAssignment(props, policy);
+  const { policy, filter: {
+    filterState: { selectedDate }
+  } } = store.getState();
+
+  const assignment = buildAssignment(props, policy.entities);
   const {
     keyIndex,
     policyForBetType,
@@ -29,7 +29,8 @@ const BettypeCell = (props: TAssignmentBuilder) => {
   } = assignment;
 
   const { bettypeName, rowIndex } = props;
-  const handleOnSavedAssignment = (
+
+  const handleOnSavedAssignment = useCallback((
     assignmentUpdate: TAssignment,
     bettypeName: TBettype,
     rowIndex: number
@@ -41,9 +42,9 @@ const BettypeCell = (props: TAssignmentBuilder) => {
         rowIndex
       })
     );
-  };
+  }, [dispatch]);
 
-  const handleOnDeletedAssignment = (
+  const handleOnDeletedAssignment = useCallback((
     assignmentUpdate: TAssignment,
     bettypeName: TBettype,
     rowIndex: number
@@ -55,13 +56,13 @@ const BettypeCell = (props: TAssignmentBuilder) => {
         rowIndex
       })
     );
-  };
+  }, [dispatch]);
 
   return (
     <EditableButtonBase
       key={keyIndex}
       policy={policyForBetType}
-      filterDate={Utils.formatDate(filterDate)}
+      filterDate={Utils.formatDate(selectedDate)}
       main={main}
       others={others}
       matchId={main.OWPMatchId}
