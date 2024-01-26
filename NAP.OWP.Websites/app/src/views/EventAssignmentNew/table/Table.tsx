@@ -9,6 +9,7 @@ import store from '../app/store';
 import { setAllowAddEvent } from './allowAddEventSlice';
 import NotePopupTableCss from '../../Shared/NotePopupTableCss';
 import { withResizeDetector } from 'react-resize-detector';
+import ReactDOM from 'react-dom';
 
 const {
   ROW_HEIGHT,
@@ -36,11 +37,11 @@ const EventAssignmentTable = () => {
   const tableWith =
     window.innerWidth > 680 ? window.innerWidth - 110 : window.innerWidth;
 
-  // TODO
   const handleShowPopup = (show: boolean) => {
     // eslint-disable-next-line no-warning-comments
     // eslint-disable-next-line react/no-find-dom-node
-    NotePopupTableCss(tableRef.current, show);
+    const tableElement = ReactDOM.findDOMNode(tableRef.current);
+    NotePopupTableCss(tableElement, show);
   };
 
   return (
