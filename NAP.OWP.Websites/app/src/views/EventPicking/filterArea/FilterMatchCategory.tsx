@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   FILTER_MATCH_CATEGORY_OPTIONS,
   FILTER_MATCH_CATEGORY

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import LeagueCellFactory from '../../../../Shared/common/CustomTable/commonCell/LeagueCellNew/LeagueCellFactory';
 

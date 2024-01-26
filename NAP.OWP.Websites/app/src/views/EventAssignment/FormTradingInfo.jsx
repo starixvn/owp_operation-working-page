@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import Select from 'react-select';
 import { cloneDeep } from 'lodash';
 import Converter from '../Shared/Converter';
@@ -29,7 +29,7 @@ class FormTradingInfo extends Component {
       isLoading: true,
       ...cloneDeep(defaultModel)
     };
-    this.tableRef = React.createRef();
+    this.tableRef = createRef();
     this.handleMatchOfferChange = this.handleMatchOfferChange.bind(this);
     this.handlenoHDPChange = this.handlenoHDPChange.bind(this);
   }

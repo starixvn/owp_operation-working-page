@@ -1,4 +1,3 @@
-import React from 'react';
 import SubTypeManagement from './SubTypeManagement';
 import { fireEvent, render } from '@testing-library/react';
 import useStore from '../../app/zustand/ticketTypeStore';

@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import React from 'react';
 import '@testing-library/jest-dom';
 import ReportTable from './ReportTable';
 import { useDispatch, useSelector } from 'react-redux';

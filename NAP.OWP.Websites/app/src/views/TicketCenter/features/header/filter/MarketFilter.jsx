@@ -1,4 +1,3 @@
-import React from 'react';
 import { MARKET } from '../../../const/const.json';
 import SelectFilterFactory from './SelectFilterFactory';
 import PropTypes from 'prop-types';

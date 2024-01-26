@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Filter from './Filter';
 import NormalizeDataHelper from './Helper/NormalizeDataHelper';
 import Table from './Table';

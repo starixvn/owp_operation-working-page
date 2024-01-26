@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import ViewCreateTicketBoard from './ViewCreateTicketBoard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fireEvent, render, waitFor } from '@testing-library/react';

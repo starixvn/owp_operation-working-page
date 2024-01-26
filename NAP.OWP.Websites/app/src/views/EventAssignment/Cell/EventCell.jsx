@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import { Button } from 'reactstrap';
 import { v4 as uuidv4 } from 'uuid';
 import { PlusIcon, ArrowRightIcon } from 'mdi-react';
@@ -17,7 +17,7 @@ const propTypesEvent = {
   detailInformationPolicy: PropTypes.object.isRequired
 };
 
-class EventCell extends React.PureComponent {
+class EventCell extends PureComponent {
   render() {
     const {
       isAllowAddEvent,

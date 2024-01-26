@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import NoteRow from './NoteRow';
 import { useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ const propTypes = {
 const NoteTable = props => {
   const { model } = props;
   const { PreMatchNoteId, LeagueId, InfoSiteMatchId } = model;
-  const addInputRef = React.createRef();
+  const addInputRef = createRef();
   const permission = useSelector(state => state.policy.permission);
   const note = useSelector(state => state.note);
   const notesData = note.notes;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 import LogHistoryPopup from './LogHistoryPopup';

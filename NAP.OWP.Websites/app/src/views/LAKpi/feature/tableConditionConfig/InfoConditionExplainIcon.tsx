@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Tooltip } from 'reactstrap';
 import TableConditionConfig from './TableConditionConfig';
 
-const InfoConditionExplainIcon: React.FC = () => {
+const InfoConditionExplainIcon = () => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const ref = useRef<SVGSVGElement | null>(null);
   const toggle = () => {

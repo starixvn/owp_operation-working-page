@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Filter from './Filter';
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch } from 'react-redux';

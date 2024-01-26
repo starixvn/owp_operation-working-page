@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import PopupContainer from '../views/PopupContainer/PopupAppNative';
 import '../scss/components/_chatboard.scss';

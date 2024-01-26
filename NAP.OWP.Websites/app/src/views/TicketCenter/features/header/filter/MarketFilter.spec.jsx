@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { useDispatch } from 'react-redux';
 import MarketFilter from './MarketFilter';

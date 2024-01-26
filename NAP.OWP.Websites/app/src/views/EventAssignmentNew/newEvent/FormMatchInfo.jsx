@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Select from 'react-select';
 import { Input } from 'reactstrap';
 import ArrowDownBoldIcon from 'mdi-react/ArrowDownBoldIcon';

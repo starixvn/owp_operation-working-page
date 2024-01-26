@@ -1,4 +1,3 @@
-import React from 'react';
 import { TableCell } from '../../TypeNative';
 import { MessageIcon } from 'mdi-react';
 import { Icon, Tooltip } from '@mui/material';

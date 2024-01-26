@@ -1,4 +1,3 @@
-import React from 'react';
 import TicketLogWorkCreator from './TicketLogWorkCreator';
 import { useSelector } from 'react-redux';
 import { LogWorkProps } from './Type';

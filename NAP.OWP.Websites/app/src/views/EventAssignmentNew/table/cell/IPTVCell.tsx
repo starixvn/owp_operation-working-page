@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { Button, UncontrolledPopover, PopoverBody } from 'reactstrap';
 import { TCellModel } from '../../type/type';
 
@@ -18,7 +18,7 @@ const IPTVCell = (props: TCellModel) => {
       )}
 
       {Channel && (
-        <React.Fragment key={`Channel${rowIndex}`}>
+        <Fragment key={`Channel${rowIndex}`}>
           <Button id={`Channel${rowIndex}`} className='button-channel'>
             IPTV/Channel
           </Button>
@@ -29,10 +29,10 @@ const IPTVCell = (props: TCellModel) => {
             target={`Channel${rowIndex}`}>
             <PopoverBody>{Channel}</PopoverBody>
           </UncontrolledPopover>
-        </React.Fragment>
+        </Fragment>
       )}
       {WatchBet && (
-        <React.Fragment key={`WatchBet${rowIndex}`}>
+        <Fragment key={`WatchBet${rowIndex}`}>
           <Button id={`WatchBet${rowIndex}`} className='button-watchbet'>
             Streaming
           </Button>
@@ -43,7 +43,7 @@ const IPTVCell = (props: TCellModel) => {
             target={`WatchBet${rowIndex}`}>
             <PopoverBody>{WatchBet}</PopoverBody>
           </UncontrolledPopover>
-        </React.Fragment>
+        </Fragment>
       )}
     </div>
   );

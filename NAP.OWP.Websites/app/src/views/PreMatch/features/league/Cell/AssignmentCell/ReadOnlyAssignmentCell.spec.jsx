@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { render } from '@testing-library/react';
 import ReadOnlyAssignmentCell from './ReadOnlyAssignmentCell';

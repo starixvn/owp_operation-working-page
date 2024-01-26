@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../../type/TTaskListTable';
 import { OFF_VR } from '../../const/TableSchema.json';
 

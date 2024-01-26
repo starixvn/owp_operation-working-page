@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef, Component } from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import ReportConst from './constant/ReportConst';
@@ -21,7 +21,7 @@ const propTypes = {
   serverTime: PropTypes.string
 };
 
-class Filter extends React.Component {
+class Filter extends Component {
   constructor(props) {
     super(props);
     const { serverTime } = this.props;
@@ -31,8 +31,8 @@ class Filter extends React.Component {
       toDate: dateDefault.toDate
     };
 
-    this.fromDatePicker = React.createRef();
-    this.toDatePicker = React.createRef();
+    this.fromDatePicker = createRef();
+    this.toDatePicker = createRef();
     this.handleSearch = this.handleSearch.bind(this);
     this.handleExport = this.handleExport.bind(this);
     this.onShowColumnChange = this.onShowColumnChange.bind(this);

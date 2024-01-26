@@ -1,5 +1,5 @@
 import CalendarIcon from 'mdi-react/CalendarIcon';
-import React, { createRef, useState } from 'react';
+import { createRef, useState } from 'react';
 import DatePicker, { ReactDatePicker } from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDays, getCurrentDateGmtPlus8 } from '../../../Shared/DateTime/dateTimeHelper';

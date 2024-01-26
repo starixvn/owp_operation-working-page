@@ -1,4 +1,3 @@
-import React from 'react';
 import MaxbetConst from '../../../constants/MaxbetConst';
 import Select from 'react-select';
 import { useDispatch, useStore } from 'react-redux';

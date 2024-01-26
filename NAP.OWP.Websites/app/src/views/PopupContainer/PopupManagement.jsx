@@ -1,4 +1,3 @@
-import React from 'react';
 import CreateTicketBoardOther from './../Shared/createTicketNew/CreateTicketBoardOther';
 import CreateTicketButton from './../Shared/createTicketNew/CreateTicketButton';
 import CreateTicketLiveIncident from './../Shared/createTicketNew/CreateTicketLiveIncident';

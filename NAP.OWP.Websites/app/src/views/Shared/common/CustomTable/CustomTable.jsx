@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'fixed-data-table-2';
 import { isEqual } from 'lodash';
@@ -15,7 +15,7 @@ const propTypes = {
   config: PropTypes.object.isRequired
 };
 
-const CustomTable = React.forwardRef(({ model, config }, ref) => {
+const CustomTable = forwardRef(({ model, config }, ref) => {
   const {
     columnSchema,
     dynamicCell,
@@ -30,7 +30,7 @@ const CustomTable = React.forwardRef(({ model, config }, ref) => {
     collapseAllRowFunc,
     expandAllRowFunc
   } = config;
-  const tableRef = React.createRef();
+  const tableRef = createRef();
   const { rowHeight, headerHeight, defaultHeight, filterOffset } = tableStyle;
   const {
     sortState,

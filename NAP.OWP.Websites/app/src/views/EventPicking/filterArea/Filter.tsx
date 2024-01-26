@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InfoIcon from '../../../assets/svg-element/InfoIcon';
 import store, { RootState } from '../app/store';

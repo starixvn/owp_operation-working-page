@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import TicketCellCommon from '../../../../Shared/ticketEvent/component/TicketCellCommon';
 import { setDataTable } from '../../tableSlice/tableSlice';
@@ -10,7 +10,7 @@ const propTypes = {
   handleShowTicket: PropTypes.func
 };
 
-const TicketCell = React.memo(props => {
+const TicketCell = memo(props => {
   const { dataSource, rowIndex, handleShowTicket } = props;
 
   const stableDispatch = useDispatch();

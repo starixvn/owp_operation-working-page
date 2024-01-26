@@ -1,5 +1,5 @@
 import Autosuggest from 'react-autosuggest';
-import React from 'react';
+import { Component } from 'react';
 import UserService from '../../Shared/User/UserService';
 import PropTypes from 'prop-types';
 import ToastrWrapper from '../ToastrWrapper';
@@ -14,7 +14,7 @@ const renderSuggestion = suggestion => {
   );
 };
 
-export class UserSuggestion extends React.Component {
+export class UserSuggestion extends Component {
   constructor() {
     super();
     this.state = {

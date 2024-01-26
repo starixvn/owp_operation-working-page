@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import CreateTicketHandler from '../handler/CreateTicketHandler';
 import OpenTicketListHandler from '../handler/OpenTicketListHandler';

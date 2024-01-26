@@ -1,4 +1,3 @@
-import React from 'react';
 import { DefaultCellTrader, DefaultCellProvider } from '../../TableSchema.json';
 import { DataSource, MatchSetting } from '../Share/Type';
 

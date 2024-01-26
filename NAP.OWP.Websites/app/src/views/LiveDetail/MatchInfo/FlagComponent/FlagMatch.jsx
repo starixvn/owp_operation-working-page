@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import FlagDetail from './FlagDetail';
 import { FIFA_FLAG, PES_FLAG, PES_FLAG_23 } from './FlagStore/FlagsCondition';

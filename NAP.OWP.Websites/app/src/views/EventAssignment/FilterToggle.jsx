@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Utils from '../Shared/Utils';
 import { FunctionKeys } from '../Shared/Constants';

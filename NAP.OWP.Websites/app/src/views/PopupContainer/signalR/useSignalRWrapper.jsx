@@ -1,4 +1,3 @@
-import React from 'react';
 import NetCoreSignalR from '../../Shared/NetCoreSignalR/NetCoreSignalR';
 import { handleNewMessageIncome } from './newMessageIncomeHandler';
 import { handleNewAddRecipient } from './newAddRecipientHandler';

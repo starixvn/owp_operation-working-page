@@ -1,7 +1,7 @@
 import { cloneDeep, isNil } from 'lodash';
 import BroomIcon from 'mdi-react/BroomIcon';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import Select from 'react-select';
 import { MajorBetTypes } from '../Shared/Constants';
 import Toastr from '../components/ToastrWrapper';

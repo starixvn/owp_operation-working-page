@@ -1,4 +1,3 @@
-import React from 'react';
 import LAReportManagement from './components/LAReportManagement';
 import { Provider } from 'react-redux';
 import store from './store/store';

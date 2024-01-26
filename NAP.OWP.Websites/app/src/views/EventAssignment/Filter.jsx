@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import { createRef, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
@@ -49,7 +49,7 @@ class Filter extends PureComponent {
 
     this.matchStatusOptions = [];
     this.offVRs = [];
-    this.datePicker = React.createRef();
+    this.datePicker = createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSyncOffVR = this.handleSyncOffVR.bind(this);
     this.handleShowMessage = this.handleShowMessage.bind(this);

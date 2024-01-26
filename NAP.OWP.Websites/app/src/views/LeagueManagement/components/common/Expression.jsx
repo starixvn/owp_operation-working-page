@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { useDispatch } from 'react-redux';
@@ -14,7 +14,7 @@ const propTypes = {
 const Expression = props => {
   const { item, index, hasWrite, actionType } = props;
   const dispatch = useDispatch();
-  let selectRef = React.createRef();
+  let selectRef = createRef();
   const handleChangeExpression = () => {
     dispatch(
       crud(actionType.UPDATE, {

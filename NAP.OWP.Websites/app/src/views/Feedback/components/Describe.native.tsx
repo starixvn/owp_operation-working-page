@@ -1,4 +1,4 @@
-import React, { createRef, ChangeEvent } from 'react';
+import { createRef, ChangeEvent } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../assets/svg-element/AttachFileIcon';

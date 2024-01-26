@@ -1,4 +1,3 @@
-import React from 'react';
 import RecipientsSelect from '../../../recipientSelect/RecipientsSelect';
 import { TRecipient } from '../Type';
 

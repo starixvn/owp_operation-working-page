@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Collapse, CardBody, Card, Button, CardHeader } from 'reactstrap';
 import PropTypes from 'prop-types';
 import ChevronDownIcon from 'mdi-react/ChevronDownIcon';

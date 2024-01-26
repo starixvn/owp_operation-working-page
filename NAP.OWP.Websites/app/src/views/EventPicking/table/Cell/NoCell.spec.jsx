@@ -1,4 +1,3 @@
-import React from 'react';
 import Spinner from '../../../components/Spinner';
 import { noop } from 'lodash';
 import { fireEvent, render } from '@testing-library/react';

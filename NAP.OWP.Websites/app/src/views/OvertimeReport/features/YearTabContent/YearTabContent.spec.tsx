@@ -1,5 +1,4 @@
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { OverTimeDataByYear } from '../typeNative';
 import { screen } from '@testing-library/react';

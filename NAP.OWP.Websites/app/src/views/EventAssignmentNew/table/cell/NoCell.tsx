@@ -1,4 +1,3 @@
-import React from 'react';
 import { TCellModel } from '../../type/type';
 import AbsencePersonIcon from '../../../../assets/svg-element/AbsencePersonIcon';
 import { UncontrolledTooltip } from 'reactstrap';

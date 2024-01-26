@@ -1,4 +1,3 @@
-import React from 'react';
 import FilterToggle from './FilterToggle';
 import { fireEvent, render } from '@testing-library/react';
 

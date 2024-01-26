@@ -1,3 +1,3 @@
-import React from 'react';
+import { lazy } from 'react';
 
-export default React.lazy(() =>  import('../maxbet/teamInfo/TeamInfo'));
+export default lazy(() =>  import('../maxbet/teamInfo/TeamInfo'));

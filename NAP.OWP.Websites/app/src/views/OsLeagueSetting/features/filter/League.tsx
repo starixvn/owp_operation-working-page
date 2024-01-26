@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Input } from 'reactstrap';
 import useStore from '../../app/store';
 import { filter } from '../../osLeague.json';

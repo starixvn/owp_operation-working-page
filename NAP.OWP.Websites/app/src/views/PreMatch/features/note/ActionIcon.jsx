@@ -1,4 +1,3 @@
-import React from 'react';
 import PencilIcon from 'mdi-react/PencilIcon';
 import PropTypes from 'prop-types';
 import ToastrWrapper from '../../../components/ToastrWrapper';

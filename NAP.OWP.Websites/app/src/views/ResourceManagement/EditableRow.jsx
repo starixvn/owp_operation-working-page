@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import EditableCell from './EditableCell';
 import ActionCell from './ActionCell';
@@ -15,7 +15,7 @@ const propTypes = {
   onCancel: PropTypes.func.isRequired
 };
 
-class EditableRow extends React.Component {
+class EditableRow extends Component {
   constructor(props) {
     super(props);
     const { row } = this.props;

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import { createRef, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import { MultiSelect } from 'react-multi-select-component';
@@ -31,7 +31,7 @@ class FilterNative extends PureComponent {
     };
 
     this.matchStatusOptions = [];
-    this.datePicker = React.createRef();
+    this.datePicker = createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleExport = this.handleExport.bind(this);
   }

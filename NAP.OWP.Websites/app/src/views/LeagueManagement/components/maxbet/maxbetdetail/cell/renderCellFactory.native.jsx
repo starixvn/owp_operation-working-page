@@ -1,4 +1,3 @@
-import React from 'react';
 import ColumnConst from '../../../../constants/ColumnConst';
 import CategoryCell from './CategoryCell';
 import TimeCell from './TimeCell';

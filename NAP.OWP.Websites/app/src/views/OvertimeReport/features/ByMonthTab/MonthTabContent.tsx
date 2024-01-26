@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import Loading from '../../../components/Loading';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
@@ -10,7 +10,7 @@ import { FilterModel } from '../typeNative';
 import { getReportByMonth } from './Helper/byMonthSlice';
 import ReportTable from './Table/ReportTable';
 
-const MonthTabContent = React.memo(() => {
+const MonthTabContent = memo(() => {
   const model = useSelector((state: RootState) => state.monthOTReducer);
   const dispatch = useStableDispatch();
   const { data, isFulfill, isLoading } = model;

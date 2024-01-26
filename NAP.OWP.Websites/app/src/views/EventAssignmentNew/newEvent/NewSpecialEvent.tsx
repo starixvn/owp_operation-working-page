@@ -1,4 +1,3 @@
-import React from 'react';
 import AddEvent from './AddEvent';
 import store from '../app/store';
 import { useAppDispatch, useAppSelector } from '../app/hooks';

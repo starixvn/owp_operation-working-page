@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Button, CardHeader, Collapse } from 'reactstrap';
 import ChevronDownIcon from 'mdi-react/ChevronDownIcon';

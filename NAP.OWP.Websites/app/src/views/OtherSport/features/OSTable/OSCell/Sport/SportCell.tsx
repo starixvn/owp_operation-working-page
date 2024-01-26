@@ -1,4 +1,3 @@
-import React from 'react';
 import { DataSource } from '../Share/Type';
 
 type Props = {

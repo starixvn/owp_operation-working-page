@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React, { Suspense, useState, lazy } from 'react';
+import { Suspense, useState, lazy } from 'react';
 import Loading from '../../components/Loading';
 import { FunctionKeys } from '../../Shared/Constants';
 import usePermission from '../../Shared/customHook/usePermission';

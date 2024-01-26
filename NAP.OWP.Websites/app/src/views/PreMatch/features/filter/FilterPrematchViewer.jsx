@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { forwardRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../../../components/Loading';
 import { isEqual } from 'lodash';
@@ -22,7 +22,7 @@ const propTypes = {
   isNightShift: PropTypes.bool
 };
 
-const FilterPrematchViewer = React.forwardRef((props, ref) => {
+const FilterPrematchViewer = forwardRef((props, ref) => {
   const { model, onSubmit, isDisableEmp, onClickMyAssignee, isNightShift } =
     props;
   const { filterDate, loading, isReloadEdit } = model;

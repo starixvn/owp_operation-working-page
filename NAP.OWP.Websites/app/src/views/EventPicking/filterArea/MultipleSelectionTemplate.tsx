@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import MultipleSelection from '../../Shared/MultipleSelection/MultipleSelection';
 import { TMultipleSelectionTemplate } from '../types/filterType';
 import { Option } from '../../Shared/MultipleSelection/type';

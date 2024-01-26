@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import TableBody from './TableBody';
 import { DataSource, TBody } from '../../type/TTaskListTable';

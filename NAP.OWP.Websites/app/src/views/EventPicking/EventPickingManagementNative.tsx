@@ -1,4 +1,3 @@
-import React from 'react';
 import Filter from './filterArea/Filter';
 import { OWPPage, OWPHeader, OWPBody } from '../Shared/common/OWP/OPWPage';
 import EventPickingTable from './table/EventPickingTable';

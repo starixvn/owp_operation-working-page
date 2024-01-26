@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import NoCell from '../Cell/NoCell';
 import KOTimeCell from '../Cell/KOTimeCell';
 import LeagueCell from '../Cell/LeagueCell';

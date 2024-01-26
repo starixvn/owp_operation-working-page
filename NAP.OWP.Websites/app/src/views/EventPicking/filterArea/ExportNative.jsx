@@ -1,4 +1,3 @@
-import React from 'react';
 import DropdownNative from '../../Shared/common/Dropdown/DropdownNative';
 import { EXPORT } from './filterConst.json';
 import { exportAndConfirmAllEvent, exportOnly } from '../helper/exportHelper';

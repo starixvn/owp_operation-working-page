@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { TooltipButton, TooltipText } from '../../../../../Shared/common/Tooltip';
 import { v4 as uuidv4 } from 'uuid';
@@ -47,7 +47,7 @@ const ProviderCell = props => {
         />
       )}
       {reporter && (
-        <React.Fragment key={`Phone${uuidv4()}${rowIndex}`}>
+        <Fragment key={`Phone${uuidv4()}${rowIndex}`}>
           <Button id={buttonIdPhone} className='button-provider'>
             <PhoneIcon size={11} /> Phone
           </Button>
@@ -58,7 +58,7 @@ const ProviderCell = props => {
             target={buttonIdPhone}>
             <PopoverBody>{reporter}</PopoverBody>
           </UncontrolledPopover>
-        </React.Fragment>
+        </Fragment>
       )}
     </div>
   );

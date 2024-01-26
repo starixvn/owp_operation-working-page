@@ -1,4 +1,3 @@
-import React from 'react';
 import Converter from '../Shared/Converter';
 import FormProviderInfo from './FormProviderInfo';
 import { render, screen, act, fireEvent } from '@testing-library/react';

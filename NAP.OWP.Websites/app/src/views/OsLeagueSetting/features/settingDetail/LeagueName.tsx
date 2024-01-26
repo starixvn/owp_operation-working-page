@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { TLeagueName } from '../../typing/type';
 import useStore from '../../app/store';
 import ErrorMessage from './ErrorMessage';

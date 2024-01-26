@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import SearchableCell from '../common/SearchableCell';
 import { useDispatch, useSelector } from 'react-redux';

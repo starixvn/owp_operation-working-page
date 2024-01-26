@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import Select from 'react-select';
 import DeleteIcon from 'mdi-react/DeleteIcon';
 import PropTypes from 'prop-types';
@@ -10,7 +10,7 @@ const propTypes = {
   bettypesOpition: PropTypes.array
 };
 
-class TradingInfoRow extends React.Component {
+class TradingInfoRow extends Component {
   constructor(props) {
     super(props);
     this.notifyDeleteMatchSetting = this.notifyDeleteMatchSetting.bind(this);

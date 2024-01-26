@@ -1,4 +1,3 @@
-import React from 'react';
 import { IFieldSelection } from '../../typing/type';
 import {
   localStoreKey,

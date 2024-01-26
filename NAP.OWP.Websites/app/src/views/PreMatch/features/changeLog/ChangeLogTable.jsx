@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import withFixedColumns from 'react-table-hoc-fixed-columns';

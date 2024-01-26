@@ -1,2 +1,2 @@
-import React from 'react';
-export default React.lazy(() => import('../features/Validation'));
+import { lazy } from 'react';
+export default lazy(() => import('../features/Validation'));

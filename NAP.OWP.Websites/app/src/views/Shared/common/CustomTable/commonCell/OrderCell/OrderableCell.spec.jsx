@@ -1,4 +1,3 @@
-import React from 'react';
 import OrderableCell from './OrderableCell';
 import { render, fireEvent } from '@testing-library/react';
 

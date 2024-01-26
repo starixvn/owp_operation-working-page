@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Input } from 'reactstrap';
 import ToastrWrapper from '../../../components/ToastrWrapper';

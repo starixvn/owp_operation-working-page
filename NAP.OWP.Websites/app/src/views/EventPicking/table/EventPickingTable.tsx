@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomTable from '../../Shared/tableCommon/CustomTable';
 import { useSelector } from 'react-redux';
 import TableHeader from './tableHeader/TableHeader';

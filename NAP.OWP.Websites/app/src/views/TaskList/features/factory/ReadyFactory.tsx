@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../type/TTaskListTable';
 import ReadyCell from '../table/cell/ReadyCell';
 import ReadyCheckboxCell from '../table/cell/ReadyCheckboxCell';

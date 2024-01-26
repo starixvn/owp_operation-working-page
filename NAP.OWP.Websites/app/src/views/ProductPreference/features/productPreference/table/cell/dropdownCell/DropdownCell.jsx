@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cell } from 'fixed-data-table-2';
 import DropdownDefaultNative from '../../../../../../Shared/common/Dropdown/DropdownDefaultNative';
 import { uniqueId } from 'lodash';

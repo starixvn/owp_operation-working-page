@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
@@ -13,7 +13,7 @@ const LocationCell = (props: {
   const { rowIndex, dataSource } = props;
   const { locationCode, userId, sectionName, flagCode } = dataSource[rowIndex];
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     updateUserInfo({
       ColumnName: "LocationCode",

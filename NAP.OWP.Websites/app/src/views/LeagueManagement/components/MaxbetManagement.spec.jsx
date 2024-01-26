@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 
 import { BrowserRouter } from 'react-router-dom';

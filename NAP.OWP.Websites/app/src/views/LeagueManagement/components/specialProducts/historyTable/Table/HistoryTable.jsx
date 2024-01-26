@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-warning-comments
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
 import { Table } from 'reactstrap';
 import { useSelector } from 'react-redux';
 import { selectLogHistoryState } from '../../../../selector/SelectorSpecialProduct';

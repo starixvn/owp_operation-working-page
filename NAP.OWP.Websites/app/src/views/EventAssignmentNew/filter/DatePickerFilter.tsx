@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import DatePicker, { ReactDatePicker } from 'react-datepicker';
 import CalendarIcon from 'mdi-react/CalendarIcon';
 import { buildTimeRangeLast30Day } from '../../Shared/DateTime/dateTimeHelper';

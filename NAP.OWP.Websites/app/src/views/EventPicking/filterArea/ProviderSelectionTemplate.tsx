@@ -1,4 +1,3 @@
-import React from 'react';
 import { TProviderSelectionTemplate } from '../types/filterType';
 import { HAS_PROVIDER_OPTIONS } from './filterConst.json';
 import MultipleSelectionTemplate from './MultipleSelectionTemplate';

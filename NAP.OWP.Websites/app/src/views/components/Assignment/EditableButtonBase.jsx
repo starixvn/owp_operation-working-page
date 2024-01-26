@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import EditableTextSuggestion from './EditableTextSuggestion';
 import EditableTextMention from './EditableTextMention';
 import PlusCircleIcon from 'mdi-react/PlusCircleIcon';

@@ -1,4 +1,3 @@
-import React from 'react';
 import KOTimeCell from './KOTimeCell';
 import { render, screen } from '@testing-library/react';
 

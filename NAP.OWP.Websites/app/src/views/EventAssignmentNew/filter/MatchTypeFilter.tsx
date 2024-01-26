@@ -1,4 +1,3 @@
-import React from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import { MATCH_TYPE_OPTION } from './FilterConst.json';
 import { useAppSelector, useAppDispatch } from '../app/hooks';

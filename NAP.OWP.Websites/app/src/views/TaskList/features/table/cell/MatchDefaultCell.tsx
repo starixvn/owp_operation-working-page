@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../../type/TTaskListTable';
 
 const MatchDefaultCell = (props: CellProps) => {

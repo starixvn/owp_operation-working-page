@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import EditableRemark from './EditableRemark';
 import { useDispatch, useSelector } from 'react-redux';

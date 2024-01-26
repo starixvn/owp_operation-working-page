@@ -1,4 +1,3 @@
-import React from 'react';
 import { TTicketCell } from '../../type/type';
 import TicketCellCommon from '../../../Shared/ticketEvent/component/TicketCellCommon';
 import { useAppDispatch } from '../../app/hooks';

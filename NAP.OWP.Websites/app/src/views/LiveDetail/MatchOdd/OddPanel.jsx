@@ -3,7 +3,7 @@ import { isEqual, isNil } from 'lodash';
 import ChevronDownIcon from 'mdi-react/ChevronDownIcon';
 import ChevronRightIcon from 'mdi-react/ChevronRightIcon';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { Component } from 'react';
 import { Button, CardHeader, Collapse } from 'reactstrap';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -18,7 +18,7 @@ const propTypes = {
   onSave: PropTypes.func.isRequired
 };
 
-class OddPanel extends React.Component {
+class OddPanel extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);

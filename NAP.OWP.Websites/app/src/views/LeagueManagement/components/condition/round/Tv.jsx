@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 import { useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ const propTypes = {
   actionType: PropTypes.object.isRequired
 };
 const Tv = ({ hasTV, tv, actionType }) => {
-  let inputRef = React.createRef();
+  let inputRef = createRef();
   const id = 'tV';
   const dispatch = useDispatch();
   const triggerChangeEvent = (key, value) => {

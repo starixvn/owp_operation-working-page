@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import Validation from './Validation';
 import { useSelector, useDispatch } from 'react-redux';
 import ToastrWrapper from '../../components/ToastrWrapper';

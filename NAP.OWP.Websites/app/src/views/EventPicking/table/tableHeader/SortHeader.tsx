@@ -1,4 +1,3 @@
-import React from 'react';
 import { ISortState } from '../../types/dataTableType';
 import { RootState } from '../../app/store';
 import { useAppDispatch } from '../../app/hooks';

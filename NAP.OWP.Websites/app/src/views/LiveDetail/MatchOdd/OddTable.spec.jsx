@@ -1,4 +1,3 @@
-import React from 'react';
 import { clone } from 'lodash';
 import OddTable from './OddTable';
 import Service from './Service';

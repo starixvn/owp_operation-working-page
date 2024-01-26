@@ -1,4 +1,3 @@
-import React from 'react';
 import IPTvStreamingCell from './IPTvStreamingCell';
 import { render, screen } from '@testing-library/react';
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import store from './app/storeNative';
 import { Provider, useSelector } from 'react-redux';
 import Filter from './features/filter/Filter';

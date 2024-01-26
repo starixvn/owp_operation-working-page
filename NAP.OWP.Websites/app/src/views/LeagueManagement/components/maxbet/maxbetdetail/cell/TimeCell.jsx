@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { createRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Cell } from 'fixed-data-table-2';
 import { useStore, useDispatch } from 'react-redux';
@@ -19,7 +19,7 @@ const TimeCell = ({ data, rowIndex }) => {
   const [canEdit, setCanEdit] = useState(false);
   const [timeDesc, setTimeDesc] = useState(data.TimeDesc);
   const dispatch = useDispatch();
-  const input = React.createRef();
+  const input = createRef();
   const store = useStore();
   const { policyData } = store.getState().policyReducer;
   const hasWrite = hasWriteOnPageMaxbetGeneral(policyData);

@@ -1,4 +1,3 @@
-import React from 'react';
 import BettypeCell from './BettypeCell';
 import { fireEvent, render } from '@testing-library/react';
 

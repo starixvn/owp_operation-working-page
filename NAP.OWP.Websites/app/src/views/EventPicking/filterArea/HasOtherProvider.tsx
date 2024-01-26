@@ -1,4 +1,3 @@
-import React from 'react';
 import { HAS_OTHER_PROVIDER } from './filterConst.json';
 import ProviderSelectionTemplate from './ProviderSelectionTemplate';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef, Component } from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from 'mdi-react/CloseIcon';
 import CommentIcon from 'mdi-react/CommentIcon';
@@ -12,7 +12,7 @@ const propTypes = {
   onShowNote: PropTypes.func.isRequired
 };
 
-class NotePopover extends React.Component {
+class NotePopover extends Component {
   static popovers = [];
 
   constructor(props) {
@@ -20,7 +20,7 @@ class NotePopover extends React.Component {
     this.state = {
       isOpen: false
     };
-    this.iconRef = React.createRef();
+    this.iconRef = createRef();
     this.handleToggle = this.handleToggle.bind(this);
     this.handleSave = this.handleSave.bind(this);
   }

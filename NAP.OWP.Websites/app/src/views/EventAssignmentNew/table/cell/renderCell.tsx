@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MatchNoCell from './NoCell';
 import ProviderCell from './ProviderCell';
 import KOTimeCell from './KOTimeCell';

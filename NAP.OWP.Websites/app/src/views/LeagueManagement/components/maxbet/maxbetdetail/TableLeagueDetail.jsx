@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import renderTableBody from './renderTableBody';
 import { Table } from 'fixed-data-table-2';
 import MaxbetConst from '../../../constants/MaxbetConst';

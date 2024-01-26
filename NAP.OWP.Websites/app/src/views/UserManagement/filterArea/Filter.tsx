@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import User from './User';
 import DropdownList from './DropdownList';
 import { getValueFilter } from '../utils';

@@ -1,4 +1,3 @@
-import React from 'react';
 import MaxbetCell from './MaxbetHDPCell';
 import { render, screen } from '@testing-library/react';
 

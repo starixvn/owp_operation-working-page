@@ -1,4 +1,3 @@
-import React from 'react';
 import BettypeCell from './BettypeCell';
 import { useDispatch } from 'react-redux';
 import store from '../../../../app/storeNative';

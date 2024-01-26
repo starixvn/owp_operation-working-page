@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FilterConst } from '../../constants/reportConst';
 import { isEqual } from 'lodash';

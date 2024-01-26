@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import OpenTicketListHandler from './OpenTicketListHandler';
 import { render } from '@testing-library/react';
 import { getState } from '../../../EventAssignment/app/store';

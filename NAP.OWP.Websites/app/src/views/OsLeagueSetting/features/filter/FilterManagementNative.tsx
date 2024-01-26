@@ -1,4 +1,3 @@
-import React from 'react';
 import Category from './Category';
 import Command from './Command';
 import League from './League';

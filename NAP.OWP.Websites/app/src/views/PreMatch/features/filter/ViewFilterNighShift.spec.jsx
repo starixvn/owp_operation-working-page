@@ -1,7 +1,7 @@
 import { act, render } from '@testing-library/react';
 import axios from 'axios';
 import { noop } from 'lodash';
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import Spinner from '../../../components/Spinner';

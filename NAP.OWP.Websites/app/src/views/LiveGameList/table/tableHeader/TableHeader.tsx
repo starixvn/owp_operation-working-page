@@ -1,4 +1,3 @@
-import React from 'react';
 import { TABLE_HEADER } from '../TableSchema.json';
 import FilterHeader from './FilterHeader';
 import SortHeader from './SortHeader';

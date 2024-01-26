@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import RecipientSuggestion from '../../../Shared/TicketSetting/RecipientSuggestion/RecipientSuggestion';
 import { post } from '../../Service/Service';

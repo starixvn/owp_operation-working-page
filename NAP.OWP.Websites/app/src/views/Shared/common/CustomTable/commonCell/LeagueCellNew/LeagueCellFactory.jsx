@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import OtherIssueCell from './OtherIssueCell';
 import LeagueCell from './LeagueCell';

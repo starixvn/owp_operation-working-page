@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Filter from './filter/Filter';
 import Table from './table/Table';
 import { useAppDispatch, useAppSelector } from './app/hooks';

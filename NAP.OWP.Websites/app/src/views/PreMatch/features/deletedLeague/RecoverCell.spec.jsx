@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 import RecoverCell from './RecoverCell';

@@ -1,4 +1,3 @@
-import React from 'react';
 import RemarkCell from './RemarkCell';
 import { render, screen } from '@testing-library/react';
 

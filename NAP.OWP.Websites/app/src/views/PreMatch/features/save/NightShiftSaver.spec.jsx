@@ -1,4 +1,4 @@
-import React, { createRef, useState, useEffect } from 'react';
+import { createRef, useState, useEffect } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 /**
  * @jest-environment jsdom

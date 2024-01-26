@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import React from 'react';
 import FilterHeader from './FilterHeader';
 import { useState, useDispatch } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react';

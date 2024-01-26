@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { createRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useStore, useSelector, useDispatch } from 'react-redux';
 import { selectSpecialProductData } from '../../../../selector/SelectorSpecialProduct';
@@ -24,7 +24,7 @@ const RemarkCell = props => {
     x => x.ProductId === props.productId
   );
   const dispatch = useDispatch();
-  const input = React.createRef();
+  const input = createRef();
 
   const handleOnBlur = () => {
     setEdit(false);

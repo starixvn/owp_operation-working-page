@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
@@ -12,7 +12,7 @@ const LevelCell = (props: {
   const user = props.dataSource[props.rowIndex];
 
   const options = selectOption(user.sectionId);
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     updateUserInfo({
       ColumnName: "Level",

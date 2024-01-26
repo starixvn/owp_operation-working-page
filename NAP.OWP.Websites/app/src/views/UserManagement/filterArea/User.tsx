@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import store from '../app/useStoreNative';
 
 const User = () => {
   const { setFilterValue } = store.getState();
   const [value, setValue] = useState('');
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     setFilterValue(e.target.value, 'userName');
   };

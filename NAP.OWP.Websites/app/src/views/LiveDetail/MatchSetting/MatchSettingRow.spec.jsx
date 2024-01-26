@@ -1,4 +1,3 @@
-import React from 'react';
 import MatchSettingRow from './MatchSettingRow';
 import { fireEvent, render, screen } from '@testing-library/react';
 

@@ -1,9 +1,12 @@
-import React, {
+import {
+  Children,
+  isValidElement,
+  cloneElement,
   useState,
   useLayoutEffect,
   useCallback,
   useEffect,
-  useRef
+  useRef,
 } from 'react';
 import { throttle } from 'lodash';
 import PropTypes from 'prop-types';
@@ -66,9 +69,9 @@ const CustomTable = ({
     setMaxHeight(innerHeight - 200);
   };
 
-  const childrenWithProps = React.Children.map(children, child => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, {
+  const childrenWithProps = Children.map(children, child => {
+    if (isValidElement(child)) {
+      return cloneElement(child, {
         data,
         displayStart,
         displayEnd

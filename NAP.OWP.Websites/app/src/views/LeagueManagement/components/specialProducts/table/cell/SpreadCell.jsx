@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { useStore, useSelector, useDispatch } from 'react-redux';
 import NumericTextbox from 'react-numeric-textbox';
@@ -17,7 +17,7 @@ const SpreadCell = props => {
   const { policyData } = store.getState().policyReducer;
   const hasWrite = policyData.generalPolicy.HasWrite;
   const dispatch = useDispatch();
-  const input = React.createRef();
+  const input = createRef();
 
   const convertToPercent = number => {
     if (!number) {

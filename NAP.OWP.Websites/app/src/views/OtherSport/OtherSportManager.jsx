@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { OWPBody, OWPHeader } from '../Shared/common/OWP/OPWPage';
 import AssignmentUpload from './features/AssignmentUpload';
 import store from './app/store';

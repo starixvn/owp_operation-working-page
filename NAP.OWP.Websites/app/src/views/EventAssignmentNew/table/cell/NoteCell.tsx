@@ -1,14 +1,13 @@
-import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import NotePopover from '../../components/NotePopover';
 import { TNoteCell } from '../../type/type';
 import { useAppSelector } from '../../app/hooks';
 
-const NoteCell: React.FC<TNoteCell> = ({
+const NoteCell = ({
   dataSource,
   rowIndex,
   onShowNote
-}) => {
+}: TNoteCell) => {
   const notePolicy = useAppSelector(state => state.policy.entities.Note);
   return (
     <NotePopover

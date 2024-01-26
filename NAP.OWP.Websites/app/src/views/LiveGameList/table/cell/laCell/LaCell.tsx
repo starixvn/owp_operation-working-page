@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../../type/TableType';
 import AssignmentComponent from '../../../component/Assignment';
 import OtherAssignment from '../../../component/OtherAssignment';

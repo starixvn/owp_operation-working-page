@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../../../typing/tableType';
 import { UncontrolledTooltip } from 'reactstrap';
 

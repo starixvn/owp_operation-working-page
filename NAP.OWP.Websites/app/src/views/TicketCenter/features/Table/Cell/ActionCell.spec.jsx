@@ -1,4 +1,3 @@
-import React from 'react';
 import ActionCell from './ActionCell';
 import { fireEvent, render, screen } from '@testing-library/react';
 import {

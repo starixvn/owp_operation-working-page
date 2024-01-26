@@ -1,4 +1,3 @@
-import React from 'react';
 import { THANK_YOU, HEADER, NEXT_STEP } from './const.json';
 import ThankImage from '../../assets/img/feedback-thank.png';
 

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import Category from './Category';
 import useQueryDropdownOption from '../../hook/useQueryDropdownOption';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { changeMode } from '../edit/editSlice';
 import { resetCopyInfo } from '../copy/copySlice';

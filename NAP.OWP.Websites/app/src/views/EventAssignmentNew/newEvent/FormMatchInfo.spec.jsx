@@ -1,4 +1,3 @@
-import React from 'react';
 import FormMatchInfo from './FormMatchInfo';
 import EventAssignmentService from './Service';
 import {

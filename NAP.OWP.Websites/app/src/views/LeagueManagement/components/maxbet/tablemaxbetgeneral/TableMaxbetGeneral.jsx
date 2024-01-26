@@ -1,4 +1,3 @@
-import React from 'react';
 import { Table } from 'fixed-data-table-2';
 import MaxbetConst from '../../../constants/MaxbetConst';
 import renderTableBody from './renderTableBody';

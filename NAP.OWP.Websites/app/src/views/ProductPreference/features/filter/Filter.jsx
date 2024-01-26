@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Loading from '../../../components/Loading';
 import { getProductPreference } from '../productPreference/productThunkNative';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';

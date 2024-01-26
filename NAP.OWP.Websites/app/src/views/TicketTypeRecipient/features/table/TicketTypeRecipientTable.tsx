@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { Fragment, useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import usePermission from '../../../Shared/customHook/usePermission';

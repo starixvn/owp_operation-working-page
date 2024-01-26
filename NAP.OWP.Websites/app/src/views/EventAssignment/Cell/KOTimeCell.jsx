@@ -1,7 +1,7 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import TimeOfMatch from '../../Shared/LiveGameShared/TimeOfMatch';
-class KOTimeCell extends React.PureComponent {
+class KOTimeCell extends PureComponent {
   render() {
     const { data, rowIndex } = this.props;
     const {

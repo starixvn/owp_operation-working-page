@@ -1,4 +1,3 @@
-import React from 'react';
 import LeagueContent from '../settingDetail/LeagueContent';
 import SettingContent from '../settingDetail/SettingContent';
 import SettingPopup from '../settingDetail/SettingPopup';

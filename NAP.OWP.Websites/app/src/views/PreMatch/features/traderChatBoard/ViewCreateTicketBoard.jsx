@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ShareOfChatBoardTicket from '../../../Shared/createTicketNew/ShareOfChatBoardTicket/ShareOfChatBoardTicket';
 import { closeTicketPopup } from '../../../Shared/chatBoardNew/chatBoardSlice';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 import { useDispatch } from 'react-redux';
@@ -13,7 +13,7 @@ const propTypes = {
 const Value = props => {
   const { item, index, hasWrite, actionType } = props;
   const dispatch = useDispatch();
-  let inputRef = React.createRef();
+  let inputRef = createRef();
   const handleOnBlur = event => {
     event.preventDefault();
     dispatch(

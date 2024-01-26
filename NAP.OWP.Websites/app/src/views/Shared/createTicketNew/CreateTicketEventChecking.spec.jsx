@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import CreateTicketEventChecking from './CreateTicketEventChecking';
 import { render } from '@testing-library/react';

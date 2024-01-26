@@ -1,4 +1,3 @@
-import React from 'react';
 import { Subtype } from '../TypeNative';
 import SubtypeInput from './SubTypeInput';
 import SubtypeTable from './SubTypeTable';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useStableDispatch } from '../../ImportPrematchHelperNative';
 import { sortByDefault } from '../league/shiftSlice/shiftSlice';
 import { resetCopyInfo } from '../copy/copySlice';

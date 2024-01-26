@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import Animated from 'react-select/animated';
@@ -47,7 +47,7 @@ const propTypes = {
   handleBettypeChange: PropTypes.func.isRequired
 };
 
-class BettypeCell extends React.Component {
+class BettypeCell extends Component {
   reBuildBettypeOptions = memoize(minorBettypeId =>
     buildBettypeOptions(minorBettypeId)
   );

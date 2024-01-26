@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CommentIcon from 'mdi-react/CommentIcon';
 import { EditIcon } from 'mdi-react';
@@ -28,7 +28,7 @@ const NoteCell = props => {
     InfoSiteMatchId,
     PreMatchNoteId
   } = model;
-  const iconRef = React.createRef();
+  const iconRef = createRef();
   const stableDispatch = useStableDispatch();
   const permission = useSelector(state => state.policy.permission);
 

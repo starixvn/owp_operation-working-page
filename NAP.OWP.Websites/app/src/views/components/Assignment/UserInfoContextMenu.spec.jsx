@@ -1,4 +1,3 @@
-import React from 'react';
 import UserInfoContextMenu from './UserInfoContextMenu';
 import { HighlightUserContext } from '../../Shared/Context';
 import { render, fireEvent, screen } from '@testing-library/react';

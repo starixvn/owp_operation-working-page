@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { noop } from 'lodash';

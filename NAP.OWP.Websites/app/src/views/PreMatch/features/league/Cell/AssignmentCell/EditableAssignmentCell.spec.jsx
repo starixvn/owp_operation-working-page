@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 import EditableAssignmentCell from './EditableAssignmentCell';

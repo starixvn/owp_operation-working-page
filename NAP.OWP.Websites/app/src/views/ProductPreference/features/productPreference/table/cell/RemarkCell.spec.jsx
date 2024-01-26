@@ -1,4 +1,3 @@
-import React from 'react';
 import RemarkCell from './RemarkCell';
 import { render } from '@testing-library/react';
 import { useDispatch } from 'react-redux';

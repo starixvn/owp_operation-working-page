@@ -1,4 +1,3 @@
-import React from 'react';
 import { Column, ColumnGroup, Cell } from 'fixed-data-table-2';
 import renderCellFactory from './renderCellFactory.native';
 

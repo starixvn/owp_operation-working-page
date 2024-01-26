@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../../../typing/tableType';
 
 const CategoryCell = (props: CellProps): JSX.Element => {

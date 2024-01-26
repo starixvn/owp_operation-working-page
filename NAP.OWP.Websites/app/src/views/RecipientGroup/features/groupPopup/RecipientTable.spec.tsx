@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { RecipientModel } from '../Type';
 import RecipientTable from './RecipientTable';
 

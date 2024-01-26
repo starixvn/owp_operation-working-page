@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { crud } from '../../../actions/action';
 import { ACTION_SPECIALPRODUCT } from '../../../constants/action-type';

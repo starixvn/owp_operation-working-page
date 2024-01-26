@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import Toastr from '../../../components/ToastrWrapper';
 import Utils from '../../../Shared/Utils';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Select from 'react-select';
 import { SYNC_LIVE_OPTION } from './FilterConst.json';
 import { useAppSelector, useAppDispatch } from '../app/hooks';

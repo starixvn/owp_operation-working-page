@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import Search from './Search';
 import QuickSearchService from '../QuickSearch/Service';

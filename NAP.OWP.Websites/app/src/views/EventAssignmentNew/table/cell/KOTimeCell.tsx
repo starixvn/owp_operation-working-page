@@ -1,4 +1,3 @@
-import React from 'react';
 import { TCellModel } from '../../type/type';
 import TimeOfMatch from '../../../Shared/LiveGameShared/TimeOfMatch';
 

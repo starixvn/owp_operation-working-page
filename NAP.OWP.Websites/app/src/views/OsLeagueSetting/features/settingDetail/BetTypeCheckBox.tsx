@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useQueryDropdownOption from '../../hook/useQueryDropdownOption';
 import { simpleApiKey, localStoreKey, betTypeGroup } from '../../osLeague.json';
 import { IBettypeType } from '../../typing/bettypeType';

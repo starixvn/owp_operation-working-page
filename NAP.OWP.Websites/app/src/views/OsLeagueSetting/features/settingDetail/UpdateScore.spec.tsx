@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import UpdateScore from './UpdateScore';
 import { IUpdateScore } from '../../typing/type';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { OWPPage, OWPHeader, OWPBody } from '../Shared/common/OWP/OPWPage';
 import HeaderNative from './features/header/HeaderNative';
 

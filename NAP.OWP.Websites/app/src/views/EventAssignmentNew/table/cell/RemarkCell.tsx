@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { TCellModel } from '../../type/type';
 
 const RemarkCell = (props: TCellModel) => {
@@ -33,7 +33,7 @@ const RemarkCell = (props: TCellModel) => {
   return (
     <div className='remark-col'>
       {arrayCombine.map((v, index) => (
-        <React.Fragment key={`remark_${index}`}>{v}</React.Fragment>
+        <Fragment key={`remark_${index}`}>{v}</Fragment>
       ))}
     </div>
   );

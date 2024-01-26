@@ -1,4 +1,3 @@
-import React from 'react';
 import { AssignmentInfo, MatchSettingInfo } from '../type/TableType';
 import AssignmentComponent from './Assignment';
 import OtherAssignment from './OtherAssignment';

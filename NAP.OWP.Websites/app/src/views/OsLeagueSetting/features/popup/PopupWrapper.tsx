@@ -1,4 +1,3 @@
-import React from 'react';
 import AddSetting from '../add/AddSetting';
 import EditSetting from '../edit/EditSetting';
 import useStore from '../../app/store';

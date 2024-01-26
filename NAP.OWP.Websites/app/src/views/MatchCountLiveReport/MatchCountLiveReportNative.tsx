@@ -1,4 +1,3 @@
-import React from 'react';
 import { Provider } from 'react-redux';
 import { OWPBody, OWPHeader, OWPPage } from '../Shared/common/OWP/OPWPage';
 import Filter from './features/filter/Filter';

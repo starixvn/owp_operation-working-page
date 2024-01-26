@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Filter from './Filter';
 import { useDispatch } from 'react-redux';
 import { toDateDefault, fromDateDefault } from '../helpers/helpers';

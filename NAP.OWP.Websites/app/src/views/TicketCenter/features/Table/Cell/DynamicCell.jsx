@@ -1,4 +1,3 @@
-import React from 'react';
 import { ColumnModels } from '../ConfigNative';
 import LastCommentCell from './LastCommentCell';
 import TicketIdCell from './TicketIdCell';

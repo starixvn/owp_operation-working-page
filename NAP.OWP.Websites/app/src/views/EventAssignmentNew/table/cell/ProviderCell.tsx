@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { TCellModel } from '../../type/type';
 import { Button, UncontrolledPopover, PopoverBody } from 'reactstrap';
 import { PhoneIcon } from 'mdi-react';
@@ -12,7 +12,7 @@ const ProviderCell = (props: TCellModel) => {
     <div className='provider-cell'>
       {Provider && <p className='runner'>{Provider}</p>}
       {OtherProvider && (
-        <React.Fragment key={`OtherProvider${rowIndex}`}>
+        <Fragment key={`OtherProvider${rowIndex}`}>
           <Button id={buttonIdOtherProvider} className='button-provider'>
             Other Provider
           </Button>
@@ -23,10 +23,10 @@ const ProviderCell = (props: TCellModel) => {
             target={buttonIdOtherProvider}>
             <PopoverBody>{OtherProvider}</PopoverBody>
           </UncontrolledPopover>
-        </React.Fragment>
+        </Fragment>
       )}
       {Phone && (
-        <React.Fragment key={`Phone${rowIndex}`}>
+        <Fragment key={`Phone${rowIndex}`}>
           <Button id={buttonIdPhone} className='button-provider'>
             <PhoneIcon size={11} /> Phone
           </Button>
@@ -37,7 +37,7 @@ const ProviderCell = (props: TCellModel) => {
             target={buttonIdPhone}>
             <PopoverBody>{Phone}</PopoverBody>
           </UncontrolledPopover>
-        </React.Fragment>
+        </Fragment>
       )}
     </div>
   );

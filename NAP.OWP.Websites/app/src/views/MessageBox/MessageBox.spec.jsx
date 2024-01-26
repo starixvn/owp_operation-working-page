@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import MessageBox from './MessageBox';
 import AuthorizeService from '../Authorize/Service';

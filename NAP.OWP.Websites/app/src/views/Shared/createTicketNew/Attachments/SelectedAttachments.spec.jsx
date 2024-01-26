@@ -1,4 +1,3 @@
-import React from 'react';
 import SelectedAttachments from './SelectedAttachments';
 import { render, fireEvent } from '@testing-library/react';
 import { CloseIcon, FileOutlineIcon } from 'mdi-react';

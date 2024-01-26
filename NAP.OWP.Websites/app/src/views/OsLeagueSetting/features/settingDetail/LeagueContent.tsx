@@ -1,4 +1,3 @@
-import React from 'react';
 import Region from './Region';
 import Category from './Category';
 import { ILeagueContent } from '../../typing/type';

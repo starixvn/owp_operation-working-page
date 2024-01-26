@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import NumericTextbox from 'react-numeric-textbox';
 
@@ -13,7 +13,7 @@ const propTypes = {
   highlightInput: PropTypes.bool
 };
 
-class MaxbetSpreadCell extends React.Component {
+class MaxbetSpreadCell extends Component {
   render() {
     const {
       Maxbet,

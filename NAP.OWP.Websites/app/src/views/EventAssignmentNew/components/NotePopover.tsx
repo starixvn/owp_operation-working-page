@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import CloseIcon from 'mdi-react/CloseIcon';
 import CommentIcon from 'mdi-react/CommentIcon';
 import { EditIcon } from 'mdi-react';
@@ -11,11 +11,11 @@ interface NotePopoverProps {
   onShowNote: (show: boolean) => void;
 }
 
-const NotePopover: React.FC<NotePopoverProps> = ({
+const NotePopover = ({
   policy,
   event,
   onShowNote
-}) => {
+}: NotePopoverProps) => {
   const popupRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {

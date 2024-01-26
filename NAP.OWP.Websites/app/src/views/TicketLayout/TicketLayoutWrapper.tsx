@@ -1,4 +1,3 @@
-import React from 'react';
 import { Provider } from 'react-redux';
 import TicketDetailLayout from './TicketDetailLayout';
 import '../../scss/components/_chatboard.scss';

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { postData } from '../actions/action';
 import Loading from '../../components/Loading';

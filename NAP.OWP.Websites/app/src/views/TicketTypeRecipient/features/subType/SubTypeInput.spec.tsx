@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { values } from 'lodash';
-import React from 'react';
 import SubTypeInput from './SubTypeInput';
 
 const props = {

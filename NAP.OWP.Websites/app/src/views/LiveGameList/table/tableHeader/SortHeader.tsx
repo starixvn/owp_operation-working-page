@@ -1,4 +1,3 @@
-import React from 'react';
 import { ISortState } from '../../type/TableType';
 import { RootState } from '../../app/storeNative';
 import { useSelector } from 'react-redux';

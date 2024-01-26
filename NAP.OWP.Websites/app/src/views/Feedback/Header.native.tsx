@@ -1,4 +1,3 @@
-import React from 'react';
 import { HEADER } from './const.json';
 
 const {

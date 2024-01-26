@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Modal, ModalBody } from 'reactstrap';
 import EditRecipient from '../editRecipientPopup/EditRecipient';
 import Subtype from '../subType/SubTypeManagement';

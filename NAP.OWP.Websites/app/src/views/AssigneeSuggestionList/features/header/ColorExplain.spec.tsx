@@ -1,4 +1,3 @@
-import React from 'react';
 import useStore from '../../app/useStoreNative';
 import ColorExplain from './ColorExplain';
 import { render, screen, fireEvent } from '@testing-library/react';

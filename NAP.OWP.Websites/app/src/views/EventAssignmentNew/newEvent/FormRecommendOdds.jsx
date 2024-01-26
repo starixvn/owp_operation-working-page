@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import PlusIcon from 'mdi-react/PlusIcon';
 import PropTypes from 'prop-types';
 import { noop } from 'lodash';
@@ -22,7 +22,7 @@ class FormRecommendOdds extends Component {
   constructor(props) {
     super(props);
     this.state = defaultState;
-    this.tableRef = React.createRef();
+    this.tableRef = createRef();
     this.newRow = this.newRow.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onRowChange = this.onRowChange.bind(this);

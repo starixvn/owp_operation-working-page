@@ -1,4 +1,3 @@
-import React from 'react';
 import store from '../app/useStoreNative';
 import MultipleSelection from '../../Shared/MultipleSelection/MultipleSelection';
 

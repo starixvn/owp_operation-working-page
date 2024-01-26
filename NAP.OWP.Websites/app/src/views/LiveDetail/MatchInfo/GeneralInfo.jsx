@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { cloneDeep, isNil, isEqual } from 'lodash';
 import dayjs from 'dayjs';

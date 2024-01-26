@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import ModalCommon from '../share/ModalCommon';
 import PropTypes from 'prop-types';

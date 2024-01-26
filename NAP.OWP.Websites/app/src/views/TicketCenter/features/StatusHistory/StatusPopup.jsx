@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import Utils from '../../../Shared/Utils';
 import { getStatusHistory } from '../../services/service';

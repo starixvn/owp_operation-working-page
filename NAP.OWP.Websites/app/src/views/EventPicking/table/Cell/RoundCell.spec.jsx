@@ -1,4 +1,3 @@
-import React from 'react';
 import RoundCell from './RoundCell';
 import { render, screen } from '@testing-library/react';
 

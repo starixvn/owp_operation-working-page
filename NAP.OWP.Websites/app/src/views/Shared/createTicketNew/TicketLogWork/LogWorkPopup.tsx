@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useStableDispatch from '../../customHook/useStableDispatch';
 import Header from './component/Header';
 import Subject from './component/Subject';

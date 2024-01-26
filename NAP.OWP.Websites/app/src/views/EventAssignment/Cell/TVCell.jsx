@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent, Fragment } from 'react';
 import {
   Button,
   UncontrolledPopover,
@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 
 
-class TVCell extends React.PureComponent {
+class TVCell extends PureComponent {
   render() {
     const { data, rowIndex } = this.props;
     const { Televisions, Channel, WatchBet } = data[rowIndex];
@@ -25,7 +25,7 @@ class TVCell extends React.PureComponent {
         )}
 
         {Channel && (
-          <React.Fragment key={`Channel${uuidv4()}${rowIndex}`}>
+          <Fragment key={`Channel${uuidv4()}${rowIndex}`}>
             <Button id={`Channel${rowIndex}`} className='button-channel'>
               IPTV/Channel
             </Button>
@@ -36,10 +36,10 @@ class TVCell extends React.PureComponent {
               target={`Channel${rowIndex}`}>
               <PopoverBody>{Channel}</PopoverBody>
             </UncontrolledPopover>
-          </React.Fragment>
+          </Fragment>
         )}
         {WatchBet && (
-          <React.Fragment key={`WatchBet${uuidv4()}${rowIndex}`}>
+          <Fragment key={`WatchBet${uuidv4()}${rowIndex}`}>
             <Button id={`WatchBet${rowIndex}`} className='button-watchbet'>
               Streaming
             </Button>
@@ -50,7 +50,7 @@ class TVCell extends React.PureComponent {
               target={`WatchBet${rowIndex}`}>
               <PopoverBody>{WatchBet}</PopoverBody>
             </UncontrolledPopover>
-          </React.Fragment>
+          </Fragment>
         )}
       </div>
     );

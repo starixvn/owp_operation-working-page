@@ -1,4 +1,3 @@
-import React from 'react';
 import DropdownNative from '../../Shared/common/Dropdown/DropdownNative';
 import Spinner from '../../components/Spinner';
 import ToastrWrapper from '../../components/ToastrWrapper';

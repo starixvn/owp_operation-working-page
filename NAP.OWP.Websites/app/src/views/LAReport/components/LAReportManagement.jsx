@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Filter from './Filter';
 import ReportTable from './Table/ReportTable';
 import { useSelector } from 'react-redux';

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import PropTypes from 'prop-types';
 import Service from './Service';
 
@@ -14,7 +14,7 @@ class MarketCell extends Component {
     this.state = {
       value: props.event.Market || ''
     };
-    this.textRef = React.createRef();
+    this.textRef = createRef();
   }
 
   componentDidMount() {

@@ -1,4 +1,3 @@
-import React from 'react';
 import ConversationCell from './ConversationCell';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { getState } from '../../../app/storeNative';

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import QuickSearchService from '../QuickSearch/Service';
 import SearchResultItem from './SearchResultItem';
 import PropTypes from 'prop-types';
@@ -25,8 +25,8 @@ class Search extends Component {
       liveDetailUrl: ''
     };
 
-    this.searchInput = React.createRef();
-    this.iframeRef = React.createRef();
+    this.searchInput = createRef();
+    this.iframeRef = createRef();
     this.handleOnClickCloseSearchForm = this.handleOnClickCloseSearchForm.bind(
       this
     );

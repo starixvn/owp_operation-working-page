@@ -1,4 +1,3 @@
-import React from 'react';
 import { TTotalGameConditionInfo } from '../type/TableType.native';
 import { keyOfTotalGameInfo } from '../../TableConst.json';
 import { uniqueId } from 'lodash';

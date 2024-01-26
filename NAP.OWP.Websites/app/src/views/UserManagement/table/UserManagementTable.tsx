@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import CustomTable from '../../Shared/common/CustomTable/CustomTable';
 import { DefaultTableStyle } from './TableSchema.json';
 import { shallow } from 'zustand/shallow';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { TCellModel } from '../../type/type';
 import { PlusIcon, ArrowRightIcon } from 'mdi-react';
 import { Button } from 'reactstrap';

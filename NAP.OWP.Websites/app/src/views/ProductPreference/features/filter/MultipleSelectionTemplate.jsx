@@ -1,4 +1,3 @@
-import React from 'react';
 import MultipleSelection from '../../../Shared/MultipleSelection/MultipleSelection';
 import PropTypes from 'prop-types';
 

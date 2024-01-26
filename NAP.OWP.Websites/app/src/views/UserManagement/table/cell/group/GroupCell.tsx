@@ -1,4 +1,3 @@
-import React from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import { hasPermissionUser, updateUserInfo } from '../../../utils';

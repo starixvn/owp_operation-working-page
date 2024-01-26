@@ -1,4 +1,3 @@
-import React from 'react';
 import PreMatchTable from './features/league/PreMatchTable';
 import EditComponent from './features/edit/EditComponent';
 import WorkingShiftComponent from './features/workingShift/WorkingShiftComponent';

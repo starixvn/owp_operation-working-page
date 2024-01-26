@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cell } from 'fixed-data-table-2';
 import { post } from '../../../../../Shared/Service/Service';
 import {

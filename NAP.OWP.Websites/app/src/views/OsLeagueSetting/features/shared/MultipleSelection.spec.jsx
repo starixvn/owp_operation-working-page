@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import MultipleSelection from './MultipleSelection';
 

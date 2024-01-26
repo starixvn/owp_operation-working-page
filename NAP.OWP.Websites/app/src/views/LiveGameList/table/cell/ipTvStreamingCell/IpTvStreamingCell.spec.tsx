@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import IpTvStreamingCell from './IpTvStreamingCell';
 import { CellProps } from '../../../type/TableType';

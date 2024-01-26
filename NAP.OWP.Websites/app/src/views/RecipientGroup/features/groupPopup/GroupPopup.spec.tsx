@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GroupDataSource } from '../Type';
 import GroupPopup from './GroupPopup';

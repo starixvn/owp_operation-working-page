@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Subtype } from '../TypeNative';
 
 type Prop = {

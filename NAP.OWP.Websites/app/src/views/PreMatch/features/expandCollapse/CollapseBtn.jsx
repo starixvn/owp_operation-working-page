@@ -1,4 +1,3 @@
-import React from 'react';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import { collapseAllLeague } from '../league/shiftSlice/shiftSlice';
 

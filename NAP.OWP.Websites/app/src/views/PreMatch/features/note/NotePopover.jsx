@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from 'mdi-react/CloseIcon';
 import NoteTable from './NoteTable';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Filter from './Filter';
 import Service from '../ResourceManagement/Service';
 import Utils from '../Shared/Utils';

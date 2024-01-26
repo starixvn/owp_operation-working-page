@@ -1,5 +1,5 @@
 import { CNavItem, CNavTitle, CSidebar, CSidebarNav } from '@coreui/react';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import logo from '../../assets/img/brand/logo_none.svg';
 import logoText from '../../assets/img/brand/logo_text.svg';
 import Utils from '../Shared/Utils';

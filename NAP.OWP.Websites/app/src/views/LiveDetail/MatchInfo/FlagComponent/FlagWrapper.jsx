@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { ChevronDoubleDownIcon, ChevronDoubleUpIcon } from 'mdi-react';
 import FlagComponent from './FlagComponent';

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { render, act, fireEvent, screen } from '@testing-library/react';
 import PopupWrapper from './PopupWrapper';
 import { popup } from '../../osLeague.json';

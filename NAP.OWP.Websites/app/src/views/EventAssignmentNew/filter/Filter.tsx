@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppSelector } from '../app/hooks';
 import DatePickerFilter from './DatePickerFilter';
 import UserSuggestionFilter from './UserSuggestionFilter';

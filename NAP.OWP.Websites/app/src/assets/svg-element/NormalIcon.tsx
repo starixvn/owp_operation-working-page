@@ -1,5 +1,3 @@
-import React from 'react';
-
 const NormalIcon = () => {
   return (
     <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">

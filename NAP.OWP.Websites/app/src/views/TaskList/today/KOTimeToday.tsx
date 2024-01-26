@@ -1,4 +1,3 @@
-import React from 'react';
 import { KOTimeCellProps, PesOrFiFa } from '../type/TTaskListTable';
 import FlagFactory from '../features/factory/FlagFactory';
 import KOTime from '../features/component/KOTime';

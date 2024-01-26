@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import { MentionsInput, Mention } from 'react-mentions';
 import PropTypes from 'prop-types';
 import defaultMentionStyle from './defaultMentionStyle';
@@ -100,7 +100,7 @@ class EditableTextMention extends Component {
       hasChange: false
     };
 
-    this.input = React.createRef();
+    this.input = createRef();
     this.handleChange = this.handleChange.bind(this);
     this.renderSuggestion = this.renderSuggestion.bind(this);
     this.onAdd = this.onAdd.bind(this);

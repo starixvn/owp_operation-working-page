@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import Loading from '../../../components/Loading';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
@@ -11,7 +11,7 @@ import { getReportByYear } from '../overTimeReportThunkNative';
 import { FilterModel } from '../typeNative';
 import ReportTable from './table/ReportTable';
 
-const YearTabContent = React.memo(() => {
+const YearTabContent = memo(() => {
   const dispatch = useStableDispatch();
   const tabStore = useSelector((state: RootState) => state.yearTab);
 

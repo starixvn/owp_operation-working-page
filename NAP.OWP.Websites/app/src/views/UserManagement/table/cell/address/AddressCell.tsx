@@ -1,4 +1,3 @@
-import React from 'react';
 import { TUserInfo } from '../../../type';
 import CustomInput from '../../../component/CustomInput';
 import store from '../../../app/useStoreNative';

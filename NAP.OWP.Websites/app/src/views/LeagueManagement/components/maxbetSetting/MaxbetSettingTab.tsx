@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import MaxbetSettingTable from './MaxbetSettingTable';
 import EditPopup from './popup/EditPopup';
 import LogSettingPopup from './popup/LogSettingPopup';

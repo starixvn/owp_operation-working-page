@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
 import useStore from '../../app/store';
 import EditTarget from './EditTarget';
 

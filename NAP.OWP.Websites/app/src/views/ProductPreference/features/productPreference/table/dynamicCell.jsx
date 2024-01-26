@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   tableSchema,
   SECTION_ID_LIVE_ASSISTANT_VN,

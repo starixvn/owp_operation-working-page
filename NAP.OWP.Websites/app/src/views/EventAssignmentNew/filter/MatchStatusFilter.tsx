@@ -1,4 +1,3 @@
-import React from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 import Utils from '../../Shared/Utils';

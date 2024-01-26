@@ -1,4 +1,3 @@
-import React from 'react';
 import MultipleSelection from '../shared/MultipleSelection';
 import { IFieldMultipleSelection } from '../../typing/type';
 import { localStoreKey, simpleApiKey } from '../../osLeague.json';

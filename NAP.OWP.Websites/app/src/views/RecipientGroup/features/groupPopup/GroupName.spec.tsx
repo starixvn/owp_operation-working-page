@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { Ref } from 'react';
+import { Ref } from 'react';
 import GroupName from './GroupName';
 
 jest.mock('react', () => ({

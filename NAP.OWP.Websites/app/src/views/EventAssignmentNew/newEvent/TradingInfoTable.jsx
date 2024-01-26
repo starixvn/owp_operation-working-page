@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import TradingInfoRow from './TradingInfoRow';
 import Converter from '../../Shared/Converter';
 import { Table } from 'reactstrap';
@@ -41,7 +41,7 @@ const createFirstAndSecondMatchSetting = bettypes => {
   };
 };
 
-class TradingInfoTable extends React.Component {
+class TradingInfoTable extends Component {
   constructor(props) {
     super(props);
     this.state = {

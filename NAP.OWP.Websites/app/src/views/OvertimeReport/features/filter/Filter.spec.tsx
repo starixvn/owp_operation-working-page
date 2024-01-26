@@ -1,5 +1,5 @@
 import { screen, render, fireEvent } from '@testing-library/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../../../components/Loading';
 import Filter from './Filter';

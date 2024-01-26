@@ -1,2 +1,2 @@
-import React from 'react';
-export default React.lazy(() => import('../features/FileLoader'));
+import { lazy } from 'react';
+export default lazy(() => import('../features/FileLoader'));

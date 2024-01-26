@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import NoteCell from './NoteCell';
 import { useSelector, useDispatch } from 'react-redux';

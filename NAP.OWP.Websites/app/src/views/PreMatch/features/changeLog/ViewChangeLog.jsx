@@ -1,4 +1,3 @@
-import React from 'react';
 import ChangeLog from './ChangeLog';
 import ModalCommon from '../share/ModalCommon';
 import PropTypes from 'prop-types';

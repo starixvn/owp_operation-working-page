@@ -1,4 +1,3 @@
-import React from 'react';
 import { v4 } from 'uuid';
 import { CloseIcon, FileOutlineIcon } from 'mdi-react';
 import PropTypes from 'prop-types';

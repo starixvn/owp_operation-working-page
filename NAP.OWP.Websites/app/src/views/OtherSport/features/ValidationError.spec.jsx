@@ -1,4 +1,3 @@
-import React from 'react';
 import ValidationError from './ValidationError';
 import CloseCircleIcon from 'mdi-react/CloseCircleIcon';
 import { render } from '@testing-library/react';

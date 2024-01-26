@@ -1,4 +1,3 @@
-import React from 'react';
 import { TableCell } from '../../TypeNative';
 import OTPostShift from '../../../../../assets/svg-element/OTPostShift';
 import OTPreShift from '../../../../../assets/svg-element/OTPreShift';

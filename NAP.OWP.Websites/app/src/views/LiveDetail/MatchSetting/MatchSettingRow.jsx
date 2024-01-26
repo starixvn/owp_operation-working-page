@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import ActionCell from '../MatchOdd/ActionCell';
 import MaxbetSpreadCell from './MaxbetSpreadCell';
@@ -19,7 +19,7 @@ const propTypes = {
   minorBettypeId: PropTypes.number
 };
 
-class MatchSettingRow extends React.Component {
+class MatchSettingRow extends Component {
   constructor(props) {
     super(props);
     const { matchSetting } = this.props;

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import queryDataTableThunk from '../table/queryDataTableThunk';

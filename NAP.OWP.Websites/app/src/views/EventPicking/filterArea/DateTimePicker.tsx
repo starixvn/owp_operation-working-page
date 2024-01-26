@@ -1,5 +1,5 @@
 import CalendarIcon from 'mdi-react/CalendarIcon';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { v4 as uuidv4 } from 'uuid';
 import useStableDispatch from '../../Shared/customHook/useStableDispatch';

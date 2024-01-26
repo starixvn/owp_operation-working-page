@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { KeyboardEvent, useRef } from 'react';
 
 type Props = {
   value: string | null;
@@ -10,7 +10,7 @@ type Props = {
 const CustomInput = ({ value, handleOnBlur, disabled = false, isError = false }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       event.preventDefault();
       inputRef.current?.blur();

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { REQUEST_STATUS } from '../../Shared/Constants';
 import Loading from '../../components/Loading';

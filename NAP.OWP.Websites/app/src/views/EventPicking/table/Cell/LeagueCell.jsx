@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledTooltip } from 'reactstrap';
 import { uniqueId } from 'lodash';

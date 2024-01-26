@@ -1,4 +1,3 @@
-import React from 'react';
 import LogWorkCell from './LogWorkCell';
 import { fireEvent, render } from '@testing-library/react';
 

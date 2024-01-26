@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { USER_GUIDE } from '../const/const.json';
 import ExportOnlyImg from '../../../assets/img/user_guide_export_only.png';

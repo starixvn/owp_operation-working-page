@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import Select, { SingleValue } from 'react-select-ts';
 import useStore from '../../app/store';
 import { DataSource, TargetOption } from '../type/TableType.native';

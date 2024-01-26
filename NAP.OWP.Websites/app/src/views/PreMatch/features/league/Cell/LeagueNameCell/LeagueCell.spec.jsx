@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import LeagueCell from './LeagueCell';
 import { useDispatch, useSelector } from 'react-redux';

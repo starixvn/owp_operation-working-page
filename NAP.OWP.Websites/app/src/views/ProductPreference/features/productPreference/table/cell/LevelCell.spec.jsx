@@ -1,4 +1,3 @@
-import React from 'react';
 import LevelCell from './LevelCell';
 import { render } from '@testing-library/react';
 import { useDispatch } from 'react-redux';

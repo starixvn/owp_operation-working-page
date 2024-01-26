@@ -1,4 +1,3 @@
-import React from 'react';
 import { UserSuggestion } from '../../components/Assignment/UserSuggestion';
 import { updateFilterState } from './filterSlice';
 import { useAppDispatch } from '../app/hooks';

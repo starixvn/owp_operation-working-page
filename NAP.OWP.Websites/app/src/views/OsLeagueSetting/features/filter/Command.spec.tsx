@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Command from './Command';
 import useStore from '../../app/store';

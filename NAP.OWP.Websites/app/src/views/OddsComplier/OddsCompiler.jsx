@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Filter from './FilterNative';
 import Table from './Table';
 import Service from './Service';

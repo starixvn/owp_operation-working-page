@@ -1,9 +1,9 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import { buildAssignment } from '../AssignmentHelper';
 import EditableButtonGroup from '../../components/Assignment/EditableButtonGroup';
 import PropTypes from 'prop-types';
 
-class BettypeCell extends React.PureComponent {
+class BettypeCell extends PureComponent {
   render() {
     const assignment = buildAssignment(this.props);
     const {

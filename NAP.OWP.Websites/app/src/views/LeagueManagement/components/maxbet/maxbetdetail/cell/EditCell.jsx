@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import EditIcon from 'mdi-react/EditIcon';
 import Condition from '../../../condition/round/Condition';
 import { Cell } from 'fixed-data-table-2';

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import AuthorizeService from '../Authorize/Service';
 import List from './List';
 import Loading from '../components/Loading';

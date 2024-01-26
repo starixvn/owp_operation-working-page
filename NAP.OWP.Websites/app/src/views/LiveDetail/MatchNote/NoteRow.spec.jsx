@@ -1,4 +1,3 @@
-import React from 'react';
 import NoteRow from './NoteRow';
 import { fireEvent, render, screen } from '@testing-library/react';
 

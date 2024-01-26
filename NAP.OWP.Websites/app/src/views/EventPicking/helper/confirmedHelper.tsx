@@ -4,8 +4,9 @@ import { TDataSource } from '../types/noOfferMatchType';
 import updateConfirmedThunk from '../table/updateConfirmedThunkNative';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import { MESSAGE } from '../const/const.json';
+import { ChangeEvent } from 'react';
 
-const updateConfirmAllEvent = async (event: React.ChangeEvent<HTMLInputElement>) => {
+const updateConfirmAllEvent = async (event: ChangeEvent<HTMLInputElement>) => {
   const { checked } = event.target;
   if (checked) {
     const confirmResult = await ToastrWrapper.confirm(MESSAGE.CONFIRM_ALL);

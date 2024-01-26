@@ -1,4 +1,3 @@
-import React from 'react';
 const prepareValueCopy = (dataRow, key) =>
   key.includes('TakeOver')
     ? {

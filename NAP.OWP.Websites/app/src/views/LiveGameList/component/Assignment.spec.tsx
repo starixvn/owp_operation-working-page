@@ -1,4 +1,3 @@
-import React from 'react';
 import Assignment from './Assignment';
 import { AssignmentInfo } from '../type/TableType';
 import { render } from '@testing-library/react';

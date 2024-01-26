@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import MaxbetConst from '../../../constants/MaxbetConst';
 import { useDispatch, useSelector } from 'react-redux';
 import { postData } from '../../../actions/action';

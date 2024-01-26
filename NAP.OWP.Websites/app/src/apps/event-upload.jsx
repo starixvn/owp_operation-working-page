@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Layout from '../views/Layout';
 import '../scss/pages/_EventUpload.scss';

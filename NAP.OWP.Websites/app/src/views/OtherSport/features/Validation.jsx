@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import Loading from '../../components/Loading';
 import PropTypes from 'prop-types';

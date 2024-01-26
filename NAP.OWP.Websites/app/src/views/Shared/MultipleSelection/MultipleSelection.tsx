@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import { IMultipleSelectProps, Option } from './type';
 

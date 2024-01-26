@@ -1,4 +1,3 @@
-import React from 'react';
 import CreateTicketButton from '../../Shared/createTicketNew/CreateTicketButton';
 import { BUTTON_TYPE } from '../../Shared/createTicketNew/const/const';
 import { useAppSelector } from '../app/hooks';

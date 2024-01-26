@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { getStatusHistory } from '../../services/service';
 import StatusPopup from './StatusPopup';
 import { setImmediate } from 'timers';

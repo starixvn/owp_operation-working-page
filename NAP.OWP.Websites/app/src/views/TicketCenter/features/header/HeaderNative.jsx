@@ -1,4 +1,3 @@
-import React from 'react';
 import CheckBoxFilter from './checkBox/CheckBoxFilter';
 import FilterTicketCenter from './filter/FilterTicketCenter';
 import CreateTicketButton from '../../../Shared/createTicketNew/CreateTicketButton';

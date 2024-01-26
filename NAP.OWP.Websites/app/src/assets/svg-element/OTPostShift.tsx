@@ -1,5 +1,3 @@
-import React from 'react';
-
 const OTPostShift = () => (
   <svg
     className='ot__icon'

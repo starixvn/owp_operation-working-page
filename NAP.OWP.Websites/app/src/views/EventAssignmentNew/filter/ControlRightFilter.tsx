@@ -1,4 +1,3 @@
-import React from 'react';
 import GoToMyTicket from '../../Shared/TicketCenterPrematch/GoToMyTicket';
 import DailyWorking from './DailyWorking';
 import { useAppSelector } from '../app/hooks';

@@ -1,4 +1,3 @@
-import React from 'react';
 import TicketDetailInformation from './TicketDetailInformation';
 import useStableDispatch from '../customHook/useStableDispatch';
 import { render, screen } from '@testing-library/react';

@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-warning-comments
 /* eslint-disable react/jsx-handler-names */
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import Filter from './Filter';
 import FilterToggle from './FilterToggle';
 import EventAssignmentService from './Service';
@@ -80,7 +80,7 @@ class EventAssignment extends Component {
     this.submit = this.submit.bind(this);
     this.onSaved = this.onSaved.bind(this);
     this.onCloseDetailModal = this.onCloseDetailModal.bind(this);
-    this.iframeRef = React.createRef();
+    this.iframeRef = createRef();
   }
 
   onCloseDetailModal = () => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import SettingPopup from './SettingPopup';
 import useStore from '../../app/store';
 import { fireEvent, render, screen } from '@testing-library/react';

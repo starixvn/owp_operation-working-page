@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash';
 import { HistoryIcon } from 'mdi-react';
-import React, { useEffect } from 'react';
+import { MouseEvent, useEffect } from 'react';
 import ReactTable, { CellInfo, Column } from 'react-table';
 import withFixedColumns from 'react-table-hoc-fixed-columns-ts';
 import Loading from '../../../components/Loading';
@@ -98,7 +98,7 @@ const MaxbetSettingTable = () => {
       }
     };
 
-    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleClick = (e: MouseEvent<HTMLDivElement>) => {
       const list: HTMLCollectionOf<Element> = document.getElementsByClassName(ACTIVE_CLICK);
       for (const element of Array.from(list)) {
         element.className = element.className.replace(ACTIVE_CLICK, '');

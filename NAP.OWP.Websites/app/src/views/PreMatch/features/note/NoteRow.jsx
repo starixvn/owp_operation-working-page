@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import TextareaAutosize from 'react-autosize-textarea';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';

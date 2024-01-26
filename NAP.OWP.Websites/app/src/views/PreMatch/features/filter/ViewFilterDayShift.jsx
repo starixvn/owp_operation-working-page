@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getShiftByDateAndEmployee } from '../league/shiftSlice/shiftSlice';
 import { updateFilterEmployer, updateFilterDate } from '../filter/filterSlice';

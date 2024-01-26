@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isNil } from 'lodash';
 import NumericTextbox from 'react-numeric-textbox';
@@ -9,7 +9,7 @@ const propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-class OddCell extends React.Component {
+class OddCell extends Component {
   onChange(odd) {
     const { onChange } = this.props;
     onChange(odd);

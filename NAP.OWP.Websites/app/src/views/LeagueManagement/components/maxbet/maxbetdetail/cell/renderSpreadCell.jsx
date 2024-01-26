@@ -1,4 +1,3 @@
-import React from 'react';
 import ColumnConst from '../../../../constants/ColumnConst';
 import { buildPropsMaxbetSpreadCell } from '../../../../helper/commonHelper';
 import SpreadCell from './SpreadCell';

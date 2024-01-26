@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { createRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Cell } from 'fixed-data-table-2';
 import { useStore, useDispatch } from 'react-redux';
@@ -18,7 +18,7 @@ const LstNoteCell = ({ data, rowIndex }) => {
   const [canEdit, setCanEdit] = useState(false);
   const [lSTNote, setLstNote] = useState(data.LSTNote);
   const dispatch = useDispatch();
-  const input = React.createRef();
+  const input = createRef();
   const store = useStore();
   const { policyData } = store.getState().policyReducer;
   const handleUpdateNote = () => {

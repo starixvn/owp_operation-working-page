@@ -1,4 +1,3 @@
-import React from 'react';
 import { TABLE, COLUMN_FULL_BETTYPE } from '../const.json';
 import { TBettype, TColumn, TPickCellModel, TNoteCell } from '../type/type';
 import NoCell from './cell/NoCell';

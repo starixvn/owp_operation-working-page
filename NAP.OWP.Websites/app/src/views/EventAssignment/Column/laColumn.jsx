@@ -1,4 +1,3 @@
-import React from 'react';
 import { Column } from 'fixed-data-table-2';
 import FilterHeader from '../../Shared/FilterHeader/FilterHeaderNative';
 import BettypeCell from '../Cell/BettypeCell';

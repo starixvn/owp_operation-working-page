@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Loading from '../../../components/Loading';
 import { REQUEST_STATUS } from '../../../Shared/Constants';

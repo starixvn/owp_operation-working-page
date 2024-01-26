@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import PropTypes from 'prop-types';
 import Utils from '../Utils';

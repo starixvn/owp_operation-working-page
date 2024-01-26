@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { postData } from '../../../actions/action';
 import MaxbetConst from '../../../constants/MaxbetConst';

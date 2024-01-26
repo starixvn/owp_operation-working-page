@@ -1,4 +1,3 @@
-import React from 'react';
 import KOTimeToday from '../../today/KOTimeToday';
 import { CellProps } from '../../type/TTaskListTable';
 import KOTimeYesterday from '../../yesterday/KOTimeYesterday';

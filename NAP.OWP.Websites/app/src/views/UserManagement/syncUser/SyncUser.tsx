@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { post } from '../../Shared/Service/Service';
 import { buildQuerySimpleApi } from '../../Shared/Constants';
 import UserDetail from './UserDetail';

@@ -1,4 +1,3 @@
-import React from 'react';
 import CloudDownloadIcon from 'mdi-react/CloudDownloadIcon';
 import CloudUploadIcon from 'mdi-react/CloudUploadIcon';
 import EyeIcon from 'mdi-react/EyeIcon';

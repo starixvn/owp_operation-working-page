@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import ResourceManagement from './ResourceManagement';
 import AuthorizeService from '../Authorize/Service';

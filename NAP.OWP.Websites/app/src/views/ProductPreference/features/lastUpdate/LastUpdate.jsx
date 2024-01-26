@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import { isEqual } from 'lodash';
 import Loading from '../../../components/Loading';

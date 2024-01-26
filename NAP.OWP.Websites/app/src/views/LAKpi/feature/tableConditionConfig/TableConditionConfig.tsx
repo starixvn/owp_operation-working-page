@@ -1,4 +1,3 @@
-import React from 'react';
 import ConditionColumn from './ConditionColumn';
 import { uniqueId } from 'lodash';
 import useStore from '../../app/store';

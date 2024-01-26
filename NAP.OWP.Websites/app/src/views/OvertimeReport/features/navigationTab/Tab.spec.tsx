@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Tab from './Tab';
 import { useDispatch, useSelector } from 'react-redux';
