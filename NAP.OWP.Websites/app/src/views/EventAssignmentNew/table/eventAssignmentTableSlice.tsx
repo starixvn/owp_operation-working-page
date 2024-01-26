@@ -10,7 +10,6 @@ import {
 import queryDataTableThunk from './queryDataTableThunk';
 import { isEqual } from 'lodash';
 import {
-  handleFilterByColumn,
   handleFilter,
   updateColumnFilter
 } from './columnFilter';

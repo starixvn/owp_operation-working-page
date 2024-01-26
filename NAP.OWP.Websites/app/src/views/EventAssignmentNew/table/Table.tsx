@@ -35,7 +35,7 @@ const EventAssignmentTable = () => {
     return <Loading />;
   }
   const tableWith =
-    window.innerWidth > 680 ? window.innerWidth - 110 : window.innerWidth;
+    window.innerWidth > 680 ? window.innerWidth - 125 : window.innerWidth;
 
   const handleShowPopup = (show: boolean) => {
     // eslint-disable-next-line no-warning-comments
