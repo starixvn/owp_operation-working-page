@@ -123,7 +123,7 @@ type TMaxbetSpread = {
   Maxbet: number;
   Spread: number;
   MaxBetToDisplay: string;
-  spreadToDisplay: string;
+  SpreadToDisplay: string;
 };
 type TCellSchema = {
   columnKey: string,

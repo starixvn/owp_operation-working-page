@@ -10,20 +10,20 @@ const MBCell = (props: TCellModel) => {
   const renderMaxbetSpreadMbc = () => {
     const uuidKey = `mb_${OWPMatchId}_${rowIndex}`;
     const isDisplayHDPSetting =
-      HandicapSetting?.spreadToDisplay || OverUnderSetting?.spreadToDisplay;
-    const isHDPSpreadExisting = HandicapSetting?.spreadToDisplay;
+      HandicapSetting?.SpreadToDisplay || OverUnderSetting?.SpreadToDisplay;
+    const isHDPSpreadExisting = HandicapSetting?.SpreadToDisplay;
 
     return (
       <div>
         <span data-for={uuidKey} data-tip='Maxbet/Spread of MBC'>
           {HandicapSetting?.MaxBetToDisplay}
           {isDisplayHDPSetting && (
-            <span>({HandicapSetting?.spreadToDisplay}</span>
+            <span>({HandicapSetting?.SpreadToDisplay}</span>
           )}
-          {OverUnderSetting?.spreadToDisplay && (
+          {OverUnderSetting?.SpreadToDisplay && (
             <>
               {isHDPSpreadExisting && <span>-</span>}
-              {OverUnderSetting.spreadToDisplay}
+              {OverUnderSetting.SpreadToDisplay}
             </>
           )}
           {isDisplayHDPSetting && <span>)</span>}
