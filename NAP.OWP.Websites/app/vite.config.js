@@ -8,6 +8,7 @@ const appName = process.env.NODE_APP.trim();
 const outDir = resolve(__dirname, `../wwwroot/${appName}`);
 const nerCoreUrl = 'http://localhost:5000';
 const netFwUrl = 'http://localhost:64193';
+const webSocket = 'ws://localhost:5000';
 
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? `/wwwroot/${appName}` : '/',
@@ -15,6 +16,26 @@ export default defineConfig({
     open: true,
     host: true,
     proxy: {
+      '/otherSportNewDataUploadNotifyHub': {
+        target: webSocket,
+        ws: true,
+        secure: false
+      },
+      '/changedInfoNotifyHub': {
+        target: webSocket,
+        ws: true,
+        secure: false
+      },
+      '/ticketCenterNotifyHub': {
+        target: webSocket,
+        ws: true,
+        secure: false
+      },
+      '/preMatchNotifyHub': {
+        target: webSocket,
+        ws: true,
+        secure: false
+      },
       '/api-netcore': {
         target: nerCoreUrl,
         secure: false,
