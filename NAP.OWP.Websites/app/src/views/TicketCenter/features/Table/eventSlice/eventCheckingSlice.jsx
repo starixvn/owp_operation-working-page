@@ -69,6 +69,38 @@ const eventCheckingSlice = createSlice({
         });
         state.entities = filterIssueByUnreadMessageValue(state);
       }
+    },
+    setNewMessage: (state, action) => {
+      debugger;
+      const {
+        ticketId,
+        createdDate,
+        fileId,
+        isFile,
+        message,
+        messageId,
+        userId,
+        username
+      } = action.payload;
+      const newMsg = {
+        ticketId,
+        createdDate,
+        fileId,
+        isFile,
+        message,
+        messageId,
+        userId,
+        username
+      };
+
+      const ticketTarget = state.entities.find(e => e.ticketId);
+      ticketTarget.isRead = false;
+      ticketTarget.messages.unshift(newMsg);
+      ticketTarget.messages.pop();
+      const ticketOrigin = state.entitiesOrigin.find(e => e.ticketId);
+      ticketOrigin.isRead = false;
+      ticketOrigin.messages.unshift(newMsg);
+      ticketOrigin.messages.pop();
     }
   },
   extraReducers: builder => {
@@ -133,13 +165,15 @@ const {
   sort,
   updatedIsReadOneRow,
   showUnreadMessageOnly,
-  updatedIsReadAllRows
+  updatedIsReadAllRows,
+  setNewMessage
 } = actions;
 export {
   actions,
   sort,
   updatedIsReadOneRow,
   showUnreadMessageOnly,
-  updatedIsReadAllRows
+  updatedIsReadAllRows,
+  setNewMessage
 };
 export default reducer;
