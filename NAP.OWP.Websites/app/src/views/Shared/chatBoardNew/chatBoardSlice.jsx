@@ -99,6 +99,9 @@ const chatBoardSlice = createSlice({
           state.isAllImagesLoaded = true;
         }
       }
+    },
+    setNewMessage: (state, { payload: data }) => {
+      state.ticketDetail.messages.push(data);
     }
   },
   extraReducers: builder => {
@@ -123,6 +126,8 @@ const chatBoardSlice = createSlice({
         message.isSaved = isSaved;
       })
       .addCase(getTicketDetail.fulfilled, (state, action) => {
+        debugger;
+        console.log(action.payload.data);
         state.ticketDetail = action.payload.data;
         state.loading = REQUEST_STATUS.idle;
         chatBoardSlice.caseReducers.openPopup(state);
@@ -153,7 +158,8 @@ const {
   openTicketPopup,
   closeTicketPopup,
   setModelQuoteMessage,
-  setImagesLoaded
+  setImagesLoaded,
+  setNewMessage
 } = actions;
 
 export {
@@ -169,7 +175,8 @@ export {
   closeTicketPopup,
   getTicketSubTypes,
   setModelQuoteMessage,
-  setImagesLoaded
+  setImagesLoaded,
+  setNewMessage
 };
 
 export default reducer;
