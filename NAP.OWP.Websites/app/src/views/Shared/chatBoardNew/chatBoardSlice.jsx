@@ -51,6 +51,15 @@ const chatBoardSlice = createSlice({
     isAllImagesLoaded: false
   },
   reducers: {
+    updateSubTypeTicketDetailByTicketId: {
+      reducer: (state, action) => {
+        const { ticketId, ticketSubTypeId, ticketSubTypeName } = action.payload;
+        if (state.ticketDetail.ticketId === ticketId) {
+          state.ticketDetail.ticketSubTypeId = ticketSubTypeId;
+          state.ticketDetail.ticketSubTypeName = ticketSubTypeName;
+        }
+      }
+    },
     setModelQuoteMessage: {
       reducer: (state, action) => {
         state.modelQuoteMessage = action.payload;
@@ -159,7 +168,8 @@ const {
   closeTicketPopup,
   setModelQuoteMessage,
   setImagesLoaded,
-  setNewMessage
+  setNewMessage,
+  updateSubTypeTicketDetailByTicketId
 } = actions;
 
 export {
@@ -176,7 +186,8 @@ export {
   getTicketSubTypes,
   setModelQuoteMessage,
   setImagesLoaded,
-  setNewMessage
+  setNewMessage,
+  updateSubTypeTicketDetailByTicketId
 };
 
 export default reducer;

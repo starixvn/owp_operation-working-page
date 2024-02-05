@@ -38,6 +38,25 @@ const eventCheckingSlice = createSlice({
     ticketType: [{ value: 0, label: 'All' }]
   },
   reducers: {
+    updateSubTypeByTicketId: {
+      reducer: (state, action) => {
+        const { ticketId, ticketSubTypeId, ticketSubTypeName } = action.payload;
+        console.log('action', action.payload);
+        state.entitiesOrigin.forEach(x => {
+          if (x.ticketId === ticketId) {
+            x.ticketSubTypeId = ticketSubTypeId;
+            x.ticketSubTypeName = ticketSubTypeName;
+          }
+        });
+
+        state.entities.forEach(x => {
+          if (x.ticketId === ticketId) {
+            x.ticketSubTypeId = ticketSubTypeId;
+            x.ticketSubTypeName = ticketSubTypeName;
+          }
+        });
+      }
+    },
     appendTicketItemIntoDataSource: {
       reducer: (state, action) => {
         state.entities.unshift(action.payload);
@@ -76,6 +95,7 @@ const eventCheckingSlice = createSlice({
         state.entities = filterIssueByUnreadMessageValue(state);
       }
     },
+
     setNewMessage: (state, action) => {
       debugger;
       const {
@@ -173,7 +193,8 @@ const {
   showUnreadMessageOnly,
   updatedIsReadAllRows,
   setNewMessage,
-  appendTicketItemIntoDataSource
+  appendTicketItemIntoDataSource,
+  updateSubTypeByTicketId
 } = actions;
 export {
   actions,
@@ -182,6 +203,7 @@ export {
   showUnreadMessageOnly,
   updatedIsReadAllRows,
   setNewMessage,
-  appendTicketItemIntoDataSource
+  appendTicketItemIntoDataSource,
+  updateSubTypeByTicketId
 };
 export default reducer;

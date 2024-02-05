@@ -31,6 +31,7 @@ export const TicketSubType = ({ options = [], policy = 'policy' }) => {
     const requestModel = {
       ticketId,
       ticketSubTypeId: subtype.value,
+      ticketSubTypeName: subtype.label,
       actorId: ActorId
     };
 
