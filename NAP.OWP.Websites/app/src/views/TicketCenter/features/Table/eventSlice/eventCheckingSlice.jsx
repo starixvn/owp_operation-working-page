@@ -38,6 +38,12 @@ const eventCheckingSlice = createSlice({
     ticketType: [{ value: 0, label: 'All' }]
   },
   reducers: {
+    appendTicketItemIntoDataSource: {
+      reducer: (state, action) => {
+        state.entities.unshift(action.payload);
+        state.entitiesOrigin.unshift(action.payload);
+      }
+    },
     sort: {
       reducer: (state, action) => {
         const { columnKey, orderType } = action.payload;
@@ -166,7 +172,8 @@ const {
   updatedIsReadOneRow,
   showUnreadMessageOnly,
   updatedIsReadAllRows,
-  setNewMessage
+  setNewMessage,
+  appendTicketItemIntoDataSource
 } = actions;
 export {
   actions,
@@ -174,6 +181,7 @@ export {
   updatedIsReadOneRow,
   showUnreadMessageOnly,
   updatedIsReadAllRows,
-  setNewMessage
+  setNewMessage,
+  appendTicketItemIntoDataSource
 };
 export default reducer;

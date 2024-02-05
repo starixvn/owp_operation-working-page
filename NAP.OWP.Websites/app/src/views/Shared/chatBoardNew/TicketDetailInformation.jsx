@@ -41,13 +41,18 @@ const TicketDetailInformation = ({
 
   const handleAddRecipient = useCallback(
     async recipient => {
+      const modelTicket = {
+        ...ticketDetail,
+        lastCommentDate: ticketDetail.messages[0].createdDate
+      };
       const requestModel = {
         ticketId: ticketDetail.ticketId,
         ticketTitle: getTicketTitle(ticketDetail),
         ticketEventType: ticketDetail.eventType,
         actorId: ActorId,
         recipientId: recipient.recipientId,
-        recipientType: recipient.recipientType
+        recipientType: recipient.recipientType,
+        ticketInfo: modelTicket
       };
 
       const url =

@@ -1,8 +1,8 @@
 import store from '../../app/storeNative';
-import { reloadTicketCenterTable } from './signalRHelper';
+import { appendTicketItemIntoDataSource } from '../Table/eventSlice/eventCheckingSlice';
 
-const handleNewAddRecipient = () => {
-  const model = store.getState();
-  reloadTicketCenterTable(model);
+const handleNewAddRecipient = ticketInfo => {
+  store.dispatch(appendTicketItemIntoDataSource(ticketInfo));
 };
+
 export { handleNewAddRecipient };
