@@ -83,7 +83,9 @@ const CreateTicketBoardOther = props => {
         Recipients,
         Message: message,
         SubType: subTypeSelected.value,
+        SubTypeName: subTypeSelected.label,
         TicketType: isTicKetSupport ? TICKET_SUPPORT : GROUP_CHAT,
+        TicketTypeName: typeTicketText,
         url: isTicKetSupport ? urlRequestSupport : urlRequestOther
       };
       const result = await post(newAddModel);
