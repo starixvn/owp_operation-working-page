@@ -156,7 +156,7 @@ class Filter extends PureComponent {
       'Are you sure to TURN OFF VR for ALL the matches containing OFF VR?'
     ).then(async confirmResult => {
       if (confirmResult.value) {
-        const model = { date: selectedDate };
+        const model = { date: Utils.formatDate(selectedDate) };
         await Service.syncOffVRs(model);
       }
     });
@@ -262,8 +262,6 @@ class Filter extends PureComponent {
           />
           {hasWrite && (
             <button
-              hidden
-              disabled
               className='button-submit button-sync-off-vr'
               onClick={this.handleSyncOffVR}>
               Sync OFF VR
