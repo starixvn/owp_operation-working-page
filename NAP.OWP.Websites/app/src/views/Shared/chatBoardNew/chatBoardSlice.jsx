@@ -111,6 +111,9 @@ const chatBoardSlice = createSlice({
     },
     setNewMessage: (state, { payload: data }) => {
       state.ticketDetail.messages.push(data);
+    },
+    setTicketStatus: (state, { payload: data }) => {
+      state.ticketDetail.ticketStatus = data;
     }
   },
   extraReducers: builder => {
@@ -168,6 +171,7 @@ const {
   setModelQuoteMessage,
   setImagesLoaded,
   setNewMessage,
+  setTicketStatus,
   updateSubTypeTicketDetailByTicketId
 } = actions;
 
@@ -186,6 +190,7 @@ export {
   setModelQuoteMessage,
   setImagesLoaded,
   setNewMessage,
+  setTicketStatus,
   updateSubTypeTicketDetailByTicketId
 };
 

@@ -95,7 +95,15 @@ const eventCheckingSlice = createSlice({
         state.entities = filterIssueByUnreadMessageValue(state);
       }
     },
-
+    setTicketStatus: (state, { payload: data }) => {
+      const { ticketId, newStatus } = data;
+      const ticket = state.entities.find(e => e.ticketId === ticketId);
+      ticket.ticketStatus = newStatus;
+      const ticketOrigin = state.entitiesOrigin.find(
+        e => e.ticketId === ticketId
+      );
+      ticketOrigin.ticketStatus = newStatus;
+    },
     setNewMessage: (state, action) => {
       debugger;
       const {
@@ -193,6 +201,7 @@ const {
   showUnreadMessageOnly,
   updatedIsReadAllRows,
   setNewMessage,
+  setTicketStatus,
   appendTicketItemIntoDataSource,
   updateSubTypeByTicketId
 } = actions;
@@ -203,6 +212,7 @@ export {
   showUnreadMessageOnly,
   updatedIsReadAllRows,
   setNewMessage,
+  setTicketStatus,
   appendTicketItemIntoDataSource,
   updateSubTypeByTicketId
 };
