@@ -1,9 +1,13 @@
-import { getTicketDetail } from '../../../Shared/chatBoardNew/chatBoardSlice';
+import {
+  getTicketDetail,
+  setNewMessage
+} from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/store';
 import { reloadTicketInTable } from '../league/shiftSlice/shiftSlice';
 import ToastsWrapper from '../../../components/ToastrWrapper';
 
-const reloadPreMatch = async (id, isTicketLeague, ticket) => {
+const reloadPreMatch = async (id, isTicketLeague, data) => {
+  const { ticket, messageResponse } = data;
   const ticketFormatted = {
     EventType: ticket.eventType,
     IsRead: ticket.isRead,
@@ -19,7 +23,8 @@ const reloadPreMatch = async (id, isTicketLeague, ticket) => {
   debugger;
   // TODO
   reloadTicketInPreMatchTableHandler(id, isTicketLeague, ticketFormatted);
-  await reloadOpenTicketHandler();
+
+  reloadOpenTicketHandler(messageResponse);
 };
 
 const reloadTicketInPreMatchTableHandler = (id, isTicketLeague, ticket) => {
@@ -29,19 +34,8 @@ const reloadTicketInPreMatchTableHandler = (id, isTicketLeague, ticket) => {
     store.dispatch(reloadTicketInTable({ id, isTicketLeague, ticket }));
 };
 
-const reloadOpenTicketHandler = async () => {
-  const model = store.getState();
-  const { backupGetIssueModel } = model.signalR;
-  const { isOpenPopup } = model.chatBoard;
-
-  if (isOpenPopup) {
-    const actionResult = await store.dispatch(
-      getTicketDetail(backupGetIssueModel)
-    );
-    if (getTicketDetail.rejected.match(actionResult)) {
-      ToastsWrapper.showError(actionResult.payload);
-    }
-  }
+const reloadOpenTicketHandler = messageResponse => {
+  store.dispatch(setNewMessage(messageResponse));
 };
 
 export { reloadOpenTicketHandler, reloadPreMatch };

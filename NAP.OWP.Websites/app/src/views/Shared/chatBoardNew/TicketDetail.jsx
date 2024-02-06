@@ -41,6 +41,7 @@ const TicketDetail = ({ policy = 'policy' }) => {
     modelQuoteMessage
   } = useSelector(state => state.chatBoard);
   const { ticketId } = ticketDetail;
+  debugger;
 
   const { messageId } = modelQuoteMessage;
 
