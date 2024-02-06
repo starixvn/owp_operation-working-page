@@ -33,6 +33,7 @@ import EventSubject from './component/EventSubject';
 import { urlRequestLogWork } from '../const/const';
 import {
   LogWorkProps,
+  MatchInfo,
   StatusOption,
   SubType,
   SubTypeOption,
@@ -50,6 +51,7 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [errorRecipient, setErrorRecipient] = useState(false);
   const [adminSiteId, setAdminSiteId] = useState('');
+  const [matchInfo, setMatchInfo] = useState<MatchInfo | null>(null);
   const [errorMatchCheck, setErrorMatchCheck] = useState('');
   const dispatch = useStableDispatch();
 
@@ -63,9 +65,9 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
         })
       );
       const subTypeDefault = option.find(x => x.value === subtypeTicketCheck);
-      const recipientDefault = await getRecipientDefaultBySubType(
+      const recipientDefault = (await getRecipientDefaultBySubType(
         subTypeDefault?.value
-      ) as TRecipient[];
+      )) as TRecipient[];
       setSubTypeOption(option);
       setSubTypeSelected(subTypeDefault);
       setRecipient(recipientDefault.concat([creatorInfo]));
@@ -76,9 +78,9 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
   const handleOnChangeSubtype = async (subtype: SubTypeOption | null) => {
     if (subtype) {
       setSubTypeSelected(subtype);
-      const recipientBySubtype = await getRecipientDefaultBySubType(
+      const recipientBySubtype = (await getRecipientDefaultBySubType(
         subtype?.value
-      ) as TRecipient[];
+      )) as TRecipient[];
       setRecipient(recipientBySubtype.concat([creatorInfo]));
       setSubject(getSubjectBySubtype(subtype));
       setErrorSubject('');
@@ -110,6 +112,12 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
       Message: comment || 'Please add',
       SubType: subTypeSelected?.value,
       Status: statusSelected.value,
+      SubTypeName: subTypeSelected?.label,
+      TicketTypeName: 'S&VR',
+      OwpLeagueName: matchInfo?.leagueName,
+      OwpHomeName: matchInfo?.homeName,
+      OwpAwayName: matchInfo?.awayName,
+      EventDateTimeGmt8: matchInfo?.koTime,
       TicketType: ticketType,
       AdminSiteId: adminSiteId,
       Subject: subject,
@@ -146,6 +154,8 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
             errorInvalid={errorMatchCheck}
             setErrorInvalid={setErrorMatchCheck}
             setMatchId={setAdminSiteId}
+            matchInfo={matchInfo}
+            setMatchInfo={setMatchInfo}
           />
         ) : (
           <Subject
