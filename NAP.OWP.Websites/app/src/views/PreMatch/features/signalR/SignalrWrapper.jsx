@@ -25,6 +25,6 @@ const SignalRWrapper = () => {
     }
   ];
 
-  return <NetCoreSignalR handlers={handlers} hubName='prematchNotifyHub' />;
+  return <NetCoreSignalR handlers={handlers} hubName='preMatchNotifyHub' />;
 };
 export default SignalRWrapper;

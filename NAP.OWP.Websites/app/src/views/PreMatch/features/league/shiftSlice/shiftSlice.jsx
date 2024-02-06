@@ -436,25 +436,31 @@ const shiftSlice = createSlice({
       }
     },
     reloadTicketInTable: {
-      reducer: (state, { payload }) => {
-        const { id, isTicketLeague, ticketList } = payload;
+      reducer: (state, { payload: { id, isTicketLeague, ticket } }) => {
+        debugger;
         if (isTicketLeague) {
           const findLeague = state.leagues.find(
             league => league.LeagueId === id
           );
           if (findLeague) {
-            findLeague.HasMessages = ticketList.length > 0;
-            findLeague.TicketList = ticketList;
-            findLeague.IsRead = ticketList.every(ticket => ticket.IsRead);
+            findLeague.HasMessages = true;
+            const index = findLeague.TicketList.findIndex(
+              t => t.TicketId === ticket.TicketId
+            );
+            findLeague.TicketList[index] = ticket;
+            findLeague.IsRead = false;
           }
         } else {
           const findMatch = state.matches.find(
             match => match.InfoSiteMatchId === id
           );
           if (findMatch) {
-            findMatch.HasMessages = ticketList.length > 0;
-            findMatch.TicketList = ticketList;
-            findMatch.IsRead = ticketList.every(ticket => ticket.IsRead);
+            findMatch.HasMessages = false;
+            const index = findMatch.TicketList.findIndex(
+              t => t.TicketId === ticket.TicketId
+            );
+            findMatch.TicketList[index] = ticket;
+            findMatch.IsRead = false;
           }
         }
 

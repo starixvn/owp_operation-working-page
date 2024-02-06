@@ -2,37 +2,31 @@ import { getTicketDetail } from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/store';
 import { reloadTicketInTable } from '../league/shiftSlice/shiftSlice';
 import ToastsWrapper from '../../../components/ToastrWrapper';
-import { throttle } from 'lodash';
-import { URL_QUERY_TICKET_LIST } from '../../const/const';
-import { get } from '../../ImportPrematchHelperNative';
 
-const reloadPreMatch = async (id, isTicketLeague) => {
-  await reloadTicketInPreMatchTableHandler(id, isTicketLeague);
+const reloadPreMatch = async (id, isTicketLeague, ticket) => {
+  const ticketFormatted = {
+    EventType: ticket.eventType,
+    IsRead: ticket.isRead,
+    LatestCreatedDate: ticket.latestCreatedDate,
+    LatestMessage: ticket.latestMessage,
+    LatestUsername: ticket.latestUsername,
+    OWPLeagueId: ticket.owpLeagueId,
+    SubtypeId: ticket.subtypeId,
+    SubtypeName: ticket.subtypeName,
+    TicketId: ticket.ticketId,
+    InfoSiteMatchId: ticket.infoSiteMatchId
+  };
+  debugger;
+  // TODO
+  reloadTicketInPreMatchTableHandler(id, isTicketLeague, ticketFormatted);
   await reloadOpenTicketHandler();
 };
 
-const reloadTicketInPreMatchTableHandler = async (id, isTicketLeague) => {
+const reloadTicketInPreMatchTableHandler = (id, isTicketLeague, ticket) => {
   const model = store.getState();
   const { isEdit } = model.editor;
-  const { permission } = model.policy;
-
-  const getTicketList = async () => {
-    const response = await get({
-      url: URL_QUERY_TICKET_LIST,
-      id,
-      actorId: permission.ActorId,
-      isTicketLeague
-    });
-
-    return response.data;
-  };
-
-  const submitThrottle = throttle(ticketList => {
-    store.dispatch(reloadTicketInTable({ id, isTicketLeague, ticketList }));
-  }, 500);
-
-  const ticketList = await getTicketList();
-  !isEdit && submitThrottle(ticketList);
+  !isEdit &&
+    store.dispatch(reloadTicketInTable({ id, isTicketLeague, ticket }));
 };
 
 const reloadOpenTicketHandler = async () => {

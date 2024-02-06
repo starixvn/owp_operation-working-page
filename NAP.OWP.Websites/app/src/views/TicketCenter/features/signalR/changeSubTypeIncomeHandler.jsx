@@ -1,5 +1,4 @@
 import store from '../../app/storeNative';
-import { reloadTicketCenterTable } from './signalRHelper';
 import { updateSubTypeByTicketId } from '../Table/eventSlice/eventCheckingSlice';
 import { updateSubTypeTicketDetailByTicketId } from '../../../Shared/chatBoardNew/chatBoardSlice';
 const changeSubTypeIncomeHandler = (
