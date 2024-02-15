@@ -8,9 +8,8 @@ import ToastrWrapper from '../../components/ToastrWrapper';
 export const TicketSubType = ({ options = [], policy = 'policy' }) => {
   const [selectedSubType, setSelectedSubType] = useState([]);
 
-  const { ticketSubTypeId, ticketSubTypeName, ticketId } = useSelector(
-    state => state.chatBoard.ticketDetail
-  );
+  const ticketDetail = useSelector(state => state.chatBoard.ticketDetail);
+  const { ticketSubTypeId, ticketSubTypeName, ticketId } = ticketDetail;
 
   const { permission } = useSelector(state => state[policy]);
   const { HasWrite, ActorId } = permission;
@@ -27,12 +26,17 @@ export const TicketSubType = ({ options = [], policy = 'policy' }) => {
     if (subtype.value === ticketSubTypeId) {
       return;
     }
+    const modelTicket = {
+      ...ticketDetail,
+      ticketSubTypeId: subtype.value,
+      ticketSubTypeName: subtype.label,
+      lastCommentDate: ticketDetail.messages[0].createdDate
+    };
 
     const requestModel = {
       ticketId,
-      ticketSubTypeId: subtype.value,
-      ticketSubTypeName: subtype.label,
-      actorId: ActorId
+      actorId: ActorId,
+      ticketInfo: modelTicket
     };
 
     const result = await dispatch(updateTicketSubType(requestModel));

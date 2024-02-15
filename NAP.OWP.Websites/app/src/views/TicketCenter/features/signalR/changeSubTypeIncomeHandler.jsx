@@ -1,20 +1,31 @@
 import store from '../../app/storeNative';
-import { updateSubTypeByTicketId } from '../Table/eventSlice/eventCheckingSlice';
+import {
+  appendTicketItemIntoDataSource,
+  removeTicketItemFromDataSource,
+  updateSubTypeByTicketId
+} from '../Table/eventSlice/eventCheckingSlice';
+import { checkAllFilterCondition } from './signalRHelper';
 import { updateSubTypeTicketDetailByTicketId } from '../../../Shared/chatBoardNew/chatBoardSlice';
-const changeSubTypeIncomeHandler = (
-  ticketId,
-  ticketSubTypeId,
-  ticketSubTypeName
-) => {
+const changeSubTypeIncomeHandler = ticketInfo => {
   const model = store.getState();
   const { isOpenPopup } = model.chatBoard;
-  const payload = {
-    ticketId,
-    ticketSubTypeId,
-    ticketSubTypeName
-  };
-  store.dispatch(updateSubTypeByTicketId(payload));
-  isOpenPopup && store.dispatch(updateSubTypeTicketDetailByTicketId(payload));
+  const { filterModel } = model.signalR;
+  const { entities } = model.eventChecking;
+  const isCorrectFilter = checkAllFilterCondition(filterModel, ticketInfo);
+  const elementByTicketId = entities.find(
+    x => x.ticketId === ticketInfo.ticketId
+  );
+  if (isCorrectFilter) {
+    if (elementByTicketId) {
+      store.dispatch(updateSubTypeByTicketId(ticketInfo));
+      isOpenPopup &&
+        store.dispatch(updateSubTypeTicketDetailByTicketId(ticketInfo));
+    } else {
+      store.dispatch(appendTicketItemIntoDataSource(ticketInfo));
+    }
+  } else {
+    store.dispatch(removeTicketItemFromDataSource(ticketInfo));
+  }
 };
 
 export default changeSubTypeIncomeHandler;

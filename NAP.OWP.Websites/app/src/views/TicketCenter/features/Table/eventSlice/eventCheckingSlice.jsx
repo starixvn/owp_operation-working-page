@@ -62,6 +62,18 @@ const eventCheckingSlice = createSlice({
         state.entitiesOrigin.unshift(action.payload);
       }
     },
+    removeTicketItemFromDataSource: {
+      reducer: (state, action) => {
+        const ticketInfo = action.payload;
+        const { ticketId } = ticketInfo;
+        state.entities = state.entities.filter(
+          item => item.ticketId !== ticketId
+        );
+        state.entitiesOrigin = state.entitiesOrigin.filter(
+          item => item.ticketId !== ticketId
+        );
+      }
+    },
     sort: {
       reducer: (state, action) => {
         const { columnKey, orderType } = action.payload;
@@ -201,6 +213,7 @@ const {
   setNewMessage,
   setTicketStatus,
   appendTicketItemIntoDataSource,
+  removeTicketItemFromDataSource,
   updateSubTypeByTicketId
 } = actions;
 export {
@@ -212,6 +225,7 @@ export {
   setNewMessage,
   setTicketStatus,
   appendTicketItemIntoDataSource,
+  removeTicketItemFromDataSource,
   updateSubTypeByTicketId
 };
 export default reducer;
