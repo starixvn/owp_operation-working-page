@@ -41,7 +41,6 @@ const eventCheckingSlice = createSlice({
     updateSubTypeByTicketId: {
       reducer: (state, action) => {
         const { ticketId, ticketSubTypeId, ticketSubTypeName } = action.payload;
-        console.log('action', action.payload);
         state.entitiesOrigin.forEach(x => {
           if (x.ticketId === ticketId) {
             x.ticketSubTypeId = ticketSubTypeId;
@@ -105,7 +104,6 @@ const eventCheckingSlice = createSlice({
       ticketOrigin.ticketStatus = newStatus;
     },
     setNewMessage: (state, action) => {
-      debugger;
       const {
         ticketId,
         createdDate,

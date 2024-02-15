@@ -4,7 +4,6 @@ import { getTicketDetail } from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/storeNative';
 
 const reloadTicketCenterTable = model => {
-  debugger;
   const { filterModel, issueModel } = model.signalR;
   const { isOpenPopup } = model.chatBoard;
 

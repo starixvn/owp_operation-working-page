@@ -20,7 +20,6 @@ const reloadPreMatch = async (id, isTicketLeague, data) => {
     TicketId: ticket.ticketId,
     InfoSiteMatchId: ticket.infoSiteMatchId
   };
-  debugger;
   // TODO
   reloadTicketInPreMatchTableHandler(id, isTicketLeague, ticketFormatted);
 

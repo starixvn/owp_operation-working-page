@@ -138,7 +138,6 @@ const chatBoardSlice = createSlice({
         message.isSaved = isSaved;
       })
       .addCase(getTicketDetail.fulfilled, (state, action) => {
-        debugger;
         state.ticketDetail = action.payload.data;
         state.loading = REQUEST_STATUS.idle;
         chatBoardSlice.caseReducers.openPopup(state);

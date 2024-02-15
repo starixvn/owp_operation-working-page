@@ -437,7 +437,6 @@ const shiftSlice = createSlice({
     },
     reloadTicketInTable: {
       reducer: (state, { payload: { id, isTicketLeague, ticket } }) => {
-        debugger;
         if (isTicketLeague) {
           const findLeague = state.leagues.find(
             league => league.LeagueId === id
