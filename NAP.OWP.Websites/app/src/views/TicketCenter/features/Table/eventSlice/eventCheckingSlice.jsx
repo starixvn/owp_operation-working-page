@@ -157,15 +157,21 @@ const eventCheckingSlice = createSlice({
         userId,
         username
       };
-
-      const ticketTarget = state.entities.find(e => e.ticketId);
+      debugger;
+      const ticketTarget = state.entities.find(e => e.ticketId === ticketId);
       ticketTarget.isRead = false;
       ticketTarget.messages.unshift(newMsg);
-      ticketTarget.messages.pop();
-      const ticketOrigin = state.entitiesOrigin.find(e => e.ticketId);
+      if (ticketTarget.messages?.length > 2) {
+        ticketTarget.messages.pop();
+      }
+      const ticketOrigin = state.entitiesOrigin.find(
+        e => e.ticketId === ticketId
+      );
       ticketOrigin.isRead = false;
       ticketOrigin.messages.unshift(newMsg);
-      ticketOrigin.messages.pop();
+      if (ticketOrigin.messages?.length > 2) {
+        ticketOrigin.messages.pop();
+      }
     }
   },
   extraReducers: builder => {
