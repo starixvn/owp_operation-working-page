@@ -10,9 +10,10 @@ const propTypes = {
 
 const LastCommentCell = props => {
   const { dataSource, rowIndex } = props;
-  const { messages, isRead } = dataSource[rowIndex];
+  const { lastTwoComments, messages, isRead } = dataSource[rowIndex];
+  const lastMessages = messages.length !== 0 ? messages : lastTwoComments;
   const buildComment = () => {
-    return messages.map((mes, index) => {
+    return lastMessages.map((mes, index) => {
       const { getCreatedTime, getMessageContent } = MessageContentsNative({
         ...mes,
         className: 'is-file',
@@ -37,7 +38,7 @@ const LastCommentCell = props => {
       className={
         !isRead ? 'has-unread last-comment-cell' : 'cell last-comment-cell'
       }>
-      {messages.length > 0 ? (
+      {lastMessages.length > 0 ? (
         buildComment()
       ) : (
         <div className='no-comments'>No comments</div>

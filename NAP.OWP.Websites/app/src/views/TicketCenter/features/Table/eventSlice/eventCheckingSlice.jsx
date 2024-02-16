@@ -1,15 +1,19 @@
 /* eslint-disable no-warning-comments */
 import { createSlice } from '@reduxjs/toolkit';
 import compareValues from '../../../../Shared/Order/compareValues';
-import { isEqual } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
 import {
   getEventTickets,
   refreshEventTickets,
   pinTicket,
   deleteTicket
 } from './eventSliceThunkNative';
-import { filterIssueByUnreadMessageValue } from './eventSliceHelper';
+import {
+  filterIssueByUnreadMessageValue,
+  sortTickets
+} from './eventSliceHelper';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
+import { checkAllFilterCondition } from '../../signalR/signalRHelper';
 
 const handlePendingState = state => {
   const { loading } = state;
@@ -107,13 +111,30 @@ const eventCheckingSlice = createSlice({
       }
     },
     setTicketStatus: (state, { payload: data }) => {
-      const { ticketId, newStatus } = data;
-      const ticket = state.entities.find(e => e.ticketId === ticketId);
-      ticket.ticketStatus = newStatus;
-      const ticketOrigin = state.entitiesOrigin.find(
-        e => e.ticketId === ticketId
-      );
-      ticketOrigin.ticketStatus = newStatus;
+      const { ticketInfo, filterModel } = data;
+      const { ticketId, ticketStatus } = ticketInfo;
+      const isCorrectFilter = checkAllFilterCondition(filterModel, ticketInfo);
+      const updateTickets = entities => {
+        const ticketIndex = entities.findIndex(e => e.ticketId === ticketId);
+        if (ticketIndex !== -1) {
+          entities[ticketIndex].ticketStatus = ticketStatus;
+        } else {
+          entities.unshift(ticketInfo);
+        }
+      };
+      const removeTickets = entities =>
+        entities.filter(item => item.ticketId !== ticketId);
+
+      if (isCorrectFilter) {
+        updateTickets(state.entities);
+        updateTickets(state.entitiesOrigin);
+        const test = cloneDeep(state.entities);
+        sortTickets(state.entities);
+        sortTickets(state.entitiesOrigin);
+      } else {
+        state.entities = removeTickets(state.entities);
+        state.entitiesOrigin = removeTickets(state.entitiesOrigin);
+      }
     },
     setNewMessage: (state, action) => {
       const {

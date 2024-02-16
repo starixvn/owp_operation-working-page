@@ -2,15 +2,17 @@ import { setTicketStatus as setPopupTicketStatus } from '../../../Shared/chatBoa
 import store from '../../app/storeNative';
 import { setTicketStatus as setTableTicketStatus } from '../Table/eventSlice/eventCheckingSlice';
 
-const changeStatusIncomeHandler = async (ticketId, newStatus) => {
+const changeStatusIncomeHandler = async ticketInfo => {
   const model = store.getState();
+  const { filterModel } = model.signalR;
   const { isOpenPopup, ticketDetail } = model.chatBoard;
+  const { ticketId, ticketStatus } = ticketInfo;
   const { ticketId: openTicketId } = ticketDetail;
 
-  store.dispatch(setTableTicketStatus({ ticketId, newStatus }));
+  store.dispatch(setTableTicketStatus({ ticketInfo, filterModel }));
   isOpenPopup &&
     openTicketId === ticketId &&
-    store.dispatch(setPopupTicketStatus(newStatus));
+    store.dispatch(setPopupTicketStatus(ticketStatus));
 };
 
 export default changeStatusIncomeHandler;

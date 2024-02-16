@@ -41,7 +41,6 @@ const TicketDetail = ({ policy = 'policy' }) => {
     modelQuoteMessage
   } = useSelector(state => state.chatBoard);
   const { ticketId } = ticketDetail;
-
   const { messageId } = modelQuoteMessage;
 
   const handleOnClickClosePopUp = () => {
@@ -170,4 +169,5 @@ const TicketDetail = ({ policy = 'policy' }) => {
 TicketDetail.propTypes = {
   policy: PropTypes.string
 };
+
 export default TicketDetail;
