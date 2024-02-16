@@ -58,6 +58,8 @@ const eventCheckingSlice = createSlice({
             x.ticketSubTypeName = ticketSubTypeName;
           }
         });
+        sortTickets(state.entities);
+        sortTickets(state.entitiesOrigin);
       }
     },
     appendTicketItemIntoDataSource: {
@@ -128,7 +130,6 @@ const eventCheckingSlice = createSlice({
       if (isCorrectFilter) {
         updateTickets(state.entities);
         updateTickets(state.entitiesOrigin);
-        const test = cloneDeep(state.entities);
         sortTickets(state.entities);
         sortTickets(state.entitiesOrigin);
       } else {

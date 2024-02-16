@@ -11,7 +11,8 @@ const propTypes = {
 const LastCommentCell = props => {
   const { dataSource, rowIndex } = props;
   const { lastTwoComments, messages, isRead } = dataSource[rowIndex];
-  const lastMessages = messages.length !== 0 ? messages : lastTwoComments;
+  const lastMessages =
+    lastTwoComments && lastTwoComments.length > 0 ? lastTwoComments : messages;
   const buildComment = () => {
     return lastMessages.map((mes, index) => {
       const { getCreatedTime, getMessageContent } = MessageContentsNative({
