@@ -86,10 +86,11 @@ const checkFilterTicketId = (filterModel, ticketInfo) => {
 };
 
 const checkFilterTicketSubTypeId = (filterModel, ticketInfo) => {
+  const listSubTypeIdFilterModel = filterModel.TicketTypeId.split(',');
   const ticketSubTypeId = `${ticketInfo.ticketType}-${
     ticketInfo.ticketSubTypeId || ''
   }`;
-  return filterModel.TicketTypeId.includes(ticketSubTypeId);
+  return listSubTypeIdFilterModel.some(x => x === ticketSubTypeId);
 };
 
 const checkFilterStatus = (filterModel, ticketInfo) => {

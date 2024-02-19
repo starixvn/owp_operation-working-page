@@ -29,8 +29,7 @@ export const TicketSubType = ({ options = [], policy = 'policy' }) => {
     const modelTicket = {
       ...ticketDetail,
       ticketSubTypeId: subtype.value,
-      ticketSubTypeName: subtype.label,
-      lastCommentDate: ticketDetail.messages[0].createdDate
+      ticketSubTypeName: subtype.label
     };
 
     const requestModel = {
