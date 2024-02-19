@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { TicketSubType } from './TicketSubType';
 import TicketStatus from './TicketStatus';
 import RecipientsSelect from '../recipientSelect/RecipientsSelect';
-import { getTicketTitle } from './helper/chatBoardHelper';
+import { getMessageList, getTicketTitle } from './helper/chatBoardHelper';
 import Axios from 'axios';
 import { URL } from './const/index.json';
 
@@ -15,7 +15,7 @@ const TicketDetailInformation = ({
 }) => {
   const { HasWrite, ActorId } = permission;
 
-  const { ticketId, eventType } = ticketDetail;
+  const { ticketId, eventType, messageId, messages } = ticketDetail;
 
   const handleRemoveRecipient = useCallback(
     async recipient => {
@@ -41,14 +41,20 @@ const TicketDetailInformation = ({
 
   const handleAddRecipient = useCallback(
     async recipient => {
+      const messageList =
+        messages.length === 0
+          ? await getMessageList(ticketId, messageId, messages)
+          : messages;
+
       const modelTicket = {
         ...ticketDetail,
-        lastCommentDate: ticketDetail.messages[0].createdDate
+        messages: messageList,
+        lastCommentDate: messageList[0]?.createdDate
       };
       const requestModel = {
-        ticketId: ticketDetail.ticketId,
+        ticketId,
         ticketTitle: getTicketTitle(ticketDetail),
-        ticketEventType: ticketDetail.eventType,
+        ticketEventType: eventType,
         actorId: ActorId,
         recipientId: recipient.recipientId,
         recipientType: recipient.recipientType,
