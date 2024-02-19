@@ -1,11 +1,9 @@
 import store from '../../app/storeNative';
 import {
-  appendTicketItemIntoDataSource,
-  removeTicketItemFromDataSource,
-  updateSubTypeByTicketId
-} from '../Table/eventSlice/eventCheckingSlice';
-import { checkAllFilterCondition } from './signalRHelper';
-import { updateSubTypeTicketDetailByTicketId } from '../../../Shared/chatBoardNew/chatBoardSlice';
+  checkAllFilterCondition,
+  handleCorrectFilter,
+  handleInCorrectFilter
+} from './signalRHelper';
 const changeSubTypeIncomeHandler = ticketInfo => {
   const model = store.getState();
   const { isOpenPopup } = model.chatBoard;
@@ -15,17 +13,9 @@ const changeSubTypeIncomeHandler = ticketInfo => {
   const elementByTicketId = entities.find(
     x => x.ticketId === ticketInfo.ticketId
   );
-  if (isCorrectFilter) {
-    if (elementByTicketId) {
-      store.dispatch(updateSubTypeByTicketId(ticketInfo));
-      isOpenPopup &&
-        store.dispatch(updateSubTypeTicketDetailByTicketId(ticketInfo));
-    } else {
-      store.dispatch(appendTicketItemIntoDataSource(ticketInfo));
-    }
-  } else {
-    store.dispatch(removeTicketItemFromDataSource(ticketInfo));
-  }
+  isCorrectFilter
+    ? handleCorrectFilter(elementByTicketId, ticketInfo, isOpenPopup)
+    : handleInCorrectFilter(ticketInfo);
 };
 
 export default changeSubTypeIncomeHandler;

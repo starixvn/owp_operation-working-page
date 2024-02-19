@@ -3,6 +3,12 @@ import { refreshEventTickets } from '../../ImportTicketCenterHelperNative';
 import { getTicketDetail } from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/storeNative';
 import dayjs from 'dayjs';
+import {
+  appendTicketItemIntoDataSource,
+  removeTicketItemFromDataSource,
+  updateSubTypeByTicketId
+} from '../Table/eventSlice/eventCheckingSlice';
+import { updateSubTypeTicketDetailByTicketId } from '../../../Shared/chatBoardNew/chatBoardSlice';
 
 const reloadTicketCenterTable = model => {
   const { filterModel, issueModel } = model.signalR;
@@ -14,6 +20,24 @@ const reloadTicketCenterTable = model => {
   );
   isOpenPopup && store.dispatch(getTicketDetail(issueModel));
   submitThrottle(filterModel);
+};
+
+const handleCorrectFilter = (elementByTicketId, ticketInfo, isOpenPopup) => {
+  if (elementByTicketId) {
+    updateTicketInfo(ticketInfo, isOpenPopup);
+  } else {
+    store.dispatch(appendTicketItemIntoDataSource(ticketInfo));
+  }
+};
+
+const handleInCorrectFilter = ticketInfo => {
+  store.dispatch(removeTicketItemFromDataSource(ticketInfo));
+};
+
+const updateTicketInfo = (ticketInfo, isOpenPopup) => {
+  store.dispatch(updateSubTypeByTicketId(ticketInfo));
+  isOpenPopup &&
+    store.dispatch(updateSubTypeTicketDetailByTicketId(ticketInfo));
 };
 
 const checkAllFilterCondition = (filterModel, ticketInfo) => {
@@ -72,4 +96,9 @@ const checkFilterStatus = (filterModel, ticketInfo) => {
   return filterModel.TicketStatuses.includes(ticketInfo.ticketStatus);
 };
 
-export { reloadTicketCenterTable, checkAllFilterCondition };
+export {
+  reloadTicketCenterTable,
+  checkAllFilterCondition,
+  handleCorrectFilter,
+  handleInCorrectFilter
+};
