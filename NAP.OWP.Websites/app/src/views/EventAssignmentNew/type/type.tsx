@@ -126,10 +126,10 @@ type TMaxbetSpread = {
   SpreadToDisplay: string;
 };
 type TCellSchema = {
-  columnKey: string,
-  dataSource: TDataTable,
-  rowIndex: number,
-  onShowPopup: (show: boolean) => void
+  columnKey: string;
+  dataSource: TDataTable;
+  rowIndex: number;
+  onShowPopup: (show: boolean) => void;
 };
 
 type TDataTable = Array<TDataSource>;
@@ -150,8 +150,8 @@ type TNote = {
   Username: string;
 };
 type TAllowAddEvent = {
-  isYesterdayOrAfter: boolean,
-  isAllowAddEvent: boolean
+  isYesterdayOrAfter: boolean;
+  isAllowAddEvent: boolean;
 };
 
 type TQueryLiveGameAssignment = {
