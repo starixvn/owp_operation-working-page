@@ -10,14 +10,14 @@ const MarginCell = props => {
   const { margin } = dataSource[rowIndex];
 
   return (
-    <div
+    <td
       className='margin-cell'
       style={{
         color: margin.color,
         textAlign: 'center'
       }}>
       {margin.valueDisplay}
-    </div>
+    </td>
   );
 };
 

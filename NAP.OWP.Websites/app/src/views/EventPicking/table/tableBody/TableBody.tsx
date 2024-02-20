@@ -22,14 +22,16 @@ import store from '../../app/store';
 const propTypes = {
   data: PropTypes.array,
   displayStart: PropTypes.number,
-  displayEnd: PropTypes.number,
+  displayEnd: PropTypes.number
 };
 
 const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   const rows = [];
-  const { turnOverMarginPolicy: {
-    permission: { HasRead }
-  } } = store.getState();
+  const {
+    turnOverMarginPolicy: {
+      permission: { HasRead }
+    }
+  } = store.getState();
   rows.push(
     <tr
       key='startRowFiller'
@@ -41,48 +43,53 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
       rows.push(
         <Fragment key={uuidv4()}>
           <tr className={`${row.rowColor}-row`}>
-            <td>
+            <td rowSpan={2}>
               <NoCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <KOTimeCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <LeagueCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <MatchCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <MaxBetCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <IPTvStreamingCell dataSource={data} rowIndex={i} />
             </td>
-            {HasRead && <><td>
-              <TurnOverCell dataSource={data} rowIndex={i} />
-            </td>
-              <td>
+            {HasRead && (
+              <>
+                <TurnOverCell dataSource={data} rowIndex={i} name='1 month' />
+
                 <MarginCell dataSource={data} rowIndex={i} />
-              </td></>}
-            <td>
+              </>
+            )}
+            <td rowSpan={2}>
               <ProviderCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <RoundCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <RemarkCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <RAndDUpdateCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <CheckedByLstCell dataSource={data} rowIndex={i} />
             </td>
-            <td>
+            <td rowSpan={2}>
               <ActionCell dataSource={data} rowIndex={i} />
             </td>
+          </tr>
+          <tr>
+            <TurnOverCell dataSource={data} rowIndex={i} name='2 month' />
+            <MarginCell dataSource={data} rowIndex={i} />
           </tr>
         </Fragment>
       );

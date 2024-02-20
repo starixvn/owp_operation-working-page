@@ -5,7 +5,8 @@
       "size": 3,
       "isCheckBox": true,
       "columnKey": "No #",
-      "isSort": false
+      "isSort": false,
+      "colSpan": 1
     },
     {
       "headerName": "KO Time",
@@ -110,7 +111,8 @@
       "headerName": "Turnover",
       "size": 6,
       "isSort": true,
-      "columnKey": "TurnoverSort"
+      "columnKey": "TurnoverSort",
+      "colSpan": 2
     },
     {
       "headerName": "Margin",
