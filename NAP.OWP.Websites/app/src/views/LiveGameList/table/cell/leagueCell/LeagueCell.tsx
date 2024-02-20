@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../../type/TableType';
 import { OFF_VR } from '../../../LiveGameListConst.json';
 

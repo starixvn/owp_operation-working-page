@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-warning-comments
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import ToastrWrapper from '../../components/ToastrWrapper';

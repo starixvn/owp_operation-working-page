@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Option } from '../../typing/type';
 import MultipleSelection from '../shared/MultipleSelection';
 import useStore from '../../app/store';

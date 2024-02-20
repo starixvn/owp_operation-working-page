@@ -1,4 +1,3 @@
-import React from 'react';
 import { Column, Cell } from 'fixed-data-table-2';
 import DynamicCell from './Cell/DynamicCell';
 import OrderHeader from './OrderHeader';

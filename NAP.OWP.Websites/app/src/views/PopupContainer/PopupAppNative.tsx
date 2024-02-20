@@ -1,4 +1,3 @@
-import React from 'react';
 import store from './app/storeNative';
 import { Provider } from 'react-redux';
 import PopupManagement from './PopupManagement';

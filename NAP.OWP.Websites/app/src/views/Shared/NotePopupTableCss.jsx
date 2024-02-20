@@ -32,7 +32,8 @@ const NotePopupTableCss = (tableElement, show) => {
   if (indexRowShowNote !== -1) {
     rowElements[
       indexRowShowNote
-    ].className = `fixedDataTableRowLayout_rowWrapper ${show ? 'is-show-note' : ''
+    ].className = `fixedDataTableRowLayout_rowWrapper ${
+      show ? 'is-show-note' : ''
     }`;
   }
   fourIndexElementLast.forEach(item => {

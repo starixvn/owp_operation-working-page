@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import ReactTable from 'react-table';
 import withFixedColumns from 'react-table-hoc-fixed-columns';
 import FilterHeader from './FilterHeader';
@@ -23,7 +23,7 @@ const propTypes = {
   onOrder: PropTypes.func.isRequired
 };
 
-class Table extends React.Component {
+class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {

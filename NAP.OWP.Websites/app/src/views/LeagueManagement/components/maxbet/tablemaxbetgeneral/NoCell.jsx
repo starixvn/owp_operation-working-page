@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cell } from 'fixed-data-table-2';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';

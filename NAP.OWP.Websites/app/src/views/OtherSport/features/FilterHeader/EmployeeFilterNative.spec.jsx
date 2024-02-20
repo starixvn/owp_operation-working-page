@@ -1,5 +1,4 @@
 import { setImmediate } from 'timers';
-import React from 'react';
 import EmployeeFilterNative from './EmployeeFilterNative';
 import { render, fireEvent } from '@testing-library/react';
 

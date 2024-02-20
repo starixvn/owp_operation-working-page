@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import PropTypes from 'prop-types';
 import DragAndDrop from '../../common/DragAndDrop/DragAndDrop';
 import { validExtension } from '../../chatBoardNew/const/index.json';

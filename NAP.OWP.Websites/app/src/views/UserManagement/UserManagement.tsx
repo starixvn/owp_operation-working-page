@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Filter from './filterArea/Filter';
 import SyncUser from './syncUser/SyncUser';
 import useStore from './app/useStoreNative';

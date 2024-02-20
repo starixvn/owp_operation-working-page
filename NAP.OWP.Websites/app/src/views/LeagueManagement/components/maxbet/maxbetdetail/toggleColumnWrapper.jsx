@@ -1,4 +1,3 @@
-import React from 'react';
 import ToggleColumn from '../../../../Shared/ShowHideColumn/ToggleColumn';
 import {
   buildLocalStoreKey,

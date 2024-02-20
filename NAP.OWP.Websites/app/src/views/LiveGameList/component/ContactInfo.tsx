@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import { RefObject } from 'react';
 import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 import { AssignmentInfo } from '../type/TableType';
 import DeskPhoneIcon from 'mdi-react/DeskphoneIcon';

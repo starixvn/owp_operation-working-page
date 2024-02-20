@@ -1,4 +1,3 @@
-import React from 'react';
 import { RootState } from '../app/store';
 import MultipleSelectionTemplate from './MultipleSelectionTemplate';
 import { LEAGUE } from './filterConst.json';

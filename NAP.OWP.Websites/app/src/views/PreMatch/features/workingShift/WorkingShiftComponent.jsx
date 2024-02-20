@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Modal, ModalBody } from 'reactstrap';
 import WorkingShift from './WorkingShift';
 import { useSelector } from 'react-redux';

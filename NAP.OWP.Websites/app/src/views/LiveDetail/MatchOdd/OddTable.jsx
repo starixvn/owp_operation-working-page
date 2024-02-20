@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import { times, noop, filter, includes } from 'lodash';
@@ -28,7 +28,7 @@ const betTypes = [
   MajorBetTypes.OverUnder,
   MajorBetTypes.OneXTwo
 ];
-class OddTable extends React.Component {
+class OddTable extends Component {
   constructor(props) {
     super(props);
     this.rowRefs = [];
@@ -64,7 +64,7 @@ class OddTable extends React.Component {
     const betTypeOptions = filter(betTypes, function (bt) {
       return !includes(getBetTypes, bt);
     });
-    this.rowRefs = times(rows.length, () => React.createRef());
+    this.rowRefs = times(rows.length, () => createRef());
     if (rows.length === 0) {
       return (
         <tr>

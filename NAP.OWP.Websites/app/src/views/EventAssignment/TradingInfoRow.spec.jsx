@@ -1,4 +1,3 @@
-import React from 'react';
 import TradingInfoRow from './TradingInfoRow';
 import { fireEvent, render, screen } from '@testing-library/react';
 

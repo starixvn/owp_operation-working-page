@@ -1,4 +1,3 @@
-import React from 'react';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import NetCoreSignalR from '../../../Shared/NetCoreSignalR/NetCoreSignalR';
 import getOSAssignmentThunkNative from '../OSTable/OSTableSlice/getOSAssignmentThunkNative';

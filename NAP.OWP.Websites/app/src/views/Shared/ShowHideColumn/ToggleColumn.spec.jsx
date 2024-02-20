@@ -1,4 +1,3 @@
-import React from 'react';
 import ToggleColumn from './ToggleColumn';
 import Utils from '../Utils';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import ReadOnlyAssignmentCell from './ReadOnlyAssignmentCell';
 import EditableAssignmentCellWrapper from './EditableAssignmentCellWrapper';

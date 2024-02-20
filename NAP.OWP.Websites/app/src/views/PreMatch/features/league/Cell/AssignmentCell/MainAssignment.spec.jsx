@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import MainAssignment from './MainAssignment';

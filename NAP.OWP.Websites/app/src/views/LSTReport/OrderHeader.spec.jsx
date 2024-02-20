@@ -1,4 +1,3 @@
-import React from 'react';
 import OrderHeader from './OrderHeader';
 import { act, fireEvent, render } from '@testing-library/react';
 

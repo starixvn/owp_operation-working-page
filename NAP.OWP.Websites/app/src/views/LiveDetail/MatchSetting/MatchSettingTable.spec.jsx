@@ -1,4 +1,3 @@
-import React from 'react';
 import MatchSettingTable from './MatchSettingTable';
 import { render } from '@testing-library/react';
 

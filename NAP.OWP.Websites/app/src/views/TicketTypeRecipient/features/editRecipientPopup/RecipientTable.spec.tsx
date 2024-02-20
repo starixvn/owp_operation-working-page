@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { TicketTypeRecipientEnum } from '../../../Shared/enum/TicketRecipientEnum';
 import { Recipient } from '../TypeNative';

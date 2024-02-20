@@ -1,4 +1,3 @@
-import React from 'react';
 import { SELECT_GAME_OPTIONS, SELECT_GAME } from './filterConst.json';
 import MultipleSelectionTemplate from './MultipleSelectionTemplate';
 

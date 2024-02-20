@@ -1,5 +1,4 @@
 import configureStore from 'redux-mock-store';
-import React from 'react';
 import CheckBoxFilter from './CheckBoxFilter';
 import { useSelector, useDispatch, Provider } from 'react-redux';
 import { render, fireEvent, screen } from '@testing-library/react';

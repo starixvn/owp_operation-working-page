@@ -1,4 +1,3 @@
-import React from 'react';
 import OrderHeader from './OrderHeader';
 import FilterHeaderUseHookNative from '../../../FilterHeader/FilterHeaderUseHookNative';
 import CollapseExpandHeader from './CollapseExpandHeader';

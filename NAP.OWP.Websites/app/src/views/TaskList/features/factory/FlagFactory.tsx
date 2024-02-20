@@ -1,4 +1,3 @@
-import React from 'react';
 import { PesOrFiFa } from '../../type/TTaskListTable';
 import PesIcon from '../component/PesIcon';
 import FifaIcon from '../component/FifaIcon';

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import { MultiSelect } from 'react-multi-select-component';
 import {

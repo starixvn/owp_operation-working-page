@@ -1,4 +1,3 @@
-import React from 'react';
 import store from './app/storeNative';
 import { Provider } from 'react-redux';
 import { OWPPage, OWPBody, OWPHeader } from '../Shared/common/OWP/OPWPage';

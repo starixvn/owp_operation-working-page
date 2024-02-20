@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TimePicker } from 'antd';
 import { ITimeRange } from '../../typing/type';
 import dayjs from 'dayjs';

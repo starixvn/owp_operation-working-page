@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DataSource } from '../../../../typing/tableType';
 import { UncontrolledTooltip } from 'reactstrap';
 import LogHistory from './ActionPopup/LogHistory';

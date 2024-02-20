@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import useStore, { RootState } from '../store/storeNative';
 import { detectLogChanged } from '../helper/buildLogHelper';

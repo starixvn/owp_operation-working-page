@@ -1,4 +1,3 @@
-import React from 'react';
 import Router from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { render, fireEvent, screen } from '@testing-library/react';

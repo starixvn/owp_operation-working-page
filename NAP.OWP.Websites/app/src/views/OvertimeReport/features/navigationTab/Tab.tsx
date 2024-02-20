@@ -1,10 +1,10 @@
-import React, { Suspense, useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import Loading from '../../../components/Loading';
-const MonthTabContent = React.lazy(() =>
+const MonthTabContent = lazy(() =>
   import('../ByMonthTab/MonthTabContent')
 );
 
-const YearTabContent = React.lazy(() =>
+const YearTabContent = lazy(() =>
   import('../YearTabContent/YearTabContent')
 );
 

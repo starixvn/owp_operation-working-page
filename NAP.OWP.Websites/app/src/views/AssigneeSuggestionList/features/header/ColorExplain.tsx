@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { shallow } from 'zustand/shallow';
 import useStore from '../../app/useStoreNative';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';

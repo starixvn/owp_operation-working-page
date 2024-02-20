@@ -1,4 +1,3 @@
-import React from 'react';
 import MaxbetCell from './cell/MaxbetCell';
 import PropTypes from 'prop-types';
 

@@ -4,13 +4,14 @@ import store from '../app/store';
 import updateNoOfferMatchThunk from '../table/updateNoOfferMatchThunkNative';
 import { MESSAGE } from '../const/const.json';
 import { TDataSource, TNoOfferMatch } from '../types/noOfferMatchType';
+import { ChangeEvent } from 'react';
 
 const messageOption = {
   'true': MESSAGE.CHECK_ALL,
   'false': MESSAGE.UN_CHECK_ALL
 };
 
-const handleNoOfferAllMatch = async (event: React.ChangeEvent<HTMLInputElement>) => {
+const handleNoOfferAllMatch = async (event: ChangeEvent<HTMLInputElement>) => {
   const { checked } = event.target;
   const { entities } = store.getState().eventPickingTable;
   if (entities.length) {

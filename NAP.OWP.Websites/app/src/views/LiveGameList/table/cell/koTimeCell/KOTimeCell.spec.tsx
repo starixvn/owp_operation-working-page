@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import KOTimeCell from './KOTimeCell';
 import { CellProps } from '../../../type/TableType';

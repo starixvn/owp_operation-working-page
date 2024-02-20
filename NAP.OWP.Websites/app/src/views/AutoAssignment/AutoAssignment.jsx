@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import DatePicker from 'react-datepicker';
 import Utils from '../Shared/Utils';
 import Service from './Service';
@@ -32,7 +32,7 @@ class AutoAssignment extends Component {
       creatorId: null,
       data: []
     };
-    this.datePicker = React.createRef();
+    this.datePicker = createRef();
   }
 
   componentDidMount() {

@@ -1,4 +1,3 @@
-import React from 'react';
 import PreMatchTable from './features/league/PreMatchTable';
 import ViewFilterDayShift from './features/filter/ViewFilterDayShift';
 import EditComponent from './features/edit/EditComponent';

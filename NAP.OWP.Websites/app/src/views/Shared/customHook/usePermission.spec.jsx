@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
 import usePermission from './usePermission';
-import React from 'react';
 import { useSelector, useDispatch, Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import PropTypes from 'prop-types';

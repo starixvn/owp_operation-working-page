@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import MaxbetConst from '../../../../constants/MaxbetConst';
 import isEqual from 'lodash.isequal';

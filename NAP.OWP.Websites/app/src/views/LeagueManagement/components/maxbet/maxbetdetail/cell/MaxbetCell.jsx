@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { createRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Cell } from 'fixed-data-table-2';
 import NumericTextbox from 'react-numeric-textbox';
@@ -19,7 +19,7 @@ const MaxbetCell = props => {
   const [valueMaxbet, setValueMaxbet] = useState(
     typeof data[modelKey] === 'number' ? correctMaxbet(data[modelKey]) : null
   );
-  const input = React.createRef();
+  const input = createRef();
   const store = useStore();
   const dispatch = useDispatch();
   const { policyData } = store.getState().policyReducer;

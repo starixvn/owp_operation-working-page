@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import Utils from '../../../Shared/Utils';
 import { TLog } from '../type/TableType.native';

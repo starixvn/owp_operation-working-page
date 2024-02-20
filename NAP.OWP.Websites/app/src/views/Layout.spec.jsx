@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from './Layout';
 import HeaderService from './Header/Service';
 import AuthorizeService from './Authorize/Service';

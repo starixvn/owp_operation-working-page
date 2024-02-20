@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import UserService from '../Shared/User/UserService';
 import Table from './Table';

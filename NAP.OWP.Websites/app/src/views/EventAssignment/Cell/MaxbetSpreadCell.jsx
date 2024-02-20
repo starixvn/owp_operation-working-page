@@ -1,9 +1,9 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 
-class MaxbetSpreadCell extends React.PureComponent {
+class MaxbetSpreadCell extends PureComponent {
   constructor(props) {
     super(props);
     this.renderMaxbetSpreadMbc = this.renderMaxbetSpreadMbc.bind(this);

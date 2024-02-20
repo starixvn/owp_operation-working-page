@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import axios from 'axios';
 import { noop } from 'lodash';
-import React, { createRef, useState } from 'react';
+import { createRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setImmediate } from 'timers';
 import ToastrWrapper from '../../../components/ToastrWrapper';

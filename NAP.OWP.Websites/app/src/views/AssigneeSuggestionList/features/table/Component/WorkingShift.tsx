@@ -1,4 +1,3 @@
-import React from 'react';
 import { timeLineColumn } from '../../../const/Const.json';
 import {
   AssignmentCell,

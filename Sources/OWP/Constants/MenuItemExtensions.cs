@@ -10,6 +10,7 @@
             {
                 { MenuItems.TaskList, "icon-home" },
                 { MenuItems.LiveGameAssignment, "icon-calendar-clock" },
+                { MenuItems.LiveGameAssignmentNew, "icon-calendar-clock" },
                 { MenuItems.ProviderArrangement, "icon-provider-arrangement" },
                 { MenuItems.EventUpload, "icon-cloud-upload" },
                 { MenuItems.EventPicking, "icon-calendar-check" },

@@ -1,4 +1,3 @@
-import React from 'react';
 import { TAssigneeSuggestion } from '../TypeNative';
 import SuggestionInfo from './Component/SuggestionInfo';
 import { isShowPartially } from '../helper/AssigneeSuggestionHelper';

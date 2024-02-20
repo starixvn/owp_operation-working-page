@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Fragment, Component } from 'react';
 import { Button, UncontrolledPopover, PopoverBody } from 'reactstrap';
 import ReactTable from 'react-table';
 import PropTypes from 'prop-types';
@@ -94,10 +94,10 @@ class Table extends Component {
   renderEventColumn = cellInfo => {
     const event = cellInfo.original;
     return (
-      <React.Fragment key={`Event_${this.state.key}`}>
+      <Fragment key={`Event_${this.state.key}`}>
         <p className='league-name'>{event.League}</p>
         <p className='match-name'>{event.MatchName}</p>
-      </React.Fragment>
+      </Fragment>
     );
   };
 
@@ -113,21 +113,19 @@ class Table extends Component {
       <div className='websites'>
         {map(websites, (website, index) => {
           const key = `website_${index}_${this.state.key}`;
-          return (
-            website && (
-              <React.Fragment key={key}>
-                <a
-                  id={key}
-                  className='website'
-                  href={website}
-                  target='_blank'
-                  rel='noopener noreferrer'>
-                  <span data-tip={website} data-for={key}>
-                    [{index + 1}]
-                  </span>
-                </a>
-              </React.Fragment>
-            )
+          return website && (
+            <Fragment key={key}>
+              <a
+                id={key}
+                className='website'
+                href={website}
+                target='_blank'
+                rel='noopener noreferrer'>
+                <span data-tip={website} data-for={key}>
+                  [{index + 1}]
+                </span>
+              </a>
+            </Fragment>
           );
         })}
       </div>
@@ -238,7 +236,7 @@ class Table extends Component {
       return (
         <div className='remark-col'>
           {arrayCombine.map(v => (
-            <React.Fragment key={`Remark_${uuidv4()}`}>{v}</React.Fragment>
+            <Fragment key={`Remark_${uuidv4()}`}>{v}</Fragment>
           ))}
         </div>
       );
@@ -254,7 +252,7 @@ class Table extends Component {
       <div className='provider-cell'>
         {event.Provider && <p className='runner'>{event.Provider}</p>}
         {event.OtherProvider && (
-          <React.Fragment key={`Provider_${this.state.key}`}>
+          <Fragment key={`Provider_${this.state.key}`}>
             <Button
               id={'OP' + cellInfo.index}
               type='button'
@@ -268,7 +266,7 @@ class Table extends Component {
               target={'OP' + cellInfo.index}>
               <PopoverBody>{event.OtherProvider}</PopoverBody>
             </UncontrolledPopover>
-          </React.Fragment>
+          </Fragment>
         )}
         <p className='wb'>{event.WatchBet}</p>
         {event.Phone && (

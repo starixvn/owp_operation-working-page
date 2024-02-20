@@ -1,4 +1,3 @@
-import React from 'react';
 import TraderCell from '../Cell/TraderCell';
 import ShiftCell from '../Cell/ShiftCell';
 import LevelCell from '../Cell/LevelCell';

@@ -1,4 +1,3 @@
-import React from 'react';
 import FlagWrapper from './FlagWrapper';
 import { checkLeague } from './FlagLogic';
 import { useDispatch } from 'react-redux';

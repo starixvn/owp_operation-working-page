@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledTooltip } from 'reactstrap';
 
@@ -26,7 +26,7 @@ const TooltipText = props => {
   } = props;
 
   return (
-    <React.Fragment key={`${innerClassName}${rowIndex}`}>
+    <Fragment key={`${innerClassName}${rowIndex}`}>
       <div id={`${innerClassName}${rowIndex}`} className={`${innerClassName}`}>
         {text}
       </div>
@@ -36,7 +36,7 @@ const TooltipText = props => {
         target={`${innerClassName}${rowIndex}`}>
         {toolTipContent}
       </UncontrolledTooltip>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

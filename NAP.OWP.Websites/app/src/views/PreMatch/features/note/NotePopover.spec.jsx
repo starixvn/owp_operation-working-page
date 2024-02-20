@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 import NotePopover from './NotePopover';

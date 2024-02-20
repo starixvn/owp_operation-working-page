@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderHeaderCell } from './createColumn';
 import { ColumnModels } from './constants/preMatchConst';
 import OrderHeader from './OrderHeader';

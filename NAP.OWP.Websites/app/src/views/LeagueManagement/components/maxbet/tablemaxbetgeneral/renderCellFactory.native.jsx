@@ -1,4 +1,3 @@
-import React from 'react';
 import NoCell from './NoCell';
 import LeagueGroupCell from './LeagueGroupCell';
 import LeagueCell from './LeagueCell';

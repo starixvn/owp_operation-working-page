@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IInputMaxbetSpread, TInputCustom } from '../../typing/type';
 import NumericTextbox from 'react-numeric-textbox';
 

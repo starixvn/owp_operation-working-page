@@ -1,4 +1,3 @@
-import React from 'react';
 import Notes from './Notes';
 import Service from './Service';
 import { render, screen, act } from '@testing-library/react';

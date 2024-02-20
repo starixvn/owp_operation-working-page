@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../app/hooksNative';
 import CustomTable from '../../../Shared/common/CustomTable/CustomTable';
 import { getConfigTicketsTab } from '../Table/ConfigNative';

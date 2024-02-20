@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { CellProps } from '../../../type/TableType';
 import PhoneIcon from '@mui/icons-material/Phone';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';

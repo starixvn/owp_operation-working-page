@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import { MatchStatuses } from '../../Shared/Constants';
 import { UncontrolledTooltip } from 'reactstrap';
 import { LinkIcon, LinkOffIcon } from 'mdi-react';
@@ -6,7 +6,7 @@ import AbsencePersonIcon from '../../../assets/svg-element/AbsencePersonIcon';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
 
-class MatchNoCell extends React.PureComponent {
+class MatchNoCell extends PureComponent {
   constructor(props) {
     super(props);
     this.renderInfoSiteLinked = this.renderInfoSiteLinked.bind(this);

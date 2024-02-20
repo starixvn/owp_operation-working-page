@@ -1,4 +1,3 @@
-import React from 'react';
 import TicketTypeFilter from './TicketTypeFilter';
 import { render, screen, fireEvent } from '@testing-library/react';
 

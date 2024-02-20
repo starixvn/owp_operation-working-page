@@ -4,7 +4,6 @@ import Service from '../Service';
 import { urlUploadFile } from '../const/const';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import { TICKET_TYPE } from '../../TicketCenterPrematch/const/const.json';
-import React from 'react';
 
 const informResult = result => {
   if (result) {

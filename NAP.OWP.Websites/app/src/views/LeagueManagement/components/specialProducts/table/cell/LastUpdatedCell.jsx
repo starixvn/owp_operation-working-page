@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import HistoryModal from '../../historyTable/HistoryModal.native';
 import HistoryIcon from 'mdi-react/HistoryIcon';

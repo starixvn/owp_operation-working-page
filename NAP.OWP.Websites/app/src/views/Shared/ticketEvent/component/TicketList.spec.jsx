@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import TicketList from './TicketList';
 import { useDispatch, useSelector } from 'react-redux';

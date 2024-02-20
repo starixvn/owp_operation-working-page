@@ -1,4 +1,3 @@
-import React from 'react';
 import DropdownCell from './dropdownCell/DropdownCell';
 import { dbColumnName } from '../../../../Const.json';
 import PropTypes from 'prop-types';

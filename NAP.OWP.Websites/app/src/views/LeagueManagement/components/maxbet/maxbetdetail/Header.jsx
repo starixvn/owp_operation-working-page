@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import toggleColumnWrapper from './toggleColumnWrapper';
 import { buildMaxbetUrl } from '../../../helper/commonHelper';

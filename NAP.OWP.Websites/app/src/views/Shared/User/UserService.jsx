@@ -10,10 +10,10 @@ const getAll = async () => {
 const dataSourceUsersFromServer = () => {
   (async () => {
     const data = await getAll();
+    const userMainAccounts = data.filter(x => !x.IsSecondAccount);
     const localStorageKey = 'localStorageKey_DataSourceLocalUsers';
-    localStorage.setItem(localStorageKey, JSON.stringify(data));
-
-    return data;
+    localStorage.setItem(localStorageKey, JSON.stringify(userMainAccounts));
+    return userMainAccounts;
   })();
 };
 

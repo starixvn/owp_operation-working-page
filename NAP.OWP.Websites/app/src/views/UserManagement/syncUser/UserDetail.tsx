@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from 'reactstrap';
 import { TUserDetail, confirmSyncUserEnum } from '../type';
 

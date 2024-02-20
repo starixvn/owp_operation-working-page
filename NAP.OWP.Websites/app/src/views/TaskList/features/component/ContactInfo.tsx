@@ -1,4 +1,4 @@
-import React from 'react';
+import { RefObject } from 'react';
 import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 import DeskPhoneIcon from 'mdi-react/DeskphoneIcon';
 import SkypeIcon from 'mdi-react/SkypeIcon';
@@ -7,8 +7,8 @@ import { TAssignment } from '../../type/TTaskListTable';
 
 type Props = {
   target:
-    | React.RefObject<HTMLInputElement>
-    | React.RefObject<HTMLAnchorElement>;
+  | RefObject<HTMLInputElement>
+  | RefObject<HTMLAnchorElement>;
   assignment: TAssignment;
 };
 

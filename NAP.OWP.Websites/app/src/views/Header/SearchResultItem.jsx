@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { split, join } from 'lodash';
 import Utils from '../Shared/Utils';
@@ -18,7 +18,7 @@ const eventMouse = {
   duringMouseUp: 0
 };
 
-class SearchResultItem extends React.Component {
+class SearchResultItem extends Component {
   constructor(props) {
     super(props);
     this.state = {

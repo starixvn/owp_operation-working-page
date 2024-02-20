@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { formatOtherAssignment } from './AssignmentHelper';
 import { TooltipText } from '../../../../../Shared/common/Tooltip';

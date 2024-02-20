@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import RemarkCell from './RemarkCell';
 import { CellProps } from '../../../type/TableType';

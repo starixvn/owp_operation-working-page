@@ -1,4 +1,3 @@
-import React from 'react';
 import { Provider } from 'react-redux';
 import store from './app/storeNative';
 import EventUploadContent from './features/components/EventUploadContent';

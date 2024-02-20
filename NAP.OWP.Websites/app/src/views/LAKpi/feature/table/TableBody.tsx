@@ -1,4 +1,3 @@
-import React from 'react';
 import { DataSource } from '../type/TableType.native';
 import TableBodyTotalGame from './TableBodyTotalGame';
 import HistoryCell from '../components/HistoryCell';

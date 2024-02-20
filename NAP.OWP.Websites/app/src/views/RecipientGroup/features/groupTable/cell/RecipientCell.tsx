@@ -1,4 +1,3 @@
-import React from 'react';
 import { GroupDataSource, RecipientModel } from '../../Type';
 
 const RecipientCell = (data: GroupDataSource) => {

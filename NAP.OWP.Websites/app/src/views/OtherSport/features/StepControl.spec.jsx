@@ -1,4 +1,3 @@
-import React from 'react';
 import StepControl from './StepControl';
 import { render, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';

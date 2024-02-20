@@ -1,5 +1,4 @@
 import CollapseBtn from './CollapseBtn';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import LogWorkPopup from './LogWorkPopup';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';

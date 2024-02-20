@@ -1,4 +1,3 @@
-import React from 'react';
 import { Subtype } from '../TypeNative';
 import SubtypeRow from './SubTypeRow';
 import useStore from '../../app/zustand/ticketTypeStore';

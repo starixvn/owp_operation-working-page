@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import useStore, { RootState } from '../store/storeNative';
 import { SelectOption } from '../typeNative';

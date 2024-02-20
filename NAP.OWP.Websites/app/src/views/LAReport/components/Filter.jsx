@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-warning-comments
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import DatePicker from 'react-datepicker';
 import CalendarIcon from 'mdi-react/CalendarIcon';
 import ToggleColumnHook from './common/ToggleColumnHook';

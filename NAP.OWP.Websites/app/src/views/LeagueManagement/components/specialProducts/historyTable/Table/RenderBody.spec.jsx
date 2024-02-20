@@ -1,4 +1,3 @@
-import React from 'react';
 import { Table } from 'reactstrap';
 import { render } from '@testing-library/react';
 import RenderBody from './RenderBody';

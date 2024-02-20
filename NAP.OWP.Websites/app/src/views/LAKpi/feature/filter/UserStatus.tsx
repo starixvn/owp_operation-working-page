@@ -1,4 +1,3 @@
-import React from 'react';
 import useStore from '../../app/store';
 import { MultiSelect } from 'react-multi-select-component';
 

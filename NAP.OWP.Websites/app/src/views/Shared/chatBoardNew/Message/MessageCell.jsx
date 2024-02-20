@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import MessageContents from './MessageContentNative';
 import useStableDispatch from '../../customHook/useStableDispatch';

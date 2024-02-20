@@ -1,4 +1,3 @@
-import React from 'react';
 import usePermission from '../Shared/customHook/usePermission';
 import { FunctionKeys } from '../Shared/Constants';
 import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';

@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
 import Dialog from './Dialog';
 import useStore from '../../app/zustand/ticketTypeStore';
 import { useDispatch, useSelector } from 'react-redux';

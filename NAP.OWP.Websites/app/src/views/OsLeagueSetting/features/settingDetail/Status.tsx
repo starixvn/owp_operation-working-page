@@ -1,5 +1,5 @@
 import { Switch } from '@mui/material';
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { IStatus } from '../../typing/type';
 
 const Status = (props: IStatus) => {

@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-warning-comments
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { AccountCheckIcon } from 'mdi-react';
 import { LOCAL_STORAGE_KEY } from './FilterHeaderConst.json';
@@ -17,7 +17,7 @@ const getUserCacheInfo = employee => {
   return userInfoString ? JSON.parse(userInfoString) : {};
 };
 
-const EmployeeFilterNative = React.forwardRef((props, ref) => {
+const EmployeeFilterNative = forwardRef((props, ref) => {
   const { defaultValue, onLoadEmployeeDone } = props;
   const userInfo = getUserCacheInfo(defaultValue);
   const { employee } = userInfo;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import HeaderCommon from './HeaderCommon';
 import ToastrWrapper from '../../../components/ToastrWrapper';

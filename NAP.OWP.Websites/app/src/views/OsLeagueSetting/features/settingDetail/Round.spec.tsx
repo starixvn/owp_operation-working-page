@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import Round from './Round';
 import { IFieldMultipleSelection } from '../../typing/type';

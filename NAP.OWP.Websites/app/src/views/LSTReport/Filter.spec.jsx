@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import Filter from './Filter';
 import dayjs from 'dayjs';

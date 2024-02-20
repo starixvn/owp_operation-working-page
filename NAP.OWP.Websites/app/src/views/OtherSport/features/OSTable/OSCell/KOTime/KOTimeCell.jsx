@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { UncontrolledTooltip } from 'reactstrap';
 import { formatTime } from '../../../../../Shared/DateTime/dateTimeHelper';
 

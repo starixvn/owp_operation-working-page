@@ -1,4 +1,3 @@
-import React from 'react';
 import useStore, { RootState } from '../store/storeNative';
 import { editPopupType } from '../Const.json';
 import EditMaxbetSettingPopup from './EditMaxbetSettingPopup';

@@ -1,4 +1,3 @@
-import React from 'react';
 import ColumnConst from '../../../../constants/ColumnConst';
 import MaxbetCell from './MaxbetCell';
 import NoOfHdpCell from './NoOfHdpCell';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import LaCell from './LaCell';
 import { CellProps } from '../../../type/TableType';

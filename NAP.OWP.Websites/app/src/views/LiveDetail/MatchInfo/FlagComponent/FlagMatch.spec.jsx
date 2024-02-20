@@ -1,4 +1,3 @@
-import React from 'react';
 import FlagMatch from './FlagMatch';
 import { render, screen } from '@testing-library/react';
 

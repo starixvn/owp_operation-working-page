@@ -1,4 +1,3 @@
-import React from 'react';
 import DropdownCell from './DropdownCell';
 import { post } from '../../../../../../Shared/Service/Service';
 import { fireEvent, render } from '@testing-library/react';

@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import Loading from '../../components/Loading';
 
 const WizardWrapper = lazy(() => import('./WizardWrapper'));

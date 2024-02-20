@@ -1,2 +1,2 @@
-import React from 'react';
-export default React.lazy(() => import('../../Shared/WizardControl/Wizard'));
+import { lazy } from 'react';
+export default lazy(() => import('../../Shared/WizardControl/Wizard'));

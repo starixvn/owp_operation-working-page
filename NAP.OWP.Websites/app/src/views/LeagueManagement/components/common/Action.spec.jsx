@@ -1,4 +1,3 @@
-import React from 'react';
 import Action from './Action';
 import { render, fireEvent } from '@testing-library/react';
 import MaxbetConst from '../../constants/MaxbetConst';

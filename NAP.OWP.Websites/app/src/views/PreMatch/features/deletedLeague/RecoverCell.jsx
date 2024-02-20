@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { restoreDeletedLeague } from '../league/shiftSlice/shiftSlice';
 import { refeshDeletedLeagueTable } from './deleteLeagueSlice';

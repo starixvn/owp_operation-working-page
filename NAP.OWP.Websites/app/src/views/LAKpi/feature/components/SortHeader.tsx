@@ -1,5 +1,4 @@
 import { isEqual } from 'lodash';
-import React from 'react';
 import useStore from '../../app/store';
 import { SortHeaderProps, SortState } from '../type/TableType.native';
 import { buildOrderSelection } from '../../helper/LaKpiHelper';

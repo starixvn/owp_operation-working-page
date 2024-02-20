@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FilterIcon } from 'mdi-react';
 import FilterHeaderPopupCommon from './FilterHeaderPopupCommon';
 import { TFilterState } from './typeCommon';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Subtype } from '../TypeNative';
 import { validateDuplicateSubtype } from '../../helper/validateDuplicateSubType';
 import ToastrWrapper from '../../../components/ToastrWrapper';

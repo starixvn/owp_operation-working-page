@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import { createRef, PureComponent } from 'react';
 import { Button } from 'reactstrap';
 import CloseIcon from 'mdi-react/CloseIcon';
 import FilterIcon from 'mdi-react/FilterIcon';
@@ -21,7 +21,7 @@ class FilterHeaderNative extends PureComponent {
       isOpen: false,
       value: ''
     };
-    this.ref = React.createRef();
+    this.ref = createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.onHandleClickOpen = this.onHandleClickOpen.bind(this);
   }

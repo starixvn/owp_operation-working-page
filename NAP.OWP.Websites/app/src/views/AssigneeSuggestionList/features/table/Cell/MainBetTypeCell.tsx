@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { TableCell } from '../../TypeNative';
 import { UncontrolledTooltip } from 'reactstrap';
 const MainBetTypeCell = ({ value }: TableCell) => {

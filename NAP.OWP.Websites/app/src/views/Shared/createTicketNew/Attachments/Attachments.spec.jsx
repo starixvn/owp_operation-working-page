@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import Attachments from './Attachments';
 import { render, screen, fireEvent } from '@testing-library/react';
 import ToastrWrapper from '../../../components/ToastrWrapper';

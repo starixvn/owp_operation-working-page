@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Loading from '../../components/Loading';
 import useStore from '../app/store';
 

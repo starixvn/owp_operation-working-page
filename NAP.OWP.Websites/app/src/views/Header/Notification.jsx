@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import {
   Badge,
   UncontrolledDropdown,
@@ -35,7 +35,7 @@ import { isEquals } from 'immutability-helper';
 const $ = window.jQuery;
 const classNameToast = 'Toastify__toast--blink';
 
-class Notification extends React.Component {
+class Notification extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);

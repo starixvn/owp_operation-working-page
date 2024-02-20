@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { forwardRef } from 'react';
+import { KeyboardEvent, forwardRef } from 'react';
 import { CloseIcon } from 'mdi-react';
 import { Button } from 'reactstrap';
 import { TFilterState } from './typeCommon';
@@ -50,7 +50,7 @@ const FilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupProps>(
     };
 
     const handelOnKeyDown = (
-      e: React.KeyboardEvent<HTMLInputElement>
+      e: KeyboardEvent<HTMLInputElement>
     ): void => {
       if (e.key === 'Enter' && e.currentTarget.value) {
         handleOnSearchFilter();
@@ -60,11 +60,10 @@ const FilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupProps>(
     return (
       <div
         ref={ref}
-        className={`filter-popup is-show ${
-          isEqual(columnKey, columnKeyFilterCurrent)
+        className={`filter-popup is-show ${isEqual(columnKey, columnKeyFilterCurrent)
             ? ''
             : 'is-hide-another-popup'
-        }`}>
+          }`}>
         <span className='close-popup' onClick={() => onClickClosedIcon()}>
           <CloseIcon size={14} />
         </span>

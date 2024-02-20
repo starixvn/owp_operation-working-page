@@ -1,8 +1,8 @@
-import React from 'react';
+import { PureComponent, Fragment } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 
-class RemarkCell extends React.PureComponent {
+class RemarkCell extends PureComponent {
   render() {
     const { data, rowIndex } = this.props;
     const { Round, Division, TeamRound } = data[rowIndex];
@@ -36,7 +36,7 @@ class RemarkCell extends React.PureComponent {
     return (
       <div className='remark-col'>
         {arrayCombine.map(v => (
-          <React.Fragment key={uuidv4()}>{v}</React.Fragment>
+          <Fragment key={uuidv4()}>{v}</Fragment>
         ))}
       </div>
     );

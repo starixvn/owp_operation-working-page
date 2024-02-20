@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import useStore from '../../app/store';
 import { IRemark } from '../../typing/type';
 import ErrorMessage from './ErrorMessage';

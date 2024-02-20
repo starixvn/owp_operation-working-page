@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import CreateTicketLGAView from './CreateTicketLGAView';
 import { useSelector, useDispatch } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react';

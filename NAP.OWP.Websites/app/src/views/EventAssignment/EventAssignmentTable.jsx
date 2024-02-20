@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef, Component } from 'react';
 import ReactDOM from 'react-dom';
 import { find, isEqual } from 'lodash';
 import { Table } from 'fixed-data-table-2';
@@ -47,10 +47,10 @@ const propTypes = {
   scrollLeft: PropTypes.number
 };
 
-class EventAssignmentTable extends React.Component {
+class EventAssignmentTable extends Component {
   constructor(props) {
     super(props);
-    this.tableRef = React.createRef();
+    this.tableRef = createRef();
     this.state = {
       data: [],
       ticketMatch: [],

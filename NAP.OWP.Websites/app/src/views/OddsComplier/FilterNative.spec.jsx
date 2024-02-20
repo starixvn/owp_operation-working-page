@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import Filter from './FilterNative';
 import Service from '../ResourceManagement/Service';

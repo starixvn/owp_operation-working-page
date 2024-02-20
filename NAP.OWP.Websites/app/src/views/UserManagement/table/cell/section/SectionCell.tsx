@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
 import { CellProps } from '../../../type';
 import store from '../../../app/useStoreNative';
 import SingleSelection from '../cellCommon/SingleSelection';
@@ -9,7 +9,7 @@ const SectionCell = ({ dataSource, rowIndex }: CellProps) => {
 
   const { userId } = dataSource[rowIndex];
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     updateUserInfo({
       ColumnName: 'SectionId',

@@ -1,4 +1,3 @@
-import React from 'react';
 import Wizard from './Wizard';
 import { fireEvent, render } from '@testing-library/react';
 

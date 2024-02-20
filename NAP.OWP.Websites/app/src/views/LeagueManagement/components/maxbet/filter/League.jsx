@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { Input } from 'reactstrap';
 import { updateExpressionFilter } from '../../../actions/action';

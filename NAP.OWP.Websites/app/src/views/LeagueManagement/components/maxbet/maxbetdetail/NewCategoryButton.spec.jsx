@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import Router from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { render, fireEvent, screen } from '@testing-library/react';

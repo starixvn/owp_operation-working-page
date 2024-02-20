@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import axios from 'axios';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import FormMatchInfo from './FormMatchInfo';
@@ -53,12 +53,12 @@ class AddEvent extends Component {
       bettypesForTraderInfo: [],
       bettypeData: null
     };
-    this.recommendOddsRef = React.createRef();
-    this.matchSettingsRef = React.createRef();
+    this.recommendOddsRef = createRef();
+    this.matchSettingsRef = createRef();
     this.onAddEvent = this.onAddEvent.bind(this);
     this.onAddEventAndContinue = this.onAddEventAndContinue.bind(this);
-    this.formMatchInfo = React.createRef();
-    this.formProviderInfo = React.createRef();
+    this.formMatchInfo = createRef();
+    this.formProviderInfo = createRef();
     this.getInfoSiteMatch = this.getInfoSiteMatch.bind(this);
     this.confirmClose = this.confirmClose.bind(this);
   }

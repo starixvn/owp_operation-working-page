@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import useStore from '../../app/store';
 import { TSettingPopup } from '../../typing/settingPopup';

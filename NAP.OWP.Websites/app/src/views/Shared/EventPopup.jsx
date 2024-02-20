@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 import { BettypeId } from './Constants';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import BetTypeCell from './BetTypeCell';
 import GoalCell from './GoalCell';
@@ -22,7 +22,7 @@ const propTypes = {
   onRowChange: PropTypes.func
 };
 
-class OddRow extends React.Component {
+class OddRow extends Component {
   constructor(props) {
     super(props);
     const { row } = this.props;

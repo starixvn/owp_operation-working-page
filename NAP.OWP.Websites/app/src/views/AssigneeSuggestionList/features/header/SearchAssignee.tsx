@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import useStore from '../../app/useStoreNative';
 import { shallow } from 'zustand/shallow';
 
@@ -7,7 +7,7 @@ const SearchAssignee = () => {
 
   const [keyword, setKeyword] = useState('');
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) =>
     event.key === 'Enter' && filterByAssignee(keyword);
 
   return (

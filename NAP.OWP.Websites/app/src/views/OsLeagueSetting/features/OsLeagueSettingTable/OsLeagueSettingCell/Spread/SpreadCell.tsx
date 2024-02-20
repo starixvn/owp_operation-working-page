@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../../../typing/tableType';
 
 const SpreadCell = (props: CellProps): JSX.Element => {

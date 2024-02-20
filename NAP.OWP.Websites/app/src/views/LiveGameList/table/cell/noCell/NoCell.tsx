@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellProps } from '../../../type/TableType';
 import { UncontrolledTooltip } from 'reactstrap';
 import AbsencePersonIcon from '../../../../../assets/svg-element/AbsencePersonIcon';

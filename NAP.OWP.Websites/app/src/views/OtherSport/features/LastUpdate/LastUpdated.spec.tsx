@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import '@testing-library/jest-dom';

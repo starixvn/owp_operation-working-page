@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ActionWrapper from './ActionWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { fireEvent, render, screen } from '@testing-library/react';

@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-warning-comments
 /* eslint-disable react/jsx-handler-names */
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import PencilIcon from 'mdi-react/PencilIcon';
 import DeleteIcon from 'mdi-react/DeleteIcon';

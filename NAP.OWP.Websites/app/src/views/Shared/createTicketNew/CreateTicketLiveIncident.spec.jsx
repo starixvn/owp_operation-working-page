@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import CreateTicketLiveIncident from './CreateTicketLiveIncident';
 import { render } from '@testing-library/react';

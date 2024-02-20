@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import ViewFilterDayShift from './ViewFilterDayShift';

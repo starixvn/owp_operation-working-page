@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomTable from '../../Shared/tableCommon/CustomTable';
 import TableHeader from './tableHeader/TableHeader';
 import TableBody from './tableBody/TableBody';

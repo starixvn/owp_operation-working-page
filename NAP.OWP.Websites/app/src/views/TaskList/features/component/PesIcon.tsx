@@ -1,4 +1,3 @@
-import React from 'react';
 import { PesOrFiFa } from '../../type/TTaskListTable';
 import { UncontrolledTooltip } from 'reactstrap';
 

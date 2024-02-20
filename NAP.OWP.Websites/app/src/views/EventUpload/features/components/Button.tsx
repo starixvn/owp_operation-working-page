@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { resetResponse, setBackStep, setNextStep, setResetValidationResult } from '../slice/eventUploadSlice';
 

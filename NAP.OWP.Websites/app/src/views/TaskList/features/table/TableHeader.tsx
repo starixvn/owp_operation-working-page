@@ -1,4 +1,3 @@
-import React from 'react';
 import { TABLE_HEADER } from '../const/TableSchema.json';
 
 type colSpanType = {

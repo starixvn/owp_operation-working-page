@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import TicketListPopup from './TicketListPopup';
 import { useDispatch, useSelector } from 'react-redux';

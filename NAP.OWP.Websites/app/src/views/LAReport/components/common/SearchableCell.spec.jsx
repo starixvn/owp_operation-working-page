@@ -1,4 +1,3 @@
-import React from 'react';
 import SearchableCell from './SearchableCell';
 import { fireEvent, render, screen } from '@testing-library/react';
 

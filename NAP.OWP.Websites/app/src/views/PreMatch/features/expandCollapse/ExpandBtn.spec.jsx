@@ -1,5 +1,4 @@
 import ExpandBtn from './ExpandBtn';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
 

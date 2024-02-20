@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import MessageService, { SystemMessageTypes } from '../Message/Service';
 import StarIcon from 'mdi-react/StarIcon';
@@ -10,7 +10,7 @@ const propTypes = {
   data: PropTypes.object.isRequired
 };
 
-class NotificationItem extends React.Component {
+class NotificationItem extends Component {
   renderMessageIcon() {
     const { SystemMessageType } = this.props.data;
     switch (SystemMessageType) {

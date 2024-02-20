@@ -1,4 +1,3 @@
-import React from 'react';
 import GeneralInfo from './GeneralInfo';
 import Toastr from '../../components/ToastrWrapper';
 import { fireEvent, render, screen } from '@testing-library/react';

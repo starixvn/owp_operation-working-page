@@ -1,4 +1,3 @@
-import React from 'react';
 import CreateTicketButton from './CreateTicketButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { screen, render, fireEvent } from '@testing-library/react';

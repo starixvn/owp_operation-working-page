@@ -1,4 +1,4 @@
-import React from 'react';
+import { DragEvent } from 'react';
 import FunctionDropdown from './components/FunctionDropdown.native';
 import Describe from './components/Describe.native';
 import RateFunction from './components/RateFunction';
@@ -13,7 +13,7 @@ import ToastsWrapper from '../components/ToastrWrapper';
 const Body = () => {
   const updateFeedbackInfo = useStore(state => state.updateFeedbackInfo);
 
-  const handleSendFile = (event: React.DragEvent) => {
+  const handleSendFile = (event: DragEvent) => {
     if (event.dataTransfer.files) {
       const file = event.dataTransfer.files[0];
       if (!validateFileExtension(file.name)) {

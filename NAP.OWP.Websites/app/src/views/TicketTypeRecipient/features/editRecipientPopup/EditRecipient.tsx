@@ -1,4 +1,3 @@
-import React from 'react';
 import RecipientTable from './RecipientTable';
 import { Recipient } from '../TypeNative';
 import RecipientSuggestion from '../../../Shared/TicketSetting/RecipientSuggestion/RecipientSuggestion';

@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-warning-comments
 /* eslint-disable react/jsx-handler-names */
-import React, { PureComponent } from 'react';
+import { createRef, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import NoteRow from './NoteRow';
@@ -19,7 +19,7 @@ const propTypes = {
 class NoteTable extends PureComponent {
   constructor(props) {
     super(props);
-    this.addInputRef = React.createRef();
+    this.addInputRef = createRef();
     this.onSave = this.onSave.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onCreate = this.onCreate.bind(this);

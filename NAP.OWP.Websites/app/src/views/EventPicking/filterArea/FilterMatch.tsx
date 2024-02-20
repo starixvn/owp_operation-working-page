@@ -1,4 +1,3 @@
-import React from 'react';
 import { FILTER_MATCH_OPTIONS, FILTER_MATCH } from './filterConst.json';
 import MultipleSelectionTemplate from './MultipleSelectionTemplate';
 

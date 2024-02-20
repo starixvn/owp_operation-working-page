@@ -1,4 +1,3 @@
-import React from 'react';
 import EditableButtonGroup from './EditableButtonGroup';
 import EditableTextSuggestion from './EditableTextSuggestion';
 import EditableTextMention from './EditableTextMention';

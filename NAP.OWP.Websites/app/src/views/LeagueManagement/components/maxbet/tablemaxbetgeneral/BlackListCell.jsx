@@ -1,4 +1,3 @@
-import React from 'react';
 import CheckboxCell from '../../common/CheckboxCell';
 import { useDispatch, useStore } from 'react-redux';
 import { postDataWithExtraModel } from '../../../actions/action';

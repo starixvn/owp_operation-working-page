@@ -1,4 +1,3 @@
-import React from 'react';
 import useStableDispatch from '../customHook/useStableDispatch';
 import {
   openPopupEventChecking,

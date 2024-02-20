@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Dialog from '../dialog/Dialog';
 import { TicketTypeRecipientDataSource } from '../TypeNative';
 import ActionCell from './ActionCell';

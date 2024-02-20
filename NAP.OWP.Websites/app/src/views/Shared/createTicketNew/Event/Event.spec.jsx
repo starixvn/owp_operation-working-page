@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import InputEvent from './Event';
 import { useSelector, useDispatch } from 'react-redux';
 import { render } from '@testing-library/react';

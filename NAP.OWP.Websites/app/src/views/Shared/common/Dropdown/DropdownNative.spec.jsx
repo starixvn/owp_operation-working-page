@@ -1,4 +1,3 @@
-import React from 'react';
 import DropdownNative from './DropdownNative';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 const mockOnclick = jest.fn();

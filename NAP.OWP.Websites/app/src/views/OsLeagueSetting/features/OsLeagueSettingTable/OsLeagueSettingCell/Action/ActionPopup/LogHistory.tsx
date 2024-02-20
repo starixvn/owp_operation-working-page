@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { LogHistoryProps } from '../../../../../typing/tableType';
 import { LogValue } from '../../../../../typing/osLeagueStateType';

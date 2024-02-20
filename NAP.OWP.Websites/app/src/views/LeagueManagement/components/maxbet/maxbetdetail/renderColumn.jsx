@@ -1,4 +1,3 @@
-import React from 'react';
 import { Column, Cell } from 'fixed-data-table-2';
 import renderCellFactory from './cell/renderCellFactory.native';
 import { v4 as uuidv4 } from 'uuid';

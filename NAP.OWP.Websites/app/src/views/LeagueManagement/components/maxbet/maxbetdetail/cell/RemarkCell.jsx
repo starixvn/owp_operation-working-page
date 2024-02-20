@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { createRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Cell } from 'fixed-data-table-2';
 import { useStore, useDispatch } from 'react-redux';
@@ -20,7 +20,7 @@ const RemarkCell = ({ data, rowIndex }) => {
   const [remark, setRemark] = useState(data.Remark);
   const store = useStore();
   const dispatch = useDispatch();
-  const input = React.createRef();
+  const input = createRef();
   const { policyData } = store.getState().policyReducer;
   const hasWrite = hasWriteOnPageMaxbetGeneral(policyData);
   const handleUpdateRemark = () => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { RecipientIcon } from './RecipientIcon';
 import PropTypes from 'prop-types';
 

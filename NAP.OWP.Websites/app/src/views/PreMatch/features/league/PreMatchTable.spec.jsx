@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import { render } from '@testing-library/react';
 import PreMatchTable from './PreMatchTable';
 import { useDispatch, useSelector } from 'react-redux';

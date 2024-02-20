@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import { render, waitFor } from '@testing-library/react';
 import NightShiftManagement from './NightShiftManagement';
 import { useDispatch, useSelector } from 'react-redux';

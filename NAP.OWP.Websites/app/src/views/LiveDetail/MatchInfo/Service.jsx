@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { buildRequestURL } from '../buildUrlHelper';
-
+import { buildRequestURLForLGA } from '../../EventAssignmentNew/helper/apiHelper';
 const query = async owpMatchId => {
   const response = await axios.get(buildRequestURL('match-info'), {
     params: {
@@ -32,18 +32,14 @@ const updateTradingInfo = async model => {
 };
 
 const editEvent = async formModel => {
-  const response = await axios.post(
-    'api/event-assignment/edit-event',
-    formModel
-  );
+  const url = buildRequestURLForLGA('/edit-event');
+  const response = await axios.post(url, formModel);
   return response.data;
 };
 
 const validateToEditEvent = async model => {
-  const response = await axios.post(
-    'api/event-assignment/validate-to-edit-event',
-    model
-  );
+  const url = buildRequestURLForLGA('/validate-to-edit-event');
+  const response = await axios.post(url, model);
   return response.data;
 };
 

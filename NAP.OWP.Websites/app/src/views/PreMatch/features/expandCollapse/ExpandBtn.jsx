@@ -1,4 +1,3 @@
-import React from 'react';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import { expandAllLeague } from '../league/shiftSlice/shiftSlice';
 

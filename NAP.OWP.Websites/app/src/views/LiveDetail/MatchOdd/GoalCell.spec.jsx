@@ -1,4 +1,3 @@
-import React from 'react';
 import GoalCell from './GoalCell';
 import { MajorBetTypes } from '../../Shared/Constants';
 import { fireEvent, render, screen } from '@testing-library/react';

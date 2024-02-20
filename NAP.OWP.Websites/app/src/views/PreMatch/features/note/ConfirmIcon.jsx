@@ -1,4 +1,3 @@
-import React from 'react';
 import CheckIcon from 'mdi-react/CheckIcon';
 import CloseIcon from 'mdi-react/CloseIcon';
 import PropTypes from 'prop-types';

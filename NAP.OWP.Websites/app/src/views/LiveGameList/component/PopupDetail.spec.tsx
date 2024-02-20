@@ -1,4 +1,3 @@
-import React from 'react';
 import PopupDetail from './PopupDetail';
 import useStableDispatch from './../../Shared/customHook/useStableDispatch';
 import { render } from '@testing-library/react';

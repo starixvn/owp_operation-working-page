@@ -1,4 +1,3 @@
-import React from 'react';
 import { dbColumnName, SECTION_LIVE_TRADING_ID } from '../../../../Const.json';
 import PropTypes from 'prop-types';
 import {

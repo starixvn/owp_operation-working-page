@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import LeagueCell from './LeagueCell';
 import { CellProps } from '../../../type/TableType';

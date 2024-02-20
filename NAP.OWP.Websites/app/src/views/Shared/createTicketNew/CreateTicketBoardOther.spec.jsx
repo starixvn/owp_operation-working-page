@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import CreateTicketBoardOther from './CreateTicketBoardOther';
 import usePermission from '../customHook/usePermission';
 import { useSelector, useDispatch } from 'react-redux';

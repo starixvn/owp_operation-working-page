@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cell } from 'fixed-data-table-2';
 import DeleteIcon from 'mdi-react/DeleteIcon';
 import PropTypes from 'prop-types';

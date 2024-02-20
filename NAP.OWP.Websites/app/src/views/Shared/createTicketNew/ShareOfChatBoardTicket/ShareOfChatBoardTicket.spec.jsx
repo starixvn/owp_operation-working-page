@@ -1,4 +1,3 @@
-import React from 'react';
 import ShareOfChatBoardTicket from './ShareOfChatBoardTicket';
 import { useSelector, useDispatch } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';

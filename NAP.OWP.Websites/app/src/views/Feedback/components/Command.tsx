@@ -1,4 +1,3 @@
-import React from 'react';
 import useStore from '../app/store';
 import ToastrWrapper from '../../components/ToastrWrapper';
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BODY } from '../const.json';
 import Select from 'react-select-ts';
 import { queryFunction } from '../services.native';

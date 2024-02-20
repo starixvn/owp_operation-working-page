@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { OWPHeader, OWPPage, OWPBody } from '../Shared/common/OWP/OPWPage';
 import Header from './features/header/Header';
 import SuggestionTable from './features/table/SuggestionTable';

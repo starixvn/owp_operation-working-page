@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FILTER_KEY } from '../../Const.json';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import { setFilter } from './filterSlice';

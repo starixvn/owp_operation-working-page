@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { createRef, Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import CloseCircleIcon from 'mdi-react/CloseCircleIcon';
@@ -39,7 +39,7 @@ class LiveDetail extends Component {
       isLoading: true,
       matchId
     };
-    this.formProviderInfo = React.createRef();
+    this.formProviderInfo = createRef();
     this.onSaveGeneralInfo = this.onSaveGeneralInfo.bind(this);
     this.onSaveMatchInfo = this.onSaveMatchInfo.bind(this);
     this.onSaveTradingInfo = this.onSaveTradingInfo.bind(this);

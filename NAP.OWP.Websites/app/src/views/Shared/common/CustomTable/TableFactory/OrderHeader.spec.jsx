@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react';
 import OrderHeader from './OrderHeader';

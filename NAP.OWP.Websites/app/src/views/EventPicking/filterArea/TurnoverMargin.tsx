@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   SELECT_TURNOVER_OPTIONS,
   FROM_DATE,

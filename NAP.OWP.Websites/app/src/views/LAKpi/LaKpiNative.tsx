@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import LAKpiTable from './feature/table/LAKpiTable';
 import Filter from './feature/filter/Filter';
 import useStore from './app/store';

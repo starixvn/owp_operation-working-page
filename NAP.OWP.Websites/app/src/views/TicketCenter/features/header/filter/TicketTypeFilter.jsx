@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import TreeSelect from 'rc-tree-select';
 import 'rc-tree-select/assets/index.css';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent, Fragment } from 'react';
 import {
   Button,
   UncontrolledPopover,
@@ -10,7 +10,7 @@ import {
 } from 'mdi-react';
 import PropTypes from 'prop-types';
 
-class ProviderCell extends React.PureComponent {
+class ProviderCell extends PureComponent {
   render() {
     const { data, rowIndex } = this.props;
     const { OtherProvider, Phone } = data[rowIndex];
@@ -22,7 +22,7 @@ class ProviderCell extends React.PureComponent {
           <p className='runner'>{data[rowIndex].Provider}</p>
         )}
         {OtherProvider && (
-          <React.Fragment key={`OtherProvider${uuidv4()}${rowIndex}`}>
+          <Fragment key={`OtherProvider${uuidv4()}${rowIndex}`}>
             <Button id={buttonIdOtherProvider} className='button-provider'>
               Other Provider
             </Button>
@@ -33,10 +33,10 @@ class ProviderCell extends React.PureComponent {
               target={buttonIdOtherProvider}>
               <PopoverBody>{OtherProvider}</PopoverBody>
             </UncontrolledPopover>
-          </React.Fragment>
+          </Fragment>
         )}
         {Phone && (
-          <React.Fragment key={`Phone${uuidv4()}${rowIndex}`}>
+          <Fragment key={`Phone${uuidv4()}${rowIndex}`}>
             <Button id={buttonIdPhone} className='button-provider'>
               <PhoneIcon size={11} /> Phone
             </Button>
@@ -47,7 +47,7 @@ class ProviderCell extends React.PureComponent {
               target={buttonIdPhone}>
               <PopoverBody>{Phone}</PopoverBody>
             </UncontrolledPopover>
-          </React.Fragment>
+          </Fragment>
         )}
       </div>
     );

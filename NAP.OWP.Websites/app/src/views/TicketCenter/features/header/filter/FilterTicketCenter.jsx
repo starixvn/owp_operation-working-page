@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import MarketFilter from './MarketFilter';
 import { onSubmitFilterModel } from '../../signalR/signalRSlice';
 import update from 'immutability-helper';

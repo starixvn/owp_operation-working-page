@@ -1,4 +1,3 @@
-import React from 'react';
 import { cloneDeep } from 'lodash';
 import Converter from '../../Shared/Converter';
 import FormProviderInfo from './FormProviderInfo';

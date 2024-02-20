@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import DeleteIcon from 'mdi-react/DeleteIcon';
 import { SpecialProductConst } from '../../../../constants/SpecialProductConst';

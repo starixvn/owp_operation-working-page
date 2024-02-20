@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import { useState, Suspense } from 'react';
 import Loading from '../../../../components/Loading';
 import { IPropsTeamInfo } from '../../../type';
 import LazyTeamInfo from '../../lazyExport/LazyTeamInfo';

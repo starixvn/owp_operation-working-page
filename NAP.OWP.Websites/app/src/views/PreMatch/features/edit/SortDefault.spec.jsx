@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { useDispatch } from 'react-redux';
 import SortDefault from './SortDefault';

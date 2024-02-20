@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import Notification from './Notification';
 import MessageService from '../Message/Service';

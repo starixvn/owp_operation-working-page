@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { createRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useStore, useSelector, useDispatch } from 'react-redux';
 import NumericTextbox from 'react-numeric-textbox';
@@ -108,7 +108,7 @@ const MaxbetCell = props => {
   const hasWrite = policyData.generalPolicy.HasWrite;
   const dispatch = useDispatch();
   const stableDispatch = useCallback(dispatch, [dispatch]);
-  const input = React.createRef(props.value);
+  const input = createRef(props.value);
 
   const handlePostData = maxbet => {
     if (

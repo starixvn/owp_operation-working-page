@@ -1,4 +1,3 @@
-import React from 'react';
 import MaxbetInfo from '../../../component/MaxbetInfo';
 import { useSelector } from 'react-redux';
 

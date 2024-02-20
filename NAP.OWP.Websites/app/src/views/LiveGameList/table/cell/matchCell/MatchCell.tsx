@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Button } from 'reactstrap';
 import { CellProps } from '../../../type/TableType';
 import EventPopup from '../../../../Shared/EventPopup';

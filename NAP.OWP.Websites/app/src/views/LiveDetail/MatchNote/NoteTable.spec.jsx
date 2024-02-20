@@ -1,4 +1,3 @@
-import React from 'react';
 import NoteTable from './NoteTable';
 import Service from './Service';
 import { fireEvent, render, screen } from '@testing-library/react';

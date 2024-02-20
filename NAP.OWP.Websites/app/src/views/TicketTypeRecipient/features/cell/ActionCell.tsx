@@ -1,5 +1,4 @@
 import { PencilIcon } from 'mdi-react';
-import React from 'react';
 
 type Props = {
   onOpenPopup: () => void

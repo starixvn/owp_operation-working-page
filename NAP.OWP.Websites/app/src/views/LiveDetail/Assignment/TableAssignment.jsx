@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table, UncontrolledTooltip } from 'reactstrap';
 import EditableButtonGroupForLiveDetail from '../../components/Assignment/EditableButtonGroupForLiveDetail';
@@ -9,14 +9,14 @@ const propTypes = {
   policy: PropTypes.object.isRequired
 };
 
-class TableAssignment extends React.Component {
+class TableAssignment extends Component {
   constructor(props) {
     super(props);
     this.mappingRowGroup = this.mappingRowGroup.bind(this);
     this.state = {
       dataSource: []
     };
-    this.tbody = React.createRef();
+    this.tbody = createRef();
   }
 
   changeBackgroundTableRow(event, color) {

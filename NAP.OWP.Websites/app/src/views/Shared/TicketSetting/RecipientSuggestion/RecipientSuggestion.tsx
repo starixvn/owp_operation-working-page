@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { TicketSettingRecipient } from '../TypeNative';
 import { post } from '../../Service/Service';
 import ToastrWrapper from '../../../components/ToastrWrapper';

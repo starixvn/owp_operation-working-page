@@ -1,4 +1,3 @@
-import React from 'react';
 import MatchCell from './MatchCell';
 import { render, screen } from '@testing-library/react';
 

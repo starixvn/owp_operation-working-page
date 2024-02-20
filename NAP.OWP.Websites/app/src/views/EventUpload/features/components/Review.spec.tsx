@@ -1,6 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react';
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import Review from './Review';

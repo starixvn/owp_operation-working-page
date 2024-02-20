@@ -1,5 +1,5 @@
 import { render, waitFor } from '@testing-library/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CreateTicketPlusCircle from './CreateTicketPlusCircle';
 

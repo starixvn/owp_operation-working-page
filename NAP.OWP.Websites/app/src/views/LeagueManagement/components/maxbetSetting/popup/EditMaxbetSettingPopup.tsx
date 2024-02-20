@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import React, { useRef } from 'react';
+import { useRef, KeyboardEvent } from 'react';
 import { Input, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import ToastrWrapper from '../../../../components/ToastrWrapper';
 import { covertToNumber, validateMaxbet } from '../helper/helper';
@@ -16,7 +16,7 @@ const EditMaxbetSettingPopup = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSave = () => {
-    const value = inputRef.current && inputRef.current.value;
+    const value = inputRef?.current?.value;
     const inputValue = value ? Number(value) : null;
     const DELAY_TIME = 200;
     if (!validateMaxbet(inputValue)) {
@@ -33,7 +33,7 @@ const EditMaxbetSettingPopup = () => {
     }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       handleSave();
     }

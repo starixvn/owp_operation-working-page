@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import { CellProps } from '../../../../typing/tableType';
 import MaxBetCell from './MaxBetCell';

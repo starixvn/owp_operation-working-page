@@ -1,4 +1,3 @@
-import React from 'react';
 import LiveAssignment from './LiveAssignment';
 import AssignmentService from './Service';
 import MatchSettingService from '../MatchSetting/Service';

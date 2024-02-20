@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomInput from '../../../component/CustomInput';
 import { CellProps } from '../../../type';
 import store from '../../../app/useStoreNative';

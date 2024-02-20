@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import ActionCell from './ActionCell';
 import { useDispatch, useSelector } from 'react-redux';

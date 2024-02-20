@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CellProps } from '../../../type';
 import CustomInput from '../../../component/CustomInput';
 import Toast from '../../../../components/ToastrWrapper';

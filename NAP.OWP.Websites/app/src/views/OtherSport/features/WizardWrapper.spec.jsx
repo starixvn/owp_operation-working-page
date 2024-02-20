@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import WizardWrapper from './WizardWrapper';
 import {
   acceptedFileFormat,

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { TooltipText } from '../../../../../Shared/common/Tooltip';
 import Utils from '../../../../../Shared/Utils';

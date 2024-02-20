@@ -1,4 +1,3 @@
-import React from 'react';
 import { IInputFieldMaxbetSpread } from '../../typing/type';
 import InputCustom from '../shared/InputCustom';
 import useStore from '../../app/store';

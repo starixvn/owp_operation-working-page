@@ -1,9 +1,9 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import NotePopover from '../NotePopover';
 import PropTypes from 'prop-types';
 
-class NoteCell extends React.PureComponent {
+class NoteCell extends PureComponent {
   render() {
     const { notePolicy, data, rowIndex, closePopup } = this.props;
     return (

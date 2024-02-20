@@ -1,9 +1,9 @@
-import React from 'react';
+import { ChangeEventHandler } from 'react';
 import { Option } from '../../../../Shared/MultipleSelection/type';
 
 const SingleSelection = (props: {
   defaultValue: string | number | undefined,
-  onChange: React.ChangeEventHandler<HTMLSelectElement>,
+  onChange: ChangeEventHandler<HTMLSelectElement>,
   options: Option[],
   disabled?: boolean
 }) =>

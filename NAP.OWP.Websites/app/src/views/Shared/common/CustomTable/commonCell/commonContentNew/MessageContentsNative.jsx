@@ -1,4 +1,3 @@
-import React from 'react';
 import Linkify from 'react-linkify';
 import { formatTime } from '../../../../DateTime/dateTimeHelper';
 import PropTypes from 'prop-types';

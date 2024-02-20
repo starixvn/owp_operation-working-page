@@ -1,4 +1,4 @@
-import React, { DragEvent } from 'react';
+import { DragEvent } from 'react';
 import DragIcon from '../../../../assets/svg-element/DragIcon';
 import { ProviderData } from '../TypeNative';
 

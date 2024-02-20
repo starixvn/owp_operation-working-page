@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import { getMyTicketPermission, buildGoToMyTicketLink } from './helper/helper';
 

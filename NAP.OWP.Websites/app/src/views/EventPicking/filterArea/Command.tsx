@@ -1,4 +1,3 @@
-import React from 'react';
 import { getEventPickings } from '../table/eventPickingTableSlice/eventSliceThunkNative';
 import store from '../app/store';
 import useStableDispatch from '../../Shared/customHook/useStableDispatch';

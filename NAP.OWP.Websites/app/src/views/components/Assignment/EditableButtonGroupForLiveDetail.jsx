@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import EditableButtonBase from './EditableButtonBase';
 
 class EditableButtonGroupForLiveDetail extends Component {

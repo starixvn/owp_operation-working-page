@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 
 import MaxbetCell from './MaxbetCell';

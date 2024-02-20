@@ -1,5 +1,5 @@
 import EditSecondAcceptSettingPopup from './EditSecondAcceptSettingPopup';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import useStore from '../store/storeNative';
 import { EditModel } from '../typeNative';

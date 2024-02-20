@@ -1,5 +1,4 @@
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import ActionIcon from './ActionIcon';

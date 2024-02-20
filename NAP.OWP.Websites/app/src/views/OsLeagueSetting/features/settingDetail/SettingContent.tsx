@@ -1,4 +1,3 @@
-import React from 'react';
 import OfferLine from './OfferLine';
 import {
   IFieldMultipleSelection,

@@ -1,5 +1,4 @@
 import { prepareValueCopy, isTakeOver, notificationContent } from './Helper';
-import React from 'react';
 
 const createProps = key => {
   const dataRow = {

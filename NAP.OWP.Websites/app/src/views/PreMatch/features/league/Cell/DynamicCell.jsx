@@ -1,4 +1,3 @@
-import React from 'react';
 import { ColumnModels } from '../constants/preMatchConst';
 import NoCell from './NoCell';
 import MaxbetOUCell from './MaxbetOUCell';

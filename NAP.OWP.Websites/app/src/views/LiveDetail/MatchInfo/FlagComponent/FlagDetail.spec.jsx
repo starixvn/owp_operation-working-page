@@ -1,4 +1,3 @@
-import React from 'react';
 import FlagDetail from './FlagDetail';
 import { render, screen } from '@testing-library/react';
 

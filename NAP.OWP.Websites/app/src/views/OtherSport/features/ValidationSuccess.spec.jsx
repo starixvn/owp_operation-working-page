@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import { setImmediate } from 'timers';
-import React from 'react';
 import ValidationSuccess from './ValidationSuccess';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import { useSelector, useDispatch } from 'react-redux';

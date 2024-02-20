@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { useSelector, useStore } from 'react-redux';
 import { selectSpecialProductData } from '../../../selector/SelectorSpecialProduct';
 import ReactTable from 'react-table';
@@ -11,7 +11,7 @@ import { nomalizeArraySpecialProductMaxbetSpreadResponse } from '../../../helper
 
 const SpecialProductTable = () => {
   const specialProductSelector = useSelector(selectSpecialProductData);
-  const specialProductData = React.useMemo(
+  const specialProductData = useMemo(
     () =>
       nomalizeArraySpecialProductMaxbetSpreadResponse(
         specialProductSelector.specialProductData
@@ -66,7 +66,7 @@ const SpecialProductTable = () => {
         }
     }
   };
-  const generateColumns = React.useMemo(() => {
+  const generateColumns = useMemo(() => {
     const generateSubCols = header => {
       return [
         {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BODY } from '../const.json';
 import AngryIcon from '../../../assets/svg-element/AngryIcon';
 import SadIcon from '../../../assets/svg-element/SadIcon';

@@ -1,5 +1,4 @@
 import { AccountMultipleIcon, PersonIcon } from 'mdi-react';
-import React from 'react';
 import { TicketTypeRecipientEnum } from '../../enum/TicketRecipientEnum';
 import SectionIcon from '../../recipientSelect/SectionIcon';
 import { TicketSettingRecipient } from '../TypeNative';

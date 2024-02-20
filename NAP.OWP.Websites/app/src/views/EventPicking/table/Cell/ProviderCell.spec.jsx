@@ -1,4 +1,3 @@
-import React from 'react';
 import ProviderCell from './ProviderCell';
 import { render, screen } from '@testing-library/react';
 

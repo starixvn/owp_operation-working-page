@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { IUpdateScore } from '../../typing/type';
 import constant from '../../osLeague.json';
 import ErrorMessage from './ErrorMessage';

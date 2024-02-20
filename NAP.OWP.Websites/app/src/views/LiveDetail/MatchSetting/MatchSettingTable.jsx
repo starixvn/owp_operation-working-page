@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import MatchSettingRow from './MatchSettingRow';
@@ -16,7 +16,7 @@ const propTypes = {
   policy: PropTypes.object
 };
 
-class MatchSettingTable extends React.Component {
+class MatchSettingTable extends Component {
   render() {
     const { policy } = this.props;
     return (

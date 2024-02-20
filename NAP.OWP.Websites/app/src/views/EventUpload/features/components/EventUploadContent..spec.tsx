@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import React, { createRef, useState } from 'react';
+import { createRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EventUploadContent from './EventUploadContent';
 

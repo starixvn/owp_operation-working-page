@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import useGetHeaderInfo from '../customHook/useGetHeaderInfo';
 import HeaderCommon from '../share/HeaderCommon';

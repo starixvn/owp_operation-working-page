@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import PlusIcon from 'mdi-react/PlusIcon';
 import ChevronDownIcon from 'mdi-react/ChevronDownIcon';
@@ -25,7 +25,7 @@ const propTypes = {
   data: PropTypes.object.isRequired
 };
 
-class MatchSettingPanel extends React.Component {
+class MatchSettingPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {

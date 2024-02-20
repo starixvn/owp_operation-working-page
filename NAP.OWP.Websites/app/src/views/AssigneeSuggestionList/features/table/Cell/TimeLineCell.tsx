@@ -1,4 +1,3 @@
-import React from 'react';
 import { AssignmentCell } from '../../TypeNative';
 
 type Props = AssignmentCell;

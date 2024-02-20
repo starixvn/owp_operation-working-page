@@ -1,4 +1,3 @@
-import React from 'react';
 import Select from 'react-select';
 import { useDispatch, useStore } from 'react-redux';
 import { updateExpressionFilter } from '../../../actions/action';

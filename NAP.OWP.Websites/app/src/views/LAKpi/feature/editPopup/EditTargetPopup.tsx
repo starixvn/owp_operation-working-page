@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Modal, ModalBody } from 'reactstrap';
 import useStore from '../../app/store';
 import { DataSource, Target } from '../type/TableType.native';

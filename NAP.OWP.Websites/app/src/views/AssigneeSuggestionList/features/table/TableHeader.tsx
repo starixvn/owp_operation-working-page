@@ -1,4 +1,3 @@
-import React from 'react';
 import { getLocaleDateTime } from '../../../Shared/DateTime/dateTimeHelper';
 import { timeLineColumn } from '../../const/Const.json';
 import { TimeLine } from '../TypeNative';

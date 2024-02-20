@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   TABLE_HEADER,
   TABLE_HEADER_TURN_OVER_MARGIN

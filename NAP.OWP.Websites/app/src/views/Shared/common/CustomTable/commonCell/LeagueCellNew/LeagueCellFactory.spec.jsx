@@ -1,4 +1,3 @@
-import React from 'react';
 import LeagueCellFactory from './LeagueCellFactory';
 import { render, screen } from '@testing-library/react';
 

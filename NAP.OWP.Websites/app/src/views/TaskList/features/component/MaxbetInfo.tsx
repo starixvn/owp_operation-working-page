@@ -1,4 +1,3 @@
-import React from 'react';
 import { TAssignment, TMatchSettingInfo } from '../../type/TTaskListTable';
 import Assignment from './Assignment';
 import OtherAssignment from './OtherAssignment';

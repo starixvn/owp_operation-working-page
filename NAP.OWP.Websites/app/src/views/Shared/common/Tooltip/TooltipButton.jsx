@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 
@@ -20,7 +20,7 @@ const TooltipButton = props => {
   } = props;
 
   return (
-    <React.Fragment key={`${innerClassName}${rowIndex}`}>
+    <Fragment key={`${innerClassName}${rowIndex}`}>
       <button
         id={`${innerClassName}${rowIndex}`}
         className={`button-${innerClassName}`}>
@@ -33,7 +33,7 @@ const TooltipButton = props => {
         target={`${innerClassName}${rowIndex}`}>
         <PopoverBody>{toolTipContent}</PopoverBody>
       </UncontrolledPopover>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

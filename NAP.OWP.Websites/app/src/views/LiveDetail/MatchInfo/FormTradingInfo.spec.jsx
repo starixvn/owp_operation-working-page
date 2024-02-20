@@ -1,4 +1,3 @@
-import React from 'react';
 import FormTradingInfo from './FormTradingInfo';
 import MatchInfoService from './Service';
 import Toastr from '../../components/ToastrWrapper';

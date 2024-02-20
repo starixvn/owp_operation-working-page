@@ -1,4 +1,3 @@
-import React from 'react';
 import MatchSettingPanel from './MatchSettingPanel';
 import MatchSettingService from './Service';
 import { act, fireEvent, render, screen } from '@testing-library/react';

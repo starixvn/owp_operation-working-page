@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import { createRef, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { DefaultTableStyle } from './constants/preMatchConst';
@@ -33,7 +33,7 @@ const PreMatchTable = ({ isEditing, isNightShift }) => {
   const tableKey = model.tableKey;
   const data = model.entities;
   const dataLength = data.length;
-  const tableRef = React.createRef();
+  const tableRef = createRef();
   const dispatch = useStableDispatch();
 
   useEffect(() => {

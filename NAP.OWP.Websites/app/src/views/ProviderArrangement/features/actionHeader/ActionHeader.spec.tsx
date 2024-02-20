@@ -1,6 +1,5 @@
 import { fireEvent, render, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import axios from 'axios';
-import React from 'react';
 import { useSelector } from 'react-redux';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';
 import { ProviderData } from '../TypeNative';

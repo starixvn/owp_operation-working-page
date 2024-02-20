@@ -1,4 +1,4 @@
-import React, { useState, createRef, useEffect } from 'react';
+import { useState, createRef, useEffect } from 'react';
 import MultipleSelection from '../../Shared/MultipleSelection/MultipleSelection';
 import {
   DEFAULT_STATUS_OPTION,

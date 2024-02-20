@@ -1,5 +1,5 @@
 import { DeleteIcon } from 'mdi-react';
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { RecipientModel } from '../Type';
 
 interface Props {

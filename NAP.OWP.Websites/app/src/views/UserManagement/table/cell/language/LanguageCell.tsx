@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { TUserInfo } from '../../../type';
 import store from '../../../app/useStoreNative';
 import DropdownIcon from '../../../../../assets/svg-element/DropdownIcon';

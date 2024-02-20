@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import SearchResultItem from './SearchResultItem';
 import { AppContext } from '../Shared/Context';

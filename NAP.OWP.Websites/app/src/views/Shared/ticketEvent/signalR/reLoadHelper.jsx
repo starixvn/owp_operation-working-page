@@ -8,6 +8,20 @@ const handleReload = (store, actorId, owpMatchId, setData) => {
   isOpenPopup && store.dispatch(getTicketDetail(issueModel));
 };
 
+const handleReloadEventAssignment = (
+  store,
+  actorId,
+  userId,
+  owpMatchId,
+  setData
+) => {
+  const model = store.getState();
+  const { issueModel } = model.signalREventTicket;
+  const { isOpenPopup } = model.chatBoard;
+  store.dispatch(setData({ actorId, owpMatchId, userId }));
+  isOpenPopup && store.dispatch(getTicketDetail(issueModel));
+};
+
 const handleReloadTicketDetail = store => {
   const model = store.getState();
   const { issueModel } = model.signalREventTicket;
@@ -15,4 +29,4 @@ const handleReloadTicketDetail = store => {
   isOpenPopup && store.dispatch(getTicketDetail(issueModel));
 };
 
-export { handleReload, handleReloadTicketDetail };
+export { handleReload, handleReloadEventAssignment, handleReloadTicketDetail };

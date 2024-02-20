@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Utils from '../Utils';
 import { UncontrolledTooltip } from 'reactstrap';
 import { MessageTextOutlineIcon } from 'mdi-react';

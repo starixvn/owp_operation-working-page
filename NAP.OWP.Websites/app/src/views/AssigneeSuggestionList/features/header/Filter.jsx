@@ -1,4 +1,3 @@
-import React from 'react';
 import Select from 'react-select';
 import { OVERT_TIME } from '../../const/OptionsConst';
 import { shallow } from 'zustand/shallow';

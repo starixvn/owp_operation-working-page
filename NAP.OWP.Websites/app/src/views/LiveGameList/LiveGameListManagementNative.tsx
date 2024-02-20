@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { OWPBody, OWPHeader } from '../Shared/common/OWP/OPWPage';
 import Filter from './filterArea/Filter';
 import { FunctionKeys } from '../Shared/Constants';

@@ -1,4 +1,3 @@
-import React from 'react';
 import TicketCellCommon from '../../../../Shared/ticketEvent/component/TicketCellCommon';
 import { setDataTable } from '../taskListSlice';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';

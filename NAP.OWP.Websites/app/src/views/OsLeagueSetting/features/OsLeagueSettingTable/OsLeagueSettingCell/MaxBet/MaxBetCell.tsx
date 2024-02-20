@@ -1,4 +1,3 @@
-import React from 'react';
 import { numberWithCommas } from '../../../../helper/OsLeagueSettingHelper';
 import { CellProps } from '../../../../typing/tableType';
 import StatusIcon from '../Status/StatusIcon';

@@ -1,5 +1,4 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
-import React from 'react';
 import EditableRow from './EditableRow';
 import ResourceTable from './ResourceTable';
 import Service from './Service';

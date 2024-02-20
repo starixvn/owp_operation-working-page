@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import MultipleSelectionTemplate from './MultipleSelectionTemplate';
 import { FILTER_KEY } from '../../Const.json';
 import useStableDispatch from '../../../Shared/customHook/useStableDispatch';

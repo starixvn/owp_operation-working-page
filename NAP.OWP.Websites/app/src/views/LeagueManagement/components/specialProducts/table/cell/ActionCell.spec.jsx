@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react';
 import ToastrWrapper from '../../../../../components/ToastrWrapper';

@@ -1,4 +1,3 @@
-import React from 'react';
 import FileLoader from './FileLoader';
 import { useSelector, useDispatch } from 'react-redux';
 import ToastrWrapper from '../../components/ToastrWrapper';

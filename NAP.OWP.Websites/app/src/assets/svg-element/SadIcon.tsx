@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SadIcon = () => {
   return (
     <svg width="44" height="43" viewBox="0 0 44 43" fill="none" xmlns="http://www.w3.org/2000/svg">

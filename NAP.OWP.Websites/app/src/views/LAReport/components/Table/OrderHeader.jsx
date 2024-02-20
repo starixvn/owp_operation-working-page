@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import OrderableCell from '../common/OrderableCell';
 import { useDispatch } from 'react-redux';

@@ -1,4 +1,3 @@
-import React from 'react';
 import LiveGameListTable from './LiveGameListTable';
 import { useSelector, useDispatch } from 'react-redux';
 import { fakeEntities } from './tableSlice/tableSliceConst';

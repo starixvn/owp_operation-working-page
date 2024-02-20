@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import { useState, createRef } from 'react';
 import CalendarIcon from 'mdi-react/CalendarIcon';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';

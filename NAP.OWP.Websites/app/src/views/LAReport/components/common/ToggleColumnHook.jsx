@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-warning-comments
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { MultiSelect } from 'react-multi-select-component';
 import PropTypes from 'prop-types';
 import Utils from '../../../Shared/Utils';

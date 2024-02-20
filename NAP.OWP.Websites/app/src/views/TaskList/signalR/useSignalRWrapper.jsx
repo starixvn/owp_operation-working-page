@@ -1,4 +1,3 @@
-import React from 'react';
 import { reloadTicketCellTable } from './signalRHelper';
 import { handleChangeStatus } from './changeStatusIncomeHandler';
 import { handleChangeSubtype } from './changeSubtypeIncomeHandler';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import FilterPrematchViewer from './FilterPrematchViewer';
 import Loading from '../../../components/Loading';
@@ -10,7 +10,7 @@ const propTypes = {
   policy: PropTypes.object.isRequired
 };
 
-const FilterPrematchFactory = React.forwardRef((props, ref) => {
+const FilterPrematchFactory = forwardRef((props, ref) => {
   const { model, policy } = props;
 
   if (
