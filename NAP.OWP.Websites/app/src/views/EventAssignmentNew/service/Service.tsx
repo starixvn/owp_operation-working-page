@@ -24,7 +24,7 @@ const getLastUpdated = async (eventDate: string) => {
   )}?date=${eventDate}`;
   const response = await axios.get(url);
 
-  return response.data.uploadDateTime;
+  return response.data.UploadDateTime;
 };
 
 const syncOffVRs = async (eventModel: { date: Date }) => {
