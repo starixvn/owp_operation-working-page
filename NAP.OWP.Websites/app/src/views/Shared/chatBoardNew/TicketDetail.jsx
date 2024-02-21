@@ -92,7 +92,8 @@ const TicketDetail = ({ policy = 'policy' }) => {
       const model = {
         ticketId: ticketDetail.ticketId,
         ticketStatus: TicketStatusConst.Open,
-        actorId: permission.ActorId
+        actorId: permission.ActorId,
+        ticketInfo: ticketDetail
       };
       await dispatch(updateTicketStatus(model));
     }

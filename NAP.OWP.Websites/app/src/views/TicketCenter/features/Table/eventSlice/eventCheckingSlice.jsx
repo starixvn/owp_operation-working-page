@@ -158,7 +158,6 @@ const eventCheckingSlice = createSlice({
         userId,
         username
       };
-      debugger;
       const ticketTarget = state.entities.find(e => e.ticketId === ticketId);
       ticketTarget.isRead = false;
       ticketTarget.messages.unshift(newMsg);

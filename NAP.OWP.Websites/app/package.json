@@ -26,7 +26,7 @@
     "build-batch-7": "npm run build:os-league-setting & npm run build:event-upload & npm run build:provider-arrangement & npm run build:event-picking",
     "build-batch-8": "npm run build:assignee-suggestion & npm run build:la-kpi & npm run build:feedback & npm run build:user-management & npm run build:event-assignment-new",
     "build-all": "npm run build-batch-0 & npm run build-batch-1 & npm run build-batch-2 & npm run build-batch-3 & npm run build-batch-4 & npm run build-batch-5 & npm run build-batch-6 & npm run build-batch-7 & npm run build-batch-8",
-    "build-related-popup-ticket": "npm run build:task-list & npm run build:live-game-list & npm run build:live-game-assignment & npm run build:ticket-center & npm run build:day-shift-assignment & npm run build:night-shift-assignment",
+    "build-related-popup-ticket": "npm run build:task-list & npm run build:live-game-list & npm run build:live-game-assignment & npm run build:event-assignment-new & npm run build:ticket-center & npm run build:day-shift-assignment & npm run build:night-shift-assignment",
     "start:product-preference": "set NODE_APP=product-preference & vite",
     "build:product-preference": "set NODE_APP=product-preference & vite build",
     "start:ticket-center": "set NODE_APP=ticket-center & vite",
