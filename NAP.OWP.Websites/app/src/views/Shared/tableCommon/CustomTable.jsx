@@ -6,7 +6,7 @@ import {
   useLayoutEffect,
   useCallback,
   useEffect,
-  useRef,
+  useRef
 } from 'react';
 import { throttle } from 'lodash';
 import PropTypes from 'prop-types';
@@ -28,6 +28,7 @@ const CustomTable = ({
 }) => {
   const containerRef = useRef(null);
   const [maxHeight, setMaxHeight] = useState(window.innerHeight - 200);
+  const [maxWidth, setMaxWidth] = useState(window.innerWidth);
   const [displayStart, setDisplayStart] = useState(0);
   const [displayEnd, setDisplayEnd] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -65,8 +66,9 @@ const CustomTable = ({
   }, 100);
 
   const handleResizeBrowser = () => {
-    const { innerHeight } = window;
+    const { innerHeight, innerWidth } = window;
     setMaxHeight(innerHeight - 200);
+    setMaxWidth(innerWidth);
   };
 
   const childrenWithProps = Children.map(children, child => {
@@ -104,7 +106,7 @@ const CustomTable = ({
         ref={containerRef}
         onScroll={onScrollTable}
         className='table-wrap'
-        style={{ maxHeight }}>
+        style={{ maxHeight, maxWidth }}>
         <table id='scrollable-table' className={classNameTable}>
           <thead>{tableHeader}</thead>
           <tbody>{childrenWithProps}</tbody>
