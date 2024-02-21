@@ -28,6 +28,22 @@ type TDataTable = {
   eTPK: string;
   isCheck: boolean;
   rowColor: string;
+  turnoverPeriod: TTurnOverInfo[];
+  marginPeriod: MarginInfo[];
+};
+
+type TTurnOverInfo = {
+  title: string;
+  valueDisplay: string;
+  value: number;
+  color: string;
+};
+
+type MarginInfo = {
+  title: string;
+  valueDisplay: string;
+  value: number;
+  color: string;
 };
 
 type TTableSlice = {
@@ -65,4 +81,11 @@ interface ISortState {
 }
 
 export default TDataTable;
-export { TTableSlice, TFilterState, FilterAllColumn, TPermission, ISortState };
+export {
+  TTurnOverInfo,
+  TTableSlice,
+  TFilterState,
+  FilterAllColumn,
+  TPermission,
+  ISortState
+};

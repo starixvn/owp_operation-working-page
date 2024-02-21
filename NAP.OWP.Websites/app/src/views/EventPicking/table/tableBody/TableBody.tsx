@@ -15,7 +15,7 @@ import CheckedByLstCell from '../Cell/CheckedByLstCell';
 import ActionCell from '../Cell/ActionCell';
 import { v4 as uuidv4 } from 'uuid';
 import { itemRowHeight } from '../TableSchema.json';
-import TDataTable from '../../types/dataTableType';
+import TDataTable, { TTurnOverInfo } from '../../types/dataTableType';
 import PropTypes from 'prop-types';
 import store from '../../app/store';
 
@@ -39,58 +39,83 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   );
   for (let i = displayStart; i < displayEnd; ++i) {
     const row = data[i] as TDataTable;
+    const rowSpan = row.turnoverPeriod.length;
+
     if (row) {
+      const buildTurnoverMarginRow = () => {
+        return row.turnoverPeriod.map(
+          (_item: TTurnOverInfo, index: number) =>
+            row.turnoverPeriod[index + 1] && (
+              <tr>
+                <TurnOverCell
+                  value={row.turnoverPeriod[index + 1].valueDisplay}
+                  color={row.turnoverPeriod[index + 1].color}
+                  name={row.turnoverPeriod[index + 1].title}
+                />
+                <MarginCell
+                  value={row.marginPeriod[index + 1].valueDisplay}
+                  color={row.marginPeriod[index + 1].color}
+                />
+              </tr>
+            )
+        );
+      };
+
       rows.push(
         <Fragment key={uuidv4()}>
           <tr className={`${row.rowColor}-row`}>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <NoCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <KOTimeCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <LeagueCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <MatchCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <MaxBetCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <IPTvStreamingCell dataSource={data} rowIndex={i} />
             </td>
             {HasRead && (
               <>
-                <TurnOverCell dataSource={data} rowIndex={i} name='1 month' />
+                <TurnOverCell
+                  value={row.turnoverPeriod[0].valueDisplay}
+                  color={row.turnoverPeriod[0].color}
+                  name={row.turnoverPeriod[0].title}
+                />
 
-                <MarginCell dataSource={data} rowIndex={i} />
+                <MarginCell
+                  value={row.marginPeriod[0].valueDisplay}
+                  color={row.marginPeriod[0].color}
+                />
               </>
             )}
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <ProviderCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <RoundCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <RemarkCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <RAndDUpdateCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <CheckedByLstCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={2}>
+            <td rowSpan={rowSpan}>
               <ActionCell dataSource={data} rowIndex={i} />
             </td>
           </tr>
-          <tr>
-            <TurnOverCell dataSource={data} rowIndex={i} name='2 month' />
-            <MarginCell dataSource={data} rowIndex={i} />
-          </tr>
+          {buildTurnoverMarginRow()}
         </Fragment>
       );
     }

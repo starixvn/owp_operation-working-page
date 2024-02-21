@@ -1,22 +1,20 @@
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  dataSource: PropTypes.array.isRequired,
-  rowIndex: PropTypes.number.isRequired
+  value: PropTypes.string,
+  color: PropTypes.string
 };
 
 const MarginCell = props => {
-  const { rowIndex, dataSource } = props;
-  const { margin } = dataSource[rowIndex];
-
+  const { value, color } = props;
   return (
     <td
       className='margin-cell'
       style={{
-        color: margin.color,
+        color: color,
         textAlign: 'center'
       }}>
-      {margin.valueDisplay}
+      {value}
     </td>
   );
 };

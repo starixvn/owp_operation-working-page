@@ -1,24 +1,23 @@
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  dataSource: PropTypes.array.isRequired,
-  rowIndex: PropTypes.number.isRequired,
+  value: PropTypes.string,
+  color: PropTypes.string,
   name: PropTypes.string
 };
 
 const TurnOverCell = props => {
-  const { rowIndex, dataSource, name } = props;
-  const { turnover } = dataSource[rowIndex];
+  const { value, color, name } = props;
 
   return (
     <>
       <td>{name}</td>
       <td
         style={{
-          color: turnover.color,
+          color: color,
           textAlign: 'center'
         }}>
-        {turnover.valueDisplay}
+        {value}
       </td>
     </>
   );
