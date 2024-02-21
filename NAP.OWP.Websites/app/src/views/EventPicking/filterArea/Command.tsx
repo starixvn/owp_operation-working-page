@@ -5,8 +5,8 @@ const Command = () => {
   const dispatch = useStableDispatch();
 
   const handleSearch = () => {
-    const { filter } = store.getState();
-    dispatch(getEventPickings(filter.param));
+    const { param } = store.getState().filter;
+    dispatch(getEventPickings(param));
   };
 
   return (

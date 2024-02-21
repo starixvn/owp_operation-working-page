@@ -1,35 +1,49 @@
-import {
-  SELECT_TURNOVER_OPTIONS,
-  FROM_DATE,
-  TO_DATE
-} from './filterConst.json';
-import SingleSelection from '../../Shared/SingleSelection/SingleSelection';
+import { useState } from 'react';
+import { Option } from '../../Shared/MultipleSelection/type';
 import { TurnoverMarginSelection } from '../types/filterType';
 import useStableDispatch from '../../Shared/customHook/useStableDispatch';
-import { setFilter } from './slice/filterSlice';
-import Utils from '../../Shared/Utils';
+import { setPeriod } from './slice/filterSlice';
+import { SELECT_TURNOVER_OPTIONS } from './const';
+import { MultiSelect } from 'react-multi-select-component';
 
 const TurnoverMargin = () => {
   const dispatch = useStableDispatch();
+  const [selected, setSelected] = useState<Option[]>(SELECT_TURNOVER_OPTIONS);
 
-  const handleOnChange = (event: TurnoverMarginSelection) => {
-    const curDate = new Date();
-    const fromDate = new Date(curDate.setDate(curDate.getDate() - event.value));
-    dispatch(
-      setFilter({
-        key: FROM_DATE,
-        value: Utils.formatDate(fromDate)
-      })
-    );
+  const handleChange = (value: TurnoverMarginSelection[]) => {
+    const period = value.reduce((sl, item) => ({
+      ...sl,
+      [item.key]: {
+        fromDate: item.fromDate,
+        toDate: item.toDate
+      }
+    }), {});
+
+    dispatch(setPeriod(period));
+    setSelected(value);
   };
 
   return (
     <div className='multi-select-dropdown'>
-      <div className='label'>Turnover & Margin Period</div>
-      <SingleSelection
-        option={SELECT_TURNOVER_OPTIONS}
-        onSelectedChange={handleOnChange}
-      />
+      <div className={`Turnover__Margin--Period`}>
+        <div className='label'>
+          Turnover & Margin Period
+        </div>
+        <MultiSelect
+          onChange={handleChange}
+          value={selected}
+          options={SELECT_TURNOVER_OPTIONS}
+          ClearSelectedIcon={null}
+          className='multi-select'
+          disableSearch
+          hasSelectAll
+          labelledBy='Select...'
+          overrideStrings={{
+            selectAll: '-- Select All --',
+            allItemsAreSelected: 'All'
+          }}
+        />
+      </div>
     </div>
   );
 };
