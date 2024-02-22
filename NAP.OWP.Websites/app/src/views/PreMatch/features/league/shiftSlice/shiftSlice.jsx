@@ -454,7 +454,7 @@ const shiftSlice = createSlice({
             match => match.InfoSiteMatchId === id
           );
           if (findMatch) {
-            findMatch.HasMessages = false;
+            findMatch.HasMessages = true;
             const index = findMatch.TicketList.findIndex(
               t => t.TicketId === ticket.TicketId
             );

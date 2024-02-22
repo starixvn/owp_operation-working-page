@@ -1,10 +1,8 @@
 import {
-  getTicketDetail,
   setNewMessage
 } from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/store';
 import { reloadTicketInTable } from '../league/shiftSlice/shiftSlice';
-import ToastsWrapper from '../../../components/ToastrWrapper';
 
 const reloadPreMatch = async (id, isTicketLeague, data) => {
   const { ticket, messageResponse } = data;
@@ -20,7 +18,7 @@ const reloadPreMatch = async (id, isTicketLeague, data) => {
     TicketId: ticket.ticketId,
     InfoSiteMatchId: ticket.infoSiteMatchId
   };
-  // TODO
+
   reloadTicketInPreMatchTableHandler(id, isTicketLeague, ticketFormatted);
 
   reloadOpenTicketHandler(messageResponse);
