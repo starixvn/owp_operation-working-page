@@ -48,7 +48,7 @@ const NoCell = props => {
   };
 
   return (
-    <div className='no-cell'>
+    <div className={`no-cell ${isNoOffer ? 'color-unselected' : ''}`}>
       <span>{rowIndex + 1}</span>
       <Input
         type='checkbox'
