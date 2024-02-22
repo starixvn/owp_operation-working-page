@@ -92,7 +92,7 @@
     },
     {
       "headerName": "Match",
-      "size": 14,
+      "size": 12,
       "isFilter": true,
       "columnKey": "Match"
     },
@@ -103,13 +103,13 @@
     },
     {
       "headerName": "TV/IPTV",
-      "size": 10,
+      "size": 8,
       "isFilter": true,
       "columnKey": "TV/IPTV"
     },
     {
       "headerName": "Turnover",
-      "size": 6,
+      "size": 10,
       "isSort": true,
       "columnKey": "TurnoverSort",
       "colSpan": 2

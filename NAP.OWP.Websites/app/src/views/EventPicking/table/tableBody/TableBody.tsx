@@ -39,26 +39,27 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   );
   for (let i = displayStart; i < displayEnd; ++i) {
     const row = data[i] as TDataTable;
-    const rowSpan = row.turnoverPeriod.length;
-    const buildTurnoverMarginRow = () => {
-      return row.turnoverPeriod.map(
-        (_item: TTurnOverInfo, index: number) =>
-          row.turnoverPeriod[index + 1] && (
-            <tr className={`${row.rowColor}-row`}>
-              <TurnOverCell
-                value={row.turnoverPeriod[index + 1].valueDisplay}
-                color={row.turnoverPeriod[index + 1].color}
-                name={row.turnoverPeriod[index + 1].title}
-              />
-              <MarginCell
-                value={row.marginPeriod[index + 1].valueDisplay}
-                color={row.marginPeriod[index + 1].color}
-              />
-            </tr>
-          )
-      );
-    };
+
     if (row) {
+      const rowSpan = row.turnoverPeriod.length;
+      const buildTurnoverMarginRow = () => {
+        return row.turnoverPeriod.map(
+          (_item: TTurnOverInfo, index: number) =>
+            row.turnoverPeriod[index + 1] && (
+              <tr className={`${row.rowColor}-row`}>
+                <TurnOverCell
+                  value={row.turnoverPeriod[index + 1].valueDisplay}
+                  color={row.turnoverPeriod[index + 1].color}
+                  name={row.turnoverPeriod[index + 1].title}
+                />
+                <MarginCell
+                  value={row.marginPeriod[index + 1].valueDisplay}
+                  color={row.marginPeriod[index + 1].color}
+                />
+              </tr>
+            )
+        );
+      };
       rows.push(
         <Fragment key={uuidv4()}>
           <tr className={`${row.rowColor}-row`}>
