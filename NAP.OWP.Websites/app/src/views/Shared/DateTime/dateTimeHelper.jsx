@@ -107,11 +107,8 @@ const formatTimeForTicketLGAPopup = (value, startOf, formatOutput) => {
   if (!value) {
     return null;
   }
-  const timezone = 'America/New_York';
 
-  return process.env.NODE_ENV === 'development'
-    ? dayjs(value).startOf(startOf).format(formatOutput)
-    : dayjs(value).tz(timezone).format('MMM DD, YYYY h:mm A');
+  return dayjs(value).startOf(startOf).format(formatOutput);
 };
 
 const formatTimeOsLastUpdate = dateStr =>
