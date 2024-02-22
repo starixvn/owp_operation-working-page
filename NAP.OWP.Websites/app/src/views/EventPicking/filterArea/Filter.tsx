@@ -16,14 +16,10 @@ import Utils from '../../Shared/Utils';
 import ExportNative from './ExportNative';
 import UserGuideWrapper from '../userGuide/UserGuideWrapper';
 import TurnoverMargin from './TurnoverMargin';
-import { REQUEST_STATUS } from '../../Shared/Constants';
-import Loading from '../../components/Loading';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const { date } = useSelector((state: RootState) => state.filter.param);
-  const queryLeagueStatus = useSelector((state: RootState) => state.filter.queryLeagueStatus);
-
 
   const { turnOverMarginPolicy: {
     permission: { HasRead }
@@ -37,9 +33,7 @@ const Filter = () => {
     dispatch(getUpdateTypes());
   }, [dispatch]);
 
-  if (queryLeagueStatus === REQUEST_STATUS.pending) {
-    return <Loading />;
-  }
+
   return (
     <div className='filter-control'>
       <DateTimePicker />

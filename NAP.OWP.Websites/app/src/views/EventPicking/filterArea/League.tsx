@@ -2,7 +2,7 @@ import { LEAGUE } from './filterConst.json';
 import { useAppSelector } from '../app/hooks';
 import { MultiSelect } from 'react-multi-select-component';
 import { Option } from '../../Shared/MultipleSelection/type';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useStableDispatch from '../../Shared/customHook/useStableDispatch';
 import { setFilter } from './slice/filterSlice';
 
@@ -18,6 +18,10 @@ const League = () => {
     }));
     setSelected(event);
   };
+
+  useEffect(() => {
+    setSelected(leagues);
+  }, [leagues]);
 
   return (
     <div className='multi-select-dropdown'>

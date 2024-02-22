@@ -32,7 +32,6 @@ const { KEY, VALUE: {
 const filterSlice = createSlice({
   name: 'filter/filterSlice',
   initialState: {
-    queryLeagueStatus: REQUEST_STATUS.pending,
     leagues: [] as Option[],
     updateTypes: [] as Option[],
     param: {
@@ -75,11 +74,7 @@ const filterSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(getLeagues.pending, state => {
-        state.queryLeagueStatus = REQUEST_STATUS.pending;
-      })
       .addCase(getLeagues.fulfilled, (state, { payload }) => {
-        state.queryLeagueStatus = REQUEST_STATUS.idle;
         state.leagues = payload;
         state.param[LEAGUE] = payload.map(m => m.value);
       })
