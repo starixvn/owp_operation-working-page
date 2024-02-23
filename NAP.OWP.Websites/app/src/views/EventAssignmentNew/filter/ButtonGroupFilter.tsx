@@ -3,12 +3,13 @@ import ExportSelector from './ExportSelector';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import Service from '../service/Service';
 import queryDataTableThunk from '../table/queryDataTableThunk';
+import Utils from '../../Shared/Utils';
 
 const ButtonGroupFilter = () => {
   const dispatch = useAppDispatch();
   const filterState = useAppSelector(state => state.filter.filterState);
   const policy = useAppSelector(state => state.policy.entities.FullBetTypes);
-  const { selectedMatchStatus, selectedOffVRs, selectedMatchType, userNameFilterIsValid } = filterState;
+  const { selectedMatchStatus, selectedOffVRs, selectedMatchType, userNameFilterIsValid, selectedDate } = filterState;
 
   const handleSubmit = () => {
     const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
@@ -37,7 +38,7 @@ const ButtonGroupFilter = () => {
       'Are you sure to TURN OFF VR for ALL the matches containing OFF VR?'
     ).then(async confirmResult => {
       if (confirmResult.value) {
-        const model = { date: filterState.selectedDate };
+        const model = { date: Utils.formatDate(selectedDate) };
         await Service.syncOffVRs(model);
       }
     });
@@ -51,8 +52,6 @@ const ButtonGroupFilter = () => {
       <ExportSelector />
       {policy.HasWrite && (
         <button
-          hidden
-          disabled
           className='button-submit button-sync-off-vr'
           onClick={handleSyncOffVR}>
           Sync OFF VR
