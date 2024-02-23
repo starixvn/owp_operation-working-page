@@ -85,6 +85,9 @@ const LogWorkPopup = ({ creatorInfo }: LogWorkProps) => {
       setSubject(getSubjectBySubtype(subtype));
       setErrorSubject('');
       setErrorRecipient(false);
+      setMatchInfo(null);
+      setAdminSiteId('');
+      setErrorMatchCheck('');
     }
   };
 
