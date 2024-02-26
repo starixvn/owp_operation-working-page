@@ -1,7 +1,8 @@
 import NetCoreSignalR from '../../../Shared/NetCoreSignalR/NetCoreSignalR';
 import {
-  reloadOpenTicketHandler,
   reloadPreMatch,
+  reloadStatusOpenTicketHandler,
+  reloadSubTypeOpenTicketHandler,
   reloadTicketCellInTable
 } from './reloadPreMatchHandler';
 import { handleOpenTicketDetail } from './openTicketDetailHandler';
@@ -22,7 +23,11 @@ const SignalRWrapper = () => {
     },
     {
       method: 'NotifyChangeStatusIncome',
-      handler: reloadOpenTicketHandler
+      handler: reloadStatusOpenTicketHandler
+    },
+    {
+      method: 'NotifyChangeSybTypeIncome',
+      handler: reloadSubTypeOpenTicketHandler
     }
   ];
 

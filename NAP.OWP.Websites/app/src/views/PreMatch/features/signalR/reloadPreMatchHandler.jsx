@@ -1,4 +1,8 @@
-import { setNewMessage } from '../../../Shared/chatBoardNew/chatBoardSlice';
+import {
+  setNewMessage,
+  setTicketStatus,
+  updateSubTypeTicketDetailByTicketId
+} from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/store';
 import {
   reloadTicketInTable,
@@ -60,4 +64,28 @@ const reloadOpenTicketHandler = messageResponse => {
   store.dispatch(setNewMessage(messageResponse));
 };
 
-export { reloadOpenTicketHandler, reloadPreMatch, reloadTicketCellInTable };
+const reloadStatusOpenTicketHandler = async (ticketId, ticketStatus) => {
+  const model = store.getState();
+  const { isOpenPopup, ticketDetail } = model.chatBoard;
+  const { ticketId: openTicketId } = ticketDetail;
+
+  isOpenPopup &&
+    openTicketId === ticketId &&
+    store.dispatch(setTicketStatus(ticketStatus));
+};
+
+const reloadSubTypeOpenTicketHandler = async ticketInfo => {
+  const model = store.getState();
+  const { isOpenPopup } = model.chatBoard;
+
+  isOpenPopup &&
+    store.dispatch(updateSubTypeTicketDetailByTicketId(ticketInfo));
+};
+
+export {
+  reloadOpenTicketHandler,
+  reloadPreMatch,
+  reloadTicketCellInTable,
+  reloadStatusOpenTicketHandler,
+  reloadSubTypeOpenTicketHandler
+};
