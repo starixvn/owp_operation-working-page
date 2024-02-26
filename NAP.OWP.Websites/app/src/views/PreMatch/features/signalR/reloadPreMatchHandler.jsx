@@ -1,8 +1,33 @@
-import {
-  setNewMessage
-} from '../../../Shared/chatBoardNew/chatBoardSlice';
+import { setNewMessage } from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/store';
-import { reloadTicketInTable } from '../league/shiftSlice/shiftSlice';
+import {
+  reloadTicketInTable,
+  reloadTicketCell
+} from '../league/shiftSlice/shiftSlice';
+import { throttle } from 'lodash';
+import { URL_QUERY_TICKET_LIST } from '../../const/const';
+import { get } from '../../ImportPrematchHelperNative';
+
+const reloadTicketCellInTable = async (id, isTicketLeague) => {
+  const model = store.getState();
+  const { isEdit } = model.editor;
+  const { permission } = model.policy;
+  const getTicketList = async () => {
+    const response = await get({
+      url: URL_QUERY_TICKET_LIST,
+      id,
+      actorId: permission.ActorId,
+      isTicketLeague
+    });
+    return response.data;
+  };
+  const submitThrottle = throttle(ticketList => {
+    store.dispatch(reloadTicketCell({ id, isTicketLeague, ticketList }));
+  }, 500);
+  const ticketList = await getTicketList();
+
+  !isEdit && submitThrottle(ticketList);
+};
 
 const reloadPreMatch = async (id, isTicketLeague, data) => {
   const { ticket, messageResponse } = data;
@@ -35,4 +60,4 @@ const reloadOpenTicketHandler = messageResponse => {
   store.dispatch(setNewMessage(messageResponse));
 };
 
-export { reloadOpenTicketHandler, reloadPreMatch };
+export { reloadOpenTicketHandler, reloadPreMatch, reloadTicketCellInTable };

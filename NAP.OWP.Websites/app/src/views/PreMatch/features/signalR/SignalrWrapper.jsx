@@ -1,7 +1,8 @@
 import NetCoreSignalR from '../../../Shared/NetCoreSignalR/NetCoreSignalR';
 import {
   reloadOpenTicketHandler,
-  reloadPreMatch
+  reloadPreMatch,
+  reloadTicketCellInTable
 } from './reloadPreMatchHandler';
 import { handleOpenTicketDetail } from './openTicketDetailHandler';
 
@@ -13,7 +14,7 @@ const SignalRWrapper = () => {
     },
     {
       method: 'NotifyNewAddRecipient',
-      handler: reloadPreMatch
+      handler: reloadTicketCellInTable
     },
     {
       method: 'NotifyUserOnClickToast',
