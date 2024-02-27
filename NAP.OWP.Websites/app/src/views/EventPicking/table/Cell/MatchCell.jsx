@@ -7,11 +7,11 @@ const propTypes = {
 
 const MatchCell = props => {
   const { rowIndex, dataSource } = props;
-  const { homeName, awayName, isNoOffer } = dataSource[rowIndex];
+  const { homeName, awayName } = dataSource[rowIndex];
 
   return (
     <>
-      <div className={`match-cell ${isNoOffer ? 'color-unselected' : ''}`}>
+      <div className='match-cell'>
         <div className='home'>{homeName}</div>
         <div className='away'>{awayName}</div>
       </div>

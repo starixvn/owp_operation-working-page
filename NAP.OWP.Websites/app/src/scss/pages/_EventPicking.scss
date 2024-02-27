@@ -496,11 +496,7 @@ input[type='checkbox'] {
     }
   }
 
-  .no-cell.color-unselected,
-  .ko-time-cell.color-unselected,
-  .match-cell.color-unselected,
-  .max-bet-cell.color-unselected,
-  .league-cell.color-unselected {
+  .color-unselected {
     background-color: #ffd8d8;
   }
 

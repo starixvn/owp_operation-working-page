@@ -8,9 +8,9 @@ const propTypes = {
 
 const KoTimeCell = props => {
   const { rowIndex, dataSource } = props;
-  const { eventDateTime, isNoOffer } = dataSource[rowIndex];
+  const { eventDateTime } = dataSource[rowIndex];
   return (
-    <div className={`ko-time-cell ${isNoOffer ? 'color-unselected' : ''}`}>
+    <div className='ko-time-cell'>
       <span>{formatTime(eventDateTime, 'minute', 'hh:mm A')}</span>
     </div>
   );

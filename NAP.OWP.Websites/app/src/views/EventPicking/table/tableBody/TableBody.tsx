@@ -63,19 +63,29 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
       rows.push(
         <Fragment key={uuidv4()}>
           <tr className={`${row.rowColor}-row`}>
-            <td rowSpan={rowSpan}>
+            <td
+              rowSpan={rowSpan}
+              className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
               <NoCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={rowSpan}>
+            <td
+              rowSpan={rowSpan}
+              className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
               <KOTimeCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={rowSpan}>
+            <td
+              rowSpan={rowSpan}
+              className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
               <LeagueCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={rowSpan}>
+            <td
+              rowSpan={rowSpan}
+              className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
               <MatchCell dataSource={data} rowIndex={i} />
             </td>
-            <td rowSpan={rowSpan}>
+            <td
+              rowSpan={rowSpan}
+              className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
               <MaxBetCell dataSource={data} rowIndex={i} />
             </td>
             <td rowSpan={rowSpan}>

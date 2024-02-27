@@ -7,12 +7,8 @@ const propTypes = {
 
 const MaxBetCell = props => {
   const { rowIndex, dataSource } = props;
-  const { maxBetHDP, isNoOffer } = dataSource[rowIndex];
-  return (
-    <div className={`max-bet-cell ${isNoOffer ? 'color-unselected' : ''}`}>
-      {maxBetHDP}
-    </div>
-  );
+  const { maxBetHDP } = dataSource[rowIndex];
+  return <div className='max-bet-cell'>{maxBetHDP}</div>;
 };
 
 MaxBetCell.propTypes = propTypes;

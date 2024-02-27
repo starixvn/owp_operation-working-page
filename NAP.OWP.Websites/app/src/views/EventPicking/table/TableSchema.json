@@ -86,7 +86,7 @@
     },
     {
       "headerName": "League",
-      "size": 15,
+      "size": 14,
       "isFilter": true,
       "columnKey": "League"
     },
@@ -109,7 +109,7 @@
     },
     {
       "headerName": "Turnover",
-      "size": 10,
+      "size": 11,
       "isSort": true,
       "columnKey": "TurnoverSort",
       "colSpan": 2

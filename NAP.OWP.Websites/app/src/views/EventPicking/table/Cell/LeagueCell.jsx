@@ -10,12 +10,12 @@ const propTypes = {
 
 const LeagueCell = props => {
   const { rowIndex, dataSource } = props;
-  const { leagueName, matchOffer, noHDP, isNoOffer } = dataSource[rowIndex];
+  const { leagueName, matchOffer, noHDP } = dataSource[rowIndex];
   const matchOfferLst = matchOffer && matchOffer.split(',');
   const refMatchOffer = useRef(null);
   const refNoHdp = useRef(null);
   return (
-    <div className={`league-cell ${isNoOffer ? 'color-unselected' : ''}`}>
+    <div className='league-cell'>
       <div className='league-name'>{leagueName}</div>
       <div className='offer'>
         {matchOffer &&

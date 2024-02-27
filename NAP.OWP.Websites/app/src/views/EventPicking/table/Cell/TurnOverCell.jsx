@@ -14,11 +14,10 @@ const TurnOverCell = props => {
       <td
         style={{
           height: '30px',
-          maxWidth: '40px',
           backgroundColor: '#44546b',
           color: '#fff',
           fontWeight: 700,
-          padding: '3px'
+          paddingLeft: '3px'
         }}>
         {name}
       </td>
@@ -27,7 +26,7 @@ const TurnOverCell = props => {
           height: '30px',
           color: color,
           textAlign: 'right',
-          padding: '3px'
+          paddingRight: '3px'
         }}>
         {value}
       </td>
