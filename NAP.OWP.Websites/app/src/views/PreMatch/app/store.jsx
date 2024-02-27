@@ -12,7 +12,6 @@ import chatBoardNewReducer from '../../Shared/chatBoardNew/chatBoardSlice';
 import signalRReducer from '../features/signalR/signalRSlice';
 import noteSlice from '../features/note/NoteSlice';
 import createTicketBoardReducerNew from '../../Shared/createTicketNew/createTicketBoardSliceNew';
-import { isEqual } from 'lodash';
 
 const store = configureStore({
   reducer: {
@@ -35,7 +34,7 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false
     }),
-  devTools: !isEqual(process.env.NODE_ENV, 'production')
+  devTools: true
 });
 
 export default store;

@@ -447,7 +447,7 @@ const shiftSlice = createSlice({
               t => t.TicketId === ticket.TicketId
             );
             findLeague.TicketList[index] = ticket;
-            findLeague.IsRead = false;
+            findLeague.IsRead = ticket.IsRead;
           }
         } else {
           const findMatch = state.matches.find(
@@ -459,7 +459,7 @@ const shiftSlice = createSlice({
               t => t.TicketId === ticket.TicketId
             );
             findMatch.TicketList[index] = ticket;
-            findMatch.IsRead = false;
+            findMatch.IsRead = ticket.IsRead;
           }
         }
 

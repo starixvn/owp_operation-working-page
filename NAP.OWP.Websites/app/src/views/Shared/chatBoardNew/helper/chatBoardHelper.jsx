@@ -41,7 +41,7 @@ const getMessageList = async (ticketId, messageId, messages) => {
       : `${window.netCoreRootUrl}/${URL.NET_FW_TICKET_CENTER}/${URL.LOAD_MORE_MESSAGE}`;
   const modelLoadMoreMessage = {
     msgOfPage: 20,
-    ticketId: ticketId,
+    ticketId,
     firstMsgId: messageId
   };
   const response = await Axios.post(urlGetLastMessage, modelLoadMoreMessage);

@@ -146,7 +146,8 @@ const eventCheckingSlice = createSlice({
         message,
         messageId,
         userId,
-        username
+        username,
+        isRead
       } = action.payload;
       const newMsg = {
         ticketId,
@@ -159,7 +160,7 @@ const eventCheckingSlice = createSlice({
         username
       };
       const ticketTarget = state.entities.find(e => e.ticketId === ticketId);
-      ticketTarget.isRead = false;
+      ticketTarget.isRead = isRead;
       ticketTarget.messages.unshift(newMsg);
       if (ticketTarget.messages?.length > 2) {
         ticketTarget.messages.pop();

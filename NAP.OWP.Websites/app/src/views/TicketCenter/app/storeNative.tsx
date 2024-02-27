@@ -3,7 +3,6 @@ import eventCheckingReducer from '../features/Table/eventSlice/eventCheckingSlic
 import chatBoardReducer from '../../Shared/chatBoardNew/chatBoardSlice';
 import createTicketBoardReducer from '../../Shared/createTicketNew/createTicketBoardSliceNew';
 import createMultiplePolicySlice from '../../Shared/permission/multiplePolicySlice';
-import { isEqual } from 'lodash';
 import signalRReducer from '../features/signalR/signalRSlice';
 
 const store = configureStore({
@@ -19,7 +18,7 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false
     }),
-  devTools: !isEqual(process.env.NODE_ENV, 'production')
+  devTools: true
 });
 
 export type RootState = ReturnType<typeof store.getState>;

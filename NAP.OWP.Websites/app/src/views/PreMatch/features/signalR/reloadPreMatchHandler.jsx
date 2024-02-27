@@ -35,29 +35,40 @@ const reloadTicketCellInTable = async (id, isTicketLeague) => {
 
 const reloadPreMatch = async (id, isTicketLeague, data) => {
   const { ticket, messageResponse } = data;
-  const ticketFormatted = {
-    EventType: ticket.eventType,
-    IsRead: ticket.isRead,
-    LatestCreatedDate: ticket.latestCreatedDate,
-    LatestMessage: ticket.latestMessage,
-    LatestUsername: ticket.latestUsername,
-    OWPLeagueId: ticket.owpLeagueId,
-    SubtypeId: ticket.subtypeId,
-    SubtypeName: ticket.subtypeName,
-    TicketId: ticket.ticketId,
-    InfoSiteMatchId: ticket.infoSiteMatchId
-  };
-
-  reloadTicketInPreMatchTableHandler(id, isTicketLeague, ticketFormatted);
+  const {
+    policy: { permission: ActorId }
+  } = store.getState();
+  reloadTicketInPreMatchTableHandler({
+    id,
+    isTicketLeague,
+    ticket: {
+      EventType: ticket.eventType,
+      IsRead: messageResponse.userId === ActorId,
+      LatestCreatedDate: ticket.latestCreatedDate,
+      LatestMessage: ticket.latestMessage,
+      LatestUsername: ticket.latestUsername,
+      OWPLeagueId: ticket.owpLeagueId,
+      SubtypeId: ticket.subtypeId,
+      SubtypeName: ticket.subtypeName,
+      TicketId: ticket.ticketId,
+      InfoSiteMatchId: ticket.infoSiteMatchId
+    }
+  });
 
   reloadOpenTicketHandler(messageResponse);
 };
 
-const reloadTicketInPreMatchTableHandler = (id, isTicketLeague, ticket) => {
+const reloadTicketInPreMatchTableHandler = ({ id, isTicketLeague, ticket }) => {
   const model = store.getState();
   const { isEdit } = model.editor;
   !isEdit &&
-    store.dispatch(reloadTicketInTable({ id, isTicketLeague, ticket }));
+    store.dispatch(
+      reloadTicketInTable({
+        id,
+        isTicketLeague,
+        ticket
+      })
+    );
 };
 
 const reloadOpenTicketHandler = messageResponse => {
