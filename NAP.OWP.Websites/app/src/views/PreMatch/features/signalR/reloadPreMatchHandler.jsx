@@ -36,7 +36,9 @@ const reloadTicketCellInTable = async (id, isTicketLeague) => {
 const reloadPreMatch = async (id, isTicketLeague, data) => {
   const { ticket, messageResponse } = data;
   const {
-    policy: { permission: ActorId }
+    policy: {
+      permission: { ActorId }
+    }
   } = store.getState();
   reloadTicketInPreMatchTableHandler({
     id,
@@ -55,10 +57,11 @@ const reloadPreMatch = async (id, isTicketLeague, data) => {
     }
   });
 
-  reloadOpenTicketHandler(messageResponse);
+  reloadOpenTicketHandler(messageResponse, ticket.ticketId);
 };
 
 const reloadTicketInPreMatchTableHandler = ({ id, isTicketLeague, ticket }) => {
+  debugger;
   const model = store.getState();
   const { isEdit } = model.editor;
   !isEdit &&
@@ -71,8 +74,13 @@ const reloadTicketInPreMatchTableHandler = ({ id, isTicketLeague, ticket }) => {
     );
 };
 
-const reloadOpenTicketHandler = messageResponse => {
-  store.dispatch(setNewMessage(messageResponse));
+const reloadOpenTicketHandler = (messageResponse, ticketId) => {
+  const model = store.getState();
+  const { isOpenPopup, ticketDetail } = model.chatBoard;
+
+  isOpenPopup &&
+    ticketDetail.ticketId === ticketId &&
+    store.dispatch(setNewMessage(messageResponse));
 };
 
 const reloadStatusOpenTicketHandler = async (ticketId, ticketStatus) => {

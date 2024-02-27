@@ -3,8 +3,13 @@ import store from '../../app/storeNative';
 import { setNewMessage as setNewMessageOnTable } from '../Table/eventSlice/eventCheckingSlice';
 
 const handleNewMessageIncome = newMsgInfo => {
+  debugger;
   const {
-    pagePolicy: { permission: ActorId }
+    pagePolicy: {
+      permission: { ActorId }
+    },
+    signalR: { issueModel },
+    chatBoard
   } = store.getState();
   store.dispatch(
     setNewMessageOnTable({
@@ -12,7 +17,9 @@ const handleNewMessageIncome = newMsgInfo => {
       isRead: ActorId === newMsgInfo.userId
     })
   );
-  store.dispatch(setNewMessageOnChatBoard(newMsgInfo));
+  issueModel.ticketId === newMsgInfo.ticketId &&
+    chatBoard.isOpenPopup &&
+    store.dispatch(setNewMessageOnChatBoard(newMsgInfo));
 };
 
 export { handleNewMessageIncome };

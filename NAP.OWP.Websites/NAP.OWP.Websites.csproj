@@ -1094,8 +1094,8 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\server-d5ccde45.css" />
-    <Content Include="wwwroot\day-shift-assignment\assets\js\main-78feff42.js" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\server-c663508e.css" />
+    <Content Include="wwwroot\day-shift-assignment\assets\js\main-baf4de3d.js" />
     <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\day-shift-assignment\server.html" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\icon-feedback-57264197.svg" />
@@ -2835,8 +2835,8 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\night-shift-assignment\assets\ext\server-d5ccde45.css" />
-    <Content Include="wwwroot\night-shift-assignment\assets\js\main-61093541.js" />
+    <Content Include="wwwroot\night-shift-assignment\assets\ext\server-c663508e.css" />
+    <Content Include="wwwroot\night-shift-assignment\assets\js\main-83aa0acb.js" />
     <Content Include="wwwroot\night-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\night-shift-assignment\server.html" />
     <Content Include="wwwroot\notification-setting\assets\ext\icon-feedback-57264197.svg" />
@@ -2961,7 +2961,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-cefe6ea3.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-d769a9d8.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-45927460.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-feedback-57264197.svg" />
@@ -3098,6 +3098,10 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\ticket-center\server.cshtml" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
@@ -3106,10 +3110,6 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\ticket-center\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
