@@ -19,13 +19,7 @@ import {
   pushOrUpdateObject
 } from '../../../Shared/Utils';
 import filterByKeyword from '../filterByKeyword';
-import { isEqual } from 'lodash';
-import {
-  sortDataAsc,
-  sortDataDesc,
-  sortData
-} from '../EventPickingTableHelper';
-import { ORDER_ASC, ORDER_DESC } from '../TableSchema.json';
+import { sortData } from '../EventPickingTableHelper';
 
 const EventPickingTableSlice = createSlice({
   name: 'EventPickingTableSlice',
@@ -55,35 +49,27 @@ const EventPickingTableSlice = createSlice({
       );
     },
     filterBySearchKey: (state, action) => {
-      const { filterState, sortState } = state;
-      const { orderType, columnKeySelected } = sortState;
+      const { filterState } = state;
       state.filterState = addOrReplaceFilterState(filterState, action.payload);
       state.entities = filterDataTable(
         state.entitiesOriginal,
         state.filterState,
         filterByKeyword
       );
-      state.entities = sortData(orderType, state.entities, columnKeySelected);
       if (state.entities.length) {
         state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
       }
     },
     clearFilter: state => {
-      const { entitiesOriginal, sortState } = state;
-      const { orderType, columnKeySelected } = sortState;
+      const { entitiesOriginal } = state;
       state.filterState = [];
       state.valueFilterAllColumn = {};
-      state.entities = sortData(orderType, entitiesOriginal, columnKeySelected);
+      state.entities = entitiesOriginal;
       if (state.entities.length) {
         state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
       }
-    },
-    sortFunc: (state, action) => {
-      state.sortState = action.payload;
-      const { orderType, columnKeySelected } = action.payload;
-      state.entities = sortData(orderType, state.entities, columnKeySelected);
     }
   },
   extraReducers: builder => {
@@ -128,18 +114,7 @@ const EventPickingTableSlice = createSlice({
   }
 });
 const { reducer, actions } = EventPickingTableSlice;
-const {
-  filterBySearchKey,
-  clearFilter,
-  setColumnKeyValue,
-  setValueFilter,
-  sortFunc
-} = actions;
-export {
-  filterBySearchKey,
-  clearFilter,
-  setColumnKeyValue,
-  setValueFilter,
-  sortFunc
-};
+const { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter } =
+  actions;
+export { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter };
 export default reducer;

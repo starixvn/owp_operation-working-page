@@ -28,7 +28,6 @@ const TableHeader = () => {
             <div className='header-table'>
               <span>{item.headerName}</span>
               {item?.isFilter && <FilterHeader columnKey={item.columnKey} />}
-              {item?.isSort && <SortHeader columnKey={item.columnKey} />}
             </div>
             {item?.isCheckBox && (
               <CheckboxHeader

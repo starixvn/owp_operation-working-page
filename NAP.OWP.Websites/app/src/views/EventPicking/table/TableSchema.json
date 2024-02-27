@@ -5,7 +5,6 @@
       "size": 3,
       "isCheckBox": true,
       "columnKey": "No #",
-      "isSort": false,
       "colSpan": 1
     },
     {
@@ -110,14 +109,12 @@
     {
       "headerName": "Turnover",
       "size": 11,
-      "isSort": true,
       "columnKey": "TurnoverSort",
       "colSpan": 2
     },
     {
       "headerName": "Margin",
       "size": 4,
-      "isSort": true,
       "columnKey": "MarginSort"
     },
     {
