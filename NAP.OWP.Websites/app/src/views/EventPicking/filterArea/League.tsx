@@ -24,7 +24,7 @@ const League = () => {
   }, [leagues]);
 
   return (
-    <div className='multi-select-dropdown'>
+    <div className='multi-select-dropdown filter-league'>
       <div className='league'>
         <div className='label'>
           League
