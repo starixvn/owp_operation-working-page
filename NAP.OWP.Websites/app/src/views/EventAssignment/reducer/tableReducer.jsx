@@ -16,9 +16,9 @@ const tableSlice = createSlice({
       state.dataEvent = action.payload;
     },
     setDataSignalR: (state, action) => {
-      const { actorId, owpMatchId } = action.payload;
+      const { actorId, parentMatchId } = action.payload;
       state.dataEvent.forEach(item => {
-        if (item.OWPMatchId === owpMatchId) {
+        if (item.ParentMatchId === parentMatchId) {
           item.IsRead = buildIsReadValue(actorId, state.userId, item.IsRead);
           item.HasTicket = true;
         }
