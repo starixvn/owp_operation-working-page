@@ -76,8 +76,13 @@ const TicketList = props => {
     });
     stableDispatch(setTicketList(newTicketList));
     const isRead = newTicketList.every(x => x.IsRead);
+    const { ParentMatchId } = dataSources.find(
+      d => d.OWPMatchId === owpMatchId
+    );
+    debugger;
     const newDataSource = dataSources.map(item => {
-      if (item.OWPMatchId === owpMatchId) {
+      // TODO
+      if (item.ParentMatchId === ParentMatchId) {
         return {
           ...item,
           IsRead: isRead
