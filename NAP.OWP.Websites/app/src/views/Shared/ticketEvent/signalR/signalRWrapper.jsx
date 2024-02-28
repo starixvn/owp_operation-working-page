@@ -7,7 +7,6 @@ const propTypes = {
   handleChangeSubtype: PropTypes.func
 };
 
-// New branch
 const SignalRWrapper = props => {
   const handlers = [
     {
