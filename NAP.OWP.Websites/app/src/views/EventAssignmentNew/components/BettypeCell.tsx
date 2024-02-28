@@ -13,9 +13,13 @@ import store from '../app/store';
 const BettypeCell = (props: TAssignmentBuilder) => {
   const dispatch = useAppDispatch();
 
-  const { policy, filter: {
-    filterState: { selectedDate }
-  } } = store.getState();
+  const {
+    policy,
+    filter: {
+      filterState: { selectedDate }
+    },
+    allowAddEvent
+  } = store.getState();
 
   const assignment = buildAssignment(props, policy.entities);
   const {
@@ -67,7 +71,7 @@ const BettypeCell = (props: TAssignmentBuilder) => {
       others={others}
       matchId={main.OWPMatchId}
       betType={assignmentBetType}
-      isAllowAdd={isAllowAdd}
+      isAllowAdd={isAllowAdd && allowAddEvent.isYesterdayOrAfter}
       index={keyIndex}
       columnName={bettypeName}
       rowIndex={rowIndex}

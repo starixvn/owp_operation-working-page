@@ -12,7 +12,7 @@ const policySlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(queryPolicyThunk.pending, (state, { payload }) => {
+      .addCase(queryPolicyThunk.pending, state => {
         state.loading = REQUEST_STATUS.pending;
       })
       .addCase(queryPolicyThunk.fulfilled, (state, { payload }) => {

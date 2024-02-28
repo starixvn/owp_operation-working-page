@@ -237,7 +237,6 @@ class EventAssignment extends Component {
         postModel.EventDate
       );
       const syncOffVRLastUpdate =
-        //'2023-11-21 10:00:00';
         await EventAssignmentService.getSyncOffVRLastUpdated(
           postModel.EventDate
         );
