@@ -440,9 +440,11 @@ input[type='checkbox'] {
     margin: 0;
     height: 100%;
   }
+
   .max-bet-cell {
     text-align: center;
   }
+
   .match-cell,
   .max-bet-cell,
   .league-cell,
@@ -492,6 +494,10 @@ input[type='checkbox'] {
     input {
       margin: 0 auto;
     }
+  }
+
+  .color-unselected {
+    background-color: #ffd8d8;
   }
 
   .league-cell {
@@ -631,12 +637,10 @@ input[type='checkbox'] {
     + span::before {
     margin-right: 7px;
   }
-
+  .filter-league {
+    flex-grow: 3;
+  }
   .multi-select-dropdown {
-    &.league {
-      width: 300px;
-    }
-
     &.update-type {
       width: 180px;
     }

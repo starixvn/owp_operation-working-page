@@ -8,11 +8,7 @@ const propTypes = {
 const MaxBetCell = props => {
   const { rowIndex, dataSource } = props;
   const { maxBetHDP } = dataSource[rowIndex];
-  return (
-    <div className='max-bet-cell'>
-      {maxBetHDP}
-    </div>
-  );
+  return <div className='max-bet-cell'>{maxBetHDP}</div>;
 };
 
 MaxBetCell.propTypes = propTypes;

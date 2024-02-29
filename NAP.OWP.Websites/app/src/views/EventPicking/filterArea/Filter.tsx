@@ -33,6 +33,7 @@ const Filter = () => {
     dispatch(getUpdateTypes());
   }, [dispatch]);
 
+
   return (
     <div className='filter-control'>
       <DateTimePicker />

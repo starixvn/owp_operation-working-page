@@ -1,15 +1,14 @@
 import CustomTable from '../../Shared/tableCommon/CustomTable';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../app/hooks';
 import TableHeader from './tableHeader/TableHeader';
 import TableBody from './tableBody/TableBody';
 import Loading from '../../components/Loading';
 import { REQUEST_STATUS } from '../../Shared/Constants';
-import { RootState } from '../app/store';
 import { isEqual } from 'lodash';
 import { itemRowHeight } from './TableSchema.json';
 
 const EventPickingTable = () => {
-  const model = useSelector((state: RootState) => state.eventPickingTable);
+  const model = useAppSelector(state => state.eventPickingTable);
   const { entities, loading } = model;
   return (
     <>

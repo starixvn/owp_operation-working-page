@@ -5,7 +5,7 @@
       "size": 3,
       "isCheckBox": true,
       "columnKey": "No #",
-      "isSort": false
+      "colSpan": 1
     },
     {
       "headerName": "KO Time",
@@ -85,13 +85,13 @@
     },
     {
       "headerName": "League",
-      "size": 15,
+      "size": 14,
       "isFilter": true,
       "columnKey": "League"
     },
     {
       "headerName": "Match",
-      "size": 14,
+      "size": 12,
       "isFilter": true,
       "columnKey": "Match"
     },
@@ -102,20 +102,19 @@
     },
     {
       "headerName": "TV/IPTV",
-      "size": 10,
+      "size": 8,
       "isFilter": true,
       "columnKey": "TV/IPTV"
     },
     {
       "headerName": "Turnover",
-      "size": 6,
-      "isSort": true,
-      "columnKey": "TurnoverSort"
+      "size": 11,
+      "columnKey": "TurnoverSort",
+      "colSpan": 2
     },
     {
       "headerName": "Margin",
       "size": 4,
-      "isSort": true,
       "columnKey": "MarginSort"
     },
     {

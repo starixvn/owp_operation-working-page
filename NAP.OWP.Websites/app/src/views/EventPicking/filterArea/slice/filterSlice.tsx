@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Option } from '../../../Shared/MultipleSelection/type';
-import { TFilter, TPayloadFilter } from '../../types/filterType';
+import { TFilter, TPayloadFilter, TPeriodFilter } from '../../types/filterType';
 import {
   DATE,
   FILTER_MATCH,
@@ -17,15 +17,17 @@ import {
   NONE_OPTION,
   FROM_DATE,
   TO_DATE,
-  SELECT_TURNOVER_OPTIONS
+  PERIOD
 } from '../filterConst.json';
+import { SELECT_TURNOVER_OPTIONS } from '../const';
 import { getLeagues, getUpdateTypes } from './filterThunkNative';
 import Utils from '../../../Shared/Utils';
+import { REQUEST_STATUS } from '../../../Shared/Constants';
 
-const curDate = new Date();
-const defaultDate = new Date(
-  curDate.setDate(curDate.getDate() - SELECT_TURNOVER_OPTIONS[0].value)
-);
+const { KEY, VALUE: {
+  ONE_MONTH,
+  THREE_MONTHS, SIX_MONTHS, TWELVE_MONTH
+} } = PERIOD;
 
 const filterSlice = createSlice({
   name: 'filter/filterSlice',
@@ -41,14 +43,33 @@ const filterSlice = createSlice({
       [FILTER_MATCH_CATEGORY]: FILTER_MATCH_CATEGORY_OPTIONS.map(m => m.value),
       [LEAGUE]: [],
       [UPDATE_TYPE]: [],
-      [FROM_DATE]: Utils.formatDate(defaultDate),
-      [TO_DATE]: Utils.formatDate(new Date())
+      [PERIOD.KEY]: {
+        [ONE_MONTH]: {
+          [FROM_DATE]: SELECT_TURNOVER_OPTIONS[0].fromDate,
+          [TO_DATE]: SELECT_TURNOVER_OPTIONS[0].toDate
+        },
+        [THREE_MONTHS]: {
+          [FROM_DATE]: SELECT_TURNOVER_OPTIONS[1].fromDate,
+          [TO_DATE]: SELECT_TURNOVER_OPTIONS[1].toDate
+        },
+        [SIX_MONTHS]: {
+          [FROM_DATE]: SELECT_TURNOVER_OPTIONS[2].fromDate,
+          [TO_DATE]: SELECT_TURNOVER_OPTIONS[2].toDate
+        },
+        [TWELVE_MONTH]: {
+          [FROM_DATE]: SELECT_TURNOVER_OPTIONS[3].fromDate,
+          [TO_DATE]: SELECT_TURNOVER_OPTIONS[3].toDate
+        }
+      }
     } as TFilter
   },
   reducers: {
     setFilter: (state, action: { payload: TPayloadFilter }) => {
       const { key, value } = action.payload;
       state.param[key] = value;
+    },
+    setPeriod: (state, action: { payload: TPeriodFilter }) => {
+      state.param[PERIOD.KEY] = action.payload;
     }
   },
   extraReducers: builder => {
@@ -66,6 +87,6 @@ const filterSlice = createSlice({
 });
 
 const { reducer, actions } = filterSlice;
-const { setFilter } = actions;
-export { setFilter };
+const { setFilter, setPeriod } = actions;
+export { setFilter, setPeriod };
 export default reducer;

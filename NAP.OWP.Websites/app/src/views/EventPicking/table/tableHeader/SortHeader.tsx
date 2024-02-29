@@ -4,7 +4,6 @@ import { useAppDispatch } from '../../app/hooks';
 import { useSelector } from 'react-redux';
 import { ORDER_ASC, ORDER_DESC } from '../TableSchema.json';
 import { isEqual } from 'lodash';
-import { sortFunc } from '../eventPickingTableSlice/reducer';
 type SortHeaderProps = {
   columnKey: string;
 };
@@ -18,7 +17,6 @@ const SortHeader = ({ columnKey }: SortHeaderProps) => {
       columnKeySelected: columnKey,
       orderType: isEqual(orderType, ORDER_ASC) ? ORDER_DESC : ORDER_ASC
     };
-    dispatch(sortFunc(sortStateNew));
   };
 
   return (

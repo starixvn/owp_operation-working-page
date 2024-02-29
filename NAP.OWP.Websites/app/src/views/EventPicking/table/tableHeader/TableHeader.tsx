@@ -21,11 +21,13 @@ const TableHeader = () => {
         false: TABLE_HEADER
       }[`${HasRead}`].map((item, index) => {
         return (
-          <th style={{ width: `${item.size}%` }} key={index}>
+          <th
+            colSpan={item?.colSpan}
+            style={{ width: `${item.size}%` }}
+            key={index}>
             <div className='header-table'>
               <span>{item.headerName}</span>
               {item?.isFilter && <FilterHeader columnKey={item.columnKey} />}
-              {item?.isSort && <SortHeader columnKey={item.columnKey} />}
             </div>
             {item?.isCheckBox && (
               <CheckboxHeader
