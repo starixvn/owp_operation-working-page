@@ -1,21 +1,21 @@
-import { getTicketDetail } from '../../../Shared/chatBoardNew/chatBoardSlice';
+import {
+  setNewMessage,
+  setTicketStatus,
+  updateSubTypeTicketDetailByTicketId
+} from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/store';
-import { reloadTicketInTable } from '../league/shiftSlice/shiftSlice';
-import ToastsWrapper from '../../../components/ToastrWrapper';
+import {
+  reloadTicketInTable,
+  reloadTicketCell
+} from '../league/shiftSlice/shiftSlice';
 import { throttle } from 'lodash';
 import { URL_QUERY_TICKET_LIST } from '../../const/const';
 import { get } from '../../ImportPrematchHelperNative';
 
-const reloadPreMatch = async (id, isTicketLeague) => {
-  await reloadTicketInPreMatchTableHandler(id, isTicketLeague);
-  await reloadOpenTicketHandler();
-};
-
-const reloadTicketInPreMatchTableHandler = async (id, isTicketLeague) => {
+const reloadTicketCellInTable = async (id, isTicketLeague) => {
   const model = store.getState();
   const { isEdit } = model.editor;
   const { permission } = model.policy;
-
   const getTicketList = async () => {
     const response = await get({
       url: URL_QUERY_TICKET_LIST,
@@ -23,31 +23,88 @@ const reloadTicketInPreMatchTableHandler = async (id, isTicketLeague) => {
       actorId: permission.ActorId,
       isTicketLeague
     });
-
     return response.data;
   };
-
   const submitThrottle = throttle(ticketList => {
-    store.dispatch(reloadTicketInTable({ id, isTicketLeague, ticketList }));
+    store.dispatch(reloadTicketCell({ id, isTicketLeague, ticketList }));
   }, 500);
-
   const ticketList = await getTicketList();
+
   !isEdit && submitThrottle(ticketList);
 };
 
-const reloadOpenTicketHandler = async () => {
-  const model = store.getState();
-  const { backupGetIssueModel } = model.signalR;
-  const { isOpenPopup } = model.chatBoard;
-
-  if (isOpenPopup) {
-    const actionResult = await store.dispatch(
-      getTicketDetail(backupGetIssueModel)
-    );
-    if (getTicketDetail.rejected.match(actionResult)) {
-      ToastsWrapper.showError(actionResult.payload);
+const reloadPreMatch = async (id, isTicketLeague, data) => {
+  const { ticket, messageResponse } = data;
+  const {
+    policy: {
+      permission: { ActorId }
     }
-  }
+  } = store.getState();
+  reloadTicketInPreMatchTableHandler({
+    id,
+    isTicketLeague,
+    ticket: {
+      EventType: ticket.eventType,
+      IsRead: messageResponse.userId === ActorId,
+      LatestCreatedDate: ticket.latestCreatedDate,
+      LatestMessage: ticket.latestMessage,
+      LatestUsername: ticket.latestUsername,
+      OWPLeagueId: ticket.owpLeagueId,
+      SubtypeId: ticket.subtypeId,
+      SubtypeName: ticket.subtypeName,
+      TicketId: ticket.ticketId,
+      InfoSiteMatchId: ticket.infoSiteMatchId
+    }
+  });
+
+  reloadOpenTicketHandler(messageResponse, ticket.ticketId);
 };
 
-export { reloadOpenTicketHandler, reloadPreMatch };
+const reloadTicketInPreMatchTableHandler = ({ id, isTicketLeague, ticket }) => {
+  debugger;
+  const model = store.getState();
+  const { isEdit } = model.editor;
+  !isEdit &&
+    store.dispatch(
+      reloadTicketInTable({
+        id,
+        isTicketLeague,
+        ticket
+      })
+    );
+};
+
+const reloadOpenTicketHandler = (messageResponse, ticketId) => {
+  const model = store.getState();
+  const { isOpenPopup, ticketDetail } = model.chatBoard;
+
+  isOpenPopup &&
+    ticketDetail.ticketId === ticketId &&
+    store.dispatch(setNewMessage(messageResponse));
+};
+
+const reloadStatusOpenTicketHandler = async (ticketId, ticketStatus) => {
+  const model = store.getState();
+  const { isOpenPopup, ticketDetail } = model.chatBoard;
+  const { ticketId: openTicketId } = ticketDetail;
+
+  isOpenPopup &&
+    openTicketId === ticketId &&
+    store.dispatch(setTicketStatus(ticketStatus));
+};
+
+const reloadSubTypeOpenTicketHandler = async ticketInfo => {
+  const model = store.getState();
+  const { isOpenPopup } = model.chatBoard;
+
+  isOpenPopup &&
+    store.dispatch(updateSubTypeTicketDetailByTicketId(ticketInfo));
+};
+
+export {
+  reloadOpenTicketHandler,
+  reloadPreMatch,
+  reloadTicketCellInTable,
+  reloadStatusOpenTicketHandler,
+  reloadSubTypeOpenTicketHandler
+};

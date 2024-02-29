@@ -436,12 +436,49 @@ const shiftSlice = createSlice({
       }
     },
     reloadTicketInTable: {
+      reducer: (state, { payload: { id, isTicketLeague, ticket } }) => {
+        if (isTicketLeague) {
+          const findLeague = state.leagues.find(
+            league => league.LeagueId === id
+          );
+          if (findLeague) {
+            findLeague.HasMessages = true;
+            const index = findLeague.TicketList.findIndex(
+              t => t.TicketId === ticket.TicketId
+            );
+            findLeague.TicketList[index] = ticket;
+            findLeague.IsRead = ticket.IsRead;
+          }
+        } else {
+          const findMatch = state.matches.find(
+            match => match.InfoSiteMatchId === id
+          );
+          if (findMatch) {
+            findMatch.HasMessages = true;
+            const index = findMatch.TicketList.findIndex(
+              t => t.TicketId === ticket.TicketId
+            );
+            findMatch.TicketList[index] = ticket;
+            findMatch.IsRead = ticket.IsRead;
+          }
+        }
+
+        state.entities = mergeMatchesToLeagues(
+          state.matches,
+          state.leagues,
+          state.isShowUnreadMessage,
+          state.leagueWithTimeCondition
+        );
+      }
+    },
+    reloadTicketCell: {
       reducer: (state, { payload }) => {
         const { id, isTicketLeague, ticketList } = payload;
         if (isTicketLeague) {
           const findLeague = state.leagues.find(
             league => league.LeagueId === id
           );
+
           if (findLeague) {
             findLeague.HasMessages = ticketList.length > 0;
             findLeague.TicketList = ticketList;
@@ -457,7 +494,6 @@ const shiftSlice = createSlice({
             findMatch.IsRead = ticketList.every(ticket => ticket.IsRead);
           }
         }
-
         state.entities = mergeMatchesToLeagues(
           state.matches,
           state.leagues,
@@ -467,6 +503,7 @@ const shiftSlice = createSlice({
       }
     }
   },
+
   extraReducers: builder => {
     builder
       .addCase(getShiftByDateAndEmployee.pending, (state, action) => {
@@ -586,6 +623,7 @@ const {
   updateIconNoteToPencil,
   sortByDefault,
   reloadTicketInTable,
+  reloadTicketCell,
   showLeaguesWithTimeCondition,
   unShowLeaguesWithTimeCondition
 } = actions;
@@ -611,6 +649,7 @@ export {
   pasteCopiedMultipleValue,
   pasteCopiedValue,
   reloadTicketInTable,
+  reloadTicketCell,
   restore,
   restoreDeletedLeague,
   showUnreadMessageOnly,

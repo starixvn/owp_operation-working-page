@@ -172,7 +172,7 @@ const getTicketSubTypes = createAsyncThunk(
         value: d.subTypeId,
         label: d.subTypeName
       }));
-      return ticketTypeId != TICKET_TYPE.LOG_WORK
+      return ticketTypeId !== TICKET_TYPE.LOG_WORK
         ? [...options, { value: 0, label: '' }]
         : [...options];
     }

@@ -4,6 +4,7 @@ import {
   EVENT_TYPE,
   URL
 } from '../const/index.json';
+import Axios from 'axios';
 
 const buildMessageListClassName = (height, isExpandInfo) => {
   const className = 'message-list';
@@ -31,6 +32,23 @@ const buildMessageListClassName = (height, isExpandInfo) => {
       }
       return `${className}-900`;
   }
+};
+
+const getMessageList = async (ticketId, messageId, messages) => {
+  const urlGetLastMessage =
+    process.env.NODE_ENV === 'development'
+      ? `${URL.NET_Core_TICKET_CENTER}/${URL.LOAD_MORE_MESSAGE}`
+      : `${window.netCoreRootUrl}/${URL.NET_FW_TICKET_CENTER}/${URL.LOAD_MORE_MESSAGE}`;
+  const modelLoadMoreMessage = {
+    msgOfPage: 20,
+    ticketId,
+    firstMsgId: messageId
+  };
+  const response = await Axios.post(urlGetLastMessage, modelLoadMoreMessage);
+  const messageList = response.data.messages.concat(messages);
+  return messageList.sort(
+    (a, b) => new Date(b.createdDate) - new Date(a.createdDate)
+  );
 };
 
 const getExtensionFile = fileName =>
@@ -66,6 +84,7 @@ const getUrlTicketFile = imageName =>
     ? `${URL.NET_CORE_TICKET_CENTER_FILE}/${imageName}`
     : `${window.netCoreRootUrl}/${URL.NET_CORE_TICKET_CENTER_FILE}/${imageName}`;
 export {
+  getMessageList,
   buildMessageListClassName,
   getUrlTicketFile,
   validateFileExtension,

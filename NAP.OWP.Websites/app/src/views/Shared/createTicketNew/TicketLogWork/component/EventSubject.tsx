@@ -10,10 +10,17 @@ type Props = {
   setMatchId: (value: string) => void;
   errorInvalid: string;
   setErrorInvalid: (value: string) => void;
+  matchInfo: MatchInfo | null;
+  setMatchInfo: (value: MatchInfo | null) => void;
 };
 
-const EventSubject = ({ setMatchId, errorInvalid, setErrorInvalid }: Props) => {
-  const [matchInfo, setMatchInfo] = useState<MatchInfo | null>(null);
+const EventSubject = ({
+  setMatchId,
+  errorInvalid,
+  setErrorInvalid,
+  matchInfo,
+  setMatchInfo
+}: Props) => {
   const [value, setValue] = useState('');
 
   const handleOnBlur = async () => {

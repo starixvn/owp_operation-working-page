@@ -1,9 +1,18 @@
+import { setTicketStatus as setPopupTicketStatus } from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/storeNative';
-import { reloadTicketCenterTable } from './signalRHelper';
+import { setTicketStatus as setTableTicketStatus } from '../Table/eventSlice/eventCheckingSlice';
 
-const changeStatusIncomeHandler = () => {
+const changeStatusIncomeHandler = async ticketInfo => {
   const model = store.getState();
-  reloadTicketCenterTable(model);
+  const { filterModel } = model.signalR;
+  const { isOpenPopup, ticketDetail } = model.chatBoard;
+  const { ticketId, ticketStatus } = ticketInfo;
+  const { ticketId: openTicketId } = ticketDetail;
+
+  store.dispatch(setTableTicketStatus({ ticketInfo, filterModel }));
+  isOpenPopup &&
+    openTicketId === ticketId &&
+    store.dispatch(setPopupTicketStatus(ticketStatus));
 };
 
 export default changeStatusIncomeHandler;

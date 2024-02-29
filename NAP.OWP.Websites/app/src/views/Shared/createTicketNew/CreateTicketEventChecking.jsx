@@ -16,7 +16,7 @@ const propTypes = {
 const CreateTicketEventChecking = props => {
   const stableDispatch = useStableDispatch();
   const { creatorInfo } = props;
-  const { isEventChecking, valueEvent } = useSelector(
+  const { isEventChecking, valueEvent, subTypeSelected } = useSelector(
     state => state.createTicketBoard
   );
 
@@ -33,6 +33,14 @@ const CreateTicketEventChecking = props => {
       OwpAwayId: valueEvent.awayId,
       OwpHomeId: valueEvent.homeId,
       OwpLeagueId: valueEvent.owpLeagueId,
+      OwpHomeName: valueEvent.homeName,
+      OwpAwayName: valueEvent.awayName,
+      OwpLeagueName: valueEvent.leagueName,
+      EventDateTimeGmt8: valueEvent.eventDateTimeGmt8,
+      SubType: subTypeSelected.value,
+      SubTypeName: subTypeSelected.label,
+      TicketType: EVENT_CHECKING,
+      TicketTypeName: 'Event Checking',
       url: valueEvent.isLeague ? urlRequestLeague : urlRequestEvent
     };
   };

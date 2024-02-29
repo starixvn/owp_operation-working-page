@@ -51,6 +51,15 @@ const chatBoardSlice = createSlice({
     isAllImagesLoaded: false
   },
   reducers: {
+    updateSubTypeTicketDetailByTicketId: {
+      reducer: (state, action) => {
+        const { ticketId, ticketSubTypeId, ticketSubTypeName } = action.payload;
+        if (state.ticketDetail.ticketId === ticketId) {
+          state.ticketDetail.ticketSubTypeId = ticketSubTypeId;
+          state.ticketDetail.ticketSubTypeName = ticketSubTypeName;
+        }
+      }
+    },
     setModelQuoteMessage: {
       reducer: (state, action) => {
         state.modelQuoteMessage = action.payload;
@@ -99,6 +108,12 @@ const chatBoardSlice = createSlice({
           state.isAllImagesLoaded = true;
         }
       }
+    },
+    setNewMessage: (state, { payload: data }) => {
+      state.ticketDetail.messages.push(data);
+    },
+    setTicketStatus: (state, { payload: data }) => {
+      state.ticketDetail.ticketStatus = data;
     }
   },
   extraReducers: builder => {
@@ -153,7 +168,10 @@ const {
   openTicketPopup,
   closeTicketPopup,
   setModelQuoteMessage,
-  setImagesLoaded
+  setImagesLoaded,
+  setNewMessage,
+  setTicketStatus,
+  updateSubTypeTicketDetailByTicketId
 } = actions;
 
 export {
@@ -169,7 +187,10 @@ export {
   closeTicketPopup,
   getTicketSubTypes,
   setModelQuoteMessage,
-  setImagesLoaded
+  setImagesLoaded,
+  setNewMessage,
+  setTicketStatus,
+  updateSubTypeTicketDetailByTicketId
 };
 
 export default reducer;

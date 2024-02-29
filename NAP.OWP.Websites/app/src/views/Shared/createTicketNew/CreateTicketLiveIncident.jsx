@@ -16,15 +16,19 @@ const propTypes = {
 const CreateTicketLiveIncident = props => {
   const stableDispatch = useStableDispatch();
   const { creatorInfo } = props;
-  const { isLiveIncident, valueEvent } = useSelector(
-    state => state.createTicketBoard
-  );
+  const { isLiveIncident, valueEvent, subTypeSelected, typeTicketText } =
+    useSelector(state => state.createTicketBoard);
   const handleBuildModel = () => {
     return {
       OwpMatchId: valueEvent.owpMatchId,
       OwpLeagueName: valueEvent.leagueName,
       OwpHomeName: valueEvent.homeName,
       OwpAwayName: valueEvent.awayName,
+      EventDateTimeGmt8: valueEvent.eventDateTimeGmt8,
+      SubType: subTypeSelected.value,
+      SubTypeName: subTypeSelected.label,
+      TicketType: LIVE_INCIDENT,
+      TicketTypeName: typeTicketText,
       url: urlRequestLiveIncident
     };
   };

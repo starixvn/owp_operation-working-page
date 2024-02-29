@@ -54,6 +54,7 @@ const ViewCreateTicketBoard = props => {
       dispatch(changeErrorRecipient(true));
     }
   };
+
   const createRequestEvent = async message => {
     const recipientPreMatch = await Service.GetRecipientPreMatch(
       PreMatchLeagueId
@@ -77,6 +78,12 @@ const ViewCreateTicketBoard = props => {
         TicketType: EVENT_CHECKING,
         SubType: subTypeSelected.value,
         Files: resultSaveFile || [],
+        OwpHomeName: modelByRowIndex.HomeName,
+        OwpAwayName: modelByRowIndex.AwayName,
+        OwpLeagueName: modelByRowIndex.LeagueName,
+        EventDateTimeGmt8: modelByRowIndex.EventDateTime,
+        SubTypeName: subTypeSelected.label,
+        TicketTypeName: 'Event Checking',
         url: urlRequestEvent
       };
     } else {
@@ -91,9 +98,13 @@ const ViewCreateTicketBoard = props => {
         TicketType: EVENT_CHECKING,
         SubType: subTypeSelected.value,
         Files: resultSaveFile || [],
+        OwpLeagueName: modelByRowIndex.LeagueName,
+        SubTypeName: subTypeSelected.label,
+        TicketTypeName: 'Event Checking',
         url: urlRequestLeague
       };
     }
+    console.log(newAddModel);
     if (selectedRecipients.length === 0) {
       dispatchActionRecipient(selectedRecipients);
     } else {

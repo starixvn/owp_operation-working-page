@@ -14,7 +14,9 @@ const CreateTicketHandler = props => {
   }
 
   return (
-    <PlusCircleIcon onClick={handleOpenCreateTicket} className='icon-plus' />
+    <span style={{ margin: '10px' }}>
+      <PlusCircleIcon onClick={handleOpenCreateTicket} className='icon-plus' />
+    </span>
   );
 };
 

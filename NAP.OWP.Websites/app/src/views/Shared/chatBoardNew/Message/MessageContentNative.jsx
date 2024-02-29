@@ -103,13 +103,11 @@ const MessageContents = ({
     return (
       <>
         {!fileId && (
-          <>
-            <p className='message-div'>
-              <Linkify properties={{ target: '_blank' }}>
-                {buildMessageContent()}
-              </Linkify>
-            </p>
-          </>
+          <p className='message-div'>
+            <Linkify properties={{ target: '_blank' }}>
+              {buildMessageContent()}
+            </Linkify>
+          </p>
         )}
         {fileId && (
           <div className='file-div' onClick={handleOnClick}>

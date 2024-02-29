@@ -1,7 +1,9 @@
 import NetCoreSignalR from '../../../Shared/NetCoreSignalR/NetCoreSignalR';
 import {
-  reloadOpenTicketHandler,
-  reloadPreMatch
+  reloadPreMatch,
+  reloadStatusOpenTicketHandler,
+  reloadSubTypeOpenTicketHandler,
+  reloadTicketCellInTable
 } from './reloadPreMatchHandler';
 import { handleOpenTicketDetail } from './openTicketDetailHandler';
 
@@ -13,7 +15,7 @@ const SignalRWrapper = () => {
     },
     {
       method: 'NotifyNewAddRecipient',
-      handler: reloadPreMatch
+      handler: reloadTicketCellInTable
     },
     {
       method: 'NotifyUserOnClickToast',
@@ -21,10 +23,14 @@ const SignalRWrapper = () => {
     },
     {
       method: 'NotifyChangeStatusIncome',
-      handler: reloadOpenTicketHandler
+      handler: reloadStatusOpenTicketHandler
+    },
+    {
+      method: 'NotifyChangeSybTypeIncome',
+      handler: reloadSubTypeOpenTicketHandler
     }
   ];
 
-  return <NetCoreSignalR handlers={handlers} hubName='prematchNotifyHub' />;
+  return <NetCoreSignalR handlers={handlers} hubName='preMatchNotifyHub' />;
 };
 export default SignalRWrapper;

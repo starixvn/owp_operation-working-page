@@ -1,15 +1,19 @@
 /* eslint-disable no-warning-comments */
 import { createSlice } from '@reduxjs/toolkit';
 import compareValues from '../../../../Shared/Order/compareValues';
-import { isEqual } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
 import {
   getEventTickets,
   refreshEventTickets,
   pinTicket,
   deleteTicket
 } from './eventSliceThunkNative';
-import { filterIssueByUnreadMessageValue } from './eventSliceHelper';
+import {
+  filterIssueByUnreadMessageValue,
+  sortTickets
+} from './eventSliceHelper';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
+import { checkAllFilterCondition } from '../../signalR/signalRHelper';
 
 const handlePendingState = state => {
   const { loading } = state;
@@ -38,6 +42,44 @@ const eventCheckingSlice = createSlice({
     ticketType: [{ value: 0, label: 'All' }]
   },
   reducers: {
+    updateSubTypeByTicketId: {
+      reducer: (state, action) => {
+        const { ticketId, ticketSubTypeId, ticketSubTypeName } = action.payload;
+        state.entitiesOrigin.forEach(x => {
+          if (x.ticketId === ticketId) {
+            x.ticketSubTypeId = ticketSubTypeId;
+            x.ticketSubTypeName = ticketSubTypeName;
+          }
+        });
+
+        state.entities.forEach(x => {
+          if (x.ticketId === ticketId) {
+            x.ticketSubTypeId = ticketSubTypeId;
+            x.ticketSubTypeName = ticketSubTypeName;
+          }
+        });
+        sortTickets(state.entities);
+        sortTickets(state.entitiesOrigin);
+      }
+    },
+    appendTicketItemIntoDataSource: {
+      reducer: (state, action) => {
+        state.entities.unshift(action.payload);
+        state.entitiesOrigin.unshift(action.payload);
+      }
+    },
+    removeTicketItemFromDataSource: {
+      reducer: (state, action) => {
+        const ticketInfo = action.payload;
+        const { ticketId } = ticketInfo;
+        state.entities = state.entities.filter(
+          item => item.ticketId !== ticketId
+        );
+        state.entitiesOrigin = state.entitiesOrigin.filter(
+          item => item.ticketId !== ticketId
+        );
+      }
+    },
     sort: {
       reducer: (state, action) => {
         const { columnKey, orderType } = action.payload;
@@ -68,6 +110,68 @@ const eventCheckingSlice = createSlice({
           x.isRead = true;
         });
         state.entities = filterIssueByUnreadMessageValue(state);
+      }
+    },
+    setTicketStatus: (state, { payload: data }) => {
+      const { ticketInfo, filterModel } = data;
+      const { ticketId, ticketStatus } = ticketInfo;
+      const isCorrectFilter = checkAllFilterCondition(filterModel, ticketInfo);
+      const updateTickets = entities => {
+        const ticketIndex = entities.findIndex(e => e.ticketId === ticketId);
+        if (ticketIndex !== -1) {
+          entities[ticketIndex].ticketStatus = ticketStatus;
+        } else {
+          entities.unshift(ticketInfo);
+        }
+      };
+      const removeTickets = entities =>
+        entities.filter(item => item.ticketId !== ticketId);
+
+      if (isCorrectFilter) {
+        updateTickets(state.entities);
+        updateTickets(state.entitiesOrigin);
+        sortTickets(state.entities);
+        sortTickets(state.entitiesOrigin);
+      } else {
+        state.entities = removeTickets(state.entities);
+        state.entitiesOrigin = removeTickets(state.entitiesOrigin);
+      }
+    },
+    setNewMessage: (state, action) => {
+      const {
+        ticketId,
+        createdDate,
+        fileId,
+        isFile,
+        message,
+        messageId,
+        userId,
+        username,
+        isRead
+      } = action.payload;
+      const newMsg = {
+        ticketId,
+        createdDate,
+        fileId,
+        isFile,
+        message,
+        messageId,
+        userId,
+        username
+      };
+      const ticketTarget = state.entities.find(e => e.ticketId === ticketId);
+      ticketTarget.isRead = isRead;
+      ticketTarget.messages.unshift(newMsg);
+      if (ticketTarget.messages?.length > 2) {
+        ticketTarget.messages.pop();
+      }
+      const ticketOrigin = state.entitiesOrigin.find(
+        e => e.ticketId === ticketId
+      );
+      ticketOrigin.isRead = false;
+      ticketOrigin.messages.unshift(newMsg);
+      if (ticketOrigin.messages?.length > 2) {
+        ticketOrigin.messages.pop();
       }
     }
   },
@@ -133,13 +237,23 @@ const {
   sort,
   updatedIsReadOneRow,
   showUnreadMessageOnly,
-  updatedIsReadAllRows
+  updatedIsReadAllRows,
+  setNewMessage,
+  setTicketStatus,
+  appendTicketItemIntoDataSource,
+  removeTicketItemFromDataSource,
+  updateSubTypeByTicketId
 } = actions;
 export {
   actions,
   sort,
   updatedIsReadOneRow,
   showUnreadMessageOnly,
-  updatedIsReadAllRows
+  updatedIsReadAllRows,
+  setNewMessage,
+  setTicketStatus,
+  appendTicketItemIntoDataSource,
+  removeTicketItemFromDataSource,
+  updateSubTypeByTicketId
 };
 export default reducer;

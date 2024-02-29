@@ -41,7 +41,6 @@ const TicketDetail = ({ policy = 'policy' }) => {
     modelQuoteMessage
   } = useSelector(state => state.chatBoard);
   const { ticketId } = ticketDetail;
-
   const { messageId } = modelQuoteMessage;
 
   const handleOnClickClosePopUp = () => {
@@ -93,7 +92,8 @@ const TicketDetail = ({ policy = 'policy' }) => {
       const model = {
         ticketId: ticketDetail.ticketId,
         ticketStatus: TicketStatusConst.Open,
-        actorId: permission.ActorId
+        actorId: permission.ActorId,
+        ticketInfo: ticketDetail
       };
       await dispatch(updateTicketStatus(model));
     }
@@ -170,4 +170,5 @@ const TicketDetail = ({ policy = 'policy' }) => {
 TicketDetail.propTypes = {
   policy: PropTypes.string
 };
+
 export default TicketDetail;

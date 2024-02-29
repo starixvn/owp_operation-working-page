@@ -8,9 +8,8 @@ import ToastsWrapper from '../../components/ToastrWrapper';
 import PropTypes from 'prop-types';
 
 const TicketStatus = ({ policy = 'policy' }) => {
-  const { ticketStatus, ticketId } = useSelector(
-    state => state.chatBoard.ticketDetail
-  );
+  const ticketDetail = useSelector(state => state.chatBoard.ticketDetail);
+  const { ticketStatus, ticketId } = ticketDetail;
   const [currentStatus, setCurrentStatus] = useState();
   const { permission } = useSelector(state => state[policy]);
   const { HasWrite, ActorId } = permission;
@@ -28,7 +27,8 @@ const TicketStatus = ({ policy = 'policy' }) => {
     const model = {
       ticketId,
       ticketStatus: event.value,
-      actorId: ActorId
+      actorId: ActorId,
+      ticketInfo: ticketDetail
     };
     const actionResult = await dispatch(updateTicketStatus(model));
 

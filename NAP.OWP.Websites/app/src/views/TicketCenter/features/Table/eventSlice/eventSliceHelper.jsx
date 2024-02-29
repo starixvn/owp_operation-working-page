@@ -11,4 +11,14 @@ const formatTicketTypeOption = ticketTypes =>
     label
   }));
 
-export { filterIssueByUnreadMessageValue, formatTicketTypeOption };
+const sortTickets = entities => {
+  entities.sort((a, b) => {
+    if (a.isPinned !== b.isPinned) {
+      return a.isPinned ? -1 : 1;
+    } else {
+      return new Date(b.lastCommentDate) - new Date(a.lastCommentDate);
+    }
+  });
+};
+
+export { filterIssueByUnreadMessageValue, formatTicketTypeOption, sortTickets };
