@@ -41,7 +41,7 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
     const row = data[i] as TDataTable;
 
     if (row) {
-      const rowSpan = row.turnoverPeriod.length;
+      const rowSpan = HasRead ? row.turnoverPeriod.length : 1;
       const buildTurnoverMarginRow = () => {
         return row.turnoverPeriod.map(
           (_item: TTurnOverInfo, index: number) =>
