@@ -260,15 +260,6 @@ class Filter extends PureComponent {
             selectedSyncLive={this.state.selectedSyncLive}
             lastUpdated={lastUpdated}
           />
-          {hasWrite && (
-            <button
-              hidden
-              disabled
-              className='button-submit button-sync-off-vr'
-              onClick={this.handleSyncOffVR}>
-              Sync OFF VR
-            </button>
-          )}
         </div>
         <div className='filter-control-checkbox'>
           <label>
