@@ -66,6 +66,23 @@ const eventCheckingSlice = createSlice({
       reducer: (state, action) => {
         state.entities.unshift(action.payload);
         state.entitiesOrigin.unshift(action.payload);
+        sortTickets(state.entitiesOrigin);
+        state.entities = filterIssueByUnreadMessageValue(state);
+      }
+    },
+    updateTicketItemIntoDataSource: {
+      reducer: (state, action) => {
+        const ticketIndex = state.entitiesOrigin.findIndex(
+          e => e.ticketId === action.payload?.ticketId
+        );
+        if (ticketIndex !== -1) {
+          state.entitiesOrigin[ticketIndex] = action.payload;
+        } else {
+          state.entitiesOrigin.unshift(action.payload);
+        }
+        sortTickets(state.entitiesOrigin);
+
+        state.entities = filterIssueByUnreadMessageValue(state);
       }
     },
     removeTicketItemFromDataSource: {
@@ -160,6 +177,7 @@ const eventCheckingSlice = createSlice({
         username
       };
       const ticketTarget = state.entities.find(e => e.ticketId === ticketId);
+
       ticketTarget.isRead = isRead;
       ticketTarget.messages.unshift(newMsg);
       if (ticketTarget.messages?.length > 2) {
@@ -168,7 +186,7 @@ const eventCheckingSlice = createSlice({
       const ticketOrigin = state.entitiesOrigin.find(
         e => e.ticketId === ticketId
       );
-      ticketOrigin.isRead = false;
+      ticketOrigin.isRead = isRead;
       ticketOrigin.messages.unshift(newMsg);
       if (ticketOrigin.messages?.length > 2) {
         ticketOrigin.messages.pop();
@@ -242,6 +260,7 @@ const {
   setTicketStatus,
   appendTicketItemIntoDataSource,
   removeTicketItemFromDataSource,
+  updateTicketItemIntoDataSource,
   updateSubTypeByTicketId
 } = actions;
 export {
@@ -254,6 +273,7 @@ export {
   setTicketStatus,
   appendTicketItemIntoDataSource,
   removeTicketItemFromDataSource,
+  updateTicketItemIntoDataSource,
   updateSubTypeByTicketId
 };
 export default reducer;

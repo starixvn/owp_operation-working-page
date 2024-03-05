@@ -61,7 +61,6 @@ const reloadPreMatch = async (id, isTicketLeague, data) => {
 };
 
 const reloadTicketInPreMatchTableHandler = ({ id, isTicketLeague, ticket }) => {
-  debugger;
   const model = store.getState();
   const { isEdit } = model.editor;
   !isEdit &&

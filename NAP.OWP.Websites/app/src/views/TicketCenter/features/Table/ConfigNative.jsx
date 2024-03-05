@@ -101,7 +101,6 @@ const getConfigTicketsTab = containerWidth => {
       const { permission } = pagePolicy;
       const { ticketId, eventType, ticketType } =
         eventChecking.entities[rowIndex];
-      debugger;
       const requestDetailModel = {
         ticketId,
         actorId: permission.ActorId,
