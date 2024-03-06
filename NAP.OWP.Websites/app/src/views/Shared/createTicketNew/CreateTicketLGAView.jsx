@@ -57,6 +57,7 @@ const CreateTicketLGAView = props => {
       OwpLeagueName: League,
       OwpHomeName: Home,
       OwpAwayName: Away,
+      EventDateTimeGmt8: EventDateTime,
       CreatorId: creatorInfo.recipientId,
       Recipients: reformattedArray,
       Message: message,

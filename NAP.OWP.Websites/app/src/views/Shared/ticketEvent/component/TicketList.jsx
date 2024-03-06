@@ -79,9 +79,8 @@ const TicketList = props => {
     const { ParentMatchId } = dataSources.find(
       d => d.OWPMatchId === owpMatchId
     );
-    debugger;
+
     const newDataSource = dataSources.map(item => {
-      // TODO
       if (item.ParentMatchId === ParentMatchId) {
         return {
           ...item,
