@@ -57,10 +57,31 @@ const TicketDetail = ({ policy = 'policy' }) => {
 
   const handleSendMessage = async (event, fileId, fileName) => {
     event.preventDefault();
-
+    const {
+      ticketId,
+      eventType,
+      ticketType,
+      ticketStatus,
+      typeName,
+      ticketSubTypeId,
+      ticketSubTypeName,
+      lastCommentDate,
+      isRead,
+      isPinned,
+      owpLeagueId,
+      owpLeagueName,
+      owpHomeId,
+      owpAwayId,
+      homeName,
+      awayName,
+      koTime,
+      subject,
+      eventName,
+      leagueName
+    } = ticketDetail;
     let newMessage = {
-      ticketId: ticketDetail.ticketId,
-      ticketEventType: ticketDetail.eventType,
+      ticketId,
+      ticketEventType: eventType,
       ticketTitle: getTicketTitle(ticketDetail),
       message: inputMessage,
       actorId: permission.ActorId,
@@ -75,6 +96,32 @@ const TicketDetail = ({ policy = 'policy' }) => {
         message: fileName
       };
     }
+
+    newMessage = {
+      ...newMessage,
+      ticketInfo: {
+        ticketId,
+        eventType,
+        ticketType,
+        ticketStatus,
+        typeName,
+        ticketSubTypeId,
+        ticketSubTypeName,
+        lastCommentDate,
+        isRead,
+        isPinned,
+        owpLeagueId,
+        owpLeagueName,
+        owpHomeId,
+        owpAwayId,
+        homeName,
+        awayName,
+        koTime,
+        subject,
+        eventName,
+        leagueName
+      }
+    };
 
     if (!newMessage.message.trim()) {
       return;

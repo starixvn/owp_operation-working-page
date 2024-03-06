@@ -448,6 +448,10 @@ const shiftSlice = createSlice({
             );
             findLeague.TicketList[index] = ticket;
             findLeague.IsRead = ticket.IsRead;
+            findLeague.TicketList.sort(
+              (a, b) =>
+                new Date(b.LatestCreatedDate) - new Date(a.LatestCreatedDate)
+            );
           }
         } else {
           const findMatch = state.matches.find(
@@ -460,6 +464,10 @@ const shiftSlice = createSlice({
             );
             findMatch.TicketList[index] = ticket;
             findMatch.IsRead = ticket.IsRead;
+            findMatch.TicketList.sort(
+              (a, b) =>
+                new Date(b.LatestCreatedDate) - new Date(a.LatestCreatedDate)
+            );
           }
         }
 

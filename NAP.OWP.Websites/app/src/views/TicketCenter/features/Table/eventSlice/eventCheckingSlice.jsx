@@ -1,7 +1,7 @@
 /* eslint-disable no-warning-comments */
 import { createSlice } from '@reduxjs/toolkit';
 import compareValues from '../../../../Shared/Order/compareValues';
-import { cloneDeep, isEqual } from 'lodash';
+import { isEqual } from 'lodash';
 import {
   getEventTickets,
   refreshEventTickets,
@@ -10,7 +10,9 @@ import {
 } from './eventSliceThunkNative';
 import {
   filterIssueByUnreadMessageValue,
-  sortTickets
+  sortTickets,
+  removeTickets,
+  updateTicketsStatus
 } from './eventSliceHelper';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
 import { checkAllFilterCondition } from '../../signalR/signalRHelper';
@@ -66,6 +68,29 @@ const eventCheckingSlice = createSlice({
       reducer: (state, action) => {
         state.entities.unshift(action.payload);
         state.entitiesOrigin.unshift(action.payload);
+        sortTickets(state.entitiesOrigin);
+        state.entities = filterIssueByUnreadMessageValue(state);
+      }
+    },
+    updateTicketItemIntoDataSource: {
+      reducer: (state, action) => {
+        const { ticketInfo, filterModel } = action.payload;
+        const ticketId = ticketInfo?.ticketId;
+        const isUpdate = checkAllFilterCondition(filterModel, ticketInfo);
+        if (isUpdate) {
+          const ticketIndex = state.entitiesOrigin.findIndex(
+            e => e.ticketId === ticketId
+          );
+          if (ticketIndex !== -1) {
+            state.entitiesOrigin[ticketIndex] = ticketInfo;
+          } else {
+            state.entitiesOrigin.unshift(ticketInfo);
+          }
+        } else {
+          state.entitiesOrigin = removeTickets(state.entitiesOrigin, ticketId);
+        }
+        sortTickets(state.entitiesOrigin);
+        state.entities = filterIssueByUnreadMessageValue(state);
       }
     },
     removeTicketItemFromDataSource: {
@@ -114,27 +139,18 @@ const eventCheckingSlice = createSlice({
     },
     setTicketStatus: (state, { payload: data }) => {
       const { ticketInfo, filterModel } = data;
-      const { ticketId, ticketStatus } = ticketInfo;
       const isCorrectFilter = checkAllFilterCondition(filterModel, ticketInfo);
-      const updateTickets = entities => {
-        const ticketIndex = entities.findIndex(e => e.ticketId === ticketId);
-        if (ticketIndex !== -1) {
-          entities[ticketIndex].ticketStatus = ticketStatus;
-        } else {
-          entities.unshift(ticketInfo);
-        }
-      };
-      const removeTickets = entities =>
-        entities.filter(item => item.ticketId !== ticketId);
-
       if (isCorrectFilter) {
-        updateTickets(state.entities);
-        updateTickets(state.entitiesOrigin);
+        updateTicketsStatus(state.entities, ticketInfo);
+        updateTicketsStatus(state.entitiesOrigin, ticketInfo);
         sortTickets(state.entities);
         sortTickets(state.entitiesOrigin);
       } else {
-        state.entities = removeTickets(state.entities);
-        state.entitiesOrigin = removeTickets(state.entitiesOrigin);
+        state.entities = removeTickets(state.entities, ticketInfo.ticketId);
+        state.entitiesOrigin = removeTickets(
+          state.entitiesOrigin,
+          ticketInfo.ticketId
+        );
       }
     },
     setNewMessage: (state, action) => {
@@ -160,6 +176,7 @@ const eventCheckingSlice = createSlice({
         username
       };
       const ticketTarget = state.entities.find(e => e.ticketId === ticketId);
+
       ticketTarget.isRead = isRead;
       ticketTarget.messages.unshift(newMsg);
       if (ticketTarget.messages?.length > 2) {
@@ -168,7 +185,7 @@ const eventCheckingSlice = createSlice({
       const ticketOrigin = state.entitiesOrigin.find(
         e => e.ticketId === ticketId
       );
-      ticketOrigin.isRead = false;
+      ticketOrigin.isRead = isRead;
       ticketOrigin.messages.unshift(newMsg);
       if (ticketOrigin.messages?.length > 2) {
         ticketOrigin.messages.pop();
@@ -242,6 +259,7 @@ const {
   setTicketStatus,
   appendTicketItemIntoDataSource,
   removeTicketItemFromDataSource,
+  updateTicketItemIntoDataSource,
   updateSubTypeByTicketId
 } = actions;
 export {
@@ -254,6 +272,7 @@ export {
   setTicketStatus,
   appendTicketItemIntoDataSource,
   removeTicketItemFromDataSource,
+  updateTicketItemIntoDataSource,
   updateSubTypeByTicketId
 };
 export default reducer;
