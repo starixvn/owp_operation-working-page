@@ -2961,7 +2961,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-0fcb2dd2.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-27d63e27.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-3a302d14.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-feedback-57264197.svg" />
@@ -3094,10 +3094,6 @@
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-assignment-new\server.cshtml" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\ticket-center\server.cshtml" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
@@ -3110,6 +3106,10 @@
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\night-shift-assignment\server.cshtml" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\ticket-center\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
