@@ -50,13 +50,7 @@ const ButtonGroupFilter = () => {
         Submit
       </button>
       <ExportSelector />
-      {policy.HasWrite && (
-        <button
-          className='button-submit button-sync-off-vr'
-          onClick={handleSyncOffVR}>
-          Sync OFF VR
-        </button>
-      )}
+
     </div>
   );
 };
