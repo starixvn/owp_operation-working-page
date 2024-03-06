@@ -1104,7 +1104,7 @@
     <Content Include="wwwroot\event-assignment-new\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\server-16b369fb.css" />
-    <Content Include="wwwroot\event-assignment-new\assets\js\main-81c57f0d.js" />
+    <Content Include="wwwroot\event-assignment-new\assets\js\main-09ea3af5.js" />
     <Content Include="wwwroot\event-assignment-new\favicon.ico" />
     <Content Include="wwwroot\event-assignment-new\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-feedback-57264197.svg" />
@@ -1113,7 +1113,7 @@
     <Content Include="wwwroot\event-assignment\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\server-81765027.css" />
-    <Content Include="wwwroot\event-assignment\assets\js\main-271fee39.js" />
+    <Content Include="wwwroot\event-assignment\assets\js\main-69d1a0b3.js" />
     <Content Include="wwwroot\event-assignment\favicon.ico" />
     <Content Include="wwwroot\event-assignment\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-feedback-57264197.svg" />
@@ -2960,8 +2960,8 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\ticket-center\assets\ext\server-0fcb2dd2.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-3a302d14.js" />
+    <Content Include="wwwroot\ticket-center\assets\ext\server-cefe6ea3.css" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-c20f0c9d.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-feedback-57264197.svg" />
@@ -3090,6 +3090,10 @@
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a7443744.ttf" />
@@ -3098,10 +3102,6 @@
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-assignment\server.cshtml" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\night-shift-assignment\assets\ext\OWP-a7443744.ttf" />
