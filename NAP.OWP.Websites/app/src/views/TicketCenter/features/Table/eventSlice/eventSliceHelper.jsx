@@ -5,6 +5,7 @@ const filterIssueByUnreadMessageValue = state => {
   }
   return entitiesOrigin;
 };
+
 const formatTicketTypeOption = ticketTypes =>
   ticketTypes.map(({ id: value, name: label }) => ({
     value,
@@ -21,4 +22,24 @@ const sortTickets = entities => {
   });
 };
 
-export { filterIssueByUnreadMessageValue, formatTicketTypeOption, sortTickets };
+const removeTickets = (entities, ticketId) =>
+  entities.filter(item => item.ticketId !== ticketId);
+
+const updateTicketsStatus = (entities, ticketInfo) => {
+  const { ticketId, ticketStatus } = ticketInfo;
+  const ticketIndex = entities.findIndex(e => e.ticketId === ticketId);
+
+  if (ticketIndex !== -1) {
+    entities[ticketIndex].ticketStatus = ticketStatus;
+  } else {
+    entities.unshift(ticketInfo);
+  }
+};
+
+export {
+  filterIssueByUnreadMessageValue,
+  formatTicketTypeOption,
+  sortTickets,
+  removeTickets,
+  updateTicketsStatus
+};
