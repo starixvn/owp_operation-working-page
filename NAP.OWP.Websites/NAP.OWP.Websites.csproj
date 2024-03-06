@@ -2961,7 +2961,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-cefe6ea3.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-c20f0c9d.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-a81a2a20.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-feedback-57264197.svg" />
