@@ -33,8 +33,12 @@ const CreateTicketLGAView = props => {
   const dispatch = useStableDispatch();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const { modelByRowIndex } = useSelector(state => state.chatBoard);
-  const { selectedRecipients, subTypeSelected, isOpenCreateTicketInLGA } =
-    useSelector(state => state.createTicketBoard);
+  const {
+    selectedRecipients,
+    subTypeSelected,
+    isOpenCreateTicketInLGA,
+    typeTicketText
+  } = useSelector(state => state.createTicketBoard);
 
   const { OWPMatchId, League, Home, Away, EventDateTime } = modelByRowIndex;
   const renderHeader = () => (
@@ -62,7 +66,9 @@ const CreateTicketLGAView = props => {
       Recipients: reformattedArray,
       Message: message,
       TicketType: LIVE_INCIDENT,
+      TicketTypeName: 'Live Incident',
       SubType: subTypeSelected.value,
+      SubTypeName: subTypeSelected.label,
       Files: resultSaveFile || [],
       url: urlRequestLiveIncident
     };
