@@ -14,7 +14,7 @@
         var messages = data.messages;
         for (var i = 0; i < messages.length; i++) {
             if (messages[i].IsImportant) {
-                pushNotification(messages[i].MessageContent);
+                pushNotification(messages[i]);
                 var messageContent = messageBox.RenderAssigneeMessageContent(messages[i].MessageType, messages[i].MessageContent);
                 switch (messages[i].MessageType) {
                     case 1:
