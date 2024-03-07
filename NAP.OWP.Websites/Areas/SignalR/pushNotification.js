@@ -3,12 +3,20 @@
         return;
     }
 
+    var bodyContent = (notificationContent.messageContent.replaceAll('<b>', '')).replaceAll('</b>', '');
+
     var notification = new window.Notification('OWP Notification', {
         icon: '@Url.Content("~/favicon.ico")',
-        body: notificationContent,
+        body: bodyContent,
     });
     notification.onclick = function () {
-        window.open('@Url.Content("~/MessageBoxManagement")');
+        if (notificationContent.ticketId) {
+            window.open('@Url.Content("~/?actorId="' + notificationContent.userId + '"&eventType="' + notificationContent.eventType + '"&ticketId="' + notificationContent.ticketId + '"")');
+        }
+        else {
+            window.open('@Url.Content("~/MessageBoxManagement")');
+
+        }
     };
 
 };

@@ -1,5 +1,5 @@
 import { setNewMessage as setNewMessageOnChatBoard } from '../../Shared/chatBoardNew/chatBoardSlice';
-import store from '../store';
+import store from '../app/store';
 
 const handleNewMessageIncome = (newMsgInfo: any, ticketInfo: any) => {
   const { chatBoard } = store.getState();

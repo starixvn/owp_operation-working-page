@@ -1,5 +1,5 @@
 import { updateSubTypeTicketDetailByTicketId } from '../../Shared/chatBoardNew/chatBoardSlice';
-import store from '../store';
+import store from '../app/store';
 
 const changeSubTypeIncomeHandler = (ticketInfo: any) => {
   const model = store.getState();

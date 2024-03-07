@@ -222,7 +222,7 @@ class Notification extends Component {
         if (!message.IsImportant) {
           return;
         }
-        window.pushNotification(message.MessageContent);
+        window.pushNotification(message);
         const messageContent = MessageService.customizeContent(message);
         const notificationContent = this.renderToastContent(messageContent);
 
@@ -450,12 +450,11 @@ class Notification extends Component {
 
           const isDevelopment = isEquals(process.env.NODE_ENV, 'development');
 
-          const windowNotificationMessageContent = messageContent
-            .replaceAll('<b>', '')
-            .replaceAll('</b>', '');
+          // const windowNotificationMessageContent = messageContent
+          //   .replaceAll('<b>', '')
+          //   .replaceAll('</b>', '');
 
-          !isDevelopment &&
-            window.pushNotification(windowNotificationMessageContent);
+          !isDevelopment && window.pushNotification(data.message);
 
           let formattedMessageContent = MessageService.customizeOSContent(
             messageType,

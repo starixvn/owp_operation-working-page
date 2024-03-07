@@ -1,5 +1,5 @@
 import { setTicketStatus as setPopupTicketStatus } from '../../Shared/chatBoardNew/chatBoardSlice';
-import store from '../store';
+import store from '../app/store';
 
 const changeStatusIncomeHandler = (ticketInfo: any) => {
   const model = store.getState();
