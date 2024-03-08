@@ -89,7 +89,11 @@ class Notification extends Component {
     await post(model);
   }
 
-  async handleClickTicketCenterNotification(rest) {
+  async handleClickTicketCenterNotification(event, rest) {
+    if (event.ctrlKey) {
+      openNewChattingTab(rest.ActorId, rest.ticketId, rest.eventType);
+      return;
+    }
     const model = {
       ...rest,
       url: openTicketCenterIssueURL
@@ -111,8 +115,8 @@ class Notification extends Component {
     toast.success(content, {
       autoClose: false,
       closeOnClick: true,
-      onClick: () =>
-        this.handleClickTicketCenterNotification({
+      onClick: event =>
+        this.handleClickTicketCenterNotification(event, {
           actorId: UserId,
           ticketId,
           eventType

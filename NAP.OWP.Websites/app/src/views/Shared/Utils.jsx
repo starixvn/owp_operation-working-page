@@ -207,6 +207,15 @@ const filterDataTable = (data, filterState, callback) =>
 const formatNumberWithCommas = source =>
   source?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
+const openNewChattingTab = (actorId, eventType, ticketId) =>
+  setTimeout(function () {
+    window.open(
+      `SmallChatting/actorID=${actorId}&eventType=${eventType} ticketId=${ticketId}`,
+      `${ticketId}`,
+      `toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400`
+    );
+  }, 20);
+
 const Utils = {
   rootUrl: getRootUrl(),
   resolveUrl,
@@ -231,7 +240,8 @@ const Utils = {
   buildSelectedMatchStatus,
   handleOnDateChange,
   requestOrGetLocalStorage,
-  formatNumberWithCommas
+  formatNumberWithCommas,
+  openNewChattingTab
 };
 export {
   getValueRef,
@@ -239,6 +249,7 @@ export {
   getDisableRef,
   addOrReplaceFilterState,
   pushOrUpdateObject,
-  filterDataTable
+  filterDataTable,
+  openNewChattingTab
 };
 export default Utils;

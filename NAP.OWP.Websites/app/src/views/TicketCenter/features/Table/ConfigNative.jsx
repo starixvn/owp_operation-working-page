@@ -14,6 +14,7 @@ import {
   changeErrorRecipient
 } from '../../../Shared/createTicketNew/createTicketBoardSliceNew';
 import { onClickIssueModel } from '../signalR/signalRSlice';
+import { openNewChattingTab } from '../../../Shared/Utils';
 
 const DefaultTableStyle = {
   rowHeight: 70,
@@ -101,14 +102,8 @@ const getConfigTicketsTab = containerWidth => {
       const { permission } = pagePolicy;
       const { ticketId, eventType, ticketType } =
         eventChecking.entities[rowIndex];
-      event.stopPropagation();
-      event.preventDefault();
       if (event.ctrlKey) {
-        window.open(
-          `http://localhost:3000/${ticketId}/${eventType}`,
-          `${ticketId}`,
-          'width=400,height=400'
-        );
+        openNewChattingTab(permission.ActorId, ticketId, eventType);
         return;
       }
       const requestDetailModel = {
