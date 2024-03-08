@@ -31,6 +31,7 @@ import { post } from '../Shared/Service/Service';
 import { configSignalR } from '../Shared/NetCoreSignalR/NetCoreSignalRService';
 import { isEqual } from 'lodash';
 import { isEquals } from 'immutability-helper';
+import { openNewChattingTab } from '../Shared/Utils';
 
 const $ = window.jQuery;
 const classNameToast = 'Toastify__toast--blink';
@@ -91,6 +92,8 @@ class Notification extends Component {
 
   async handleClickTicketCenterNotification(event, rest) {
     if (event.ctrlKey) {
+      debugger;
+      console.log(rest.ActorId, rest.ticketId, rest.eventType);
       openNewChattingTab(rest.ActorId, rest.ticketId, rest.eventType);
       return;
     }
