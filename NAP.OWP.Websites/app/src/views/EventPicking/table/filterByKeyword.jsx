@@ -41,18 +41,23 @@ const checkRound = (arraySource, keyWordFormat) =>
 
 const checkRemark = (arraySource, keyWordFormat) => {
   const remark = (item, keyword) =>
-    item.remark?.toLowerCase().includes(keyword) ||
-    item.remark2?.toLowerCase().includes(keyword);
+    item.remark?.toLowerCase().includes(keyword);
 
   const matchRemark = (item, keyword) =>
     item.homeRemark?.toLowerCase().includes(keyword) ||
     item.awayRemark?.toLowerCase().includes(keyword);
 
+  const blackListRemark = (item, keyword) => {
+    const blackList = item.isBlackListFromInfoSite ? 'blacklist' : '';
+    return blackList.includes(keyword);
+  };
+
   return arraySource.filter(
     item =>
       item.lstNote?.toLowerCase().includes(keyWordFormat) ||
       remark(item, keyWordFormat) ||
-      matchRemark(item, keyWordFormat)
+      matchRemark(item, keyWordFormat) ||
+      blackListRemark(item, keyWordFormat)
   );
 };
 

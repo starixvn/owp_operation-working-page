@@ -7,7 +7,8 @@ const propTypes = {
 
 const RemarkCell = props => {
   const { rowIndex, dataSource } = props;
-  const { lstNote, remark, homeRemark, awayRemark } = dataSource[rowIndex];
+  const { lstNote, remark, homeRemark, awayRemark, isBlackListFromInfoSite } =
+    dataSource[rowIndex];
 
   const renderLstNote = () =>
     lstNote && (
@@ -25,21 +26,26 @@ const RemarkCell = props => {
       </span>
     );
 
-  const renderHomeRemark = () =>
-    homeRemark && (
+  const renderTeamRemark = (teamRemark, label) =>
+    teamRemark && (
       <span>
-        <strong>Home Remark: </strong>
-        {homeRemark}
+        <strong>{label}: </strong>
+        <span
+          className={
+            teamRemark.toLowerCase().includes('bad ranking strike out')
+              ? 'bad-ranking'
+              : ''
+          }>
+          {teamRemark}
+        </span>
       </span>
     );
 
-  const renderAwayRemark = () =>
-    awayRemark && (
-      <span>
-        <strong>Away Remark: </strong>
-        {awayRemark}
-      </span>
-    );
+  const renderAwayRemark = () => renderTeamRemark(awayRemark, 'Away Remark');
+  const renderHomeRemark = () => renderTeamRemark(homeRemark, 'Home Remark');
+
+  const renderBlackListInfoSite = () =>
+    isBlackListFromInfoSite && <span className='black-list'>BlackList</span>;
 
   return (
     <>
@@ -48,6 +54,7 @@ const RemarkCell = props => {
         {renderRemark()}
         {renderHomeRemark()}
         {renderAwayRemark()}
+        {renderBlackListInfoSite()}
       </div>
     </>
   );

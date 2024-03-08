@@ -496,6 +496,21 @@ input[type='checkbox'] {
     }
   }
 
+  .remark-cell {
+    .black-list {
+      background-color: #9999ff;
+      padding: 3px;
+      border-radius: 8px;
+      color: #000;
+    }
+    .bad-ranking {
+      background-color: #bbe98d;
+      padding: 3px;
+      border-radius: 8px;
+      color: #000;
+    }
+  }
+
   .color-unselected {
     background-color: #ffd8d8;
   }
