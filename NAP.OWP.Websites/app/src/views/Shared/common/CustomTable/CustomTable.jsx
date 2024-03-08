@@ -108,8 +108,9 @@ const CustomTable = forwardRef(({ model, config }, ref) => {
       ? ''
       : onRowClassNameGetter(index, entities);
 
-  const handleRowClick = (_, index) =>
-    !isEqual(typeof onRowClick, 'undefined') && onRowClick(index, entities);
+  const handleRowClick = (event, index) =>
+    !isEqual(typeof onRowClick, 'undefined') &&
+    onRowClick(event, index, entities);
 
   return (
     <div className='table' ref={ref}>

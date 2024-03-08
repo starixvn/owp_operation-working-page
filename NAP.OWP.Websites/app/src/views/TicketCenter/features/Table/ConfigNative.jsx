@@ -95,12 +95,22 @@ const getConfigTicketsTab = containerWidth => {
     dynamicCell: DynamicCell,
     sortFunc: sort,
     tableWidth: bonusWidth,
-    onRowClick: async rowIndex => {
+    onRowClick: async (event, rowIndex) => {
       const { pagePolicy, eventChecking } = store.getState();
       const { dispatch } = store;
       const { permission } = pagePolicy;
       const { ticketId, eventType, ticketType } =
         eventChecking.entities[rowIndex];
+      event.stopPropagation();
+      event.preventDefault();
+      if (event.ctrlKey) {
+        window.open(
+          `http://localhost:3000/${ticketId}/${eventType}`,
+          `${ticketId}`,
+          'width=400,height=400'
+        );
+        return;
+      }
       const requestDetailModel = {
         ticketId,
         actorId: permission.ActorId,

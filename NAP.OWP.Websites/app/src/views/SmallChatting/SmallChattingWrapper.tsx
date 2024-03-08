@@ -1,9 +1,8 @@
 import { Provider } from 'react-redux';
 import store from './app/store';
 import TicketDetailLayout from './SmallChatting';
-type Props = {};
 
-const SmallChattingWrapper = (props: Props) => {
+const SmallChattingWrapper = () => {
   return (
     <div>
       <Provider store={store}>
