@@ -10,7 +10,8 @@
         icon: '@Url.Content("~/favicon.ico")',
         body: bodyContent,
     });
-    notification.onclick = function () {
+    notification.onclick = function (event) {
+        console.log(event);
         if (notificationContent.ticketId) {
             window.open('@Url.Content("~/?actorId="' + notificationContent.userId + '"&eventType="' + notificationContent.eventType + '"&ticketId="' + notificationContent.ticketId + '"")');
         }
