@@ -1,3 +1,8 @@
+@import '../abstracts/mixins.scss';
+@import '../abstracts/variables.scss';
+
+@import '../base/_base.scss';
+
 .chat-board-popup {
   height: 100%;
   display: flex;
