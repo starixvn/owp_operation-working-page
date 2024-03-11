@@ -2,7 +2,6 @@
     if (!window.Notification || window.Notification.permission !== 'granted') {
         return;
     }
-    console.log(notificationContent);
 
     var bodyContent = (notificationContent.messageContent.replaceAll('<b>', '')).replaceAll('</b>', '');
 
