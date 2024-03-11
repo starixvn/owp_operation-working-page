@@ -11,7 +11,7 @@
     });
     notification.onclick = function () {
         if (notificationContent.ticketId) {
-            window.open($('#RootURL').val() + '?actorId=' + notificationContent.userId + '&eventType=' + notificationContent.eventType + '&ticketId=' + notificationContent.ticketId +'');
+            window.open($('#RootURL').val() + 'MyTickets?actorId=' + notificationContent.userId + '&eventType=' + notificationContent.eventType + '&ticketId=' + notificationContent.ticketId +'');
         }
         else {
             window.open($('#RootURL').val() + 'MessageBoxManagement');

@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import { OWPPage, OWPHeader, OWPBody } from '../Shared/common/OWP/OPWPage';
 import HeaderNative from './features/header/HeaderNative';
-
 import TicketCenterTable from './features/Table/TicketCenterTable';
-
+import { openTicketCenterIssueURL } from '../Message/Service';
 import { FunctionKeys } from '../Shared/Constants';
 import Loading from '../components/Loading';
 import { usePermission } from './ImportTicketCenterHelperNative';
@@ -12,14 +12,32 @@ import CreateTicketLiveIncident from '../Shared/createTicketNew/CreateTicketLive
 import CreateTicketEventChecking from '../Shared/createTicketNew/CreateTicketEventChecking';
 import CreateTicketBoardOther from '../Shared/createTicketNew/CreateTicketBoardOther';
 import TicketLogWorkCreator from './../Shared/createTicketNew/TicketLogWork/TicketLogWorkCreator';
+import { post } from '../Shared/Service/Service';
 
 const { INDIVIDUAL } = RECIPIENT_TYPE;
 const TicketCenterManagementNative = () => {
+  const searchParams = new URLSearchParams(document.location.search);
+  const actorId = searchParams.get('actorId');
+  const eventType = searchParams.get('eventType');
+  const ticketId = searchParams.get('ticketId');
+
   const pagePermissionModel = usePermission(
     FunctionKeys.TicketCenter,
     'pagePolicy'
   );
   usePermission(FunctionKeys.DeleteTickets, 'deletePolicy');
+
+  useEffect(() => {
+    (async () => {
+      const model = {
+        ticketId,
+        actorId,
+        eventType,
+        url: openTicketCenterIssueURL
+      };
+      ticketId && actorId && eventType && (await post(model));
+    })();
+  }, []);
 
   const { permission } = pagePermissionModel;
 
