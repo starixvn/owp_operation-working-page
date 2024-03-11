@@ -39,7 +39,7 @@ Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
         });
         notification.onclick = () => {
           if (message.ticketId) {
-            window.open('@baseHref' + 'MyTickets?actorId=' + message.userId + '&eventType=' + message.eventType + '&ticketId=' + message.ticketId + '');
+            window.location.href = '@baseHref' + 'MyTickets?actorId=' + message.userId + '&eventType=' + message.eventType + '&ticketId=' + message.ticketId + '';
           }
           else {
             window.open('@baseHref' + 'MessageBoxManagement');
@@ -51,8 +51,8 @@ Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
     @Scripts.Render("~/scripts/common")
     <script src="~/Areas/Copy/copy.js"></script>
     <link href="~/Content/Themes/fonts/flags/flag-icon.css" rel="stylesheet" >
-    <script type="module" crossorigin src="/wwwroot/ticket-center/assets/js/main-8b355f37.js"></script>
-    <link rel="stylesheet" href="/wwwroot/ticket-center/assets/ext/server-cefe6ea3.css">
+    <script type="module" crossorigin src="/wwwroot/ticket-center/assets/js/main-4a2f62e2.js"></script>
+    <link rel="stylesheet" href="/wwwroot/ticket-center/assets/ext/server-3c5ecd71.css">
   </head>
 
   <body>

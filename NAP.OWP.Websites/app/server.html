@@ -50,7 +50,7 @@ Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
         });
         notification.onclick = () => {
           if (message.ticketId) {
-            window.open('@baseHref' + 'MyTickets?actorId=' + message.userId + '&eventType=' + message.eventType + '&ticketId=' + message.ticketId + '');
+            window.location.href = '@baseHref' + 'MyTickets?actorId=' + message.userId + '&eventType=' + message.eventType + '&ticketId=' + message.ticketId + '';
           }
           else {
             window.open('@baseHref' + 'MessageBoxManagement');
