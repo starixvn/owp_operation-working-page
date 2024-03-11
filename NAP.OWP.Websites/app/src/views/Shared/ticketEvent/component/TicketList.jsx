@@ -40,7 +40,7 @@ const TicketList = props => {
     handleOpenCreateTicket
   } = props;
   const dataSource = dataSources[index];
-  const { ticketList, loading } = useSelector(state => state.ticketList);
+  const { ticketList } = useSelector(state => state.ticketList);
   const { owpMatchId } = useSelector(state => state.signalREventTicket);
   const { permission } = useSelector(state => state.pagePolicy);
   const stableDispatch = useDispatch();
@@ -76,8 +76,12 @@ const TicketList = props => {
     });
     stableDispatch(setTicketList(newTicketList));
     const isRead = newTicketList.every(x => x.IsRead);
+    const { ParentMatchId } = dataSources.find(
+      d => d.OWPMatchId === owpMatchId
+    );
+
     const newDataSource = dataSources.map(item => {
-      if (item.OWPMatchId === owpMatchId) {
+      if (item.ParentMatchId === ParentMatchId) {
         return {
           ...item,
           IsRead: isRead
@@ -99,15 +103,6 @@ const TicketList = props => {
     stableDispatch(getTicketList(model));
     stableDispatch(setOwpMatchId(dataSource.OWPMatchId));
   }, [dataSource.OWPMatchId, permission.ActorId, stableDispatch]);
-
-  if (loading) {
-    return (
-      <>
-        <div className='is-show' />
-        <Loading />
-      </>
-    );
-  }
 
   return (
     <TicketListPopupCommon

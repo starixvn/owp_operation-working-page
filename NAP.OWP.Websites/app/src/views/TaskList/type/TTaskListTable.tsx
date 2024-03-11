@@ -18,6 +18,7 @@ interface PesOrFiFa {
 
 interface DataSource extends KOTimeProps, PesOrFiFa {
   OWPMatchId: Required<number>;
+  ParentMatchId: Required<number>;
   Rowspan: number;
   MatchNo: string;
   MatchStatus: string;

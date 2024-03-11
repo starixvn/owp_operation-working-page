@@ -86,10 +86,12 @@ const eventAssignmentTableSlice = createSlice({
     setDataTable: (state, action) => {
       state.entities = action.payload;
     },
+
+    // TODO
     setDataSignalR: (state, action) => {
-      const { actorId, owpMatchId, userId } = action.payload;
+      const { actorId, parentMatchId, userId } = action.payload;
       state.entities.forEach((item: TDataSource) => {
-        if (item.OWPMatchId === owpMatchId) {
+        if (item.ParentMatchId === parentMatchId) {
           item.IsRead = buildIsReadValue(actorId, userId, item.IsRead);
           item.HasTicket = true;
         }
