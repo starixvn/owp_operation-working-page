@@ -232,8 +232,8 @@
 @section scripts{
     @Scripts.Render("~/Scripts/UserManagement")
 
-    <script>
+<script>
         var languageIds = '@string.Join(",", Model.Languages.Select(x => x.ResourceId))';
         var languageTexts = '@string.Join(",", Model.Languages.Select(x => x.Value))';
-    </script>
+</script>
 }
