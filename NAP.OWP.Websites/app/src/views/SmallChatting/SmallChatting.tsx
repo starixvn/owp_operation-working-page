@@ -18,6 +18,7 @@ const SmallChatting = () => {
   const eventType = searchParams.get('eventType');
   const ticketId = searchParams.get('ticketId');
   const { permission } = usePermission(FunctionKeys.TicketCenter, 'pagePolicy');
+  console.log(actorId, eventType, ticketId);
 
   useEffect(() => {
     (async () => {

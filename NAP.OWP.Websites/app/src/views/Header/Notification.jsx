@@ -92,9 +92,7 @@ class Notification extends Component {
 
   async handleClickTicketCenterNotification(event, rest) {
     if (event.ctrlKey) {
-      debugger;
-      console.log(rest.ActorId, rest.ticketId, rest.eventType);
-      openNewChattingTab(rest.ActorId, rest.ticketId, rest.eventType);
+      openNewChattingTab(rest.actorId, rest.ticketId, rest.eventType);
       return;
     }
     const model = {

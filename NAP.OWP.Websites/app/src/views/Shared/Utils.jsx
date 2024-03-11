@@ -207,10 +207,10 @@ const filterDataTable = (data, filterState, callback) =>
 const formatNumberWithCommas = source =>
   source?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-const openNewChattingTab = (actorId, eventType, ticketId) =>
+const openNewChattingTab = (actorId, ticketId, eventType) =>
   setTimeout(function () {
     window.open(
-      `SmallChatting/actorID=${actorId}&eventType=${eventType} ticketId=${ticketId}`,
+      `SmallChatting?actorId=${actorId}&eventType=${eventType}&ticketId=${ticketId}`,
       `${ticketId}`,
       `toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400`
     );

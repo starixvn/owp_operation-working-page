@@ -29,6 +29,7 @@ import {
 } from '../shiftSlice/shiftSlice';
 import { useSelector } from 'react-redux';
 import TicketListPopupCommon from '../../../../Shared/ticketList/TicketListPopupCommon';
+import { openNewChattingTab } from '../../../../Shared/Utils';
 
 const propTypes = {
   rowIndex: PropTypes.number.isRequired,
@@ -46,7 +47,7 @@ const TicketListPopup = props => {
   const { HasWrite } = useSelector(state => state.policy).permission;
   const stableDispatch = useStableDispatch();
 
-  const handleOpenMessage = async ticket => {
+  const handleOpenMessage = async (event, ticket) => {
     const { policy } = store.getState();
     const { permission } = policy;
     const { TicketId, EventType, IsRead } = ticket;
@@ -57,6 +58,11 @@ const TicketListPopup = props => {
       detailSegmentUrl: getDetailSegmentUrlByEventType(EventType),
       eventType: EventType
     };
+    if (event.ctrlKey) {
+      openNewChattingTab(permission.ActorId, TicketId, EventType);
+      return;
+    }
+
     stableDispatch(closeTicketPopup());
     stableDispatch(closeCreatePopup());
     stableDispatch(changeErrorRecipient(false));
