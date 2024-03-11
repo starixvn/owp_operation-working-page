@@ -14,14 +14,17 @@ import CreateTicketBoardOther from '../Shared/createTicketNew/CreateTicketBoardO
 import TicketLogWorkCreator from './../Shared/createTicketNew/TicketLogWork/TicketLogWorkCreator';
 import { post } from '../Shared/Service/Service';
 import store from './app/storeNative';
+import { useAppDispatch } from './app/hooksNative';
 import {
   getTicketDetail,
   getTicketSubTypes
 } from '../Shared/chatBoardNew/chatBoardThunkNative';
 import { onClickIssueModel } from './features/signalR/signalRSlice';
+import { getDetailSegmentUrlByEventType } from './Helper/TicketCenterHelper';
 
 const { INDIVIDUAL } = RECIPIENT_TYPE;
 const TicketCenterManagementNative = () => {
+  const dispatch = useAppDispatch();
   const searchParams = new URLSearchParams(document.location.search);
   const actorId = searchParams.get('actorId');
   const eventType = searchParams.get('eventType');
@@ -34,16 +37,25 @@ const TicketCenterManagementNative = () => {
   usePermission(FunctionKeys.DeleteTickets, 'deletePolicy');
 
   useEffect(() => {
-    const handleOpenTicketDetail = async () => {
-      const model = {
-        ticketId,
-        actorId,
-        eventType,
-        url: openTicketCenterIssueURL
-      };
-      await post(model);
-    };
-    ticketId && actorId && eventType && handleOpenTicketDetail();
+    (async () => {
+      if (actorId && eventType && ticketId) {
+        const requestDetailModel = {
+          ticketId: parseInt(ticketId),
+          actorId: parseInt(actorId),
+          detailSegmentUrl: getDetailSegmentUrlByEventType(eventType),
+          eventType: parseInt(actorId)
+        };
+        dispatch(onClickIssueModel(requestDetailModel));
+        const actionResult = await dispatch(
+          getTicketDetail(requestDetailModel)
+        );
+
+        dispatch(getTicketSubTypes(actionResult.payload.data.ticketType));
+        if (getTicketDetail.rejected.match(actionResult)) {
+          ToastrWrapper.showError(actionResult.payload);
+        }
+      }
+    })();
   }, []);
 
   const { permission } = pagePermissionModel;

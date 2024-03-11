@@ -3,11 +3,10 @@ import store from '../app/store';
 
 const handleNewMessageIncome = (newMsgInfo: any, ticketInfo: any) => {
   const { chatBoard } = store.getState();
-  const { ticketDetail, isOpenPopup } = chatBoard;
+  const { ticketDetail } = chatBoard;
   const { ticketId } = ticketDetail;
 
   ticketId === newMsgInfo.ticketId &&
-    isOpenPopup &&
     store.dispatch(setNewMessageOnChatBoard(newMsgInfo));
 };
 

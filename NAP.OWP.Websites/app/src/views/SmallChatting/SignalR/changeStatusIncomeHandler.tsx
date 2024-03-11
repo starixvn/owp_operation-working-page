@@ -3,12 +3,11 @@ import store from '../app/store';
 
 const changeStatusIncomeHandler = (ticketInfo: any) => {
   const model = store.getState();
-  const { isOpenPopup, ticketDetail } = model.chatBoard;
+  const { ticketDetail } = model.chatBoard;
   const { ticketId, ticketStatus } = ticketInfo;
   const { ticketId: openTicketId } = ticketDetail;
 
-  isOpenPopup &&
-    openTicketId === ticketId &&
+  openTicketId === ticketId &&
     store.dispatch(setPopupTicketStatus(ticketStatus));
 };
 

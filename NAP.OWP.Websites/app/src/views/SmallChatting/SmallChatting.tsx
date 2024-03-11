@@ -18,7 +18,6 @@ const SmallChatting = () => {
   const eventType = searchParams.get('eventType');
   const ticketId = searchParams.get('ticketId');
   const { permission } = usePermission(FunctionKeys.TicketCenter, 'pagePolicy');
-  console.log(actorId, eventType, ticketId);
 
   useEffect(() => {
     (async () => {
@@ -29,6 +28,7 @@ const SmallChatting = () => {
         eventType
       };
       const actionResult = await dispatch(getTicketDetail(requestDetailModel));
+
       dispatch(getTicketSubTypes(actionResult.payload.data.ticketType));
       if (getTicketDetail.rejected.match(actionResult)) {
         ToastrWrapper.showError(actionResult.payload);
