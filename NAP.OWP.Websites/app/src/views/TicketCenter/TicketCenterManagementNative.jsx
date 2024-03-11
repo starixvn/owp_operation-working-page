@@ -13,6 +13,12 @@ import CreateTicketEventChecking from '../Shared/createTicketNew/CreateTicketEve
 import CreateTicketBoardOther from '../Shared/createTicketNew/CreateTicketBoardOther';
 import TicketLogWorkCreator from './../Shared/createTicketNew/TicketLogWork/TicketLogWorkCreator';
 import { post } from '../Shared/Service/Service';
+import store from './app/storeNative';
+import {
+  getTicketDetail,
+  getTicketSubTypes
+} from '../Shared/chatBoardNew/chatBoardThunkNative';
+import { onClickIssueModel } from './features/signalR/signalRSlice';
 
 const { INDIVIDUAL } = RECIPIENT_TYPE;
 const TicketCenterManagementNative = () => {
@@ -28,15 +34,16 @@ const TicketCenterManagementNative = () => {
   usePermission(FunctionKeys.DeleteTickets, 'deletePolicy');
 
   useEffect(() => {
-    (async () => {
+    const handleOpenTicketDetail = async () => {
       const model = {
         ticketId,
         actorId,
         eventType,
         url: openTicketCenterIssueURL
       };
-      ticketId && actorId && eventType && (await post(model));
-    })();
+      await post(model);
+    };
+    ticketId && actorId && eventType && handleOpenTicketDetail();
   }, []);
 
   const { permission } = pagePermissionModel;
