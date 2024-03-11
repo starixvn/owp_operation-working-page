@@ -13,25 +13,6 @@
 
 @import './base/_base.scss';
 
-@import './components/_dropdown.scss';
-@import './components/_forms.scss';
-@import './components/_tables.scss';
-@import './components/_toastify.scss';
-@import './components/reactDatepicker';
-@import './components/tabs';
-@import './components/sweetAlert';
-@import './components/reactSelect';
-
-@import './layout/_modal.scss';
-@import './layout/_header.scss';
-@import './layout/_sidebar.scss';
-@import './layout/_notification.scss';
-
-@import './vendors/searchHeader.css';
-@import './vendors/timepicker';
-
-@import '~fixed-data-table-2/dist/fixed-data-table.css';
-
 .app {
   display: flex;
   flex-direction: column;
