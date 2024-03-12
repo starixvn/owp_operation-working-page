@@ -669,7 +669,7 @@
   justify-content: space-between;
   margin-top: 10px;
   padding-right: 10px;
-
+  width: 40%;
   .mg-l {
     margin-left: 20px;
   }
@@ -1699,4 +1699,10 @@
   width: 80px;
   height: 80px;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 1220px) {
+  .ticket-type {
+    width: 100%;
+  }
 }

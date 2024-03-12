@@ -9,7 +9,7 @@ const SmallChattingWrapper = () => {
   return (
     <div>
       <Provider store={store}>
-        <SmallChatting></SmallChatting>
+        <SmallChatting />
         <SpinnerContainer />
         {useNotificationWrapper()}
         {useSignalRWrapper()}

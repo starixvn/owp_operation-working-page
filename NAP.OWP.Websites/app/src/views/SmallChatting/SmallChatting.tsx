@@ -10,6 +10,7 @@ import {
 } from '../Shared/chatBoardNew/chatBoardThunkNative';
 import { useEffect } from 'react';
 import ToastrWrapper from '../components/ToastrWrapper';
+import { setIsDisplayCloseButton } from '../Shared/chatBoardNew/chatBoardSlice';
 
 const SmallChatting = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +29,7 @@ const SmallChatting = () => {
         eventType
       };
       const actionResult = await dispatch(getTicketDetail(requestDetailModel));
-
+      dispatch(setIsDisplayCloseButton(false));
       dispatch(getTicketSubTypes(actionResult.payload.data.ticketType));
       if (getTicketDetail.rejected.match(actionResult)) {
         ToastrWrapper.showError(actionResult.payload);
