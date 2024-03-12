@@ -3106,6 +3106,10 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\user-management\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\user-management\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\user-management\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\user-management\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
