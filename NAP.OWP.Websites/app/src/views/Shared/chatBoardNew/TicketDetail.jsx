@@ -38,9 +38,10 @@ const TicketDetail = ({ policy = 'policy' }) => {
     ticketDetail,
     inputMessage,
     ticketSubTypeOptions,
-    modelQuoteMessage
+    modelQuoteMessage,
+    isDisplayCloseButton
   } = useSelector(state => state.chatBoard);
-  const { ticketId, isDisplayCloseButton } = ticketDetail;
+  const { ticketId } = ticketDetail;
   const { messageId } = modelQuoteMessage;
 
   const handleOnClickClosePopUp = () => {
