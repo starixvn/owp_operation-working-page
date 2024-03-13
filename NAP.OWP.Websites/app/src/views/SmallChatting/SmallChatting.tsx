@@ -11,6 +11,7 @@ import {
 import { useEffect } from 'react';
 import ToastrWrapper from '../components/ToastrWrapper';
 import { setIsDisplayCloseButton } from '../Shared/chatBoardNew/chatBoardSlice';
+import BlinkDocumentTitle from './BlinkDocumentTitle';
 
 const SmallChatting = () => {
   const dispatch = useAppDispatch();
@@ -44,6 +45,7 @@ const SmallChatting = () => {
   return (
     <div className='popup-ChatBoard'>
       <TicketDetailBoard />
+      <BlinkDocumentTitle />
     </div>
   );
 };

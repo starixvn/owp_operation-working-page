@@ -10,13 +10,13 @@ import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../../assets/svg-element/AttachFileIcon';
 import QuoteIcon from '../../../../assets/svg-element/QuoteIcon';
 import { formatTime } from '../../DateTime/dateTimeHelper';
-
+import { setIsBlinkTitle } from '../chatBoardSlice';
 const InputMessage = ({ handleSendFile, handleSendMessage }) => {
   const dispatch = useStableDispatch();
   const inputFileRef = createRef();
   const [textFieldValue, setTextFieldValue] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
-  const { inputMessage, modelQuoteMessage } = useSelector(
+  const { inputMessage, modelQuoteMessage, isBlinkTitle } = useSelector(
     state => state.chatBoard
   );
   const { message, messageId, username, createdDate } = modelQuoteMessage;
@@ -66,6 +66,9 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
     dispatch(setModelQuoteMessage({}));
   };
 
+  const handleOnfocus = () => {
+    isBlinkTitle && dispatch(setIsBlinkTitle(false));
+  };
   return (
     <div className='chat-box'>
       <div>
@@ -109,6 +112,7 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
           value={inputMessage}
           autoFocus
           multiline
+          onFocus={handleOnfocus}
           onPaste={handlePaste}
           maxRows={4}
           onKeyPress={handleOnKeyPress}

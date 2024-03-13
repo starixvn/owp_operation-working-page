@@ -49,7 +49,8 @@ const chatBoardSlice = createSlice({
     modelQuoteMessage: {},
     imagesLoaded: 0,
     isAllImagesLoaded: false,
-    isDisplayCloseButton: true
+    isDisplayCloseButton: true,
+    isBlinkTitle: false
   },
   reducers: {
     updateSubTypeTicketDetailByTicketId: {
@@ -120,6 +121,9 @@ const chatBoardSlice = createSlice({
     },
     setIsDisplayCloseButton: (state, { payload: data }) => {
       state.isDisplayCloseButton = data;
+    },
+    setIsBlinkTitle: (state, { payload: data }) => {
+      state.isBlinkTitle = data;
     }
   },
   extraReducers: builder => {
@@ -178,7 +182,8 @@ const {
   setNewMessage,
   setTicketStatus,
   updateSubTypeTicketDetailByTicketId,
-  setIsDisplayCloseButton
+  setIsDisplayCloseButton,
+  setIsBlinkTitle
 } = actions;
 
 export {
@@ -198,7 +203,8 @@ export {
   setNewMessage,
   setTicketStatus,
   updateSubTypeTicketDetailByTicketId,
-  setIsDisplayCloseButton
+  setIsDisplayCloseButton,
+  setIsBlinkTitle
 };
 
 export default reducer;
