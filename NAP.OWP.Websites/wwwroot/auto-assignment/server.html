@@ -26,16 +26,24 @@ Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
         if (Notification.permission !== 'granted')
           Notification.requestPermission();
       });
-      function pushNotification(messageContent) {
+      function pushNotification(message) {
         if (!Notification || Notification.permission !== 'granted') {
           return;
         }
+
+        var bodyContent = (message.messageContent.replaceAll('<b>', '')).replaceAll('</b>', '');
+
         var notification = new Notification('OWP Notification', {
           icon: '@baseHref' + 'favicon.ico',
-          body: messageContent
+          body: bodyContent
         });
         notification.onclick = () => {
-          window.open('@baseHref' + 'MessageBoxManagement');
+          if (message.ticketId) {
+            window.open('@baseHref' + 'MyTickets?actorId=' + message.userId + '&eventType=' + message.eventType + '&ticketId=' + message.ticketId + '',`ticket-center-${message.ticketId}`);
+          }
+          else {
+            window.open('@baseHref' + 'MessageBoxManagement');
+          }
         };
       }
     </script>
@@ -43,8 +51,8 @@ Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
     @Scripts.Render("~/scripts/common")
     <script src="~/Areas/Copy/copy.js"></script>
     <link href="~/Content/Themes/fonts/flags/flag-icon.css" rel="stylesheet" >
-    <script type="module" crossorigin src="/wwwroot/auto-assignment/assets/js/main-7950c3f8.js"></script>
-    <link rel="stylesheet" href="/wwwroot/auto-assignment/assets/ext/server-758d74ed.css">
+    <script type="module" crossorigin src="/wwwroot/auto-assignment/assets/js/main-de2b2fe3.js"></script>
+    <link rel="stylesheet" href="/wwwroot/auto-assignment/assets/ext/server-c9e85428.css">
   </head>
 
   <body>
