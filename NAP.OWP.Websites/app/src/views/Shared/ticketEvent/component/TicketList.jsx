@@ -55,7 +55,7 @@ const TicketList = props => {
       ),
       eventType: EVENT_TYPE.LIVE_INCIDENT
     };
-    if (event.ctrlKey) {
+    if (event.shiftKey) {
       openNewChattingTab(
         permission.ActorId,
         TicketId,
@@ -63,7 +63,6 @@ const TicketList = props => {
       );
       return;
     }
-
     stableDispatch(changeErrorRecipient(false));
     stableDispatch(closeCreatePopup());
     stableDispatch(onClickIssueModel(requestDetailModel));

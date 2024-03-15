@@ -91,7 +91,7 @@ class Notification extends Component {
   }
 
   async handleClickTicketCenterNotification(event, rest) {
-    if (event.ctrlKey) {
+    if (event.shiftKey) {
       openNewChattingTab(rest.actorId, rest.ticketId, rest.eventType);
       return;
     }

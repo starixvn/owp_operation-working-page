@@ -208,14 +208,11 @@ const formatNumberWithCommas = source =>
   source?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 const openNewChattingTab = (actorId, ticketId, eventType) =>
-  setTimeout(function () {
-    window.open(
-      `SmallChatting?actorId=${actorId}&eventType=${eventType}&ticketId=${ticketId}`,
-      `${ticketId}`,
-      `toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400`
-    );
-  }, 20);
-
+  window.open(
+    `SmallChatting?actorId=${actorId}&eventType=${eventType}&ticketId=${ticketId}`,
+    `${ticketId}`,
+    `toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400`
+  );
 const Utils = {
   rootUrl: getRootUrl(),
   resolveUrl,
