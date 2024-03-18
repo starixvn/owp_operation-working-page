@@ -58,7 +58,7 @@ const TicketListPopup = props => {
       detailSegmentUrl: getDetailSegmentUrlByEventType(EventType),
       eventType: EventType
     };
-    if (event.shiftKey) {
+    if (event.altKey) {
       openNewChattingTab(permission.ActorId, TicketId, EventType);
       return;
     }

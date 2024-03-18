@@ -102,7 +102,7 @@ const getConfigTicketsTab = containerWidth => {
       const { permission } = pagePolicy;
       const { ticketId, eventType, ticketType } =
         eventChecking.entities[rowIndex];
-      if (event.shiftKey) {
+      if (event.altKey) {
         openNewChattingTab(permission.ActorId, ticketId, eventType);
         return;
       }

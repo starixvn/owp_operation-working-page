@@ -55,7 +55,7 @@ const TicketList = props => {
       ),
       eventType: EVENT_TYPE.LIVE_INCIDENT
     };
-    if (event.shiftKey) {
+    if (event.altKey) {
       openNewChattingTab(
         permission.ActorId,
         TicketId,
