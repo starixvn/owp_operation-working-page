@@ -207,12 +207,16 @@ const filterDataTable = (data, filterState, callback) =>
 const formatNumberWithCommas = source =>
   source?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-const openNewChattingTab = (actorId, ticketId, eventType) =>
+const openNewChattingTab = (actorId, ticketId, eventType) => {
+  const top = window.screenY + (window.innerHeight - 700) / 2;
+  const left = window.screenX + (window.innerWidth - 500) / 2;
   window.open(
     `SmallChatting?actorId=${actorId}&eventType=${eventType}&ticketId=${ticketId}`,
     `${ticketId}`,
-    `toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400`
+    `toolbar=yes,scrollbars=yes,resizable=yes,top=${top},left=${left},width=500,height=700`
   );
+};
+
 const Utils = {
   rootUrl: getRootUrl(),
   resolveUrl,
