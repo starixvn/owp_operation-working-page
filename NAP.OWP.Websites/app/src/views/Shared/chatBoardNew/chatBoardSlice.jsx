@@ -48,7 +48,9 @@ const chatBoardSlice = createSlice({
     inputMessage: '',
     modelQuoteMessage: {},
     imagesLoaded: 0,
-    isAllImagesLoaded: false
+    isAllImagesLoaded: false,
+    isDisplayCloseButton: true,
+    isBlinkTitle: false
   },
   reducers: {
     updateSubTypeTicketDetailByTicketId: {
@@ -78,6 +80,7 @@ const chatBoardSlice = createSlice({
     openTicketPopup: {
       reducer: state => {
         state.isOpenTicket = true;
+        state.isDisplayCloseButton = true;
       }
     },
     closeTicketPopup: {
@@ -93,6 +96,7 @@ const chatBoardSlice = createSlice({
     openPopup: {
       reducer: state => {
         state.isOpenPopup = true;
+        state.isDisplayCloseButton = true;
         state.imagesLoaded = 0;
         state.isAllImagesLoaded = false;
       }
@@ -114,6 +118,12 @@ const chatBoardSlice = createSlice({
     },
     setTicketStatus: (state, { payload: data }) => {
       state.ticketDetail.ticketStatus = data;
+    },
+    setIsDisplayCloseButton: (state, { payload: data }) => {
+      state.isDisplayCloseButton = data;
+    },
+    setIsBlinkTitle: (state, { payload: data }) => {
+      state.isBlinkTitle = data;
     }
   },
   extraReducers: builder => {
@@ -171,7 +181,9 @@ const {
   setImagesLoaded,
   setNewMessage,
   setTicketStatus,
-  updateSubTypeTicketDetailByTicketId
+  updateSubTypeTicketDetailByTicketId,
+  setIsDisplayCloseButton,
+  setIsBlinkTitle
 } = actions;
 
 export {
@@ -190,7 +202,9 @@ export {
   setImagesLoaded,
   setNewMessage,
   setTicketStatus,
-  updateSubTypeTicketDetailByTicketId
+  updateSubTypeTicketDetailByTicketId,
+  setIsDisplayCloseButton,
+  setIsBlinkTitle
 };
 
 export default reducer;

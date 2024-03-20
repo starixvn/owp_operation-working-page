@@ -22,6 +22,7 @@ import {
 } from '../../TicketCenterPrematch/helper/helper';
 import TicketListPopupCommon from '../../ticketList/TicketListPopupCommon';
 import { getTicketList, setTicketList } from './ticketListSlice';
+import { openNewChattingTab } from '../../Utils';
 
 const propTypes = {
   dataSources: PropTypes.array,
@@ -44,7 +45,7 @@ const TicketList = props => {
   const { owpMatchId } = useSelector(state => state.signalREventTicket);
   const { permission } = useSelector(state => state.pagePolicy);
   const stableDispatch = useDispatch();
-  const handleOpenMessage = async ticket => {
+  const handleOpenMessage = async (event, ticket) => {
     const { TicketId } = ticket;
     const requestDetailModel = {
       ticketId: TicketId,
@@ -54,7 +55,14 @@ const TicketList = props => {
       ),
       eventType: EVENT_TYPE.LIVE_INCIDENT
     };
-
+    if (event.altKey) {
+      openNewChattingTab(
+        permission.ActorId,
+        TicketId,
+        EVENT_TYPE.LIVE_INCIDENT
+      );
+      return;
+    }
     stableDispatch(changeErrorRecipient(false));
     stableDispatch(closeCreatePopup());
     stableDispatch(onClickIssueModel(requestDetailModel));

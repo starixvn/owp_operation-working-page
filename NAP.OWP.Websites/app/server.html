@@ -37,16 +37,24 @@ Request.ApplicationPath; if (baseHref != "/") { baseHref = baseHref + "/"; } }
         if (Notification.permission !== 'granted')
           Notification.requestPermission();
       });
-      function pushNotification(messageContent) {
+      function pushNotification(message) {
         if (!Notification || Notification.permission !== 'granted') {
           return;
         }
+
+        var bodyContent = (message.messageContent.replaceAll('<b>', '')).replaceAll('</b>', '');
+
         var notification = new Notification('OWP Notification', {
           icon: '@baseHref' + 'favicon.ico',
-          body: messageContent
+          body: bodyContent
         });
         notification.onclick = () => {
-          window.open('@baseHref' + 'MessageBoxManagement');
+          if (message.ticketId) {
+            window.open('@baseHref' + 'MyTickets?actorId=' + message.userId + '&eventType=' + message.eventType + '&ticketId=' + message.ticketId + '',`ticket-center-${message.ticketId}`);
+          }
+          else {
+            window.open('@baseHref' + 'MessageBoxManagement');
+          }
         };
       }
     </script>

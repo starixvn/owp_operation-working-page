@@ -14,6 +14,7 @@ import {
   changeErrorRecipient
 } from '../../../Shared/createTicketNew/createTicketBoardSliceNew';
 import { onClickIssueModel } from '../signalR/signalRSlice';
+import { openNewChattingTab } from '../../../Shared/Utils';
 
 const DefaultTableStyle = {
   rowHeight: 70,
@@ -95,12 +96,16 @@ const getConfigTicketsTab = containerWidth => {
     dynamicCell: DynamicCell,
     sortFunc: sort,
     tableWidth: bonusWidth,
-    onRowClick: async rowIndex => {
+    onRowClick: async (event, rowIndex) => {
       const { pagePolicy, eventChecking } = store.getState();
       const { dispatch } = store;
       const { permission } = pagePolicy;
       const { ticketId, eventType, ticketType } =
         eventChecking.entities[rowIndex];
+      if (event.altKey) {
+        openNewChattingTab(permission.ActorId, ticketId, eventType);
+        return;
+      }
       const requestDetailModel = {
         ticketId,
         actorId: permission.ActorId,

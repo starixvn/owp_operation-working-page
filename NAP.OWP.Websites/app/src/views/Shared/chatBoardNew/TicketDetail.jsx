@@ -38,7 +38,8 @@ const TicketDetail = ({ policy = 'policy' }) => {
     ticketDetail,
     inputMessage,
     ticketSubTypeOptions,
-    modelQuoteMessage
+    modelQuoteMessage,
+    isDisplayCloseButton
   } = useSelector(state => state.chatBoard);
   const { ticketId } = ticketDetail;
   const { messageId } = modelQuoteMessage;
@@ -177,7 +178,7 @@ const TicketDetail = ({ policy = 'policy' }) => {
     <div className='chat-board-popup'>
       <DragAndDrop onDrop={handleSendFile}>
         <div className='chatBoard-Header'>
-          {renderCloseBtn()}
+          {isDisplayCloseButton && renderCloseBtn()}
           <div className='ticket-header'>
             <TicketDetailHeader {...ticketDetail} />
           </div>

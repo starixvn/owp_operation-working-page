@@ -3,12 +3,19 @@
         return;
     }
 
+    var bodyContent = (notificationContent.messageContent.replaceAll('<b>', '')).replaceAll('</b>', '');
+
     var notification = new window.Notification('OWP Notification', {
-        icon: '@Url.Content("~/favicon.ico")',
-        body: notificationContent,
+        icon: '' + $('#RootURL').val() + 'favicon.ico',
+        body: bodyContent,
     });
     notification.onclick = function () {
-        window.open('@Url.Content("~/MessageBoxManagement")');
+        if (notificationContent.ticketId) {
+            window.open($('#RootURL').val() + 'MyTickets?actorId=' + notificationContent.userId + '&eventType=' + notificationContent.eventType + '&ticketId=' + notificationContent.ticketId + '', 'ticket-center-' + message.ticketId + '');
+        }
+        else {
+            window.open($('#RootURL').val() + 'MessageBoxManagement');
+        }
     };
 
 };

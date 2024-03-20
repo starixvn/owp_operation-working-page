@@ -31,6 +31,7 @@ import { post } from '../Shared/Service/Service';
 import { configSignalR } from '../Shared/NetCoreSignalR/NetCoreSignalRService';
 import { isEqual } from 'lodash';
 import { isEquals } from 'immutability-helper';
+import { openNewChattingTab } from '../Shared/Utils';
 
 const $ = window.jQuery;
 const classNameToast = 'Toastify__toast--blink';
@@ -89,7 +90,11 @@ class Notification extends Component {
     await post(model);
   }
 
-  async handleClickTicketCenterNotification(rest) {
+  async handleClickTicketCenterNotification(event, rest) {
+    if (event.altKey) {
+      openNewChattingTab(rest.actorId, rest.ticketId, rest.eventType);
+      return;
+    }
     const model = {
       ...rest,
       url: openTicketCenterIssueURL
@@ -111,8 +116,8 @@ class Notification extends Component {
     toast.success(content, {
       autoClose: false,
       closeOnClick: true,
-      onClick: () =>
-        this.handleClickTicketCenterNotification({
+      onClick: event =>
+        this.handleClickTicketCenterNotification(event, {
           actorId: UserId,
           ticketId,
           eventType
@@ -222,7 +227,7 @@ class Notification extends Component {
         if (!message.IsImportant) {
           return;
         }
-        window.pushNotification(message.MessageContent);
+        window.pushNotification(message);
         const messageContent = MessageService.customizeContent(message);
         const notificationContent = this.renderToastContent(messageContent);
 
@@ -450,12 +455,7 @@ class Notification extends Component {
 
           const isDevelopment = isEquals(process.env.NODE_ENV, 'development');
 
-          const windowNotificationMessageContent = messageContent
-            .replaceAll('<b>', '')
-            .replaceAll('</b>', '');
-
-          !isDevelopment &&
-            window.pushNotification(windowNotificationMessageContent);
+          !isDevelopment && window.pushNotification(data.message);
 
           let formattedMessageContent = MessageService.customizeOSContent(
             messageType,

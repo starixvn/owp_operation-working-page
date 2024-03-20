@@ -354,5 +354,14 @@ namespace NAP.OWP.Websites.Controllers
             await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/user-management/server.cshtml");
         }
+
+        [Route("SmallChatting")]
+        [NapAuth(FunctionKey = FunctionKeys.MyTickets, Policy = Constant.Policy.Read)]
+        public async Task<ActionResult> SmallChatting()
+        {
+            var functionName = ConfigurationManager.AppSettings["SmallChatting"];
+            await accessCounter.UpdateCounter(functionName);
+            return View("~/wwwroot/small-chatting/server.cshtml");
+        }
     }
 }

@@ -26,8 +26,7 @@
 
             if (message.isImportant) {
                 const isBlink = message.isBlinking;
-                const windowNotificationMessageContent = (message.messageContent.replaceAll('<b>', '')).replaceAll('</b>', '');
-                pushNotification(windowNotificationMessageContent);
+                pushNotification(message);
 
                 var messageContent = messageBox.RenderOSAssigneeMessageContent(message.messageType, message.messageContent);
                 messageContent = messageBox.RenderPrematchNotification(message.messageType, messageContent);

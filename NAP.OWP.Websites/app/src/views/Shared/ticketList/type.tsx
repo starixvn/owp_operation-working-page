@@ -11,7 +11,10 @@ type TPopup = {
   HasWrite: boolean;
   ticketList: Array<TticketList> | null;
   handleOpenCreateTicket: () => void;
-  handleOpenMessage(T: TticketList): void;
+  handleOpenMessage(
+    event: React.ChangeEvent<HTMLTableRowElement>,
+    T: TticketList
+  ): void;
   onCloseTicketList: () => void;
 };
 

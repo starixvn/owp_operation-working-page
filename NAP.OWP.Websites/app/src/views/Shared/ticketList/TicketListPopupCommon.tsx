@@ -51,7 +51,7 @@ const TicketListPopupCommon = (props: TPopup) => {
           {ticketList?.map((x, index) => (
             <tr
               key={`${x.TicketId}-${index}`}
-              onClick={() => handleOpenMessage(x)}>
+              onClick={e => handleOpenMessage(e, x)}>
               <td>
                 <MessageTextOutlineIcon
                   className={color(x.IsRead)}
