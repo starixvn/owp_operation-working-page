@@ -301,6 +301,12 @@ namespace NAP.OWP.Websites.Controllers
             return View("~/wwwroot/event-picking/server.cshtml");
         }
 
+        [Route("")]
+        public ActionResult WelcomeOWP()
+        {
+            return View("~/wwwroot/welcome/server.cshtml");
+        }
+
         [Route("TaskListNew")]
         [NapAuth(FunctionKey = FunctionKeys.OWPEventManagement, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> TaskList()
@@ -318,7 +324,6 @@ namespace NAP.OWP.Websites.Controllers
             await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/provider-arrangement/server.cshtml");
         }
-
 
         [Route("AssigneeSuggestionList")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
