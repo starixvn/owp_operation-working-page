@@ -118,7 +118,7 @@ export const MatchCell = props => {
           />
         )}
       </div>
-      {adminsiteMatchId && (
+      {adminsiteMatchId && tradingLinkItem[sport] && (
         <Button className='button-link-trader' onClick={handleOpenTraderPageOS}>
           <span className='icon-link'></span>
         </Button>

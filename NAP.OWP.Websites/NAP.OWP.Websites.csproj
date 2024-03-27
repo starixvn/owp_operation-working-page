@@ -2871,15 +2871,15 @@
     <Content Include="wwwroot\other-sport\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\other-sport\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\other-sport\assets\ext\server-2e6ac61f.css" />
-    <Content Include="wwwroot\other-sport\assets\js\FileLoader-94b57591.js" />
-    <Content Include="wwwroot\other-sport\assets\js\main-16ef0161.js" />
-    <Content Include="wwwroot\other-sport\assets\js\StepControl-4b6bb684.js" />
-    <Content Include="wwwroot\other-sport\assets\js\Validation-f38049a5.js" />
-    <Content Include="wwwroot\other-sport\assets\js\ValidationError-7e066f4d.js" />
-    <Content Include="wwwroot\other-sport\assets\js\ValidationSuccess-ca9adc7a.js" />
-    <Content Include="wwwroot\other-sport\assets\js\Wizard-405189b0.js" />
-    <Content Include="wwwroot\other-sport\assets\js\WizardWrapper-9d271ddc.js" />
+    <Content Include="wwwroot\other-sport\assets\ext\server-1d80ac21.css" />
+    <Content Include="wwwroot\other-sport\assets\js\FileLoader-da22b8b0.js" />
+    <Content Include="wwwroot\other-sport\assets\js\main-52df9ff5.js" />
+    <Content Include="wwwroot\other-sport\assets\js\StepControl-aeb8d1c5.js" />
+    <Content Include="wwwroot\other-sport\assets\js\Validation-1e0b28d1.js" />
+    <Content Include="wwwroot\other-sport\assets\js\ValidationError-4e63916f.js" />
+    <Content Include="wwwroot\other-sport\assets\js\ValidationSuccess-db10cf71.js" />
+    <Content Include="wwwroot\other-sport\assets\js\Wizard-adce52eb.js" />
+    <Content Include="wwwroot\other-sport\assets\js\WizardWrapper-af7aed36.js" />
     <Content Include="wwwroot\other-sport\favicon.ico" />
     <Content Include="wwwroot\other-sport\server.html" />
     <Content Include="wwwroot\overtime-report\assets\ext\icon-feedback-57264197.svg" />
@@ -3072,10 +3072,6 @@
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\os-league-setting\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\os-league-setting\server.cshtml" />
-    <Content Include="wwwroot\other-sport\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\other-sport\server.cshtml" />
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\overtime-report\assets\ext\OWP-a7443744.ttf" />
@@ -3121,6 +3117,10 @@
     <Content Include="wwwroot\user-management\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\user-management\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\user-management\server.cshtml" />
+    <Content Include="wwwroot\other-sport\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\other-sport\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
