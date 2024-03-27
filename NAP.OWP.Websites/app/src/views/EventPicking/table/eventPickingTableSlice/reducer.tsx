@@ -5,13 +5,14 @@ import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
 import updateConfirmedThunk from '../updateConfirmedThunkNative';
 import {
   updateNoOfferMatch,
-  updateConfirmedMatch
+  updateConfirmedMatch,
+  buildKoOptions,
+  buildMbOptions
 } from '../../helper/reducerHelper';
 import {
   TTableSlice,
   TFilterState,
-  FilterAllColumn,
-  ISortState
+  FilterAllColumn
 } from '../../types/dataTableType';
 import {
   addOrReplaceFilterState,
@@ -19,7 +20,6 @@ import {
   pushOrUpdateObject
 } from '../../../Shared/Utils';
 import filterByKeyword from '../filterByKeyword';
-import { sortData } from '../EventPickingTableHelper';
 
 const EventPickingTableSlice = createSlice({
   name: 'EventPickingTableSlice',
@@ -32,10 +32,10 @@ const EventPickingTableSlice = createSlice({
     columnKeyFilterCurrent: '',
     filterState: [] as TFilterState[],
     loading: REQUEST_STATUS.idle,
-    sortState: {
-      columnKeySelected: '',
-      orderType: ''
-    } as ISortState
+    multipleFilter: {
+      koTimeOptions: [],
+      mbOptions: [],
+    }
   } as TTableSlice,
   reducers: {
     setColumnKeyValue: (state, action) => {
@@ -101,8 +101,8 @@ const EventPickingTableSlice = createSlice({
           state.filterState,
           filterByKeyword
         );
-        const { orderType, columnKeySelected } = state.sortState;
-        state.entities = sortData(orderType, state.entities, columnKeySelected);
+        state.multipleFilter.koTimeOptions = buildKoOptions(state.entities);
+        state.multipleFilter.mbOptions = buildMbOptions(state.entities);
         if (state.entities.length) {
           state.isConfirmAll = state.entities.every(x => x.isCheck);
           state.isNoOfferAll = state.entities.every(x => x.isNoOffer);

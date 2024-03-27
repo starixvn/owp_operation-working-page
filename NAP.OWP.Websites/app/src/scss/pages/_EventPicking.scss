@@ -29,6 +29,56 @@ input[type='checkbox'] {
 }
 
 // --------------- Multiselect ------------------ //
+.filter-popup .rmsc.multi-select {
+  .dropdown-heading {
+    display: none;
+  }
+
+  .dropdown-content {
+    max-height: 400px !important;
+    padding-top: 0;
+    position: static !important;
+    .panel-content {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  //input field
+  .dropdown-container {
+    height: 28px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid #e1e1e1 !important;
+    border-radius: 0 !important;
+
+    &:focus,
+    &:focus-within {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .select-item {
+    &:focus {
+      background-color: transparent;
+    }
+
+    &.selected,
+    &:hover {
+      background-color: rgb(235, 245, 255);
+    }
+
+    .item-renderer {
+      input[type='checkbox'] + span {
+        &:after {
+          left: 6px;
+          top: 2px;
+        }
+      }
+    }
+  }
+}
 .filter-control .rmsc.multi-select {
   .dropdown-heading {
     .dropdown-heading-dropdown-arrow {
@@ -36,7 +86,6 @@ input[type='checkbox'] {
     }
 
     &:after {
-      position: absolute;
       top: 50%;
       margin-top: -2px;
       right: 0;

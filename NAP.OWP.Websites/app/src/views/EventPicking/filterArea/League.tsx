@@ -41,6 +41,7 @@ const League = () => {
             selectAll: '-- Select All --',
             allItemsAreSelected: 'All'
           }}
+
         />
       </div>
     </div>

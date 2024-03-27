@@ -1,7 +1,8 @@
+import { formatTime } from "../../Shared/DateTime/dateTimeHelper";
 import { TConfirmed } from "../types/confirmed";
 import TDataTable from "../types/dataTableType";
 import { TNoOfferMatch } from "../types/noOfferMatchType";
-
+import { uniqBy } from 'lodash';
 const updateNoOfferMatch = (entities: TDataTable[], noOfferMatch: TNoOfferMatch[]) => {
   entities.forEach(element => {
     const noOfferMatchTarget = noOfferMatch.find(
@@ -27,7 +28,25 @@ const updateConfirmedMatch = (entities: TDataTable[], confirmInfo: TConfirmed) =
   });
 };
 
+const buildKoOptions = (entities: TDataTable[]) =>
+  uniqBy(
+    entities.map(m => formatTime(m.eventDateTime, 'minute', 'hh:mm A'))
+      .map((o, index) => ({
+        value: index,
+        label: o ?? ''
+      })), i => i.label);
+
+const buildMbOptions = (entities: TDataTable[]) => uniqBy(
+  [...entities].sort((first, second) => first.maxBetHDPNumber - second.maxBetHDPNumber)
+    .map(m => m.maxBetHDP)
+    .map((o, index) => ({
+      value: index,
+      label: o ?? ''
+    })), i => i.label);
+
 export {
   updateNoOfferMatch,
-  updateConfirmedMatch
+  updateConfirmedMatch,
+  buildKoOptions,
+  buildMbOptions
 };

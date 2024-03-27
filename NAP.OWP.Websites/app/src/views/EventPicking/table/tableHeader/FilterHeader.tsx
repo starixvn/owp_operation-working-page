@@ -27,16 +27,14 @@ const FilterHeader = ({ columnKey }: FilterHeaderProps) => {
   const handleValueFilterCallback = (columnHaveBeenFiltered: TFilterState) =>
     dispatch(setValueFilter(columnHaveBeenFiltered));
   return (
-    <>
-      <FilterHeaderCommon
-        columnKey={columnKey}
-        model={model}
-        handleClickFilterCallback={handleClickFilterCallback}
-        handleClearFilterCallback={handleClearFilterCallback}
-        handleFilterBySearchKeyCallback={handleFilterBySearchKeyCallback}
-        handleValueFilterCallback={handleValueFilterCallback}
-      />
-    </>
+    <FilterHeaderCommon
+      columnKey={columnKey}
+      model={model}
+      handleClickFilterCallback={handleClickFilterCallback}
+      handleClearFilterCallback={handleClearFilterCallback}
+      handleFilterBySearchKeyCallback={handleFilterBySearchKeyCallback}
+      handleValueFilterCallback={handleValueFilterCallback}
+    />
   );
 };
 

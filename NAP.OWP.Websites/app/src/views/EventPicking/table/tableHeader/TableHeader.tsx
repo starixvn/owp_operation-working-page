@@ -4,8 +4,8 @@ import {
 } from '../TableSchema.json';
 import FilterHeader from './FilterHeader';
 import CheckboxHeader from './CheckboxHeader';
-import SortHeader from './SortHeader';
 import store from '../../app/store';
+import MultipleFilterHeader from './MultipleFilterHeader';
 
 const TableHeader = () => {
   const {
@@ -28,6 +28,7 @@ const TableHeader = () => {
             <div className='header-table'>
               <span>{item.headerName}</span>
               {item?.isFilter && <FilterHeader columnKey={item.columnKey} />}
+              {item?.isFilterMultiple && <MultipleFilterHeader columnKey={item.columnKey} />}
             </div>
             {item?.isCheckBox && (
               <CheckboxHeader

@@ -1,15 +1,18 @@
+import { Option } from "../../Shared/MultipleSelection/type";
+
 type TDataTable = {
   tV: string;
   ipTv: string;
   channel: string;
   wb: string;
-  eventDateTime: Date;
+  eventDateTime: Required<Date>;
   leagueName: string;
   matchOffer: string;
   noHDP: string;
   homeName: string;
   awayName: string;
-  maxBetHDP: number;
+  maxBetHDP: string;
+  maxBetHDPNumber: number;
   isNoOffer: boolean;
   infoSiteMatchId: number;
   isChildMatch: boolean;
@@ -54,7 +57,10 @@ type TTableSlice = {
   valueFilterAllColumn: FilterAllColumn;
   columnKeyFilterCurrent: string;
   filterState: Array<TFilterState>;
-  sortState: ISortState;
+  multipleFilter: {
+    koTimeOptions: Option[],
+    mbOptions: Option[],
+  }
   loading: string;
 };
 
@@ -75,17 +81,11 @@ type TPermission = {
   SiteId: number;
 };
 
-interface ISortState {
-  columnKeySelected: Required<string>;
-  orderType: string;
-}
-
 export default TDataTable;
 export {
   TTurnOverInfo,
   TTableSlice,
   TFilterState,
   FilterAllColumn,
-  TPermission,
-  ISortState
+  TPermission
 };
