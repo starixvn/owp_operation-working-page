@@ -87,11 +87,18 @@ const MultipleFilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupPr
           isOpen
 
         />
-        <Button
-          className='btn-search'
-          onClick={handleOnSearchFilter}>
-          Search
-        </Button>
+        <div className='command'>
+          <button
+            className='btn-cancel btn btn btn-secondary'
+            onClick={handleOnSearchFilter}>
+            Search
+          </button>
+          <Button
+            className='btn-search'
+            onClick={handleOnSearchFilter}>
+            Search
+          </Button>
+        </div>
       </div>
     );
   }
