@@ -1,14 +1,11 @@
 import {
-  clearFilter,
-  filterBySearchKey,
   setColumnKeyValue,
-  setValueFilter
 } from '../eventPickingTableSlice/reducer';
 import { useAppDispatch } from '../../app/hooks';
-import { useSelector } from 'react-redux';
-import store, { RootState } from '../../app/store';
 import MultipleFilterHeaderCommon from '../../../Shared/tableCommon/MultipleFilterHeader';
-import { TFilterState } from '../../../Shared/tableCommon/typeCommon';
+
+import { Option } from '../../../Shared/MultipleSelection/type';
+import store from '../../app/store';
 
 type FilterHeaderProps = {
   columnKey: string
@@ -17,36 +14,25 @@ type FilterHeaderProps = {
 const MultipleFilterHeader = ({
   columnKey }: FilterHeaderProps) => {
   const dispatch = useAppDispatch();
-  const model = useSelector((state: RootState) => state.eventPickingTable);
+
   const {
     eventPickingTable: {
-      multipleFilter: {
-        mbOptions,
-        koTimeOptions
-      }
+      multipleFilter
     }
   } = store.getState();
 
-  const handleClickFilterCallback = (value: string) => {
-    dispatch(setColumnKeyValue(value));
+  const handleFilter = (selected: Option[]) => {
+    //dispatch(setColumnKeyValue(value));
   };
-  const handleClearFilterCallback = () => dispatch(clearFilter());
-  const handleFilterBySearchKeyCallback = (filterState: TFilterState) =>
-    dispatch(filterBySearchKey(filterState));
-  const handleValueFilterCallback = (columnHaveBeenFiltered: TFilterState) =>
-    dispatch(setValueFilter(columnHaveBeenFiltered));
+
+  const filterInfo = multipleFilter.find(i => i.columnKey === columnKey);
   return (
     <MultipleFilterHeaderCommon
-      options={{
-        'KO Time': koTimeOptions,
-        'MB': mbOptions,
-      }[columnKey] || []}
+      options={filterInfo?.options || []}
       columnKey={columnKey}
-      model={model}
-      handleClickFilterCallback={handleClickFilterCallback}
-      handleClearFilterCallback={handleClearFilterCallback}
-      handleFilterBySearchKeyCallback={handleFilterBySearchKeyCallback}
-      handleValueFilterCallback={handleValueFilterCallback}
+      selected={filterInfo?.selected || []}
+      isFilter={filterInfo?.isFilter || false}
+      onFilter={handleFilter}
     />
   );
 };

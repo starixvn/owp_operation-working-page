@@ -1,59 +1,29 @@
-import { isEqual } from 'lodash';
+import { useState } from 'react';
 import { CloseIcon } from 'mdi-react';
 import { Button } from 'reactstrap';
-import { TFilterState } from './typeCommon';
+import { MultipleFilterPopupProps } from './typeCommon';
 import { MultiSelect } from 'react-multi-select-component';
-import { Option } from '../MultipleSelection/type';
-
-type FilterPopupProps = {
-  columnKey: string;
-  model: any;
-  options: Option[]
-  handleClosedPopup: () => void;
-  handleClearFilterCallback: () => void;
-  handleFilterBySearchKeyCallback: (filterState: TFilterState) => void;
-  handleValueFilterCallback: (filterState: TFilterState) => void;
-};
 
 const MultipleFilterHeaderPopupCommon = (
   (
     {
-      model,
       options,
-      columnKey,
-      handleClosedPopup,
-      handleClearFilterCallback,
-      handleFilterBySearchKeyCallback,
-      handleValueFilterCallback
-    }: FilterPopupProps
+      selected,
+      onClosedPopup,
+      onFilter
+    }: MultipleFilterPopupProps
   ) => {
-    const { columnKeyFilterCurrent, valueFilterAllColumn } = model;
-    //const filterValue = valueFilterAllColumn[columnKey] ?? '';
-
-    const handleClearAllFilter = () => {
-      handleClosedPopup();
-      handleClearFilterCallback();
-    };
-    const handleOnSearchFilter = () => {
-      /* const filterState = {
-        columnKey,
-        keyword: filterValue
-      };
-      handleFilterBySearchKeyCallback(filterState); */
-    };
+    const [value, setValue] = useState(selected);
 
     return (
       <div
-        className={`filter-popup is-show ${isEqual(columnKey, columnKeyFilterCurrent)
-          ? ''
-          : 'is-hide-another-popup'
-          }`}>
-        <span className='close-popup' onClick={() => onClickClosedIcon()}>
+        className='filter-popup is-show'>
+        <span className='close-popup' onClick={onClosedPopup}>
           <CloseIcon size={14} />
         </span>
         <MultiSelect
-          onChange={() => { }}
-          value={options}
+          onChange={setValue}
+          value={value}
           options={options}
           ClearSelectedIcon={null}
           className='multi-select'
@@ -64,17 +34,16 @@ const MultipleFilterHeaderPopupCommon = (
             allItemsAreSelected: 'All'
           }}
           isOpen
-
         />
         <div className='command'>
           <button
             className='btn-cancel btn btn btn-secondary'
-            onClick={handleOnSearchFilter}>
+            onClick={onClosedPopup}>
             Cancel
           </button>
           <Button
             className='btn-search'
-            onClick={handleOnSearchFilter}>
+            onClick={() => onFilter(value)}>
             Search
           </Button>
         </div>

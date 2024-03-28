@@ -1,15 +1,22 @@
 import { FilterIcon } from 'mdi-react';
 import { useState } from 'react';
-import { TFilterHeaderProps } from './typeCommon';
+import { MultipleFilterHeaderProps } from './typeCommon';
 import MultipleFilterHeaderPopupCommon from './MultipleFilterHeaderPopupCommon';
 import useClickOutside from '../customHook/useClickOutside';
+import { isEquals } from 'immutability-helper';
 
-const MultipleFilterHeader = ({ columnKey, options }: TFilterHeaderProps) => {
+const MultipleFilterHeader = ({
+  columnKey,
+  options,
+  selected,
+  isFilter,
+  onFilter
+}: MultipleFilterHeaderProps) => {
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const handleClickFilter = (value: string) => {
     //handleClickFilterCallback(value);
-    setIsOpenFilter(true);
+
   };
 
   /* const checkIsFiltered = () =>
@@ -17,32 +24,28 @@ const MultipleFilterHeader = ({ columnKey, options }: TFilterHeaderProps) => {
       return x.columnKey === columnKey;
     }); */
 
-  const handleClosedPopup = () => {
-    setIsOpenFilter(false);
-  };
 
   const filterRef = useClickOutside<HTMLDivElement>(() => setIsOpenFilter(false));
 
   const handleClearFilterCallback = () => { };
   const handleFilterBySearchKeyCallback = () => { };
   const handleValueFilterCallback = () => { };
+
+  const className = isEquals(columnKey)
   return (
     <div className='filter-header'>
       <span
-        className={`icon-filter ${true ? 'is-filter' : ''}`}
-        onClick={() => handleClickFilter(columnKey)}>
+        className={`icon-filter ${isFilter ? 'is-filter' : ''}`}
+        onClick={() => setIsOpenFilter(true)}>
         <FilterIcon size={14} />
       </span>
       {isOpenFilter && (
-        <div className='abc' ref={filterRef}>
+        <div ref={filterRef}>
           <MultipleFilterHeaderPopupCommon
-            model={{}}
             options={options}
-            handleClosedPopup={handleClosedPopup}
-            columnKey={columnKey}
-            handleClearFilterCallback={handleClearFilterCallback}
-            handleFilterBySearchKeyCallback={handleFilterBySearchKeyCallback}
-            handleValueFilterCallback={handleValueFilterCallback}
+            selected={options}
+            onClosedPopup={() => setIsOpenFilter(false)}
+            onFilter={onFilter}
           />
         </div>
       )}

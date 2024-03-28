@@ -1,4 +1,8 @@
 {
+  "COLUMN_KEY": {
+    "KO_TIME": "KO Time",
+    "MB": "MB"
+  },
   "TABLE_HEADER": [
     {
       "headerName": "No #",

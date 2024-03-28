@@ -15,4 +15,16 @@ type TFilterHeaderProps = {
   handleValueFilterCallback: (filterState: TFilterState) => void;
 };
 
-export { TFilterState, TFilterHeaderProps };
+type MultipleFilterHeaderProps = {
+  columnKey: string
+  options: Option[];
+  selected: Option[];
+  isFilter: boolean;
+  onFilter: (selected: Option[]) => void;
+};
+
+type MultipleFilterPopupProps = Omit<MultipleFilterHeaderProps, 'columnKey'> & {
+  onClosedPopup: () => void;
+};
+
+export { TFilterState, TFilterHeaderProps, MultipleFilterPopupProps, MultipleFilterHeaderProps };

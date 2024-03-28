@@ -49,6 +49,13 @@ type MarginInfo = {
   color: string;
 };
 
+type TMultipleFilter = Array<{
+  isFilter: boolean;
+  columnKey: string;
+  selected: Option[];
+  options: Option[],
+}>;
+
 type TTableSlice = {
   entities: Array<TDataTable>;
   entitiesOriginal: Array<TDataTable>;
@@ -57,10 +64,7 @@ type TTableSlice = {
   valueFilterAllColumn: FilterAllColumn;
   columnKeyFilterCurrent: string;
   filterState: Array<TFilterState>;
-  multipleFilter: {
-    koTimeOptions: Option[],
-    mbOptions: Option[],
-  }
+  multipleFilter: TMultipleFilter;
   loading: string;
 };
 
@@ -87,5 +91,6 @@ export {
   TTableSlice,
   TFilterState,
   FilterAllColumn,
-  TPermission
+  TPermission,
+  TMultipleFilter
 };

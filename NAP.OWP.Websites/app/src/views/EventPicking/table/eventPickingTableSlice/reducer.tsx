@@ -7,7 +7,8 @@ import {
   updateNoOfferMatch,
   updateConfirmedMatch,
   buildKoOptions,
-  buildMbOptions
+  buildMbOptions,
+  buildMultipleFilterDefault
 } from '../../helper/reducerHelper';
 import {
   TTableSlice,
@@ -20,6 +21,8 @@ import {
   pushOrUpdateObject
 } from '../../../Shared/Utils';
 import filterByKeyword from '../filterByKeyword';
+import { COLUMN_KEY } from '../TableSchema.json';
+
 
 const EventPickingTableSlice = createSlice({
   name: 'EventPickingTableSlice',
@@ -32,10 +35,7 @@ const EventPickingTableSlice = createSlice({
     columnKeyFilterCurrent: '',
     filterState: [] as TFilterState[],
     loading: REQUEST_STATUS.idle,
-    multipleFilter: {
-      koTimeOptions: [],
-      mbOptions: [],
-    }
+    multipleFilter: [],
   } as TTableSlice,
   reducers: {
     setColumnKeyValue: (state, action) => {
@@ -101,8 +101,8 @@ const EventPickingTableSlice = createSlice({
           state.filterState,
           filterByKeyword
         );
-        state.multipleFilter.koTimeOptions = buildKoOptions(state.entities);
-        state.multipleFilter.mbOptions = buildMbOptions(state.entities);
+
+        state.multipleFilter.push(...buildMultipleFilterDefault(state.entities));
         if (state.entities.length) {
           state.isConfirmAll = state.entities.every(x => x.isCheck);
           state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
