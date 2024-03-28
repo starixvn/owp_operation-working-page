@@ -1,5 +1,10 @@
-import { post } from '../../Shared/Service/Service';
-import { rootUrl, updateOfferLive, netFw } from '../otherSport.json';
+import { post, get } from '../../Shared/Service/Service';
+import {
+  rootUrl,
+  updateOfferLive,
+  netFw,
+  getAdminSiteLeagueId
+} from '../otherSport.json';
 const saveEditOfferLive = async rest => {
   const url =
     process.env.NODE_ENV === 'development'
@@ -13,4 +18,13 @@ const saveEditOfferLive = async rest => {
   return res.status;
 };
 
-export { saveEditOfferLive };
+const getLeagueIdFromAdminSite = async adminSiteMatchId => {
+  const url =
+    process.env.NODE_ENV === 'development'
+      ? `${rootUrl}/${getAdminSiteLeagueId}`
+      : `${window.netCoreRootUrl}/${netFw}/${getAdminSiteLeagueId}`;
+  const res = await get({ url, adminSiteMatchId });
+  return res.data;
+};
+
+export { saveEditOfferLive, getLeagueIdFromAdminSite };

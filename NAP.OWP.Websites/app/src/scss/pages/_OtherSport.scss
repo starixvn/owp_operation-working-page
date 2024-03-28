@@ -1251,6 +1251,35 @@
   font-size: 15px;
 }
 
+// link trader page
+.button-link-trader {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  position: absolute;
+  right: 24px;
+  bottom: 7px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: transparent !important;
+    border: 0 !important;
+    outline: none;
+    box-shadow: none !important;
+  }
+
+  .icon-link {
+    font-size: 20px;
+    margin: 0;
+    display: block;
+    transform: rotate(-45deg);
+    color: #1e88e5;
+  }
+}
+
 .copy-info {
   display: flex;
   justify-content: flex-end;
