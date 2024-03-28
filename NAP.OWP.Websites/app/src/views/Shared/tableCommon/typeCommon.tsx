@@ -16,14 +16,16 @@ type TFilterHeaderProps = {
 };
 
 type MultipleFilterHeaderProps = {
-  columnKey: string
-  options: Option[];
-  selected: Option[];
-  isFilter: boolean;
+  options?: Option[];
+  selected?: Option[];
+  isFilter?: boolean;
+  setOptions?: () => Option[],
+  setSelected?: () => Option[],
+  setIsFilter?: () => boolean,
   onFilter: (selected: Option[]) => void;
 };
 
-type MultipleFilterPopupProps = Omit<MultipleFilterHeaderProps, 'columnKey'> & {
+type MultipleFilterPopupProps = Omit<MultipleFilterHeaderProps, 'columnKey' | 'isFilter' | 'getOptions'> & {
   onClosedPopup: () => void;
 };
 

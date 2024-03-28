@@ -1,38 +1,30 @@
 import {
-  setColumnKeyValue,
+  setMultipleFilter,
 } from '../eventPickingTableSlice/reducer';
 import { useAppDispatch } from '../../app/hooks';
 import MultipleFilterHeaderCommon from '../../../Shared/tableCommon/MultipleFilterHeader';
-
-import { Option } from '../../../Shared/MultipleSelection/type';
 import store from '../../app/store';
+import { TColumnKey } from '../../types/dataTableType';
 
 type FilterHeaderProps = {
-  columnKey: string
+  columnKey: TColumnKey
 };
 
 const MultipleFilterHeader = ({
   columnKey }: FilterHeaderProps) => {
   const dispatch = useAppDispatch();
 
-  const {
-    eventPickingTable: {
-      multipleFilter
-    }
-  } = store.getState();
+  const getFilterInfo = () => store.getState().eventPickingTable.multipleFilter;
 
-  const handleFilter = (selected: Option[]) => {
-    //dispatch(setColumnKeyValue(value));
-  };
-
-  const filterInfo = multipleFilter.find(i => i.columnKey === columnKey);
   return (
     <MultipleFilterHeaderCommon
-      options={filterInfo?.options || []}
-      columnKey={columnKey}
-      selected={filterInfo?.selected || []}
-      isFilter={filterInfo?.isFilter || false}
-      onFilter={handleFilter}
+      setOptions={() => getFilterInfo()[columnKey].options}
+      setSelected={() => getFilterInfo()[columnKey].selected}
+      setIsFilter={() => getFilterInfo()[columnKey].isFilter}
+      onFilter={selected => dispatch(setMultipleFilter({
+        columnKey,
+        selected
+      }))}
     />
   );
 };

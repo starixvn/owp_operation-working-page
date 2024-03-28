@@ -1,6 +1,6 @@
 {
   "COLUMN_KEY": {
-    "KO_TIME": "KO Time",
+    "KO_TIME": "KO_Time",
     "MB": "MB"
   },
   "TABLE_HEADER": [
@@ -15,7 +15,7 @@
       "headerName": "KO Time",
       "size": 6,
       "isFilterMultiple": true,
-      "columnKey": "KO Time"
+      "columnKey": "KO_Time"
     },
     {
       "headerName": "League",
@@ -88,7 +88,7 @@
       "headerName": "KO Time",
       "size": 6,
       "isFilterMultiple": true,
-      "columnKey": "KO Time"
+      "columnKey": "KO_Time"
     },
     {
       "headerName": "League",

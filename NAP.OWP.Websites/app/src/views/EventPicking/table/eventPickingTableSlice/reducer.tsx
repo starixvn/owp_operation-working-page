@@ -6,14 +6,15 @@ import updateConfirmedThunk from '../updateConfirmedThunkNative';
 import {
   updateNoOfferMatch,
   updateConfirmedMatch,
-  buildKoOptions,
-  buildMbOptions,
-  buildMultipleFilterDefault
+  buildMultipleFilterDefault,
+  filterByKo,
+  filterByMb
 } from '../../helper/reducerHelper';
 import {
   TTableSlice,
   TFilterState,
-  FilterAllColumn
+  FilterAllColumn,
+  TColumnKey
 } from '../../types/dataTableType';
 import {
   addOrReplaceFilterState,
@@ -21,8 +22,8 @@ import {
   pushOrUpdateObject
 } from '../../../Shared/Utils';
 import filterByKeyword from '../filterByKeyword';
-import { COLUMN_KEY } from '../TableSchema.json';
-
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { Option } from '../../../Shared/MultipleSelection/type';
 
 const EventPickingTableSlice = createSlice({
   name: 'EventPickingTableSlice',
@@ -35,8 +36,18 @@ const EventPickingTableSlice = createSlice({
     columnKeyFilterCurrent: '',
     filterState: [] as TFilterState[],
     loading: REQUEST_STATUS.idle,
-    multipleFilter: [],
-    previousNoOfferIndex: null
+    previousNoOfferIndex: null,
+    multipleFilter: {
+      'KO_Time': {
+        isFilter: false,
+        selected: [],
+        options: []
+      }, 'MB': {
+        isFilter: false,
+        selected: [],
+        options: []
+      }
+    },
   } as TTableSlice,
   reducers: {
     setColumnKeyValue: (state, action) => {
@@ -67,10 +78,23 @@ const EventPickingTableSlice = createSlice({
       state.filterState = [];
       state.valueFilterAllColumn = {};
       state.entities = entitiesOriginal;
-      if (state.entities.length) {
-        state.isConfirmAll = state.entities.every(x => x.isCheck);
-        state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
-      }
+      state.isConfirmAll = state.entities?.every(x => x.isCheck);
+      state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
+    },
+    setMultipleFilter: (state, action: PayloadAction<{ columnKey: Required<TColumnKey>, selected: Option[] }>) => {
+      const { columnKey, selected } = action.payload;
+      state.multipleFilter[columnKey] = {
+        ...state.multipleFilter[columnKey],
+        isFilter: true,
+        selected
+      };
+      state.entities = filterDataTable(
+        state.entitiesOriginal,
+        state.filterState,
+        filterByKeyword
+      );
+      state.entities = filterByKo(state.entities, state.multipleFilter.KO_Time.selected.map(x => x.value));
+      state.entities = filterByMb(state.entities, state.multipleFilter.MB.selected.map(x => x.value));
     },
     setPreviousNoOfferRow: (state, action) => {
       state.previousNoOfferIndex = action.payload;
@@ -82,17 +106,13 @@ const EventPickingTableSlice = createSlice({
         const noOfferMatch = payload;
         updateNoOfferMatch(state.entitiesOriginal, noOfferMatch);
         updateNoOfferMatch(state.entities, noOfferMatch);
-        if (state.entities.length) {
-          state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
-        }
+        state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
       })
       .addCase(updateConfirmedThunk.fulfilled, (state, { payload }) => {
         const confirmInfo = payload;
         updateConfirmedMatch(state.entitiesOriginal, confirmInfo);
         updateConfirmedMatch(state.entities, confirmInfo);
-        if (state.entities.length) {
-          state.isConfirmAll = state.entities.every(x => x.isCheck);
-        }
+        state.isConfirmAll = state.entities?.every(x => x.isCheck);
       })
       .addCase(getEventPickings.pending, state => {
         state.loading = REQUEST_STATUS.pending;
@@ -106,11 +126,9 @@ const EventPickingTableSlice = createSlice({
           filterByKeyword
         );
 
-        state.multipleFilter.push(...buildMultipleFilterDefault(state.entities));
-        if (state.entities.length) {
-          state.isConfirmAll = state.entities.every(x => x.isCheck);
-          state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
-        }
+        state.multipleFilter = buildMultipleFilterDefault(state.entities);
+        state.isConfirmAll = state.entities?.every(x => x.isCheck);
+        state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
       })
       .addCase(getEventPickings.rejected, state => {
         state.loading = REQUEST_STATUS.idle;
@@ -118,18 +136,17 @@ const EventPickingTableSlice = createSlice({
   }
 });
 const { reducer, actions } = EventPickingTableSlice;
-const {
-  filterBySearchKey,
-  clearFilter,
-  setColumnKeyValue,
+const { filterBySearchKey, clearFilter, setMultipleFilter, setColumnKeyValue,
   setValueFilter,
   setPreviousNoOfferRow
 } = actions;
+
 export {
   filterBySearchKey,
   clearFilter,
   setColumnKeyValue,
   setValueFilter,
-  setPreviousNoOfferRow
+  setPreviousNoOfferRow,
+  setMultipleFilter
 };
 export default reducer;

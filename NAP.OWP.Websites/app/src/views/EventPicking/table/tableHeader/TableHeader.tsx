@@ -6,6 +6,7 @@ import FilterHeader from './FilterHeader';
 import CheckboxHeader from './CheckboxHeader';
 import store from '../../app/store';
 import MultipleFilterHeader from './MultipleFilterHeader';
+import { TColumnKey } from '../../types/dataTableType';
 
 const TableHeader = () => {
   const {
@@ -28,7 +29,7 @@ const TableHeader = () => {
             <div className='header-table'>
               <span>{item.headerName}</span>
               {item?.isFilter && <FilterHeader columnKey={item.columnKey} />}
-              {item?.isFilterMultiple && <MultipleFilterHeader columnKey={item.columnKey} />}
+              {item?.isFilterMultiple && <MultipleFilterHeader columnKey={item.columnKey as TColumnKey} />}
             </div>
             {item?.isCheckBox && (
               <CheckboxHeader

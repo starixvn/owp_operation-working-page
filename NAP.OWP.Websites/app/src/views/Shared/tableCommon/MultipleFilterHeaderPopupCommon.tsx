@@ -13,7 +13,7 @@ const MultipleFilterHeaderPopupCommon = (
       onFilter
     }: MultipleFilterPopupProps
   ) => {
-    const [value, setValue] = useState(selected);
+    const [value, setValue] = useState(selected || []);
 
     return (
       <div
@@ -23,8 +23,8 @@ const MultipleFilterHeaderPopupCommon = (
         </span>
         <MultiSelect
           onChange={setValue}
-          value={value}
-          options={options}
+          value={value || []}
+          options={options || []}
           ClearSelectedIcon={null}
           className='multi-select'
           hasSelectAll

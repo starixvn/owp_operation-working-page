@@ -49,12 +49,14 @@ type MarginInfo = {
   color: string;
 };
 
-type TMultipleFilter = Array<{
-  isFilter: boolean;
-  columnKey: string;
-  selected: Option[];
-  options: Option[],
-}>;
+type TColumnKey = "MB" | "KO_Time";
+type TMultipleFilter = {
+  [key in TColumnKey]: {
+    isFilter: boolean;
+    selected: Option[];
+    options: Option[];
+  };
+};
 
 type TTableSlice = {
   entities: Array<TDataTable>;
@@ -93,5 +95,6 @@ export {
   TFilterState,
   FilterAllColumn,
   TPermission,
-  TMultipleFilter
+  TMultipleFilter,
+  TColumnKey
 };
