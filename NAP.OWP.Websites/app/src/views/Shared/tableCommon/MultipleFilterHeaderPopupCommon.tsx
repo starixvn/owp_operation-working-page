@@ -1,5 +1,4 @@
 import { isEqual } from 'lodash';
-import { KeyboardEvent, forwardRef } from 'react';
 import { CloseIcon } from 'mdi-react';
 import { Button } from 'reactstrap';
 import { TFilterState } from './typeCommon';
@@ -16,7 +15,7 @@ type FilterPopupProps = {
   handleValueFilterCallback: (filterState: TFilterState) => void;
 };
 
-const MultipleFilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupProps>(
+const MultipleFilterHeaderPopupCommon = (
   (
     {
       model,
@@ -26,8 +25,7 @@ const MultipleFilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupPr
       handleClearFilterCallback,
       handleFilterBySearchKeyCallback,
       handleValueFilterCallback
-    }: FilterPopupProps,
-    ref
+    }: FilterPopupProps
   ) => {
     const { columnKeyFilterCurrent, valueFilterAllColumn } = model;
     //const filterValue = valueFilterAllColumn[columnKey] ?? '';
@@ -43,28 +41,9 @@ const MultipleFilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupPr
       };
       handleFilterBySearchKeyCallback(filterState); */
     };
-    const handleOnchangeValue = (value: string) => {
-      const columnHaveBeenFiltered = {
-        columnKey,
-        keyword: value
-      };
-      handleValueFilterCallback(columnHaveBeenFiltered);
-    };
-    const onClickClosedIcon = () => {
-      handleClosedPopup();
-    };
-
-    const handelOnKeyDown = (
-      e: KeyboardEvent<HTMLInputElement>
-    ): void => {
-      if (e.key === 'Enter' && e.currentTarget.value) {
-        handleOnSearchFilter();
-      }
-    };
 
     return (
       <div
-        ref={ref}
         className={`filter-popup is-show ${isEqual(columnKey, columnKeyFilterCurrent)
           ? ''
           : 'is-hide-another-popup'
@@ -91,7 +70,7 @@ const MultipleFilterHeaderPopupCommon = forwardRef<HTMLDivElement, FilterPopupPr
           <button
             className='btn-cancel btn btn btn-secondary'
             onClick={handleOnSearchFilter}>
-            Search
+            Cancel
           </button>
           <Button
             className='btn-search'

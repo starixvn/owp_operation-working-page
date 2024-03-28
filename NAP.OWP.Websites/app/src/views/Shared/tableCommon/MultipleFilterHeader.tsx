@@ -1,13 +1,12 @@
 import { FilterIcon } from 'mdi-react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { TFilterHeaderProps } from './typeCommon';
 import MultipleFilterHeaderPopupCommon from './MultipleFilterHeaderPopupCommon';
+import useClickOutside from '../customHook/useClickOutside';
 
 const MultipleFilterHeader = ({ columnKey, options }: TFilterHeaderProps) => {
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
-  const filterRef = useRef<HTMLDivElement>(null);
-
   const handleClickFilter = (value: string) => {
     //handleClickFilterCallback(value);
     setIsOpenFilter(true);
@@ -22,20 +21,7 @@ const MultipleFilterHeader = ({ columnKey, options }: TFilterHeaderProps) => {
     setIsOpenFilter(false);
   };
 
-  useEffect(() => {
-    const handleClickOutSide = (event: MouseEvent) => {
-      if (
-        filterRef.current &&
-        !filterRef.current.contains(event.target as Node)
-      ) {
-        setIsOpenFilter(false);
-      }
-    };
-    //document.addEventListener('mousedown', handleClickOutSide);
-    return () => {
-      //document.removeEventListener('mousedown', handleClickOutSide);
-    };
-  }, [filterRef]);
+  const filterRef = useClickOutside<HTMLDivElement>(() => setIsOpenFilter(false));
 
   const handleClearFilterCallback = () => { };
   const handleFilterBySearchKeyCallback = () => { };
@@ -48,16 +34,17 @@ const MultipleFilterHeader = ({ columnKey, options }: TFilterHeaderProps) => {
         <FilterIcon size={14} />
       </span>
       {isOpenFilter && (
-        <MultipleFilterHeaderPopupCommon
-          model={{}}
-          options={options}
-          handleClosedPopup={handleClosedPopup}
-          columnKey={columnKey}
-          ref={filterRef}
-          handleClearFilterCallback={handleClearFilterCallback}
-          handleFilterBySearchKeyCallback={handleFilterBySearchKeyCallback}
-          handleValueFilterCallback={handleValueFilterCallback}
-        />
+        <div className='abc' ref={filterRef}>
+          <MultipleFilterHeaderPopupCommon
+            model={{}}
+            options={options}
+            handleClosedPopup={handleClosedPopup}
+            columnKey={columnKey}
+            handleClearFilterCallback={handleClearFilterCallback}
+            handleFilterBySearchKeyCallback={handleFilterBySearchKeyCallback}
+            handleValueFilterCallback={handleValueFilterCallback}
+          />
+        </div>
       )}
     </div>
   );

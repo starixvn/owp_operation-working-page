@@ -9,7 +9,7 @@
     },
     {
       "headerName": "KO Time",
-      "size": 4,
+      "size": 6,
       "isFilterMultiple": true,
       "columnKey": "KO Time"
     },
@@ -27,7 +27,7 @@
     },
     {
       "headerName": "MB",
-      "size": 3,
+      "size": 5,
       "isFilterMultiple": true,
       "columnKey": "MB"
     },
@@ -82,7 +82,7 @@
     },
     {
       "headerName": "KO Time",
-      "size": 4,
+      "size": 6,
       "isFilterMultiple": true,
       "columnKey": "KO Time"
     },
@@ -100,7 +100,7 @@
     },
     {
       "headerName": "MB",
-      "size": 3,
+      "size": 5,
       "isFilterMultiple": true,
       "columnKey": "MB"
     },
