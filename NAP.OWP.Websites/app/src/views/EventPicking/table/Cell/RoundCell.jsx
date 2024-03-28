@@ -7,7 +7,7 @@ const propTypes = {
 
 const RoundCell = props => {
   const { rowIndex, dataSource } = props;
-  const { division, round, etpk, teamRound } = dataSource[rowIndex];
+  const { division, round, etpk } = dataSource[rowIndex];
 
   const renderDivision = () =>
     division && (
@@ -25,14 +25,6 @@ const RoundCell = props => {
       </span>
     );
 
-  const renderTeamRound = () =>
-    teamRound && (
-      <span>
-        <strong>Round (H-A/T): </strong>
-        {teamRound}
-      </span>
-    );
-
   const renderEtPk = () =>
     etpk && (
       <span>
@@ -42,14 +34,11 @@ const RoundCell = props => {
     );
 
   return (
-    <>
-      <div className='round-cell'>
-        {renderDivision()}
-        {renderRound()}
-        {renderTeamRound()}
-        {renderEtPk()}
-      </div>
-    </>
+    <div className='round-cell'>
+      {renderDivision()}
+      {renderRound()}
+      {renderEtPk()}
+    </div>
   );
 };
 
