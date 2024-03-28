@@ -1,4 +1,4 @@
-import { Option } from "../../Shared/MultipleSelection/type";
+import { Option } from '../../Shared/MultipleSelection/type';
 
 type TDataTable = {
   tV: string;
@@ -66,6 +66,7 @@ type TTableSlice = {
   filterState: Array<TFilterState>;
   multipleFilter: TMultipleFilter;
   loading: string;
+  previousNoOfferIndex: null | number;
 };
 
 type TFilterState = {

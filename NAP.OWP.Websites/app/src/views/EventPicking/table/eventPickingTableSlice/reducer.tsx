@@ -36,6 +36,7 @@ const EventPickingTableSlice = createSlice({
     filterState: [] as TFilterState[],
     loading: REQUEST_STATUS.idle,
     multipleFilter: [],
+    previousNoOfferIndex: null
   } as TTableSlice,
   reducers: {
     setColumnKeyValue: (state, action) => {
@@ -70,6 +71,9 @@ const EventPickingTableSlice = createSlice({
         state.isConfirmAll = state.entities.every(x => x.isCheck);
         state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
       }
+    },
+    setPreviousNoOfferRow: (state, action) => {
+      state.previousNoOfferIndex = action.payload;
     }
   },
   extraReducers: builder => {
@@ -114,7 +118,18 @@ const EventPickingTableSlice = createSlice({
   }
 });
 const { reducer, actions } = EventPickingTableSlice;
-const { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter } =
-  actions;
-export { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter };
+const {
+  filterBySearchKey,
+  clearFilter,
+  setColumnKeyValue,
+  setValueFilter,
+  setPreviousNoOfferRow
+} = actions;
+export {
+  filterBySearchKey,
+  clearFilter,
+  setColumnKeyValue,
+  setValueFilter,
+  setPreviousNoOfferRow
+};
 export default reducer;
