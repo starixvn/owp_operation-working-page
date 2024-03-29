@@ -16,6 +16,7 @@ import Utils from '../../Shared/Utils';
 import ExportNative from './ExportNative';
 import UserGuideWrapper from '../userGuide/UserGuideWrapper';
 import TurnoverMargin from './TurnoverMargin';
+import SumProviderWrapper from '../sumProvider/SumProviderWrapper';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const Filter = () => {
       <ExportNative />
       <InfoIcon />
       <UserGuideWrapper />
+      <SumProviderWrapper />
     </div>
   );
 };

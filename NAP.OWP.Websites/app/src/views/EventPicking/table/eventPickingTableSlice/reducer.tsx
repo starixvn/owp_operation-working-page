@@ -28,6 +28,7 @@ import { Option } from '../../../Shared/MultipleSelection/type';
 const EventPickingTableSlice = createSlice({
   name: 'EventPickingTableSlice',
   initialState: {
+    entitiesByDate: [],
     entities: [],
     entitiesOriginal: [],
     isNoOfferAll: false,
@@ -118,8 +119,10 @@ const EventPickingTableSlice = createSlice({
         state.loading = REQUEST_STATUS.pending;
       })
       .addCase(getEventPickings.fulfilled, (state, { payload }) => {
+        const { matchesByDate, filteredMatches } = payload;
         state.loading = REQUEST_STATUS.idle;
-        state.entitiesOriginal = payload;
+        state.entitiesByDate = matchesByDate;
+        state.entitiesOriginal = filteredMatches;
         state.entities = filterDataTable(
           state.entitiesOriginal,
           state.filterState,

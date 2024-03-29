@@ -217,6 +217,8 @@ const openNewChattingTab = (actorId, ticketId, eventType) => {
   );
 };
 
+const formatTime = date => dayjs(date).format('hh:ss A');
+
 const Utils = {
   rootUrl: getRootUrl(),
   resolveUrl,
@@ -225,6 +227,7 @@ const Utils = {
   formatDateTimeString,
   formatDateTimeCreateDate,
   formatDateTimeGMT8,
+  formatTime,
   isSameOrAfter,
   toLowerCaseForFilter,
   convertJsonToObject,

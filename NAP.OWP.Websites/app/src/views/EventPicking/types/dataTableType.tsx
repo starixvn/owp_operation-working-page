@@ -1,5 +1,10 @@
 import { Option } from '../../Shared/MultipleSelection/type';
 
+type TResult = {
+  matchesByDate: Array<TDataTable>;
+  filteredMatches: Array<TDataTable>;
+}
+
 type TDataTable = {
   tV: string;
   ipTv: string;
@@ -64,6 +69,7 @@ type TMultipleFilter = {
 };
 
 type TTableSlice = {
+  entitiesByDate: Array<TDataTable>;
   entities: Array<TDataTable>;
   entitiesOriginal: Array<TDataTable>;
   isNoOfferAll: boolean;
@@ -102,5 +108,6 @@ export {
   TPermission,
   TMultipleFilter,
   TColumnKey,
+  TResult,
   TMultipleColumnFilterOption
 };
