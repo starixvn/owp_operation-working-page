@@ -1,4 +1,5 @@
 import {
+  clearFilter,
   setMultipleFilter,
 } from '../eventPickingTableSlice/reducer';
 import { useAppDispatch } from '../../app/hooks';
@@ -25,6 +26,7 @@ const MultipleFilterHeader = ({
         columnKey,
         selected
       }))}
+      onClear={() => dispatch(clearFilter())}
     />
   );
 };

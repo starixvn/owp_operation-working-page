@@ -4,8 +4,10 @@ import TDataTable, { TMultipleFilter } from "../types/dataTableType";
 import { TNoOfferMatch } from "../types/noOfferMatchType";
 import { uniqBy } from 'lodash';
 import { COLUMN_KEY } from '../table/TableSchema.json';
-import { Option } from "../../Shared/MultipleSelection/type";
 import { isEquals } from "immutability-helper";
+
+const KO_TIME = COLUMN_KEY.KO_TIME;
+const MB = COLUMN_KEY.MB;
 
 const updateNoOfferMatch = (entities: TDataTable[], noOfferMatch: TNoOfferMatch[]) => {
   entities.forEach(element => {
@@ -43,7 +45,7 @@ const buildKoOptions = (entities: TDataTable[]) =>
 const buildMbOptions = (entities: TDataTable[]) => uniqBy(
   [...entities].sort((first, second) => first.maxBetHDPNumber - second.maxBetHDPNumber)
     .map(o => ({
-      value: o.maxBetHDPNumber ?? '',
+      value: o.maxBetHDPNumber ?? null,
       label: o.maxBetHDP ?? ''
     })), i => i.label);
 
@@ -51,28 +53,30 @@ const buildMultipleFilterDefault = (entities: TDataTable[]) => {
   const koTimeOptions = buildKoOptions(entities);
   const mbOptions = buildMbOptions(entities);
   return {
-    "KO_Time": {
+    [KO_TIME]: {
       isFilter: false,
       selected: koTimeOptions,
       options: koTimeOptions
     },
-    "MB": {
+    [MB]: {
       isFilter: false,
       selected: mbOptions,
       options: mbOptions
     }
-  };
+  } as TMultipleFilter;
 };
 
 const filterByKo = (entities: TDataTable[], selectedValue: (number | string | null)[]) =>
   entities.filter(e => selectedValue.some(s => s && isEquals(formatTime(e.eventDateTime, 'minute', 'hh:mm A'), s.toString())));
 
-const filterByMb = (entities: TDataTable[], selectedValue: (number | string | null)[]) => entities.filter(e => selectedValue.some(s => s && isEquals(e.maxBetHDPNumber?.toString(), s.toString())));
+const filterByMb = (entities: TDataTable[], selectedValue: (number | string | null)[]) => entities.filter(e => selectedValue.some(s => e.maxBetHDPNumber === s));
 
 export {
   updateNoOfferMatch,
   updateConfirmedMatch,
   buildMultipleFilterDefault,
   filterByKo,
-  filterByMb
+  filterByMb,
+  buildMbOptions,
+  buildKoOptions
 };

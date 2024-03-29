@@ -50,6 +50,11 @@ type MarginInfo = {
 };
 
 type TColumnKey = "MB" | "KO_Time";
+
+type TMultipleColumnFilterOption = {
+  [key in TColumnKey]: Option[];
+};
+
 type TMultipleFilter = {
   [key in TColumnKey]: {
     isFilter: boolean;
@@ -96,5 +101,6 @@ export {
   FilterAllColumn,
   TPermission,
   TMultipleFilter,
-  TColumnKey
+  TColumnKey,
+  TMultipleColumnFilterOption
 };

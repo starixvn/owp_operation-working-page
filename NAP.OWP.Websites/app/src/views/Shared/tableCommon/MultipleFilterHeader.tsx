@@ -11,7 +11,8 @@ const MultipleFilterHeader = ({
   onFilter,
   setOptions,
   setSelected,
-  setIsFilter
+  setIsFilter,
+  onClear
 }: MultipleFilterHeaderProps) => {
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
@@ -19,17 +20,18 @@ const MultipleFilterHeader = ({
   return (
     <div className='filter-header'>
       <span
-        className={`icon-filter ${isFilter ? 'is-filter' : ''}`}
+        className={`icon-filter ${(setIsFilter ? setIsFilter() : isFilter) ? 'is-filter' : ''}`}
         onClick={() => setIsOpenFilter(true)}>
         <FilterIcon size={14} />
       </span>
       {isOpenFilter && (
         <div ref={filterRef}>
           <MultipleFilterHeaderPopupCommon
-            options={setOptions()}
-            selected={setSelected()}
+            options={setOptions ? setOptions() : options}
+            selected={setSelected ? setSelected() : selected}
             onClosedPopup={() => setIsOpenFilter(false)}
             onFilter={onFilter}
+            onClear={onClear}
           />
         </div>
       )}

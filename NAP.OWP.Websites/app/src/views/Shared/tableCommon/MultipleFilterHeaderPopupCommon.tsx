@@ -10,14 +10,15 @@ const MultipleFilterHeaderPopupCommon = (
       options,
       selected,
       onClosedPopup,
-      onFilter
+      onFilter,
+      onClear
     }: MultipleFilterPopupProps
   ) => {
     const [value, setValue] = useState(selected || []);
 
     return (
       <div
-        className='filter-popup is-show'>
+        className='filter-popup multiple is-show'>
         <span className='close-popup' onClick={onClosedPopup}>
           <CloseIcon size={14} />
         </span>
@@ -36,6 +37,9 @@ const MultipleFilterHeaderPopupCommon = (
           isOpen
         />
         <div className='command'>
+          <span className='clear-all' onClick={onClear}>
+            Clear All Filters
+          </span>
           <button
             className='btn-cancel btn btn btn-secondary'
             onClick={onClosedPopup}>

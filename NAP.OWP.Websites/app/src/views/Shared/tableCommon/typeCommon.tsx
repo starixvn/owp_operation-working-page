@@ -23,6 +23,7 @@ type MultipleFilterHeaderProps = {
   setSelected?: () => Option[],
   setIsFilter?: () => boolean,
   onFilter: (selected: Option[]) => void;
+  onClear: () => void;
 };
 
 type MultipleFilterPopupProps = Omit<MultipleFilterHeaderProps, 'columnKey' | 'isFilter' | 'getOptions'> & {

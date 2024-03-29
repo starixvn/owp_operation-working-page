@@ -38,11 +38,11 @@ const EventPickingTableSlice = createSlice({
     loading: REQUEST_STATUS.idle,
     previousNoOfferIndex: null,
     multipleFilter: {
-      'KO_Time': {
+      KO_Time: {
         isFilter: false,
         selected: [],
         options: []
-      }, 'MB': {
+      }, MB: {
         isFilter: false,
         selected: [],
         options: []
@@ -68,10 +68,8 @@ const EventPickingTableSlice = createSlice({
         state.filterState,
         filterByKeyword
       );
-      if (state.entities.length) {
-        state.isConfirmAll = state.entities.every(x => x.isCheck);
-        state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
-      }
+      state.isConfirmAll = state.entities?.every(x => x.isCheck);
+      state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
     },
     clearFilter: state => {
       const { entitiesOriginal } = state;
@@ -80,12 +78,14 @@ const EventPickingTableSlice = createSlice({
       state.entities = entitiesOriginal;
       state.isConfirmAll = state.entities?.every(x => x.isCheck);
       state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
+      state.multipleFilter = buildMultipleFilterDefault(state.entitiesOriginal);
+
     },
     setMultipleFilter: (state, action: PayloadAction<{ columnKey: Required<TColumnKey>, selected: Option[] }>) => {
       const { columnKey, selected } = action.payload;
       state.multipleFilter[columnKey] = {
         ...state.multipleFilter[columnKey],
-        isFilter: true,
+        isFilter: state.multipleFilter[columnKey].options.length !== selected.length,
         selected
       };
       state.entities = filterDataTable(
