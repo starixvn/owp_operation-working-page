@@ -6,7 +6,7 @@ const useSetUserId = (userId: number) => {
   const dispatch = useStableDispatch();
   useEffect(() => {
     dispatch(setUserId(userId));
-  }, []);
+  }, [dispatch, userId]);
 };
 
 export default useSetUserId;

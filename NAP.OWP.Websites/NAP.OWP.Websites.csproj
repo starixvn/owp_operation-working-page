@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -479,10 +480,10 @@
     <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\task-list\assets\ext\server-bf881689.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-dad45265.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-af507719.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-5fbc40fa.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-166426a4.js" />
+    <Content Include="wwwroot\task-list\assets\js\main-a1b7247e.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-e1b325c3.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-ea499fa0.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-72b5a73b.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\welcome\assets\ext\icon-feedback-57264197.svg" />
