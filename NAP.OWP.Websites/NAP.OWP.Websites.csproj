@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -491,8 +490,9 @@
     <Content Include="wwwroot\welcome\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\welcome\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\welcome\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\welcome\assets\ext\server-a195bf4a.css" />
-    <Content Include="wwwroot\welcome\assets\js\main-6e691a38.js" />
+    <Content Include="wwwroot\welcome\assets\ext\server-8362496f.css" />
+    <Content Include="wwwroot\welcome\assets\ext\welcome-4f8ef3b4.png" />
+    <Content Include="wwwroot\welcome\assets\js\main-79732f28.js" />
     <Content Include="wwwroot\welcome\favicon.ico" />
     <Content Include="wwwroot\welcome\server.html" />
   </ItemGroup>
@@ -3126,14 +3126,14 @@
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\other-sport\server.cshtml" />
-    <Content Include="wwwroot\welcome\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\welcome\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\welcome\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\welcome\server.cshtml" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\welcome\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\welcome\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\welcome\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\welcome\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
