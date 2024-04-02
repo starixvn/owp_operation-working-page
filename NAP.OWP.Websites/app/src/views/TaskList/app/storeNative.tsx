@@ -21,7 +21,7 @@ const store = configureStore({
       serializableCheck: false
     }),
 
-  devTools: !isEqual(process.env.NODE_ENV, 'production')
+  devTools: true
 });
 
 export type RootState = ReturnType<typeof store.getState>;

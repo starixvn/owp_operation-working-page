@@ -1,4 +1,4 @@
-import { isNull } from 'lodash';
+import { isNil } from 'lodash';
 const basePath =
   process.env.NODE_ENV === 'development'
     ? `api-netcore/TicketEvent`
@@ -12,7 +12,9 @@ const buildIsReadValue = (
   if (actorId !== userId) {
     return false;
   }
-  return isNull(isRead) ? true : isRead;
+
+  console.log(`isRead: ${isRead}`);
+  return isNil(isRead) ? true : isRead;
 };
 
 export { basePath, buildIsReadValue };

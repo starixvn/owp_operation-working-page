@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -474,6 +473,28 @@
     </Content>
     <Content Include="App_Data\Files\Readme.txt" />
     <Content Include="src\scss\images\feedback-icon.svg" />
+    <Content Include="wwwroot\task-list\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\task-list\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\task-list\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\task-list\assets\ext\server-bf881689.css" />
+    <Content Include="wwwroot\task-list\assets\js\main-a1b7247e.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-e1b325c3.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-ea499fa0.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-72b5a73b.js" />
+    <Content Include="wwwroot\task-list\favicon.ico" />
+    <Content Include="wwwroot\task-list\server.html" />
+    <Content Include="wwwroot\welcome\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\welcome\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\welcome\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\welcome\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\welcome\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\welcome\assets\ext\server-8362496f.css" />
+    <Content Include="wwwroot\welcome\assets\ext\welcome-4f8ef3b4.png" />
+    <Content Include="wwwroot\welcome\assets\js\main-79732f28.js" />
+    <Content Include="wwwroot\welcome\favicon.ico" />
+    <Content Include="wwwroot\welcome\server.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DBOWP.bodb_OWP.bodbOWPNet.xml">
@@ -2950,18 +2971,6 @@
     <Content Include="wwwroot\small-chatting\assets\js\main-7b2df7a5.js" />
     <Content Include="wwwroot\small-chatting\favicon.ico" />
     <Content Include="wwwroot\small-chatting\server.html" />
-    <Content Include="wwwroot\task-list\assets\ext\icon-feedback-57264197.svg" />
-    <Content Include="wwwroot\task-list\assets\ext\icon-search-4037a8fe.svg" />
-    <Content Include="wwwroot\task-list\assets\ext\logo_none-232840bc.svg" />
-    <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\task-list\assets\ext\server-bf881689.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-774e3777.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-90b83628.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-89745b5c.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-35e0496d.js" />
-    <Content Include="wwwroot\task-list\favicon.ico" />
-    <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\logo_none-232840bc.svg" />
@@ -3101,10 +3110,6 @@
     <Content Include="wwwroot\small-chatting\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\small-chatting\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\small-chatting\server.cshtml" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\task-list\server.cshtml" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-a7443744.ttf" />
@@ -3121,6 +3126,14 @@
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\other-sport\server.cshtml" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\welcome\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\welcome\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\welcome\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\welcome\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
