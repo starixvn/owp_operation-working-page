@@ -8,6 +8,7 @@ export const RecipientIcon = ({ type = 1 }) => {
   icon.set(1, <PersonIcon />);
   icon.set(2, <GroupIcon />);
   icon.set(3, <SectionIcon />);
+  icon.set(4, <SectionIcon />);
   return <>{icon.get(type)}</>;
 };
 

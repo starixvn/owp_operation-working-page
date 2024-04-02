@@ -23,6 +23,7 @@ const RecipientTable = (props: Props) => {
     icons.set(TicketTypeRecipientEnum.User, <PersonIcon />);
     icons.set(TicketTypeRecipientEnum.Group, <AccountMultipleIcon />);
     icons.set(TicketTypeRecipientEnum.Section, <SectionIcon />);
+    icons.set(TicketTypeRecipientEnum.Assignee, <SectionIcon />);
     return icons.get(recipient.recipientType);
   };
 

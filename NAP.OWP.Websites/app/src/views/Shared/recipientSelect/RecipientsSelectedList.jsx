@@ -10,7 +10,9 @@ export const RecipientsSelectedList = ({
   onToggleList = f => f
 }) => {
   const getLabelTag = item =>
-    item.recipientType === 2 || item.recipientType === 3
+    item.recipientType === 2 ||
+    item.recipientType === 3 ||
+    item.recipientType === 4
       ? item.groupName
       : item.userName || item.nickName;
 
