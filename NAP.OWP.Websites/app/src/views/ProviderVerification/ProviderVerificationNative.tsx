@@ -1,9 +1,11 @@
+import Filter from './feature/filter/Filter';
+
 const ProviderVerificationNative = () => {
   return (
-    <>
-      <h1>filter</h1>
+    <div className='provider-verification'>
+      <Filter />
       <h2>Table</h2>
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,40 @@
+.provider-verification {
+  margin: 1rem;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 1px 1.5px #0000001f, 0 1px 2px #0000001f;
+  position: relative;
+}
+
+.top-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+
+  .filter-control {
+    display: inline-block;
+    width: 150px;
+    margin-right: 16px;
+
+    input {
+      background-color: transparent;
+    }
+  }
+
+  .right-control {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .icon-condition {
+    padding-right: 5px;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
