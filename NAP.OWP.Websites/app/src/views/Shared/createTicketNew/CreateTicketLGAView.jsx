@@ -21,6 +21,7 @@ import {
 import { urlRequestLiveIncident } from './const/const';
 import { TICKET_TYPE } from '../TicketCenterPrematch/const/const.json';
 import Loading from '../../components/Loading';
+import { TicketTypeRecipientEnum } from '../enum/TicketRecipientEnum';
 
 const { LIVE_INCIDENT } = TICKET_TYPE;
 
@@ -33,12 +34,8 @@ const CreateTicketLGAView = props => {
   const dispatch = useStableDispatch();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const { modelByRowIndex } = useSelector(state => state.chatBoard);
-  const {
-    selectedRecipients,
-    subTypeSelected,
-    isOpenCreateTicketInLGA,
-    typeTicketText
-  } = useSelector(state => state.createTicketBoard);
+  const { selectedRecipients, subTypeSelected, isOpenCreateTicketInLGA } =
+    useSelector(state => state.createTicketBoard);
 
   const { OWPMatchId, League, Home, Away, EventDateTime } = modelByRowIndex;
   const renderHeader = () => (
@@ -51,7 +48,15 @@ const CreateTicketLGAView = props => {
     const model = {
       owpMatchId: OWPMatchId
     };
-    const recipientLGA = await Service.queryAssigneesByOwpMatchId(model);
+    let recipientLGA = [];
+    if (
+      OWPMatchId &&
+      selectedRecipients.some(
+        x => x.recipientType === TicketTypeRecipientEnum.Assignee
+      )
+    ) {
+      recipientLGA = await Service.queryAssigneesByOwpMatchId(model);
+    }
     const selected = selectedRecipients.concat(recipientLGA);
     const reformattedArray = formatRecipientModel(selected, creatorInfo);
     const resultSaveFile =

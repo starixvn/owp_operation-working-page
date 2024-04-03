@@ -19,6 +19,7 @@ import {
 import ShareOfChatBoardTicket from './ShareOfChatBoardTicket/ShareOfChatBoardTicket';
 import PropTypes from 'prop-types';
 import Service from './Service';
+import { TicketTypeRecipientEnum } from '../enum/TicketRecipientEnum';
 
 const propTypes = {
   creatorInfo: PropTypes.object.isRequired,
@@ -58,7 +59,12 @@ const CreateTicketBoardEvent = props => {
       Spinner.show();
       const modelByTicketType = buildModel();
       let recipientLGA = [];
-      if (valueEvent.owpMatchId) {
+      if (
+        valueEvent.owpMatchId &&
+        selectedRecipients.some(
+          x => x.recipientType === TicketTypeRecipientEnum.Assignee
+        )
+      ) {
         const model = {
           owpMatchId: valueEvent.owpMatchId
         };
