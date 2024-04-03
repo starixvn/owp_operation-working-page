@@ -43,12 +43,13 @@ const EventPickingTableSlice = createSlice({
         isFilter: false,
         selected: [],
         options: []
-      }, MB: {
+      },
+      MB: {
         isFilter: false,
         selected: [],
         options: []
       }
-    },
+    }
   } as TTableSlice,
   reducers: {
     setColumnKeyValue: (state, action) => {
@@ -80,13 +81,19 @@ const EventPickingTableSlice = createSlice({
       state.isConfirmAll = state.entities?.every(x => x.isCheck);
       state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
       state.multipleFilter = buildMultipleFilterDefault(state.entitiesOriginal);
-
     },
-    setMultipleFilter: (state, action: PayloadAction<{ columnKey: Required<TColumnKey>, selected: Option[] }>) => {
+    setMultipleFilter: (
+      state,
+      action: PayloadAction<{
+        columnKey: Required<TColumnKey>;
+        selected: Option[];
+      }>
+    ) => {
       const { columnKey, selected } = action.payload;
       state.multipleFilter[columnKey] = {
         ...state.multipleFilter[columnKey],
-        isFilter: state.multipleFilter[columnKey].options.length !== selected.length,
+        isFilter:
+          state.multipleFilter[columnKey].options.length !== selected.length,
         selected
       };
       state.entities = filterDataTable(
@@ -94,8 +101,14 @@ const EventPickingTableSlice = createSlice({
         state.filterState,
         filterByKeyword
       );
-      state.entities = filterByKo(state.entities, state.multipleFilter.KO_Time.selected.map(x => x.value));
-      state.entities = filterByMb(state.entities, state.multipleFilter.MB.selected.map(x => x.value));
+      state.entities = filterByKo(
+        state.entities,
+        state.multipleFilter.KO_Time.selected.map(x => x.value)
+      );
+      state.entities = filterByMb(
+        state.entities,
+        state.multipleFilter.MB.selected.map(x => x.value)
+      );
     },
     setPreviousNoOfferRow: (state, action) => {
       state.previousNoOfferIndex = action.payload;
@@ -107,6 +120,7 @@ const EventPickingTableSlice = createSlice({
         const noOfferMatch = payload;
         updateNoOfferMatch(state.entitiesOriginal, noOfferMatch);
         updateNoOfferMatch(state.entities, noOfferMatch);
+        updateNoOfferMatch(state.entitiesByDate, noOfferMatch);
         state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
       })
       .addCase(updateConfirmedThunk.fulfilled, (state, { payload }) => {
@@ -139,7 +153,11 @@ const EventPickingTableSlice = createSlice({
   }
 });
 const { reducer, actions } = EventPickingTableSlice;
-const { filterBySearchKey, clearFilter, setMultipleFilter, setColumnKeyValue,
+const {
+  filterBySearchKey,
+  clearFilter,
+  setMultipleFilter,
+  setColumnKeyValue,
   setValueFilter,
   setPreviousNoOfferRow
 } = actions;
