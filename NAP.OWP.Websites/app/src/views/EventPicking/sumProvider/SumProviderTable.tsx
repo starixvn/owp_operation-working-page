@@ -21,25 +21,40 @@ const SumProviderTable = () => {
   }, [entitiesByDate]);
 
   return (
-    <table className='sum-provider-table'>
-      <thead>
-        <th>Time</th>
-        <th>Sum</th>
-        <th>Sum*</th>
-      </thead>
-      <tbody>
-        {sumTable.length &&
-          sumTable.map((x, index) => {
-            return (
-              <tr key={index}>
-                <td>{Utils.formatTime(x.countDate)}</td>
-                <td>{x.count}</td>
-                {index > 0 && <td className='periodCount'>{x.periodCount}</td>}
-              </tr>
-            );
-          })}
-      </tbody>
-    </table>
+    <>
+      <table className='sum-provider-table'>
+        <tr>
+          <th>Time</th>
+          <th>Sum</th>
+        </tr>
+        <tbody>
+          {sumTable.length &&
+            sumTable.map((x, index) => {
+              return (
+                <tr key={index}>
+                  <td>{Utils.formatTime(x.countDate)}</td>
+                  <td>{x.count}</td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+      <table className='right-table'>
+        <tr>
+          <th>Sum*</th>
+        </tr>
+        <tbody>
+          {sumTable.length &&
+            sumTable.map((x, index) => {
+              return (
+                <tr key={index}>
+                  {index > 0 && <td>{x.periodCount}</td>}
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    </>
   );
 };
 
