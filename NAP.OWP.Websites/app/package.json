@@ -95,7 +95,9 @@
     "start:small-chatting": "set NODE_APP=small-chatting & vite",
     "build:small-chatting": "set NODE_APP=small-chatting & vite build",
     "start:welcome": "set NODE_APP=welcome & vite",
-    "build:welcome": "set NODE_APP=welcome & vite build"
+    "build:welcome": "set NODE_APP=welcome & vite build",
+    "start:provider-verification": "set NODE_APP=provider-verification & vite",
+    "build:provider-verification": "set NODE_APP=provider-verification & vite build"
   },
   "dependencies": {
     "@coreui/coreui": "^4.2.6",
