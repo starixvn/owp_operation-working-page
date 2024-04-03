@@ -1,11 +1,15 @@
 import Filter from './feature/filter/Filter';
+import { Provider } from 'react-redux';
+import store from './app/storeNative';
 
 const ProviderVerificationNative = () => {
   return (
-    <div className='provider-verification'>
-      <Filter />
-      <h2>Table</h2>
-    </div>
+    <Provider store={store} >
+      <div className='provider-verification'>
+        <Filter />
+        <Table />
+      </div>
+    </Provider>
   );
 };
 
