@@ -36,7 +36,11 @@ const updateConfirmedMatch = (entities: TDataTable[], confirmInfo: TConfirmed) =
 
 const buildKoOptions = (entities: TDataTable[]) =>
   uniqBy(
-    entities.map(m => formatTime(m.eventDateTime, 'minute', 'hh:mm A'))
+    [...entities].
+      sort((first, second) =>
+        Number(new Date(first.eventDateTime)) - Number(new Date(second.eventDateTime))
+      ).map(m => formatTime(m.eventDateTime, 'minute', 'hh:mm A'))
+
       .map(o => ({
         value: o,
         label: o ?? ''
