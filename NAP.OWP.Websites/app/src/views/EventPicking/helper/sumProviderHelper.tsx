@@ -3,7 +3,6 @@ import { ProviderSumType } from "../types/providerSumType";
 
 export const groupAndCountByHour = (data: TDataTable[], date: string) => {
   const offerMatches = data.filter(x => !x.isNoOffer).map(x => new Date(x.eventDateTime));
-  console.log(offerMatches.length);
   return sumProvider(offerMatches, date);
 };
 
@@ -16,14 +15,12 @@ const sumProvider = (data: Date[], date: string) => {
     countDate.setHours(i);
     const filteredData = data.filter(x => x.getHours() === countDate.getHours());
     array.push({
-      countDate, hour: i,
+      countDate,
       count: filteredData.length,
       periodCount: previousCount + filteredData.length
     });
     previousCount = filteredData.length;
   }
-  const totalSum = array.reduce((sum, item) => sum + item.count, 0);
 
-  console.log(array, totalSum);
   return array;
 };
