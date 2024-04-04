@@ -1,13 +1,22 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ReactDatePicker } from 'react-datepicker';
 import DatePickerComponent from '../../../Shared/DatePickerComponent/DatePicker';
+import { useAppDispatch, useAppSelector } from '../../app/hookNative';
+import { updateFilter } from './FilterSlice';
 
 const FilterDate = () => {
+  const dispatch = useAppDispatch();
   const datePickerRef = useRef<ReactDatePicker>(null);
-  const [filterDate, setFilterDate] = useState(new Date());
+  const filterDate = useAppSelector(
+    state => state.filterState.filter.eventDate
+  );
 
   const onChangeFilterDate = (date: Date) => {
-    setFilterDate(date);
+    const model = {
+      key: 'eventDate',
+      value: date
+    };
+    dispatch(updateFilter(model));
   };
 
   return (

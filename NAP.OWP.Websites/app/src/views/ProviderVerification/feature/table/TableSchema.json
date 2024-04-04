@@ -67,6 +67,6 @@
       "size": 5
     }
   ],
-  "netCoreURL": "api-netcore/provider-verification",
-  "netFwURL": "api/provider-verification"
+  "netCoreURL": "api-netcore/ProviderVerification",
+  "netFwURL": "api/ProviderVerification"
 }

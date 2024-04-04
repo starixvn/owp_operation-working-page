@@ -134,6 +134,13 @@ const convertTZ = (date, tzString) =>
     })
   );
 
+const buildDefaultFilterDateProviderVerification = () => {
+  const currentDate = getCurrentDateGmtPlus8();
+  return currentDate.getHours() < 11
+    ? dayjs(currentDate).add(-2, 'days').toDate()
+    : dayjs(currentDate).add(-1, 'days').toDate();
+};
+
 const buildDefaultFilterDate = () => {
   const currentDate = new Date();
   const gmt8 = convertTZ(currentDate, 'Asia/Hong_Kong');
@@ -181,5 +188,6 @@ export {
   getLocaleDateTime,
   getDayjsFromTime,
   formatTimeOsLastUpdate,
-  formatTimeForTicketLGAPopup
+  formatTimeForTicketLGAPopup,
+  buildDefaultFilterDateProviderVerification
 };
