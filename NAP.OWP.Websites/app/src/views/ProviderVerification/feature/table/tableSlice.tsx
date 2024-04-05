@@ -7,24 +7,7 @@ const tableSlice = createSlice({
   name: 'tableSlice',
   initialState: {
     loading: REQUEST_STATUS.idle,
-    dataSource: {
-      matchNo: '',
-      matchStatus: '',
-      koTime: '',
-      league: '',
-      event: '',
-      hasTicket: false,
-      isRead: false,
-      agentConfirm: [],
-      runner: '',
-      otherProvider: '',
-      agent: '',
-      mb: '',
-      remark: '',
-      remarkBy: '',
-      estNote: ''
-
-    } as TDataSource
+    dataSource: [] as TDataSource[]
   },
   reducers: {
 

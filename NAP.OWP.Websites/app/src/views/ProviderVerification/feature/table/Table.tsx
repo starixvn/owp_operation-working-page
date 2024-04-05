@@ -29,8 +29,9 @@ const Table = props => {
       </tr>
     </thead>
     <tbody>
-      {dataSource.map((event, index) => <tr>
-
+      {dataSource.map((event, index) => <tr
+      key={index}>
+        
       </tr>)}
     </tbody>
   </table>;
