@@ -60,38 +60,37 @@
 }
 
 .table__provider__verification {
-  thead {
-    background: #e3e3e3 !important;
+  overflow: auto;
+  box-shadow: inset 1px -1px #c8ced3;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  min-height: 80px;
+  width: 100%;
+  border-right: 1px solid #c8ced3;
 
+  thead {
+    position: sticky;
+    background: #e3e3e3 !important;
+    top: 0;
+    z-index: 1;
+    box-shadow: inset 1px -1px #c8ced3, inset 1px 1px #c8ced3;
     tr {
       height: 50px;
     }
   }
 
-  th,
+  tbody th {
+    position: sticky;
+    left: 0;
+  }
+
   td {
-    border-collapse: collapse;
+    box-shadow: inset 1px -1px #c8ced3;
+    text-align: center;
   }
 
   th {
     text-align: center;
-
-    .header-table {
-      position: relative;
-      display: flex;
-      justify-content: space-around;
-
-      .filter-header {
-        cursor: pointer;
-        right: 0;
-        top: 0;
-        position: absolute;
-        display: inline-block;
-
-        .filter-popup {
-          position: absolute;
-        }
-      }
-    }
+    box-shadow: inset 1px 1px #c8ced3, 0 1px #c8ced3;
   }
 }

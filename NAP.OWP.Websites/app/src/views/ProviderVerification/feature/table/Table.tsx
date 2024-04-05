@@ -23,7 +23,7 @@ const Table = props => {
         {TABLE_HEADER.map((item, index) => {
           return (
             <th
-              key={index} style={{ width: '5%' }}>
+              key={index} style={{ width: item.width }}>
               <div className='header-table'>
                 <span>{item.headerName}</span>
               </div>

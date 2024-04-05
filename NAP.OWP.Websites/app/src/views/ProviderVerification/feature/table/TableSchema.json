@@ -2,69 +2,69 @@
   "TABLE_HEADER": [
     {
       "headerName": "No #",
-      "size": 3
+      "width": "3%"
     },
     {
       "headerName": "Match status",
-      "size": 4,
+      "width": "5%",
       "isSort": true
     },
     {
       "headerName": "KO time",
-      "size": 15,
+      "width": "5%",
       "isFilter": true
     },
     {
       "headerName": "League",
-      "size": 14,
+      "width": "12%",
       "isFilter": true
     },
     {
       "headerName": "Match",
-      "size": 3
+      "width": "14%"
     },
     {
       "headerName": "Ticket",
-      "size": 11
+      "width": "3%"
     },
     {
       "headerName": "Runner",
-      "size": 11,
+      "width": "6%",
       "isFilter": true
     },
     {
       "headerName": "Other Provider",
-      "size": 11,
+      "width": "8%",
       "isFilter": true
     },
     {
       "headerName": "Agent",
-      "size": 11,
+      "width": "11%",
       "isFilter": true
     },
     {
       "headerName": "MB",
-      "size": 7,
+      "width": "5%",
       "isFilter": true
     },
     {
       "headerName": "Remark",
-      "size": 5,
+      "width": "7%",
       "isFilter": true
     },
     {
       "headerName": "Remark by",
-      "size": 5,
+      "width": "5%",
       "isFilter": true
     },
     {
       "headerName": "Agent Confirm",
-      "size": 5,
+      "width": "6%",
       "isFilter": true
     },
     {
       "headerName": "EST Note",
-      "size": 5
+      "width": "10%"
     }
   ],
   "netCoreURL": "api-netcore/ProviderVerification",
