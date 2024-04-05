@@ -42,7 +42,7 @@ const Table = props => {
           <ReadonlyCommonCell className='match__status' value={event.matchStatus} />
         </td>
         <td>
-          <ReadonlyCommonCell className='ko__time' value={formatTime(event.koTime, 'minute', 'hh:mm A')} />
+          <ReadonlyCommonCell className='ko__time' value={formatTime(event.eventDateTime, 'minute', 'hh:mm A')} />
         </td>
         <td>
           <ReadonlyCommonCell className='league' value={event.league} />
@@ -51,7 +51,7 @@ const Table = props => {
           <ReadonlyCommonCell className='match' value={`${event.home} -vs- ${event.away}`} />
         </td>
         <td>
-          <TicketCell hasTicket={event.hasTicket} isRead={event.isRead} />
+          <TicketCell hasTicket={event.hasTicket} isRead={event.isRead} rowIndex={index} />
         </td>
         <td>
           <ReadonlyCommonCell className='runner' value={event.runner} />

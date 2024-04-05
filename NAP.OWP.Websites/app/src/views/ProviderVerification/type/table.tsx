@@ -2,7 +2,7 @@
 type TDataSource = {
   [key in 'runner' | 'otherProvider' | 'agent' | 'mb' | 'remark' | 'remarkBy' | 'estNote']: string | null;
 } & {
-    [key in 'matchNo' | 'matchStatus' | 'koTime' | 'league' | 'home' |
+    [key in 'matchNo' | 'matchStatus' | 'eventDateTime' | 'league' | 'home' |
     'away'
     ]: Required<string>
   } & TTicketCell & {
