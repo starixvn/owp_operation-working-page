@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hookNative';
 import { getEvents } from '../table/tableThunk';
 import FilterDate from './FilterDate';
+import SummarizeProviderIcon from '../summarizeProvider/sum/SummarizeProviderIcon';
+import CompareAgent from '../summarizeProvider/compare/CompareAgentIcon';
 
 const Filter = () => {
   const dispatch = useAppDispatch();
@@ -23,6 +25,10 @@ const Filter = () => {
             Search
           </button>
         </div>
+      </div>
+      <div className='right-control'>
+        <CompareAgent />
+        <SummarizeProviderIcon />
       </div>
     </div>
   );

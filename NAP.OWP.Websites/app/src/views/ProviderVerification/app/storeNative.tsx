@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import eventReducer from '../feature/table/tableSlice';
 import filterReducer from '../feature/filter/FilterSlice';
 import createMultiplePolicySlice from '../../Shared/permission/multiplePolicySlice';
+import providerSumReducer from '../feature/summarizeProvider/summarizeProviderSlice';
 import createTicketBoardReducer from '../../Shared/createTicketNew/createTicketBoardSliceNew';
 import chatBoardNew from '../../Shared/chatBoardNew/chatBoardSlice';
 import ticketListSlice from '../../Shared/ticketEvent/component/ticketListSlice';
@@ -12,6 +13,7 @@ const store = configureStore({
     events: eventReducer,
     filterState: filterReducer,
     pagePolicy: createMultiplePolicySlice('pagePolicy'),
+    providerSum: providerSumReducer,
     ticketList: ticketListSlice,
     createTicketBoard: createTicketBoardReducer,
     chatBoard: chatBoardNew,
