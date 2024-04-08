@@ -6,9 +6,9 @@ import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 
 const Table = () => {
-  const { dataSource, loading } = useAppSelector(state => state.events);
+  const { dataSource, loadingDataTable } = useAppSelector(state => state.events);
 
-  if (isEquals(loading, REQUEST_STATUS.pending)) {
+  if (isEquals(loadingDataTable, REQUEST_STATUS.pending)) {
     return <Loading />;
   }
 

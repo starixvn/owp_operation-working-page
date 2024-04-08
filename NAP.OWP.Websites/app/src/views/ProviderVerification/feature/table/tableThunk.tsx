@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { get } from '../../../Shared/Service/Service';
 import Utils from '../../../Shared/Utils';
 import { netCoreURL, netFwURL } from './TableSchema.json';
+import { TOptionResponse } from '../../type/agentConfirmOption';
 
 const getUrl = (methodRoute: string) =>
   process.env.NODE_ENV === 'development'
@@ -27,7 +28,10 @@ const getAgentConfirm = createAsyncThunk(
     const response = await get({
       url
     });
-    return response.data;
+    return (response.data as TOptionResponse[]).map(data => ({
+      value: data.agentId,
+      label: data.agentName
+    }));
   }
 );
 

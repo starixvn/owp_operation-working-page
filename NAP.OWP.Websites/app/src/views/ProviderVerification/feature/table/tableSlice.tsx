@@ -3,13 +3,15 @@ import { getAgentConfirm, getEvents } from './tableThunk';
 import { TDataSource, TUpdateRow } from '../../type/table';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { Option } from '../../../Shared/MultipleSelection/type';
 
 const tableSlice = createSlice({
   name: 'tableSlice',
   initialState: {
-    loading: REQUEST_STATUS.idle,
+    loadingDataTable: REQUEST_STATUS.pending,
+    loadingAgentConfirmOption: REQUEST_STATUS.pending,
     dataSource: [] as TDataSource[],
-    agentConfirmOption: []
+    agentConfirmOption: [] as Option[]
   },
   reducers: {
     setValue: (state, action: PayloadAction<TUpdateRow>) => {
@@ -20,24 +22,24 @@ const tableSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getEvents.pending, state => {
-        state.loading = REQUEST_STATUS.pending;
+        state.loadingDataTable = REQUEST_STATUS.pending;
       })
       .addCase(getEvents.fulfilled, (state, action: PayloadAction<TDataSource[]>) => {
-        state.loading = REQUEST_STATUS.idle;
+        state.loadingDataTable = REQUEST_STATUS.idle;
         state.dataSource = action.payload;
       })
       .addCase(getEvents.rejected, state => {
-        state.loading = REQUEST_STATUS.idle;
+        state.loadingDataTable = REQUEST_STATUS.idle;
       })
       .addCase(getAgentConfirm.pending, state => {
-        state.loading = REQUEST_STATUS.pending;
+        state.loadingAgentConfirmOption = REQUEST_STATUS.pending;
       })
       .addCase(getAgentConfirm.fulfilled, (state, { payload }) => {
-        state.loading = REQUEST_STATUS.idle;
+        state.loadingAgentConfirmOption = REQUEST_STATUS.idle;
         state.agentConfirmOption = payload;
       })
       .addCase(getAgentConfirm.rejected, state => {
-        state.loading = REQUEST_STATUS.idle;
+        state.loadingAgentConfirmOption = REQUEST_STATUS.idle;
       });
   }
 });

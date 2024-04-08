@@ -7,9 +7,11 @@ import EditableCommonCell from './cell/EditableCommonCell';
 import { ROW_HEIGHT } from './TableSchema.json';
 import { useAppDispatch } from '../../app/hookNative';
 import { setValue } from './tableSlice';
+import MBCell from './cell/MBCell';
 
 const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
   const dispatch = useAppDispatch();
+
   return (
     <tbody>
       {dataSource.map((event, index) => <tr
@@ -44,7 +46,7 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
           value
         }))} />
         <td>
-          <ReadonlyCommonCell className='max__bet' value={event.Maxbet} />
+          <MBCell HandicapSetting={event.HandicapSetting} OverUnderSetting={event.OverUnderSetting} />
         </td>
         <td>
           <ReadonlyCommonCell className='remark' value={event.Remark} />
@@ -53,7 +55,10 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
           <ReadonlyCommonCell className='remark__by' value={event.RemarkBy} />
         </td>
         <td>
-          <AgentConfirmCell agentConfirm={event.AgentConfirm} />
+          <AgentConfirmCell agentConfirm={event.AgentConfirm.map(a => ({
+            value: a.Value,
+            label: a.Label
+          }))} />
         </td>
         <EditableCommonCell className='est__note' value={event.EstNote} onBlur={value => dispatch(setValue({
           rowIndex: index,

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { TEditableCell } from "../../../type/table";
 
 const EditableCommonCell = ({ className, value, onBlur }: TEditableCell) => {
