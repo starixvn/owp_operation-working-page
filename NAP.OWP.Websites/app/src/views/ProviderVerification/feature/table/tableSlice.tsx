@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getEvents } from './tableThunk';
-import { TDataSource } from '../../type/table';
+import { TDataSource, TUpdateRow } from '../../type/table';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 const tableSlice = createSlice({
   name: 'tableSlice',
@@ -10,7 +11,10 @@ const tableSlice = createSlice({
     dataSource: [] as TDataSource[]
   },
   reducers: {
-
+    setValue: (state, action: PayloadAction<TUpdateRow>) => {
+      const { rowIndex, key, value } = action.payload;
+      state.dataSource[rowIndex][key] = value;
+    }
   },
   extraReducers: builder => {
     builder
@@ -29,9 +33,9 @@ const tableSlice = createSlice({
 
 const { actions, reducer } = tableSlice;
 const {
-
+  setValue
 } = actions;
 export {
-
+  setValue
 };
 export default reducer;

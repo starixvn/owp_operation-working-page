@@ -1,72 +1,77 @@
 {
   "TABLE_HEADER": [
     {
-      "headerName": "No #",
-      "width": "3%"
+      "HEADER_NAME": "No #",
+      "WIDTH": "3%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Match status",
-      "width": "5%",
-      "isSort": true
+      "HEADER_NAME": "Match status",
+      "WIDTH": "5%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "KO time",
-      "width": "5%",
-      "isFilter": true
+      "HEADER_NAME": "KO time",
+      "WIDTH": "5%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "League",
-      "width": "12%",
-      "isFilter": true
+      "HEADER_NAME": "League",
+      "WIDTH": "12%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Match",
-      "width": "14%"
+      "HEADER_NAME": "Match",
+      "WIDTH": "14%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Ticket",
-      "width": "3%"
+      "HEADER_NAME": "Ticket",
+      "WIDTH": "3%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Runner",
-      "width": "6%",
-      "isFilter": true
+      "HEADER_NAME": "Runner",
+      "WIDTH": "6%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Other Provider",
-      "width": "8%",
-      "isFilter": true
+      "HEADER_NAME": "Other Provider",
+      "WIDTH": "8%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Agent",
-      "width": "11%",
-      "isFilter": true
+      "HEADER_NAME": "Agent",
+      "WIDTH": "11%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "MB",
-      "width": "5%",
-      "isFilter": true
+      "HEADER_NAME": "MB",
+      "WIDTH": "5%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Remark",
-      "width": "7%",
-      "isFilter": true
+      "HEADER_NAME": "Remark",
+      "WIDTH": "7%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Remark by",
-      "width": "5%",
-      "isFilter": true
+      "HEADER_NAME": "Remark by",
+      "WIDTH": "5%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "Agent Confirm",
-      "width": "6%",
-      "isFilter": true
+      "HEADER_NAME": "Agent Confirm",
+      "WIDTH": "6%",
+      "IS_FILTER": true
     },
     {
-      "headerName": "EST Note",
-      "width": "10%"
+      "HEADER_NAME": "EST Note",
+      "WIDTH": "10%",
+      "IS_FILTER": true
     }
   ],
   "netCoreURL": "api-netcore/ProviderVerification",
-  "netFwURL": "api/ProviderVerification"
+  "netFwURL": "api/ProviderVerification",
+  "ROW_HEIGHT": 40
 }

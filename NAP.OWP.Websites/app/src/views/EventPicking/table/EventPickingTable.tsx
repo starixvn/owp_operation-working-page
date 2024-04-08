@@ -16,7 +16,7 @@ const EventPickingTable = () => {
       <CustomTable
         data={entities}
         tableHeader={<TableHeader />}
-        classNameTable={'table-event-picking'}
+        classNameTable='table-event-picking'
         itemRowHeight={itemRowHeight}>
         <TableBody />
       </CustomTable>
