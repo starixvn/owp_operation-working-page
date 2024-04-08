@@ -15,55 +15,51 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
       {dataSource.map((event, index) => <tr
         key={index} style={{ height: ROW_HEIGHT }}>
         <td>
-          <ReadonlyCommonCell className='match__no' value={event.matchNo} />
+          <ReadonlyCommonCell className='match__no' value={event.MatchNo} />
         </td>
         <td>
-          <ReadonlyCommonCell className='match__status' value={event.matchStatus} />
+          <ReadonlyCommonCell className='match__status' value={event.MatchStatus} />
         </td>
         <td>
-          <ReadonlyCommonCell className='ko__time' value={formatTime(event.eventDateTime, 'minute', 'hh:mm A')} />
+          <ReadonlyCommonCell className='ko__time' value={formatTime(event.EventDateTime, 'minute', 'hh:mm A')} />
         </td>
         <td>
-          <ReadonlyCommonCell className='league' value={event.league} />
+          <ReadonlyCommonCell className='league' value={event.League} />
         </td>
         <td>
-          <ReadonlyCommonCell className='match' value={`${event.home} -vs- ${event.away}`} />
+          <ReadonlyCommonCell className='match' value={`${event.Home} -vs- ${event.Away}`} />
         </td>
         <td>
-          <TicketCell hasTicket={event.hasTicket} isRead={event.isRead} rowIndex={index} />
+          <TicketCell HasTicket={event.HasTicket} IsRead={event.IsRead} rowIndex={index} />
         </td>
         <td>
-          <ReadonlyCommonCell className='runner' value={event.runner} />
+          <ReadonlyCommonCell className='runner' value={event.Provider} />
         </td>
         <td>
-          <ReadonlyCommonCell className='other__provider' value={event.otherProvider} />
+          <ReadonlyCommonCell className='other__provider' value={event.OtherProvider} />
+        </td>
+        <EditableCommonCell className='agent' value={event.Agent} onBlur={value => dispatch(setValue({
+          rowIndex: index,
+          key: 'Agent',
+          value
+        }))} />
+        <td>
+          <ReadonlyCommonCell className='max__bet' value={event.Maxbet} />
         </td>
         <td>
-          <EditableCommonCell className='agent' value={event.agent} onBlur={value => dispatch(setValue({
-            rowIndex: index,
-            key: 'agent',
-            value
-          }))} />
+          <ReadonlyCommonCell className='remark' value={event.Remark} />
         </td>
         <td>
-          <ReadonlyCommonCell className='max__bet' value={event.mb} />
+          <ReadonlyCommonCell className='remark__by' value={event.RemarkBy} />
         </td>
         <td>
-          <ReadonlyCommonCell className='remark' value={event.remark} />
+          <AgentConfirmCell agentConfirm={event.AgentConfirm} />
         </td>
-        <td>
-          <ReadonlyCommonCell className='remark__by' value={event.remarkBy} />
-        </td>
-        <td>
-          <AgentConfirmCell agentConfirm={event.agentConfirm} />
-        </td>
-        <td>
-          <EditableCommonCell className='est__note' value={event.estNote} onBlur={value => dispatch(setValue({
-            rowIndex: index,
-            key: 'estNote',
-            value
-          }))} />
-        </td>
+        <EditableCommonCell className='est__note' value={event.EstNote} onBlur={value => dispatch(setValue({
+          rowIndex: index,
+          key: 'EstNote',
+          value
+        }))} />
       </tr>)}
     </tbody>
   );

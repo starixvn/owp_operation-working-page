@@ -2,11 +2,11 @@ import { TTicketCell } from '../../../../type/table';
 import IconCreateMessage from './IconCreateMessage';
 import IconOpenMessage from './IconOpenMessage';
 
-const TicketCell = ({ hasTicket, isRead, rowIndex }: TTicketCell) => {
+const TicketCell = ({ HasTicket, IsRead, rowIndex }: TTicketCell) => {
   return (
     <>
-      {hasTicket ? (
-        <IconOpenMessage isRead={isRead} />
+      {HasTicket ? (
+        <IconOpenMessage isRead={IsRead} />
       ) : (
         <IconCreateMessage />
       )}

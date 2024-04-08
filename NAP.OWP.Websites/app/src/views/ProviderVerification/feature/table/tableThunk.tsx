@@ -20,4 +20,15 @@ const getEvents = createAsyncThunk(
   }
 );
 
-export { getEvents };
+const getAgentConfirm = createAsyncThunk(
+  'provider-verification/get-agent-confirm',
+  async () => {
+    const url = getUrl('get-agent-option');
+    const response = await get({
+      url
+    });
+    return response.data;
+  }
+);
+
+export { getEvents, getAgentConfirm };

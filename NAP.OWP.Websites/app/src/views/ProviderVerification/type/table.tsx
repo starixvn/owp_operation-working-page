@@ -1,14 +1,15 @@
+import { Option } from "../../Shared/MultipleSelection/type";
 
-type TEditableKey = 'agent' | 'estNote';
+type TEditableKey = 'Agent' | 'EstNote';
 
 type TDataSource = {
-  [key in 'runner' | 'otherProvider' | 'mb' | 'remark' | 'remarkBy']: string | null;
+  [key in 'Provider' | 'OtherProvider' | 'Maxbet' | 'Remark' | 'RemarkBy']: string | null;
 } & {
-    [key in 'matchNo' | 'matchStatus' | 'eventDateTime' | 'league' | 'home' |
-    'away'
+    [key in 'MatchNo' | 'MatchStatus' | 'EventDateTime' | 'League' | 'Home' |
+    'Away'
     ]: Required<string>
   } & TTicketCell & {
-    agentConfirm: number[]
+    AgentConfirm: Option[]
   } & {
     [key in TEditableKey]: string | undefined;
   }
@@ -25,7 +26,7 @@ type TEditableCell = {
 }
 
 type TTicketCell = {
-  [key in 'hasTicket' | 'isRead']: boolean
+  [key in 'HasTicket' | 'IsRead']: boolean
 } & { rowIndex: number }
 
 type TUpdateRow = {

@@ -13,12 +13,12 @@ const EditableCommonCell = ({ className, value, onBlur }: TEditableCell) => {
   };
 
   return (
-    <>
+    <td onClick={() => {
+      console.log('Click');
+      setCanEdit(true);
+    }}>
       {!canEdit && <span className={className}
-        onClick={() => {
-          console.log('Click');
-          setCanEdit(true);
-        }}>
+      >
         {value}
       </span>}
       {canEdit && <input
@@ -29,7 +29,7 @@ const EditableCommonCell = ({ className, value, onBlur }: TEditableCell) => {
         autoFocus
         onBlur={handleBlur}>
       </input>}
-    </>
+    </td>
   );
 };
 

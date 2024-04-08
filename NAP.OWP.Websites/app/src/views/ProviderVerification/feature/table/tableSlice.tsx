@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getEvents } from './tableThunk';
+import { getAgentConfirm, getEvents } from './tableThunk';
 import { TDataSource, TUpdateRow } from '../../type/table';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import type { PayloadAction } from '@reduxjs/toolkit';
@@ -8,7 +8,8 @@ const tableSlice = createSlice({
   name: 'tableSlice',
   initialState: {
     loading: REQUEST_STATUS.idle,
-    dataSource: [] as TDataSource[]
+    dataSource: [] as TDataSource[],
+    agentConfirmOption: []
   },
   reducers: {
     setValue: (state, action: PayloadAction<TUpdateRow>) => {
@@ -21,11 +22,21 @@ const tableSlice = createSlice({
       .addCase(getEvents.pending, state => {
         state.loading = REQUEST_STATUS.pending;
       })
-      .addCase(getEvents.fulfilled, (state, { payload }) => {
+      .addCase(getEvents.fulfilled, (state, action: PayloadAction<TDataSource[]>) => {
         state.loading = REQUEST_STATUS.idle;
-        state.dataSource = payload;
+        state.dataSource = action.payload;
       })
       .addCase(getEvents.rejected, state => {
+        state.loading = REQUEST_STATUS.idle;
+      })
+      .addCase(getAgentConfirm.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(getAgentConfirm.fulfilled, (state, { payload }) => {
+        state.loading = REQUEST_STATUS.idle;
+        state.agentConfirmOption = payload;
+      })
+      .addCase(getAgentConfirm.rejected, state => {
         state.loading = REQUEST_STATUS.idle;
       });
   }
