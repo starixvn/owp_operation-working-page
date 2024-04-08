@@ -47,11 +47,11 @@ const buildKoOptions = (entities: TDataTable[]) =>
       })), i => i.value);
 
 const buildMbOptions = (entities: TDataTable[]) => uniqBy(
-  [...entities].sort((first, second) => first.maxBetHDPNumber - second.maxBetHDPNumber)
+  [...entities].sort((first, second) => (first.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER) - (second.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER))
     .map(o => ({
       value: o.maxBetHDPNumber ?? null,
-      label: o.maxBetHDP ?? ''
-    })), i => i.label);
+      label: o.maxBetHDP ?? '(Blanks)'
+    })), i => i.value);
 
 const buildMultipleFilterDefault = (entities: TDataTable[]) => {
   const koTimeOptions = buildKoOptions(entities);

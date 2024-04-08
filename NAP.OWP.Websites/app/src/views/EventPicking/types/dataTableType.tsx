@@ -17,7 +17,7 @@ type TDataTable = {
   homeName: string;
   awayName: string;
   maxBetHDP: string;
-  maxBetHDPNumber: number;
+  maxBetHDPNumber: number | null;
   isNoOffer: boolean;
   infoSiteMatchId: number;
   isChildMatch: boolean;
