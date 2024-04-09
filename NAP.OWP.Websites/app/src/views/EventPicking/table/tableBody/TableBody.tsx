@@ -44,9 +44,9 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
       const rowSpan = HasRead ? row.turnoverPeriod.length : 1;
       const buildTurnoverMarginRow = () => {
         return row.turnoverPeriod.map(
-          (_item: TTurnOverInfo, index: number) =>
+          (_item, index) =>
             row.turnoverPeriod[index + 1] && (
-              <tr className={`${row.rowColor}-row`}>
+              <tr key={index} className={`${row.rowColor}-row`}>
                 <TurnOverCell
                   value={row.turnoverPeriod[index + 1].valueDisplay}
                   color={row.turnoverPeriod[index + 1].color}

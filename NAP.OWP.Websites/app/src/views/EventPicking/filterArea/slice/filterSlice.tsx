@@ -22,9 +22,8 @@ import {
 import { SELECT_TURNOVER_OPTIONS } from '../const';
 import { getLeagues, getUpdateTypes } from './filterThunkNative';
 import Utils from '../../../Shared/Utils';
-import { REQUEST_STATUS } from '../../../Shared/Constants';
 
-const { KEY, VALUE: {
+const { VALUE: {
   ONE_MONTH,
   THREE_MONTHS, SIX_MONTHS, TWELVE_MONTH
 } } = PERIOD;

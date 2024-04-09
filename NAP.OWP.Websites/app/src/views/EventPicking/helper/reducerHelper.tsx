@@ -1,6 +1,13 @@
+import { formatTime } from "../../Shared/DateTime/dateTimeHelper";
 import { TConfirmed } from "../types/confirmed";
-import TDataTable from "../types/dataTableType";
+import TDataTable, { TMultipleFilter } from "../types/dataTableType";
 import { TNoOfferMatch } from "../types/noOfferMatchType";
+import { uniqBy } from 'lodash';
+import { COLUMN_KEY } from '../table/TableSchema.json';
+import { isEquals } from "immutability-helper";
+
+const KO_TIME = COLUMN_KEY.KO_TIME;
+const MB = COLUMN_KEY.MB;
 
 const updateNoOfferMatch = (entities: TDataTable[], noOfferMatch: TNoOfferMatch[]) => {
   entities.forEach(element => {
@@ -27,7 +34,53 @@ const updateConfirmedMatch = (entities: TDataTable[], confirmInfo: TConfirmed) =
   });
 };
 
+const buildKoOptions = (entities: TDataTable[]) =>
+  uniqBy(
+    [...entities].
+      sort((first, second) =>
+        Number(new Date(first.eventDateTime)) - Number(new Date(second.eventDateTime))
+      ).map(m => formatTime(m.eventDateTime, 'minute', 'hh:mm A'))
+
+      .map(o => ({
+        value: o,
+        label: o ?? ''
+      })), i => i.value);
+
+const buildMbOptions = (entities: TDataTable[]) => uniqBy(
+  [...entities].sort((first, second) => (first.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER) - (second.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER))
+    .map(o => ({
+      value: o.maxBetHDPNumber ?? null,
+      label: o.maxBetHDP ?? '(Blanks)'
+    })), i => i.value);
+
+const buildMultipleFilterDefault = (entities: TDataTable[]) => {
+  const koTimeOptions = buildKoOptions(entities);
+  const mbOptions = buildMbOptions(entities);
+  return {
+    [KO_TIME]: {
+      isFilter: false,
+      selected: koTimeOptions,
+      options: koTimeOptions
+    },
+    [MB]: {
+      isFilter: false,
+      selected: mbOptions,
+      options: mbOptions
+    }
+  } as TMultipleFilter;
+};
+
+const filterByKo = (entities: TDataTable[], selectedValue: (number | string | null)[]) =>
+  entities.filter(e => selectedValue.some(s => s && isEquals(formatTime(e.eventDateTime, 'minute', 'hh:mm A'), s.toString())));
+
+const filterByMb = (entities: TDataTable[], selectedValue: (number | string | null)[]) => entities.filter(e => selectedValue.some(s => e.maxBetHDPNumber === s));
+
 export {
   updateNoOfferMatch,
-  updateConfirmedMatch
+  updateConfirmedMatch,
+  buildMultipleFilterDefault,
+  filterByKo,
+  filterByMb,
+  buildMbOptions,
+  buildKoOptions
 };

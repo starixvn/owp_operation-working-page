@@ -8,23 +8,21 @@ import { ChangeEvent } from 'react';
 
 const updateConfirmAllEvent = async (event: ChangeEvent<HTMLInputElement>) => {
   const { checked } = event.target;
-  if (checked) {
+  const { entities } = store.getState().eventPickingTable;
+  if (checked && entities.length) {
     const confirmResult = await ToastrWrapper.confirm(MESSAGE.CONFIRM_ALL);
     if (confirmResult.value) {
       Spinner.show();
-      const { entities } = store.getState().eventPickingTable;
-      if (entities.length) {
-        Spinner.show();
-        const infoSiteMatchIds = (entities as TDataSource[]).map(
-          element => element.infoSiteMatchId
-        );
-
-        await store.dispatch(updateConfirmedThunk({
+      const infoSiteMatchIds = (entities as TDataSource[]).map(
+        element => element.infoSiteMatchId
+      );
+      await store.dispatch(
+        updateConfirmedThunk({
           infoSiteMatchIds,
           confirmed: checked
-        }));
-        Spinner.hide();
-      }
+        })
+      );
+      Spinner.hide();
     }
   }
 };

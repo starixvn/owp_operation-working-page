@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { FilterIcon } from 'mdi-react';
 import FilterHeaderPopupCommon from './FilterHeaderPopupCommon';
 import { TFilterState } from './typeCommon';
+import useClickOutside from '../customHook/useClickOutside';
 type FilterHeaderProps = {
   columnKey: string;
   model: any;
@@ -19,7 +20,7 @@ const FilterHeaderCommon = ({
   handleFilterBySearchKeyCallback,
   handleValueFilterCallback
 }: FilterHeaderProps) => {
-  const filterRef = useRef<HTMLDivElement>(null);
+
   const { filterState } = model;
   const [isOpenFilter, setIsOpenFilter] = useState(false);
 
@@ -28,47 +29,35 @@ const FilterHeaderCommon = ({
     setIsOpenFilter(true);
   };
 
-  const checkIsFiltered = () =>
-    filterState.some((x: { columnKey: string }) => {
-      return x.columnKey === columnKey;
-    });
+  const className = filterState
+    .some((x: { columnKey: string }) => x.columnKey === columnKey)
+    ? 'is-filter'
+    : '';
 
   const handleClosedPopup = () => {
     setIsOpenFilter(false);
   };
 
-  useEffect(() => {
-    const handleClickOutSide = (event: MouseEvent) => {
-      if (
-        filterRef.current &&
-        !filterRef.current.contains(event.target as Node)
-      ) {
-        setIsOpenFilter(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutSide);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutSide);
-    };
-  }, [filterRef]);
+  const filterRef = useClickOutside<HTMLDivElement>(() => setIsOpenFilter(false));
 
   return (
     <div className='filter-header'>
       <span
-        className={`icon-filter ${checkIsFiltered() ? 'is-filter' : ''}`}
+        className={`icon-filter ${className}`}
         onClick={() => handleClickFilter(columnKey)}>
         <FilterIcon size={14} />
       </span>
       {isOpenFilter && (
-        <FilterHeaderPopupCommon
-          model={model}
-          handleClosedPopup={handleClosedPopup}
-          columnKey={columnKey}
-          ref={filterRef}
-          handleClearFilterCallback={handleClearFilterCallback}
-          handleFilterBySearchKeyCallback={handleFilterBySearchKeyCallback}
-          handleValueFilterCallback={handleValueFilterCallback}
-        />
+        <div ref={filterRef}>
+          <FilterHeaderPopupCommon
+            model={model}
+            handleClosedPopup={handleClosedPopup}
+            columnKey={columnKey}
+            handleClearFilterCallback={handleClearFilterCallback}
+            handleFilterBySearchKeyCallback={handleFilterBySearchKeyCallback}
+            handleValueFilterCallback={handleValueFilterCallback}
+          />
+        </div>
       )}
     </div>
   );

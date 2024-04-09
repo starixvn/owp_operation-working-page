@@ -1,15 +1,23 @@
+import { Option } from '../../Shared/MultipleSelection/type';
+
+type TResult = {
+  matchesByDate: Array<TDataTable>;
+  filteredMatches: Array<TDataTable>;
+}
+
 type TDataTable = {
   tV: string;
   ipTv: string;
   channel: string;
   wb: string;
-  eventDateTime: Date;
+  eventDateTime: Required<Date>;
   leagueName: string;
   matchOffer: string;
   noHDP: string;
   homeName: string;
   awayName: string;
-  maxBetHDP: number;
+  maxBetHDP: string;
+  maxBetHDPNumber: number | null;
   isNoOffer: boolean;
   infoSiteMatchId: number;
   isChildMatch: boolean;
@@ -46,7 +54,22 @@ type MarginInfo = {
   color: string;
 };
 
+type TColumnKey = "MB" | "KO_Time";
+
+type TMultipleColumnFilterOption = {
+  [key in TColumnKey]: Option[];
+};
+
+type TMultipleFilter = {
+  [key in TColumnKey]: {
+    isFilter: boolean;
+    selected: Option[];
+    options: Option[];
+  };
+};
+
 type TTableSlice = {
+  entitiesByDate: Array<TDataTable>;
   entities: Array<TDataTable>;
   entitiesOriginal: Array<TDataTable>;
   isNoOfferAll: boolean;
@@ -54,8 +77,9 @@ type TTableSlice = {
   valueFilterAllColumn: FilterAllColumn;
   columnKeyFilterCurrent: string;
   filterState: Array<TFilterState>;
-  sortState: ISortState;
+  multipleFilter: TMultipleFilter;
   loading: string;
+  previousNoOfferIndex: null | number;
 };
 
 type TFilterState = {
@@ -75,11 +99,6 @@ type TPermission = {
   SiteId: number;
 };
 
-interface ISortState {
-  columnKeySelected: Required<string>;
-  orderType: string;
-}
-
 export default TDataTable;
 export {
   TTurnOverInfo,
@@ -87,5 +106,8 @@ export {
   TFilterState,
   FilterAllColumn,
   TPermission,
-  ISortState
+  TMultipleFilter,
+  TColumnKey,
+  TResult,
+  TMultipleColumnFilterOption
 };

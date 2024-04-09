@@ -5,13 +5,16 @@ import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
 import updateConfirmedThunk from '../updateConfirmedThunkNative';
 import {
   updateNoOfferMatch,
-  updateConfirmedMatch
+  updateConfirmedMatch,
+  buildMultipleFilterDefault,
+  filterByKo,
+  filterByMb
 } from '../../helper/reducerHelper';
 import {
   TTableSlice,
   TFilterState,
   FilterAllColumn,
-  ISortState
+  TColumnKey
 } from '../../types/dataTableType';
 import {
   addOrReplaceFilterState,
@@ -19,11 +22,13 @@ import {
   pushOrUpdateObject
 } from '../../../Shared/Utils';
 import filterByKeyword from '../filterByKeyword';
-import { sortData } from '../EventPickingTableHelper';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { Option } from '../../../Shared/MultipleSelection/type';
 
 const EventPickingTableSlice = createSlice({
   name: 'EventPickingTableSlice',
   initialState: {
+    entitiesByDate: [],
     entities: [],
     entitiesOriginal: [],
     isNoOfferAll: false,
@@ -32,10 +37,19 @@ const EventPickingTableSlice = createSlice({
     columnKeyFilterCurrent: '',
     filterState: [] as TFilterState[],
     loading: REQUEST_STATUS.idle,
-    sortState: {
-      columnKeySelected: '',
-      orderType: ''
-    } as ISortState
+    previousNoOfferIndex: null,
+    multipleFilter: {
+      KO_Time: {
+        isFilter: false,
+        selected: [],
+        options: []
+      },
+      MB: {
+        isFilter: false,
+        selected: [],
+        options: []
+      }
+    }
   } as TTableSlice,
   reducers: {
     setColumnKeyValue: (state, action) => {
@@ -56,20 +70,48 @@ const EventPickingTableSlice = createSlice({
         state.filterState,
         filterByKeyword
       );
-      if (state.entities.length) {
-        state.isConfirmAll = state.entities.every(x => x.isCheck);
-        state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
-      }
+      state.isConfirmAll = state.entities?.every(x => x.isCheck);
+      state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
     },
     clearFilter: state => {
       const { entitiesOriginal } = state;
       state.filterState = [];
       state.valueFilterAllColumn = {};
       state.entities = entitiesOriginal;
-      if (state.entities.length) {
-        state.isConfirmAll = state.entities.every(x => x.isCheck);
-        state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
-      }
+      state.isConfirmAll = state.entities?.every(x => x.isCheck);
+      state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
+      state.multipleFilter = buildMultipleFilterDefault(state.entitiesOriginal);
+    },
+    setMultipleFilter: (
+      state,
+      action: PayloadAction<{
+        columnKey: Required<TColumnKey>;
+        selected: Option[];
+      }>
+    ) => {
+      const { columnKey, selected } = action.payload;
+      state.multipleFilter[columnKey] = {
+        ...state.multipleFilter[columnKey],
+        isFilter:
+          state.multipleFilter[columnKey].options.length !== selected.length,
+        selected
+      };
+      state.entities = filterDataTable(
+        state.entitiesOriginal,
+        state.filterState,
+        filterByKeyword
+      );
+      state.entities = filterByKo(
+        state.entities,
+        state.multipleFilter.KO_Time.selected.map(x => x.value)
+      );
+      state.entities = filterByMb(
+        state.entities,
+        state.multipleFilter.MB.selected.map(x => x.value)
+      );
+    },
+    setPreviousNoOfferRow: (state, action) => {
+      state.previousNoOfferIndex = action.payload;
     }
   },
   extraReducers: builder => {
@@ -78,35 +120,32 @@ const EventPickingTableSlice = createSlice({
         const noOfferMatch = payload;
         updateNoOfferMatch(state.entitiesOriginal, noOfferMatch);
         updateNoOfferMatch(state.entities, noOfferMatch);
-        if (state.entities.length) {
-          state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
-        }
+        updateNoOfferMatch(state.entitiesByDate, noOfferMatch);
+        state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
       })
       .addCase(updateConfirmedThunk.fulfilled, (state, { payload }) => {
         const confirmInfo = payload;
         updateConfirmedMatch(state.entitiesOriginal, confirmInfo);
         updateConfirmedMatch(state.entities, confirmInfo);
-        if (state.entities.length) {
-          state.isConfirmAll = state.entities.every(x => x.isCheck);
-        }
+        state.isConfirmAll = state.entities?.every(x => x.isCheck);
       })
       .addCase(getEventPickings.pending, state => {
         state.loading = REQUEST_STATUS.pending;
       })
       .addCase(getEventPickings.fulfilled, (state, { payload }) => {
+        const { matchesByDate, filteredMatches } = payload;
         state.loading = REQUEST_STATUS.idle;
-        state.entitiesOriginal = payload;
+        state.entitiesByDate = matchesByDate;
+        state.entitiesOriginal = filteredMatches;
         state.entities = filterDataTable(
           state.entitiesOriginal,
           state.filterState,
           filterByKeyword
         );
-        const { orderType, columnKeySelected } = state.sortState;
-        state.entities = sortData(orderType, state.entities, columnKeySelected);
-        if (state.entities.length) {
-          state.isConfirmAll = state.entities.every(x => x.isCheck);
-          state.isNoOfferAll = state.entities.every(x => x.isNoOffer);
-        }
+
+        state.multipleFilter = buildMultipleFilterDefault(state.entities);
+        state.isConfirmAll = state.entities?.every(x => x.isCheck);
+        state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
       })
       .addCase(getEventPickings.rejected, state => {
         state.loading = REQUEST_STATUS.idle;
@@ -114,7 +153,21 @@ const EventPickingTableSlice = createSlice({
   }
 });
 const { reducer, actions } = EventPickingTableSlice;
-const { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter } =
-  actions;
-export { filterBySearchKey, clearFilter, setColumnKeyValue, setValueFilter };
+const {
+  filterBySearchKey,
+  clearFilter,
+  setMultipleFilter,
+  setColumnKeyValue,
+  setValueFilter,
+  setPreviousNoOfferRow
+} = actions;
+
+export {
+  filterBySearchKey,
+  clearFilter,
+  setColumnKeyValue,
+  setValueFilter,
+  setPreviousNoOfferRow,
+  setMultipleFilter
+};
 export default reducer;
