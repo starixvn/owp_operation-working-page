@@ -4,6 +4,7 @@ import { TDataSource, TUpdateRow } from '../../type/table';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { Option } from '../../../Shared/MultipleSelection/type';
+import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
 
 const tableSlice = createSlice({
   name: 'tableSlice',
@@ -17,6 +18,15 @@ const tableSlice = createSlice({
     setValue: (state, action: PayloadAction<TUpdateRow>) => {
       const { rowIndex, key, value } = action.payload;
       state.dataSource[rowIndex][key] = value;
+    },
+    setDataSignalR: (state, action) => {
+      const { actorId, parentMatchId, userId } = action.payload;
+      state.dataSource.forEach((item: TDataSource) => {
+        if (item === parentMatchId) {
+          item.IsRead = buildIsReadValue(actorId, userId, item.IsRead);
+          item.HasTicket = true;
+        }
+      });
     }
   },
   extraReducers: builder => {
@@ -24,10 +34,13 @@ const tableSlice = createSlice({
       .addCase(getEvents.pending, state => {
         state.loadingDataTable = REQUEST_STATUS.pending;
       })
-      .addCase(getEvents.fulfilled, (state, action: PayloadAction<TDataSource[]>) => {
-        state.loadingDataTable = REQUEST_STATUS.idle;
-        state.dataSource = action.payload;
-      })
+      .addCase(
+        getEvents.fulfilled,
+        (state, action: PayloadAction<TDataSource[]>) => {
+          state.loadingDataTable = REQUEST_STATUS.idle;
+          state.dataSource = action.payload;
+        }
+      )
       .addCase(getEvents.rejected, state => {
         state.loadingDataTable = REQUEST_STATUS.idle;
       })
@@ -45,10 +58,6 @@ const tableSlice = createSlice({
 });
 
 const { actions, reducer } = tableSlice;
-const {
-  setValue
-} = actions;
-export {
-  setValue
-};
+const { setValue, setDataSignalR } = actions;
+export { setValue, setDataSignalR };
 export default reducer;
