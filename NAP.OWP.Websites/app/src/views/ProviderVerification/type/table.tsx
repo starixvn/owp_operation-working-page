@@ -1,4 +1,11 @@
 type TEditableKey = 'Agent' | 'EstNote';
+type TAgentConfirm = {
+  Value: number | string | null;
+  Label: string;
+  Key?: string;
+  Disabled?: boolean;
+};
+
 type TMaxbetSetting = {
   [key in 'HandicapSetting' | 'OverUnderSetting']: {
     MaxBet: number | undefined;
@@ -13,20 +20,15 @@ type TDataSource = {
   OWPMatchId: number;
   ParentMatchId: number;
 } & {
-  [key in
+    [key in
     | 'MatchNo'
     | 'MatchStatus'
     | 'EventDateTime'
     | 'League'
     | 'Home'
     | 'Away']: Required<string>;
-} & TTicketCell & {
-    AgentConfirm: {
-      Value: number | string | null;
-      Label: string;
-      Key?: string;
-      Disabled?: boolean;
-    }[];
+  } & TTicketCell & {
+    AgentConfirm: TAgentConfirm[]
   } & {
     [key in TEditableKey]: string | undefined;
   } & TMaxbetSetting;
@@ -51,6 +53,8 @@ type TUpdateRow = {
   key: TEditableKey;
   value: string | undefined;
 };
+
+type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { rowIndex: number }
 export {
   TDataSource,
   TCommonCell,
@@ -58,5 +62,7 @@ export {
   TEditableCell,
   TEditableKey,
   TUpdateRow,
-  TMaxbetSetting
+  TMaxbetSetting,
+  TAgentConfirm,
+  TUpdateAgentConfirm
 };

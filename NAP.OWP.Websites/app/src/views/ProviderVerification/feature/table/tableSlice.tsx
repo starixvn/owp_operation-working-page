@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAgentConfirm, getEvents } from './tableThunk';
-import { TDataSource, TUpdateRow } from '../../type/table';
+import { TDataSource, TUpdateAgentConfirm, TUpdateRow } from '../../type/table';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { Option } from '../../../Shared/MultipleSelection/type';
@@ -27,7 +27,11 @@ const tableSlice = createSlice({
           item.HasTicket = true;
         }
       });
-    }
+    },
+    setAgentConfirm: (state, action: PayloadAction<TUpdateAgentConfirm>) => {
+      const { rowIndex, value } = action.payload;
+      state.dataSource[rowIndex].AgentConfirm = value;
+    },
   },
   extraReducers: builder => {
     builder
@@ -58,6 +62,9 @@ const tableSlice = createSlice({
 });
 
 const { actions, reducer } = tableSlice;
-const { setValue, setDataSignalR } = actions;
-export { setValue, setDataSignalR };
+const { setValue, setDataSignalR, setAgentConfirm } = actions;
+export {
+  setValue, setDataSignalR,
+  setAgentConfirm
+};
 export default reducer;

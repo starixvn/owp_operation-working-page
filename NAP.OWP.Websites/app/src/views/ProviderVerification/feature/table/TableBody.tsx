@@ -6,7 +6,7 @@ import { TDataSource } from '../../type/table';
 import EditableCommonCell from './cell/EditableCommonCell';
 import { ROW_HEIGHT } from './TableSchema.json';
 import { useAppDispatch } from '../../app/hookNative';
-import { setValue } from './tableSlice';
+import { setAgentConfirm, setValue } from './tableSlice';
 import MBCell from './cell/MBCell';
 
 const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
@@ -58,7 +58,14 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
           <AgentConfirmCell agentConfirm={event.AgentConfirm.map(a => ({
             value: a.Value,
             label: a.Label
-          }))} />
+          }))}
+            onChange={v => dispatch(setAgentConfirm({
+              rowIndex: index,
+              value: v.map(a => ({
+                Value: a.value,
+                Label: a.label
+              }))
+            }))} />
         </td>
         <EditableCommonCell className='est__note' value={event.EstNote} onBlur={value => dispatch(setValue({
           rowIndex: index,

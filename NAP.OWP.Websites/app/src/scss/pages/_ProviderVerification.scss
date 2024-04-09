@@ -94,3 +94,77 @@
     box-shadow: inset 1px 1px #c8ced3, 0 1px #c8ced3;
   }
 }
+
+.agent__confirm .rmsc.multi-select {
+  .dropdown-heading {
+    .dropdown-heading-dropdown-arrow {
+      display: none;
+    }
+
+    &:after {
+      top: 50%;
+      margin-top: -2px;
+      right: 0;
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 4.5px 0 4.5px;
+      border-color: #808080 transparent transparent transparent;
+    }
+
+    .dropdown-heading-value {
+      > span {
+        display: block;
+        max-width: 130px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .dropdown-content {
+    z-index: 5 !important;
+    padding-top: 0;
+
+    .panel-content {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  //input field
+  .dropdown-container {
+    height: 28px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid #e1e1e1 !important;
+    border-radius: 0 !important;
+
+    &:focus,
+    &:focus-within {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .select-item {
+    &:focus {
+      background-color: transparent;
+    }
+
+    &.selected,
+    &:hover {
+      background-color: rgb(235, 245, 255);
+    }
+
+    .item-renderer {
+      input[type='checkbox'] + span {
+        &:after {
+          left: 6px;
+          top: 2px;
+        }
+      }
+    }
+  }
+}
