@@ -12,10 +12,12 @@ const Table = () => {
     return <Loading />;
   }
 
-  return <table className='table__provider__verification'>
-    <TableHeader />
-    <TableBody dataSource={dataSource} />
-  </table>;
+  return (
+    <table className='table__provider__verification'>
+      <TableHeader />
+      <TableBody dataSource={dataSource} />
+    </table>
+  );
 };
 
 export default Table;

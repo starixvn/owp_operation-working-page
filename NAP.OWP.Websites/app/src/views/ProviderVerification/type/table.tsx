@@ -20,15 +20,15 @@ type TDataSource = {
   OWPMatchId: number;
   ParentMatchId: number;
 } & {
-    [key in
+  [key in
     | 'MatchNo'
     | 'MatchStatus'
     | 'EventDateTime'
     | 'League'
     | 'Home'
     | 'Away']: Required<string>;
-  } & TTicketCell & {
-    AgentConfirm: TAgentConfirm[]
+} & TTicketCell & {
+    AgentConfirm: TAgentConfirm[];
   } & {
     [key in TEditableKey]: string | undefined;
   } & TMaxbetSetting;
@@ -46,7 +46,7 @@ type TEditableCell = {
 
 type TTicketCell = {
   [key in 'HasTicket' | 'IsRead']: boolean;
-} & { rowIndex: number };
+} & { rowIndex: number; dataSource: TDataSource };
 
 type TUpdateRow = {
   rowIndex: Required<number>;
@@ -54,7 +54,13 @@ type TUpdateRow = {
   value: string | undefined;
 };
 
-type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { rowIndex: number }
+type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { rowIndex: number } & {
+  nickName: null | string;
+  recipientId: number;
+  recipientType: number;
+  userName: string;
+};
+
 export {
   TDataSource,
   TCommonCell,

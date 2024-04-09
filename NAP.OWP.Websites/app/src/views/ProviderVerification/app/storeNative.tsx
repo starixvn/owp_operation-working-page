@@ -1,11 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
 import eventReducer from '../feature/table/tableSlice';
 import filterReducer from '../feature/filter/FilterSlice';
+import createMultiplePolicySlice from '../../Shared/permission/multiplePolicySlice';
+import createTicketBoardReducer from '../../Shared/createTicketNew/createTicketBoardSliceNew';
+import chatBoardNew from '../../Shared/chatBoardNew/chatBoardSlice';
+import ticketListSlice from '../../Shared/ticketEvent/component/ticketListSlice';
+import signalREventTicketSlice from '../../Shared/ticketEvent/signalR/signalREventTicketSlice';
 
 const store = configureStore({
   reducer: {
     events: eventReducer,
-    filterState: filterReducer
+    filterState: filterReducer,
+    pagePolicy: createMultiplePolicySlice('pagePolicy'),
+    ticketList: ticketListSlice,
+    createTicketBoard: createTicketBoardReducer,
+    chatBoard: chatBoardNew,
+    signalREventTicket: signalREventTicketSlice
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

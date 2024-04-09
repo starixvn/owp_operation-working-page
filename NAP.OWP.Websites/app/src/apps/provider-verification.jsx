@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import Layout from '../views/Layout';
 import ProviderVerification from './../views/ProviderVerification/ProviderVerificationNative';
 import '../scss/pages/_ProviderVerification.scss';
-
+import '../scss/components/_chatboard.scss';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
