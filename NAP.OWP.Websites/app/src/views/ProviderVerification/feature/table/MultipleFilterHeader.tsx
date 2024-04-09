@@ -1,32 +1,21 @@
-import {
-  clearFilter,
-  setMultipleFilter,
-} from '../eventPickingTableSlice/reducer';
-import { useAppDispatch } from '../../app/hooks';
-import MultipleFilterHeaderCommon from '../../../Shared/tableCommon/MultipleFilterHeader';
-import store from '../../app/store';
-import { TColumnKey } from '../../types/dataTableType';
 
-type FilterHeaderProps = {
-  columnKey: TColumnKey
-};
+import MultipleFilterHeaderCommon from '../../../Shared/tableCommon/MultipleFilterHeader';
+import { useAppDispatch } from '../../app/hookNative';
+import { TColumnKey } from '../../type/table';
+import helper from './calculateFilterOption';
 
 const MultipleFilterHeader = ({
-  columnKey }: FilterHeaderProps) => {
+  columnKey }: {
+    columnKey: TColumnKey
+  }) => {
   const dispatch = useAppDispatch();
-
-  const getFilterInfo = () => store.getState().eventPickingTable.multipleFilter;
-
   return (
     <MultipleFilterHeaderCommon
-      setOptions={() => getFilterInfo()[columnKey].options}
-      setSelected={() => getFilterInfo()[columnKey].selected}
-      setIsFilter={() => getFilterInfo()[columnKey].isFilter}
-      onFilter={selected => dispatch(setMultipleFilter({
-        columnKey,
-        selected
-      }))}
-      onClear={() => dispatch(clearFilter())}
+      setOptions={() => helper[columnKey]()}
+      selected={[]}
+      isFilter
+      onFilter={() => { }}
+      onClear={() => { }}
     />
   );
 };

@@ -3,6 +3,8 @@ import Layout from '../views/Layout';
 import ProviderVerification from './../views/ProviderVerification/ProviderVerificationNative';
 import '../scss/pages/_ProviderVerification.scss';
 import '../scss/components/_chatboard.scss';
+import '../scss/pages/_multipleFilter.scss';
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 

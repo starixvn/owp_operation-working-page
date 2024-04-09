@@ -1,71 +1,83 @@
 {
   "TABLE_HEADER": [
     {
+      "HEADER_KEY": "matchNo",
       "HEADER_NAME": "No #",
       "WIDTH": "3%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "matchStatus",
       "HEADER_NAME": "Match status",
       "WIDTH": "5%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "koTime",
       "HEADER_NAME": "KO time",
       "WIDTH": "5%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "league",
       "HEADER_NAME": "League",
       "WIDTH": "12%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "match",
       "HEADER_NAME": "Match",
       "WIDTH": "14%",
       "IS_FILTER": true
     },
     {
       "HEADER_NAME": "Ticket",
-      "WIDTH": "3%",
-      "IS_FILTER": true
+      "WIDTH": "3%"
     },
     {
+      "HEADER_KEY": "runner",
       "HEADER_NAME": "Runner",
       "WIDTH": "6%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "otherProvider",
       "HEADER_NAME": "Other Provider",
       "WIDTH": "8%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "agent",
       "HEADER_NAME": "Agent",
       "WIDTH": "11%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "mb",
       "HEADER_NAME": "MB",
       "WIDTH": "5%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "remark",
       "HEADER_NAME": "Remark",
       "WIDTH": "7%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "remarkBy",
       "HEADER_NAME": "Remark by",
       "WIDTH": "5%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "agentConfirm",
       "HEADER_NAME": "Agent Confirm",
       "WIDTH": "10%",
       "IS_FILTER": true
     },
     {
+      "HEADER_KEY": "estNote",
       "HEADER_NAME": "EST Note",
       "WIDTH": "10%",
       "IS_FILTER": true

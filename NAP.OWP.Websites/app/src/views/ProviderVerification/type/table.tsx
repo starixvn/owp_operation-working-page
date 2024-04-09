@@ -1,3 +1,5 @@
+import { Option } from "../../Shared/MultipleSelection/type";
+
 type TEditableKey = 'Agent' | 'EstNote';
 type TAgentConfirm = {
   Value: number | string | null;
@@ -20,14 +22,14 @@ type TDataSource = {
   OWPMatchId: number;
   ParentMatchId: number;
 } & {
-  [key in
+    [key in
     | 'MatchNo'
     | 'MatchStatus'
     | 'EventDateTime'
     | 'League'
     | 'Home'
     | 'Away']: Required<string>;
-} & TTicketCell & {
+  } & TTicketCell & {
     AgentConfirm: TAgentConfirm[];
   } & {
     [key in TEditableKey]: string | undefined;
@@ -61,6 +63,32 @@ type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { rowIndex: number } & {
   userName: string;
 };
 
+type TColumnKey = "matchNo"
+  | "matchStatus" |
+  "koTime" |
+  "league" |
+  "match" |
+  "runner" |
+  "agent" |
+  "mb" |
+  "remark" |
+  "remarkBy" |
+  "agentConfirm"
+  | "estNote"
+  | "otherProvider";
+
+type TMultipleColumnFilterOption = {
+  [key in TColumnKey]: Option[];
+};
+
+type TMultipleFilter = {
+  [key in TColumnKey]: {
+    isFilter: boolean;
+    selected: Option[];
+    options: Option[];
+  };
+};
+
 export {
   TDataSource,
   TCommonCell,
@@ -70,5 +98,8 @@ export {
   TUpdateRow,
   TMaxbetSetting,
   TAgentConfirm,
-  TUpdateAgentConfirm
+  TUpdateAgentConfirm,
+  TMultipleColumnFilterOption,
+  TMultipleFilter,
+  TColumnKey
 };

@@ -1,10 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAgentConfirm, getEvents } from './tableThunk';
-import { TDataSource, TUpdateAgentConfirm, TUpdateRow } from '../../type/table';
+import { TDataSource, TMultipleFilter, TUpdateAgentConfirm, TUpdateRow } from '../../type/table';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { Option } from '../../../Shared/MultipleSelection/type';
 import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
+
+const buildMultipleFilterDefault = () => ({
+  isFilter: false,
+  selected: [],
+  options: []
+});
 
 const tableSlice = createSlice({
   name: 'tableSlice',
@@ -12,7 +18,23 @@ const tableSlice = createSlice({
     loadingDataTable: REQUEST_STATUS.pending,
     loadingAgentConfirmOption: REQUEST_STATUS.pending,
     dataSource: [] as TDataSource[],
-    agentConfirmOption: [] as Option[]
+    dataSourceOriginal: [] as TDataSource[],
+    agentConfirmOption: [] as Option[],
+    multipleFilter: {
+      matchNo: buildMultipleFilterDefault(),
+      matchStatus: buildMultipleFilterDefault(),
+      koTime: buildMultipleFilterDefault(),
+      league: buildMultipleFilterDefault(),
+      match: buildMultipleFilterDefault(),
+      mb: buildMultipleFilterDefault(),
+      runner: buildMultipleFilterDefault(),
+      otherProvider: buildMultipleFilterDefault(),
+      agent: buildMultipleFilterDefault(),
+      remark: buildMultipleFilterDefault(),
+      remarkBy: buildMultipleFilterDefault(),
+      agentConfirm: buildMultipleFilterDefault(),
+      estNote: buildMultipleFilterDefault()
+    } as TMultipleFilter
   },
   reducers: {
     setValue: (state, action: PayloadAction<TUpdateRow>) => {
@@ -43,6 +65,7 @@ const tableSlice = createSlice({
         (state, action: PayloadAction<TDataSource[]>) => {
           state.loadingDataTable = REQUEST_STATUS.idle;
           state.dataSource = action.payload;
+          state.dataSourceOriginal = action.payload;
         }
       )
       .addCase(getEvents.rejected, state => {
