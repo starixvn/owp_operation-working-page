@@ -3,14 +3,14 @@ import { useAppDispatch, useAppSelector } from './app/hookNative';
 import Filter from './feature/filter/Filter';
 import Table from './feature/table/Table';
 import { getAgentConfirm } from './feature/table/tableThunk';
-import { FunctionKeys } from '../Shared/Constants';
 import usePermission from '../Shared/customHook/usePermission';
 import { CreatorInfo } from './type/table';
 import { isEquals } from 'immutability-helper';
-import { REQUEST_STATUS } from '../Shared/Constants';
+import { REQUEST_STATUS, FunctionKeys } from '../Shared/Constants';
 import Loading from '../components/Loading';
 import { RECIPIENT_TYPE } from '../Shared/createTicketNew/const/const';
 import CreateTicketLGAView from '../Shared/createTicketNew/CreateTicketLGAView';
+import TicketDetail from '../Shared/chatBoardNew/TicketDetail';
 
 const ProviderVerificationAppNative = () => {
   const dispatch = useAppDispatch();
@@ -48,6 +48,7 @@ const ProviderVerificationAppNative = () => {
         <Filter />
         <Table />
       </div>
+      <TicketDetail />
       <CreateTicketLGAView creatorInfo={creatorInfo} />
     </>
   );
