@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { summarize } from './helper';
 import { TProviderCount } from '../../type/provider';
 import { TDataSource } from '../../type/table';
+import { Option } from '../../../Shared/MultipleSelection/type';
 
 const sumProviderSlice = createSlice({
   name: 'filter/filterSlice',
@@ -11,10 +12,10 @@ const sumProviderSlice = createSlice({
   reducers: {
     sumProvider: (
       state,
-      action: { payload: { data: TDataSource[] } }
+      action: { payload: { data: TDataSource[], agentOptions: Option[] } }
     ) => {
-      const { data } = action.payload;
-      state.sumTable = summarize(data);
+      const { data, agentOptions } = action.payload;
+      state.sumTable = summarize(data, agentOptions);
     }
   },
   extraReducers: {}

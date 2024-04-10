@@ -526,6 +526,42 @@
   .modal-body {
     padding: 3rem 2rem;
     min-height: 500px;
+
+    .agent-select {
+      padding-left: 20px;
+      width: 150px;
+      display: inline-block;
+    }
+
+    textarea {
+      margin-top: 10px;
+    }
+    textarea:focus-visible {
+      outline-color: gray;
+    }
+
+    .provider-compare-table {
+      overflow: auto;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      min-height: 80px;
+      width: 100%;
+      border: 1px solid #c8ced3;
+      text-align: center;
+
+      thead,
+      td {
+        border: 1px solid #c8ced3;
+      }
+
+      thead {
+        box-shadow: inset 1px -1px #c8ced3, inset 1px 1px #c8ced3;
+        background: #e3e3e3 !important;
+        tr {
+          height: 30px;
+        }
+      }
+    }
   }
 
   .modal-footer {

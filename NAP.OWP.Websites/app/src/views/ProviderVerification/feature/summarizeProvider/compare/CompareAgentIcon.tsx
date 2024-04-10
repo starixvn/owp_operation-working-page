@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { useState } from 'react';
+import CompareAgentPopup from './CompareAgentPopup';
 
 const CompareAgent = () => {
   const [isOpenPopup, setIsOpenPopup] = useState(false);
-  const handleCheck = async () => { }
 
   return (
     <>
@@ -13,26 +12,9 @@ const CompareAgent = () => {
         <path d="M24.2816 26.2077C26.0193 26.2077 27.6858 25.5174 28.9146 24.2886C30.1434 23.0599 30.8337 21.3933 30.8337 19.6556C30.8337 17.9179 30.1434 16.2513 28.9146 15.0226C27.6858 13.7938 26.0193 13.1035 24.2816 13.1035C22.5439 13.1035 20.8773 13.7938 19.6486 15.0226C18.4198 16.2513 17.7295 17.9179 17.7295 19.6556C17.7295 21.3933 18.4198 23.0599 19.6486 24.2886C20.8773 25.5174 22.5439 26.2077 24.2816 26.2077Z" stroke="black" strokeWidth="2" />
         <path d="M28.521 24.666L33.9168 30.1004" stroke="black" strokeWidth="2" strokeLinecap="round" />
       </svg>
-      <Modal isOpen={isOpenPopup} scrollable className='edit-popup' centered>
-        <ModalBody>
-          <h2 className='title'>Check the difference with Agent File</h2>
-          <div>
-            Agent Type
-          </div>
-        </ModalBody>
-        <ModalFooter>
-          <div className='list-btn'>
-            <button
-              className='button-cancel'
-              onClick={() => setIsOpenPopup(false)}>
-              Cancel
-            </button>
-            <button className='button-export button-check' onClick={handleCheck}>
-              Check
-            </button>
-          </div>
-        </ModalFooter>
-      </Modal>
+      {isOpenPopup &&
+        <CompareAgentPopup setIsOpenPopup={setIsOpenPopup} />
+      }
     </>
   );
 };
