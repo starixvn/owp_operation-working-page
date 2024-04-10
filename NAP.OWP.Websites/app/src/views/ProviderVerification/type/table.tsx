@@ -51,12 +51,12 @@ type TTicketCell = {
 } & { rowIndex: number; dataSource: TDataSource };
 
 type TUpdateRow = {
-  rowIndex: Required<number>;
+  owpMatchId: Required<number>;
   key: TEditableKey;
   value: string | undefined;
 };
 
-type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { rowIndex: number } & {
+type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { owpMatchId: number } & {
   nickName: null | string;
   recipientId: number;
   recipientType: number;
@@ -85,7 +85,6 @@ type TMultipleFilter = {
   [key in TColumnKey]: {
     isFilter: boolean;
     selected: Option[];
-    options: Option[];
   };
 };
 

@@ -1,15 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAgentConfirm, getEvents } from './tableThunk';
-import { TDataSource, TMultipleFilter, TUpdateAgentConfirm, TUpdateRow } from '../../type/table';
+import { TColumnKey, TDataSource, TMultipleFilter, TUpdateAgentConfirm, TUpdateRow } from '../../type/table';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { Option } from '../../../Shared/MultipleSelection/type';
 import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
+import { buildDefaultTableFilter, executeFilterTable } from './helper';
+import helper from './calculateFilterOption';
 
 const buildMultipleFilterDefault = () => ({
   isFilter: false,
-  selected: [],
-  options: []
+  selected: []
 });
 
 const tableSlice = createSlice({
@@ -38,8 +39,11 @@ const tableSlice = createSlice({
   },
   reducers: {
     setValue: (state, action: PayloadAction<TUpdateRow>) => {
-      const { rowIndex, key, value } = action.payload;
-      state.dataSource[rowIndex][key] = value;
+      const { owpMatchId, key, value } = action.payload;
+      const event = state.dataSource.find(d => d.OWPMatchId === owpMatchId);
+      event && (event[key] = value);
+      const eventOriginal = state.dataSourceOriginal.find(d => d.OWPMatchId === owpMatchId);
+      eventOriginal && (eventOriginal[key] = value);
     },
     setDataSignalR: (state, action) => {
       const { actorId, parentMatchId, userId } = action.payload;
@@ -51,8 +55,28 @@ const tableSlice = createSlice({
       });
     },
     setAgentConfirm: (state, action: PayloadAction<TUpdateAgentConfirm>) => {
-      const { rowIndex, value } = action.payload;
-      state.dataSource[rowIndex].AgentConfirm = value;
+      const { owpMatchId, value } = action.payload;
+      const event = state.dataSource.find(d => d.OWPMatchId === owpMatchId);
+      event && (event.AgentConfirm = value);
+      const eventOriginal = state.dataSourceOriginal.find(d => d.OWPMatchId === owpMatchId);
+      eventOriginal && (eventOriginal.AgentConfirm = value);
+    },
+    setMultipleFilter: (
+      state,
+      action: PayloadAction<{
+        columnKey: Required<TColumnKey>;
+        selected: Option[];
+        isFilter: boolean
+      }>
+    ) => {
+      const { columnKey, selected, isFilter } = action.payload;
+
+      state.multipleFilter[columnKey] = {
+        ...state.multipleFilter[columnKey],
+        isFilter,
+        selected
+      };
+      state.dataSource = executeFilterTable(state.dataSourceOriginal, state.multipleFilter);
     },
   },
   extraReducers: builder => {
@@ -66,6 +90,7 @@ const tableSlice = createSlice({
           state.loadingDataTable = REQUEST_STATUS.idle;
           state.dataSource = action.payload;
           state.dataSourceOriginal = action.payload;
+          buildDefaultTableFilter(state.dataSourceOriginal, state.agentConfirmOption, state.multipleFilter,);
         }
       )
       .addCase(getEvents.rejected, state => {
@@ -85,9 +110,10 @@ const tableSlice = createSlice({
 });
 
 const { actions, reducer } = tableSlice;
-const { setValue, setDataSignalR, setAgentConfirm } = actions;
+const { setValue, setDataSignalR, setAgentConfirm, setMultipleFilter } = actions;
 export {
   setValue, setDataSignalR,
-  setAgentConfirm
+  setAgentConfirm,
+  setMultipleFilter
 };
 export default reducer;
