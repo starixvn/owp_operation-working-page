@@ -8,7 +8,8 @@ import {
   updateConfirmedMatch,
   buildMultipleFilterDefault,
   filterByKo,
-  filterByMb
+  filterByMb,
+  executeFilterTable
 } from '../../helper/reducerHelper';
 import {
   TTableSlice,
@@ -65,11 +66,7 @@ const EventPickingTableSlice = createSlice({
     filterBySearchKey: (state, action) => {
       const { filterState } = state;
       state.filterState = addOrReplaceFilterState(filterState, action.payload);
-      state.entities = filterDataTable(
-        state.entitiesOriginal,
-        state.filterState,
-        filterByKeyword
-      );
+      state.entities = executeFilterTable(state, filterByKeyword);
       state.isConfirmAll = state.entities?.every(x => x.isCheck);
       state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
     },
@@ -96,19 +93,10 @@ const EventPickingTableSlice = createSlice({
           state.multipleFilter[columnKey].options.length !== selected.length,
         selected
       };
-      state.entities = filterDataTable(
-        state.entitiesOriginal,
-        state.filterState,
-        filterByKeyword
-      );
-      state.entities = filterByKo(
-        state.entities,
-        state.multipleFilter.KO_Time.selected.map(x => x.value)
-      );
-      state.entities = filterByMb(
-        state.entities,
-        state.multipleFilter.MB.selected.map(x => x.value)
-      );
+      state.entities = executeFilterTable(state, filterByKeyword);
+      state.isConfirmAll = state.entities?.every(x => x.isCheck);
+      state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
+
     },
     setPreviousNoOfferRow: (state, action) => {
       state.previousNoOfferIndex = action.payload;

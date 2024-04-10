@@ -1,10 +1,11 @@
 import { formatTime } from "../../Shared/DateTime/dateTimeHelper";
 import { TConfirmed } from "../types/confirmed";
-import TDataTable, { TMultipleFilter } from "../types/dataTableType";
+import TDataTable, { TFilterState, TMultipleFilter, TTableSlice } from "../types/dataTableType";
 import { TNoOfferMatch } from "../types/noOfferMatchType";
 import { uniqBy } from 'lodash';
 import { COLUMN_KEY } from '../table/TableSchema.json';
 import { isEquals } from "immutability-helper";
+import { filterDataTable } from "../../Shared/Utils";
 
 const KO_TIME = COLUMN_KEY.KO_TIME;
 const MB = COLUMN_KEY.MB;
@@ -75,6 +76,24 @@ const filterByKo = (entities: TDataTable[], selectedValue: (number | string | nu
 
 const filterByMb = (entities: TDataTable[], selectedValue: (number | string | null)[]) => entities.filter(e => selectedValue.some(s => e.maxBetHDPNumber === s));
 
+
+const executeFilterTable = (state: TTableSlice, filterByKeyword: (arraySource: any, { keyword, columnKey }: { keyword?: undefined, columnKey?: undefined }) => any) => {
+  state.entities = filterDataTable(
+    state.entitiesOriginal,
+    state.filterState,
+    filterByKeyword
+  );
+  state.entities = filterByKo(
+    state.entities,
+    state.multipleFilter.KO_Time.selected.map(x => x.value)
+  );
+  state.entities = filterByMb(
+    state.entities,
+    state.multipleFilter.MB.selected.map(x => x.value)
+  );
+  return state.entities;
+};
+
 export {
   updateNoOfferMatch,
   updateConfirmedMatch,
@@ -82,5 +101,6 @@ export {
   filterByKo,
   filterByMb,
   buildMbOptions,
-  buildKoOptions
+  buildKoOptions,
+  executeFilterTable
 };
