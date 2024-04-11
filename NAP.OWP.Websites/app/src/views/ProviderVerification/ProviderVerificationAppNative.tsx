@@ -10,7 +10,7 @@ import { REQUEST_STATUS, FunctionKeys } from '../Shared/Constants';
 import Loading from '../components/Loading';
 import { RECIPIENT_TYPE } from '../Shared/createTicketNew/const/const';
 import CreateTicketLGAView from '../Shared/createTicketNew/CreateTicketLGAView';
-import TicketDetail from '../Shared/chatBoardNew/TicketDetail';
+import TicketDetailBoard from '../Shared/chatBoardNew/TicketDetailBoard';
 
 const ProviderVerificationAppNative = () => {
   const dispatch = useAppDispatch();
@@ -48,7 +48,7 @@ const ProviderVerificationAppNative = () => {
         <Filter />
         <Table />
       </div>
-      <TicketDetail />
+      <TicketDetailBoard />
       <CreateTicketLGAView creatorInfo={creatorInfo} />
     </>
   );
