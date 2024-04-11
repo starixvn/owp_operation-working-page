@@ -214,11 +214,8 @@
 
 .table-wrap {
   overflow: auto;
-  box-shadow: inset 1px -1px #c8ced3;
   margin-bottom: 20px;
   margin-top: 10px;
-  max-width: 1800px;
-  border-right: 1px solid #c8ced3;
 
   thead {
     position: sticky;
@@ -232,6 +229,10 @@
       position: sticky;
       left: 0;
     }
+  }
+
+  tr {
+    border-right: 1px solid #c8ced3;
   }
 
   td {
@@ -261,11 +262,15 @@
 
   th,
   td {
+    box-shadow: inset 1px -1px #c8ced3;
+    text-align: center;
     border-collapse: collapse;
   }
 
   th {
+    left: 0;
     text-align: center;
+    box-shadow: inset 1px 1px #c8ced3, 0 1px #c8ced3;
 
     .header-table {
       position: relative;
@@ -442,20 +447,11 @@
     }
   }
 
-  tbody th {
-    position: sticky;
-    left: 0;
-  }
 
-  td {
-    box-shadow: inset 1px -1px #c8ced3;
-    text-align: center;
-  }
+}
 
-  th {
-    text-align: center;
-    box-shadow: inset 1px 1px #c8ced3, 0 1px #c8ced3;
-  }
+.total-record {
+  padding-top: 10px;
 }
 
 .agent__confirm .rmsc.multi-select {

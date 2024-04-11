@@ -17,17 +17,15 @@ const Table = () => {
   }
 
   return (
-    <>
-      <div className='table-wrap' style={{ maxHeight, maxWidth }}>
-        <table className='table__provider__verification'>
-          <TableHeader />
-          <TableBody
-            dataSource={[...dataSource, ...dataSource, ...dataSource]}
-          />
-        </table>
-      </div>
-      <div>Total record: {dataSource.length}</div>
-    </>
+    <div
+      className='table-wrap'
+      style={{ maxHeight, maxWidth, minHeight: '300px' }}>
+      <table className='table__provider__verification'>
+        <TableHeader />
+        <TableBody dataSource={dataSource} />
+      </table>
+      <div className='total-record'>Total record: {dataSource.length}</div>
+    </div>
   );
 };
 

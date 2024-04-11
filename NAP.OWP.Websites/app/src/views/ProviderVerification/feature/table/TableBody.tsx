@@ -58,6 +58,8 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             />
           </td>
           <EditableCommonCell
+            columnKey='agent'
+            rowIndex={index}
             className='agent'
             value={event.Agent}
             onBlur={value =>
@@ -96,6 +98,8 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
               }))} />
           </td>
           <EditableCommonCell
+            columnKey='estNote'
+            rowIndex={index}
             className='est__note'
             value={event.EstNote}
             onBlur={value =>

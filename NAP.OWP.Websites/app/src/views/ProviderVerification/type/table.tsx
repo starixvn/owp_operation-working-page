@@ -43,6 +43,8 @@ type TCommonCell = {
 };
 
 type TEditableCell = {
+  columnKey: string,
+  rowIndex: number,
   className: string | undefined;
   value: string | undefined;
   onBlur: (value: string | undefined) => void;
