@@ -33,7 +33,9 @@ type TDataSource = {
     AgentConfirm: TAgentConfirm[];
   } & {
     [key in TEditableKey]: string | undefined;
-  } & TMaxbetSetting;
+  } & TMaxbetSetting & {
+    RowColor: string | undefined;
+  };
 
 type TCommonCell = {
   className: string | undefined;

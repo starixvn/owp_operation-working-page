@@ -15,7 +15,7 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
   return (
     <tbody>
       {dataSource.map((event, index) => (
-        <tr key={index} style={{ height: ROW_HEIGHT }}>
+        <tr key={index} style={{ height: ROW_HEIGHT, backgroundColor: event.RowColor }}>
           <td>
             <ReadonlyCommonCell className='match__no' value={event.MatchNo} />
           </td>
