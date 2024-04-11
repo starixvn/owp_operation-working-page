@@ -1,5 +1,4 @@
 import { uniqBy } from "lodash";
-import store from "../../app/storeNative";
 import { formatTime } from "../../../Shared/DateTime/dateTimeHelper";
 import { buildMaxbetItemInOption } from "./helper";
 import { TDataSource } from "../../type/table";
@@ -48,9 +47,9 @@ const calculateOtherProviderOption = (dataSource: TDataSource[]) => {
 };
 const calculateAgentOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
-    value: x.OWPMatchId,
+    value: x.Agent ?? '',
     label: x.Agent ?? '(Blanks)'
-  })), v => v.label);
+  })), v => v.value);
 };
 
 const calculateMbOption = (dataSource: TDataSource[]) => {
@@ -71,30 +70,25 @@ const calculateRemarkByOption = (dataSource: TDataSource[]) => {
     label: x.RemarkBy ?? '(Blanks)'
   })), v => v.label);
 };
-const calculateAgentConfirmOption = () => {
-  const { agentConfirmOption } = store.getState().events;
-  return [...agentConfirmOption, { value: -1, label: '(Blanks)' }];
-};
 
 const calculateEstNoteOption = (dataSource: TDataSource[]) => uniqBy([...dataSource].map(x => ({
-  value: x.OWPMatchId,
+  value: x.EstNote ?? '',
   label: x.EstNote ?? '(Blanks)'
-})), v => v.label);
+})), v => v.value);
 
 const helper = {
-  matchNo: (dataSource: TDataSource[]) => calculateMatchNoOption(dataSource),
-  matchStatus: (dataSource: TDataSource[]) => calculateMatchStatusOption(dataSource),
-  koTime: (dataSource: TDataSource[]) => calculateKoOption(dataSource),
-  league: (dataSource: TDataSource[]) => calculateLeagueOption(dataSource),
-  match: (dataSource: TDataSource[]) => calculateMatchOption(dataSource),
-  runner: (dataSource: TDataSource[]) => calculateRunnerOption(dataSource),
-  agent: (dataSource: TDataSource[]) => calculateAgentOption(dataSource),
-  mb: (dataSource: TDataSource[]) => calculateMbOption(dataSource),
-  remark: (dataSource: TDataSource[]) => calculateRemarkOption(dataSource),
-  remarkBy: (dataSource: TDataSource[]) => calculateRemarkByOption(dataSource),
-  agentConfirm: () => calculateAgentConfirmOption(),
-  estNote: (dataSource: TDataSource[]) => calculateEstNoteOption(dataSource),
-  otherProvider: (dataSource: TDataSource[]) => calculateOtherProviderOption(dataSource)
+  MatchNo: (dataSource: TDataSource[]) => calculateMatchNoOption(dataSource),
+  MatchStatus: (dataSource: TDataSource[]) => calculateMatchStatusOption(dataSource),
+  KoTime: (dataSource: TDataSource[]) => calculateKoOption(dataSource),
+  League: (dataSource: TDataSource[]) => calculateLeagueOption(dataSource),
+  Match: (dataSource: TDataSource[]) => calculateMatchOption(dataSource),
+  Runner: (dataSource: TDataSource[]) => calculateRunnerOption(dataSource),
+  Agent: (dataSource: TDataSource[]) => calculateAgentOption(dataSource),
+  Mb: (dataSource: TDataSource[]) => calculateMbOption(dataSource),
+  Remark: (dataSource: TDataSource[]) => calculateRemarkOption(dataSource),
+  RemarkBy: (dataSource: TDataSource[]) => calculateRemarkByOption(dataSource),
+  EstNote: (dataSource: TDataSource[]) => calculateEstNoteOption(dataSource),
+  OtherProvider: (dataSource: TDataSource[]) => calculateOtherProviderOption(dataSource)
 };
 
 export default helper;

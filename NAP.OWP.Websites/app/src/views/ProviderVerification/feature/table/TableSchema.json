@@ -1,31 +1,31 @@
 {
   "TABLE_HEADER": [
     {
-      "HEADER_KEY": "matchNo",
+      "HEADER_KEY": "MatchNo",
       "HEADER_NAME": "No #",
       "WIDTH": "4%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "matchStatus",
+      "HEADER_KEY": "MatchStatus",
       "HEADER_NAME": "Match status",
       "WIDTH": "7%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "koTime",
+      "HEADER_KEY": "KoTime",
       "HEADER_NAME": "KO time",
       "WIDTH": "5%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "league",
+      "HEADER_KEY": "League",
       "HEADER_NAME": "League",
       "WIDTH": "12%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "match",
+      "HEADER_KEY": "Match",
       "HEADER_NAME": "Match",
       "WIDTH": "13%",
       "IS_FILTER": true
@@ -35,49 +35,48 @@
       "WIDTH": "3%"
     },
     {
-      "HEADER_KEY": "runner",
+      "HEADER_KEY": "Runner",
       "HEADER_NAME": "Runner",
       "WIDTH": "6%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "otherProvider",
+      "HEADER_KEY": "OtherProvider",
       "HEADER_NAME": "Other Provider",
       "WIDTH": "8%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "agent",
+      "HEADER_KEY": "Agent",
       "HEADER_NAME": "Agent",
       "WIDTH": "8%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "mb",
+      "HEADER_KEY": "Mb",
       "HEADER_NAME": "MB",
       "WIDTH": "5%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "remark",
+      "HEADER_KEY": "Remark",
       "HEADER_NAME": "Remark",
       "WIDTH": "7%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "remarkBy",
+      "HEADER_KEY": "RemarkBy",
       "HEADER_NAME": "Remark by",
       "WIDTH": "7%",
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "agentConfirm",
+      "HEADER_KEY": "AgentConfirm",
       "HEADER_NAME": "Agent Confirm",
-      "WIDTH": "8%",
-      "IS_FILTER": true
+      "WIDTH": "8%"
     },
     {
-      "HEADER_KEY": "estNote",
+      "HEADER_KEY": "EstNote",
       "HEADER_NAME": "EST Note",
       "WIDTH": "10%",
       "IS_FILTER": true

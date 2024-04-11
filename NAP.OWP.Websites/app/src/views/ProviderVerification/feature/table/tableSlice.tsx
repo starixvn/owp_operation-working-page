@@ -21,19 +21,18 @@ const tableSlice = createSlice({
     dataSourceOriginal: [] as TDataSource[],
     agentConfirmOption: [] as Option[],
     multipleFilter: {
-      matchNo: buildMultipleFilterDefault(),
-      matchStatus: buildMultipleFilterDefault(),
-      koTime: buildMultipleFilterDefault(),
-      league: buildMultipleFilterDefault(),
-      match: buildMultipleFilterDefault(),
-      mb: buildMultipleFilterDefault(),
-      runner: buildMultipleFilterDefault(),
-      otherProvider: buildMultipleFilterDefault(),
-      agent: buildMultipleFilterDefault(),
-      remark: buildMultipleFilterDefault(),
-      remarkBy: buildMultipleFilterDefault(),
-      agentConfirm: buildMultipleFilterDefault(),
-      estNote: buildMultipleFilterDefault()
+      MatchNo: buildMultipleFilterDefault(),
+      MatchStatus: buildMultipleFilterDefault(),
+      KoTime: buildMultipleFilterDefault(),
+      League: buildMultipleFilterDefault(),
+      Match: buildMultipleFilterDefault(),
+      Mb: buildMultipleFilterDefault(),
+      Runner: buildMultipleFilterDefault(),
+      OtherProvider: buildMultipleFilterDefault(),
+      Agent: buildMultipleFilterDefault(),
+      Remark: buildMultipleFilterDefault(),
+      RemarkBy: buildMultipleFilterDefault(),
+      EstNote: buildMultipleFilterDefault()
     } as TMultipleFilter
   },
   reducers: {
@@ -43,6 +42,10 @@ const tableSlice = createSlice({
       event && (event[key] = value);
       const eventOriginal = state.dataSourceOriginal.find(d => d.OWPMatchId === owpMatchId);
       eventOriginal && (eventOriginal[key] = value);
+      state.multipleFilter[key] = {
+        ...state.multipleFilter[key],
+        selected: [...state.multipleFilter[key].selected, { value: value ?? '', label: value ?? '' }]
+      };
     },
     setDataSignalR: (state, action) => {
       const { actorId, parentMatchId, userId } = action.payload;

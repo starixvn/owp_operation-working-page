@@ -58,19 +58,18 @@ type TUpdateRow = {
 
 type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { owpMatchId: number };
 
-type TColumnKey = "matchNo"
-  | "matchStatus" |
-  "koTime" |
-  "league" |
-  "match" |
-  "runner" |
-  "agent" |
-  "mb" |
-  "remark" |
-  "remarkBy" |
-  "agentConfirm"
-  | "estNote"
-  | "otherProvider";
+type TColumnKey = "MatchNo"
+  | "MatchStatus" |
+  "KoTime" |
+  "League" |
+  "Match" |
+  "Runner" |
+  "Agent" |
+  "Mb" |
+  "Remark" |
+  "RemarkBy"
+  | "EstNote"
+  | "OtherProvider";
 
 type TMultipleColumnFilterOption = {
   [key in TColumnKey]: Option[];

@@ -15,55 +15,46 @@ ${OverUnderSetting?.SpreadToDisplay ? (isHDPSpreadExisting ? '-' : '') + OverUnd
 };
 
 const buildDefaultTableFilter = (dataSource: TDataSource[], agentOption: Option[], tableFilter: TMultipleFilter) => {
-  tableFilter.matchNo.selected = helper.matchNo(dataSource);
-  tableFilter.matchStatus.selected = helper.matchStatus(dataSource);
-  tableFilter.koTime.selected = helper.koTime(dataSource);
-  tableFilter.league.selected = helper.league(dataSource);
-  tableFilter.match.selected = helper.match(dataSource);
-  tableFilter.runner.selected = helper.runner(dataSource);
-  tableFilter.otherProvider.selected = helper.otherProvider(dataSource);
-  tableFilter.agent.selected = helper.agent(dataSource);
-  tableFilter.mb.selected = helper.mb(dataSource);
-  tableFilter.remark.selected = helper.remark(dataSource);
-  tableFilter.remarkBy.selected = helper.remarkBy(dataSource);
-  tableFilter.agentConfirm.selected = [...agentOption, { value: -1, label: '(Blanks)' }];
-  tableFilter.estNote.selected = helper.estNote(dataSource);
+  tableFilter.MatchNo.selected = helper.MatchNo(dataSource);
+  tableFilter.MatchStatus.selected = helper.MatchStatus(dataSource);
+  tableFilter.KoTime.selected = helper.KoTime(dataSource);
+  tableFilter.League.selected = helper.League(dataSource);
+  tableFilter.Match.selected = helper.Match(dataSource);
+  tableFilter.Runner.selected = helper.Runner(dataSource);
+  tableFilter.OtherProvider.selected = helper.OtherProvider(dataSource);
+  tableFilter.Agent.selected = helper.Agent(dataSource);
+  tableFilter.Mb.selected = helper.Mb(dataSource);
+  tableFilter.Remark.selected = helper.Remark(dataSource);
+  tableFilter.RemarkBy.selected = helper.RemarkBy(dataSource);
+  tableFilter.EstNote.selected = helper.EstNote(dataSource);
 };
 
 const executeFilterTable = (dataSource: TDataSource[], tableFilter: TMultipleFilter) => {
-  const { matchNo,
-    matchStatus,
-    koTime,
-    league,
-    match,
-    runner,
-    otherProvider,
-    agent,
-    mb,
-    remark,
-    remarkBy,
-    agentConfirm,
-    estNote
+  const { MatchNo,
+    MatchStatus,
+    KoTime,
+    League,
+    Match,
+    Runner,
+    OtherProvider,
+    Agent,
+    Mb,
+    Remark,
+    RemarkBy,
+    EstNote
   } = tableFilter;
-  return dataSource.filter(e => matchNo.selected.some(m => m.label === (e.MatchNo ?? '(Blanks)'))
-    && matchStatus.selected.some(m => m.label === (e.MatchStatus ?? '(Blanks)'))
-    && match.selected.some(m => m.label === `${e.Home} -vs- ${e.Away}`)
-    && koTime.selected.some(m => m.label === formatTime(e.EventDateTime, 'minute', 'hh:mm A'))
-    && league.selected.some(m => m.label === e.League)
-    && runner.selected.some(m => m.label === (e.Provider ?? '(Blanks)'))
-    && otherProvider.selected.some(m => m.label === (e.OtherProvider ?? '(Blanks)'))
-    && agent.selected.some(m => m.label === (e.Agent ?? '(Blanks)'))
-    && mb.selected.some(m => m.label === (buildMaxbetItemInOption({ HandicapSetting: e.HandicapSetting, OverUnderSetting: e.OverUnderSetting }) ?? '(Blanks)'))
-    && remark.selected.some(m => m.label === (e.Remark ?? '(Blanks)'))
-    && remarkBy.selected.some(m => m.label === (e.RemarkBy ?? '(Blanks)'))
-
-    // TODO:
-    && estNote.selected.some(m => m.label === (e.EstNote ?? '(Blanks)')))
-    .filter(e => {
-      debugger
-      console.log(e)
-      return agentConfirm.selected.some(m => e.AgentConfirm.some(a => a.Label === m.label));
-    });
+  return dataSource.filter(e => MatchNo.selected.some(m => m.label === (e.MatchNo ?? '(Blanks)'))
+    && MatchStatus.selected.some(m => m.label === (e.MatchStatus ?? '(Blanks)'))
+    && Match.selected.some(m => m.label === `${e.Home} -vs- ${e.Away}`)
+    && KoTime.selected.some(m => m.label === formatTime(e.EventDateTime, 'minute', 'hh:mm A'))
+    && League.selected.some(m => m.label === e.League)
+    && Runner.selected.some(m => m.label === (e.Provider ?? '(Blanks)'))
+    && OtherProvider.selected.some(m => m.label === (e.OtherProvider ?? '(Blanks)'))
+    && Agent.selected.some(m => m.label === (e.Agent ?? '(Blanks)'))
+    && Mb.selected.some(m => m.label === (buildMaxbetItemInOption({ HandicapSetting: e.HandicapSetting, OverUnderSetting: e.OverUnderSetting }) ?? '(Blanks)'))
+    && Remark.selected.some(m => m.label === (e.Remark ?? '(Blanks)'))
+    && RemarkBy.selected.some(m => m.label === (e.RemarkBy ?? '(Blanks)'))
+    && EstNote.selected.some(m => m.label === (e.EstNote ?? '(Blanks)')));
 };
 
 export { buildMaxbetItemInOption, buildDefaultTableFilter, executeFilterTable };
