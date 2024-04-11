@@ -63,7 +63,7 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             onBlur={value =>
               dispatch(
                 setValue({
-                  rowIndex: index,
+                  owpMatchId: event.OWPMatchId,
                   key: 'Agent',
                   value
                 })
@@ -83,17 +83,17 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             <ReadonlyCommonCell className='remark__by' value={event.RemarkBy} />
           </td>
           <td>
-          <AgentConfirmCell agentConfirm={event.AgentConfirm.map(a => ({
-            value: a.Value,
-            label: a.Label
-          }))}
-            onChange={v => dispatch(setAgentConfirm({
-              rowIndex: index,
-              value: v.map(a => ({
-                Value: a.value,
-                Label: a.label
-              }))
-            }))} />
+            <AgentConfirmCell agentConfirm={event.AgentConfirm.map(a => ({
+              value: a.Value,
+              label: a.Label
+            }))}
+              onChange={v => dispatch(setAgentConfirm({
+                owpMatchId: event.OWPMatchId,
+                value: v.map(a => ({
+                  Value: a.value,
+                  Label: a.label
+                }))
+              }))} />
           </td>
           <EditableCommonCell
             className='est__note'
@@ -101,7 +101,7 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             onBlur={value =>
               dispatch(
                 setValue({
-                  rowIndex: index,
+                  owpMatchId: event.OWPMatchId,
                   key: 'EstNote',
                   value
                 })

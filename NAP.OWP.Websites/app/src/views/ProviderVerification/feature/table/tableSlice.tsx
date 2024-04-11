@@ -6,7 +6,6 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { Option } from '../../../Shared/MultipleSelection/type';
 import { buildIsReadValue } from '../../../Shared/ticketEvent/helper/ticketHelper';
 import { buildDefaultTableFilter, executeFilterTable } from './helper';
-import helper from './calculateFilterOption';
 
 const buildMultipleFilterDefault = () => ({
   isFilter: false,

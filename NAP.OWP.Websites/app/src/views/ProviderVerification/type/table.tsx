@@ -56,12 +56,7 @@ type TUpdateRow = {
   value: string | undefined;
 };
 
-type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { owpMatchId: number } & {
-  nickName: null | string;
-  recipientId: number;
-  recipientType: number;
-  userName: string;
-};
+type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { owpMatchId: number };
 
 type TColumnKey = "matchNo"
   | "matchStatus" |
