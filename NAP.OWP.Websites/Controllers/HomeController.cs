@@ -351,7 +351,7 @@ namespace NAP.OWP.Websites.Controllers
             return View("~/wwwroot/feedback/server.cshtml");
         }
 
-        [Route("UserManagement_New")]
+        [Route("UserManagement")]
         [NapAuth(FunctionKey = FunctionKeys.OWPEventManagement, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> UserManagement()
         {

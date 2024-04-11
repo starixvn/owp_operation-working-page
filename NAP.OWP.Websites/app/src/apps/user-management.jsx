@@ -6,4 +6,4 @@ import '../scss/pages/_UserManagement.scss';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<Layout view={<UserManagement />} title='User Management New' />);
+root.render(<Layout view={<UserManagement />} title='User Management' />);

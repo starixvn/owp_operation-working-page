@@ -8,7 +8,7 @@
 // </summary>
 //
 // <history>
-// Lasted generated date: 4/11/2024 10:46:04 AM
+// Lasted generated date: 4/11/2024 1:42:47 PM
 // </history>
 
 namespace OWP.Constants
@@ -93,8 +93,6 @@ namespace OWP.Constants
 				public const string TraderReport = "Trader Report";
 
 				public const string UserManagement = "User Management";
-
-				public const string UserManagementNew = "User Management New";
 
 				public const string WorkingShiftManagement = "Working Shift Management";
 
