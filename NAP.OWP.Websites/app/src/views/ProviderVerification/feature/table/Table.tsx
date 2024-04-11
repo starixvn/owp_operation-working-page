@@ -4,19 +4,30 @@ import { REQUEST_STATUS } from '../../../Shared/Constants';
 import Loading from '../../../components/Loading';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
+import useLayoutTable from '../../../Shared/customHook/useLayoutTable';
 
 const Table = () => {
-  const { dataSource, loadingDataTable } = useAppSelector(state => state.events);
+  const { dataSource, loadingDataTable } = useAppSelector(
+    state => state.events
+  );
+  const { maxHeight, maxWidth } = useLayoutTable();
 
   if (isEquals(loadingDataTable, REQUEST_STATUS.pending)) {
     return <Loading />;
   }
 
   return (
-    <table className='table__provider__verification'>
-      <TableHeader />
-      <TableBody dataSource={dataSource} />
-    </table>
+    <>
+      <div className='table-wrap' style={{ maxHeight, maxWidth }}>
+        <table className='table__provider__verification'>
+          <TableHeader />
+          <TableBody
+            dataSource={[...dataSource, ...dataSource, ...dataSource]}
+          />
+        </table>
+      </div>
+      <div>Total record: {dataSource.length}</div>
+    </>
   );
 };
 
