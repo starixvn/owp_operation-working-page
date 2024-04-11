@@ -1,6 +1,7 @@
 import { DeleteIcon, AccountMultipleIcon, PersonIcon } from 'mdi-react';
 import { Recipient } from '../TypeNative';
 import SectionIcon from '../../../Shared/recipientSelect/SectionIcon';
+import MatchAssigneeIcon from '../../../Shared/recipientSelect/MatchAssigneeIcon';
 import { TicketTypeRecipientEnum } from '../../../Shared/enum/TicketRecipientEnum';
 import { orderBy } from 'lodash';
 
@@ -23,7 +24,7 @@ const RecipientTable = (props: Props) => {
     icons.set(TicketTypeRecipientEnum.User, <PersonIcon />);
     icons.set(TicketTypeRecipientEnum.Group, <AccountMultipleIcon />);
     icons.set(TicketTypeRecipientEnum.Section, <SectionIcon />);
-    icons.set(TicketTypeRecipientEnum.Assignee, <SectionIcon />);
+    icons.set(TicketTypeRecipientEnum.Assignee, <MatchAssigneeIcon />);
     return icons.get(recipient.recipientType);
   };
 
