@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../app/hookNative';
 import store from '../../app/storeNative';
 import { TColumnKey } from '../../type/table';
 import helper from './calculateFilterOption';
-import { setMultipleFilter } from './tableSlice';
+import { setMultipleFilter, handleClearFilter } from './tableSlice';
 
 const MultipleFilterHeader = ({
   columnKey }: {
@@ -27,7 +27,7 @@ const MultipleFilterHeader = ({
         selected,
         isFilter: selected.length !== options.length
       }))}
-      onClear={() => { }}
+      onClear={() => dispatch(handleClearFilter())}
     />
   );
 };

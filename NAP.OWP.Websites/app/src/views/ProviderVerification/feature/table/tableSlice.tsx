@@ -72,7 +72,6 @@ const tableSlice = createSlice({
       }>
     ) => {
       const { columnKey, selected, isFilter } = action.payload;
-
       state.multipleFilter[columnKey] = {
         ...state.multipleFilter[columnKey],
         isFilter,
@@ -80,6 +79,11 @@ const tableSlice = createSlice({
       };
       state.dataSource = executeFilterTable(state.dataSourceOriginal, state.multipleFilter);
     },
+
+    handleClearFilter: state => {
+      state.dataSource = state.dataSourceOriginal;
+      buildDefaultTableFilter(state.dataSource, state.multipleFilter);
+    }
   },
   extraReducers: builder => {
     builder
@@ -92,7 +96,7 @@ const tableSlice = createSlice({
           state.loadingDataTable = REQUEST_STATUS.idle;
           state.dataSource = action.payload;
           state.dataSourceOriginal = action.payload;
-          buildDefaultTableFilter(state.dataSourceOriginal, state.multipleFilter,);
+          buildDefaultTableFilter(state.dataSourceOriginal, state.multipleFilter);
         }
       )
       .addCase(getEvents.rejected, state => {
@@ -112,10 +116,11 @@ const tableSlice = createSlice({
 });
 
 const { actions, reducer } = tableSlice;
-const { setValue, setDataSignalR, setAgentConfirm, setMultipleFilter } = actions;
+const { setValue, setDataSignalR, setAgentConfirm, setMultipleFilter, handleClearFilter } = actions;
 export {
   setValue, setDataSignalR,
   setAgentConfirm,
-  setMultipleFilter
+  setMultipleFilter,
+  handleClearFilter
 };
 export default reducer;
