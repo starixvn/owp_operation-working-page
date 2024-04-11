@@ -5,9 +5,6 @@ type TProviderCount = {
 
 type TAgentCompare = {
   koTime: string;
-  league: string;
-  home: string;
-  away: string;
 }
 
 type TCompareCountResult = {

@@ -62,8 +62,8 @@ const mapRows = (agentData: string) => {
     .filter(row => row.trim() !== '')
     .filter(row => row.split('\t')[0].trim() !== 'Time')
     .map(row => {
-      const [koTime, league, home, away] = row.split('\t');
-      return { koTime, league, home, away };
+      const [koTime] = row.split('\t');
+      return { koTime };
     });
 };
 
