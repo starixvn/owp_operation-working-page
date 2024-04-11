@@ -1,5 +1,4 @@
 import { formatTime } from "../../../Shared/DateTime/dateTimeHelper";
-import { Option } from "../../../Shared/MultipleSelection/type";
 import { TDataSource, TMaxbetSetting, TMultipleFilter } from "../../type/table";
 import helper from "./calculateFilterOption";
 
@@ -14,19 +13,55 @@ ${OverUnderSetting?.SpreadToDisplay ? (isHDPSpreadExisting ? '-' : '') + OverUnd
   ${isDisplayHDPSetting ? ')' : ''}`;
 };
 
-const buildDefaultTableFilter = (dataSource: TDataSource[], agentOption: Option[], tableFilter: TMultipleFilter) => {
-  tableFilter.MatchNo.selected = helper.MatchNo(dataSource);
-  tableFilter.MatchStatus.selected = helper.MatchStatus(dataSource);
-  tableFilter.KoTime.selected = helper.KoTime(dataSource);
-  tableFilter.League.selected = helper.League(dataSource);
-  tableFilter.Match.selected = helper.Match(dataSource);
-  tableFilter.Runner.selected = helper.Runner(dataSource);
-  tableFilter.OtherProvider.selected = helper.OtherProvider(dataSource);
-  tableFilter.Agent.selected = helper.Agent(dataSource);
-  tableFilter.Mb.selected = helper.Mb(dataSource);
-  tableFilter.Remark.selected = helper.Remark(dataSource);
-  tableFilter.RemarkBy.selected = helper.RemarkBy(dataSource);
-  tableFilter.EstNote.selected = helper.EstNote(dataSource);
+const buildDefaultTableFilter = (dataSource: TDataSource[], tableFilter: TMultipleFilter) => {
+  tableFilter.MatchNo = {
+    selected: helper.MatchNo(dataSource),
+    isFilter: false
+  };
+  tableFilter.MatchStatus = {
+    selected: helper.MatchStatus(dataSource),
+    isFilter: false
+  };
+  tableFilter.KoTime = {
+    selected: helper.KoTime(dataSource),
+    isFilter: false
+  };
+  tableFilter.League = {
+    selected: helper.League(dataSource),
+    isFilter: false
+  };
+  tableFilter.Match = {
+    selected: helper.Match(dataSource),
+    isFilter: false
+  };
+  tableFilter.Runner = {
+    selected: helper.Runner(dataSource),
+    isFilter: false
+  };
+  tableFilter.OtherProvider = {
+    selected: helper.OtherProvider(dataSource),
+    isFilter: false
+  };
+  tableFilter.Agent = {
+    selected: helper.Agent(dataSource),
+    isFilter: false
+  };
+  tableFilter.Mb = {
+    selected: helper.Mb(dataSource),
+    isFilter: false
+  };
+  tableFilter.Remark = {
+    selected: helper.Remark(dataSource),
+    isFilter: false
+  };
+  tableFilter.RemarkBy = {
+    selected: helper.RemarkBy(dataSource),
+    isFilter: false
+  };
+  tableFilter.EstNote = {
+    selected: helper.EstNote(dataSource),
+    isFilter: false
+  };
 };
 
 const executeFilterTable = (dataSource: TDataSource[], tableFilter: TMultipleFilter) => {

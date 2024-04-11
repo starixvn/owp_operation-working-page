@@ -48,7 +48,7 @@ const calculateOtherProviderOption = (dataSource: TDataSource[]) => {
 const calculateAgentOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.Agent ?? '',
-    label: x.Agent ?? '(Blanks)'
+    label: x.Agent?.trim().length ? x.Agent : '(Blanks)'
   })), v => v.value);
 };
 
@@ -73,7 +73,7 @@ const calculateRemarkByOption = (dataSource: TDataSource[]) => {
 
 const calculateEstNoteOption = (dataSource: TDataSource[]) => uniqBy([...dataSource].map(x => ({
   value: x.EstNote ?? '',
-  label: x.EstNote ?? '(Blanks)'
+  label: x.EstNote?.trim().length ? x.EstNote : '(Blanks)'
 })), v => v.value);
 
 const helper = {

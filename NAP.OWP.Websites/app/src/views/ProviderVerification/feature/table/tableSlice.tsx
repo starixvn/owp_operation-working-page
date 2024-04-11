@@ -92,7 +92,7 @@ const tableSlice = createSlice({
           state.loadingDataTable = REQUEST_STATUS.idle;
           state.dataSource = action.payload;
           state.dataSourceOriginal = action.payload;
-          buildDefaultTableFilter(state.dataSourceOriginal, state.agentConfirmOption, state.multipleFilter,);
+          buildDefaultTableFilter(state.dataSourceOriginal, state.multipleFilter,);
         }
       )
       .addCase(getEvents.rejected, state => {
