@@ -13,6 +13,7 @@ const store = configureStore({
     events: eventReducer,
     filterState: filterReducer,
     pagePolicy: createMultiplePolicySlice('pagePolicy'),
+    providerPolicy: createMultiplePolicySlice('providerPolicy'),
     providerSum: providerSumReducer,
     ticketList: ticketListSlice,
     createTicketBoard: createTicketBoardReducer,

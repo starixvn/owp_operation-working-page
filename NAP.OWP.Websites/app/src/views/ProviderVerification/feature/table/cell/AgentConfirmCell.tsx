@@ -8,6 +8,7 @@ const AgentConfirmCell = (
     onChange: (value: Option[]) => void
   }) => {
   const { agentConfirmOption } = store.getState().events;
+  const { providerPolicy: { permission: { HasWrite } } } = store.getState();
 
   return (
     <span className='agent__confirm'>
@@ -18,6 +19,7 @@ const AgentConfirmCell = (
         ClearSelectedIcon={null}
         className='multi-select'
         hasSelectAll
+        disabled={!HasWrite}
         labelledBy='Select...'
         overrideStrings={{
           selectAll: '-- Select All --',

@@ -8,7 +8,7 @@
 // </summary>
 //
 // <history>
-// Lasted generated date: 1/4/2023 11:40:07 AM
+// Lasted generated date: 4/11/2024 10:45:55 AM
 // </history>
 
 namespace OWP.Constants
@@ -20,7 +20,7 @@ namespace OWP.Constants
 	/// </summary>
 	public static class FunctionKeys
 	{
-			    public const string Administration = "Administration";
+			public const string Administration = "Administration";
 
 				public const string AssignFunctionToGroup = "AssignFunctionToGroup";
 
@@ -50,9 +50,15 @@ namespace OWP.Constants
 
 				public const string EventPickingNew = "EventPickingNew";
 
+				public const string EventPickingNew_Event = "EventPickingNew_Event";
+
+				public const string EventPickingNew_EventAndPerformance = "EventPickingNew_EventAndPerformance";
+
 				public const string EventTickets = "EventTickets";
 
 				public const string FullTimeView = "FullTimeView";
+
+				public const string LAKpi = "LAKpi";
 
 				public const string LAReport = "LAReport";
 
@@ -124,19 +130,21 @@ namespace OWP.Constants
 
 				public const string ProviderArrangement = "ProviderArrangement";
 
+				public const string ProviderVerification = "ProviderVerification";
+
 				public const string QuickSearch = "QuickSearch";
 
 				public const string RecipientGroup = "RecipientGroup";
 
-				public const string SystemConfiguration = "SystemConfiguration";
+				public const string Reports = "Reports";
 
-				public const string TaskList = "TaskList";
+				public const string SystemConfiguration = "SystemConfiguration";
 
 				public const string Tickets = "Tickets";
 
 				public const string TicketTypeSettings = "TicketTypeSettings";
 
-                public const string TimeRangeView = "TimeRangeView";
+				public const string TimeRangeView = "TimeRangeView";
 
 				public const string TraderReport = "TraderReport";
 
@@ -160,8 +168,6 @@ namespace OWP.Constants
 
 				public const string WorkingShiftManagement_ShiftManagement = "WorkingShiftManagement_ShiftManagement";
 
-                public const string LAKpi = "LAKpi";
-
-    }
+			}
 	 
 }

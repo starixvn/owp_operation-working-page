@@ -8,7 +8,7 @@
 // </summary>
 //
 // <history>
-// Lasted generated date: 12/15/2023 1:28:17 PM
+// Lasted generated date: 4/11/2024 10:46:04 AM
 // </history>
 
 namespace OWP.Constants
@@ -54,9 +54,9 @@ namespace OWP.Constants
 
 				public const string LiveGameAssignment = "Live Game Assignment";
 
-                public const string LiveGameAssignmentNew = "Live Game Assignment New";
+				public const string LiveGameAssignmentNew = "Live Game Assignment New";
 
-                public const string LiveGameList = "Live Game List";
+				public const string LiveGameList = "Live Game List";
 
 				public const string MatchCountLiveReport = "Match Count Live Report";
 
@@ -79,6 +79,8 @@ namespace OWP.Constants
 				public const string PrematchReport = "Prematch Report";
 
 				public const string ProviderArrangement = "Provider Arrangement";
+
+				public const string ProviderVerification = "Provider Verification";
 
 				public const string RecipientGroup = "Recipient Group";
 

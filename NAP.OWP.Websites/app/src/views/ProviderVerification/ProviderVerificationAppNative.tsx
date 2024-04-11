@@ -16,15 +16,17 @@ const ProviderVerificationAppNative = () => {
   const dispatch = useAppDispatch();
   const { loadingAgentConfirmOption } = useAppSelector(state => state.events);
 
+  const pagePolicy = usePermission(FunctionKeys.ProviderVerification, 'providerPolicy');
+
   useEffect(() => {
     dispatch(getAgentConfirm());
   }, [dispatch]);
 
-  const pagePermissionModel = usePermission(
+  const ticketCenterPermissionModel = usePermission(
     FunctionKeys.TicketCenter,
     'pagePolicy'
   );
-  const { permission } = pagePermissionModel;
+  const { permission } = ticketCenterPermissionModel;
   const { Username, ActorId } = permission;
 
   const creatorInfo: CreatorInfo = {
@@ -37,7 +39,8 @@ const ProviderVerificationAppNative = () => {
 
   if (
     isEquals(loadingAgentConfirmOption, REQUEST_STATUS.pending) ||
-    !Username
+    !Username ||
+    !pagePolicy.permission.Username
   ) {
     return <Loading />;
   }

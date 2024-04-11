@@ -368,5 +368,12 @@ namespace NAP.OWP.Websites.Controllers
             await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/small-chatting/server.cshtml");
         }
+
+        [Route("provider-verification")]
+        [NapAuth(FunctionKey = FunctionKeys.MyTickets, Policy = Constant.Policy.Read)]
+        public async Task<ActionResult> ProviderVerification()
+        {
+            return View("~/wwwroot/provider-verification/server.cshtml");
+        }
     }
 }
