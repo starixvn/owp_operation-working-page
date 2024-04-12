@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { get } from '../../../Shared/Service/Service';
+import { get, post } from '../../../Shared/Service/Service';
 import Utils from '../../../Shared/Utils';
 import { netCoreURL, netFwURL } from './TableSchema.json';
 import { TOptionResponse } from '../../type/agentConfirmOption';
@@ -35,4 +35,16 @@ const getAgentConfirm = createAsyncThunk(
   }
 );
 
-export { getEvents, getAgentConfirm };
+const saveAgentConfirm = createAsyncThunk(
+  'provider-verification/save-agent-confirm',
+  async (data: { owpMatchId: number; agentSelected: string }) => {
+    const url = getUrl('save-agent-confirm');
+    const prop = {
+      url,
+      ...data
+    };
+    return await post(prop);
+  }
+);
+
+export { getEvents, getAgentConfirm, saveAgentConfirm };

@@ -85,17 +85,13 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             <ReadonlyCommonCell className='remark__by' value={event.RemarkBy} />
           </td>
           <td>
-            <AgentConfirmCell agentConfirm={event.AgentConfirm.map(a => ({
-              value: a.Value,
-              label: a.Label
-            }))}
-              onChange={v => dispatch(setAgentConfirm({
-                owpMatchId: event.OWPMatchId,
-                value: v.map(a => ({
-                  Value: a.value,
-                  Label: a.label
-                }))
-              }))} />
+            <AgentConfirmCell
+              agentConfirm={event.AgentConfirm.map(a => ({
+                value: a.Value,
+                label: a.Label
+              }))}
+              owpMatchId={event.OWPMatchId}
+            />
           </td>
           <EditableCommonCell
             columnKey='estNote'
