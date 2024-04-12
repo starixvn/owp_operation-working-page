@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAgentConfirm, getEvents } from './tableThunk';
-import { TColumnKey, TDataSource, TMultipleFilter, TUpdateAgentConfirm, TUpdateRow } from '../../type/table';
+import {
+  TColumnKey,
+  TDataSource,
+  TMultipleFilter,
+  TUpdateAgentConfirm,
+  TUpdateRow
+} from '../../type/table';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { Option } from '../../../Shared/MultipleSelection/type';
@@ -40,11 +46,16 @@ const tableSlice = createSlice({
       const { owpMatchId, key, value } = action.payload;
       const event = state.dataSource.find(d => d.OWPMatchId === owpMatchId);
       event && (event[key] = value);
-      const eventOriginal = state.dataSourceOriginal.find(d => d.OWPMatchId === owpMatchId);
+      const eventOriginal = state.dataSourceOriginal.find(
+        d => d.OWPMatchId === owpMatchId
+      );
       eventOriginal && (eventOriginal[key] = value);
       state.multipleFilter[key] = {
         ...state.multipleFilter[key],
-        selected: [...state.multipleFilter[key].selected, { value: value ?? '', label: value ?? '' }]
+        selected: [
+          ...state.multipleFilter[key].selected,
+          { value: value ?? '', label: value ?? '' }
+        ]
       };
     },
     setDataSignalR: (state, action) => {
@@ -60,7 +71,9 @@ const tableSlice = createSlice({
       const { owpMatchId, value } = action.payload;
       const event = state.dataSource.find(d => d.OWPMatchId === owpMatchId);
       event && (event.AgentConfirm = value);
-      const eventOriginal = state.dataSourceOriginal.find(d => d.OWPMatchId === owpMatchId);
+      const eventOriginal = state.dataSourceOriginal.find(
+        d => d.OWPMatchId === owpMatchId
+      );
       eventOriginal && (eventOriginal.AgentConfirm = value);
     },
     setMultipleFilter: (
@@ -68,7 +81,7 @@ const tableSlice = createSlice({
       action: PayloadAction<{
         columnKey: Required<TColumnKey>;
         selected: Option[];
-        isFilter: boolean
+        isFilter: boolean;
       }>
     ) => {
       const { columnKey, selected, isFilter } = action.payload;
@@ -77,7 +90,10 @@ const tableSlice = createSlice({
         isFilter,
         selected
       };
-      state.dataSource = executeFilterTable(state.dataSourceOriginal, state.multipleFilter);
+      state.dataSource = executeFilterTable(
+        state.dataSourceOriginal,
+        state.multipleFilter
+      );
     },
 
     handleClearFilter: state => {
@@ -96,7 +112,10 @@ const tableSlice = createSlice({
           state.loadingDataTable = REQUEST_STATUS.idle;
           state.dataSource = action.payload;
           state.dataSourceOriginal = action.payload;
-          buildDefaultTableFilter(state.dataSourceOriginal, state.multipleFilter);
+          buildDefaultTableFilter(
+            state.dataSourceOriginal,
+            state.multipleFilter
+          );
         }
       )
       .addCase(getEvents.rejected, state => {
@@ -116,9 +135,16 @@ const tableSlice = createSlice({
 });
 
 const { actions, reducer } = tableSlice;
-const { setValue, setDataSignalR, setAgentConfirm, setMultipleFilter, handleClearFilter } = actions;
+const {
+  setValue,
+  setDataSignalR,
+  setAgentConfirm,
+  setMultipleFilter,
+  handleClearFilter
+} = actions;
 export {
-  setValue, setDataSignalR,
+  setValue,
+  setDataSignalR,
   setAgentConfirm,
   setMultipleFilter,
   handleClearFilter

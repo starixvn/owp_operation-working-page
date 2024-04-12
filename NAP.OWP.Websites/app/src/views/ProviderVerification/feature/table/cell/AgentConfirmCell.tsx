@@ -15,6 +15,9 @@ const AgentConfirmCell = ({
     store => store.events.agentConfirmOption
   );
 
+  const hasWrite = useAppSelector(
+    store => store.providerPolicy.permission.HasWrite
+  );
   const dispatch = useAppDispatch();
 
   const handleOnChange = event => {
@@ -40,7 +43,7 @@ const AgentConfirmCell = ({
         ClearSelectedIcon={null}
         className='multi-select'
         hasSelectAll
-        disabled={!HasWrite}
+        disabled={!hasWrite}
         labelledBy='Select...'
         overrideStrings={{
           selectAll: '-- Select All --',

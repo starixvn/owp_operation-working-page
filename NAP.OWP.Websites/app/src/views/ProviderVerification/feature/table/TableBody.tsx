@@ -6,8 +6,9 @@ import { TDataSource } from '../../type/table';
 import EditableCommonCell from './cell/EditableCommonCell';
 import { ROW_HEIGHT } from './TableSchema.json';
 import { useAppDispatch } from '../../app/hookNative';
-import { setAgentConfirm, setValue } from './tableSlice';
+import { setValue } from './tableSlice';
 import MBCell from './cell/MBCell';
+import EstNoteCell from './cell/EstNoteCell';
 
 const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
   const dispatch = useAppDispatch();
@@ -15,7 +16,9 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
   return (
     <tbody>
       {dataSource.map((event, index) => (
-        <tr key={index} style={{ height: ROW_HEIGHT, backgroundColor: event.RowColor }}>
+        <tr
+          key={index}
+          style={{ height: ROW_HEIGHT, backgroundColor: event.RowColor }}>
           <td>
             <ReadonlyCommonCell className='match__no' value={event.MatchNo} />
           </td>
@@ -93,20 +96,12 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
               owpMatchId={event.OWPMatchId}
             />
           </td>
-          <EditableCommonCell
+          <EstNoteCell
             columnKey='estNote'
             rowIndex={index}
             className='est__note'
             value={event.EstNote}
-            onBlur={value =>
-              dispatch(
-                setValue({
-                  owpMatchId: event.OWPMatchId,
-                  key: 'EstNote',
-                  value
-                })
-              )
-            }
+            owpMatchId={event.OWPMatchId}
           />
         </tr>
       ))}

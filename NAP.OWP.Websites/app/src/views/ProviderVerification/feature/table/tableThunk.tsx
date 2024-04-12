@@ -47,4 +47,16 @@ const saveAgentConfirm = createAsyncThunk(
   }
 );
 
-export { getEvents, getAgentConfirm, saveAgentConfirm };
+const saveESTNote = createAsyncThunk(
+  'provider-verification/save-agent-confirm',
+  async (data: { owpMatchId: number; estNote: string | undefined }) => {
+    const url = getUrl('save-est-note');
+    const prop = {
+      url,
+      ...data
+    };
+    return await post(prop);
+  }
+);
+
+export { getEvents, getAgentConfirm, saveAgentConfirm, saveESTNote };
