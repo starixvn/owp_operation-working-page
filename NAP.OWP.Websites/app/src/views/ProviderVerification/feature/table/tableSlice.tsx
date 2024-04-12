@@ -95,6 +95,10 @@ const tableSlice = createSlice({
         state.multipleFilter
       );
     },
+    setDataTable: (state, action) => {
+      state.dataSource = action.payload;
+      state.dataSourceOriginal = action.payload;
+    },
 
     handleClearFilter: state => {
       state.dataSource = state.dataSourceOriginal;
@@ -140,13 +144,15 @@ const {
   setDataSignalR,
   setAgentConfirm,
   setMultipleFilter,
-  handleClearFilter
+  handleClearFilter,
+  setDataTable
 } = actions;
 export {
   setValue,
   setDataSignalR,
   setAgentConfirm,
   setMultipleFilter,
-  handleClearFilter
+  handleClearFilter,
+  setDataTable
 };
 export default reducer;
