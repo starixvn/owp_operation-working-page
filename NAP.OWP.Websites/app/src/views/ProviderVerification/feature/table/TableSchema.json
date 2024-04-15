@@ -48,8 +48,8 @@
     },
     {
       "HEADER_KEY": "Agent",
-      "HEADER_NAME": "Agent",
-      "WIDTH": "8%",
+      "HEADER_NAME": "Agent For EST",
+      "WIDTH": "9%",
       "IS_FILTER": true
     },
     {
@@ -60,8 +60,8 @@
     },
     {
       "HEADER_KEY": "Remark",
-      "HEADER_NAME": "Remark",
-      "WIDTH": "7%",
+      "HEADER_NAME": "Remark For EST",
+      "WIDTH": "9%",
       "IS_FILTER": true
     },
     {
