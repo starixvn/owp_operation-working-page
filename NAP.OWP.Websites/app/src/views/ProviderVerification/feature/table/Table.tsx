@@ -19,7 +19,7 @@ const Table = () => {
   return (
     <div
       className='table-wrap'
-      style={{ maxHeight, maxWidth, minHeight: '300px' }}>
+      style={{ maxHeight, maxWidth, minHeight: '450px' }}>
       <table className='table__provider__verification'>
         <TableHeader />
         <TableBody dataSource={dataSource} />
