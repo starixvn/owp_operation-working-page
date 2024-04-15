@@ -8,6 +8,7 @@ type DatePickerProps = {
   name: string;
   isShowMonthYearPicker?: boolean;
   dateFormat?: string;
+  maxDate?: Date;
 };
 
 const DatePickerComponent = (props: DatePickerProps) => {
@@ -17,12 +18,14 @@ const DatePickerComponent = (props: DatePickerProps) => {
     onChangeDate,
     name,
     isShowMonthYearPicker,
-    dateFormat
+    dateFormat,
+    maxDate
   } = props;
   return (
     <div className='filter-control calendar'>
       <div className='label'>{name}</div>
       <DatePicker
+        maxDate={maxDate}
         selected={selectedDate}
         showMonthYearPicker={isShowMonthYearPicker ?? false}
         dateFormat={dateFormat ?? 'MMM dd, yyyy'}
