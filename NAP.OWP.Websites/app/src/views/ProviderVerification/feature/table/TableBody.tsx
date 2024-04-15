@@ -9,6 +9,7 @@ import { useAppDispatch } from '../../app/hookNative';
 import { setValue } from './tableSlice';
 import MBCell from './cell/MBCell';
 import EstNoteCell from './cell/EstNoteCell';
+import { saveESTAgent } from './tableThunk';
 
 const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
   const dispatch = useAppDispatch();
@@ -65,14 +66,16 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             rowIndex={index}
             className='agent'
             value={event.Agent}
-            onBlur={value =>
+            onBlur={value => {
+              dispatch(saveESTAgent({ owpMatchId: event.OWPMatchId, estAgent: value }));
               dispatch(
                 setValue({
                   owpMatchId: event.OWPMatchId,
                   key: 'Agent',
                   value
                 })
-              )
+              );
+            }
             }
           />
           <td>

@@ -43,6 +43,7 @@ type TCommonCell = {
 };
 
 type TEditableCell = {
+  owpMatchId?: number,
   columnKey: string,
   rowIndex: number,
   className: string | undefined;

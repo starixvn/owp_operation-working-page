@@ -36,8 +36,7 @@ const DatePickerComponent = (props: DatePickerProps) => {
       <span
         className='icon-calendar'
         id='icon-calendar-from-date'
-        onClick={() => datePickerRef?.current?.setOpen(true)}
-        onKeyDown={() => console.log('ac')}>
+        onClick={() => datePickerRef?.current?.setOpen(true)}>
         <CalendarIcon size={14} />
       </span>
     </div>
