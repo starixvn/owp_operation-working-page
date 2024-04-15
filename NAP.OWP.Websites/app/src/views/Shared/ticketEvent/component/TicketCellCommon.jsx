@@ -8,18 +8,26 @@ import {
 } from '../../chatBoardNew/chatBoardSlice';
 import {
   closeCreatePopup,
-  openPopupCreateTicketInLGA
+  openPopupCreateTicketInLGA,
+  setSubTypeSelected
 } from '../../createTicketNew/createTicketBoardSliceNew';
 
 const propTypes = {
   dataSource: PropTypes.any,
   rowIndex: PropTypes.number,
   onShowTicketList: PropTypes.func,
-  updateDataSources: PropTypes.func
+  updateDataSources: PropTypes.func,
+  isProviderVerification: PropTypes.bool
 };
 
 const TicketCellCommon = props => {
-  const { dataSource, rowIndex, onShowTicketList, updateDataSources } = props;
+  const {
+    dataSource,
+    rowIndex,
+    onShowTicketList,
+    updateDataSources,
+    isProviderVerification = false
+  } = props;
   const stableDispatch = useDispatch();
   const closeAnotherPopup = () => {
     stableDispatch(closePopup());
@@ -30,6 +38,10 @@ const TicketCellCommon = props => {
     closeAnotherPopup();
     stableDispatch(getModelByRowIndex(dataSource[rowIndex]));
     stableDispatch(openPopupCreateTicketInLGA());
+    isProviderVerification &&
+      stableDispatch(
+        setSubTypeSelected([{ value: 27, label: 'Provider Checking' }])
+      );
   };
 
   return (
