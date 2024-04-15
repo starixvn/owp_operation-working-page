@@ -11,6 +11,7 @@ interface KOTimeProps {
 
 interface PesOrFiFa {
   IsPES23: boolean;
+  IsPES24: boolean;
   IsPESOther: boolean;
   IsFIFA: boolean;
   rowIndex: number;
