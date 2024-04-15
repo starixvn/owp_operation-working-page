@@ -11,8 +11,11 @@ import {
   changeErrorRecipient,
   setSelectedRecipients,
   closePopupCreateTicketInLGA,
-  setDefaultRecipients
+  setDefaultRecipients,
+  setSubTypeSelected
 } from './createTicketBoardSliceNew';
+import { getRecipientDefaultBySubType } from './Helper/HelperCreateTicket';
+
 import {
   formatRecipientModel,
   saveFileToBackEnd,
@@ -26,16 +29,21 @@ import { TicketTypeRecipientEnum } from '../enum/TicketRecipientEnum';
 const { LIVE_INCIDENT } = TICKET_TYPE;
 
 const propTypes = {
-  creatorInfo: PropTypes.any
+  creatorInfo: PropTypes.any,
+  isProviderVerification: PropTypes.bool
 };
 
 const CreateTicketLGAView = props => {
-  const { creatorInfo } = props;
+  const { creatorInfo, isProviderVerification = false } = props;
   const dispatch = useStableDispatch();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const { modelByRowIndex } = useSelector(state => state.chatBoard);
-  const { selectedRecipients, subTypeSelected, isOpenCreateTicketInLGA } =
-    useSelector(state => state.createTicketBoard);
+  const {
+    selectedRecipients,
+    subTypeSelected,
+    isOpenCreateTicketInLGA,
+    defaultRecipients
+  } = useSelector(state => state.createTicketBoard);
 
   const { OWPMatchId, League, Home, Away, EventDateTime } = modelByRowIndex;
   const renderHeader = () => (
@@ -100,6 +108,18 @@ const CreateTicketLGAView = props => {
   useEffect(() => {
     creatorInfo.userName && dispatch(setDefaultRecipients([creatorInfo]));
   }, [creatorInfo, dispatch]);
+
+  useEffect(() => {
+    (async () => {
+      if (isProviderVerification) {
+        dispatch(
+          setSubTypeSelected([{ value: 27, label: 'Provider Checking' }])
+        );
+        const recipient = await getRecipientDefaultBySubType(27);
+        dispatch(setSelectedRecipients(recipient.concat(defaultRecipients)));
+      }
+    })();
+  }, [OWPMatchId]);
 
   if (!creatorInfo.userName) {
     return <Loading />;

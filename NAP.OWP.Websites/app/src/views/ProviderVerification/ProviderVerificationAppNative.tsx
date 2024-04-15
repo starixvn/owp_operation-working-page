@@ -16,7 +16,10 @@ const ProviderVerificationAppNative = () => {
   const dispatch = useAppDispatch();
   const { loadingAgentConfirmOption } = useAppSelector(state => state.events);
 
-  const pagePolicy = usePermission(FunctionKeys.ProviderVerification, 'providerPolicy');
+  const pagePolicy = usePermission(
+    FunctionKeys.ProviderVerification,
+    'providerPolicy'
+  );
 
   useEffect(() => {
     dispatch(getAgentConfirm());
@@ -52,7 +55,10 @@ const ProviderVerificationAppNative = () => {
         <Table />
       </div>
       <TicketDetailBoard />
-      <CreateTicketLGAView creatorInfo={creatorInfo} />
+      <CreateTicketLGAView
+        creatorInfo={creatorInfo}
+        isProviderVerification={true}
+      />
     </>
   );
 };

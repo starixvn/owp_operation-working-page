@@ -11,7 +11,6 @@ const TicketCell = ({ rowIndex, dataSource }: TTicketCell) => {
       dataSource={dataSource}
       rowIndex={rowIndex}
       updateDataSources={data => stableDispatch(setDataTable(data))}
-      isProviderVerification={true}
     />
   );
 };
