@@ -3,22 +3,17 @@ import { formatTime } from '../../../Shared/DateTime/dateTimeHelper';
 import TicketCell from './cell/TicketCell';
 import AgentConfirmCell from './cell/AgentConfirmCell';
 import { TDataSource } from '../../type/table';
-import EditableCommonCell from './cell/EditableCommonCell';
 import { ROW_HEIGHT } from './TableSchema.json';
-import { useAppDispatch } from '../../app/hookNative';
-import { setValue } from './tableSlice';
 import MBCell from './cell/MBCell';
 import EstNoteCell from './cell/EstNoteCell';
-import { saveESTAgent } from './tableThunk';
+import AgentCell from './cell/AgentCell';
 
 const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
-  const dispatch = useAppDispatch();
-
   return (
     <tbody>
       {dataSource.map((event, index) => (
         <tr
-          key={index}
+          key={event.OWPMatchId}
           style={{ height: ROW_HEIGHT, backgroundColor: event.RowColor }}>
           <td>
             <ReadonlyCommonCell className='match__no' value={event.MatchNo} />
@@ -61,22 +56,12 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
               value={event.OtherProvider}
             />
           </td>
-          <EditableCommonCell
+          <AgentCell
             columnKey='agent'
             rowIndex={index}
             className='agent'
             value={event.Agent}
-            onBlur={value => {
-              dispatch(saveESTAgent({ owpMatchId: event.OWPMatchId, estAgent: value }));
-              dispatch(
-                setValue({
-                  owpMatchId: event.OWPMatchId,
-                  key: 'Agent',
-                  value
-                })
-              );
-            }
-            }
+            owpMatchId={event.OWPMatchId}
           />
           <td>
             <MBCell

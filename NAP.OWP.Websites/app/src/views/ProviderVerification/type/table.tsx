@@ -1,4 +1,4 @@
-import { Option } from "../../Shared/MultipleSelection/type";
+import { Option } from '../../Shared/MultipleSelection/type';
 
 type TEditableKey = 'Agent' | 'EstNote';
 type TAgentConfirm = {
@@ -22,14 +22,14 @@ type TDataSource = {
   OWPMatchId: number;
   ParentMatchId: number;
 } & {
-    [key in
+  [key in
     | 'MatchNo'
     | 'MatchStatus'
     | 'EventDateTime'
     | 'League'
     | 'Home'
     | 'Away']: Required<string>;
-  } & TTicketCell & {
+} & TTicketCell & {
     AgentConfirm: TAgentConfirm[];
   } & {
     [key in TEditableKey]: string | undefined;
@@ -43,17 +43,16 @@ type TCommonCell = {
 };
 
 type TEditableCell = {
-  owpMatchId?: number,
-  columnKey: string,
-  rowIndex: number,
+  owpMatchId: number;
+  columnKey: string;
+  rowIndex: number;
   className: string | undefined;
   value: string | undefined;
-  onBlur: (value: string | undefined) => void;
 };
 
 type TTicketCell = {
   [key in 'HasTicket' | 'IsRead']: boolean;
-} & { rowIndex: number; dataSource: TDataSource };
+} & { rowIndex: number; dataSource: TDataSource[] };
 
 type TUpdateRow = {
   owpMatchId: Required<number>;
@@ -63,18 +62,19 @@ type TUpdateRow = {
 
 type TUpdateAgentConfirm = { value: TAgentConfirm[] } & { owpMatchId: number };
 
-type TColumnKey = "MatchNo"
-  | "MatchStatus" |
-  "KoTime" |
-  "League" |
-  "Match" |
-  "Runner" |
-  "Agent" |
-  "Mb" |
-  "Remark" |
-  "RemarkBy"
-  | "EstNote"
-  | "OtherProvider";
+type TColumnKey =
+  | 'MatchNo'
+  | 'MatchStatus'
+  | 'KoTime'
+  | 'League'
+  | 'Match'
+  | 'Runner'
+  | 'Agent'
+  | 'Mb'
+  | 'Remark'
+  | 'RemarkBy'
+  | 'EstNote'
+  | 'OtherProvider';
 
 type TMultipleColumnFilterOption = {
   [key in TColumnKey]: Option[];
