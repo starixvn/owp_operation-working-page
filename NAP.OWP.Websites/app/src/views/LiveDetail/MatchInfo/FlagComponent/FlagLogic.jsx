@@ -5,8 +5,10 @@ import {
   PES_FLAG_21,
   FIFA_FLAG_23,
   PES_FLAG_23,
-  SABA
+  SABA,
+  FC_24
 } from './FlagStore/FlagsCondition';
+import { FC_24_IMAGE_STORE } from './FlagStore/FC24';
 import { PES_IMAGE_STORE } from './FlagStore/PES';
 import { PES_21_IMAGE_STORE } from './FlagStore/PES21';
 import { FIFA_23_IMAGE_STORE } from './FlagStore/FIFA23';
@@ -58,6 +60,13 @@ export const flagFactory = props => {
         flagNameLibrary: FIFA_23_IMAGE_STORE,
         flagURL: FIFA_FLAG_23.rootPath
       });
+    case 'FC 24':
+      debugger;
+      return getFlagFromStore({
+        flagName,
+        flagNameLibrary: FC_24_IMAGE_STORE,
+        flagURL: FC_24.rootPath
+      });
     default:
       return null;
   }
@@ -106,7 +115,7 @@ export const checkLeague = props => /* NOSONAR */ {
   const fifa = testRegex({ leagueName, ...FIFA_FLAG });
   const fifa23 = testRegex({ leagueName, ...FIFA_FLAG_23 });
   const pes23 = testRegex({ leagueName, ...PES_FLAG_23 });
-
+  const fc24 = testRegex({ leagueName, ...FC_24 });
   if (pes && fifa) {
     return { isHaveFlag: null, flagInfo: null };
   }
@@ -129,6 +138,9 @@ export const checkLeague = props => /* NOSONAR */ {
 
   if (isSABA && fifa23) {
     return { isHaveFlag: true, flagInfo: FIFA_FLAG_23.type };
+  }
+  if (isSABA && fc24) {
+    return { isHaveFlag: true, flagInfo: FC_24.type };
   }
 
   return { isHaveFlag: null, flagInfo: null };

@@ -29,3 +29,9 @@ export const FIFA_FLAG_23 = {
   condition: 'FIFA 23',
   rootPath: 'wwwroot/images/Flags/FIFA23'
 };
+
+export const FC_24 = {
+  type: 'FC 24',
+  condition: 'FC 24',
+  rootPath: 'wwwroot/images/Flags/FC24'
+};
