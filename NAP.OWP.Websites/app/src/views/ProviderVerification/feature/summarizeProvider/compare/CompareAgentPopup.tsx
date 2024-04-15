@@ -48,7 +48,7 @@ const CompareAgentPopup: React.FC<Props> = ({
   };
 
   return (
-    <Modal isOpen scrollable className='edit-popup' centered>
+    <Modal isOpen scrollable className='compare-popup' centered>
       <ModalBody>
         <h3 className='title'>Check the difference with Agent File</h3>
         <span>Agent Type: </span>
@@ -65,10 +65,13 @@ const CompareAgentPopup: React.FC<Props> = ({
           }}
         />
         <textarea
-          placeholder='Copy all the KO time of an agent in excel file and paste in here... Make sure the time is GMT+8'
+          placeholder='Copy all the KO time of an agent in excel file and paste in here.
+Make sure the format time is XX:XX AM/PM GMT+8
+Ex: 01:00 PM
+     03:00 AM'
           name='postContent'
           rows={20}
-          cols={70}
+          cols={72}
           value={textAreaValue}
           onChange={e => {
             setTextAreaValue(e.target.value);
