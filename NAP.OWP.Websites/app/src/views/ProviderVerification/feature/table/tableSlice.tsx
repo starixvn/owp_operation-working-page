@@ -61,7 +61,7 @@ const tableSlice = createSlice({
     setDataSignalR: (state, action) => {
       const { actorId, parentMatchId, userId } = action.payload;
       state.dataSource.forEach((item: TDataSource) => {
-        if (item === parentMatchId) {
+        if (item.OWPMatchId === parentMatchId) {
           item.IsRead = buildIsReadValue(actorId, userId, item.IsRead);
           item.HasTicket = true;
         }
