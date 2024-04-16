@@ -38,6 +38,7 @@ const tableSlice = createSlice({
       Agent: buildMultipleFilterDefault(),
       Remark: buildMultipleFilterDefault(),
       RemarkBy: buildMultipleFilterDefault(),
+      AgentConfirm: buildMultipleFilterDefault(),
       EstNote: buildMultipleFilterDefault()
     } as TMultipleFilter
   },
@@ -102,7 +103,8 @@ const tableSlice = createSlice({
 
     handleClearFilter: state => {
       state.dataSource = state.dataSourceOriginal;
-      buildDefaultTableFilter(state.dataSource, state.multipleFilter);
+      buildDefaultTableFilter(state.dataSource,
+        state.agentConfirmOption, state.multipleFilter);
     }
   },
   extraReducers: builder => {
@@ -118,6 +120,7 @@ const tableSlice = createSlice({
           state.dataSourceOriginal = action.payload;
           buildDefaultTableFilter(
             state.dataSourceOriginal,
+            state.agentConfirmOption,
             state.multipleFilter
           );
         }

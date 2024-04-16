@@ -73,7 +73,8 @@
     {
       "HEADER_KEY": "AgentConfirm",
       "HEADER_NAME": "Agent Confirm",
-      "WIDTH": "8%"
+      "WIDTH": "8%",
+      "IS_FILTER": true
     },
     {
       "HEADER_KEY": "EstNote",

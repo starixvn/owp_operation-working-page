@@ -1,4 +1,5 @@
 import { formatTime } from "../../../Shared/DateTime/dateTimeHelper";
+import { Option } from "../../../Shared/MultipleSelection/type";
 import { TDataSource, TMaxbetSetting, TMultipleFilter } from "../../type/table";
 import helper from "./calculateFilterOption";
 
@@ -13,7 +14,7 @@ ${OverUnderSetting?.SpreadToDisplay ? (isHDPSpreadExisting ? '-' : '') + OverUnd
   ${isDisplayHDPSetting ? ')' : ''}`;
 };
 
-const buildDefaultTableFilter = (dataSource: TDataSource[], tableFilter: TMultipleFilter) => {
+const buildDefaultTableFilter = (dataSource: TDataSource[], agentConfirmOption: Option[], tableFilter: TMultipleFilter) => {
   tableFilter.MatchNo = {
     selected: helper.MatchNo(dataSource),
     isFilter: false
@@ -58,6 +59,10 @@ const buildDefaultTableFilter = (dataSource: TDataSource[], tableFilter: TMultip
     selected: helper.RemarkBy(dataSource),
     isFilter: false
   };
+  tableFilter.AgentConfirm = {
+    selected: [...agentConfirmOption, { value: -1, label: '(Blanks)' }],
+    isFilter: false
+  };
   tableFilter.EstNote = {
     selected: helper.EstNote(dataSource),
     isFilter: false
@@ -78,7 +83,7 @@ const executeFilterTable = (dataSource: TDataSource[], tableFilter: TMultipleFil
     RemarkBy,
     EstNote
   } = tableFilter;
-  return dataSource.filter(e => MatchNo.selected.some(m => m.label === (e.MatchNo ?? '(Blanks)'))
+  const result = dataSource.filter(e => MatchNo.selected.some(m => m.label === (e.MatchNo ?? '(Blanks)'))
     && MatchStatus.selected.some(m => m.label === (e.MatchStatus ?? '(Blanks)'))
     && Match.selected.some(m => m.label === `${e.Home} -vs- ${e.Away}`)
     && KoTime.selected.some(m => m.label === formatTime(e.EventDateTime, 'minute', 'hh:mm A'))
@@ -90,6 +95,22 @@ const executeFilterTable = (dataSource: TDataSource[], tableFilter: TMultipleFil
     && Remark.selected.some(m => m.label === (e.Remark ?? '(Blanks)'))
     && RemarkBy.selected.some(m => m.label === (e.RemarkBy ?? '(Blanks)'))
     && EstNote.selected.some(m => m.label === (e.EstNote ?? '(Blanks)')));
+
+  return filterByAgentConfirm(result, tableFilter);
+};
+
+const filterByAgentConfirm = (dataSource: TDataSource[], tableFilter: TMultipleFilter) => {
+  return dataSource.filter(e => {
+    const { AgentConfirm } = e;
+    const { selected } = tableFilter.AgentConfirm;
+    if (!AgentConfirm.length && selected.some(s => s.label === '(Blanks)')) {
+      return true;
+    }
+    return AgentConfirm.some(a =>
+      selected.some(s =>
+        s.label === a.Label
+      ));
+  });
 };
 
 export { buildMaxbetItemInOption, buildDefaultTableFilter, executeFilterTable };

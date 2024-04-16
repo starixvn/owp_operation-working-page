@@ -22,14 +22,14 @@ type TDataSource = {
   OWPMatchId: number;
   ParentMatchId: number;
 } & {
-  [key in
+    [key in
     | 'MatchNo'
     | 'MatchStatus'
     | 'EventDateTime'
     | 'League'
     | 'Home'
     | 'Away']: Required<string>;
-} & TTicketCell & {
+  } & TTicketCell & {
     AgentConfirm: TAgentConfirm[];
   } & {
     [key in TEditableKey]: string | undefined;
@@ -73,6 +73,7 @@ type TColumnKey =
   | 'Mb'
   | 'Remark'
   | 'RemarkBy'
+  | 'AgentConfirm'
   | 'EstNote'
   | 'OtherProvider';
 

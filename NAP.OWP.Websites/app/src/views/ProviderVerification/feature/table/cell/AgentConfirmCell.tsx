@@ -20,7 +20,7 @@ const AgentConfirmCell = ({
   );
   const dispatch = useAppDispatch();
 
-  const handleOnChange = event => {
+  const handleOnChange = (event: Option[]) => {
     const agentSelected = event.map((a: Option) => a.value).join(',');
     dispatch(saveAgentConfirm({ owpMatchId, agentSelected }));
     dispatch(

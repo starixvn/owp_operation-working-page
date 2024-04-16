@@ -2,6 +2,7 @@ import { uniqBy } from "lodash";
 import { formatTime } from "../../../Shared/DateTime/dateTimeHelper";
 import { buildMaxbetItemInOption } from "./helper";
 import { TDataSource } from "../../type/table";
+import store from "../../app/storeNative";
 
 const calculateMatchNoOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
@@ -71,6 +72,11 @@ const calculateRemarkByOption = (dataSource: TDataSource[]) => {
   })), v => v.label);
 };
 
+const calculateAgentConfirmOption = () => {
+  const { agentConfirmOption } = store.getState().events;
+  return [...agentConfirmOption, { value: -1, label: '(Blanks)' }];
+};
+
 const calculateEstNoteOption = (dataSource: TDataSource[]) => uniqBy([...dataSource].map(x => ({
   value: x.EstNote ?? '',
   label: x.EstNote?.trim().length ? x.EstNote : '(Blanks)'
@@ -87,6 +93,7 @@ const helper = {
   Mb: (dataSource: TDataSource[]) => calculateMbOption(dataSource),
   Remark: (dataSource: TDataSource[]) => calculateRemarkOption(dataSource),
   RemarkBy: (dataSource: TDataSource[]) => calculateRemarkByOption(dataSource),
+  AgentConfirm: (dataSource: TDataSource[]) => calculateAgentConfirmOption(),
   EstNote: (dataSource: TDataSource[]) => calculateEstNoteOption(dataSource),
   OtherProvider: (dataSource: TDataSource[]) => calculateOtherProviderOption(dataSource)
 };
