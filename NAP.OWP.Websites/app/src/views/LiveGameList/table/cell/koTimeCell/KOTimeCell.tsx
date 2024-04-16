@@ -34,7 +34,7 @@ const KOTimeCell = ({ rowIndex, dataSource }: CellProps): JSX.Element => {
       {IsPES24 && (
         <>
           <i
-            className={`icon-match ${IsPES23 ? 'icon-pes24' : 'icon-pes'}`}
+            className={`icon-match ${IsPES24 ? 'icon-pes24' : 'icon-pes'}`}
             original-title='PES'
             ref={ref}></i>
           <UncontrolledTooltip placement='bottom' target={ref}>
