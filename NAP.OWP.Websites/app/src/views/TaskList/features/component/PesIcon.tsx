@@ -3,22 +3,11 @@ import { PesOrFiFa } from '../../type/TTaskListTable';
 import { UncontrolledTooltip } from 'reactstrap';
 
 const PesIcon = (props: PesOrFiFa) => {
-  const { IsPES23, IsPES24, IsPESOther } = props;
+  const { IsPES23, IsPESOther } = props;
 
   const ref = useRef(null);
   return (
     <>
-      {IsPES24 && (
-        <>
-          <i
-            className={`icon-match icon-pes24`}
-            original-title='PES'
-            ref={ref}></i>
-          <UncontrolledTooltip placement='bottom' target={ref}>
-            PES
-          </UncontrolledTooltip>
-        </>
-      )}
       {(IsPESOther || IsPES23) && (
         <>
           <i
