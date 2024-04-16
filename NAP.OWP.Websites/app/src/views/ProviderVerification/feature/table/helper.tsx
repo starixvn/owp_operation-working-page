@@ -5,6 +5,9 @@ import helper from "./calculateFilterOption";
 
 const buildMaxbetItemInOption = (maxbetSetting: TMaxbetSetting) => {
   const { HandicapSetting, OverUnderSetting } = maxbetSetting;
+  if (!HandicapSetting && !OverUnderSetting) {
+    return '(Blanks)';
+  }
   const isDisplayHDPSetting =
     HandicapSetting?.SpreadToDisplay ?? OverUnderSetting?.SpreadToDisplay;
   const isHDPSpreadExisting = HandicapSetting?.SpreadToDisplay;
