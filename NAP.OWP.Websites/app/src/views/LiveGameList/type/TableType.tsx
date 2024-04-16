@@ -149,6 +149,7 @@ interface MatchInfo {
   IsMinorMatch: boolean;
   IsOneHourToKickOffTime: boolean;
   IsPES23: boolean;
+  IsFC24: boolean;
   IsPESOther: boolean;
   KickOffTime: string;
   League: string;

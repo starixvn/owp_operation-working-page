@@ -49,21 +49,15 @@ class LiveDetail extends Component {
   componentDidMount() {
     (async () => {
       const { matchId } = this.state;
-      const [
-        policy,
-        notePolicy,
-        users,
-        matchInfo,
-        noOfHDPs,
-        matchOffers
-      ] = await axios.all([
-        AuthorizeService.authorize(FunctionKeys.DetailsInformation),
-        AuthorizeService.authorize(FunctionKeys.Note),
-        UserService.dataSourceUsersFromServer(),
-        MatchInfoService.query(matchId),
-        ResourceService.getByRefName('NoOfHDP'),
-        ResourceService.getByRefName('MatchOffer')
-      ]);
+      const [policy, notePolicy, users, matchInfo, noOfHDPs, matchOffers] =
+        await axios.all([
+          AuthorizeService.authorize(FunctionKeys.DetailsInformation),
+          AuthorizeService.authorize(FunctionKeys.Note),
+          UserService.dataSourceUsersFromServer(),
+          MatchInfoService.query(matchId),
+          ResourceService.getByRefName('NoOfHDP'),
+          ResourceService.getByRefName('MatchOffer')
+        ]);
       if (!matchInfo) {
         this.setState({
           isLoading: false
@@ -71,9 +65,8 @@ class LiveDetail extends Component {
         return;
       }
 
-      const matchOfferOptions = Converter.convertMatchOffersToOptions(
-        matchOffers
-      );
+      const matchOfferOptions =
+        Converter.convertMatchOffersToOptions(matchOffers);
       const noOfHDPOptions = Converter.convertNoOfHDPToOptions(noOfHDPs);
       matchInfo.NoOfHDP = noOfHDPOptions.filter(
         option => option.value === (matchInfo.NoOfHDPId || 0)
@@ -174,16 +167,13 @@ class LiveDetail extends Component {
   onSaveGeneralInfo = async () => {
     this.onUpdateAttribute(editGeneralConst, '0');
     if (window.frameElement) {
-      const editGeneralInfo = window.frameElement.getAttribute(
-        editGeneralConst
-      );
+      const editGeneralInfo =
+        window.frameElement.getAttribute(editGeneralConst);
       const editMatchInfo = window.frameElement.getAttribute(editMatchConst);
-      const editTradingInfo = window.frameElement.getAttribute(
-        editTradingConst
-      );
-      const editProviderInfo = window.frameElement.getAttribute(
-        editProviderConst
-      );
+      const editTradingInfo =
+        window.frameElement.getAttribute(editTradingConst);
+      const editProviderInfo =
+        window.frameElement.getAttribute(editProviderConst);
 
       const isEditGeneralInfo = this.isEditInfo(editGeneralInfo);
       const isEditMatchInfo = this.isEditInfo(editMatchInfo);

@@ -1,17 +1,24 @@
+import { useRef } from 'react';
 import { PesOrFiFa } from '../../type/TTaskListTable';
 import { UncontrolledTooltip } from 'reactstrap';
 
 const PesIcon = (props: PesOrFiFa) => {
-  const { rowIndex, IsPES23 } = props;
+  const { IsPES23, IsPESOther } = props;
+
+  const ref = useRef(null);
   return (
     <>
-      <i
-        className={`icon-match ${IsPES23 ? 'icon-pes23' : 'icon-pes'}`}
-        original-title='PES'
-        id={`link-pes-${rowIndex}`}></i>
-      <UncontrolledTooltip placement='bottom' target={`link-pes-${rowIndex}`}>
-        PES
-      </UncontrolledTooltip>
+      {(IsPESOther || IsPES23) && (
+        <>
+          <i
+            className={`icon-match ${IsPES23 ? 'icon-pes23' : 'icon-pes'}`}
+            original-title='PES'
+            ref={ref}></i>
+          <UncontrolledTooltip placement='bottom' target={ref}>
+            PES
+          </UncontrolledTooltip>
+        </>
+      )}
     </>
   );
 };
