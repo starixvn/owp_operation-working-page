@@ -1,19 +1,19 @@
 import { uniqBy } from "lodash";
 import { formatTime } from "../../../Shared/DateTime/dateTimeHelper";
-import { buildMaxbetItemInOption } from "./helper";
+import { buildLabelItemOption, buildMaxbetItemInOption } from "./helper";
 import { TDataSource } from "../../type/table";
 import store from "../../app/storeNative";
 
 const calculateMatchNoOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.OWPMatchId,
-    label: x.MatchNo ?? '(Blanks)'
+    label: buildLabelItemOption(x.MatchNo)
   })), v => v.label);
 };
 const calculateMatchStatusOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.OWPMatchId,
-    label: x.MatchStatus ?? '(Blanks)'
+    label: buildLabelItemOption(x.MatchStatus)
   })), v => v.label);
 };
 const calculateKoOption = (dataSource: TDataSource[]) => {
@@ -37,19 +37,19 @@ const calculateMatchOption = (dataSource: TDataSource[]) => {
 const calculateRunnerOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.OWPMatchId,
-    label: x.Provider ?? '(Blanks)'
+    label: buildLabelItemOption(x.Provider)
   })), v => v.label);
 };
 const calculateOtherProviderOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.OWPMatchId,
-    label: x.OtherProvider ?? '(Blanks)'
+    label: buildLabelItemOption(x.OtherProvider)
   })), v => v.label);
 };
 const calculateAgentOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.Agent ?? '',
-    label: x.Agent?.trim().length ? x.Agent : '(Blanks)'
+    label: buildLabelItemOption(x.Agent)
   })), v => v.value);
 };
 
@@ -62,13 +62,13 @@ const calculateMbOption = (dataSource: TDataSource[]) => {
 const calculateRemarkOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.OWPMatchId,
-    label: x.Remark ?? '(Blanks)'
+    label: buildLabelItemOption(x.Remark)
   })), v => v.label);
 };
 const calculateRemarkByOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.OWPMatchId,
-    label: x.RemarkBy ?? '(Blanks)'
+    label: buildLabelItemOption(x.RemarkBy)
   })), v => v.label);
 };
 
@@ -79,7 +79,7 @@ const calculateAgentConfirmOption = () => {
 
 const calculateEstNoteOption = (dataSource: TDataSource[]) => uniqBy([...dataSource].map(x => ({
   value: x.EstNote ?? '',
-  label: x.EstNote?.trim().length ? x.EstNote : '(Blanks)'
+  label: buildLabelItemOption(x.EstNote)
 })), v => v.value);
 
 const helper = {

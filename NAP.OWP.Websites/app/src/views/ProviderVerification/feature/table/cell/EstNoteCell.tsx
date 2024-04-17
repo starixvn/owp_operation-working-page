@@ -58,6 +58,7 @@ const EstNoteCell = ({
           defaultValue={value}
           ref={inputRef}
           autoFocus
+          multiple
           onBlur={handleBlur}></input>
       )}
     </td>

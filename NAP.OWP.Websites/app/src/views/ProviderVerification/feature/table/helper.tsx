@@ -86,18 +86,18 @@ const executeFilterTable = (dataSource: TDataSource[], tableFilter: TMultipleFil
     RemarkBy,
     EstNote
   } = tableFilter;
-  const result = dataSource.filter(e => MatchNo.selected.some(m => m.label === (e.MatchNo ?? '(Blanks)'))
-    && MatchStatus.selected.some(m => m.label === (e.MatchStatus ?? '(Blanks)'))
+  const result = dataSource.filter(e => MatchNo.selected.some(m => m.label === buildLabelItemOption(e.MatchNo))
+    && MatchStatus.selected.some(m => m.label === buildLabelItemOption(e.MatchStatus))
     && Match.selected.some(m => m.label === `${e.Home} -vs- ${e.Away}`)
     && KoTime.selected.some(m => m.label === formatTime(e.EventDateTime, 'minute', 'hh:mm A'))
     && League.selected.some(m => m.label === e.League)
-    && Runner.selected.some(m => m.label === (e.Provider ?? '(Blanks)'))
-    && OtherProvider.selected.some(m => m.label === (e.OtherProvider ?? '(Blanks)'))
-    && Agent.selected.some(m => m.label === (e.Agent ?? '(Blanks)'))
+    && Runner.selected.some(m => m.label === buildLabelItemOption(e.Provider))
+    && OtherProvider.selected.some(m => m.label === buildLabelItemOption(e.OtherProvider))
+    && Agent.selected.some(m => m.label === buildLabelItemOption(e.Agent))
     && Mb.selected.some(m => m.label === (buildMaxbetItemInOption({ HandicapSetting: e.HandicapSetting, OverUnderSetting: e.OverUnderSetting }) ?? '(Blanks)'))
-    && Remark.selected.some(m => m.label === (e.Remark ?? '(Blanks)'))
-    && RemarkBy.selected.some(m => m.label === (e.RemarkBy ?? '(Blanks)'))
-    && EstNote.selected.some(m => m.label === (e.EstNote ?? '(Blanks)')));
+    && Remark.selected.some(m => m.label === buildLabelItemOption(e.Remark))
+    && RemarkBy.selected.some(m => m.label === buildLabelItemOption(e.RemarkBy))
+    && EstNote.selected.some(m => m.label === buildLabelItemOption(e.EstNote)));
 
   return filterByAgentConfirm(result, tableFilter);
 };
@@ -116,4 +116,7 @@ const filterByAgentConfirm = (dataSource: TDataSource[], tableFilter: TMultipleF
   });
 };
 
-export { buildMaxbetItemInOption, buildDefaultTableFilter, executeFilterTable };
+const buildLabelItemOption = (value: string | undefined | null) => value?.trim().length ? value : '(Blanks)';
+
+
+export { buildMaxbetItemInOption, buildDefaultTableFilter, executeFilterTable, buildLabelItemOption };

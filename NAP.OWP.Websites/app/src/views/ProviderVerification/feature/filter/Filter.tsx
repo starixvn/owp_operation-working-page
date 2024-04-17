@@ -20,6 +20,7 @@ const Filter = () => {
     <div className='top-control'>
       <div className='left-control'>
         <FilterDate />
+
         <div className='filter-control btn-block'>
           <button className='button-submit' onClick={handleOnSearch}>
             Search
