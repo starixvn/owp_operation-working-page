@@ -33,7 +33,7 @@ const AgentCell = ({
     dispatch(
       setValue({
         owpMatchId,
-        key: 'Agent',
+        key: 'AgentEst',
         value
       })
     );

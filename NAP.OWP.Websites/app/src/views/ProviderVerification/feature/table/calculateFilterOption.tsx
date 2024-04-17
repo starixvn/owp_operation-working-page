@@ -34,7 +34,7 @@ const calculateMatchOption = (dataSource: TDataSource[]) => {
     label: `${x.Home} -vs- ${x.Away}`
   })), v => v.label);
 };
-const calculateRunnerOption = (dataSource: TDataSource[]) => {
+const calculateProviderOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.OWPMatchId,
     label: buildLabelItemOption(x.Provider)
@@ -48,8 +48,8 @@ const calculateOtherProviderOption = (dataSource: TDataSource[]) => {
 };
 const calculateAgentOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
-    value: x.Agent ?? '',
-    label: buildLabelItemOption(x.Agent)
+    value: x.AgentEst ?? '',
+    label: buildLabelItemOption(x.AgentEst)
   })), v => v.value);
 };
 
@@ -62,7 +62,7 @@ const calculateMbOption = (dataSource: TDataSource[]) => {
 const calculateRemarkOption = (dataSource: TDataSource[]) => {
   return uniqBy([...dataSource].map(x => ({
     value: x.OWPMatchId,
-    label: buildLabelItemOption(x.Remark)
+    label: buildLabelItemOption(x.RemarkEst)
   })), v => v.label);
 };
 const calculateRemarkByOption = (dataSource: TDataSource[]) => {
@@ -88,10 +88,10 @@ const helper = {
   KoTime: (dataSource: TDataSource[]) => calculateKoOption(dataSource),
   League: (dataSource: TDataSource[]) => calculateLeagueOption(dataSource),
   Match: (dataSource: TDataSource[]) => calculateMatchOption(dataSource),
-  Runner: (dataSource: TDataSource[]) => calculateRunnerOption(dataSource),
-  Agent: (dataSource: TDataSource[]) => calculateAgentOption(dataSource),
+  Provider: (dataSource: TDataSource[]) => calculateProviderOption(dataSource),
+  AgentEst: (dataSource: TDataSource[]) => calculateAgentOption(dataSource),
   Mb: (dataSource: TDataSource[]) => calculateMbOption(dataSource),
-  Remark: (dataSource: TDataSource[]) => calculateRemarkOption(dataSource),
+  RemarkEst: (dataSource: TDataSource[]) => calculateRemarkOption(dataSource),
   RemarkBy: (dataSource: TDataSource[]) => calculateRemarkByOption(dataSource),
   AgentConfirm: (dataSource: TDataSource[]) => calculateAgentConfirmOption(),
   EstNote: (dataSource: TDataSource[]) => calculateEstNoteOption(dataSource),

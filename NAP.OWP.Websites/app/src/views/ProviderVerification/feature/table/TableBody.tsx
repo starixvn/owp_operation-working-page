@@ -48,7 +48,7 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             />
           </td>
           <td>
-            <ReadonlyCommonCell className='runner' value={event.Provider} />
+            <ReadonlyCommonCell className='provider' value={event.Provider} />
           </td>
           <td>
             <ReadonlyCommonCell
@@ -60,7 +60,7 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             columnKey='agent'
             rowIndex={index}
             className='agent'
-            value={event.Agent}
+            value={event.AgentEst}
             owpMatchId={event.OWPMatchId}
           />
           <td>
@@ -70,7 +70,7 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             />
           </td>
           <td>
-            <ReadonlyCommonCell className='remark' value={event.Remark} />
+            <ReadonlyCommonCell className='remark' value={event.RemarkEst} />
           </td>
           <td>
             <ReadonlyCommonCell className='remark__by' value={event.RemarkBy} />

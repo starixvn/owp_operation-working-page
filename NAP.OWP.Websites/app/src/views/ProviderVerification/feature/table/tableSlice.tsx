@@ -33,10 +33,10 @@ const tableSlice = createSlice({
       League: buildMultipleFilterDefault(),
       Match: buildMultipleFilterDefault(),
       Mb: buildMultipleFilterDefault(),
-      Runner: buildMultipleFilterDefault(),
+      Provider: buildMultipleFilterDefault(),
       OtherProvider: buildMultipleFilterDefault(),
-      Agent: buildMultipleFilterDefault(),
-      Remark: buildMultipleFilterDefault(),
+      AgentEst: buildMultipleFilterDefault(),
+      RemarkEst: buildMultipleFilterDefault(),
       RemarkBy: buildMultipleFilterDefault(),
       AgentConfirm: buildMultipleFilterDefault(),
       EstNote: buildMultipleFilterDefault()

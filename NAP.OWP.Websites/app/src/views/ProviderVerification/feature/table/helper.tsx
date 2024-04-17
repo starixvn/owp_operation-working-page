@@ -38,24 +38,24 @@ const buildDefaultTableFilter = (dataSource: TDataSource[], agentConfirmOption: 
     selected: helper.Match(dataSource),
     isFilter: false
   };
-  tableFilter.Runner = {
-    selected: helper.Runner(dataSource),
+  tableFilter.Provider = {
+    selected: helper.Provider(dataSource),
     isFilter: false
   };
   tableFilter.OtherProvider = {
     selected: helper.OtherProvider(dataSource),
     isFilter: false
   };
-  tableFilter.Agent = {
-    selected: helper.Agent(dataSource),
+  tableFilter.AgentEst = {
+    selected: helper.AgentEst(dataSource),
     isFilter: false
   };
   tableFilter.Mb = {
     selected: helper.Mb(dataSource),
     isFilter: false
   };
-  tableFilter.Remark = {
-    selected: helper.Remark(dataSource),
+  tableFilter.RemarkEst = {
+    selected: helper.RemarkEst(dataSource),
     isFilter: false
   };
   tableFilter.RemarkBy = {
@@ -78,11 +78,11 @@ const executeFilterTable = (dataSource: TDataSource[], tableFilter: TMultipleFil
     KoTime,
     League,
     Match,
-    Runner,
+    Provider,
     OtherProvider,
-    Agent,
+    AgentEst,
     Mb,
-    Remark,
+    RemarkEst,
     RemarkBy,
     EstNote
   } = tableFilter;
@@ -91,11 +91,11 @@ const executeFilterTable = (dataSource: TDataSource[], tableFilter: TMultipleFil
     && Match.selected.some(m => m.label === `${e.Home} -vs- ${e.Away}`)
     && KoTime.selected.some(m => m.label === formatTime(e.EventDateTime, 'minute', 'hh:mm A'))
     && League.selected.some(m => m.label === e.League)
-    && Runner.selected.some(m => m.label === buildLabelItemOption(e.Provider))
+    && Provider.selected.some(m => m.label === buildLabelItemOption(e.Provider))
     && OtherProvider.selected.some(m => m.label === buildLabelItemOption(e.OtherProvider))
-    && Agent.selected.some(m => m.label === buildLabelItemOption(e.Agent))
+    && AgentEst.selected.some(m => m.label === buildLabelItemOption(e.AgentEst))
     && Mb.selected.some(m => m.label === (buildMaxbetItemInOption({ HandicapSetting: e.HandicapSetting, OverUnderSetting: e.OverUnderSetting }) ?? '(Blanks)'))
-    && Remark.selected.some(m => m.label === buildLabelItemOption(e.Remark))
+    && RemarkEst.selected.some(m => m.label === buildLabelItemOption(e.RemarkEst))
     && RemarkBy.selected.some(m => m.label === buildLabelItemOption(e.RemarkBy))
     && EstNote.selected.some(m => m.label === buildLabelItemOption(e.EstNote)));
 

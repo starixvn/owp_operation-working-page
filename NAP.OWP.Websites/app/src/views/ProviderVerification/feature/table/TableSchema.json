@@ -35,8 +35,8 @@
       "WIDTH": "3%"
     },
     {
-      "HEADER_KEY": "Runner",
-      "HEADER_NAME": "Runner",
+      "HEADER_KEY": "Provider",
+      "HEADER_NAME": "Provider",
       "WIDTH": "6%",
       "IS_FILTER": true
     },
@@ -47,7 +47,7 @@
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "Agent",
+      "HEADER_KEY": "AgentEst",
       "HEADER_NAME": "Agent For EST",
       "WIDTH": "9%",
       "IS_FILTER": true
@@ -59,7 +59,7 @@
       "IS_FILTER": true
     },
     {
-      "HEADER_KEY": "Remark",
+      "HEADER_KEY": "RemarkEst",
       "HEADER_NAME": "Remark For EST",
       "WIDTH": "9%",
       "IS_FILTER": true

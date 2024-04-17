@@ -1,6 +1,6 @@
 import { Option } from '../../Shared/MultipleSelection/type';
 
-type TEditableKey = 'Agent' | 'EstNote';
+type TEditableKey = 'AgentEst' | 'EstNote';
 type TAgentConfirm = {
   Value: number | string | null;
   Label: string;
@@ -17,7 +17,7 @@ type TMaxbetSetting = {
   };
 };
 type TDataSource = {
-  [key in 'Provider' | 'OtherProvider' | 'Remark' | 'RemarkBy']: string | null;
+  [key in 'Provider' | 'OtherProvider' | 'RemarkEst' | 'RemarkBy']: string | null;
 } & {
   OWPMatchId: number;
   ParentMatchId: number;
@@ -68,10 +68,10 @@ type TColumnKey =
   | 'KoTime'
   | 'League'
   | 'Match'
-  | 'Runner'
-  | 'Agent'
+  | 'Provider'
+  | 'AgentEst'
   | 'Mb'
-  | 'Remark'
+  | 'RemarkEst'
   | 'RemarkBy'
   | 'AgentConfirm'
   | 'EstNote'
