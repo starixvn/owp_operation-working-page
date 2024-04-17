@@ -71,7 +71,6 @@ Ex: 01:00 PM
      03:00 AM'
           name='postContent'
           rows={20}
-          cols={72}
           value={textAreaValue}
           onChange={e => {
             setTextAreaValue(e.target.value);
