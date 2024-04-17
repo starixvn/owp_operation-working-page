@@ -94,7 +94,7 @@
       margin-top: 0;
     }
 
-    label + .MuiInput-formControl {
+    label+.MuiInput-formControl {
       margin-top: 35px;
     }
 
@@ -214,7 +214,6 @@
 
 .table-wrap {
   overflow: auto;
-  margin-bottom: 20px;
   margin-top: 10px;
 
   thead {
@@ -449,7 +448,9 @@
 }
 
 .total-record {
-  padding-top: 10px;
+  padding-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .agent__confirm .rmsc.multi-select {
@@ -471,7 +472,7 @@
     }
 
     .dropdown-heading-value {
-      > span {
+      >span {
         display: block;
         max-width: 130px;
         overflow: hidden;
@@ -517,7 +518,7 @@
     }
 
     .item-renderer {
-      input[type='checkbox'] + span {
+      input[type='checkbox']+span {
         &:after {
           left: 6px;
           top: 2px;
