@@ -1,10 +1,21 @@
-import { TCommonCell } from "../../../type/table";
+import { TCommonCell } from '../../../type/table';
+import { UncontrolledTooltip } from 'reactstrap';
 
-const ReadonlyCommonCell = ({ className, value }: TCommonCell) => {
+const ReadonlyCommonCell = ({
+  className,
+  value,
+  index,
+  isCanToolTip
+}: TCommonCell) => {
   return (
-    <span className={className}>
-      {value}
-    </span>
+    <td className={className} id={`${className}-${index}`}>
+      <span id={`${className}-${index}`}>{value}</span>
+      {isCanToolTip && (
+        <UncontrolledTooltip placement='top' target={`${className}-${index}`}>
+          {value}
+        </UncontrolledTooltip>
+      )}
+    </td>
   );
 };
 

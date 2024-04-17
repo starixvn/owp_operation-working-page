@@ -14,27 +14,41 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
         <tr
           key={event.OWPMatchId}
           style={{ height: ROW_HEIGHT, backgroundColor: event.RowColor }}>
-          <td className='match__no'>
-            <ReadonlyCommonCell value={event.MatchNo} />
-          </td>
-          <td className='match__status'>
-            <ReadonlyCommonCell
-              value={event.MatchStatus}
-            />
-          </td>
-          <td className='ko__time'>
-            <ReadonlyCommonCell
-              value={formatTime(event.EventDateTime, 'minute', 'hh:mm A')}
-            />
-          </td>
-          <td className='league'>
-            <ReadonlyCommonCell value={event.League} />
-          </td>
-          <td className='match'>
-            <ReadonlyCommonCell
-              value={`${event.Home} -vs- ${event.Away}`}
-            />
-          </td>
+          <ReadonlyCommonCell
+            className='match_no'
+            value={event.MatchNo}
+            index={index}
+            isCanToolTip={false}
+          />
+
+          <ReadonlyCommonCell
+            className='match_status'
+            value={event.MatchStatus}
+            index={index}
+            isCanToolTip={false}
+          />
+
+          <ReadonlyCommonCell
+            className='ko_time'
+            value={formatTime(event.EventDateTime, 'minute', 'hh:mm A')}
+            index={index}
+            isCanToolTip={false}
+          />
+
+          <ReadonlyCommonCell
+            className='league'
+            value={event.League}
+            index={index}
+            isCanToolTip={false}
+          />
+
+          <ReadonlyCommonCell
+            className='match'
+            value={`${event.Home} -vs- ${event.Away}`}
+            index={index}
+            isCanToolTip={false}
+          />
+
           <td>
             <TicketCell
               dataSource={dataSource}
@@ -43,40 +57,57 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
               rowIndex={index}
             />
           </td>
-          <td className='provider'>
-            <ReadonlyCommonCell value={event.Provider} />
-          </td>
-          <td className='other__provider'>
-            <ReadonlyCommonCell
-              value={event.OtherProvider}
-            />
-          </td>
-          <td className='agent'>
-            <ReadonlyCommonCell
-              value={event.AgentEst}
-            />
-          </td>
+
+          <ReadonlyCommonCell
+            className='provider'
+            value={event.Provider}
+            index={index}
+            isCanToolTip={true}
+          />
+
+          <ReadonlyCommonCell
+            className='other_provider'
+            value={event.OtherProvider}
+            index={index}
+            isCanToolTip={true}
+          />
+
+          <ReadonlyCommonCell
+            index={index}
+            isCanToolTip={true}
+            className='agent'
+            value={event.AgentEst}
+          />
+
           <td className='max__bet'>
             <MBCell
               HandicapSetting={event.HandicapSetting}
               OverUnderSetting={event.OverUnderSetting}
             />
           </td>
-          <td className='remark'>
-            <ReadonlyCommonCell value={event.RemarkEst} />
-          </td>
-          <td className='remark__by' >
-            <ReadonlyCommonCell value={event.RemarkBy} />
-          </td>
-          <td>
-            <AgentConfirmCell
-              agentConfirm={event.AgentConfirm.map(a => ({
-                value: a.Value,
-                label: a.Label
-              }))}
-              owpMatchId={event.OWPMatchId}
-            />
-          </td>
+
+          <ReadonlyCommonCell
+            className='remark'
+            value={event.RemarkEst}
+            index={index}
+            isCanToolTip={true}
+          />
+
+          <ReadonlyCommonCell
+            className='remark__by'
+            value={event.RemarkBy}
+            index={index}
+            isCanToolTip={true}
+          />
+
+          <AgentConfirmCell
+            agentConfirm={event.AgentConfirm.map(a => ({
+              value: a.Value,
+              label: a.Label
+            }))}
+            owpMatchId={event.OWPMatchId}
+          />
+
           <EstNoteCell
             columnKey='estNote'
             rowIndex={index}

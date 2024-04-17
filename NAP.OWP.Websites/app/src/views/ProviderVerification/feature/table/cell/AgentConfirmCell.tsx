@@ -35,22 +35,24 @@ const AgentConfirmCell = ({
   };
 
   return (
-    <span className='agent__confirm'>
-      <MultiSelect
-        onChange={handleOnChange}
-        value={agentConfirm}
-        options={agentConfirmOption}
-        ClearSelectedIcon={null}
-        className='multi-select'
-        hasSelectAll
-        disabled={!hasWrite}
-        labelledBy='Select...'
-        overrideStrings={{
-          selectAll: '-- Select All --',
-          allItemsAreSelected: 'All'
-        }}
-      />
-    </span>
+    <td>
+      <span className='agent__confirm'>
+        <MultiSelect
+          onChange={handleOnChange}
+          value={agentConfirm}
+          options={agentConfirmOption}
+          ClearSelectedIcon={null}
+          className='multi-select'
+          hasSelectAll
+          disabled={!hasWrite}
+          labelledBy='Select...'
+          overrideStrings={{
+            selectAll: '-- Select All --',
+            allItemsAreSelected: 'All'
+          }}
+        />
+      </span>
+    </td>
   );
 };
 

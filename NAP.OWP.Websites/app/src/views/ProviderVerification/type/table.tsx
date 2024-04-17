@@ -17,12 +17,14 @@ type TMaxbetSetting = {
   };
 };
 type TDataSource = {
-  [key in 'Provider' | 'OtherProvider' | 'RemarkEst' | 'RemarkBy']: string | null;
+  [key in 'Provider' | 'OtherProvider' | 'RemarkEst' | 'RemarkBy']:
+    | string
+    | null;
 } & {
   OWPMatchId: number;
   ParentMatchId: number;
 } & {
-    [key in
+  [key in
     | 'MatchNo'
     | 'MatchStatus'
     | 'EventDateTime'
@@ -30,7 +32,7 @@ type TDataSource = {
     | 'Home'
     | 'Away'
     | 'AgentEst']: Required<string>;
-  } & TTicketCell & {
+} & TTicketCell & {
     AgentConfirm: TAgentConfirm[];
   } & {
     [key in TEditableKey]: string | undefined;
@@ -41,6 +43,8 @@ type TDataSource = {
 type TCommonCell = {
   className?: string | undefined;
   value: string | null;
+  index: number;
+  isCanToolTip: boolean;
 };
 
 type TEditableCell = {
