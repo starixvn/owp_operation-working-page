@@ -119,7 +119,7 @@ const CreateTicketLGAView = props => {
         dispatch(setSelectedRecipients(recipient.concat(defaultRecipients)));
       }
     })();
-  }, [OWPMatchId]);
+  }, [modelByRowIndex]);
 
   if (!creatorInfo.userName) {
     return <Loading />;
