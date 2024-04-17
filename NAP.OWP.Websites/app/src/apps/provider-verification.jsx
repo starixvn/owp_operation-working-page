@@ -4,6 +4,7 @@ import ProviderVerification from './../views/ProviderVerification/ProviderVerifi
 import '../scss/pages/_ProviderVerification.scss';
 import '../scss/components/_chatboard.scss';
 import '../scss/pages/_multipleFilter.scss';
+import '../scss/pages/_popupEditor.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

@@ -5,6 +5,7 @@ import { UncontrolledTooltip } from 'reactstrap';
 import { setValue } from '../tableSlice';
 import { useAppDispatch } from '../../../../EventAssignmentNew/app/hooks';
 import { saveESTAgent } from '../tableThunk';
+import PopupEditor from '../../../../Shared/popupEditor/PopupEditor';
 
 const AgentCell = ({
   rowIndex,
@@ -51,13 +52,7 @@ const AgentCell = ({
         </>
       )}
       {canEdit && (
-        <input
-          type='text'
-          className='input-field'
-          defaultValue={value}
-          ref={inputRef}
-          autoFocus
-          onBlur={handleBlur}></input>
+        <PopupEditor value={value} />
       )}
     </td>
   );
