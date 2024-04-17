@@ -52,6 +52,13 @@ const AgentCell = ({
         </>
       )}
       {canEdit && (
+        /*  <input
+           type='text'
+           className='input-field'
+           defaultValue={value}
+           ref={inputRef}
+           autoFocus
+           onBlur={handleBlur}></input> */
         <PopupEditor value={value} />
       )}
     </td>

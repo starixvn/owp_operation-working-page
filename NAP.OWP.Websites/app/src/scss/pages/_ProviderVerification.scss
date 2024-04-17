@@ -311,9 +311,27 @@
       }
     }
   }
+  .agent__view,
+  .est__note__view {
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-  .agent,
-  .est__note {
+    .input-field {
+      width: 100%;
+    }
+
+    &.est__note {
+      max-width: 120px;
+
+      .input-field {
+        width: 100%;
+      }
+    }
+  }
+  .agent__edit,
+  .est__note__edit {
     max-width: 120px;
     white-space: nowrap;
     overflow: hidden;
@@ -483,7 +501,7 @@
       }
 
       .dropdown-heading-value {
-        > span {
+      > span {
           display: block;
           max-width: 130px;
           overflow: hidden;
@@ -529,7 +547,7 @@
       }
 
       .item-renderer {
-        input[type='checkbox'] + span {
+      input[type='checkbox'] + span {
           &:after {
             left: 6px;
             top: 2px;
