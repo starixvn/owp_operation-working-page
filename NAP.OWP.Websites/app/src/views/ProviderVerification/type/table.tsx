@@ -38,7 +38,7 @@ type TDataSource = {
   };
 
 type TCommonCell = {
-  className: string | undefined;
+  className?: string | undefined;
   value: string | null;
 };
 

@@ -15,27 +15,24 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
         <tr
           key={event.OWPMatchId}
           style={{ height: ROW_HEIGHT, backgroundColor: event.RowColor }}>
-          <td>
-            <ReadonlyCommonCell className='match__no' value={event.MatchNo} />
+          <td className='match__no'>
+            <ReadonlyCommonCell value={event.MatchNo} />
           </td>
-          <td>
+          <td className='match__status'>
             <ReadonlyCommonCell
-              className='match__status'
               value={event.MatchStatus}
             />
           </td>
-          <td>
+          <td className='ko__time'>
             <ReadonlyCommonCell
-              className='ko__time'
               value={formatTime(event.EventDateTime, 'minute', 'hh:mm A')}
             />
           </td>
-          <td>
-            <ReadonlyCommonCell className='league' value={event.League} />
+          <td className='league'>
+            <ReadonlyCommonCell value={event.League} />
           </td>
-          <td>
+          <td className='match'>
             <ReadonlyCommonCell
-              className='match'
               value={`${event.Home} -vs- ${event.Away}`}
             />
           </td>
@@ -47,12 +44,11 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
               rowIndex={index}
             />
           </td>
-          <td>
-            <ReadonlyCommonCell className='provider' value={event.Provider} />
+          <td className='provider'>
+            <ReadonlyCommonCell value={event.Provider} />
           </td>
-          <td>
+          <td className='other__provider'>
             <ReadonlyCommonCell
-              className='other__provider'
               value={event.OtherProvider}
             />
           </td>
@@ -63,17 +59,17 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             value={event.AgentEst}
             owpMatchId={event.OWPMatchId}
           />
-          <td>
+          <td className='max__bet'>
             <MBCell
               HandicapSetting={event.HandicapSetting}
               OverUnderSetting={event.OverUnderSetting}
             />
           </td>
-          <td>
-            <ReadonlyCommonCell className='remark' value={event.RemarkEst} />
+          <td className='remark'>
+            <ReadonlyCommonCell value={event.RemarkEst} />
           </td>
-          <td>
-            <ReadonlyCommonCell className='remark__by' value={event.RemarkBy} />
+          <td className='remark__by' >
+            <ReadonlyCommonCell value={event.RemarkBy} />
           </td>
           <td>
             <AgentConfirmCell
