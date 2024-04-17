@@ -501,7 +501,7 @@
       }
 
       .dropdown-heading-value {
-      > span {
+        > span {
           display: block;
           max-width: 130px;
           overflow: hidden;
@@ -547,7 +547,7 @@
       }
 
       .item-renderer {
-      input[type='checkbox'] + span {
+        input[type='checkbox'] + span {
           &:after {
             left: 6px;
             top: 2px;
@@ -700,4 +700,10 @@
       }
     }
   }
+}
+
+.popup__editor__wrapper {
+  height: 100%;
+  position: relative;
+  z-index: 1;
 }

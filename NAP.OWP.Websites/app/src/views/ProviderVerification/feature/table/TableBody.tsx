@@ -6,7 +6,6 @@ import { TDataSource } from '../../type/table';
 import { ROW_HEIGHT } from './TableSchema.json';
 import MBCell from './cell/MBCell';
 import EstNoteCell from './cell/EstNoteCell';
-import AgentCell from './cell/AgentCell';
 
 const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
   return (
@@ -52,13 +51,11 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
               value={event.OtherProvider}
             />
           </td>
-          <AgentCell
-            columnKey='agent'
-            rowIndex={index}
-            className='agent'
-            value={event.AgentEst}
-            owpMatchId={event.OWPMatchId}
-          />
+          <td className='agent'>
+            <ReadonlyCommonCell
+              value={event.AgentEst}
+            />
+          </td>
           <td className='max__bet'>
             <MBCell
               HandicapSetting={event.HandicapSetting}

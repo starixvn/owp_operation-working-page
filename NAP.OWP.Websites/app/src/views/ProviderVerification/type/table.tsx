@@ -1,6 +1,6 @@
 import { Option } from '../../Shared/MultipleSelection/type';
 
-type TEditableKey = 'AgentEst' | 'EstNote';
+type TEditableKey = 'EstNote';
 type TAgentConfirm = {
   Value: number | string | null;
   Label: string;
@@ -28,7 +28,8 @@ type TDataSource = {
     | 'EventDateTime'
     | 'League'
     | 'Home'
-    | 'Away']: Required<string>;
+    | 'Away'
+    | 'AgentEst']: Required<string>;
   } & TTicketCell & {
     AgentConfirm: TAgentConfirm[];
   } & {

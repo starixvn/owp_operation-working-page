@@ -5,6 +5,8 @@ import { UncontrolledTooltip } from 'reactstrap';
 import { setValue } from '../tableSlice';
 import { useAppDispatch } from '../../../../EventAssignmentNew/app/hooks';
 import { saveESTNote } from '../tableThunk';
+import PopupEditor from '../../../../Shared/popupEditor/PopupEditor';
+import useClickOutside from '../../../../Shared/customHook/useClickOutside';
 
 const EstNoteCell = ({
   rowIndex,
@@ -14,6 +16,7 @@ const EstNoteCell = ({
   columnKey
 }: TEditableCell) => {
   const [canEdit, setCanEdit] = useState(false);
+  const filterRef = useClickOutside<HTMLDivElement>(() => setCanEdit(false));
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
   const handleEdit = () => {
@@ -43,15 +46,14 @@ const EstNoteCell = ({
   const id = `${columnKey}${rowIndex}`;
   return (
     <td className={className} onClick={handleEdit}>
-      {!canEdit && (
-        <>
-          <span id={id}>{value}</span>
-          <UncontrolledTooltip placement='top' target={id}>
-            {value}
-          </UncontrolledTooltip>
-        </>
-      )}
-      {canEdit && (
+      <div ref={filterRef} className='popup__editor__wrapper'>
+        {canEdit && <PopupEditor value={value} />}
+        <span id={id}>{value}</span>
+        <UncontrolledTooltip placement='top' target={id}>
+          {value}
+        </UncontrolledTooltip>
+      </div>
+      {/* {canEdit && (
         <input
           type='text'
           className='input-field'
@@ -60,7 +62,7 @@ const EstNoteCell = ({
           autoFocus
           multiple
           onBlur={handleBlur}></input>
-      )}
+      )} */}
     </td>
   );
 };
