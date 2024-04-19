@@ -12,7 +12,7 @@ const PopupEditor = forwardRef((props: TPopup, ref: Ref<HTMLTextAreaElement> | u
       ref={ref}
       defaultValue={props.value}
       rows={8}
-      cols={50}
+      cols={60}
       autoFocus
       onFocus={e => {
         const temp_value = e.target.value;

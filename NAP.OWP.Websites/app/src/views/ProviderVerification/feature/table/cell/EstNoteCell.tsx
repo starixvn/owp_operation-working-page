@@ -6,6 +6,7 @@ import { setValue } from '../tableSlice';
 import { useAppDispatch } from '../../../../EventAssignmentNew/app/hooks';
 import { saveESTNote } from '../tableThunk';
 import PopupEditor from '../../../../Shared/popupEditor/PopupEditor';
+import { isEquals } from 'immutability-helper';
 
 const EstNoteCell = ({
   rowIndex,
@@ -18,16 +19,20 @@ const EstNoteCell = ({
   const dispatch = useAppDispatch();
 
   const onClickOutside = () => {
-    console.log('onClickOutside');
+    const { current } = popupRef;
     setCanEdit(false);
-    dispatch(
-      setValue({
-        owpMatchId,
-        key: 'EstNote',
-        value: popupRef.current?.value
-      })
-    );
-    dispatch(saveESTNote({ owpMatchId, estNote: value }));
+
+    if (!isEquals(value?.trim(), current?.value.trim())) {
+      dispatch(
+        setValue({
+          owpMatchId,
+          key: 'EstNote',
+          value: current?.value
+        })
+      );
+
+      dispatch(saveESTNote({ owpMatchId, estNote: current?.value }));
+    }
   };
 
 
@@ -41,7 +46,6 @@ const EstNoteCell = ({
   };
 
   const id = `${columnKey}${rowIndex}`;
-
 
   return (
     <td onClick={handleEdit}>
