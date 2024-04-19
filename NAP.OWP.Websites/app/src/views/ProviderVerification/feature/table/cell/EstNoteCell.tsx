@@ -1,7 +1,6 @@
 import { createRef, useState } from 'react';
 import { TEditableCell } from '../../../type/table';
 import store from '../../../app/storeNative';
-import { UncontrolledTooltip } from 'reactstrap';
 import { setValue } from '../tableSlice';
 import { useAppDispatch } from '../../../../EventAssignmentNew/app/hooks';
 import { saveESTNote } from '../tableThunk';
@@ -45,8 +44,6 @@ const EstNoteCell = ({
     HasWrite && setCanEdit(true);
   };
 
-  const id = `${columnKey}${rowIndex}`;
-
   return (
     <td onClick={handleEdit}>
       <div className='popup__editor__wrapper'>
@@ -55,10 +52,7 @@ const EstNoteCell = ({
           value={value}
           onBlur={onClickOutside} />}
         <div className='est__note'>
-          <span id={id}>{value}</span>
-          <UncontrolledTooltip placement='top' target={id}>
-            {value}
-          </UncontrolledTooltip>
+          <span>{value}</span>
         </div>
       </div>
     </td>
