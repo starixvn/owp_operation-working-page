@@ -9,7 +9,7 @@
     {
       "HEADER_KEY": "MatchStatus",
       "HEADER_NAME": "Match status",
-      "WIDTH": "7%",
+      "WIDTH": "5.5%",
       "IS_FILTER": true
     },
     {
@@ -21,7 +21,7 @@
     {
       "HEADER_KEY": "League",
       "HEADER_NAME": "League",
-      "WIDTH": "12%",
+      "WIDTH": "12.5%",
       "IS_FILTER": true
     },
     {
@@ -79,11 +79,10 @@
     {
       "HEADER_KEY": "EstNote",
       "HEADER_NAME": "EST Note",
-      "WIDTH": "7%",
+      "WIDTH": "8%",
       "IS_FILTER": true
     }
   ],
   "netCoreURL": "api-netcore/ProviderVerification",
-  "netFwURL": "api/ProviderVerification",
-  "ROW_HEIGHT": 57
+  "netFwURL": "api/ProviderVerification"
 }

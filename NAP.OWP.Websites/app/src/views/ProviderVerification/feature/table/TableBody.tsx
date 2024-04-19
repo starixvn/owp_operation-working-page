@@ -3,9 +3,9 @@ import { formatTime } from '../../../Shared/DateTime/dateTimeHelper';
 import TicketCell from './cell/TicketCell';
 import AgentConfirmCell from './cell/AgentConfirmCell';
 import { TDataSource } from '../../type/table';
-import { ROW_HEIGHT } from './TableSchema.json';
 import MBCell from './cell/MBCell';
 import EstNoteCell from './cell/EstNoteCell';
+import MatchCell from './cell/MatchCell';
 
 const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
   return (
@@ -13,7 +13,7 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
       {dataSource.map((event, index) => (
         <tr
           key={event.OWPMatchId}
-          style={{ height: ROW_HEIGHT, backgroundColor: event.RowColor }}>
+          style={{ backgroundColor: event.RowColor }}>
           <ReadonlyCommonCell
             className='match_no'
             value={event.MatchNo}
@@ -42,11 +42,10 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
             isCanToolTip={false}
           />
 
-          <ReadonlyCommonCell
+          <MatchCell
             className='match'
-            value={`${event.Home} -vs- ${event.Away}`}
-            index={index}
-            isCanToolTip={false}
+            home={event.Home}
+            away={event.Away}
           />
 
           <td>

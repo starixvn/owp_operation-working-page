@@ -10,7 +10,7 @@ const ReadonlyCommonCell = ({
   return (
     <td className={className} id={`${className}-${index}`}>
       <span id={`${className}-${index}`}>{value}</span>
-      {isCanToolTip && (
+      {isCanToolTip && value && (
         <UncontrolledTooltip placement='top' target={`${className}-${index}`}>
           {value}
         </UncontrolledTooltip>

@@ -219,7 +219,7 @@
   thead {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     box-shadow: inset 1px -1px #c8ced3, inset 1px 1px #c8ced3;
   }
 
@@ -236,7 +236,7 @@
 
   td {
     box-shadow: inset 1px -1px #c8ced3;
-    padding: 5px;
+    padding: 3px 5px !important;
   }
 
   th {
@@ -256,7 +256,8 @@
     background: #e3e3e3 !important;
 
     tr {
-      height: 50px;
+      height: 35px;
+      z-index: -1;
     }
   }
   tbody {
@@ -275,11 +276,26 @@
     text-align: left;
     border-collapse: collapse;
   }
-  .match__no,
-  .match__status,
-  .ko__time,
+  .match_no,
+  .match_status,
+  .ko_time,
   .max__bet {
     text-align: center !important;
+  }
+  .league {
+    font-size: 13px;
+  }
+  .match {
+    .home {
+      color: #e21b1b;
+      font-weight: 700;
+      margin-bottom: 2px !important;
+    }
+    .away {
+      display: block;
+      color: #494848;
+      font-weight: 700;
+    }
   }
 
   th {
@@ -733,4 +749,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.ticket-cell span {
+  margin: 0 !important;
 }
