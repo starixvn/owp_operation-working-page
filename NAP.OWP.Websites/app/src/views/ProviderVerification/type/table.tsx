@@ -57,7 +57,7 @@ type TEditableCell = {
   owpMatchId: number;
   columnKey: string;
   rowIndex: number;
-  className: string | undefined;
+  className?: string | undefined;
   value: string | undefined;
 };
 

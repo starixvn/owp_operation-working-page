@@ -110,7 +110,6 @@ const TableBody = ({ dataSource }: { dataSource: TDataSource[] }) => {
           <EstNoteCell
             columnKey='estNote'
             rowIndex={index}
-            className='est__note'
             value={event.EstNote}
             owpMatchId={event.OWPMatchId}
           />
