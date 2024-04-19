@@ -16,9 +16,10 @@ const EstNoteCell = ({
   columnKey
 }: TEditableCell) => {
   const [canEdit, setCanEdit] = useState(false);
-  const filterRef = useClickOutside<HTMLDivElement>(() => setCanEdit(false));
+  const [defaultValue, setDefaultValue] = useState(value);
+  const editRef = useClickOutside<HTMLDivElement>(() => setCanEdit(false));
   const dispatch = useAppDispatch();
-  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleEdit = () => {
     const {
       providerPolicy: {
@@ -27,12 +28,9 @@ const EstNoteCell = ({
     } = store.getState();
     HasWrite && setCanEdit(true);
   };
-  const handleBlur = () => {
-    setTimeout(() => {
-      setCanEdit(false);
-    }, 90);
-    const value = inputRef.current?.value;
-
+  const handleBlur = (value: string | undefined) => {
+    setCanEdit(false);
+    setDefaultValue(value);
     dispatch(
       setValue({
         owpMatchId,
@@ -44,25 +42,16 @@ const EstNoteCell = ({
   };
 
   const id = `${columnKey}${rowIndex}`;
+
   return (
     <td className={className} onClick={handleEdit}>
-      <div ref={filterRef} className='popup__editor__wrapper'>
-        {canEdit && <PopupEditor value={value} />}
-        <span id={id}>{value}</span>
+      <div ref={editRef} className='popup__editor__wrapper'>
+        {canEdit && <PopupEditor onBlur={handleBlur} defaultValue={defaultValue} />}
+        <span id={id}>{defaultValue}</span>
         <UncontrolledTooltip placement='top' target={id}>
-          {value}
+          {defaultValue}
         </UncontrolledTooltip>
       </div>
-      {/* {canEdit && (
-        <input
-          type='text'
-          className='input-field'
-          defaultValue={value}
-          ref={inputRef}
-          autoFocus
-          multiple
-          onBlur={handleBlur}></input>
-      )} */}
     </td>
   );
 };
