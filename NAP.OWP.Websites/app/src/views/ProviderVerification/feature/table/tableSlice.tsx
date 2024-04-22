@@ -98,13 +98,15 @@ const tableSlice = createSlice({
     },
     setDataTable: (state, action) => {
       state.dataSource = action.payload;
-      state.dataSourceOriginal = action.payload;
     },
 
     handleClearFilter: state => {
       state.dataSource = state.dataSourceOriginal;
-      buildDefaultTableFilter(state.dataSource,
-        state.agentConfirmOption, state.multipleFilter);
+      buildDefaultTableFilter(
+        state.dataSource,
+        state.agentConfirmOption,
+        state.multipleFilter
+      );
     }
   },
   extraReducers: builder => {

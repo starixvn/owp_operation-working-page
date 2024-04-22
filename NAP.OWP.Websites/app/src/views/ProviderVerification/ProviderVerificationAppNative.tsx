@@ -54,11 +54,11 @@ const ProviderVerificationAppNative = () => {
         <Filter />
         <Table />
       </div>
-      <TicketDetailBoard />
       <CreateTicketLGAView
         creatorInfo={creatorInfo}
         isProviderVerification={true}
       />
+      <TicketDetailBoard />
     </>
   );
 };
