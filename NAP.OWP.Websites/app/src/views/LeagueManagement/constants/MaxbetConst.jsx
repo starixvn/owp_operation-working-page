@@ -1,4 +1,10 @@
 import { buildMatchOfferURL, buildRequestURL } from './Const';
+
+const leagueInfo = {
+  id: 'new-league-details',
+  label: 'New League Details'
+};
+
 const maxbetInfo = {
   id: 'league-Details',
   label: 'League Details'
@@ -114,6 +120,7 @@ const messageUpdateConditionSuccess =
   'The condition has been successfully updated';
 
 const MaxbetConst = {
+  leagueInfo,
   viewlogUrl,
   maxbetInfo,
   SpecialLiveProductInfo,

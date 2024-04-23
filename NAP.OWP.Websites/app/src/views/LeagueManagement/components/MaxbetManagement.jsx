@@ -12,10 +12,11 @@ import Maxbet from './maxbet/Maxbet';
 import MaxbetDetail from './maxbet/maxbetdetail/MaxbetDetail';
 import MaxbetSettingTab from './maxbetSetting/MaxbetSettingTab';
 import SpecialProduct from './SpecialProduct';
+import LeagueInfoManagement from './leagueInfo/LeagueInfoManagement';
 
 const MaxbetManagement = () => {
   const dispatch = useDispatch();
-  const [navigationId, setNavigationId] = useState(MaxbetConst.maxbetInfo.id);
+  const [navigationId, setNavigationId] = useState(MaxbetConst.leagueInfo.id);
   const maxbetUrl = buildMaxbetUrl();
   const model = useSelector(selectPolicy);
   const stableDispatch = useCallback(dispatch, [dispatch]);
@@ -24,6 +25,7 @@ const MaxbetManagement = () => {
   }, [stableDispatch]);
 
   const navbarList = [
+    { ...MaxbetConst.leagueInfo },
     { ...MaxbetConst.maxbetInfo },
     { ...MaxbetConst.SpecialLiveProductInfo },
     { ...MaxbetConst.maxbetSetting }
@@ -39,6 +41,9 @@ const MaxbetManagement = () => {
         navbarList={navbarList}
         activeTabId={navigationId}
       />
+      {isEqual(navigationId, MaxbetConst.leagueInfo.id) && (
+        <LeagueInfoManagement />
+      )}
       {isEqual(navigationId, MaxbetConst.maxbetInfo.id) && (
         <Switch>
           <Route
