@@ -4,7 +4,6 @@ import Filter from './feature/filter/Filter';
 import Table from './feature/table/Table';
 import { getAgentConfirm } from './feature/table/tableThunk';
 import usePermission from '../Shared/customHook/usePermission';
-import { CreatorInfo } from './type/table';
 import { isEquals } from 'immutability-helper';
 import { REQUEST_STATUS, FunctionKeys } from '../Shared/Constants';
 import Loading from '../components/Loading';
@@ -32,7 +31,7 @@ const ProviderVerificationAppNative = () => {
   const { permission } = ticketCenterPermissionModel;
   const { Username, ActorId } = permission;
 
-  const creatorInfo: CreatorInfo = {
+  const creatorInfo = {
     groupName: null,
     nickName: Username,
     recipientId: ActorId,
