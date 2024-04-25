@@ -64,9 +64,7 @@ const TableHeader = (props: PropsTableHeader) => {
             </th>
           </>
         ) : (
-          <>
-            <th colSpan={5}>Achieved matches</th>
-          </>
+          <th colSpan={5}>Achieved matches</th>
         )}
       </tr>
       <tr>

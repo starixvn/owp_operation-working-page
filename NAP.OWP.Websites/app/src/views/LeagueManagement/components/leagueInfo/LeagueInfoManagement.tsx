@@ -1,4 +1,6 @@
+import LeagueInfoTable from './table/LeagueInfoTable';
+
 const LeagueInfoManagement = () => {
-  return <h1>League Info</h1>;
+  return <LeagueInfoTable />;
 };
 export default LeagueInfoManagement;

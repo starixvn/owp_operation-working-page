@@ -18,7 +18,10 @@ const TableBody = (props: {
           <td>{item.sectionName}</td>
           {props.isGap ? (
             <>
-              <td className={`${item.isAlmostWinTarget ? 'almost-target' : ''} ${item.progress === 'Fail' ? 'fail-progress' : ''}`}>
+              <td
+                className={`${item.isAlmostWinTarget ? 'almost-target' : ''} ${
+                  item.progress === 'Fail' ? 'fail-progress' : ''
+                }`}>
                 {item.progress}
               </td>
               <td>{item.target}</td>
@@ -30,9 +33,7 @@ const TableBody = (props: {
               </td>
             </>
           ) : (
-            <>
-              <TableBodyTotalGame {...item.achievedGames} />
-            </>
+            <TableBodyTotalGame {...item.achievedGames} />
           )}
         </tr>
       ))}
