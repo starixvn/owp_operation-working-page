@@ -1,4 +1,5 @@
 type TDataSource = {
+  leagueSettingId: number;
   leagueGroup: string;
   league: string;
   tv: string;

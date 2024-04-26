@@ -5,6 +5,7 @@ import TableBody from './TableBody';
 const LeagueInfoTable = () => {
   const entities = [
     {
+      leagueSettingId: 123,
       leagueGroup: 'MJ',
       league: '*ENGLISH PREMIER LEAGUE',
       tv: 'TV/IPTV',
@@ -20,7 +21,7 @@ const LeagueInfoTable = () => {
       lstNote: 'WD-MB',
       remark2: 'test',
       comment:
-        '[Remark]\n<content of that cell>\n[Maxbet Weekend - HDP(K)]\n<content of that cell>'
+        '[Remark]\r\n<content of that cell>\r\n[Maxbet Weekend - HDP(K)]\r\n<content of that cell>'
     }
   ];
 

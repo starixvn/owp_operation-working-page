@@ -1,3 +1,21 @@
 {
+  "classNameCells": {
+    "noCell": "no-cell",
+    "leagueGroupCell": "league-group-cell",
+    "leagueCell": "league-cell",
+    "tvCell": "tv-cell",
+    "roundCell": "round-cell",
+    "leagueDivisionCell": "league-division-cell",
+    "remarkCell": "remark-cell",
+    "spreadHDPCell": "spread-hdp-cell",
+    "spreadOUCell": "spread-ou-cell",
+    "mbWeekdayHDPCell": "mb-weekday-hdp-cell",
+    "mbWeekdayNoHDPCell": "mb-weekday-no-hdp-cell",
+    "mbWeekendHDPCell": "mb-weekend-hdp-cell",
+    "mbWeekendNoHDPCell": "mb-weekend-no-hdp-cell",
+    "lstNoteCell": "lst-note-cell",
+    "remark2Cell": "remark2-cell",
+    "commentCell": "comment-cell"
+  },
   "itemRowHeight": 100
 }
