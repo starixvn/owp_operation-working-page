@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -481,7 +482,7 @@
     <Content Include="wwwroot\event-picking\assets\ext\server-cc3983b4.css" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_check_all-1f6bb12a.png" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_only-49132f43.png" />
-    <Content Include="wwwroot\event-picking\assets\js\main-d3b2b545.js" />
+    <Content Include="wwwroot\event-picking\assets\js\main-65cad67b.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\images\Flags\FC24\AC Milan %28V%29.jpg" />
