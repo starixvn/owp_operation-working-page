@@ -22,6 +22,19 @@ type TDataSource = {
   lstNote: string;
   remark2: string;
   comment: string;
+  condition: {
+    hasTv: boolean;
+    hasIpTv: boolean;
+    ipTv: Array<Condition>;
+    round: Array<Condition>;
+    division: Array<Condition>;
+    remark: string;
+  };
+};
+
+type Condition = {
+  type: string;
+  value: string;
 };
 
 type TTableSlice = {

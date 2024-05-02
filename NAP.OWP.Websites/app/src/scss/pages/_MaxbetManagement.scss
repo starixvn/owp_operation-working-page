@@ -110,7 +110,7 @@
       border-bottom: 0;
     }
 
-    > * {
+    >* {
       display: inline-block;
       vertical-align: bottom;
     }
@@ -286,19 +286,13 @@
 }
 
 .maxbet-content {
-  .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child
-    .fixedDataTableCellLayout_main[role='columnheader'],
-  .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child
-    .fixedDataTableCellLayout_main[role='columnheader']
-    .header,
-  .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:last-child,
-  .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(1),
-  .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(2),
-  .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(3) {
+
+  .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child .fixedDataTableCellLayout_main[role='columnheader'],
+  .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child .fixedDataTableCellLayout_main[role='columnheader'] .header,
+  .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:last-child,
+  .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(1),
+  .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(2),
+  .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(3) {
     border-bottom: none;
 
     .header,
@@ -309,6 +303,7 @@
 }
 
 .maxbet-content-detail {
+
   // .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child .fixedDataTableCellLayout_main[role="columnheader"]:first-child,
   // .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child .fixedDataTableCellLayout_main[role="columnheader"]:nth-child(2),
   // .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role="columnheader"]:last-child,
@@ -320,30 +315,14 @@
   //     border-top: 1px solid #f1f1f1;
   //   }
   // }
-  .fixedDataTableRowLayout_rowWrapper:nth-child(2)
-    .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child
-    .fixedDataTableCellLayout_main[role='columnheader']:first-child,
-  .fixedDataTableRowLayout_rowWrapper:nth-child(2)
-    .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child
-    .fixedDataTableCellLayout_main[role='columnheader']:nth-child(2),
-  .fixedDataTableRowLayout_rowWrapper:nth-child(2)
-    .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:first-child,
-  .fixedDataTableRowLayout_rowWrapper:nth-child(2)
-    .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:nth-child(2),
-  .fixedDataTableRowLayout_rowWrapper:nth-child(2)
-    .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:last-child,
-  .fixedDataTableRowLayout_rowWrapper:nth-child(2)
-    .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(1),
-  .fixedDataTableRowLayout_rowWrapper:nth-child(2)
-    .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(2),
-  .fixedDataTableRowLayout_rowWrapper:nth-child(2)
-    .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2)
-    .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(3) {
+  .fixedDataTableRowLayout_rowWrapper:nth-child(2) .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child .fixedDataTableCellLayout_main[role='columnheader']:first-child,
+  .fixedDataTableRowLayout_rowWrapper:nth-child(2) .fixedDataTableCellGroupLayout_cellGroupWrapper:first-child .fixedDataTableCellLayout_main[role='columnheader']:nth-child(2),
+  .fixedDataTableRowLayout_rowWrapper:nth-child(2) .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:first-child,
+  .fixedDataTableRowLayout_rowWrapper:nth-child(2) .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:nth-child(2),
+  .fixedDataTableRowLayout_rowWrapper:nth-child(2) .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:last-child,
+  .fixedDataTableRowLayout_rowWrapper:nth-child(2) .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(1),
+  .fixedDataTableRowLayout_rowWrapper:nth-child(2) .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(2),
+  .fixedDataTableRowLayout_rowWrapper:nth-child(2) .fixedDataTableCellGroupLayout_cellGroupWrapper:nth-of-type(2) .fixedDataTableCellLayout_main[role='columnheader']:nth-last-child(3) {
     border-bottom: none;
 
     .header,
@@ -359,7 +338,8 @@
 }
 
 .fixedDataTableRowLayout_rowWrapper:nth(2) //.fixedDataTableCellGroupLayout_cellGroupWrapper:last-child .fixedDataTableCellLayout_main:nth-child(2n){
-{
+
+  {
   width: 71px !important;
 }
 
@@ -450,6 +430,7 @@
 }
 
 .fixedDataTableRowLayout_body {
+
   .division,
   .round,
   .has-tv {
@@ -571,6 +552,7 @@
 }
 
 .public_fixedDataTableRow_highlighted {
+
   .remark-note:after,
   .round-note:after,
   .division-note:after,
@@ -602,8 +584,7 @@
   border-left: 0;
 }
 
-.fixedDataTableCellGroupLayout_cellGroup
-  .public_fixedDataTableCell_main:last-child {
+.fixedDataTableCellGroupLayout_cellGroup .public_fixedDataTableCell_main:last-child {
   .assignment .button-plus {
     right: 13px;
   }
@@ -706,7 +687,7 @@
     }
   }
 
-  + button[type='button'] {
+  +button[type='button'] {
     &.btn-primary {
       margin: 0 10px;
       display: block;
@@ -723,6 +704,7 @@
 
     .rt-table {
       .rt-thead {
+
         .rt-th,
         .rt-td {
           border-color: #c8ced3 !important;
@@ -780,7 +762,7 @@
                 }
 
                 .input-field {
-                  + span {
+                  +span {
                     position: relative;
                     right: 12px;
                     border: 0;
@@ -964,6 +946,7 @@
 
   tr {
     &:first-child {
+
       td,
       th {
         color: #ffffff;
@@ -1037,11 +1020,9 @@
         border-bottom: 1px solid #c8ced3 !important;
         border-right: 1px solid #c8ced3 !important;
         background-color: #f1f1f1 !important;
-        background-image: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.1),
-          rgba(0, 0, 0, 0)
-        );
+        background-image: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0));
         text-align: right;
       }
     }
@@ -1180,7 +1161,7 @@
 .react-select__menu {
   box-shadow: none !important;
 
-  > div {
+  >div {
     border: 1px solid #ccc;
     max-height: 230px !important;
   }
@@ -1246,6 +1227,7 @@
   width: 100%;
 
   thead {
+
     th,
     td {
       background: #dedede;
@@ -1253,6 +1235,7 @@
   }
 
   tr {
+
     th,
     td {
       border-collapse: collapse;
@@ -1521,7 +1504,8 @@
     }
 
     .row-table {
-      max-height: 40px;
+      padding-top: 5px;
+      height: 40px;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -1575,12 +1559,14 @@
 .tooltip-inner {
   text-align: start !important;
 }
+
 // filter header
 
 .league-filter {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+
   input {
     max-width: 280px;
     height: 22px;
@@ -1588,6 +1574,7 @@
     border: 1px solid #c8ced3;
     background-color: transparent;
   }
+
   input:focus {
     outline: none;
     border: 1px solid #1e88e5;
