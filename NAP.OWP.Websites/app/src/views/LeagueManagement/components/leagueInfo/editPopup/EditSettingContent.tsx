@@ -5,9 +5,10 @@ import MB from './content/MB';
 import MicsMatch from './content/MicsMatch';
 import Comment from './content/Comment';
 import Header from './content/Header';
+import { TDataSource } from '../table/TableType';
 
 interface Props {
-  data: any
+  data: TDataSource
 }
 
 const EditSettingContent = (props: Props) => {
@@ -16,7 +17,7 @@ const EditSettingContent = (props: Props) => {
   return (
     <div>
       <Header data={data} />
-      <Condition />
+      <Condition data={data} />
       <FtSpread />
       <MB />
       <MicsMatch />
