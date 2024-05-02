@@ -36,27 +36,31 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
         <CommonCell className={classNameCells.remarkCell} value={row.remark} />
         <CommonCell
           className={classNameCells.spreadHDPCell}
-          value={row.spreadHDP}
+          value={row.spread_HDP_value?.toString()}
         />
         <CommonCell
           className={classNameCells.spreadOUCell}
-          value={row.spreadOU}
+          value={row.spread_OU_value?.toString()}
         />
         <CommonCell
           className={classNameCells.mbWeekdayHDPCell}
-          value={row.maxbetWeekdayHDP}
+          value={row.maxbetWD_HDP_value?.toString() || row.maxbetWD_HDP_Note}
         />
         <CommonCell
           className={classNameCells.mbWeekdayNoHDPCell}
-          value={row.maxbetWeekdayNoHDP}
+          value={
+            row.maxbetWD_NoOfHDP_value?.toString() || row.maxbetWD_NoOfHDP_Note
+          }
         />
         <CommonCell
           className={classNameCells.mbWeekendHDPCell}
-          value={row.maxbetWeekendHDP}
+          value={row.maxbetWK_HDP_value?.toString() || row.maxbetWK_HDP_Note}
         />
         <CommonCell
           className={classNameCells.mbWeekendHDPCell}
-          value={row.maxbetWeekendNoHDP}
+          value={
+            row.maxbetWK_NoOfHDP_value?.toString() || row.maxbetWK_NoOfHDP_Note
+          }
         />
         <CommonCell
           className={classNameCells.lstNoteCell}

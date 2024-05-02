@@ -1,20 +1,39 @@
 type TDataSource = {
   leagueSettingId: number;
+  owpLeagueId: number;
+  leagueGroupId: number;
   leagueGroup: string;
   league: string;
   tv: string;
   round: string;
   leagueDivision: string;
   remark: string;
-  spreadHDP: string;
-  spreadOU: string;
-  maxbetWeekdayHDP: string;
-  maxbetWeekdayNoHDP: string;
-  maxbetWeekendHDP: string;
-  maxbetWeekendNoHDP: string;
+  spread_HDP_value: number;
+  spread_OU_value: number;
+  spread_Note: string;
+  maxbetWD_HDP_value: number;
+  maxbetWD_HDP_Note: string;
+  maxbetWD_NoOfHDP_value: string;
+  maxbetWD_NoOfHDP_Note: string;
+  maxbetWK_HDP_value: number;
+  maxbetWK_HDP_Note: string;
+  maxbetWK_NoOfHDP_value: string;
+  maxbetWK_NoOfHDP_Note: string;
   lstNote: string;
   remark2: string;
   comment: string;
 };
 
-export { TDataSource };
+type TTableSlice = {
+  entities: Array<TDataSource>;
+  entitiesOriginal: Array<TDataSource>;
+  filterState: Array<TFilterState>;
+  loading: string;
+};
+
+type TFilterState = {
+  columnKey: string | undefined;
+  keyword: string | undefined;
+};
+
+export { TDataSource, TFilterState, TTableSlice };

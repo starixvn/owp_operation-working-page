@@ -1,6 +1,6 @@
-import { useState, KeyboardEvent } from 'react';
+import { useState, KeyboardEvent, useEffect } from 'react';
 import { useAppDispatch } from '../app/hooks';
-import { getLeagueInfoThunk } from '../table/slice/LeagueInfoThunk';
+import { getLeagueInfoThunk } from '../table/leagueInfoTableSlice/leagueInfoThunk';
 
 const LeagueNameFilter = () => {
   const [value, setValue] = useState('');
@@ -11,9 +11,15 @@ const LeagueNameFilter = () => {
   };
 
   const handleOnBlur = async () => {
-    const league = value;
-    await dispatch(getLeagueInfoThunk(league));
+    await dispatch(getLeagueInfoThunk(value));
   };
+
+  useEffect(() => {
+    const getAllLeague = async () => {
+      await dispatch(getLeagueInfoThunk(value));
+    };
+    getAllLeague();
+  }, []);
 
   return (
     <div className='league-filter'>

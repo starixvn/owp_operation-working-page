@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-
+import LeagueInfoTableSlice from '../table/leagueInfoTableSlice/reducer';
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    leagueInfoTableSlice: LeagueInfoTableSlice
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false
