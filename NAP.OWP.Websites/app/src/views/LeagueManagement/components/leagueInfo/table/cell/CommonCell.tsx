@@ -1,4 +1,4 @@
-import ReactTooltip from 'react-tooltip';
+import { UncontrolledTooltip } from 'reactstrap';
 import { v4 as uuidv4 } from 'uuid';
 
 const CommonCell = ({ className = '', value = '' }) => {
@@ -6,10 +6,14 @@ const CommonCell = ({ className = '', value = '' }) => {
 
   return (
     <td className={className}>
-      <div className='row-table' data-for={uuidKey} data-tip={value}>
+      <div className='row-table' id={uuidKey}>
         {value}
       </div>
-      <ReactTooltip place='right' id={uuidKey} effect='solid' />
+      {value && (
+        <UncontrolledTooltip placement='left' target={uuidKey}>
+          {value}
+        </UncontrolledTooltip>
+      )}
     </td>
   );
 };

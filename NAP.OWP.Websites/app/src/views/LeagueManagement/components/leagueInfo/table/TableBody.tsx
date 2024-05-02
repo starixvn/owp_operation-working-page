@@ -27,13 +27,22 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
           value={row.leagueGroup}
         />
         <LeagueCell className={classNameCells.leagueCell} value={row.league} />
-        <CommonCell className={classNameCells.tvCell} value={row.tv} />
-        <CommonCell className={classNameCells.roundCell} value={row.round} />
+        <CommonCell
+          className={classNameCells.tvCell}
+          value={row.condition.ipTv.map(x => x.value).join('/')}
+        />
+        <CommonCell
+          className={classNameCells.roundCell}
+          value={row.condition.round.map(x => x.value).join('/')}
+        />
         <CommonCell
           className={classNameCells.leagueDivisionCell}
-          value={row.leagueDivision}
+          value={row.condition.division.map(x => x.value).join('/')}
         />
-        <CommonCell className={classNameCells.remarkCell} value={row.remark} />
+        <CommonCell
+          className={classNameCells.remarkCell}
+          value={row.condition.remark}
+        />
         <CommonCell
           className={classNameCells.spreadHDPCell}
           value={row.spread_HDP_value?.toString()}

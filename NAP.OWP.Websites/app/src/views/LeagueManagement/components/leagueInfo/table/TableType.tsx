@@ -4,9 +4,6 @@ type TDataSource = {
   leagueGroupId: number;
   leagueGroup: string;
   league: string;
-  tv: string;
-  round: string;
-  leagueDivision: string;
   remark: string;
   spread_HDP_value: number;
   spread_OU_value: number;
