@@ -1581,3 +1581,77 @@
     box-shadow: none;
   }
 }
+
+// edit popup
+.league {
+  color: #1e88e5;
+}
+
+.edit-setting-popup {
+  .modal-header {
+    background-color: #44546b;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .modal-body {
+    padding: 0px;
+
+    .list {
+      border: 1px solid #c8ced3;
+
+      .title {
+        padding: 5px 10px;
+        background: #f1f1f1;
+        border-bottom: 1px solid #c8ced3;
+        font-weight: bold;
+      }
+
+      .content {
+        overflow: auto;
+        max-height: 500px;
+      }
+
+      .item {
+        padding: 7px 10px;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        > * {
+          display: inline-block;
+          vertical-align: bottom;
+        }
+      }
+
+      .basic-multi-select {
+        width: 100px;
+        margin-right: 10px;
+
+        .select__control {
+          min-height: 28px;
+        }
+      }
+
+      .input-field {
+        width: 400px;
+        margin-right: 10px;
+      }
+
+      .mdi-icon {
+        cursor: pointer;
+        color: #808080;
+        width: 20px;
+      }
+
+      .icon-delete:hover {
+        color: red;
+      }
+
+      .icon-add:hover {
+        color: #1e88e5;
+      }
+    }
+  }
+}
