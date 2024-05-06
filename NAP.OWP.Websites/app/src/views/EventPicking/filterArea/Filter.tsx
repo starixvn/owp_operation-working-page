@@ -20,7 +20,7 @@ const Filter = () => {
 
   const { turnOverMarginPolicy: {
     permission: { HasRead }
-  } } = store.getState();
+  }, mode: { mode } } = store.getState();
 
   useEffect(() => {
     dispatch(getLeagues(Utils.formatDate(date)));

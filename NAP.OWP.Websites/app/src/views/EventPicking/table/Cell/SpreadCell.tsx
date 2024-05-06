@@ -3,6 +3,7 @@ import store from '../../app/store';
 import SpreadViewCell from './SpreadViewCell';
 import SpreadEditableCell from './SpreadEditableCell';
 import { VIEW, EDIT } from '../../mode/mode.json';
+import React from 'react';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,

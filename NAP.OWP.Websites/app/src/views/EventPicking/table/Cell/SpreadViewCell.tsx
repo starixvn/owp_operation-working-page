@@ -1,3 +1,4 @@
+import React from 'react';
 import Utils from '../../../Shared/Utils';
 
 const { convertSpreadToPercent } = Utils;
@@ -15,6 +16,7 @@ const SpreadViewCell = ({ spread }: { spread: number | string | undefined }) => 
           Check
         </a>
       )}
+
     </>
   );
 };

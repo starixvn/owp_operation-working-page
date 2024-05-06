@@ -6,7 +6,7 @@ const NoOfHdpEditableCell = ({ value }: { value: string | undefined }) => {
           {value}
         </div>
       ) : (
-        <a className='spread__check' href='http://google.com'>
+        <a className='noOf__hdp__check' href='http://google.com'>
           Check
         </a>
       )}

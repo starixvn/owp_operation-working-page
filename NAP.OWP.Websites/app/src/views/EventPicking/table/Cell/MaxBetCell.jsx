@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import store from '../../app/store';
-import MaxBetCellView from './MaxBetCellView';
-import MaxbetCellEditable from './MaxbetCellEditable';
+import MaxBetViewCell from './MaxBetViewCell';
+import MaxbetEditableCell from './MaxbetEditableCell';
 import { VIEW, EDIT } from '../../mode/mode.json';
 
 const propTypes = {
@@ -14,8 +14,8 @@ const MaxBetCell = props => {
   const { rowIndex, dataSource } = props;
   const { maxbetHdp } = dataSource[rowIndex];
   const component = {
-    [VIEW]: <MaxBetCellView {...props} />,
-    [EDIT]: <MaxbetCellEditable value={maxbetHdp} />
+    [VIEW]: <MaxBetViewCell value={maxbetHdp} />,
+    [EDIT]: <MaxbetEditableCell value={maxbetHdp} />
   };
   return component[mode];
 };

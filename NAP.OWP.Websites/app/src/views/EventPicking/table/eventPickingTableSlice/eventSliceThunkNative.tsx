@@ -21,7 +21,7 @@ const getEventPickings = createAsyncThunk<TResult, TFilter>(
 const editEventPickings = createAsyncThunk<TResult, TFilter>(
   'EventPicking/editEventPicking',
   async modelFilter => {
-    const url = buildUrl(getEventPicking);
+    const url = buildUrl(editEventPicking);
     const response = await post({ url, ...modelFilter });
     return response.data as TResult;
   }

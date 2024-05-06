@@ -8,21 +8,26 @@ const MaxbetEditableCell = ({ value }: { value: string | number | undefined }) =
 
   };
   return (
-    <div className='input-value'>
-      <NumericTextbox
-        ref={input}
-        className='input-field'
-        value={value}
-        min={0}
-        max={999999}
-        decimals={3}
-        autoCorrect
-        format=''
-        name='maxbet'
-        onBlur={handleBlur}
-      />
-      <span>K</span>
-    </div>
+    <>
+      <div className='input-value'>
+        <NumericTextbox
+          ref={input}
+          className='input-field'
+          value={value}
+          min={0}
+          max={999999}
+          decimals={3}
+          autoCorrect
+          format=''
+          name='maxbet'
+          onBlur={handleBlur}
+        />
+        <span>K</span>
+      </div>
+      {!value && <a className='mb__check' href='http://google.com'>
+        Check
+      </a>}
+    </>
   );
 };
 
