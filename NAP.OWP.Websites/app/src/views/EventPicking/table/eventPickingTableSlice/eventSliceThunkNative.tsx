@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { post } from '../../../Shared/Service/Service';
-import { getEventPicking, netCoreURL, netFwURL } from '../../const/const.json';
+import { getEventPicking, netCoreURL, netFwURL, editEventPicking } from '../../const/const.json';
 import { TResult } from '../../types/dataTableType';
 import { TFilter } from '../../types/filterType';
 
@@ -18,5 +18,14 @@ const getEventPickings = createAsyncThunk<TResult, TFilter>(
   }
 );
 
-export { getEventPickings };
+const editEventPickings = createAsyncThunk<TResult, TFilter>(
+  'EventPicking/editEventPicking',
+  async modelFilter => {
+    const url = buildUrl(getEventPicking);
+    const response = await post({ url, ...modelFilter });
+    return response.data as TResult;
+  }
+);
+
+export { getEventPickings, editEventPickings };
 

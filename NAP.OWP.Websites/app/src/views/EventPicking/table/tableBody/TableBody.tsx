@@ -15,7 +15,7 @@ import CheckedByLstCell from '../Cell/CheckedByLstCell';
 import ActionCell from '../Cell/ActionCell';
 import { v4 as uuidv4 } from 'uuid';
 import { itemRowHeight } from '../TableSchema.json';
-import TDataTable, { TTurnOverInfo } from '../../types/dataTableType';
+import TDataTable from '../../types/dataTableType';
 import PropTypes from 'prop-types';
 import store from '../../app/store';
 

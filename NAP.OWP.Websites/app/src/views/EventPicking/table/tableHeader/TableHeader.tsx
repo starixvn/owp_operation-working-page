@@ -30,6 +30,7 @@ const TableHeader = () => {
               <span>{item.headerName}</span>
               {item?.isFilter && <FilterHeader columnKey={item.columnKey} />}
               {item?.isFilterMultiple && <MultipleFilterHeader columnKey={item.columnKey as TColumnKey} />}
+
             </div>
             {item?.isCheckBox && (
               <CheckboxHeader

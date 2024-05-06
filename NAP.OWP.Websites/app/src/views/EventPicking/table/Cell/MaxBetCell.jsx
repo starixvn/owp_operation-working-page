@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import Utils from '../../../Shared/Utils';
-
-const { convertThousandToK } = Utils;
+import store from '../../app/store';
+import MaxBetCellView from './MaxBetCellView';
+import MaxbetCellEditable from './MaxbetCellEditable';
+import { VIEW, EDIT } from '../../mode/mode.json';
 
 const propTypes = {
   dataSource: PropTypes.array.isRequired,
@@ -9,19 +10,14 @@ const propTypes = {
 };
 
 const MaxBetCell = props => {
+  const { mode } = store.getState().mode;
   const { rowIndex, dataSource } = props;
-  const { maxbet } = dataSource[rowIndex];
-  return (
-    <>
-      {maxbet ? (
-        <div className='max-bet-cell'>{convertThousandToK(maxbet)}</div>
-      ) : (
-        <a className='mb__check' href='http://google.com'>
-          Check
-        </a>
-      )}
-    </>
-  );
+  const { maxbetHdp } = dataSource[rowIndex];
+  const component = {
+    [VIEW]: <MaxBetCellView {...props} />,
+    [EDIT]: <MaxbetCellEditable value={maxbetHdp} />
+  };
+  return component[mode];
 };
 
 MaxBetCell.propTypes = propTypes;

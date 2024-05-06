@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
-import { getEventPickings } from './eventSliceThunkNative';
+import { editEventPickings, getEventPickings } from './eventSliceThunkNative';
 import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
 import updateConfirmedThunk from '../updateConfirmedThunkNative';
 import {
@@ -136,6 +136,27 @@ const EventPickingTableSlice = createSlice({
         state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
       })
       .addCase(getEventPickings.rejected, state => {
+        state.loading = REQUEST_STATUS.idle;
+      })
+      .addCase(editEventPickings.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(editEventPickings.fulfilled, (state, { payload }) => {
+        const { matchesByDate, filteredMatches } = payload;
+        state.loading = REQUEST_STATUS.idle;
+        state.entitiesByDate = matchesByDate;
+        state.entitiesOriginal = filteredMatches;
+        state.entities = filterDataTable(
+          state.entitiesOriginal,
+          state.filterState,
+          filterByKeyword
+        );
+
+        state.multipleFilter = buildMultipleFilterDefault(state.entities);
+        state.isConfirmAll = state.entities?.every(x => x.isCheck);
+        state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
+      })
+      .addCase(editEventPickings.rejected, state => {
         state.loading = REQUEST_STATUS.idle;
       });
   }

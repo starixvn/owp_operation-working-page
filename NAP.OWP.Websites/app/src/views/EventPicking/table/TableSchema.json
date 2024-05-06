@@ -36,6 +36,21 @@
       "columnKey": "MB"
     },
     {
+      "headerName": "Spread HDP",
+      "size": 5,
+      "columnKey": "SpreadHDP"
+    },
+    {
+      "headerName": "Spread OU",
+      "size": 5,
+      "columnKey": "SpreadOU"
+    },
+    {
+      "headerName": "No. HDP",
+      "size": 5,
+      "columnKey": "NoHDP"
+    },
+    {
       "headerName": "TV/IPTV",
       "size": 10,
       "isFilter": true,
@@ -107,6 +122,21 @@
       "size": 5,
       "isFilterMultiple": true,
       "columnKey": "MB"
+    },
+    {
+      "headerName": "Spread HDP",
+      "size": 5,
+      "columnKey": "SpreadHDP"
+    },
+    {
+      "headerName": "Spread OU",
+      "size": 5,
+      "columnKey": "SpreadOU"
+    },
+    {
+      "headerName": "No. HDP",
+      "size": 5,
+      "columnKey": "NoHDP"
     },
     {
       "headerName": "TV/IPTV",

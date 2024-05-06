@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import InfoIcon from '../../../assets/svg-element/InfoIcon';
 import store, { RootState } from '../app/store';
 import Command from './Command';
 import DateTimePicker from './DateTimePicker';
@@ -13,10 +12,7 @@ import SelectGame from './SelectGame';
 import UpdateType from './UpdateType';
 import { getLeagues, getUpdateTypes } from './slice/filterThunkNative';
 import Utils from '../../Shared/Utils';
-import ExportNative from './ExportNative';
-import UserGuideWrapper from '../userGuide/UserGuideWrapper';
 import TurnoverMargin from './TurnoverMargin';
-import SumProviderWrapper from '../sumProvider/SumProviderWrapper';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -34,9 +30,8 @@ const Filter = () => {
     dispatch(getUpdateTypes());
   }, [dispatch]);
 
-
   return (
-    <div className='filter-control'>
+    <>
       <DateTimePicker />
       <League />
       <SelectGame />
@@ -47,11 +42,7 @@ const Filter = () => {
       {HasRead && <TurnoverMargin />}
       <UpdateType />
       <Command />
-      <ExportNative />
-      <InfoIcon />
-      <UserGuideWrapper />
-      <SumProviderWrapper />
-    </div>
+    </>
   );
 };
 export default Filter;

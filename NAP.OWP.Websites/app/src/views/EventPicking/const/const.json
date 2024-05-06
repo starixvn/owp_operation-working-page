@@ -2,6 +2,7 @@
   "netCoreURL": "api-netcore/EventPicking",
   "netFwURL": "api/EventPicking",
   "getEventPicking": "get-event-picking",
+  "editEventPicking": "edit-event-picking",
   "getLogsHistory": "get-logs-history",
   "getLeague": "get-league-name",
   "getUpdateType": "get-update-type",
