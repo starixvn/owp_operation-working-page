@@ -5,23 +5,22 @@ import MB from './content/MB';
 import MicsMatch from './content/MicsMatch';
 import Comment from './content/Comment';
 import Header from './content/Header';
-import { TDataSource } from '../table/TableType';
+import { TEditSetting } from './EditType';
 
 interface Props {
-  data: TDataSource
+  data: TEditSetting,
+  updateSetting: Function
 }
 
 const EditSettingContent = (props: Props) => {
-  const { data } = props;
-
   return (
     <div>
-      <Header data={data} />
-      <Condition data={data} />
-      <FtSpread />
-      <MB />
-      <MicsMatch />
-      <Comment />
+      <Header {...props} />
+      <Condition {...props} />
+      <FtSpread {...props} />
+      <MB {...props} />
+      <MicsMatch {...props} />
+      <Comment {...props} />
     </div>
   );
 };

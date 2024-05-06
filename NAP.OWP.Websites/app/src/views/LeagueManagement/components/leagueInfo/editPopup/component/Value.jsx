@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { crud } from '../../../../actions/action';
+import { handleUpdateRounds } from '../slice/editSettingSlice';
 
 const propTypes = {
   item: PropTypes.object.isRequired,
@@ -17,12 +18,19 @@ const Value = props => {
   const handleOnBlur = event => {
     event.preventDefault();
     dispatch(
-      crud(actionType.UPDATE, {
+      handleUpdateRounds({
         key: 'value',
         value: inputRef.value,
         index
       })
     );
+    // dispatch(
+    //   crud(actionType.UPDATE, {
+    //     key: 'value',
+    //     value: inputRef.value,
+    //     index
+    //   })
+    // );
   };
 
   const handleOnChange = input => (inputRef = input);
@@ -31,7 +39,6 @@ const Value = props => {
     <Input
       disabled={!hasWrite}
       type='text'
-      name='league-value'
       className='input-field'
       defaultValue={item.value}
       maxLength='100'

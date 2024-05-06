@@ -25,6 +25,7 @@ const Action = props => {
     e.preventDefault();
     dispatch(crud(actionType.DELETE, { index }));
   };
+
   return (
     <>
       {modelsLength > 1 && hasWrite && (
