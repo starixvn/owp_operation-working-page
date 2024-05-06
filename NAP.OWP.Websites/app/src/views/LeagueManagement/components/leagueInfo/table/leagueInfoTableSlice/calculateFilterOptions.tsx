@@ -1,0 +1,203 @@
+import { uniqBy } from 'lodash';
+import { TCondition, TDataSource } from '../TableType';
+import { Option } from '../../../../../Shared/MultipleSelection/type';
+
+const buildLeagueGroupOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.leagueGroup ?? null,
+        label: o.leagueGroup ?? '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildLeagueOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.league ?? null,
+        label: o.league ?? '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildConditionOptions = (
+  first: TCondition[][],
+  second: string[] | null[]
+) => {
+  const options: Option[] = uniqBy(
+    [...second]
+      .sort((first, second) => (first || '').localeCompare(second || ''))
+      .map(
+        o =>
+          ({
+            value: o ?? null,
+            label: o
+          } as Option)
+      ),
+    i => i.label
+  );
+
+  const checkEmpty = first.some(x => x.length === 0);
+
+  checkEmpty &&
+    options.push({
+      value: null,
+      label: '(Blanks)'
+    });
+  return options;
+};
+const buildRemarkOptions = (data: string[]) =>
+  swapBlanks(
+    uniqBy(
+      [...data].map(o => ({
+        value: o ?? null,
+        label: o.length ? o : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildSpreadHDPOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.spread_HDP_value ?? null,
+        label: o.spread_HDP_value ? o.spread_HDP_value.toString() : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildSpreadOUOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.spread_OU_value ?? null,
+        label: o.spread_OU_value ? o.spread_OU_value.toString() : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+
+const buildMaxBetWeekdayHDPGroupOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.maxbetWD_HDP_Show ?? null,
+        label: o.maxbetWD_HDP_Show.length > 0 ? o.maxbetWD_HDP_Show : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildMaxBetWeekdayNoHDPGroupOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.maxbetWD_NoOfHDP_Show ?? null,
+        label: o.maxbetWD_NoOfHDP_Show.length
+          ? o.maxbetWD_NoOfHDP_Show
+          : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildMaxBetWeekendHDPGroupOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.maxbetWK_HDP_Show ?? null,
+        label: o.maxbetWK_HDP_Show.length ? o.maxbetWK_HDP_Show : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildMaxBetWeekendNoHDPGroupOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.maxbetWK_NoOfHDP_Show ?? null,
+        label: o.maxbetWK_NoOfHDP_Show.length
+          ? o.maxbetWK_NoOfHDP_Show
+          : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+
+const buildLSTNoteOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.lstNote ?? null,
+        label: o.lstNote.length ? o.lstNote : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildRemark2Options = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.remark2 ?? null,
+        label: o.remark2.length ? o.remark2 : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const buildCommentOptions = (entities: TDataSource[]) =>
+  swapBlanks(
+    uniqBy(
+      [...entities].map(o => ({
+        value: o.comment ?? null,
+        label: o.comment.length ? o.comment : '(Blanks)'
+      })),
+      i => i.label
+    )
+  );
+const swapBlanks = (options: Option[]) => {
+  const indexBlanks = options.findIndex(o => o.label === '(Blanks)');
+  if (indexBlanks > -1) {
+    const { length } = options;
+    const temp = options[indexBlanks];
+    options[indexBlanks] = options[length - 1];
+    options[length - 1] = temp;
+  }
+  return options;
+};
+const helper = {
+  League_Group: (dataSource: TDataSource[]) =>
+    buildLeagueGroupOptions(dataSource),
+  League: (dataSource: TDataSource[]) => buildLeagueOptions(dataSource),
+  Tv: (dataSource: TDataSource[]) =>
+    buildConditionOptions(
+      dataSource.map(x => x.condition.ipTv),
+      dataSource.flatMap(x => x.condition.ipTv).map(x => x.value)
+    ),
+  Round: (dataSource: TDataSource[]) =>
+    buildConditionOptions(
+      dataSource.map(x => x.condition.round),
+      dataSource.flatMap(x => x.condition.round).map(x => x.value)
+    ),
+  League_Division: (dataSource: TDataSource[]) =>
+    buildConditionOptions(
+      dataSource.map(x => x.condition.division),
+      dataSource.flatMap(x => x.condition.division).map(x => x.value)
+    ),
+  Remark: (dataSource: TDataSource[]) =>
+    buildRemarkOptions(dataSource.map(x => x.condition.remark)),
+  Spread_HDP: (dataSource: TDataSource[]) => buildSpreadHDPOptions(dataSource),
+  Spread_OU: (dataSource: TDataSource[]) => buildSpreadOUOptions(dataSource),
+  MB_WD_HDP: (dataSource: TDataSource[]) =>
+    buildMaxBetWeekdayHDPGroupOptions(dataSource),
+  MB_WD_NO_HDP: (dataSource: TDataSource[]) =>
+    buildMaxBetWeekdayNoHDPGroupOptions(dataSource),
+  MB_WK_HDP: (dataSource: TDataSource[]) =>
+    buildMaxBetWeekendHDPGroupOptions(dataSource),
+  MB_WK_NO_HDP: (dataSource: TDataSource[]) =>
+    buildMaxBetWeekendNoHDPGroupOptions(dataSource),
+  LST_Note: (dataSource: TDataSource[]) => buildLSTNoteOptions(dataSource),
+  Remark2: (dataSource: TDataSource[]) => buildRemark2Options(dataSource),
+  Comment: (dataSource: TDataSource[]) => buildCommentOptions(dataSource)
+};
+
+export default helper;

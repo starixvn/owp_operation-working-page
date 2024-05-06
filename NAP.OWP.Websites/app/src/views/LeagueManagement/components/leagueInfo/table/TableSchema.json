@@ -17,5 +17,22 @@
     "remark2Cell": "remark2-cell",
     "commentCell": "comment-cell"
   },
+  "COLUMN_KEY": {
+    "League_Group": "League_Group",
+    "League": "League",
+    "Tv": "Tv",
+    "Round": "Round",
+    "League_Division": "League_Division",
+    "Remark": "Remark",
+    "Spread_HDP": "Spread_HDP",
+    "Spread_OU": "Spread_OU",
+    "MB_WK_HDP": "MB_WK_HDP",
+    "MB_WK_NO_HDP": "MB_WK_NO_HDP",
+    "MB_WD_HDP": "MB_WD_HDP",
+    "MB_WD_NO_HDP": "MB_WD_NO_HDP",
+    "LST_Note": "LST_Note",
+    "Remark2": "Remark2",
+    "Comment": "Comment"
+  },
   "itemRowHeight": 40
 }

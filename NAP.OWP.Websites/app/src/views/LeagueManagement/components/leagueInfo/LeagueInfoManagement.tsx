@@ -7,7 +7,7 @@ const LeagueInfoManagement = () => {
   return (
     <Provider store={store}>
       <LeagueNameFilter />
-      <LeagueInfoTable />;
+      <LeagueInfoTable />
     </Provider>
   );
 };
