@@ -8,4 +8,9 @@ const exportExcelUrl =
 const queryDataExcel = async (url, queryInfo) =>
   await axios.post(url, queryInfo, { responseType: 'blob' });
 
-export { exportExcelUrl, queryDataExcel };
+const exportExcelLSTUrl =
+  process.env.NODE_ENV === 'development'
+    ? `api-netcore/EventPicking/export-excel-lst-format`
+    : `${window.netCoreRootUrl}/api/EventPicking/export-excel-lst-format`;
+
+export { exportExcelUrl, exportExcelLSTUrl, queryDataExcel };

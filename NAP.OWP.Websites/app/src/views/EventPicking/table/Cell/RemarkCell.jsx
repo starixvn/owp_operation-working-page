@@ -7,7 +7,7 @@ const propTypes = {
 
 const RemarkCell = props => {
   const { rowIndex, dataSource } = props;
-  const { lstNote, remark, homeRemark, awayRemark, isBlackListFromInfoSite } =
+  const { lstNote, remark, homeRemark, awayRemark, infoSiteBlackList } =
     dataSource[rowIndex];
 
   const renderLstNote = () =>
@@ -45,7 +45,17 @@ const RemarkCell = props => {
   const renderHomeRemark = () => renderTeamRemark(homeRemark, 'Home Remark');
 
   const renderBlackListInfoSite = () =>
-    isBlackListFromInfoSite && <span className='black-list'>BlackList</span>;
+    infoSiteBlackList.length > 0 && (
+      <>
+        {infoSiteBlackList.map((blackList, i) => {
+          return (
+            <span key={i} className='black-list'>
+              {blackList}
+            </span>
+          );
+        })}
+      </>
+    );
 
   return (
     <>

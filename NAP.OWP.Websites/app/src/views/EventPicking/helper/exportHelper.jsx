@@ -2,10 +2,9 @@ import { MESSAGE } from '../const/const.json';
 import store from '../app/store';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import Spinner from '../../components/Spinner';
-import { exportExcel } from '../filterArea/slice/ExportThunkNative';
 import updateConfirmedThunk from '../table/updateConfirmedThunkNative';
 
-const exportAndConfirmAllEvent = async () => {
+const exportAndConfirmAllEvent = async exportCallback => {
   const { param } = store.getState().filter;
   const confirmResult = await ToastrWrapper.confirm(
     MESSAGE.EXPORT_AND_CONFIRM_ALL
@@ -13,9 +12,10 @@ const exportAndConfirmAllEvent = async () => {
   if (confirmResult.value) {
     Spinner.show();
     const { entities } = store.getState().eventPickingTable;
-    await store.dispatch(exportExcel(param));
+    await store.dispatch(exportCallback(param));
     if (entities.length) {
       const infoSiteMatchIds = entities.map(element => element.infoSiteMatchId);
+      console.log(infoSiteMatchIds);
       await store.dispatch(
         updateConfirmedThunk({
           infoSiteMatchIds,
@@ -27,11 +27,11 @@ const exportAndConfirmAllEvent = async () => {
   }
 };
 
-const exportOnly = () => {
+const exportOnly = exportCallback => {
   (async () => {
     const { param } = store.getState().filter;
     Spinner.show();
-    await store.dispatch(exportExcel(param));
+    await store.dispatch(exportCallback(param));
     Spinner.hide();
   })();
 };

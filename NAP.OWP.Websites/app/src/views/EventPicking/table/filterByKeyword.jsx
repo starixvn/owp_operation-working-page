@@ -47,10 +47,8 @@ const checkRemark = (arraySource, keyWordFormat) => {
     item.homeRemark?.toLowerCase().includes(keyword) ||
     item.awayRemark?.toLowerCase().includes(keyword);
 
-  const blackListRemark = (item, keyword) => {
-    const blackList = item.isBlackListFromInfoSite ? 'blacklist' : '';
-    return blackList.includes(keyword);
-  };
+  const blackListRemark = (item, keyword) =>
+    item.infoSiteBlackList.some(x => x.toLowerCase().includes(keyword));
 
   return arraySource.filter(
     item =>
