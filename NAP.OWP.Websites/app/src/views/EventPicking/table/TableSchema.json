@@ -47,7 +47,7 @@
     },
     {
       "headerName": "No. HDP",
-      "size": 5,
+      "size": 7,
       "columnKey": "NoHDP"
     },
     {
@@ -135,7 +135,7 @@
     },
     {
       "headerName": "No. HDP",
-      "size": 5,
+      "size": 7,
       "columnKey": "NoHDP"
     },
     {

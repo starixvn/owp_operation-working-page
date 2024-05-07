@@ -12,7 +12,7 @@ const MaxbetEditableCell = ({ value }: { value: string | number | undefined }) =
       <div className='input-value'>
         <NumericTextbox
           ref={input}
-          className='input-field'
+          className='input-field maxbet-editable'
           value={value}
           min={0}
           max={999999}
