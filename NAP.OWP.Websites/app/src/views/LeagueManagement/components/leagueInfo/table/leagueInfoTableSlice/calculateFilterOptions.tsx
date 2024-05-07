@@ -15,10 +15,12 @@ const buildLeagueGroupOptions = (entities: TDataSource[]) =>
 const buildLeagueOptions = (entities: TDataSource[]) =>
   swapBlanks(
     uniqBy(
-      [...entities].map(o => ({
-        value: o.league ?? null,
-        label: o.league ?? '(Blanks)'
-      })),
+      [...entities]
+        .sort((first, second) => first.league.localeCompare(second.league))
+        .map(o => ({
+          value: o.league ?? null,
+          label: o.league ?? '(Blanks)'
+        })),
       i => i.label
     )
   );

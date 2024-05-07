@@ -24,7 +24,7 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
           />
           <CommonCell
             className={classNameCells.leagueGroupCell}
-            value={row.leagueGroup ?? ''}
+            value={row.leagueGroup}
           />
           <LeagueCell className={classNameCells.leagueCell} dataSource={row} />
           <CommonCell
