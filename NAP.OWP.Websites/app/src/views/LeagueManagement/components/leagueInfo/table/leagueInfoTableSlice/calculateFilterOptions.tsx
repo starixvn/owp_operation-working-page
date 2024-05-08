@@ -95,10 +95,8 @@ const buildMaxBetWeekdayNoHDPGroupOptions = (entities: TDataSource[]) =>
   swapBlanks(
     uniqBy(
       [...entities].map(o => ({
-        value: o.maxbetWD_NoOfHDP_Show ?? null,
-        label: o.maxbetWD_NoOfHDP_Show.length
-          ? o.maxbetWD_NoOfHDP_Show
-          : '(Blanks)'
+        value: o.wD_NoOfHDP_Show ?? null,
+        label: o.wD_NoOfHDP_Show.length ? o.wD_NoOfHDP_Show : '(Blanks)'
       })),
       i => i.label
     )
@@ -117,10 +115,8 @@ const buildMaxBetWeekendNoHDPGroupOptions = (entities: TDataSource[]) =>
   swapBlanks(
     uniqBy(
       [...entities].map(o => ({
-        value: o.maxbetWK_NoOfHDP_Show ?? null,
-        label: o.maxbetWK_NoOfHDP_Show.length
-          ? o.maxbetWK_NoOfHDP_Show
-          : '(Blanks)'
+        value: o.wK_NoOfHDP_Show ?? null,
+        label: o.wK_NoOfHDP_Show.length ? o.wK_NoOfHDP_Show : '(Blanks)'
       })),
       i => i.label
     )

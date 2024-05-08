@@ -3,6 +3,7 @@ import { classNameCells, itemRowHeight } from './TableSchema.json';
 import { uniqueId } from 'lodash';
 import CommonCell from './cell/CommonCell';
 import CommentCell from './cell/CommentCell';
+import React from 'react';
 import LeagueCell from './cell/LeagueCell';
 
 const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
@@ -45,11 +46,11 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
           />
           <CommonCell
             className={classNameCells.spreadHDPCell}
-            value={row.spread_HDP_value?.toString()}
+            value={row.spread_HDP_Value?.toString()}
           />
           <CommonCell
             className={classNameCells.spreadOUCell}
-            value={row.spread_OU_value?.toString()}
+            value={row.spread_OU_Value?.toString()}
           />
           <CommonCell
             className={classNameCells.mbWeekdayHDPCell}
@@ -57,7 +58,7 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
           />
           <CommonCell
             className={classNameCells.mbWeekdayNoHDPCell}
-            value={row.maxbetWD_NoOfHDP_Show}
+            value={row.wD_NoOfHDP_Show}
           />
           <CommonCell
             className={classNameCells.mbWeekendHDPCell}
@@ -65,7 +66,7 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
           />
           <CommonCell
             className={classNameCells.mbWeekendHDPCell}
-            value={row.maxbetWK_NoOfHDP_Show}
+            value={row.wK_NoOfHDP_Show}
           />
           <CommonCell
             className={classNameCells.lstNoteCell}
