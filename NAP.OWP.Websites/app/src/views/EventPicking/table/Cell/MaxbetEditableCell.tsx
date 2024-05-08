@@ -2,14 +2,14 @@
 import { createRef, useEffect } from 'react';
 import NumericTextbox from 'react-numeric-textbox';
 import { useAppDispatch } from '../../app/hooks';
-import { setValue } from '../eventPickingTableSlice/reducer';
+import { setValueMaxbetSpread } from '../eventPickingTableSlice/reducer';
 
 const MaxbetEditableCell = ({ value, infoSiteMatchId }: { value: string | number | undefined, infoSiteMatchId: number }) => {
   let newValue = -999999999;
   const dispatch = useAppDispatch();
   const inputRef = createRef<HTMLInputElement>();
   const handleBlur = () => {
-    dispatch(setValue({
+    dispatch(setValueMaxbetSpread({
       value: (inputRef?.current?.value as number) * 1000,
       key: 'maxbetHdp',
       infoSiteMatchId
@@ -19,7 +19,7 @@ const MaxbetEditableCell = ({ value, infoSiteMatchId }: { value: string | number
   useEffect(() => {
     return () => {
       if (newValue !== -999999999) {
-        dispatch(setValue({
+        dispatch(setValueMaxbetSpread({
           value: newValue * 1000,
           key: 'maxbetHdp',
           infoSiteMatchId

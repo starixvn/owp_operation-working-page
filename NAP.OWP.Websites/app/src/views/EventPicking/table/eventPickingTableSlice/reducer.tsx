@@ -107,6 +107,7 @@ const EventPickingTableSlice = createSlice({
       const { key, value, infoSiteMatchId } = action.payload;
       const target = state.entities.find(s => s.infoSiteMatchId === infoSiteMatchId);
       if (target) {
+        target.isModified = true;
         target[key] = value;
       }
     },
@@ -118,6 +119,7 @@ const EventPickingTableSlice = createSlice({
       const target = state.entities.find(s => s.infoSiteMatchId === infoSiteMatchId);
       if (target) {
         target.noOfHDP = value;
+        target.isModified = true;
       }
     }
   },

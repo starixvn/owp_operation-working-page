@@ -5,6 +5,14 @@ type TResult = {
   filteredMatches: Array<TDataTable>;
 }
 
+type TUpdateEvents = Array<{
+  InfoSiteMatchId: number,
+  SpreadHdp: number | undefined,
+  SpreadOu: number | undefined,
+  MaxbetHdp: number | undefined,
+  NoOfHDP: string | undefined
+}>
+
 type TDataTable = {
   tV: string;
   ipTv: string;
@@ -39,6 +47,7 @@ type TDataTable = {
   rowColor: string;
   turnoverPeriod: TTurnOverInfo[];
   marginPeriod: MarginInfo[];
+  isModified: boolean | undefined;
 };
 
 type TTurnOverInfo = {
@@ -110,5 +119,6 @@ export {
   TMultipleFilter,
   TColumnKey,
   TResult,
-  TMultipleColumnFilterOption
+  TMultipleColumnFilterOption,
+  TUpdateEvents
 };

@@ -34,7 +34,10 @@ const NoOfHdpEditableCell = ({
     };
   });
   return (
-    <div key={uniqueId()} className="input-value">
+    <div key={uniqueId()} className="input-value no__hdp__wrapper">
+      <div className='no__hdp__child'>
+
+      </div>
       <input
         ref={inputRef}
         type='text'

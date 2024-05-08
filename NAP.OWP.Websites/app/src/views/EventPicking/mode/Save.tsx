@@ -1,12 +1,42 @@
+import Spinner from "../../components/Spinner";
+import { useAppDispatch } from "../app/hooks";
+import store from "../app/store";
+import { getEventPickings } from "../table/eventPickingTableSlice/eventSliceThunkNative";
+import { updateEventsThunk } from "./updateEventThunkNative";
+
 const Save = ({ onSetMode }: { onSetMode: () => void }) => {
-  const handleSave = () => {
+  const dispatch = useAppDispatch();
+  const handleSave = async () => {
+    Spinner.show();
+    const { entities } = store.getState().eventPickingTable;
+    const eventModified = entities.filter(e => e.isModified).map(e => ({
+      InfoSiteMatchId: e.infoSiteMatchId,
+      SpreadHdp: e.spreadHdp,
+      SpreadOu: e.spreadOu,
+      NoOfHDP: e.noOfHDP,
+      MaxbetHdp: e.maxbetHdp
+    }));
+    await dispatch(updateEventsThunk(eventModified));
+    Spinner.hide();
+    const { param } = store.getState().filter;
+    await dispatch(getEventPickings(param));
     onSetMode();
   };
 
+  const handleCancel = async () => {
+    const { param } = store.getState().filter;
+    await dispatch(getEventPickings(param));
+    onSetMode();
+  };
   return (
-    <button className='button-submit' onClick={handleSave}>
-      Save
-    </button>
+    <>
+      <button className='button-cancel btn-cancel' onClick={handleCancel}>
+        Cancel
+      </button>
+      <button className='button-submit' onClick={handleSave}>
+        Save
+      </button>
+    </>
   );
 };
 
