@@ -1,19 +1,41 @@
 
-import { createRef } from 'react';
+import { createRef, useEffect } from 'react';
 import NumericTextbox from 'react-numeric-textbox';
+import { useAppDispatch } from '../../app/hooks';
+import { setValue } from '../eventPickingTableSlice/reducer';
 
-const MaxbetEditableCell = ({ value }: { value: string | number | undefined }) => {
-  const input = createRef();
+const MaxbetEditableCell = ({ value, infoSiteMatchId }: { value: string | number | undefined, infoSiteMatchId: number }) => {
+  let newValue = -999999999;
+  const dispatch = useAppDispatch();
+  const inputRef = createRef<HTMLInputElement>();
   const handleBlur = () => {
-
+    dispatch(setValue({
+      value: (inputRef?.current?.value as number) * 1000,
+      key: 'maxbetHdp',
+      infoSiteMatchId
+    }));
   };
+
+  useEffect(() => {
+    return () => {
+      if (newValue !== -999999999) {
+        dispatch(setValue({
+          value: newValue * 1000,
+          key: 'maxbetHdp',
+          infoSiteMatchId
+        }));
+        newValue = -999999999;
+      }
+    };
+  });
+
   return (
     <>
       <div className='input-value'>
         <NumericTextbox
-          ref={input}
-          className='input-field maxbet-editable'
-          value={value}
+          ref={inputRef}
+          className='input-field'
+          value={value ?? undefined}
           min={0}
           max={999999}
           decimals={3}
@@ -21,6 +43,9 @@ const MaxbetEditableCell = ({ value }: { value: string | number | undefined }) =
           format=''
           name='maxbet'
           onBlur={handleBlur}
+          onChange={v => {
+            newValue = v;
+          }}
         />
         <span>K</span>
       </div>

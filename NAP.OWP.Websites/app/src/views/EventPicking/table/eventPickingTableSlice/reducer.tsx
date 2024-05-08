@@ -7,8 +7,6 @@ import {
   updateNoOfferMatch,
   updateConfirmedMatch,
   buildMultipleFilterDefault,
-  filterByKo,
-  filterByMb,
   executeFilterTable
 } from '../../helper/reducerHelper';
 import {
@@ -100,6 +98,27 @@ const EventPickingTableSlice = createSlice({
     },
     setPreviousNoOfferRow: (state, action) => {
       state.previousNoOfferIndex = action.payload;
+    },
+    setValueMaxbetSpread: (state, action: PayloadAction<{
+      key: 'maxbetHdp' | 'spreadOu' | 'spreadHdp',
+      infoSiteMatchId: number,
+      value: number | undefined
+    }>) => {
+      const { key, value, infoSiteMatchId } = action.payload;
+      const target = state.entities.find(s => s.infoSiteMatchId === infoSiteMatchId);
+      if (target) {
+        target[key] = value;
+      }
+    },
+    setValueNoOfHdp: (state, action: PayloadAction<{
+      infoSiteMatchId: number,
+      value: string | undefined
+    }>) => {
+      const { value, infoSiteMatchId } = action.payload;
+      const target = state.entities.find(s => s.infoSiteMatchId === infoSiteMatchId);
+      if (target) {
+        target.noOfHDP = value;
+      }
     }
   },
   extraReducers: builder => {
@@ -168,7 +187,9 @@ const {
   setMultipleFilter,
   setColumnKeyValue,
   setValueFilter,
-  setPreviousNoOfferRow
+  setPreviousNoOfferRow,
+  setValueMaxbetSpread,
+  setValueNoOfHdp,
 } = actions;
 
 export {
@@ -177,6 +198,8 @@ export {
   setColumnKeyValue,
   setValueFilter,
   setPreviousNoOfferRow,
-  setMultipleFilter
+  setMultipleFilter,
+  setValueMaxbetSpread,
+  setValueNoOfHdp,
 };
 export default reducer;

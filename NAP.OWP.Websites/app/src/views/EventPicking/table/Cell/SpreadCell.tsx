@@ -1,23 +1,26 @@
-import PropTypes from 'prop-types';
 import store from '../../app/store';
 import SpreadViewCell from './SpreadViewCell';
 import SpreadEditableCell from './SpreadEditableCell';
 import { VIEW, EDIT } from '../../mode/mode.json';
-import React from 'react';
+import Utils from '../../../Shared/Utils';
 
-const propTypes = {
-  dataSource: PropTypes.array.isRequired,
-  rowIndex: PropTypes.number.isRequired
-};
+const { convertSpreadToPercent, convertToPercent } = Utils;
 
-const SpreadCell = ({ spread }: { spread: string | number | undefined }) => {
+const SpreadCell = (
+  { spread, spreadKey, infoSiteMatchId }: {
+    spread: number | string | undefined,
+    spreadKey: 'maxbetHdp' | 'spreadOu' | 'spreadHdp',
+    infoSiteMatchId: number
+  }) => {
+
+  const spreadValue = convertSpreadToPercent(spread, false);
   const { mode } = store.getState().mode;
+
   const component = {
-    [VIEW]: <SpreadViewCell spread={spread} />,
-    [EDIT]: <SpreadEditableCell spread={spread} />
+    [VIEW]: <SpreadViewCell spread={spreadValue} />,
+    [EDIT]: <SpreadEditableCell spreadKey={spreadKey} infoSiteMatchId={infoSiteMatchId} spread={convertToPercent(spread)} />
   };
   return component[mode];
 };
 
-SpreadCell.propTypes = propTypes;
 export default SpreadCell;

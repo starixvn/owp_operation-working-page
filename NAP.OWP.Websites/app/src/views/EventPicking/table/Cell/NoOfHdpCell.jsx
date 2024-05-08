@@ -12,10 +12,13 @@ const propTypes = {
 const NoOfHdpCell = props => {
   const { mode } = store.getState().mode;
   const { rowIndex, dataSource } = props;
-  const { noOfHDP } = dataSource[rowIndex];
+  const { noOfHDP, infoSiteMatchId } = dataSource[rowIndex];
+
   const component = {
     [VIEW]: <NoOfHdpViewCell value={noOfHDP} />,
-    [EDIT]: <NoOfHdpEditableCell value={noOfHDP} />
+    [EDIT]: (
+      <NoOfHdpEditableCell infoSiteMatchId={infoSiteMatchId} value={noOfHDP} />
+    )
   };
   return component[mode];
 };

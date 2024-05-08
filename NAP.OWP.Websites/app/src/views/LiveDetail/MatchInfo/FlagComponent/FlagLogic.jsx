@@ -61,7 +61,6 @@ export const flagFactory = props => {
         flagURL: FIFA_FLAG_23.rootPath
       });
     case 'FC 24':
-      debugger;
       return getFlagFromStore({
         flagName,
         flagNameLibrary: FC_24_IMAGE_STORE,

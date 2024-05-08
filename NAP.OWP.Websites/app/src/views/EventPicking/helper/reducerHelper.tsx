@@ -1,11 +1,12 @@
 import { formatTime } from "../../Shared/DateTime/dateTimeHelper";
 import { TConfirmed } from "../types/confirmed";
-import TDataTable, { TFilterState, TMultipleFilter, TTableSlice } from "../types/dataTableType";
+import TDataTable, { TMultipleFilter, TTableSlice } from "../types/dataTableType";
 import { TNoOfferMatch } from "../types/noOfferMatchType";
 import { uniqBy } from 'lodash';
 import { COLUMN_KEY } from '../table/TableSchema.json';
 import { isEquals } from "immutability-helper";
 import { filterDataTable } from "../../Shared/Utils";
+import Utils from '../../Shared/Utils';
 
 const KO_TIME = COLUMN_KEY.KO_TIME;
 const MB = COLUMN_KEY.MB;
@@ -48,10 +49,12 @@ const buildKoOptions = (entities: TDataTable[]) =>
       })), i => i.value);
 
 const buildMbOptions = (entities: TDataTable[]) => uniqBy(
-  [...entities].sort((first, second) => (first.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER) - (second.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER))
+  [...entities].sort((first, second) => (first.maxbetHdp ?? Number.MAX_SAFE_INTEGER) - (second.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER))
     .map(o => ({
-      value: o.maxBetHDPNumber ?? null,
-      label: o.maxBetHDP ?? '(Blanks)'
+      value: o.maxbetHdp ?? null,
+      label: Utils.convertThousandToK(o.maxbetHdp).length ?
+        Utils.convertThousandToK(o.maxbetHdp)
+        : '(Blanks)'
     })), i => i.value);
 
 const buildMultipleFilterDefault = (entities: TDataTable[]) => {

@@ -13,11 +13,12 @@ type TDataTable = {
   eventDateTime: Required<Date>;
   leagueName: string;
   matchOffer: string;
-  noHDP: string;
   homeName: string;
   awayName: string;
-  maxBetHDP: string;
-  maxBetHDPNumber: number | null;
+  maxbetHdp: number | undefined;
+  noOfHDP: string | undefined;
+  spreadOu: number | undefined;
+  spreadHdp: number | undefined;
   isNoOffer: boolean;
   infoSiteMatchId: number;
   isChildMatch: boolean;

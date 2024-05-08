@@ -8,8 +8,15 @@ const propTypes = {
 
 const SpreadOuCell = props => {
   const { rowIndex, dataSource } = props;
-  const { spreadOu } = dataSource[rowIndex];
-  return <SpreadCell spread={spreadOu} />;
+  const { spreadOu, infoSiteMatchId } = dataSource[rowIndex];
+
+  return (
+    <SpreadCell
+      spreadKey='spreadOu'
+      infoSiteMatchId={infoSiteMatchId}
+      spread={spreadOu}
+    />
+  );
 };
 
 SpreadOuCell.propTypes = propTypes;

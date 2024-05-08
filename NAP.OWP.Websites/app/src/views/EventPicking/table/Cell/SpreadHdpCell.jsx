@@ -8,8 +8,14 @@ const propTypes = {
 
 const SpreadHdpCell = props => {
   const { rowIndex, dataSource } = props;
-  const { spreadHdp } = dataSource[rowIndex];
-  return <SpreadCell spread={spreadHdp} />;
+  const { spreadHdp, infoSiteMatchId } = dataSource[rowIndex];
+  return (
+    <SpreadCell
+      spreadKey='spreadHdp'
+      infoSiteMatchId={infoSiteMatchId}
+      spread={spreadHdp}
+    />
+  );
 };
 
 SpreadHdpCell.propTypes = propTypes;
