@@ -1,16 +1,16 @@
 const NoOfHdpEditableCell = ({ value }: { value: string | undefined }) => {
   return (
-    <>
+    <div className="noOf__hdp-cell">
       {value ? (
-        <div className='noOf__hdp'>
+        <p className='noOf__hdp__value'>
           {value}
-        </div>
+        </p>
       ) : (
         <a className='noOf__hdp__check' href='http://google.com'>
           Check
         </a>
       )}
-    </>
+    </div>
   );
 };
 

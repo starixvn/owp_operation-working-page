@@ -1,17 +1,17 @@
 
 const MaxBetViewCell = ({ value }: { value: string | undefined }) => {
   return (
-    <>
+    <div className="max-bet-cell">
       {value ? (
-        <div className='max-bet-cell'>
+        <p className='max-bet-cell__value'>
           {value}
-        </div>
+        </p>
       ) : (
         <a className='mb__check' href='http://google.com'>
           Check
         </a>
       )}
-    </>
+    </div>
   );
 };
 

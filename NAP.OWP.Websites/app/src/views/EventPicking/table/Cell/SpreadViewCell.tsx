@@ -1,18 +1,18 @@
 
 const SpreadViewCell = ({ spread }: { spread: number | string | undefined }) => {
   return (
-    <>
+    <div className="spread-cell">
       {spread ? (
-        <div className='spread-cell'>
+        <p className='spread-cell__value'>
           {spread}
-        </div>
+        </p>
       ) : (
         <a className='spread__check' href='http://google.com'>
           Check
         </a>
       )}
 
-    </>
+    </div>
   );
 };
 

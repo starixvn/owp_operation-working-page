@@ -382,12 +382,15 @@
     height: 100%;
   }
 
-  .max-bet-cell {
-    text-align: center;
+  .max-bet-cell,
+  .spread-cell,
+  .noOf__hdp-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .match-cell,
-  .max-bet-cell,
   .league-cell,
   .streaming-info-cell,
   .provider-cell,

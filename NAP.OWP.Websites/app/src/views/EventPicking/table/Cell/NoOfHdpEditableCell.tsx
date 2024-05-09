@@ -35,7 +35,6 @@ const NoOfHdpEditableCell = ({
   });
   return (
     <div key={uniqueId()} className="input-value">
-
       <input
         ref={inputRef}
         type='text'
