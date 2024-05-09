@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import { TEditSetting } from '../EditType';
+import { useAppDispatch } from '../../app/hooks';
+import { updateObject } from '../slice/editSettingSlice';
 
 interface CommonTextAreaProps {
   value: string;
   inputKey: keyof TEditSetting;
-  updateObject: Function;
   rows?: number
 }
 
-const CommonTextArea: React.FC<CommonTextAreaProps> = ({ value, inputKey, updateObject, rows }) => {
+const CommonTextArea: React.FC<CommonTextAreaProps> = ({ value, inputKey, rows }) => {
   const [inputValue, setInputValue] = useState(value);
+  const dispatch = useAppDispatch();
 
   const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    value !== newValue && updateObject(inputKey, newValue);
+    value !== newValue && dispatch(updateObject({ inputKey, newValue }));
+  };
+
+  const handleOnBlur = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = event.target.value;
+    value !== newValue && dispatch(updateObject({ inputKey, newValue }));
   };
 
   return (
@@ -22,6 +29,7 @@ const CommonTextArea: React.FC<CommonTextAreaProps> = ({ value, inputKey, update
       className='common-textarea'
       value={inputValue}
       onChange={handleOnChange}
+      onBlur={handleOnBlur}
       rows={rows || 3}
     />
   );

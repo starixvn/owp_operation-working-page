@@ -10,6 +10,7 @@ type TDataSource = {
   spread_HDP_Value: number;
   spread_OU_Value: number;
   spread_Note: string;
+  spreadShow: string;
   maxbetWD_HDP_Show: string;
   maxbetWD_HDP_Value: number;
   maxbetWD_HDP_Note: string;

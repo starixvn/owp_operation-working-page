@@ -1,4 +1,4 @@
-import { createRef } from 'react';
+import { createRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
 import { useDispatch } from 'react-redux';
@@ -9,41 +9,38 @@ const propTypes = {
   item: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   hasWrite: PropTypes.bool,
-  actionType: PropTypes.object.isRequired
+  inputKey: PropTypes.string
 };
 const Value = props => {
-  const { item, index, hasWrite, actionType } = props;
+  const { item, index, hasWrite, inputKey } = props;
   const dispatch = useDispatch();
-  let inputRef = createRef();
+  const [inputValue, setInputValue] = useState(item.value);
+
   const handleOnBlur = event => {
     event.preventDefault();
     dispatch(
       handleUpdateRounds({
+        property: inputKey,
         key: 'value',
-        value: inputRef.value,
+        value: event.target.value,
         index
       })
     );
-    // dispatch(
-    //   crud(actionType.UPDATE, {
-    //     key: 'value',
-    //     value: inputRef.value,
-    //     index
-    //   })
-    // );
   };
 
-  const handleOnChange = input => (inputRef = input);
+  const handleOnChange = event => {
+    setInputValue(event.target.value);
+  };
 
   return (
     <Input
       disabled={!hasWrite}
       type='text'
       className='input-field'
-      defaultValue={item.value}
+      defaultValue={inputValue}
       maxLength='100'
       onBlur={handleOnBlur}
-      innerRef={handleOnChange}
+      onChange={handleOnChange}
     />
   );
 };

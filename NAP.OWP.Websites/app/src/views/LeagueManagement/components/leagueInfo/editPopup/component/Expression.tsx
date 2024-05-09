@@ -1,21 +1,29 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Select from 'react-select-ts';
 import MaxbetConst from '../../../../constants/MaxbetConst';
-import { TExpression, TOption } from '../EditType';
+import { TConditions, TExpression, TOption } from '../EditType';
+import { handleUpdateRounds } from '../slice/editSettingSlice';
 
 interface ExpressionProps {
   item: TExpression;
   index: number;
   hasWrite: boolean;
-  updateSetting: Function;
+  inputKey: keyof TConditions;
 }
 
-const Expression: React.FC<ExpressionProps> = ({ item, index, hasWrite = true, updateSetting }) => {
-  const { expression } = item;
+const Expression: React.FC<ExpressionProps> = ({ item, index, hasWrite = true, inputKey }) => {
+  const dispatch = useDispatch();
 
   const handleChangeExpression = (selectedOption: TOption | null) => {
-    //expression.value !== selectedOption?.value && updateSetting('', selectedOption?.value);
-    expression.value !== selectedOption?.value && updateSetting('', selectedOption?.value);
+    dispatch(
+      handleUpdateRounds({
+        property: inputKey,
+        key: 'type',
+        value: selectedOption!.value,
+        index
+      })
+    );
   };
 
   return (

@@ -2,9 +2,14 @@ import { useEffect } from 'react';
 import { Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { TDataSource } from '../table/TableType';
-import EditSettingContent from './EditSettingContent';
-import { TEditSetting } from './EditType';
-import { mapDataSourceToEditSetting } from './helper/helper';
+import EditSettingAction from './EditSettingContent';
+import Comment from './content/Comment';
+import Condition from './content/Condition';
+import FtSpread from './content/FtSpread';
+import Header from './content/Header';
+import MB from './content/MB';
+import MicsMatch from './content/MicsMatch';
+import { setInitSetting } from './slice/editSettingSlice';
 import { getLeagueGroupOptionsThunk } from './slice/editSettingThunk';
 
 interface Props {
@@ -13,46 +18,31 @@ interface Props {
 };
 
 const EditSettingPopup = (props: Props) => {
-  const { closePopup, dataSource } = props;
-  let setting = mapDataSourceToEditSetting(dataSource);
+  console.log("render-popup");
+  const { dataSource, closePopup } = props;
   const dispatch = useAppDispatch();
-  const model = useAppSelector(state => state.editSettingSlice.editModel);
 
-  const updateSetting = (inputKey: keyof TEditSetting, newValue: string) => {
-    setting = { ...setting, [inputKey]: newValue };
-    console.log(setting);
-  };
-  const newProps = {
-    data: model,
-    updateSetting
-  };
+  useEffect(() => {
+    dispatch(setInitSetting(dataSource));
+  }, [dispatch, dataSource]);
 
-  const { leagueGroupOptions } = useAppSelector(state => state.editSettingSlice);
+  const leagueGroupOptions = useAppSelector(state => state.editSettingSlice.leagueGroupOptions);
   useEffect(() => {
     leagueGroupOptions.length === 0 && dispatch(getLeagueGroupOptionsThunk());
   }, [dispatch, leagueGroupOptions]);
 
-  const handleSave = async () => {
-    console.log(setting);
-    closePopup();
-  };
-
   return (
     <Modal isOpen scrollable className='edit-setting-popup' modalClassName='edit-modal' centered>
       <ModalBody>
-        <EditSettingContent {...newProps} />
+        <Header data={dataSource} />
+        <Condition data={dataSource} />
+        <FtSpread data={dataSource} />
+        <MB data={dataSource} />
+        <MicsMatch data={dataSource} />
+        <Comment data={dataSource} />
       </ModalBody>
       <ModalFooter>
-        <div className='list-btn'>
-          <button
-            className='btn-cancel'
-            onClick={() => closePopup()}>
-            Cancel
-          </button>
-          <button className='button-export' onClick={handleSave}>
-            Save
-          </button>
-        </div>
+        <EditSettingAction closePopup={closePopup} />
       </ModalFooter>
     </Modal>
   );

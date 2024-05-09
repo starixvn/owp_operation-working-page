@@ -1,21 +1,38 @@
-import React from 'react';
-import { ACTION_DIVISION, ACTION_ROUND, ACTION_TVLIST } from '../../../../constants/action-type';
+import React, { useState } from 'react';
 import { TExpression, TProps } from '../EditType';
 import CommonTextArea from '../component/CommonTextArea';
 import RowsExpression from '../component/RowsExpression';
 import { convertResponseToCondition } from '../helper/helper';
+import { useAppDispatch } from '../../app/hooks';
+import { updateObject } from '../slice/editSettingSlice';
 
-const Condition: React.FC<TProps> = ({ data, updateSetting }) => {
-  const rounds = convertResponseToCondition(data.round);
-  const divisions = convertResponseToCondition(data.division);
-  const iptvs = convertResponseToCondition(data.ipTv);
+const Condition: React.FC<TProps> = ({ data }) => {
+  const { condition, remark } = data;
+  const { round, division, ipTv, hasTv, hasIpTv } = condition;
+  const [checkedTV, setCheckedTV] = useState<boolean>(hasTv);
+  const [checkedIPTV, setCheckedIPTV] = useState(hasIpTv);
+  const dispatch = useAppDispatch();
+
+  const rounds = convertResponseToCondition(round);
+  const divisions = convertResponseToCondition(division);
+  const iptvs = convertResponseToCondition(ipTv);
+
+  const handleOnChangeTV = (_: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(updateObject({ inputKey: 'hasTv', newValue: !checkedTV }));
+    setCheckedTV(!checkedTV);
+  };
+
+  const handleOnChangeIPTV = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(updateObject({ inputKey: 'hasIpTv', newValue: !checkedIPTV }));
+    setCheckedIPTV(!checkedIPTV);
+
+  };
 
   const renderRoundList = (rounds: TExpression[]) => (
     <RowsExpression
       items={rounds}
       title='Round'
       inputKey={'round'}
-      updateSetting={updateSetting}
     />
   );
 
@@ -24,7 +41,6 @@ const Condition: React.FC<TProps> = ({ data, updateSetting }) => {
       items={divisions}
       title='Division'
       inputKey={'division'}
-      updateSetting={updateSetting}
     />
   );
 
@@ -35,7 +51,6 @@ const Condition: React.FC<TProps> = ({ data, updateSetting }) => {
         <CommonTextArea
           value={remark}
           inputKey={'remark'}
-          updateObject={updateSetting}
         />
       </div>
     </>
@@ -45,11 +60,10 @@ const Condition: React.FC<TProps> = ({ data, updateSetting }) => {
     <RowsExpression
       items={iptvs}
       inputKey={'ipTv'}
-      updateSetting={updateSetting}
     />
   );
 
-  const renderTV = (tv: boolean, hasIpTv: boolean, iptv: TExpression[]) => (
+  const renderTV = () => (
     <>
       <div className='content'>
         <div className='left'>TV</div>
@@ -57,8 +71,8 @@ const Condition: React.FC<TProps> = ({ data, updateSetting }) => {
           <label>
             <input
               type='checkbox'
-              checked={tv}
-            //onChange={handleCheckboxChange}
+              checked={checkedTV}
+              onChange={handleOnChangeTV}
             />
             TV (check in TV list)
           </label>
@@ -66,12 +80,12 @@ const Condition: React.FC<TProps> = ({ data, updateSetting }) => {
             <label>
               <input
                 type='checkbox'
-                checked={hasIpTv}
-              //onChange={handleCheckboxChange}
+                checked={checkedIPTV}
+                onChange={handleOnChangeIPTV}
               />
               IPTV
             </label>
-            {renderIPTVList(iptv)}
+            {renderIPTVList(iptvs)}
           </div>
         </div>
       </div>
@@ -82,10 +96,10 @@ const Condition: React.FC<TProps> = ({ data, updateSetting }) => {
   return (
     <div className='list'>
       <div className='title'>Condition</div>
-      {renderTV(data.condition.hasTv, data.condition.hasIpTv, iptvs)}
+      {renderTV()}
       {renderRoundList(rounds)}
       {renderDivisionList(divisions)}
-      {renderRemark(data.condition.remark)}
+      {renderRemark(remark)}
     </div>
   );
 };

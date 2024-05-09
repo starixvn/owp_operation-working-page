@@ -1,20 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { buildRequestURL } from '../../../../../Shared/Service/serviceHelper';
-import { get } from '../../../../../Shared/Service/Service';
-import { TOption } from '../EditType';
-import Converter from '../../../../../Shared/Converter';
+import { buildLeagueGroupURL, buildRequestURL } from '../../../../../Shared/Service/serviceHelper';
+import { get, post } from '../../../../../Shared/Service/Service';
+import { TEditSetting, TOption } from '../EditType';
 import { rebuildLeagueGroupOption } from '../../../../helper/commonHelper';
+import { convertResourceToOptions } from '../helper/helper';
 
 const getLeagueGroupOptionsThunk = createAsyncThunk<TOption[]>(
   'leagueGroup/query',
   async () => {
-    const url = buildRequestURL('league-management', 'get-league-group');
+    const url = buildLeagueGroupURL();
     const data = await get({ url });
 
-    const options = Converter.convertResourceToOptions(data.data);
+    const options = convertResourceToOptions(data.data);
     const leagueGroupOptionIncludeNoneItem = rebuildLeagueGroupOption(options);
     return leagueGroupOptionIncludeNoneItem as TOption[];
   }
 );
 
-export { getLeagueGroupOptionsThunk };
+const updateSettingService = async (model: TEditSetting) => {
+  const url = buildRequestURL('NewLeagueSetting', 'editLeagueSetting');
+  const response = await post({ url, ...model });
+  return response;
+};
+
+export { getLeagueGroupOptionsThunk, updateSettingService };

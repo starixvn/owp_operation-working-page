@@ -1,23 +1,18 @@
 import React from 'react';
-import { InputItem } from '../component/InputItem';
 import { TProps } from '../EditType';
+import { InputItem } from '../component/InputItem';
 
-const FtSpread: React.FC<TProps> = ({ data, updateSetting }) => {
+const FtSpread: React.FC<TProps> = ({ data }) => {
+  const { spreadShow } = data;
+
   return (
     <div className='list'>
       <div className='title'>FT Spread</div>
       <div className='content-column-2'>
         <InputItem
-          label='HDP(%)'
-          inputKey={'spread_HDP'}
-          value={data.spread_HDP_value?.toString()}
-          updateObject={updateSetting}
-        />
-        <InputItem
-          label='OU(%)'
-          inputKey={'spread_OU'}
-          value={data.spread_OU_value?.toString()}
-          updateObject={updateSetting}
+          label='HDP-OU(%)'
+          inputKey={'spread'}
+          value={spreadShow}
         />
       </div>
     </div >

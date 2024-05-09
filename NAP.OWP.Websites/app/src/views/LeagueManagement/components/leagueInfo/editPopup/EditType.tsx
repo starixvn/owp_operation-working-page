@@ -1,4 +1,4 @@
-import { TCondition } from "../table/TableType";
+import { TCondition, TDataSource } from "../table/TableType";
 
 type TOption = {
   value: number;
@@ -6,8 +6,7 @@ type TOption = {
 };
 
 type TProps = {
-  data: TEditSetting;
-  updateSetting: Function;
+  data: TDataSource;
 }
 type TConditions = {
   ipTv: Array<TCondition>;
@@ -21,12 +20,11 @@ type TEditSetting = {
   owpLeagueId: number;
   leagueGroupId: number;
   leagueGroup: string;
-  spread_HDP: string;
-  spread_OU: string;
+  spread: string;
   maxbetWD_HDP: string;
-  maxbetWD_NoOfHDP: string;
+  wD_NoOfHDP: string;
   maxbetWK_HDP: string;
-  maxbetWK_NoOfHDP: string;
+  wK_NoOfHDP: string;
   lstNote: string;
   remark2: string;
   comment: string;
@@ -44,4 +42,10 @@ type TExpression = {
   value: string;
 }
 
-export { TEditSetting, TExpression, TOption, TProps, TConditions };
+type TLeagueCategory = {
+  RefName: string;
+  Id: number;
+  Value: string;
+}
+
+export { TEditSetting, TExpression, TOption, TProps, TConditions, TLeagueCategory };

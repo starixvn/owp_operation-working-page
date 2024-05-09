@@ -6,4 +6,9 @@ const buildRequestURL = (baseUrl: string, key: string) =>
     ? `${netCoreURL}/${baseUrl}/${key}`
     : `${window.netCoreRootUrl}/${netFwURL}/${baseUrl}/${key}`;
 
-export { buildRequestURL };
+const buildLeagueGroupURL = () =>
+  process.env.NODE_ENV === 'development'
+    ? 'api-netcore/resource-assignment/?refName=NewLeagueCategory'
+    : `${window.netCoreRootUrl}/api/resource-assignment/?refName=NewLeagueCategory`;
+
+export { buildRequestURL, buildLeagueGroupURL };

@@ -1,8 +1,10 @@
 import React from 'react';
-import { InputItem } from '../component/InputItem';
 import { TProps } from '../EditType';
+import { InputItem } from '../component/InputItem';
 
-const MicsMatch: React.FC<TProps> = ({ data, updateSetting }) => {
+const MicsMatch: React.FC<TProps> = ({ data }) => {
+  const { lstNote, remark2 } = data;
+
   return (
     <div className='list'>
       <div className='title'>Display in Misc match file</div>
@@ -10,16 +12,14 @@ const MicsMatch: React.FC<TProps> = ({ data, updateSetting }) => {
         <InputItem
           label='LST Note (Show under League)'
           inputKey={'lstNote'}
-          value={data.lstNote}
-          updateObject={updateSetting}
+          value={lstNote}
         />
       </div>
       <div className='content-column'>
         <InputItem
           label='Remark 2 (Show under Match)'
           inputKey={'remark2'}
-          value={data.remark2}
-          updateObject={updateSetting}
+          value={remark2}
         />
       </div>
     </div>

@@ -9,7 +9,6 @@ interface RowExpressionProps {
   items: TExpression[];
   title?: string;
   inputKey: keyof TEditSetting;
-  updateSetting: Function;
 }
 
 const RowsExpression: React.FC<RowExpressionProps> = ({ items, title, inputKey }) => {
@@ -24,7 +23,7 @@ const RowsExpression: React.FC<RowExpressionProps> = ({ items, title, inputKey }
             inputKey,
             modelsLength: items.length,
             modelExpressionDefault: {
-              round: {
+              [inputKey]: {
                 expression: MaxbetConst.expressionOption[0],
                 value: ''
               }
@@ -33,7 +32,7 @@ const RowsExpression: React.FC<RowExpressionProps> = ({ items, title, inputKey }
           };
 
           return (
-            <div className='item' key={item.key}>
+            <div className='item' key={`${index}-${inputKey}`}>
               <Expression {...rowProps} />
               <Value {...rowProps} />
               <Action {...rowProps} />

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { TEditSetting } from '../EditType';
+import { useAppDispatch } from '../../app/hooks';
+import { updateObject } from '../slice/editSettingSlice';
 
 interface InputItemProps {
   label: string;
   inputKey: keyof TEditSetting;
-  value: string,
-  updateObject: Function;
+  value: string;
 }
-export const InputItem: React.FC<InputItemProps> = ({ label, inputKey, value, updateObject }) => {
-  console.log("re-render", inputKey);
+
+export const InputItem: React.FC<InputItemProps> = ({ label, inputKey, value }) => {
+  const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState('');
   useEffect(() => {
     setInputValue(value);
@@ -17,7 +19,11 @@ export const InputItem: React.FC<InputItemProps> = ({ label, inputKey, value, up
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    newValue !== value && updateObject(inputKey, newValue);
+  };
+
+  const handleOnBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    newValue !== value && dispatch(updateObject({ inputKey, newValue }));
   };
 
   return (
@@ -27,7 +33,7 @@ export const InputItem: React.FC<InputItemProps> = ({ label, inputKey, value, up
         value={inputValue}
         className='input'
         onChange={handleOnChange}
-        style={{ maxHeight: '2em', overflow: 'hidden' }}
+        onBlur={handleOnBlur}
       />
     </div>
   );

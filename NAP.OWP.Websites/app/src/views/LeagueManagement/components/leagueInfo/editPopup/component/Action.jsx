@@ -10,20 +10,18 @@ const propTypes = {
   index: PropTypes.number.isRequired,
   modelsLength: PropTypes.number.isRequired,
   hasWrite: PropTypes.bool,
-  actionType: PropTypes.object.isRequired,
   modelExpressionDefault: PropTypes.object.isRequired
 };
 const Action = props => {
-  const { index, modelsLength, hasWrite, actionType, modelExpressionDefault } =
-    props;
+  const { index, modelsLength, hasWrite, modelExpressionDefault } = props;
   const dispatch = useDispatch();
   const handleAddNewTV = e => {
     e.preventDefault();
-    dispatch(crud(actionType.ADD, modelExpressionDefault));
+    //dispatch(crud(actionType.ADD, modelExpressionDefault));
   };
   const handleDeleteTV = e => {
     e.preventDefault();
-    dispatch(crud(actionType.DELETE, { index }));
+    //dispatch(crud(actionType.DELETE, { index }));
   };
 
   return (

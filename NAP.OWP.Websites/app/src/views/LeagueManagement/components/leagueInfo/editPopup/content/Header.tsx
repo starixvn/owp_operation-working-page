@@ -1,14 +1,20 @@
-import React from 'react';
 import Select from 'react-select-ts';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { TOption, TProps } from '../EditType';
+import { updateObject } from '../slice/editSettingSlice';
+import React from 'react';
 
-const Header: React.FC<TProps> = ({ data, updateSetting }) => {
-  const { league, leagueGroup, leagueGroupId } = data;
-  const { leagueGroupOptions } = useAppSelector(state => state.editSettingSlice);
+const Header: React.FC<TProps> = ({ data }) => {
+  const leagueGroupOptions = useAppSelector(state => state.editSettingSlice.leagueGroupOptions);
+  const { leagueGroupId, league } = data;
+  const dispatch = useAppDispatch();
 
   const handleChangeLeagueGroup = (selectedOption: TOption | null) => {
-    leagueGroupId !== selectedOption?.value && updateSetting('leagueGroupId', selectedOption?.value);
+    const newValue = selectedOption?.value || 0;
+    if (leagueGroupId !== newValue) {
+      dispatch(updateObject({ inputKey: 'leagueGroupId', newValue }));
+      dispatch(updateObject({ inputKey: 'leagueGroup', newValue: selectedOption?.label || '' }));
+    }
   };
 
   return (
@@ -16,7 +22,7 @@ const Header: React.FC<TProps> = ({ data, updateSetting }) => {
       <span>{league}</span>
       <Select
         options={leagueGroupOptions}
-        defaultValue={leagueGroupOptions.find(x => x.label === leagueGroup)}
+        defaultValue={leagueGroupOptions.find(x => x.value === leagueGroupId)}
         className='basic-multi-select'
         classNamePrefix='select'
         onChange={handleChangeLeagueGroup}

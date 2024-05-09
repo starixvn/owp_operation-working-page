@@ -1,28 +1,40 @@
-import React from 'react';
-import Condition from './content/Condition';
-import FtSpread from './content/FtSpread';
-import MB from './content/MB';
-import MicsMatch from './content/MicsMatch';
-import Comment from './content/Comment';
-import Header from './content/Header';
-import { TEditSetting } from './EditType';
+import ToastrWrapper from '../../../../components/ToastrWrapper';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { getLeagueInfoThunk } from '../table/leagueInfoTableSlice/leagueInfoThunk';
+import { selectData } from './slice/editSettingSlice';
+import { updateSettingService } from './slice/editSettingThunk';
 
 interface Props {
-  data: TEditSetting,
-  updateSetting: Function
+  closePopup: Function;
 }
 
-const EditSettingContent = (props: Props) => {
+const EditSettingAction = (props: Props) => {
+  const { closePopup } = props;
+  const dispatch = useAppDispatch();
+  const model = useAppSelector(selectData);
+
+  const handleSave = async () => {
+    console.log(model);
+    const response = await updateSettingService(model);
+    if (response.status === 200) {
+      await ToastrWrapper.showInfo('The setting has been edited successfully!');
+      dispatch(getLeagueInfoThunk(''));
+    }
+    closePopup();
+  };
   return (
-    <div>
-      <Header {...props} />
-      <Condition {...props} />
-      <FtSpread {...props} />
-      <MB {...props} />
-      <MicsMatch {...props} />
-      <Comment {...props} />
-    </div>
+    <>
+      <div className='list-btn'>
+        <button
+          className='btn-cancel'
+          onClick={() => closePopup()}>
+          Cancel
+        </button>
+        <button className='button-export' onClick={handleSave}>
+          Save
+        </button>
+      </div></>
   );
 };
 
-export default EditSettingContent;
+export default EditSettingAction;
