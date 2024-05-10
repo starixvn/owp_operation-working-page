@@ -59,7 +59,7 @@ const buildRemarkOptions = (data: string[]) =>
     uniqBy(
       [...data].map(o => ({
         value: o ?? null,
-        label: o.length ? o : '(Blanks)'
+        label: o?.length ? o : '(Blanks)'
       })),
       i => i.label
     )
