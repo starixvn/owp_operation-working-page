@@ -24,18 +24,22 @@ const buildLeagueOptions = (entities: TDataSource[]) =>
       i => i.label
     )
   );
-const buildConditionOptions = (
-  first: TCondition[][],
-  second: string[] | null[]
-) => {
+const buildConditionOptions = (first: TCondition[][], second: TCondition[]) => {
   const options: Option[] = uniqBy(
     [...second]
-      .sort((first, second) => (first || '').localeCompare(second || ''))
+      .sort((first, second) =>
+        (first.value || '').localeCompare(second.value || '')
+      )
       .map(
         o =>
           ({
-            value: o ?? null,
-            label: o
+            value: o.value.length > 0 ? o.value : null,
+            label:
+              o.value.length > 0
+                ? o.type === 'Contains'
+                  ? `*${o.value}*`
+                  : o.value
+                : null
           } as Option)
       ),
     i => i.label
@@ -169,17 +173,17 @@ const helper = {
   Tv: (dataSource: TDataSource[]) =>
     buildConditionOptions(
       dataSource.map(x => x.condition.ipTv),
-      dataSource.flatMap(x => x.condition.ipTv).map(x => x.value)
+      dataSource.flatMap(x => x.condition.ipTv)
     ),
   Round: (dataSource: TDataSource[]) =>
     buildConditionOptions(
       dataSource.map(x => x.condition.round),
-      dataSource.flatMap(x => x.condition.round).map(x => x.value)
+      dataSource.flatMap(x => x.condition.round)
     ),
   League_Division: (dataSource: TDataSource[]) =>
     buildConditionOptions(
       dataSource.map(x => x.condition.division),
-      dataSource.flatMap(x => x.condition.division).map(x => x.value)
+      dataSource.flatMap(x => x.condition.division)
     ),
   Remark: (dataSource: TDataSource[]) =>
     buildRemarkOptions(dataSource.map(x => x.condition.remark)),

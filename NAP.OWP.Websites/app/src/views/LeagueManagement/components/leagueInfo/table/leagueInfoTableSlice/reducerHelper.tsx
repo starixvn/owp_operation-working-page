@@ -148,12 +148,14 @@ const buildLabelItemNumberOption = (value: number | undefined | null) =>
   value?.toString() || '(Blanks)';
 const buildLabelItemForCondition = (
   conditions: TCondition[],
-  selected: string
+  selected: string | number | null
 ) => {
   if (conditions.length === 0 && selected === '(Blanks)') {
     return true;
   }
-  return conditions.some(x => x.value === selected);
+  return conditions.some(x => buildValue(x.value, x.type) === selected);
 };
 
+const buildValue = (value: string, type: string) =>
+  value.length > 0 ? (type === 'Contains' ? `*${value}*` : value) : null;
 export { executeFilterTable, buildDefaultTableFilter };

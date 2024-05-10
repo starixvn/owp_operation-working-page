@@ -30,15 +30,21 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
           <LeagueCell className={classNameCells.leagueCell} dataSource={row} />
           <CommonCell
             className={classNameCells.tvCell}
-            value={row.condition.ipTv.map(x => x.value).join('/')}
+            value={row.condition.ipTv
+              .map(x => (x.type === 'Contains' ? `*${x.value}*` : x.value))
+              .join('/')}
           />
           <CommonCell
             className={classNameCells.roundCell}
-            value={row.condition.round.map(x => x.value).join('/')}
+            value={row.condition.round
+              .map(x => (x.type === 'Contains' ? `*${x.value}*` : x.value))
+              .join('/')}
           />
           <CommonCell
             className={classNameCells.leagueDivisionCell}
-            value={row.condition.division.map(x => x.value).join('/')}
+            value={row.condition.division
+              .map(x => (x.type === 'Contains' ? `*${x.value}*` : x.value))
+              .join('/')}
           />
           <CommonCell
             className={classNameCells.remarkCell}
