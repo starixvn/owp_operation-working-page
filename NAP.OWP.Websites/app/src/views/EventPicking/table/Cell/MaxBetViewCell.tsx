@@ -1,13 +1,20 @@
+const MaxBetViewCell = ({
+  maxBet,
+  owpLeagueId
+}: {
+  maxBet: string | undefined;
+  owpLeagueId: number;
+}) => {
+  const handleOnclick = () => {
+    window.open(`LeagueManagement?leagueId=${owpLeagueId}`, `${owpLeagueId}`);
+  };
 
-const MaxBetViewCell = ({ value }: { value: string | undefined }) => {
   return (
-    <div className="max-bet-cell">
-      {value ? (
-        <p className='max-bet-cell__value'>
-          {value}
-        </p>
+    <div className='max-bet-cell'>
+      {maxBet ? (
+        <p className='max-bet-cell__value'>{maxBet}</p>
       ) : (
-        <a className='mb__check' href='http://google.com'>
+        <a className='mb__check' onClick={handleOnclick}>
           Check
         </a>
       )}

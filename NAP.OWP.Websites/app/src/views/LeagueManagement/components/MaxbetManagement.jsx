@@ -1,7 +1,7 @@
 import isEqual from 'lodash.isequal';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import NavigationBar from '../../Shared/NavigationBar/NavigationBar';
 import { queryPolicy } from '../actions/action';
@@ -20,6 +20,8 @@ const MaxbetManagement = () => {
   const maxbetUrl = buildMaxbetUrl();
   const model = useSelector(selectPolicy);
   const stableDispatch = useCallback(dispatch, [dispatch]);
+  const history = useHistory();
+
   useEffect(() => {
     stableDispatch(queryPolicy());
   }, [stableDispatch]);
@@ -31,13 +33,18 @@ const MaxbetManagement = () => {
     { ...MaxbetConst.maxbetSetting }
   ];
 
+  const handleNavigation = id => {
+    history.push(maxbetUrl.maxbetGeneralUrl);
+    setNavigationId(id);
+  };
+
   if (model.policyPending) {
     return <Loading />;
   }
   return (
     <>
       <NavigationBar
-        onUpdateNavigate={id => setNavigationId(id)}
+        onUpdateNavigate={id => handleNavigation(id)}
         navbarList={navbarList}
         activeTabId={navigationId}
       />

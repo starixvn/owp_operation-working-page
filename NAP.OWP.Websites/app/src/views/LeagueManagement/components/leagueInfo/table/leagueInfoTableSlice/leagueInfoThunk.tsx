@@ -12,4 +12,16 @@ const getLeagueInfoThunk = createAsyncThunk<TDataSource[], string>(
   }
 );
 
-export { getLeagueInfoThunk };
+const getLeagueSettingByOwpLeagueId = createAsyncThunk<TDataSource[], number>(
+  'dataTable/queryById',
+  async (owpLeagueId = 0) => {
+    const url = buildRequestURL(
+      'NewLeagueSetting',
+      'get-league-setting-by-owpLeagueId'
+    );
+    const data = await get({ url, owpLeagueId });
+    return data.data as TDataSource[];
+  }
+);
+
+export { getLeagueInfoThunk, getLeagueSettingByOwpLeagueId };

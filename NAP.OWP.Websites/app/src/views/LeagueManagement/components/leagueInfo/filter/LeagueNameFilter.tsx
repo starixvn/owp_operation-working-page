@@ -1,11 +1,16 @@
 import { useState, KeyboardEvent, useEffect } from 'react';
 import { useAppDispatch } from '../app/hooks';
-import { getLeagueInfoThunk } from '../table/leagueInfoTableSlice/leagueInfoThunk';
+import {
+  getLeagueInfoThunk,
+  getLeagueSettingByOwpLeagueId
+} from '../table/leagueInfoTableSlice/leagueInfoThunk';
 import TVListCustom from './TVListCustom';
 const LeagueNameFilter = () => {
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
-
+  const searchParams = new URLSearchParams(document.location.search);
+  const owpLeagueId = searchParams.get('leagueId');
+  const parseOwpLeagueId = owpLeagueId ? parseInt(owpLeagueId) : 0;
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     e.key === 'Enter' && handleOnBlur();
   };
@@ -18,7 +23,10 @@ const LeagueNameFilter = () => {
     const getAllLeague = async () => {
       await dispatch(getLeagueInfoThunk(value));
     };
-    getAllLeague();
+    const getLeagueSettingById = async () => {
+      await dispatch(getLeagueSettingByOwpLeagueId(parseOwpLeagueId));
+    };
+    owpLeagueId ? getLeagueSettingById() : getAllLeague();
   }, []);
 
   return (

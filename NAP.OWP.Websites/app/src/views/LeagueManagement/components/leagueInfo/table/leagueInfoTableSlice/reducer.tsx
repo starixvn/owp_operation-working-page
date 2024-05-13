@@ -1,6 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TColumnKey, TTableSlice } from '../TableType';
-import { getLeagueInfoThunk } from './leagueInfoThunk';
+import {
+  getLeagueInfoThunk,
+  getLeagueSettingByOwpLeagueId
+} from './leagueInfoThunk';
 import { REQUEST_STATUS } from '../../../../../Shared/Constants';
 import { Option } from '../../../../../Shared/MultipleSelection/type';
 import { executeFilterTable, buildDefaultTableFilter } from './reducerHelper';
@@ -69,7 +72,19 @@ const LeagueInfoTableSlice = createSlice({
         state.entitiesOriginal = payload;
         state.loading = REQUEST_STATUS.idle;
         buildDefaultTableFilter(state.entitiesOriginal, state.multipleFilter);
-      });
+      })
+      .addCase(getLeagueSettingByOwpLeagueId.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(
+        getLeagueSettingByOwpLeagueId.fulfilled,
+        (state, { payload }) => {
+          state.entities = payload;
+          state.entitiesOriginal = payload;
+          state.loading = REQUEST_STATUS.idle;
+          buildDefaultTableFilter(state.entitiesOriginal, state.multipleFilter);
+        }
+      );
   }
 });
 const { reducer, actions } = LeagueInfoTableSlice;
