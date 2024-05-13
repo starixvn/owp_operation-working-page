@@ -52,11 +52,7 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
           />
           <CommonCell
             className={classNameCells.spreadHDPCell}
-            value={row.spread_HDP_Value?.toString()}
-          />
-          <CommonCell
-            className={classNameCells.spreadOUCell}
-            value={row.spread_OU_Value?.toString()}
+            value={row.spreadShow}
           />
           <CommonCell
             className={classNameCells.mbWeekdayHDPCell}

@@ -64,22 +64,12 @@ const buildRemarkOptions = (data: string[]) =>
       i => i.label
     )
   );
-const buildSpreadHDPOptions = (entities: TDataSource[]) =>
+const buildSpreadHDPAndOUOptions = (entities: TDataSource[]) =>
   swapBlanks(
     uniqBy(
       [...entities].map(o => ({
-        value: o.spread_HDP_value ?? null,
-        label: o.spread_HDP_value ? o.spread_HDP_value.toString() : '(Blanks)'
-      })),
-      i => i.label
-    )
-  );
-const buildSpreadOUOptions = (entities: TDataSource[]) =>
-  swapBlanks(
-    uniqBy(
-      [...entities].map(o => ({
-        value: o.spread_OU_value ?? null,
-        label: o.spread_OU_value ? o.spread_OU_value.toString() : '(Blanks)'
+        value: o.spreadShow ?? null,
+        label: o.spreadShow ? o.spreadShow : '(Blanks)'
       })),
       i => i.label
     )
@@ -88,10 +78,17 @@ const buildSpreadOUOptions = (entities: TDataSource[]) =>
 const buildMaxBetWeekdayHDPGroupOptions = (entities: TDataSource[]) =>
   swapBlanks(
     uniqBy(
-      [...entities].map(o => ({
-        value: o.maxbetWD_HDP_Show ?? null,
-        label: o.maxbetWD_HDP_Show.length > 0 ? o.maxbetWD_HDP_Show : '(Blanks)'
-      })),
+      [...entities]
+        .sort((first, second) =>
+          (first.maxbetWD_HDP_Show || '').localeCompare(
+            second.maxbetWD_HDP_Show || ''
+          )
+        )
+        .map(o => ({
+          value: o.maxbetWD_HDP_Show ?? null,
+          label:
+            o.maxbetWD_HDP_Show.length > 0 ? o.maxbetWD_HDP_Show : '(Blanks)'
+        })),
       i => i.label
     )
   );
@@ -108,10 +105,16 @@ const buildMaxBetWeekdayNoHDPGroupOptions = (entities: TDataSource[]) =>
 const buildMaxBetWeekendHDPGroupOptions = (entities: TDataSource[]) =>
   swapBlanks(
     uniqBy(
-      [...entities].map(o => ({
-        value: o.maxbetWK_HDP_Show ?? null,
-        label: o.maxbetWK_HDP_Show.length ? o.maxbetWK_HDP_Show : '(Blanks)'
-      })),
+      [...entities]
+        .sort((first, second) =>
+          (first.maxbetWK_HDP_Show || '').localeCompare(
+            second.maxbetWK_HDP_Show || ''
+          )
+        )
+        .map(o => ({
+          value: o.maxbetWK_HDP_Show ?? null,
+          label: o.maxbetWK_HDP_Show.length ? o.maxbetWK_HDP_Show : '(Blanks)'
+        })),
       i => i.label
     )
   );
@@ -187,8 +190,8 @@ const helper = {
     ),
   Remark: (dataSource: TDataSource[]) =>
     buildRemarkOptions(dataSource.map(x => x.condition.remark)),
-  Spread_HDP: (dataSource: TDataSource[]) => buildSpreadHDPOptions(dataSource),
-  Spread_OU: (dataSource: TDataSource[]) => buildSpreadOUOptions(dataSource),
+  Spread_HDP_OU: (dataSource: TDataSource[]) =>
+    buildSpreadHDPAndOUOptions(dataSource),
   MB_WD_HDP: (dataSource: TDataSource[]) =>
     buildMaxBetWeekdayHDPGroupOptions(dataSource),
   MB_WD_NO_HDP: (dataSource: TDataSource[]) =>

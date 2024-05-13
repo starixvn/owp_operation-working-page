@@ -9,8 +9,7 @@ const {
   Round,
   League_Division,
   Remark,
-  Spread_HDP,
-  Spread_OU,
+  Spread_HDP_OU,
   MB_WK_HDP,
   MB_WK_NO_HDP,
   MB_WD_HDP,
@@ -46,14 +45,8 @@ const TableHeader = () => {
         </th>
         <th rowSpan={2} className='blue-header'>
           <div className='header-table'>
-            <span>Spread HDP(%)</span>
-            <FilterHeader columnKey={Spread_HDP as TColumnKey} />
-          </div>
-        </th>
-        <th rowSpan={2} className='blue-header'>
-          <div className='header-table'>
-            <span>Spread OU(%)</span>
-            <FilterHeader columnKey={Spread_OU as TColumnKey} />
+            <span>Spread HDP - OU</span>
+            <FilterHeader columnKey={Spread_HDP_OU as TColumnKey} />
           </div>
         </th>
         <th rowSpan={1} colSpan={2} className='light-blue-header'>

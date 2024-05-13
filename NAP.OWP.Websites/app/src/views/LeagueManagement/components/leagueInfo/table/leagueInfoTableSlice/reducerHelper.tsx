@@ -37,12 +37,8 @@ const buildDefaultTableFilter = (
     selected: helper.Remark(dataSource),
     isFilter: false
   };
-  tableFilter.Spread_HDP = {
-    selected: helper.Spread_HDP(dataSource),
-    isFilter: false
-  };
-  tableFilter.Spread_OU = {
-    selected: helper.Spread_OU(dataSource),
+  tableFilter.Spread_HDP_OU = {
+    selected: helper.Spread_HDP_OU(dataSource),
     isFilter: false
   };
   tableFilter.MB_WD_HDP = {
@@ -86,8 +82,7 @@ const executeFilterTable = (
     Round,
     League_Division,
     Remark,
-    Spread_HDP,
-    Spread_OU,
+    Spread_HDP_OU,
     MB_WK_HDP,
     MB_WK_NO_HDP,
     MB_WD_HDP,
@@ -115,23 +110,20 @@ const executeFilterTable = (
       Remark.selected.some(
         m => m.label === buildLabelItemOption(e.condition.remark)
       ) &&
-      Spread_HDP.selected.some(
-        m => m.label === buildLabelItemNumberOption(e.spread_HDP_value)
-      ) &&
-      Spread_OU.selected.some(
-        m => m.label === buildLabelItemNumberOption(e.spread_OU_value)
+      Spread_HDP_OU.selected.some(
+        m => m.label === buildLabelItemOption(e.spreadShow)
       ) &&
       MB_WD_HDP.selected.some(
         m => m.label === buildLabelItemOption(e.maxbetWD_HDP_Show)
       ) &&
       MB_WD_NO_HDP.selected.some(
-        m => m.label === buildLabelItemOption(e.maxbetWD_NoOfHDP_Show)
+        m => m.label === buildLabelItemOption(e.wD_NoOfHDP_Show)
       ) &&
       MB_WK_HDP.selected.some(
         m => m.label === buildLabelItemOption(e.maxbetWK_HDP_Show)
       ) &&
       MB_WK_NO_HDP.selected.some(
-        m => m.label === buildLabelItemOption(e.maxbetWK_NoOfHDP_Show)
+        m => m.label === buildLabelItemOption(e.wK_NoOfHDP_Show)
       ) &&
       LST_Note.selected.some(
         m => m.label === buildLabelItemOption(e.lstNote)
