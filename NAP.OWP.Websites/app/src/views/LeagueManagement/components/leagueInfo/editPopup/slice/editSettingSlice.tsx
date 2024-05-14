@@ -1,21 +1,17 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { REQUEST_STATUS } from '../../../../../Shared/Constants';
-import { RootState } from '../../app/storeNative';
-import { TCondition, TDataSource } from '../../table/TableType';
-import { TOption } from '../EditType';
-import { getLeagueGroupOptionsThunk } from './editSettingThunk';
-import { mapEditSettingFromDataSource } from '../helper/helper';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { forEach } from 'lodash';
+import { createSlice } from '@reduxjs/toolkit';
+import { REQUEST_STATUS } from '../../../../../Shared/Constants';
+import { TCondition, TDataSource } from '../../table/TableType';
+import { TAddExpressionKey, TEditSetting, TOption } from '../EditType';
+import { mapEditSettingFromDataSource } from '../helper/helper';
+import { getLeagueGroupOptionsThunk } from './editSettingThunk';
 
 interface ConditionPayLoad {
   key: 'type' | 'value';
-  property: TAddExpressionKey;
+  property: keyof TAddExpressionKey;
   value: ('Contains' | 'Equals') | (string | number | undefined);
   index: number;
 }
-
-type TAddExpressionKey = "ipTv" | "round" | "division";
 
 const EditSettingSlice = createSlice({
   name: 'editSettingSlice',
@@ -83,14 +79,14 @@ const EditSettingSlice = createSlice({
       state.round = round;
       state.division = division;
     },
-    updateObject: (state, action: PayloadAction<{ property: string; value: string | number | boolean }>) => {
+    updateObject: (state, action: PayloadAction<{ property: keyof TEditSetting; value: string | number | boolean }>) => {
       const { property, value } = action.payload;
-      state[property] = value;
+      return { ...state, [property]: value };
     },
-    addRowExpressions: (state, action: { payload: TAddExpressionKey }) => {
+    addRowExpressions: (state, action: { payload: keyof TAddExpressionKey }) => {
       state[action.payload].push({ type: "Contains", value: '' });
     },
-    removeRowExpressions: (state, action: { payload: { index: number, property: TAddExpressionKey } }) => {
+    removeRowExpressions: (state, action: { payload: { index: number, property: keyof TAddExpressionKey } }) => {
       const { property } = action.payload;
 
       state[property] = state[property].filter((_, index) => index !== action.payload.index);
@@ -123,7 +119,6 @@ const { updateObject, updateExpression, setInitSetting, addRowExpressions, remov
 
 export default reducer;
 export {
-  updateExpression, setInitSetting, updateObject,
-  addRowExpressions, removeRowExpressions
+  addRowExpressions, removeRowExpressions, setInitSetting, updateExpression, updateObject
 };
 

@@ -13,22 +13,21 @@ const Condition = (props: {
   const { round, division, ipTv, hasTv, hasIpTv, remark } = props.condition;
   const [checkedTV, setCheckedTV] = useState<boolean>(hasTv);
   const [checkedIPTV, setCheckedIPTV] = useState(hasIpTv);
+  console.log(hasTv, hasIpTv);
   const dispatch = useAppDispatch();
 
   const rounds = convertResponseToCondition(round);
   const divisions = convertResponseToCondition(division);
   const iptvs = convertResponseToCondition(ipTv);
 
-  const handleOnChangeHasTV = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    dispatch(updateObject({ property: 'hasTv', value: !checkedTV }));
-    setCheckedTV(!checkedTV);
+  const handleOnChangeHasTV = (event: React.MouseEvent<HTMLInputElement>) => {
+    dispatch(updateObject({ property: 'hasTv', value: event.currentTarget.checked }));
+    setCheckedTV(event.currentTarget.checked);
   };
 
-  const handleOnChangeHasIPTV = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    dispatch(updateObject({ property: 'hasIpTv', value: !checkedIPTV }));
-    setCheckedIPTV(!checkedIPTV);
+  const handleOnChangeHasIPTV = (event: React.MouseEvent<HTMLInputElement>) => {
+    dispatch(updateObject({ property: 'hasIpTv', value: event.currentTarget.checked }));
+    setCheckedIPTV(event.currentTarget.checked);
   };
 
   const renderRoundList = (rounds: TExpressionRow[]) => (
@@ -73,9 +72,10 @@ const Condition = (props: {
         <div className='right'>
           <label>
             <input
+              className='form-check-label'
               type='checkbox'
               checked={checkedTV}
-              onChange={handleOnChangeHasTV}
+              onClick={handleOnChangeHasTV}
             />
             TV (check in TV list)
           </label>
@@ -84,7 +84,7 @@ const Condition = (props: {
               <input
                 type='checkbox'
                 checked={checkedIPTV}
-                onChange={handleOnChangeHasIPTV}
+                onClick={handleOnChangeHasIPTV}
               />
               IPTV
             </label>

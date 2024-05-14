@@ -38,7 +38,7 @@ const mapEditSettingFromDataSource = (dataSource: TDataSource) => {
     remark2,
     comment,
     hasTv: condition.hasTv,
-    hasIpTv: true,
+    hasIpTv: condition.hasIpTv,
     ipTv: selectCondition(condition.ipTv),
     round: selectCondition(condition.round),
     division: selectCondition(condition.division),
