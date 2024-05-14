@@ -1,44 +1,39 @@
-import React from 'react';
-import MaxbetConst from '../../../../constants/MaxbetConst';
-import { TEditSetting, TExpression } from '../EditType';
+import { uniqueId } from 'lodash';
+import { TExpressionRow } from '../EditType';
 import Action from './Action';
-import Expression from './Expression';
+import Condition from './Condition';
 import Value from './Value';
 
 interface RowExpressionProps {
-  items: TExpression[];
+  expressionList: Array<TExpressionRow>;
   title?: string;
-  inputKey: keyof TEditSetting;
+  property: "ipTv" | "round" | "division";
 }
 
-const RowsExpression: React.FC<RowExpressionProps> = ({ items, title, inputKey }) => {
+const RowsExpression = ({ expressionList, title, property }: RowExpressionProps) => {
   return (
     <div className='content'>
       {title && <div className='left'>{title}</div>}
       <div className='right'>
-        {items.map((item, index) => {
-          const rowProps = {
-            item,
-            index,
-            inputKey,
-            modelsLength: items.length,
-            modelExpressionDefault: {
-              [inputKey]: {
-                expression: MaxbetConst.expressionOption[0],
-                value: ''
-              }
-            },
-            hasWrite: true
-          };
-
-          return (
-            <div className='item' key={`${index}-${inputKey}`}>
-              <Expression {...rowProps} />
-              <Value {...rowProps} />
-              <Action {...rowProps} />
-            </div>
-          );
-        })}
+        {expressionList.map((expression, index) =>
+        (
+          <div className='expression__row' key={`${uniqueId()}`}>
+            <Condition
+              property={property}
+              condition={expression.condition}
+              index={index}
+              hasWrite />
+            <Value value={expression.value}
+              index={index}
+              property={property}
+              hasWrite />
+            <Action property={property}
+              index={index}
+              hasWrite
+              modelsLength={expressionList.length}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

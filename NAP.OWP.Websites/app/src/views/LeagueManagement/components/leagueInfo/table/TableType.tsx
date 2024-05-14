@@ -12,33 +12,26 @@ type TDataSource = {
   spread_Note: string;
   spreadShow: string;
   maxbetWD_HDP_Show: string;
-  maxbetWD_HDP_Value: number;
-  maxbetWD_HDP_Note: string;
   wD_NoOfHDP_Show: string;
-  WD_NoOfHDP_Value: string;
-  wD_NoOfHDP_Note: string;
   maxbetWK_HDP_Show: string;
-  maxbetWK_HDP_Value: number;
-  maxbetWK_HDP_Note: string;
   wK_NoOfHDP_Show: string;
-  wK_NoOfHDP_Value: string;
-  wK_NoOfHDP_Note: string;
   lstNote: string;
   remark2: string;
   comment: string;
-  condition: {
-    hasTv: boolean;
-    hasIpTv: boolean;
-    ipTv: Array<TCondition>;
-    round: Array<TCondition>;
-    division: Array<TCondition>;
-    remark: string;
-  };
+  condition: TConditionSource;
+};
+type TConditionSource = {
+  hasTv: boolean;
+  hasIpTv: boolean;
+  ipTv: Array<TCondition>;
+  round: Array<TCondition>;
+  division: Array<TCondition>;
+  remark: string;
 };
 
 type TCondition = {
-  type: string;
-  value: string;
+  type: "Contains" | "Equals";
+  value: string | number | undefined;
 };
 
 type TTableSlice = {
@@ -71,4 +64,4 @@ type TMultipleFilter = {
   };
 };
 
-export { TCondition, TDataSource, TTableSlice, TColumnKey, TMultipleFilter };
+export { TCondition, TConditionSource, TDataSource, TTableSlice, TColumnKey, TMultipleFilter };

@@ -1,26 +1,29 @@
-import React from 'react';
+
 import { useDispatch } from 'react-redux';
 import Select from 'react-select-ts';
 import MaxbetConst from '../../../../constants/MaxbetConst';
-import { TConditions, TExpression, TOption } from '../EditType';
-import { handleUpdateRounds } from '../slice/editSettingSlice';
+import { TOption } from '../EditType';
+import { updateExpression } from '../slice/editSettingSlice';
 
-interface ExpressionProps {
-  item: TExpression;
+interface ConditionProps {
+  condition: {
+    value: number;
+    label: string;
+  };
   index: number;
   hasWrite: boolean;
-  inputKey: keyof TConditions;
+  property: "ipTv" | "round" | "division";
 }
 
-const Expression: React.FC<ExpressionProps> = ({ item, index, hasWrite = true, inputKey }) => {
+const Condition = ({ condition, index, hasWrite = true, property }: ConditionProps) => {
   const dispatch = useDispatch();
 
   const handleChangeExpression = (selectedOption: TOption | null) => {
-    dispatch(
-      handleUpdateRounds({
-        property: inputKey,
+    selectedOption && dispatch(
+      updateExpression({
+        property,
         key: 'type',
-        value: selectedOption!.value,
+        value: selectedOption.label?.toString(),
         index
       })
     );
@@ -30,7 +33,7 @@ const Expression: React.FC<ExpressionProps> = ({ item, index, hasWrite = true, i
     <Select
       isDisabled={!hasWrite}
       options={MaxbetConst.expressionOption}
-      defaultValue={item.expression}
+      defaultValue={condition}
       className='basic-multi-select'
       classNamePrefix='select'
       name='list-condition'
@@ -39,4 +42,4 @@ const Expression: React.FC<ExpressionProps> = ({ item, index, hasWrite = true, i
   );
 };
 
-export default Expression;
+export default Condition;

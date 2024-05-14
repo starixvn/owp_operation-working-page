@@ -1,13 +1,10 @@
-import { TCondition, TDataSource } from "../table/TableType";
+import { TCondition } from "../table/TableType";
 
 type TOption = {
   value: number;
   label: string | null;
 };
 
-type TProps = {
-  data: TDataSource;
-}
 type TConditions = {
   ipTv: Array<TCondition>;
   round: Array<TCondition>;
@@ -15,6 +12,8 @@ type TConditions = {
 }
 
 type TEditSetting = {
+  leagueGroupOptions: TOption[],
+  loading: string,
   leagueSettingId: number;
   league: string;
   owpLeagueId: number;
@@ -33,9 +32,11 @@ type TEditSetting = {
   remark: string;
 } & TConditions;
 
-type TExpression = {
+type TUpdateSettingSender = Omit<TEditSetting, "leagueGroupOptions" | "loading">
+
+type TExpressionRow = {
   key: string;
-  expression: {
+  condition: {
     value: number;
     label: string;
   };
@@ -48,4 +49,4 @@ type TLeagueCategory = {
   Value: string;
 }
 
-export { TEditSetting, TExpression, TOption, TProps, TConditions, TLeagueCategory };
+export { TEditSetting, TExpressionRow, TOption, TConditions, TLeagueCategory, TUpdateSettingSender };

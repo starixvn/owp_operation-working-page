@@ -1,9 +1,8 @@
-import React from 'react';
-import { TProps } from '../EditType';
+
 import { InputItem } from '../component/InputItem';
 
-const MicsMatch: React.FC<TProps> = ({ data }) => {
-  const { lstNote, remark2 } = data;
+const MicsMatch = (props: { lstNote: string, remark2: string }) => {
+  const { lstNote, remark2 } = props;
 
   return (
     <div className='list'>

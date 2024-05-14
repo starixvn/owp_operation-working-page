@@ -2,23 +2,26 @@ import { createSelector, createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../../../Shared/Constants';
 import { RootState } from '../../app/storeNative';
 import { TCondition, TDataSource } from '../../table/TableType';
-import { TConditions, TEditSetting, TOption } from '../EditType';
+import { TOption } from '../EditType';
 import { getLeagueGroupOptionsThunk } from './editSettingThunk';
 import { mapEditSettingFromDataSource } from '../helper/helper';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { forEach } from 'lodash';
 
 interface ConditionPayLoad {
-  key: string;
-  property: keyof TConditions;
-  value: string | number;
+  key: 'type' | 'value';
+  property: TAddExpressionKey;
+  value: ('Contains' | 'Equals') | (string | number | undefined);
   index: number;
 }
+
+type TAddExpressionKey = "ipTv" | "round" | "division";
 
 const EditSettingSlice = createSlice({
   name: 'editSettingSlice',
   initialState: {
     leagueGroupOptions: [] as TOption[],
     loading: REQUEST_STATUS.idle,
-    editModel: {} as TEditSetting,
     leagueSettingId: 0,
     league: '',
     owpLeagueId: 0,
@@ -40,29 +43,67 @@ const EditSettingSlice = createSlice({
     division: [] as Array<TCondition>,
   },
   reducers: {
-    setInitSetting: (state, action) => {
-      const data: TDataSource = action.payload;
-      return {
-        ...state,
-        ...mapEditSettingFromDataSource(data)
-      };
+    setInitSetting: (state, action: PayloadAction<TDataSource>) => {
+      const { ipTv,
+        leagueSettingId,
+        league,
+        owpLeagueId,
+        leagueGroupId,
+        leagueGroup,
+        spread,
+        maxbetWD_HDP,
+        wD_NoOfHDP,
+        maxbetWK_HDP,
+        wK_NoOfHDP,
+        lstNote,
+        remark2,
+        comment,
+        hasTv,
+        hasIpTv,
+        remark,
+        round,
+        division } = mapEditSettingFromDataSource(action.payload);
+      state.ipTv = ipTv;
+      state.leagueSettingId = leagueSettingId;
+      state.league = league;
+      state.owpLeagueId = owpLeagueId;
+      state.leagueGroupId = leagueGroupId;
+      state.leagueGroup = leagueGroup;
+      state.spread = spread;
+      state.maxbetWD_HDP = maxbetWD_HDP;
+      state.wD_NoOfHDP = wD_NoOfHDP;
+      state.maxbetWK_HDP = maxbetWK_HDP;
+      state.wK_NoOfHDP = wK_NoOfHDP;
+      state.lstNote = lstNote;
+      state.remark2 = remark2;
+      state.comment = comment;
+      state.hasTv = hasTv;
+      state.hasIpTv = hasIpTv;
+      state.remark = remark;
+      state.round = round;
+      state.division = division;
     },
-    updateObject: (state, action: { payload: { inputKey: string; newValue: string | number | boolean } }) => {
-      const { inputKey, newValue } = action.payload;
-      return { ...state, [inputKey]: newValue };
+    updateObject: (state, action: PayloadAction<{ property: string; value: string | number | boolean }>) => {
+      const { property, value } = action.payload;
+      state[property] = value;
     },
-    handleUpdateRounds: (state, action: { payload: ConditionPayLoad }) => {
+    addRowExpressions: (state, action: { payload: TAddExpressionKey }) => {
+      state[action.payload].push({ type: "Contains", value: '' });
+    },
+    removeRowExpressions: (state, action: { payload: { index: number, property: TAddExpressionKey } }) => {
+      const { property } = action.payload;
+
+      state[property] = state[property].filter((_, index) => index !== action.payload.index);
+    },
+    updateExpression: (state, action: PayloadAction<ConditionPayLoad>) => {
       const { key, property, value, index } = action.payload;
-      state[property] = state[property]?.map((item: TCondition, i) => {
-        if (i !== index) {
-          console.log(item);
-          return item;
-        }
-        return {
-          ...item,
-          [key]: value
-        };
-      });
+
+      if (key === 'type' && (value === "Contains" || value === "Equals")) {
+        state[property][index].type = value;
+      }
+      if (key === 'value') {
+        state[property][index].value = value;
+      }
     }
   },
   extraReducers: builder => {
@@ -78,73 +119,11 @@ const EditSettingSlice = createSlice({
 });
 
 const { reducer, actions } = EditSettingSlice;
-const { updateObject, handleUpdateRounds, setInitSetting } = actions;
-
-const selectData = createSelector(
-  (state: RootState) => state.editSettingSlice.leagueSettingId,
-  (state: RootState) => state.editSettingSlice.league,
-  (state: RootState) => state.editSettingSlice.owpLeagueId,
-  (state: RootState) => state.editSettingSlice.leagueGroupId,
-  (state: RootState) => state.editSettingSlice.leagueGroup,
-  (state: RootState) => state.editSettingSlice.spread,
-  (state: RootState) => state.editSettingSlice.maxbetWD_HDP,
-  (state: RootState) => state.editSettingSlice.wD_NoOfHDP,
-  (state: RootState) => state.editSettingSlice.maxbetWK_HDP,
-  (state: RootState) => state.editSettingSlice.wK_NoOfHDP,
-  (state: RootState) => state.editSettingSlice.lstNote,
-  (state: RootState) => state.editSettingSlice.remark2,
-  (state: RootState) => state.editSettingSlice.comment,
-  (state: RootState) => state.editSettingSlice.hasTv,
-  (state: RootState) => state.editSettingSlice.hasIpTv,
-  (state: RootState) => state.editSettingSlice.remark,
-  (state: RootState) => state.editSettingSlice.ipTv,
-  (state: RootState) => state.editSettingSlice.round,
-  (state: RootState) => state.editSettingSlice.division,
-  (
-    leagueSettingId,
-    league,
-    owpLeagueId,
-    leagueGroupId,
-    leagueGroup,
-    spread,
-    maxbetWD_HDP,
-    maxbetWD_NoOfHDP,
-    maxbetWK_HDP,
-    maxbetWK_NoOfHDP,
-    lstNote,
-    remark2,
-    comment,
-    hasTv,
-    hasIpTv,
-    remark,
-    ipTv,
-    round,
-    division,
-  ): TEditSetting => ({
-    leagueSettingId,
-    league,
-    owpLeagueId,
-    leagueGroupId,
-    leagueGroup,
-    spread: spread,
-    maxbetWD_HDP,
-    wD_NoOfHDP: maxbetWD_NoOfHDP,
-    maxbetWK_HDP,
-    wK_NoOfHDP: maxbetWK_NoOfHDP,
-    lstNote,
-    remark2,
-    comment,
-    hasTv,
-    hasIpTv,
-    remark,
-    ipTv,
-    round,
-    division
-  })
-);
+const { updateObject, updateExpression, setInitSetting, addRowExpressions, removeRowExpressions } = actions;
 
 export default reducer;
 export {
-  handleUpdateRounds, selectData, setInitSetting, updateObject
+  updateExpression, setInitSetting, updateObject,
+  addRowExpressions, removeRowExpressions
 };
 

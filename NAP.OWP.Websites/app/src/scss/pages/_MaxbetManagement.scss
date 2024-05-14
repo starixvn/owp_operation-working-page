@@ -1694,6 +1694,9 @@
       .content {
         overflow: auto;
         max-height: 500px;
+        .expression__row {
+          display: flex;
+        }
       }
 
       .item {
@@ -1894,12 +1897,7 @@
           display: flex;
         }
       }
-      textarea {
-        width: 500px !important;
-        min-height: 60px;
-        border-color: #e1e1e1;
-        border-radius: 2px;
-      }
+
       .input {
         border: 1px solid #c8ced3;
       }
@@ -1916,4 +1914,17 @@
   float: right;
   padding-top: 12px;
   padding-right: 18px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+textarea {
+  width: 500px !important;
+  min-height: 60px;
+  border-color: #e1e1e1;
+  border-radius: 2px;
+  border: 1px solid #e1e1e1;
+  resize: none;
 }

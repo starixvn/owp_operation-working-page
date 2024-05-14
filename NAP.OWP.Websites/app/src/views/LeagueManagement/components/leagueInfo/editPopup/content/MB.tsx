@@ -1,14 +1,17 @@
-import React from 'react';
-import { TProps } from '../EditType';
 import { InputItem } from '../component/InputItem';
 
-const MB: React.FC<TProps> = ({ data }) => {
+const MB = (props: {
+  maxbetWD_HDP: string,
+  wD_NoOfHDP: string,
+  maxbetWK_HDP: string,
+  wK_NoOfHDP: string
+}) => {
   const {
-    maxbetWD_HDP_Show,
-    wD_NoOfHDP_Show,
-    maxbetWK_HDP_Show,
-    wK_NoOfHDP_Show
-  } = data;
+    maxbetWD_HDP,
+    wD_NoOfHDP,
+    maxbetWK_HDP,
+    wK_NoOfHDP
+  } = props;
 
   return (
     <div className='list'>
@@ -16,22 +19,22 @@ const MB: React.FC<TProps> = ({ data }) => {
       <div className='content-column-2'>
         <InputItem
           label='Weekday HDP (K)'
-          inputKey={'maxbetWD_HDP'}
-          value={maxbetWD_HDP_Show} />
+          inputKey='maxbetWD_HDP'
+          value={maxbetWD_HDP} />
         <InputItem
           label='Weekday NO. HDP (K)'
-          inputKey={'wD_NoOfHDP'}
-          value={wD_NoOfHDP_Show} />
+          inputKey='wD_NoOfHDP'
+          value={wD_NoOfHDP} />
       </div>
       <div className='content-column-2'>
         <InputItem
           label='Weekend HDP (K)'
-          inputKey={'maxbetWK_HDP'}
-          value={maxbetWK_HDP_Show} />
+          inputKey='maxbetWK_HDP'
+          value={maxbetWK_HDP} />
         <InputItem
           label='Weekend NO. HDP (K)'
-          inputKey={'wK_NoOfHDP'}
-          value={wK_NoOfHDP_Show} />
+          inputKey='wK_NoOfHDP'
+          value={wK_NoOfHDP} />
       </div>
     </div>
   );

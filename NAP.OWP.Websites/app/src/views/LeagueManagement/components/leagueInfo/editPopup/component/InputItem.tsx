@@ -23,7 +23,7 @@ export const InputItem: React.FC<InputItemProps> = ({ label, inputKey, value }) 
 
   const handleOnBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
-    newValue !== value && dispatch(updateObject({ inputKey, newValue }));
+    newValue !== value && dispatch(updateObject({ property: inputKey, value: newValue }));
   };
 
   return (

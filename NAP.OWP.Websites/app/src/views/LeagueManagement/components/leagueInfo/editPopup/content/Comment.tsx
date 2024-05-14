@@ -1,9 +1,7 @@
-import React from 'react';
-import { TProps } from '../EditType';
+
 import CommonTextArea from '../component/CommonTextArea';
 
-const Comment: React.FC<TProps> = ({ data }) => {
-  const { comment } = data;
+const Comment = ({ comment }: { comment: string }) => {
   return (
     <div className='list'>
       <div className='title'>Comment</div>

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { buildLeagueGroupURL, buildRequestURL } from '../../../../../Shared/Service/serviceHelper';
 import { get, post } from '../../../../../Shared/Service/Service';
-import { TEditSetting, TOption } from '../EditType';
+import { TOption, TUpdateSettingSender } from '../EditType';
 import { rebuildLeagueGroupOption } from '../../../../helper/commonHelper';
 import { convertResourceToOptions } from '../helper/helper';
 
@@ -17,7 +17,7 @@ const getLeagueGroupOptionsThunk = createAsyncThunk<TOption[]>(
   }
 );
 
-const updateSettingService = async (model: TEditSetting) => {
+const updateSettingService = async (model: TUpdateSettingSender) => {
   const url = buildRequestURL('NewLeagueSetting', 'editLeagueSetting');
   const response = await post({ url, ...model });
   return response;
