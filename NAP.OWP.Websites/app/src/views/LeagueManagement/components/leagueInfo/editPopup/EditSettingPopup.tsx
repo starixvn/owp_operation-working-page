@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { TDataSource } from '../table/TableType';
-import EditSettingAction from './EditSettingContent';
+import Command from './Command';
 import Comment from './content/Comment';
 import Condition from './content/Condition';
 import FtSpread from './content/FtSpread';
@@ -11,12 +10,7 @@ import MB from './content/MB';
 import MicsMatch from './content/MicsMatch';
 import { getLeagueGroupOptionsThunk } from './slice/editSettingThunk';
 
-
-interface Props {
-  closePopup: () => void
-};
-
-const EditSettingPopup = (props: Props) => {
+const EditSettingPopup = (props: { closePopup: () => void }) => {
   const { closePopup } = props;
   const dispatch = useAppDispatch();
   const { leagueGroupOptions,
@@ -38,7 +32,7 @@ const EditSettingPopup = (props: Props) => {
     remark2 } = useAppSelector(state => state.editSettingSlice);
 
   useEffect(() => {
-    leagueGroupOptions.length === 0 && dispatch(getLeagueGroupOptionsThunk());
+    !leagueGroupOptions.length && dispatch(getLeagueGroupOptionsThunk());
   }, [dispatch, leagueGroupOptions]);
 
   return (
@@ -63,7 +57,7 @@ const EditSettingPopup = (props: Props) => {
         <Comment comment={comment} />
       </ModalBody>
       <ModalFooter>
-        <EditSettingAction closePopup={closePopup} />
+        <Command closePopup={closePopup} />
       </ModalFooter>
     </Modal>
   );

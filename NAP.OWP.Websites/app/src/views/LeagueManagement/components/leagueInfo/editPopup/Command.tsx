@@ -1,10 +1,12 @@
 import ToastrWrapper from '../../../../components/ToastrWrapper';
 import store from '../app/storeNative';
 import { updateSettingService } from './slice/editSettingThunk';
+import { useAppDispatch } from '../app/hooks';
+import { getLeagueInfoThunk } from '../table/leagueInfoTableSlice/leagueInfoThunk';
 
-const EditSettingAction = (props: { closePopup: Function; }) => {
+const Command = (props: { closePopup: Function; }) => {
   const { closePopup } = props;
-
+  const dispatch = useAppDispatch();
   const { editSettingSlice: {
     leagueSettingId,
     league,
@@ -51,6 +53,7 @@ const EditSettingAction = (props: { closePopup: Function; }) => {
     });
     if (response.status === 200) {
       await ToastrWrapper.showInfo('The setting has been edited successfully!');
+      dispatch(getLeagueInfoThunk(''));
     }
     closePopup();
   };
@@ -68,4 +71,4 @@ const EditSettingAction = (props: { closePopup: Function; }) => {
   );
 };
 
-export default EditSettingAction;
+export default Command;

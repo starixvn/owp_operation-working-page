@@ -5,12 +5,6 @@ type TOption = {
   label: string | null;
 };
 
-type TConditions = {
-  ipTv: Array<TCondition>;
-  round: Array<TCondition>;
-  division: Array<TCondition>;
-}
-
 type TEditSetting = {
   leagueGroupOptions: TOption[],
   loading: string,
@@ -30,7 +24,10 @@ type TEditSetting = {
   hasTv: boolean;
   hasIpTv: boolean;
   remark: string;
-} & TConditions;
+  ipTv: Array<TCondition>;
+  round: Array<TCondition>;
+  division: Array<TCondition>
+};
 
 type TUpdateSettingSender = Omit<TEditSetting, "leagueGroupOptions" | "loading">
 
@@ -49,4 +46,4 @@ type TLeagueCategory = {
   Value: string;
 }
 
-export { TEditSetting, TExpressionRow, TOption, TConditions, TLeagueCategory, TUpdateSettingSender };
+export { TEditSetting, TExpressionRow, TOption, TLeagueCategory, TUpdateSettingSender };

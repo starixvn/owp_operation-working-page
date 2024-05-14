@@ -1,6 +1,6 @@
 import MaxbetConst from '../../../../constants/MaxbetConst';
 import { TCondition, TDataSource } from '../../table/TableType';
-import { TExpressionRow, TLeagueCategory } from '../EditType';
+import { TConditions, TExpressionRow, TLeagueCategory } from '../EditType';
 import { v4 as uuidv4 } from 'uuid';
 
 const mapEditSettingFromDataSource = (dataSource: TDataSource) => {
@@ -10,7 +10,6 @@ const mapEditSettingFromDataSource = (dataSource: TDataSource) => {
     leagueGroupId,
     leagueGroup,
     league,
-    remark,
     spread_HDP_Value,
     spread_OU_Value,
     spreadShow,
@@ -40,41 +39,24 @@ const mapEditSettingFromDataSource = (dataSource: TDataSource) => {
     comment,
     hasTv: condition.hasTv,
     hasIpTv: true,
-    ipTv: condition.ipTv?.length
-      ? condition.ipTv
-      : [
-          {
-            type: MaxbetConst.expressionOption[0].label as
-              | 'Contains'
-              | 'Equals',
-            value: ''
-          }
-        ],
-    round: condition.round?.length
-      ? condition.round
-      : [
-          {
-            type: MaxbetConst.expressionOption[0].label as
-              | 'Contains'
-              | 'Equals',
-            value: ''
-          }
-        ],
-    division: condition.division?.length
-      ? condition.division
-      : [
-          {
-            type: MaxbetConst.expressionOption[0].label as
-              | 'Contains'
-              | 'Equals',
-            value: ''
-          }
-        ],
-    remark
+    ipTv: selectCondition(condition.ipTv),
+    round: selectCondition(condition.round),
+    division: selectCondition(condition.division),
+    remark: condition.remark
   };
 
   return result;
 };
+
+const selectCondition = (conditions: Array<TCondition>) =>
+  conditions?.length
+    ? conditions
+    : [
+        {
+          type: MaxbetConst.expressionOption[0].label as 'Contains' | 'Equals',
+          value: ''
+        }
+      ];
 
 const convertResponseToCondition = (response: TCondition[]) => {
   return response.map(item => ({

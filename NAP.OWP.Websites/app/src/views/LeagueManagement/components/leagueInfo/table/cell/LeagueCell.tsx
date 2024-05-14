@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import EditSettingPopup from '../../editPopup/EditSettingPopup';
 import { TDataSource } from '../TableType';
 import { setInitSetting } from '../../editPopup/slice/editSettingSlice';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 
 interface Props {
   className: string;
