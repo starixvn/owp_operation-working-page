@@ -10,13 +10,12 @@ interface CommonTextAreaProps {
 }
 
 const CommonTextArea: React.FC<CommonTextAreaProps> = ({ value, inputKey, rows }) => {
-  const [inputValue, setInputValue] = useState(value);
+  const [inputValue, setInputValue] = useState(value || '');
   const dispatch = useAppDispatch();
 
   const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    value !== newValue && dispatch(updateObject({ property: inputKey, value: newValue }));
   };
 
   const handleOnBlur = (event: React.ChangeEvent<HTMLTextAreaElement>) => {

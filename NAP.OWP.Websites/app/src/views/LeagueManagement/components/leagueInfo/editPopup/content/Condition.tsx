@@ -13,19 +13,18 @@ const Condition = (props: {
   const { round, division, ipTv, hasTv, hasIpTv, remark } = props.condition;
   const [checkedTV, setCheckedTV] = useState<boolean>(hasTv);
   const [checkedIPTV, setCheckedIPTV] = useState(hasIpTv);
-  console.log(hasTv, hasIpTv);
   const dispatch = useAppDispatch();
 
   const rounds = convertResponseToCondition(round);
   const divisions = convertResponseToCondition(division);
   const iptvs = convertResponseToCondition(ipTv);
 
-  const handleOnChangeHasTV = (event: React.MouseEvent<HTMLInputElement>) => {
+  const handleOnChangeHasTV = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateObject({ property: 'hasTv', value: event.currentTarget.checked }));
     setCheckedTV(event.currentTarget.checked);
   };
 
-  const handleOnChangeHasIPTV = (event: React.MouseEvent<HTMLInputElement>) => {
+  const handleOnChangeHasIPTV = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateObject({ property: 'hasIpTv', value: event.currentTarget.checked }));
     setCheckedIPTV(event.currentTarget.checked);
   };
@@ -74,8 +73,9 @@ const Condition = (props: {
             <input
               className='form-check-label'
               type='checkbox'
+              defaultChecked={checkedTV}
               checked={checkedTV}
-              onClick={handleOnChangeHasTV}
+              onChange={handleOnChangeHasTV}
             />
             TV (check in TV list)
           </label>
@@ -83,8 +83,9 @@ const Condition = (props: {
             <label>
               <input
                 type='checkbox'
+                defaultChecked={checkedIPTV}
                 checked={checkedIPTV}
-                onClick={handleOnChangeHasIPTV}
+                onChange={handleOnChangeHasIPTV}
               />
               IPTV
             </label>

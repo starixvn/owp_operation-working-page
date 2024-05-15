@@ -22,7 +22,7 @@ const MB = (props: {
           inputKey='maxbetWD_HDP'
           value={maxbetWD_HDP} />
         <InputItem
-          label='Weekday NO. HDP (K)'
+          label='Weekday NO. HDP'
           inputKey='wD_NoOfHDP'
           value={wD_NoOfHDP} />
       </div>
@@ -32,7 +32,7 @@ const MB = (props: {
           inputKey='maxbetWK_HDP'
           value={maxbetWK_HDP} />
         <InputItem
-          label='Weekend NO. HDP (K)'
+          label='Weekend NO. HDP'
           inputKey='wK_NoOfHDP'
           value={wK_NoOfHDP} />
       </div>
