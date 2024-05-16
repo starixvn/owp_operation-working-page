@@ -1,21 +1,65 @@
 {
   "classNameCells": {
-    "noCell": "no-cell",
-    "leagueGroupCell": "league-group-cell",
-    "leagueCell": "league-cell",
-    "tvCell": "tv-cell",
-    "roundCell": "round-cell",
-    "leagueDivisionCell": "league-division-cell",
-    "remarkCell": "remark-cell",
-    "spreadHDPCell": "spread-hdp-cell",
-    "spreadOUCell": "spread-ou-cell",
-    "mbWeekdayHDPCell": "mb-weekday-hdp-cell",
-    "mbWeekdayNoHDPCell": "mb-weekday-no-hdp-cell",
-    "mbWeekendHDPCell": "mb-weekend-hdp-cell",
-    "mbWeekendNoHDPCell": "mb-weekend-no-hdp-cell",
-    "lstNoteCell": "lst-note-cell",
-    "remark2Cell": "remark2-cell",
-    "commentCell": "comment-cell"
+    "noCell": {
+      "className": "no-cell",
+      "width": "40px"
+    },
+    "leagueGroupCell": {
+      "className": "league-group-cell",
+      "width": "55px"
+    },
+    "leagueCell": {
+      "className": "league-cell",
+      "width": "250px"
+    },
+    "tvCell": {
+      "className": "tv-cell",
+      "width": "80px"
+    },
+    "roundCell": {
+      "className": "round-cell",
+      "width": "80px"
+    },
+    "leagueDivisionCell": {
+      "className": "league-division-cell",
+      "width": "80px"
+    },
+    "remarkCell": {
+      "className": "remark-cell",
+      "width": "80px"
+    },
+    "spreadHDP_OUCell": {
+      "className": "spread-hdp-ou-cell",
+      "width": "100px"
+    },
+    "mbWeekdayHDPCell": {
+      "className": "mb-weekday-hdp-cell",
+      "width": "90px"
+    },
+    "mbWeekdayNoHDPCell": {
+      "className": "mb-weekday-no-hdp-cell",
+      "width": "90px"
+    },
+    "mbWeekendHDPCell": {
+      "className": "mb-weekend-hdp-cell",
+      "width": "90px"
+    },
+    "mbWeekendNoHDPCell": {
+      "className": "mb-weekend-no-hdp-cell",
+      "width": "90px"
+    },
+    "lstNoteCell": {
+      "className": "lst-note-cell",
+      "width": "150px"
+    },
+    "remark2Cell": {
+      "className": "remark2-cell",
+      "width": "150px"
+    },
+    "commentCell": {
+      "className": "comment-cell",
+      "width": "380px"
+    }
   },
   "COLUMN_KEY": {
     "League_Group": "League_Group",

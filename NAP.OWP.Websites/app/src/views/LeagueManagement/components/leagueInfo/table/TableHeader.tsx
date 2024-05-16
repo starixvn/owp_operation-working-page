@@ -1,5 +1,5 @@
 import FilterHeader from './FilterHeader';
-import { COLUMN_KEY } from './TableSchema.json';
+import { COLUMN_KEY, classNameCells } from './TableSchema.json';
 import { TColumnKey } from './TableType';
 
 const {
@@ -23,18 +23,30 @@ const TableHeader = () => {
   return (
     <>
       <tr>
-        <th rowSpan={2} className='blue-header'>
+        <th
+          style={{ width: `${classNameCells.noCell.width}` }}
+          rowSpan={2}
+          className='blue-header'>
           <div className='header-table'>
             <span>#</span>
           </div>
         </th>
-        <th rowSpan={2} className='blue-header'>
-          <div className='header-table'>
+        <th
+          style={{
+            width: `${classNameCells.leagueGroupCell.width}`,
+            textAlign: 'center'
+          }}
+          rowSpan={2}
+          className='blue-header'>
+          <div>
             <span>League Group</span>
             <FilterHeader columnKey={League_Group as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={2} className='blue-header'>
+        <th
+          style={{ width: `${classNameCells.leagueCell.width}` }}
+          rowSpan={2}
+          className='blue-header'>
           <div className='header-table'>
             <span>League</span>
             <FilterHeader columnKey={League as TColumnKey} />
@@ -43,9 +55,16 @@ const TableHeader = () => {
         <th rowSpan={1} colSpan={4} className='grey-header'>
           Condition
         </th>
-        <th rowSpan={2} className='blue-header'>
-          <div className='header-table'>
-            <span>Spread HDP - OU</span>
+        <th
+          style={{ width: `${classNameCells.spreadHDP_OUCell.width}` }}
+          rowSpan={2}
+          className='blue-header'>
+          <div>
+            <span>
+              Spread
+              <br />
+              HDP - OU
+            </span>
             <FilterHeader columnKey={Spread_HDP_OU as TColumnKey} />
           </div>
         </th>
@@ -58,7 +77,10 @@ const TableHeader = () => {
         <th rowSpan={1} colSpan={2} className='blue-header'>
           Display in Mis match file
         </th>
-        <th rowSpan={2} className='grey-header'>
+        <th
+          style={{ width: `${classNameCells.commentCell.width}` }}
+          rowSpan={2}
+          className='grey-header'>
           <div className='header-table'>
             <span>Comment</span>
             <FilterHeader columnKey={Comment as TColumnKey} />
@@ -66,61 +88,91 @@ const TableHeader = () => {
         </th>
       </tr>
       <tr>
-        <th rowSpan={1} className='blue-header'>
+        <th
+          style={{ width: `${classNameCells.tvCell.width}` }}
+          rowSpan={1}
+          className='blue-header'>
           <div className='header-table'>
             <span>TV</span>
             <FilterHeader columnKey={Tv as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='blue-header'>
+        <th
+          style={{ width: `${classNameCells.roundCell.width}` }}
+          rowSpan={1}
+          className='blue-header'>
           <div className='header-table'>
             <span>Round</span>
             <FilterHeader columnKey={Round as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='blue-header'>
+        <th
+          style={{ width: `${classNameCells.leagueDivisionCell.width}` }}
+          rowSpan={1}
+          className='blue-header'>
           <div className='header-table'>
             <span>League Division</span>
             <FilterHeader columnKey={League_Division as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='blue-header'>
+        <th
+          style={{ width: `${classNameCells.remarkCell.width}` }}
+          rowSpan={1}
+          className='blue-header'>
           <div className='header-table'>
             <span>Remark</span>
             <FilterHeader columnKey={Remark as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='light-blue-header'>
+        <th
+          style={{ width: `${classNameCells.mbWeekdayHDPCell.width}` }}
+          rowSpan={1}
+          className='light-blue-header'>
           <div className='header-table'>
             <span>HDP(K)</span>
             <FilterHeader columnKey={MB_WD_HDP as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='light-blue-header'>
+        <th
+          style={{ width: `${classNameCells.mbWeekdayNoHDPCell.width}` }}
+          rowSpan={1}
+          className='light-blue-header'>
           <div className='header-table'>
             <span>NO.HDP</span>
             <FilterHeader columnKey={MB_WD_NO_HDP as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='pink-header'>
+        <th
+          style={{ width: `${classNameCells.mbWeekendHDPCell.width}` }}
+          rowSpan={1}
+          className='pink-header'>
           <div className='header-table'>
             <span>HDP</span>
             <FilterHeader columnKey={MB_WK_HDP as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='pink-header'>
+        <th
+          style={{ width: `${classNameCells.mbWeekendNoHDPCell.width}` }}
+          rowSpan={1}
+          className='pink-header'>
           <div className='header-table'>
             <span>NO.HDP</span>
             <FilterHeader columnKey={MB_WK_NO_HDP as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='blue-header'>
+        <th
+          style={{ width: `${classNameCells.lstNoteCell.width}` }}
+          rowSpan={1}
+          className='blue-header'>
           <div className='header-table'>
             <span>LST Note (Show under League)</span>
             <FilterHeader columnKey={LST_Note as TColumnKey} />
           </div>
         </th>
-        <th rowSpan={1} className='blue-header'>
+        <th
+          style={{ width: `${classNameCells.remark2Cell.width}` }}
+          rowSpan={1}
+          className='blue-header'>
           <div className='header-table'>
             <span>Remark 2 (Show under match)</span>
             <FilterHeader columnKey={Remark2 as TColumnKey} />
