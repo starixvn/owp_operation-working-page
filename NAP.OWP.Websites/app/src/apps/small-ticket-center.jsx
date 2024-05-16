@@ -3,7 +3,7 @@ import SmallTicketCenterAppNative from '../views/SmallTicketCenter/SmallTicketCe
 import '../scss/base/_base.scss';
 import '../scss/fonts/icon-OWP/icon.scss';
 import '../scss/style.scss';
-import '../scss/pages/_TicketCenter.scss';
+import '../scss/pages/_SmallTicketCenter.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

@@ -2,26 +2,29 @@ import { useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import CalendarIcon from 'mdi-react/CalendarIcon';
 import { getDefaultDateRange } from '../../../Helper/TicketCenterHelper';
-import Utils from '../../../../Shared/Utils';
-import { TUpdateTimeRange } from '../../../type';
+import { useAppDispatch } from '../../../app/hooksNative';
+import store from '../../../app/storeNative';
+import { setFilterTimeRange } from './filterSlice';
 
+const { minDate, toDateDefault } = getDefaultDateRange();
 
-const DateRangeFilter = (props: TUpdateTimeRange) => {
-  const { fromDateDefault, toDateDefault, minDate } = getDefaultDateRange();
-  const [toDateFilter, setToDateFilter] = useState(toDateDefault);
-  const [fromDateFilter, setFromDateFilter] = useState(fromDateDefault);
+const DateRangeFilter = () => {
+  const dispatch= useAppDispatch();
+  const {filterInfo: {fromDateFilter, toDateFilter}}= store.getState().filter.entities;
+  const [fromDate, setFromDate] = useState(fromDateFilter);
+  const [toDate, setToDate] = useState(toDateFilter);
 
   const toDateRef = useRef<DatePicker>(null);
   const fromDateRef = useRef<DatePicker>(null);
 
   const handleChangeFromDate = (date: Date) => {
-    setFromDateFilter(date);
-    props.onUpdate('fromDate', Utils.formatDate(date));
+    setFromDate(date);
+    dispatch(setFilterTimeRange( {key:'fromDateFilter', value: date}));
   };
 
   const handleChangeToDate = (date: Date) => {
-    setToDateFilter(date);
-    props.onUpdate('fromDate', Utils.formatDate(date));
+    setToDate(date);
+    dispatch(setFilterTimeRange( {key:'toDateFilter', value: date}));
   };
 
   return (
@@ -29,9 +32,9 @@ const DateRangeFilter = (props: TUpdateTimeRange) => {
       <div className='calendar'>
         <div className='label'>From Date</div>
         <DatePicker
-          maxDate={toDateFilter}
+          maxDate={toDate}
           minDate={minDate}
-          selected={fromDateFilter}
+          selected={fromDate}
           dateFormat='MMM dd, yyyy'
           ref={fromDateRef}
           onChange={handleChangeFromDate}
@@ -46,8 +49,8 @@ const DateRangeFilter = (props: TUpdateTimeRange) => {
         <div className='label'>To Date</div>
         <DatePicker
           maxDate={toDateDefault}
-          minDate={fromDateFilter}
-          selected={toDateFilter}
+          minDate={fromDate}
+          selected={toDate}
           dateFormat='MMM dd, yyyy'
           ref={toDateRef}
           onChange={handleChangeToDate}

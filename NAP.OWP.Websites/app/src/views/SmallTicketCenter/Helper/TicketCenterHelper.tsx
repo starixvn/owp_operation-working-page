@@ -6,6 +6,7 @@ import {
   EVENT_TYPE,
   URL
 } from '../../Shared/TicketCenterPrematch/helper/helper';
+import { TChildrenResponse, TParentsResponse } from '../type';
 
 const getDefaultDateRange = () => {
   const dateTimeGmtPlus8String = new Date().toLocaleString('en-US', {
@@ -50,7 +51,7 @@ const buildValueTicketsFilter = policy => {
   return flowBasic(ActorId);
 };
 
-const buildTicketTypeFilter = (parents, children) => {
+const buildTicketTypeFilter = (parents: Array<TParentsResponse>, children: Array<TChildrenResponse>) => {
   const parentOption = parents.map(({ id, name }) => ({
     value: `p-${id}`,
     title: name,
@@ -58,7 +59,7 @@ const buildTicketTypeFilter = (parents, children) => {
     showTitle: name
   }));
 
-  const getParent = id => parents.find(x => x.id === id);
+  const getParent = (id: number) => parents.find(x => x.id === id);
 
   const childrenOption = children.map(
     ({ parentId, subTypeId, subTypeName }) => ({

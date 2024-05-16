@@ -1,15 +1,5 @@
 import { get } from '../../Shared/Service/Service';
-import { netCoreURL, netFwURL, getTicketType } from '../const/const.json';
-
-const getTicketTypeOption = async () => {
-  const url =
-    process.env.NODE_ENV === 'development'
-      ? `${netCoreURL}/${getTicketType}`
-      : `${window.netCoreRootUrl}/${netFwURL}/${getTicketType}`;
-
-  const response = await get({ url });
-  return response.data;
-};
+import { netCoreURL, netFwURL } from '../const/const.json';
 
 const getStatusHistory = async ticketId => {
   const url =
@@ -31,4 +21,4 @@ const markAllTicketsAsRead = async actorId => {
   return response;
 };
 
-export { getTicketTypeOption, getStatusHistory, markAllTicketsAsRead };
+export { getStatusHistory, markAllTicketsAsRead };
