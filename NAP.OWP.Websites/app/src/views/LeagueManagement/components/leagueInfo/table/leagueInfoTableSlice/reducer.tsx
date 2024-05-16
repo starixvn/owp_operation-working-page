@@ -19,6 +19,7 @@ const LeagueInfoTableSlice = createSlice({
     entitiesOriginal: [],
     loading: REQUEST_STATUS.idle,
     leagueFilterHeader: '',
+    focusSettingId: 0,
     multipleFilter: {
       League_Group: buildMultipleFilterDefault(),
       League: buildMultipleFilterDefault(),
@@ -46,6 +47,9 @@ const LeagueInfoTableSlice = createSlice({
       const league = actions.payload;
       state.leagueFilterHeader = league;
     },
+    setFocusSettingId: (state, actions) => {
+      state.focusSettingId = actions.payload;
+    },
     setMultipleFilter: (
       state,
       action: PayloadAction<{
@@ -64,7 +68,8 @@ const LeagueInfoTableSlice = createSlice({
         state.entitiesOriginal,
         state.multipleFilter
       );
-    }
+    },
+
   },
   extraReducers: builder => {
     builder
@@ -81,8 +86,8 @@ const LeagueInfoTableSlice = createSlice({
 });
 const { reducer, actions } = LeagueInfoTableSlice;
 
-const { clearFilter, setMultipleFilter, setLeagueHeaderFiler } = actions;
+const { clearFilter, setMultipleFilter, setLeagueHeaderFiler, setFocusSettingId } = actions;
 
-export { clearFilter, setMultipleFilter, setLeagueHeaderFiler };
+export { clearFilter, setMultipleFilter, setLeagueHeaderFiler, setFocusSettingId };
 
 export default reducer;

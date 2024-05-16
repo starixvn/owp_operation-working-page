@@ -1,12 +1,14 @@
-import { TDataSource } from './TableType';
-import { classNameCells, itemRowHeight } from './TableSchema.json';
 import { uniqueId } from 'lodash';
-import CommonCell from './cell/CommonCell';
+import { useAppSelector } from '../app/hooks';
+import { classNameCells, itemRowHeight } from './TableSchema.json';
+import { TDataSource } from './TableType';
 import CommentCell from './cell/CommentCell';
+import CommonCell from './cell/CommonCell';
 import LeagueCell from './cell/LeagueCell';
 
 const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   const rows = [];
+  const focusSettingId = useAppSelector(state => state.leagueInfoTableSlice.focusSettingId);
 
   rows.push(
     <tr
@@ -24,8 +26,9 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
       return `${tv} ${linkVerb} ${iptvValue}`;
     };
     if (row) {
+      const className = focusSettingId === row.leagueSettingId ? 'is-focus-row' : '';
       rows.push(
-        <tr key={uniqueId()}>
+        <tr key={uniqueId()} className={className}>
           <CommonCell
             className={classNameCells.noCell.className}
             value={(i + 1).toString()}
