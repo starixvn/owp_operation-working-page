@@ -6,11 +6,11 @@
     },
     "leagueGroupCell": {
       "className": "league-group-cell",
-      "width": "55px"
+      "width": "75px"
     },
     "leagueCell": {
       "className": "league-cell",
-      "width": "250px"
+      "width": "230px"
     },
     "tvCell": {
       "className": "tv-cell",

@@ -1443,6 +1443,14 @@
   }
 
   tbody {
+    :hover {
+      background-color: #dae4ec;
+    }
+
+    .league-group-cell,
+    .no-cell {
+      text-align: center;
+    }
 
     .round-cell {
       max-width: 80px;
@@ -1494,8 +1502,7 @@
 
     &:nth-child(9),
     &:nth-child(10),
-    &:nth-child(11),
-    &:nth-child(12) {
+    &:nth-child(11) {
       .filter-popup {
         right: 1px !important;
         left: auto !important;
@@ -1622,6 +1629,7 @@
       .content {
         overflow: auto;
         max-height: 500px;
+
         .expression__row {
           display: flex;
         }
@@ -1722,6 +1730,7 @@
       border: 1px solid #c8ced3;
       border-radius: 3px !important;
     }
+
     textarea:focus,
     .input:focus {
       outline: none !important;
@@ -1824,10 +1833,12 @@
           margin-right: 10px;
           border: 2px solid #c8ced3;
         }
+
         input[type='checkbox']:checked {
           background-color: #3498db;
           border: none;
         }
+
         input[type='checkbox']:checked:after {
           content: '';
           display: block;

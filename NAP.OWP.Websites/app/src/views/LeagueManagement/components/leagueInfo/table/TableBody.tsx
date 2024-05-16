@@ -15,6 +15,14 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   );
   for (let i = displayStart; i < displayEnd; ++i) {
     let row = data[i] as TDataSource;
+    const buildValueForTvCell = () => {
+      const tv = row.condition.hasTv ? 'tv' : '';
+      const iptvValue = row.condition.ipTv
+        .map(x => (x.type === 'Contains' ? `*${x.value}*` : x.value))
+        .join('/');
+      const linkVerb = iptvValue.length && tv.length ? 'or' : '';
+      return `${tv} ${linkVerb} ${iptvValue}`;
+    };
     if (row) {
       rows.push(
         <tr key={uniqueId()}>
@@ -32,9 +40,7 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
           />
           <CommonCell
             className={classNameCells.tvCell.className}
-            value={row.condition.ipTv
-              .map(x => (x.type === 'Contains' ? `*${x.value}*` : x.value))
-              .join('/')}
+            value={buildValueForTvCell()}
           />
           <CommonCell
             className={classNameCells.roundCell.className}

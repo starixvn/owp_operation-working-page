@@ -38,7 +38,7 @@ const TableHeader = () => {
           }}
           rowSpan={2}
           className='blue-header'>
-          <div>
+          <div className='header-table'>
             <span>League Group</span>
             <FilterHeader columnKey={League_Group as TColumnKey} />
           </div>
@@ -59,7 +59,7 @@ const TableHeader = () => {
           style={{ width: `${classNameCells.spreadHDP_OUCell.width}` }}
           rowSpan={2}
           className='blue-header'>
-          <div>
+          <div className='header-table'>
             <span>
               Spread
               <br />
