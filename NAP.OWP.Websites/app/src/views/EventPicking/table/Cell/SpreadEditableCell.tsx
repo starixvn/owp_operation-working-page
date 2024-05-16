@@ -2,11 +2,13 @@ import { createRef, useEffect } from 'react';
 import NumericTextbox from 'react-numeric-textbox';
 import { useAppDispatch } from '../../app/hooks';
 import { setValueMaxbetSpread } from '../eventPickingTableSlice/reducer';
+import { handleCheckButton } from '../../helper/filterHelper';
 
-const SpreadEditableCell = ({ spread, spreadKey, infoSiteMatchId }: {
+const SpreadEditableCell = ({ spread, spreadKey, infoSiteMatchId, leagueName }: {
   spread: number | string | undefined,
   spreadKey: 'maxbetHdp' | 'spreadOu' | 'spreadHdp',
-  infoSiteMatchId: number
+  infoSiteMatchId: number,
+  leagueName: string
 }) => {
   let newValue = -999999999;
   const dispatch = useAppDispatch();
@@ -56,7 +58,7 @@ const SpreadEditableCell = ({ spread, spreadKey, infoSiteMatchId }: {
         />
         <span>%</span>
       </div>
-      {!spread && <a className='mb__check' href='http://google.com'>
+      {!spread && <a className='mb__check' onClick={() => handleCheckButton(leagueName)}>
         Check
       </a>}
     </>

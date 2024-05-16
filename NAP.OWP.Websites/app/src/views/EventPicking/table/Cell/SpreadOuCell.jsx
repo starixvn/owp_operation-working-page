@@ -8,13 +8,14 @@ const propTypes = {
 
 const SpreadOuCell = props => {
   const { rowIndex, dataSource } = props;
-  const { spreadOu, infoSiteMatchId } = dataSource[rowIndex];
+  const { spreadOu, infoSiteMatchId, leagueName } = dataSource[rowIndex];
 
   return (
     <SpreadCell
       spreadKey='spreadOu'
       infoSiteMatchId={infoSiteMatchId}
       spread={spreadOu}
+      leagueName={leagueName}
     />
   );
 };

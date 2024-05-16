@@ -2,13 +2,16 @@ import { useEffect, useRef } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { setValueNoOfHdp } from '../eventPickingTableSlice/reducer';
 import { uniqueId } from 'lodash';
+import { handleCheckButton } from '../../helper/filterHelper';
 
 const NoOfHdpEditableCell = ({
   value,
-  infoSiteMatchId
+  infoSiteMatchId,
+  leagueName
 }: {
   value: string | null | undefined,
-  infoSiteMatchId: number
+  infoSiteMatchId: number,
+  leagueName: string
 }) => {
   console.log(value);
   let newValue = null;
@@ -45,7 +48,7 @@ const NoOfHdpEditableCell = ({
         onBlur={handleBlur}
         onChange={v => { newValue = v.target?.value; }}
       />
-      {!value && <a className='mb__check' href='http://google.com'>
+      {!value && <a className='mb__check' onClick={() => handleCheckButton(leagueName)}>
         Check
       </a>}
     </div>

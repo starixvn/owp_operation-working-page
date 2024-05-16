@@ -1,8 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TColumnKey, TTableSlice } from '../TableType';
 import {
-  getLeagueInfoThunk,
-  getLeagueSettingByOwpLeagueId
+  getLeagueInfoThunk
 } from './leagueInfoThunk';
 import { REQUEST_STATUS } from '../../../../../Shared/Constants';
 import { Option } from '../../../../../Shared/MultipleSelection/type';
@@ -19,6 +18,7 @@ const LeagueInfoTableSlice = createSlice({
     entities: [],
     entitiesOriginal: [],
     loading: REQUEST_STATUS.idle,
+    leagueFilterHeader: '',
     multipleFilter: {
       League_Group: buildMultipleFilterDefault(),
       League: buildMultipleFilterDefault(),
@@ -41,6 +41,10 @@ const LeagueInfoTableSlice = createSlice({
       const { entitiesOriginal } = state;
       state.entities = entitiesOriginal;
       buildDefaultTableFilter(state.entitiesOriginal, state.multipleFilter);
+    },
+    setLeagueHeaderFiler: (state, actions) => {
+      const league = actions.payload;
+      state.leagueFilterHeader = league;
     },
     setMultipleFilter: (
       state,
@@ -72,25 +76,13 @@ const LeagueInfoTableSlice = createSlice({
         state.entitiesOriginal = payload;
         state.loading = REQUEST_STATUS.idle;
         buildDefaultTableFilter(state.entitiesOriginal, state.multipleFilter);
-      })
-      .addCase(getLeagueSettingByOwpLeagueId.pending, state => {
-        state.loading = REQUEST_STATUS.pending;
-      })
-      .addCase(
-        getLeagueSettingByOwpLeagueId.fulfilled,
-        (state, { payload }) => {
-          state.entities = payload;
-          state.entitiesOriginal = payload;
-          state.loading = REQUEST_STATUS.idle;
-          buildDefaultTableFilter(state.entitiesOriginal, state.multipleFilter);
-        }
-      );
+      });
   }
 });
 const { reducer, actions } = LeagueInfoTableSlice;
 
-const { clearFilter, setMultipleFilter } = actions;
+const { clearFilter, setMultipleFilter, setLeagueHeaderFiler } = actions;
 
-export { clearFilter, setMultipleFilter };
+export { clearFilter, setMultipleFilter, setLeagueHeaderFiler };
 
 export default reducer;

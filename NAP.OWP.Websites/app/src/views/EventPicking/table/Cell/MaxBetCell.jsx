@@ -15,20 +15,20 @@ const propTypes = {
 const MaxBetCell = props => {
   const { mode } = store.getState().mode;
   const { rowIndex, dataSource } = props;
-  const { maxbetHdp, infoSiteMatchId, owpLeagueId } = dataSource[rowIndex];
+  const { maxbetHdp, infoSiteMatchId, leagueName } = dataSource[rowIndex];
 
   const component = {
     [VIEW]: (
       <MaxBetViewCell
         maxBet={convertThousandToK(maxbetHdp, true)}
-        owpLeagueId={owpLeagueId}
+        leagueName={leagueName}
       />
     ),
     [EDIT]: (
       <MaxbetEditableCell
         infoSiteMatchId={infoSiteMatchId}
         maxBet={convertThousandToK(maxbetHdp, false) ?? 0}
-        owpLeagueId={owpLeagueId}
+        leagueName={leagueName}
       />
     )
   };

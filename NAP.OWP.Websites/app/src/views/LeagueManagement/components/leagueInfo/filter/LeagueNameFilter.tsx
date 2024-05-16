@@ -1,40 +1,34 @@
-import { useState, KeyboardEvent, useEffect } from 'react';
+import { KeyboardEvent, useEffect, useState } from 'react';
 import { useAppDispatch } from '../app/hooks';
-import {
-  getLeagueInfoThunk,
-  getLeagueSettingByOwpLeagueId
-} from '../table/leagueInfoTableSlice/leagueInfoThunk';
-import TVListCustom from './TVListCustom';
+import { fetchLeagueSettingInfo } from '../table/leagueInfoTableSlice/leagueInfoThunk';
+import { setLeagueHeaderFiler } from '../table/leagueInfoTableSlice/reducer';
+
 const LeagueNameFilter = () => {
-  const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
   const searchParams = new URLSearchParams(document.location.search);
-  const owpLeagueId = searchParams.get('leagueId');
-  const parseOwpLeagueId = owpLeagueId ? parseInt(owpLeagueId) : 0;
+  const owpLeagueName = searchParams.get('leagueName');
+  const [value, setValue] = useState(owpLeagueName || '');
+  const isEqualLeague = !!owpLeagueName;
+
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    e.key === 'Enter' && handleOnBlur();
+    e.key === 'Enter' && handleEnter();
   };
 
-  const handleOnBlur = async () => {
-    await dispatch(getLeagueInfoThunk(value));
+  const handleEnter = async () => {
+    dispatch(setLeagueHeaderFiler(value));
+    await dispatch(fetchLeagueSettingInfo(value));
   };
 
   useEffect(() => {
-    const getAllLeague = async () => {
-      await dispatch(getLeagueInfoThunk(value));
-    };
-    const getLeagueSettingById = async () => {
-      await dispatch(getLeagueSettingByOwpLeagueId(parseOwpLeagueId));
-    };
-    owpLeagueId ? getLeagueSettingById() : getAllLeague();
-  }, []);
+    dispatch(setLeagueHeaderFiler(value));
+    dispatch(fetchLeagueSettingInfo(value, isEqualLeague));
+  }, [owpLeagueName]);
 
   return (
     <div className='league-filter'>
       <span> League </span>
       <input
         type='text'
-        onBlur={handleOnBlur}
         onKeyDown={handleKeyDown}
         value={value}
         onChange={e => setValue(e.target.value)}></input>

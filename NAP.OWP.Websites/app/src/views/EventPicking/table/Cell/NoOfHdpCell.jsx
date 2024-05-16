@@ -12,12 +12,16 @@ const propTypes = {
 const NoOfHdpCell = props => {
   const { mode } = store.getState().mode;
   const { rowIndex, dataSource } = props;
-  const { noOfHDP, infoSiteMatchId } = dataSource[rowIndex];
+  const { noOfHDP, infoSiteMatchId, leagueName } = dataSource[rowIndex];
 
   const component = {
-    [VIEW]: <NoOfHdpViewCell value={noOfHDP} />,
+    [VIEW]: <NoOfHdpViewCell value={noOfHDP} leagueName={leagueName} />,
     [EDIT]: (
-      <NoOfHdpEditableCell infoSiteMatchId={infoSiteMatchId} value={noOfHDP} />
+      <NoOfHdpEditableCell
+        infoSiteMatchId={infoSiteMatchId}
+        value={noOfHDP}
+        leagueName={leagueName}
+      />
     )
   };
   return component[mode];

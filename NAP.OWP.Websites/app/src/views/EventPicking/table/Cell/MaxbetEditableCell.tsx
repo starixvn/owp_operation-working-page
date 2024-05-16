@@ -2,15 +2,16 @@ import { createRef, useEffect } from 'react';
 import NumericTextbox from 'react-numeric-textbox';
 import { useAppDispatch } from '../../app/hooks';
 import { setValueMaxbetSpread } from '../eventPickingTableSlice/reducer';
+import { handleCheckButton } from '../../helper/filterHelper';
 
 const MaxbetEditableCell = ({
   maxBet,
   infoSiteMatchId,
-  owpLeagueId
+  leagueName
 }: {
   maxBet: string | number | undefined;
   infoSiteMatchId: number;
-  owpLeagueId: number;
+  leagueName: string;
 }) => {
   let newValue = -999999999;
   const dispatch = useAppDispatch();
@@ -23,10 +24,6 @@ const MaxbetEditableCell = ({
         infoSiteMatchId
       })
     );
-  };
-
-  const handleOnclick = () => {
-    window.open(`LeagueManagement?leagueId=${owpLeagueId}`, `${owpLeagueId}`);
   };
 
   useEffect(() => {
@@ -65,7 +62,7 @@ const MaxbetEditableCell = ({
         <span>K</span>
       </div>
       {!maxBet && (
-        <a className='mb__check' onClick={handleOnclick}>
+        <a className='mb__check' onClick={() => handleCheckButton(leagueName)}>
           Check
         </a>
       )}

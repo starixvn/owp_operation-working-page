@@ -1,8 +1,8 @@
 import ToastrWrapper from '../../../../components/ToastrWrapper';
-import store from '../app/storeNative';
-import { updateSettingService } from './slice/editSettingThunk';
 import { useAppDispatch } from '../app/hooks';
-import { getLeagueInfoThunk } from '../table/leagueInfoTableSlice/leagueInfoThunk';
+import store from '../app/storeNative';
+import { fetchLeagueSettingInfo } from '../table/leagueInfoTableSlice/leagueInfoThunk';
+import { updateSettingService } from './slice/editSettingThunk';
 
 const Command = (props: { closePopup: Function; }) => {
   const { closePopup } = props;
@@ -27,7 +27,7 @@ const Command = (props: { closePopup: Function; }) => {
     ipTv,
     round,
     division,
-  } } = store.getState();
+  }, leagueInfoTableSlice: { leagueFilterHeader } } = store.getState();
 
   const handleSave = async () => {
     const response = await updateSettingService({
@@ -53,7 +53,7 @@ const Command = (props: { closePopup: Function; }) => {
     });
     if (response.status === 200) {
       await ToastrWrapper.showInfo('The setting has been edited successfully!');
-      dispatch(getLeagueInfoThunk(''));
+      dispatch(fetchLeagueSettingInfo(leagueFilterHeader, false));
     }
     closePopup();
   };

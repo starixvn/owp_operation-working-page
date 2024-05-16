@@ -1,5 +1,6 @@
+import { handleCheckButton } from "../../helper/filterHelper";
 
-const SpreadViewCell = ({ spread }: { spread: number | string | undefined }) => {
+const SpreadViewCell = ({ spread, leagueName }: { spread: number | string | undefined, leagueName: string }) => {
   return (
     <div className="spread-cell">
       {spread ? (
@@ -7,7 +8,7 @@ const SpreadViewCell = ({ spread }: { spread: number | string | undefined }) => 
           {spread}
         </p>
       ) : (
-        <a className='spread__check' href='http://google.com'>
+        <a className='spread__check' onClick={() => handleCheckButton(leagueName)}>
           Check
         </a>
       )}

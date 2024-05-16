@@ -37,6 +37,7 @@ type TTableSlice = {
   entities: Array<TDataSource>;
   entitiesOriginal: Array<TDataSource>;
   loading: string;
+  leagueFilterHeader: string;
   multipleFilter: TMultipleFilter;
 };
 
