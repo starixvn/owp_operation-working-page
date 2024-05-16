@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -491,7 +490,7 @@
     <Content Include="wwwroot\event-picking\assets\ext\server-489d958f.css" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_check_all-1f6bb12a.png" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_only-49132f43.png" />
-    <Content Include="wwwroot\event-picking\assets\js\main-b6dc6a61.js" />
+    <Content Include="wwwroot\event-picking\assets\js\main-76da011d.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\images\Flags\FC24\AC Milan %28V%29.jpg" />
@@ -595,9 +594,9 @@
     <Content Include="wwwroot\league-management\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\league-management\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\league-management\assets\ext\server-31fdf222.css" />
-    <Content Include="wwwroot\league-management\assets\js\main-9620fc67.js" />
-    <Content Include="wwwroot\league-management\assets\js\TeamInfo-972d1a4c.js" />
+    <Content Include="wwwroot\league-management\assets\ext\server-d5c8c683.css" />
+    <Content Include="wwwroot\league-management\assets\js\main-e26d95ec.js" />
+    <Content Include="wwwroot\league-management\assets\js\TeamInfo-67629a92.js" />
     <Content Include="wwwroot\league-management\favicon.ico" />
     <Content Include="wwwroot\league-management\server.html" />
     <Content Include="wwwroot\live-detail\assets\ext\icon-feedback-57264197.svg" />
