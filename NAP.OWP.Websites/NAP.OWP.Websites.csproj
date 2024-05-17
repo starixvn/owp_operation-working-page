@@ -603,10 +603,10 @@
     <Content Include="wwwroot\task-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\task-list\assets\ext\server-761266a9.css" />
-    <Content Include="wwwroot\task-list\assets\js\main-3b7a3ccb.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabToday-75fd8052.js" />
-    <Content Include="wwwroot\task-list\assets\js\TabYesterday-2792cfe4.js" />
-    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-2e69300a.js" />
+    <Content Include="wwwroot\task-list\assets\js\main-cc93c43a.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabToday-bb266240.js" />
+    <Content Include="wwwroot\task-list\assets\js\TabYesterday-29db5893.js" />
+    <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-901310c8.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
     <Content Include="wwwroot\welcome\assets\ext\icon-feedback-57264197.svg" />
@@ -3223,14 +3223,14 @@
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\live-game-list\server.cshtml" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\task-list\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\event-picking\server.cshtml" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\task-list\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
