@@ -8,7 +8,9 @@ import LeagueCell from './cell/LeagueCell';
 
 const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   const rows = [];
-  const focusSettingId = useAppSelector(state => state.leagueInfoTableSlice.focusSettingId);
+  const focusSettingId = useAppSelector(
+    state => state.leagueInfoTableSlice.focusSettingId
+  );
 
   rows.push(
     <tr
@@ -18,15 +20,14 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
   for (let i = displayStart; i < displayEnd; ++i) {
     let row = data[i] as TDataSource;
     const buildValueForTvCell = () => {
-      const tv = row.condition.hasTv ? 'tv' : '';
-      const iptvValue = row.condition.ipTv
-        .map(x => (x.type === 'Contains' ? `*${x.value}*` : x.value))
-        .join('/');
-      const linkVerb = iptvValue.length && tv.length ? 'or' : '';
-      return `${tv} ${linkVerb} ${iptvValue}`;
+      const tv = row.condition.hasTv ? 'TV' : '';
+      const iptv = row.condition.hasIpTv ? 'IPTV' : '';
+      const linkVerb = tv.length && iptv.length ? '/' : '';
+      return `${tv}${linkVerb}${iptv}`.trim();
     };
     if (row) {
-      const className = focusSettingId === row.leagueSettingId ? 'is-focus-row' : '';
+      const className =
+        focusSettingId === row.leagueSettingId ? 'is-focus-row' : '';
       rows.push(
         <tr key={uniqueId()} className={className}>
           <CommonCell
