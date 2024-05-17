@@ -18,8 +18,8 @@ type Props = {
 };
 const IconRefresh = ({ eventDate }: Props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [timer, setTimer] = useState(-1);
-  const selectedTime = useRef(-1);
+  const [timer, setTimer] = useState(timeRefreshTable[2]);
+  const selectedTime = useRef(timeRefreshTable[2]);
   const dispatch = useStableDispatch();
 
   useEffect(() => {
