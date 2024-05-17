@@ -1,35 +1,20 @@
-import { useEffect } from 'react';
-import { OWPPage, OWPHeader } from '../Shared/common/OWP/OPWPage';
+import { OWPPage, OWPHeader, OWPBody } from '../Shared/common/OWP/OPWPage';
 import Filter from './features/header/filter/Filter';
 import { FunctionKeys } from '../Shared/Constants';
-import Loading from '../components/Loading';
-import { usePermission } from './ImportTicketCenterHelperNative';
-import { useAppDispatch } from './app/hooksNative';
-import {
-  getTicketDetail,
-  getTicketSubTypes
-} from '../Shared/chatBoardNew/chatBoardThunkNative';
+import TicketList from './features/table/TicketList';
+
 
 const SmallTicketCenterManagementNative = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    /* (async () => {
-      if (actorId && eventType && ticketId) {
-        dispatch(getTicketSubTypes(actionResult.payload.data.ticketType));
-        if (getTicketDetail.rejected.match(actionResult)) {
-          ToastrWrapper.showError(actionResult.payload);
-        }
-      }
-    })(); */
-  }, []);
-
+ 
   return (
     <div className='small__ticket-center'>
       <OWPPage className='Event-Tickets'>
-        <OWPHeader className='tickets-tab'>
+        <OWPHeader className='tickets-tab__header'>
           <Filter />
         </OWPHeader>
+        <OWPBody className='tickets-tab__body'>
+          <TicketList/>
+        </OWPBody>
       </OWPPage>
     </div>
   );

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createTicketBoardReducer from '../../Shared/createTicketNew/createTicketBoardSliceNew';
 import filterReducer from '../features/header/filter/filterSlice';
+import tickerSliceReducer from '../features/table/slice/tickerSlice';
 const store = configureStore({
   reducer: {
     createTicketBoard: createTicketBoardReducer,
+    tickerSlice: tickerSliceReducer,
     filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>

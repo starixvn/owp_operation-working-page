@@ -2,6 +2,7 @@
 import Command from './Command';
 import DateRangeFilter from './DateRangeFilter';
 import Event from './Event';
+import Status from './Status';
 import TicketTypeWrapper from './TicketTypeWrapper';
 
 const Filter = () => {
@@ -11,6 +12,7 @@ const Filter = () => {
         <DateRangeFilter />
         <Event/>
         <TicketTypeWrapper/>
+        <Status/>
         <Command/>
       </div>
     </div>

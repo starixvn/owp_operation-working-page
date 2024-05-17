@@ -18,12 +18,12 @@ const filterSlice = createSlice({
       },
       filterInfo:{
         actorId: -1,
-        marketKey: 1,
+        marketKey:1,
         fromDateFilter: fromDateDefault,
         toDateFilter: toDateDefault,
         keyword: '',
         ticketTypeId: '',
-        ticketStatuses: 'open'
+        ticketStatuses: 'Open'
       }
     }
   },
@@ -49,7 +49,7 @@ const filterSlice = createSlice({
         state.entities.multipleSelect.ticketTypeSelected=[...childrenOption, ...emptyOption].map(
           i => i.value
         );
-
+        state.entities.filterInfo.ticketTypeId=state.entities.multipleSelect.ticketTypeSelected.join(',');
         state.entities.multipleSelect.ticketTypeOptions=[...parentOption, ...childrenOption, ...emptyOption]
       }).addCase(getTicketTypeOption.rejected, state=>{
         state.loadingTicketTypeOptions= REQUEST_STATUS.idle;
