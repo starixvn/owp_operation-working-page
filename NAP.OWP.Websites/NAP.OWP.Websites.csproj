@@ -23,7 +23,8 @@
     <UseGlobalApplicationHostFile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -490,7 +491,7 @@
     <Content Include="wwwroot\event-picking\assets\ext\server-489d958f.css" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_check_all-1f6bb12a.png" />
     <Content Include="wwwroot\event-picking\assets\ext\user_guide_export_only-49132f43.png" />
-    <Content Include="wwwroot\event-picking\assets\js\main-76da011d.js" />
+    <Content Include="wwwroot\event-picking\assets\js\main-57dfacf9.js" />
     <Content Include="wwwroot\event-picking\favicon.ico" />
     <Content Include="wwwroot\event-picking\server.html" />
     <Content Include="wwwroot\images\Flags\FC24\AC Milan %28V%29.jpg" />
@@ -3210,14 +3211,14 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-picking\server.cshtml" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\league-management\server.cshtml" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-picking\server.cshtml" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a7443744.ttf" />

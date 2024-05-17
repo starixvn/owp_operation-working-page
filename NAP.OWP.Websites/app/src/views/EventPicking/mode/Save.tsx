@@ -9,7 +9,7 @@ const Save = ({ onSetMode }: { onSetMode: () => void }) => {
   const handleSave = async () => {
     Spinner.show();
     const { entities } = store.getState().eventPickingTable;
-    const eventModified = entities.filter(e => e.isModified).map(e => ({
+    const eventModified = entities.filter(e => e.isModified || e.isReferenceLeagueManagement).map(e => ({
       InfoSiteMatchId: e.infoSiteMatchId,
       SpreadHdp: e.spreadHdp,
       SpreadOu: e.spreadOu,

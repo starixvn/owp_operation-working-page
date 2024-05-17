@@ -48,6 +48,7 @@ type TDataTable = {
   turnoverPeriod: TTurnOverInfo[];
   marginPeriod: MarginInfo[];
   isModified: boolean | undefined;
+  isReferenceLeagueManagement: boolean;
 };
 
 type TTurnOverInfo = {
