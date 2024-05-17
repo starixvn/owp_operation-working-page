@@ -596,8 +596,8 @@
     <Content Include="wwwroot\league-management\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\league-management\assets\ext\server-51c728eb.css" />
-    <Content Include="wwwroot\league-management\assets\js\main-514592c0.js" />
-    <Content Include="wwwroot\league-management\assets\js\TeamInfo-9e7661d5.js" />
+    <Content Include="wwwroot\league-management\assets\js\main-c3cf59c6.js" />
+    <Content Include="wwwroot\league-management\assets\js\TeamInfo-0f854594.js" />
     <Content Include="wwwroot\league-management\favicon.ico" />
     <Content Include="wwwroot\league-management\server.html" />
     <Content Include="wwwroot\live-detail\assets\ext\icon-feedback-57264197.svg" />
