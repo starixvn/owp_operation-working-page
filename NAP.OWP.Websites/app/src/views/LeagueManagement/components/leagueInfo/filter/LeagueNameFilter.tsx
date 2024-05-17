@@ -26,7 +26,7 @@ const LeagueNameFilter = () => {
 
   return (
     <div className='league-filter'>
-      <span> League </span>
+      <span> League search</span>
       <input
         type='text'
         onKeyDown={handleKeyDown}
