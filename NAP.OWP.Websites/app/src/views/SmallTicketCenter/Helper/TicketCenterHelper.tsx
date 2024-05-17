@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash';
-import { TicketCenterPageURL, MARKET } from '../const/const.json';
+import { TicketCenterPageURL } from '../const/const.json';
 import { getValueHrefByReversedIndex } from '../../Shared/Utils';
 import {
   getDetailSegmentUrlByEventType,

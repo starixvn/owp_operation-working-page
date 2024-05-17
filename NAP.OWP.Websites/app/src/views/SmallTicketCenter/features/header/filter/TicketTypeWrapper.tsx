@@ -11,7 +11,7 @@ const TicketTypeWrapper = () => {
   const loading = useAppSelector(s=>s.filter.loadingTicketTypeOptions);
 
   useEffect(() => {
-    (async () => {
+    (() => {
       dispatch(getTicketTypeOption());
     })();
   }, [dispatch]);

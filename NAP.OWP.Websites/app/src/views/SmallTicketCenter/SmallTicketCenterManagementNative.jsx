@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { OWPPage, OWPHeader } from '../Shared/common/OWP/OPWPage';
-import HeaderNative from './features/header/HeaderNative';
+import Filter from './features/header/filter/Filter';
 import { FunctionKeys } from '../Shared/Constants';
 import Loading from '../components/Loading';
 import { usePermission } from './ImportTicketCenterHelperNative';
@@ -28,7 +28,7 @@ const SmallTicketCenterManagementNative = () => {
     <div className='small__ticket-center'>
       <OWPPage className='Event-Tickets'>
         <OWPHeader className='tickets-tab'>
-          <HeaderNative />
+          <Filter />
         </OWPHeader>
       </OWPPage>
     </div>

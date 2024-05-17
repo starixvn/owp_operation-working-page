@@ -7,20 +7,6 @@
     "default": "TicketCenter",
     "MyTicket": "MyTicket"
   },
-  "MARKET": [
-    {
-      "value": 1,
-      "label": "All"
-    },
-    {
-      "value": 2,
-      "label": "Early"
-    },
-    {
-      "value": 3,
-      "label": "Today"
-    }
-  ],
   "STATUS": [
     {
       "value": "Open",
