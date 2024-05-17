@@ -93,6 +93,12 @@ const getMentionsUsers = keyword => {
 
 const getUseSuggesionFromCache = () => true;
 
+const getUserFromCached = () => {
+  const localStorageKey = 'localStorageKey_DataSourceLocalUsers';
+  const localDataSource = localStorage.getItem(localStorageKey);
+  return localDataSource && JSON.parse(localDataSource);
+};
+
 const UserService = {
   getAll,
   getSuggestionUsers,
@@ -102,7 +108,8 @@ const UserService = {
   getMentionsUsers,
   getInfoByUserId,
   getInfoByUserName,
-  getUseSuggesionFromCache
+  getUseSuggesionFromCache,
+  getUserFromCached
 };
 
 export default UserService;

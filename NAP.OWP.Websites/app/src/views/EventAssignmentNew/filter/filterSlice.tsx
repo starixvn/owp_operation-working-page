@@ -11,9 +11,8 @@ const filterSlice = createSlice({
   name: 'filterSlice',
   initialState: {
     filterState: {
+      userIds: '',
       selectedDate: buildDefaultFilterDate(),
-      userNameFilter: '',
-      userNameFilterIsValid: true,
       selectedMatchType: MATCH_TYPE_OPTION,
       selectedMatchStatus: [] as TOptions[],
       selectedSyncLive: SYNC_LIVE_OPTION[0] as TOptions,

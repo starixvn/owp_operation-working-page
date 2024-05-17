@@ -10,7 +10,7 @@ const queryDataTableThunk = createAsyncThunk<TQueryDataResult>(
     const filterState = store.getState().filter.filterState;
     const eventModel: TQueryDataModel = {
       EventDate: Utils.formatDate(filterState.selectedDate),
-      Username: filterState.userNameFilter || '',
+      UserIds: filterState.userIds,
       MatchStatusIds: filterState.selectedMatchStatus.map(x => x.value) || [],
       SelectedOffVRs: filterState.selectedOffVRs.map(x => x.value) || [],
       MatchType:

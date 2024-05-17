@@ -240,8 +240,7 @@ type TQueryPolicy = {
 
 type TFilter = {
   selectedDate: Date;
-  userNameFilter: string;
-  userNameFilterIsValid: boolean;
+  userIds: string;
   selectedMatchType: TOptions[];
   selectedMatchStatus: TOptions[];
   selectedSyncLive: TOptions;
@@ -266,7 +265,7 @@ type CreatorInfo = {
 
 type TQueryDataModel = {
   EventDate: string;
-  Username: string;
+  UserIds: string;
   MatchStatusIds: Array<number | string>;
   SelectedOffVRs: Array<number | string>;
   MatchType: string;

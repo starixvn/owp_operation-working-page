@@ -11,12 +11,12 @@ const getUrl = (methodRoute: string) =>
 const getEvents = createAsyncThunk(
   'live-game-list/get-event',
   async ({
-    userName,
+    userIds,
     filterDate,
     statusId,
     matchType
   }: {
-    userName: string;
+    userIds: string;
     filterDate: Date;
     statusId: string;
     matchType: string;
@@ -25,7 +25,7 @@ const getEvents = createAsyncThunk(
     const eventDate = Utils.formatDate(filterDate);
     const response = await get({
       url,
-      userName,
+      userIds,
       eventDate,
       statusId,
       matchType
