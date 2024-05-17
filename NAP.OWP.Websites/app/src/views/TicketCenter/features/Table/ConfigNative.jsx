@@ -29,7 +29,8 @@ const LeagueColumn = {
   columnKey: 'eventName',
   width: 350,
   isCanSort: true,
-  isFreeze: true
+  isFreeze: true,
+  isOpenTab: true
 };
 
 const TicketIdColumn = {
@@ -97,6 +98,9 @@ const getConfigTicketsTab = containerWidth => {
     sortFunc: sort,
     tableWidth: bonusWidth,
     onRowClick: async (event, rowIndex) => {
+      if (event?.target?.className?.includes('icon-new-tab')) {
+        return;
+      }
       const { pagePolicy, eventChecking } = store.getState();
       const { dispatch } = store;
       const { permission } = pagePolicy;

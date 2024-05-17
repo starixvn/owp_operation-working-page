@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const OrderHeader = headerModel => {
-  const { columnKey, headerName, sortState, sortFunc } = headerModel;
+  const { columnKey, headerName, sortState, sortFunc, isOpenTab } = headerModel;
   const dispatch = useDispatch();
   const stableDispatch = useCallback(dispatch, [dispatch]);
 
@@ -24,6 +24,7 @@ const OrderHeader = headerModel => {
 
   const props = {
     headerName,
+    isOpenTab,
     orderType: isEqual(columnKey, sortState.columnKey)
       ? sortState.orderType
       : '',

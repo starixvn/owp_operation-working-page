@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   subject: PropTypes.string.isRequired,
-  isRead: PropTypes.bool.isRequired
+  isRead: PropTypes.bool.isRequired,
+  children: PropTypes.node
 };
 
-const OtherIssueCell = ({ subject = '', isRead = false }) => {
+const OtherIssueCell = ({ subject = '', isRead = false, children = null }) => {
   return (
     <Cell
       className={
@@ -16,6 +17,7 @@ const OtherIssueCell = ({ subject = '', isRead = false }) => {
           : 'new-add-info-cell cell conversation-cell'
       }>
       <OtherIssueContent subject={subject} />
+      {children}
     </Cell>
   );
 };

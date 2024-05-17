@@ -217,6 +217,16 @@ const openNewChattingTab = (actorId, ticketId, eventType) => {
   );
 };
 
+const openNewSmallTicket = () => {
+  const top = window.screenY + (window.innerHeight - 700) / 2;
+  const left = window.screenX + (window.innerWidth - 500) / 2;
+  window.open(
+    `SmallTicket`,
+    `_blank`,
+    `toolbar=yes,scrollbars=yes,resizable=yes,top=${top},left=${left},width=500,height=700`
+  );
+};
+
 const formatTime = date => dayjs(date).format('hh:ss A');
 
 const Utils = {
@@ -254,6 +264,7 @@ export {
   addOrReplaceFilterState,
   pushOrUpdateObject,
   filterDataTable,
-  openNewChattingTab
+  openNewChattingTab,
+  openNewSmallTicket
 };
 export default Utils;

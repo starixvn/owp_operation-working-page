@@ -350,7 +350,7 @@
       }
       .conversation-cell {
         .public_fixedDataTableCell_cellContent {
-          max-width: 399px;
+          max-width: 412px;
           overflow: hidden;
           text-overflow: ellipsis;
         }
@@ -1204,5 +1204,24 @@
         top: 2px;
       }
     }
+  }
+}
+.icon-new-tab {
+  top: 22px;
+  right: -4px;
+  position: fixed;
+  right: 5px;
+  top: 50px;
+  :hover {
+    cursor: pointer;
+    color: #1e88e5;
+  }
+}
+
+.icon-small-ticket-tab {
+  padding-bottom: 2px;
+  :hover {
+    cursor: pointer;
+    color: #1e88e5;
   }
 }

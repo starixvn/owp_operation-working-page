@@ -33,6 +33,7 @@ const createColumn = props => {
     isCheckBox,
     checked,
     className,
+    isOpenTab,
     onCheckChange
   } = columnModel;
 
@@ -55,6 +56,7 @@ const createColumn = props => {
     filterFunc,
     clearFilterFunc,
     collapseAllRowFunc,
+    isOpenTab,
     expandAllRowFunc
   };
 

@@ -3,6 +3,7 @@ import OtherIssueCell from './OtherIssueCell';
 import LeagueCell from './LeagueCell';
 import MatchCell from './MatchCell';
 import LogWorkCell from './LogWorkCell';
+import IconOpenNewTab from '../../../../IconCustom/IconOpenNewTab';
 
 const propTypes = {
   data: PropTypes.object.isRequired
@@ -16,12 +17,19 @@ const LeagueCellFactory = ({ data }) => {
     koTime,
     subject,
     isRead,
-    eventType
+    eventType,
+    ticketId
   } = data;
 
   switch (eventType) {
     case 1:
-      return <LeagueCell leagueName={owpLeagueName} isRead={isRead} />;
+      return (
+        <LeagueCell leagueName={owpLeagueName} isRead={isRead}>
+          <IconOpenNewTab
+            eventType={eventType}
+            ticketId={ticketId}></IconOpenNewTab>
+        </LeagueCell>
+      );
     case 2:
     case 5:
       return (
@@ -30,13 +38,28 @@ const LeagueCellFactory = ({ data }) => {
           leagueName={owpLeagueName}
           awayName={awayName}
           koTime={koTime}
-          isRead={isRead}
-        />
+          isRead={isRead}>
+          <IconOpenNewTab
+            eventType={eventType}
+            ticketId={ticketId}></IconOpenNewTab>
+        </MatchCell>
       );
     case 6:
-      return <LogWorkCell data={data} />;
+      return (
+        <LogWorkCell data={data}>
+          <IconOpenNewTab
+            eventType={eventType}
+            ticketId={ticketId}></IconOpenNewTab>
+        </LogWorkCell>
+      );
     default:
-      return <OtherIssueCell subject={subject || ''} isRead={isRead} />;
+      return (
+        <OtherIssueCell subject={subject || ''} isRead={isRead}>
+          <IconOpenNewTab
+            eventType={eventType}
+            ticketId={ticketId}></IconOpenNewTab>
+        </OtherIssueCell>
+      );
   }
 };
 
