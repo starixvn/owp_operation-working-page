@@ -25,7 +25,6 @@ const Command = (props: { closePopup: Function; }) => {
     hasTv,
     hasIpTv,
     remark,
-    ipTv,
     round,
     division,
   }, leagueInfoTableSlice: { leagueFilterHeader } } = store.getState();
@@ -48,7 +47,6 @@ const Command = (props: { closePopup: Function; }) => {
       hasTv,
       hasIpTv,
       remark,
-      ipTv: ipTv.filter(d => d.value) || [],
       round: round.filter(d => d.value) || [],
       division: division.filter(d => d.value) || []
     });

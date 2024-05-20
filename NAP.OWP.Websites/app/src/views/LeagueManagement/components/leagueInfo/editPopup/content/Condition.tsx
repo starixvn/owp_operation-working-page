@@ -10,14 +10,13 @@ import { TConditionSource } from '../../table/TableType';
 const Condition = (props: {
   condition: TConditionSource
 }) => {
-  const { round, division, ipTv, hasTv, hasIpTv, remark } = props.condition;
+  const { round, division, hasTv, hasIpTv, remark } = props.condition;
   const [checkedTV, setCheckedTV] = useState<boolean>(hasTv);
   const [checkedIPTV, setCheckedIPTV] = useState(hasIpTv);
   const dispatch = useAppDispatch();
 
   const rounds = convertResponseToCondition(round);
   const divisions = convertResponseToCondition(division);
-  const iptvs = convertResponseToCondition(ipTv);
 
   const handleOnChangeHasTV = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateObject({ property: 'hasTv', value: event.currentTarget.checked }));
@@ -57,13 +56,6 @@ const Condition = (props: {
     </>
   );
 
-  const renderIPTVList = (iptvs: TExpressionRow[]) => {
-    return <RowsExpression
-      expressionList={iptvs}
-      property='ipTv'
-    />;
-  };
-
   const renderTV = () => (
     <>
       <div className='content'>
@@ -89,7 +81,6 @@ const Condition = (props: {
               />
               IPTV
             </label>
-            {renderIPTVList(iptvs)}
           </div>
         </div>
       </div>

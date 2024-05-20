@@ -18,7 +18,6 @@ const EditSettingPopup = (props: { closePopup: () => void }) => {
     leagueGroupId,
     hasTv,
     hasIpTv,
-    ipTv,
     round,
     division,
     remark,
@@ -42,7 +41,6 @@ const EditSettingPopup = (props: { closePopup: () => void }) => {
         <Condition condition={{
           hasTv,
           hasIpTv,
-          ipTv,
           round,
           division,
           remark

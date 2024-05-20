@@ -1,7 +1,7 @@
+import { v4 as uuidv4 } from 'uuid';
 import MaxbetConst from '../../../../constants/MaxbetConst';
 import { TCondition, TDataSource } from '../../table/TableType';
-import { TConditions, TExpressionRow, TLeagueCategory } from '../EditType';
-import { v4 as uuidv4 } from 'uuid';
+import { TExpressionRow, TLeagueCategory } from '../EditType';
 
 const mapEditSettingFromDataSource = (dataSource: TDataSource) => {
   const {
@@ -14,6 +14,7 @@ const mapEditSettingFromDataSource = (dataSource: TDataSource) => {
     spread_OU_Value,
     spreadShow,
     maxbetWD_HDP_Show,
+    maxbetWK_HDP_Show,
     wD_NoOfHDP_Show,
     wK_NoOfHDP_Show,
     lstNote,
@@ -32,14 +33,13 @@ const mapEditSettingFromDataSource = (dataSource: TDataSource) => {
     spread: spreadShow,
     maxbetWD_HDP: maxbetWD_HDP_Show,
     wD_NoOfHDP: wD_NoOfHDP_Show,
-    maxbetWK_HDP: maxbetWD_HDP_Show,
+    maxbetWK_HDP: maxbetWK_HDP_Show,
     wK_NoOfHDP: wK_NoOfHDP_Show,
     lstNote,
     remark2,
     comment,
     hasTv: condition.hasTv,
     hasIpTv: condition.hasIpTv,
-    ipTv: selectCondition(condition.ipTv),
     round: selectCondition(condition.round),
     division: selectCondition(condition.division),
     remark: condition.remark
@@ -76,7 +76,7 @@ const convertResourceToOptions = (resource: TLeagueCategory[]) => {
 };
 
 export {
+  convertResourceToOptions,
   convertResponseToCondition,
-  mapEditSettingFromDataSource,
-  convertResourceToOptions
+  mapEditSettingFromDataSource
 };

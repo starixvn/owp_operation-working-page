@@ -7,7 +7,7 @@ import { MouseEvent } from 'react';
 
 
 const Action = ({ property, index, hasWrite, modelsLength }: {
-  property: "ipTv" | "round" | "division",
+  property: "round" | "division",
   index: number,
   hasWrite: boolean,
   modelsLength: number

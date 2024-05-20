@@ -34,13 +34,12 @@ const EditSettingSlice = createSlice({
     hasTv: false,
     hasIpTv: false,
     remark: '',
-    ipTv: [] as Array<TCondition>,
     round: [] as Array<TCondition>,
     division: [] as Array<TCondition>,
   },
   reducers: {
     setInitSetting: (state, action: PayloadAction<TDataSource>) => {
-      const { ipTv,
+      const {
         leagueSettingId,
         league,
         owpLeagueId,
@@ -59,7 +58,6 @@ const EditSettingSlice = createSlice({
         remark,
         round,
         division } = mapEditSettingFromDataSource(action.payload);
-      state.ipTv = ipTv;
       state.leagueSettingId = leagueSettingId;
       state.league = league;
       state.owpLeagueId = owpLeagueId;

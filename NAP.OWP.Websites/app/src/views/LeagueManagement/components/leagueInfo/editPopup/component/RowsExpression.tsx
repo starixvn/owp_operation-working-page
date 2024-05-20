@@ -7,7 +7,7 @@ import Value from './Value';
 interface RowExpressionProps {
   expressionList: Array<TExpressionRow>;
   title?: string;
-  property: "ipTv" | "round" | "division";
+  property: "round" | "division";
 }
 
 const RowsExpression = ({ expressionList, title, property }: RowExpressionProps) => {

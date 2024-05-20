@@ -3,7 +3,7 @@ import { Input } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { updateExpression } from '../slice/editSettingSlice';
 
-const Value = (props: { value: string | number | undefined, index: number, hasWrite: boolean, property: "ipTv" | "round" | "division" }) => {
+const Value = (props: { value: string | number | undefined, index: number, hasWrite: boolean, property: "round" | "division" }) => {
   const { value, index, hasWrite, property } = props;
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState(value);

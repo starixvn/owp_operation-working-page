@@ -6,7 +6,6 @@ type TOption = {
 };
 
 type TAddExpressionKey = {
-  ipTv: Array<TCondition>;
   round: Array<TCondition>;
   division: Array<TCondition>;
 }

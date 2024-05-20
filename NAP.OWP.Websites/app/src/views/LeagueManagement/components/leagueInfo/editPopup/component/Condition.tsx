@@ -12,7 +12,7 @@ interface ConditionProps {
   };
   index: number;
   hasWrite: boolean;
-  property: "ipTv" | "round" | "division";
+  property: "round" | "division";
 }
 
 const Condition = ({ condition, index, hasWrite = true, property }: ConditionProps) => {
