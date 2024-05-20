@@ -1,5 +1,5 @@
 import store from '../../app/storeNative';
-import { updateTicketItemIntoDataSource } from '../Table/eventSlice/eventCheckingSlice';
+import { updateTicketItemIntoDataSource } from '../table/slice/tickerSlice';
 
 const handleNewMessageIncome = (newMsgInfo, ticketInfo) => {
   const { signalR } = store.getState();

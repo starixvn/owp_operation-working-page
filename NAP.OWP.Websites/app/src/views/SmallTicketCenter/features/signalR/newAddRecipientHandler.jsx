@@ -1,6 +1,6 @@
 import { checkAllFilterCondition } from './signalRHelper';
 import store from '../../app/storeNative';
-import { appendTicketItemIntoDataSource } from '../Table/eventSlice/eventCheckingSlice';
+import { appendTicketItemIntoDataSource } from '../table/slice/tickerSlice';
 
 const handleNewAddRecipient = ticketInfo => {
   const model = store.getState();

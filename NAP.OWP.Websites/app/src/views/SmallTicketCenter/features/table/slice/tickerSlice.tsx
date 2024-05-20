@@ -74,6 +74,13 @@ const ticketSlice = createSlice({
   }
 });
 
-const { reducer } = ticketSlice;
+const { actions, reducer } = ticketSlice;
+const { appendTicketItemIntoDataSource, updateTicketItemIntoDataSource } =
+  actions;
+export {
+  actions,
+  appendTicketItemIntoDataSource,
+  updateTicketItemIntoDataSource
+};
 
 export default reducer;
