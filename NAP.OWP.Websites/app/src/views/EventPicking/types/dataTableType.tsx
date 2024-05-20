@@ -24,6 +24,7 @@ type TDataTable = {
   homeName: string;
   awayName: string;
   maxbetHdp: number | undefined;
+  maxBetHDPNumber: number | undefined;
   noOfHDP: string | undefined;
   spreadOu: number | undefined;
   spreadHdp: number | undefined;

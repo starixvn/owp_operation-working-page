@@ -60,6 +60,7 @@ const buildMbOptions = (entities: TDataTable[]) => uniqBy(
 const buildMultipleFilterDefault = (entities: TDataTable[]) => {
   const koTimeOptions = buildKoOptions(entities);
   const mbOptions = buildMbOptions(entities);
+  console.log(mbOptions);
   return {
     [KO_TIME]: {
       isFilter: false,
