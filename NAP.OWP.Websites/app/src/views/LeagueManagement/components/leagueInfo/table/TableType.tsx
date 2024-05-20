@@ -29,8 +29,8 @@ type TConditionSource = {
 };
 
 type TCondition = {
-  type: "Contains" | "Equals";
-  value: string | number | undefined;
+  type: 'Contains' | 'Equals';
+  value: string;
 };
 
 type TTableSlice = {
@@ -65,4 +65,11 @@ type TMultipleFilter = {
   };
 };
 
-export { TCondition, TConditionSource, TDataSource, TTableSlice, TColumnKey, TMultipleFilter };
+export {
+  TCondition,
+  TConditionSource,
+  TDataSource,
+  TTableSlice,
+  TColumnKey,
+  TMultipleFilter
+};

@@ -22,7 +22,7 @@ const buildDefaultTableFilter = (
     isFilter: false
   };
   tableFilter.Tv = {
-    selected: helper.Tv(dataSource),
+    selected: helper.Tv(),
     isFilter: false
   };
   tableFilter.Round = {
@@ -98,8 +98,9 @@ const executeFilterTable = (
         m => m.label === buildLabelItemOption(e.leagueGroup)
       ) &&
       League.selected.some(m => m.label === buildLabelItemOption(e.league)) &&
-      Tv.selected.some(m =>
-        buildLabelItemForCondition(e.condition.ipTv, m.label)
+      Tv.selected.some(
+        m =>
+          m.label === buildLabelTvOption(e.condition.hasTv, e.condition.hasIpTv)
       ) &&
       Round.selected.some(m =>
         buildLabelItemForCondition(e.condition.round, m.label)
@@ -133,11 +134,18 @@ const executeFilterTable = (
   );
   return result;
 };
-
+const buildLabelTvOption = (hasTv: boolean, hasIpTv: boolean) => {
+  return hasIpTv && hasTv
+    ? 'TV/IPTV'
+    : hasIpTv
+    ? 'IPTV'
+    : hasTv
+    ? 'TV'
+    : '(Blanks)';
+};
 const buildLabelItemOption = (value: string | undefined | null) =>
   value?.trim().length ? value : '(Blanks)';
-const buildLabelItemNumberOption = (value: number | undefined | null) =>
-  value?.toString() || '(Blanks)';
+
 const buildLabelItemForCondition = (
   conditions: TCondition[],
   selected: string | number | null

@@ -24,6 +24,29 @@ const buildLeagueOptions = (entities: TDataSource[]) =>
       i => i.label
     )
   );
+
+const buildTvOptions = () => {
+  const options = [
+    {
+      value: 'IPTV',
+      label: 'IPTV'
+    },
+    {
+      value: 'TV',
+      label: 'TV'
+    },
+    {
+      value: 'TV/IPTV',
+      label: 'TV/IPTV'
+    },
+    {
+      value: null,
+      label: '(Blanks)'
+    }
+  ];
+  return options;
+};
+
 const buildConditionOptions = (first: TCondition[][], second: TCondition[]) => {
   const options: Option[] = uniqBy(
     [...second]
@@ -173,11 +196,7 @@ const helper = {
   League_Group: (dataSource: TDataSource[]) =>
     buildLeagueGroupOptions(dataSource),
   League: (dataSource: TDataSource[]) => buildLeagueOptions(dataSource),
-  Tv: (dataSource: TDataSource[]) =>
-    buildConditionOptions(
-      dataSource.map(x => x.condition.ipTv),
-      dataSource.flatMap(x => x.condition.ipTv)
-    ),
+  Tv: () => buildTvOptions(),
   Round: (dataSource: TDataSource[]) =>
     buildConditionOptions(
       dataSource.map(x => x.condition.round),
