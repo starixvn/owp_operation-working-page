@@ -51,7 +51,7 @@ const buildKoOptions = (entities: TDataTable[]) =>
 const buildMbOptions = (entities: TDataTable[]) => uniqBy(
   [...entities].sort((first, second) => (first.maxbetHdp ?? Number.MAX_SAFE_INTEGER) - (second.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER))
     .map(o => ({
-      value: o.maxbetHdp ?? null,
+      value: (o.maxbetHdp===0||o.maxbetHdp)? null: o.maxbetHdp,
       label: Utils.convertThousandToK(o.maxbetHdp).length ?
         Utils.convertThousandToK(o.maxbetHdp)
         : '(Blanks)'
