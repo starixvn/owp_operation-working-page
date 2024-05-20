@@ -9,35 +9,37 @@ const NoOfHdpEditableCell = ({
   infoSiteMatchId,
   leagueName
 }: {
-  value: string | null | undefined,
-  infoSiteMatchId: number,
-  leagueName: string
+  value: string | null | undefined;
+  infoSiteMatchId: number;
+  leagueName: string;
 }) => {
-  console.log(value);
   let newValue = null;
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
   const handleBlur = () => {
-
-    dispatch(setValueNoOfHdp({
-      value: inputRef?.current?.value,
-      infoSiteMatchId
-    }));
+    dispatch(
+      setValueNoOfHdp({
+        value: inputRef?.current?.value,
+        infoSiteMatchId
+      })
+    );
   };
 
   useEffect(() => {
     return () => {
       if (newValue !== null) {
-        dispatch(setValueNoOfHdp({
-          value: newValue,
-          infoSiteMatchId
-        }));
+        dispatch(
+          setValueNoOfHdp({
+            value: newValue,
+            infoSiteMatchId
+          })
+        );
         newValue = null;
       }
     };
   });
   return (
-    <div key={uniqueId()} className="input-value">
+    <div key={uniqueId()} className='input-value'>
       <input
         ref={inputRef}
         type='text'
@@ -46,14 +48,17 @@ const NoOfHdpEditableCell = ({
         defaultValue={value ?? ''}
         maxLength={2000}
         onBlur={handleBlur}
-        onChange={v => { newValue = v.target?.value; }}
+        onChange={v => {
+          newValue = v.target?.value;
+        }}
       />
-      {!value && <a className='mb__check' onClick={() => handleCheckButton(leagueName)}>
-        Check
-      </a>}
+      {!value && (
+        <a className='mb__check' onClick={() => handleCheckButton(leagueName)}>
+          Check
+        </a>
+      )}
     </div>
   );
 };
-
 
 export default NoOfHdpEditableCell;

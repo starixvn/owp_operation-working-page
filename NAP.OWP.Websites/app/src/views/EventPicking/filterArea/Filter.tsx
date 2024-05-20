@@ -13,14 +13,17 @@ import UpdateType from './UpdateType';
 import { getLeagues, getUpdateTypes } from './slice/filterThunkNative';
 import Utils from '../../Shared/Utils';
 import TurnoverMargin from './TurnoverMargin';
+import { VIEW } from '../mode/mode.json';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const { date } = useSelector((state: RootState) => state.filter.param);
-
-  const { turnOverMarginPolicy: {
-    permission: { HasRead }
-  }, mode: { mode } } = store.getState();
+  const {
+    turnOverMarginPolicy: {
+      permission: { HasRead }
+    },
+    mode: { mode }
+  } = useSelector((state: RootState) => state);
 
   useEffect(() => {
     dispatch(getLeagues(Utils.formatDate(date)));
@@ -41,7 +44,7 @@ const Filter = () => {
       <MatchCategory />
       {HasRead && <TurnoverMargin />}
       <UpdateType />
-      <Command />
+      {mode === VIEW && <Command />}
     </>
   );
 };
