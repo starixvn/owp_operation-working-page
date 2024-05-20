@@ -67,11 +67,11 @@ const buildMbOptions = (entities: TDataTable[]) =>
       .sort(
         (first, second) =>
           (first.maxbetHdp ?? Number.MAX_SAFE_INTEGER) -
-          (second.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER)
+          (second.maxbetHdp ?? Number.MAX_SAFE_INTEGER)
       )
       .map(o => ({
         value: o.maxbetHdp || null,
-        label: Utils.convertThousandToK(o.maxbetHdp) || '(Blanks)'
+        label: Utils.convertThousandToK(o.maxbetHdp, true) || '(Blanks)'
       })),
     i => i.value
   );
@@ -108,7 +108,7 @@ const filterByKo = (
 const filterByMb = (
   entities: TDataTable[],
   selectedValue: (number | string | null)[]
-) => entities.filter(e => selectedValue.some(s => e.maxBetHDPNumber === s));
+) => entities.filter(e => selectedValue.some(s => e.maxbetHdp === s));
 
 const executeFilterTable = (
   state: TTableSlice,

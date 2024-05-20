@@ -17,9 +17,13 @@ const MaxbetEditableCell = ({
   const dispatch = useAppDispatch();
   const inputRef = createRef<HTMLInputElement>();
   const handleBlur = () => {
+    const valueNumber= typeof inputRef?.current?.value==='number'
+    ? (inputRef?.current?.value as number) * 1000
+    : undefined;
+    
     dispatch(
       setValueMaxbetSpread({
-        value: (inputRef?.current?.value as number) * 1000,
+        value:  valueNumber,
         key: 'maxbetHdp',
         infoSiteMatchId
       })

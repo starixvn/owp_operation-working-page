@@ -20,14 +20,14 @@ const MaxBetCell = props => {
   const component = {
     [VIEW]: (
       <MaxBetViewCell
-        maxBet={convertThousandToK(maxbetHdp, true)}
+        maxBet={convertThousandToK(maxbetHdp, true)||undefined}
         leagueName={leagueName}
       />
     ),
     [EDIT]: (
       <MaxbetEditableCell
         infoSiteMatchId={infoSiteMatchId}
-        maxBet={convertThousandToK(maxbetHdp, false) ?? 0}
+        maxBet={convertThousandToK(maxbetHdp, false) || undefined}
         leagueName={leagueName}
       />
     )
