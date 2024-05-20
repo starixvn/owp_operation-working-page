@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { isEqual } from 'lodash';
-import {
-  getEventTickets,
- 
-} from './ticketSliceThunkNative';
-
+import { getEventTickets } from './ticketSliceThunkNative';
+import { checkAllFilterCondition } from '../../signalR/signalRHelper';
 import { REQUEST_STATUS } from '../../../../Shared/Constants';
 import { TTicket } from '../../../type';
+import { removeTickets, sortTickets } from '../../../Helper/TicketCenterHelper';
 
 const ticketSlice = createSlice({
   name: 'ticketSlice',
@@ -16,6 +14,32 @@ const ticketSlice = createSlice({
     loadTicket: REQUEST_STATUS.idle
   },
   reducers: {
+    updateTicketItemIntoDataSource: {
+      reducer: (state, action) => {
+        const { ticketInfo, filterModel } = action.payload;
+        const ticketId = ticketInfo?.ticketId;
+        const isUpdate = checkAllFilterCondition(filterModel, ticketInfo);
+        if (isUpdate) {
+          const ticketIndex = state.entities.findIndex(
+            e => e.ticketId === ticketId
+          );
+          if (ticketIndex !== -1) {
+            state.entities[ticketIndex] = ticketInfo;
+          } else {
+            state.entities.unshift(ticketInfo);
+          }
+        } else {
+          state.entities = removeTickets(state.entities, ticketId);
+        }
+        sortTickets(state.entities);
+      }
+    },
+    appendTicketItemIntoDataSource: {
+      reducer: (state, action) => {
+        state.entities.unshift(action.payload);
+        sortTickets(state.entities);
+      }
+    }
   },
   extraReducers: builder => {
     builder
@@ -34,7 +58,7 @@ const ticketSlice = createSlice({
           state.entities.length = 0;
           state.loadTicket = REQUEST_STATUS.idle;
           state.currentRequestId = '';
-          state.entities =action.payload;
+          state.entities = action.payload;
         }
       })
       .addCase(getEventTickets.rejected, (state, action) => {

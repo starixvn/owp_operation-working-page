@@ -51,7 +51,10 @@ const buildValueTicketsFilter = policy => {
   return flowBasic(ActorId);
 };
 
-const buildTicketTypeFilter = (parents: Array<TParentsResponse>, children: Array<TChildrenResponse>) => {
+const buildTicketTypeFilter = (
+  parents: Array<TParentsResponse>,
+  children: Array<TChildrenResponse>
+) => {
   const parentOption = parents.map(({ id, name }) => ({
     value: `p-${id}`,
     title: name,
@@ -82,10 +85,25 @@ const buildTicketTypeFilter = (parents: Array<TParentsResponse>, children: Array
   return { parentOption, childrenOption, emptyOption };
 };
 
+const removeTickets = (entities, ticketId) =>
+  entities.filter(item => item.ticketId !== ticketId);
+
+const sortTickets = entities => {
+  entities.sort((a, b) => {
+    if (a.isPinned !== b.isPinned) {
+      return a.isPinned ? -1 : 1;
+    } else {
+      return new Date(b.lastCommentDate) - new Date(a.lastCommentDate);
+    }
+  });
+};
+
 export {
   buildValueTicketsFilter,
   getDetailSegmentUrlByEventType,
   buildTicketTypeFilter,
+  removeTickets,
+  sortTickets,
   EVENT_TYPE,
   URL,
   getDefaultDateRange
