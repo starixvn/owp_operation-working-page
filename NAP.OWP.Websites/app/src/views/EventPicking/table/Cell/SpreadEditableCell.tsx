@@ -13,17 +13,16 @@ const SpreadEditableCell = ({ spread, spreadKey, infoSiteMatchId, leagueName }: 
   let newValue = -999999999;
   const dispatch = useAppDispatch();
   const inputRef = createRef<HTMLInputElement>();
+  
   const handleBlur = () => {
-    if (inputRef?.current) {
-
-      const { value } = inputRef.current;
-      typeof value === 'number' && dispatch(setValueMaxbetSpread({
-        value: (value as number) / 100,
+    const valueNumber= typeof inputRef?.current?.value==='number'
+    ? (inputRef?.current?.value as number) /100
+    : undefined;
+      dispatch(setValueMaxbetSpread({
+        value: valueNumber,
         key: spreadKey,
         infoSiteMatchId
       }));
-    }
-
   };
 
   useEffect(() => {
