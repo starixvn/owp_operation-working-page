@@ -6,15 +6,15 @@ const NoOfHdpEditableCell = ({
 }: { value: string | undefined; leagueName: string; }) => {
   return (
     <div className="noOf__hdp-cell">
-      {value ? (
-        <p className='noOf__hdp__value'>
+      {value && <p className='noOf__hdp__value'>
           {value}
-        </p>
-      ) : (
-        <a className='noOf__hdp__check' onClick={() => handleCheckButton(leagueName)}>
-          Check
-        </a>
-      )}
+        </p>}
+      {(value === null|| value===undefined) &&
+        <a className='noOf__hdp__check'
+         onClick={() => handleCheckButton(leagueName)}>
+        Check
+      </a>
+      }
     </div>
   );
 };
