@@ -28,14 +28,14 @@ const buildConditionOptions = (first: TCondition[][], second: TCondition[]) => {
   const options: Option[] = uniqBy(
     [...second]
       .sort((first, second) =>
-        (first.value || '').localeCompare(second.value || '')
+        (first.value || '')?.localeCompare(second?.value || '')
       )
       .map(
         o =>
           ({
-            value: o.value.length > 0 ? o.value : null,
+            value: o?.value?.length > 0 ? o.value : null,
             label:
-              o.value.length > 0
+              o?.value?.length > 0
                 ? o.type === 'Contains'
                   ? `*${o.value}*`
                   : o.value
