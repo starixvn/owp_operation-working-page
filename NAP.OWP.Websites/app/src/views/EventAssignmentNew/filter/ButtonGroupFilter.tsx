@@ -8,8 +8,12 @@ import Utils from '../../Shared/Utils';
 const ButtonGroupFilter = () => {
   const dispatch = useAppDispatch();
   const filterState = useAppSelector(state => state.filter.filterState);
-  const policy = useAppSelector(state => state.policy.entities.FullBetTypes);
-  const { selectedMatchStatus, selectedOffVRs, selectedMatchType, userNameFilterIsValid, selectedDate } = filterState;
+  const {
+    selectedMatchStatus,
+    selectedOffVRs,
+    selectedMatchType,
+    selectedDate
+  } = filterState;
 
   const handleSubmit = () => {
     const selectedMatchStatusIsValid = selectedMatchStatus.length > 0;
@@ -17,7 +21,6 @@ const ButtonGroupFilter = () => {
     const selectedMatchTypeIsValid = selectedMatchType.length > 0;
     if (
       selectedMatchStatusIsValid &&
-      userNameFilterIsValid &&
       selectedMatchTypeIsValid &&
       selectedSyncOffVRIsValid
     ) {
@@ -27,7 +30,6 @@ const ButtonGroupFilter = () => {
         ToastrWrapper.showError('Please select at least one match status');
       !selectedSyncOffVRIsValid &&
         ToastrWrapper.showError('Please select at least one sync off VR');
-      !userNameFilterIsValid && ToastrWrapper.showError('User not found');
       !selectedMatchTypeIsValid &&
         ToastrWrapper.showError('Please select at least one match type');
     }
@@ -50,7 +52,6 @@ const ButtonGroupFilter = () => {
         Submit
       </button>
       <ExportSelector />
-
     </div>
   );
 };

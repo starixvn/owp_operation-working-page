@@ -1,31 +1,25 @@
-import { UserSuggestion } from '../../components/Assignment/UserSuggestion';
 import { updateFilterState } from './filterSlice';
 import { useAppDispatch } from '../app/hooks';
+import SearchEmployee from '../../Shared/SearchEmployee/SearchEmployee';
+type UserOption = {
+  value: number;
+  label: string;
+};
+
 const UserSuggestionFilter = () => {
   const dispatch = useAppDispatch();
-  const handleSetUserInfo = (
-    userNameValue: string,
-    userNameIsValidValue: boolean
-  ) => {
-    const modelUserNameValue = {
-      key: 'userNameFilter',
-      value: userNameValue
-    };
-    dispatch(updateFilterState(modelUserNameValue));
-    const modelUserNameIsValid = {
-      key: 'userNameFilterIsValid',
-      value: userNameIsValidValue
-    };
-    dispatch(updateFilterState(modelUserNameIsValid));
+  const handleSelectedUserIds = (selected: Array<UserOption>) => {
+    const value = selected.map(x => x.value).join();
+    dispatch(
+      updateFilterState({
+        key: 'userIds',
+        value
+      })
+    );
   };
   return (
-    <div className='filter-control'>
-      <div className='label'>Employee</div>
-      <UserSuggestion
-        onHandleChange={(userName: string, userNameIsValid: boolean) =>
-          handleSetUserInfo(userName, userNameIsValid)
-        }
-      />
+    <div className='filter-control filter-employee'>
+      <SearchEmployee onChangeOptions={handleSelectedUserIds} />
     </div>
   );
 };

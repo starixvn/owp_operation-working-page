@@ -18,13 +18,11 @@ import { FunctionKeys, MatchStatuses } from '../../Shared/Constants';
 import { useSelector } from 'react-redux';
 import {
   filterByUnReadTicket,
-  setRefreshModel,
-  setUserNameFilter,
-  setUserNameFilterIsValid
+  setRefreshModel
 } from '../table/tableSlice/tableSlice';
 import ToastrWrapper from '../../components/ToastrWrapper';
 import Utils from '../../Shared/Utils';
-import { UserSuggestion } from '../../components/Assignment/UserSuggestion';
+import SearchEmployee from '../../Shared/SearchEmployee/SearchEmployee';
 
 const { LIVE_GAME } = BUTTON_TYPE;
 const Filter = () => {
@@ -36,10 +34,8 @@ const Filter = () => {
   );
   const [selectedMatchType, setSelectedMatchType] = useState(MATCH_TYPE_OPTION);
   const [statusOptions, setStatusOptions] = useState([]);
-  const { isShowUnReadTicketOnly, userNameFilter, userNameFilterIsValid } =
-    useSelector(state => state.events);
-  const [userName, setUserName] = useState(userNameFilter);
-  const [userNameIsValid, setUserNameIsValid] = useState(userNameFilterIsValid);
+  const [userIds, setUserIds] = useState([]);
+  const { isShowUnReadTicketOnly } = useSelector(state => state.events);
   const dispatch = useStableDispatch();
 
   useEffect(() => {
@@ -83,23 +79,16 @@ const Filter = () => {
       return;
     }
 
-    if (!searchDisabled && userNameFilterIsValid) {
+    if (!searchDisabled) {
       const model = {
-        userName,
+        userIds: userIds.map(x => x.value).join(),
         filterDate: selectedDate,
         statusId: selectedMatchStatus.map(ms => ms.value).join(),
         matchType: selectedMatchType.map(ms => ms.value).join()
       };
-      dispatch(setUserNameFilter(userName));
-      dispatch(setUserNameFilterIsValid(userNameFilterIsValid));
       dispatch(getEvents(model));
       dispatch(setRefreshModel(model));
     }
-  };
-
-  const setUserInfo = (userNameValue, userNameIsValidValue) => {
-    setUserName(userNameValue);
-    setUserNameIsValid(userNameIsValidValue);
   };
 
   useEffect(() => {
@@ -119,6 +108,8 @@ const Filter = () => {
     setSelectedMatchStatus(selectedMatchStatusByDate);
   }, [selectedDate]);
 
+  const handleSelectedUserIds = selected => setUserIds(selected);
+
   return (
     <div className='filter-control'>
       <div className='date-dropdown calendar'>
@@ -136,14 +127,8 @@ const Filter = () => {
         </span>
       </div>
       <div className='employee-filter'>
-        <div className='label'>Employee</div>
-        <UserSuggestion
-          onHandleChange={(userName, userNameIsValid) =>
-            setUserInfo(userName, userNameIsValid)
-          }
-        />
+        <SearchEmployee onChangeOptions={handleSelectedUserIds} />
       </div>
-
       <MultipleSelection
         label='Match Type'
         options={MATCH_TYPE_OPTION}
