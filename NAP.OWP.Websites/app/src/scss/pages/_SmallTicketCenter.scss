@@ -272,6 +272,13 @@
 
   .ticket__list--item{
     padding:8px;
+    .cell{
+      position: relative;
+      .icon-new-tab{
+        position: absolute;
+        right: 0;
+      }
+    }
     .match-info-cell {
       .match-info-date {
         font-weight: bold;

@@ -26,10 +26,12 @@ const TicketList = () => {
                 onClick={() =>
                   handleOnClick(ticket.ticketId, ticket.eventType)
                 }>
-                {cellFactory(ticket)}
-                <IconOpenNewTab
-                  ticketId={ticket.ticketId}
-                  eventType={ticket.eventType}></IconOpenNewTab>
+                  <div className='cell'>
+                    {cellFactory(ticket)}
+                    <IconOpenNewTab
+                      ticketId={ticket.ticketId}
+                      eventType={ticket.eventType}></IconOpenNewTab>
+                  </div>
               </td>
             </tr>
           ))}
