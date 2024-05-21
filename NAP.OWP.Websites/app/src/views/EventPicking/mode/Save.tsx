@@ -13,7 +13,7 @@ const Save = ({ onSetMode }: { onSetMode: () => void }) => {
       InfoSiteMatchId: e.infoSiteMatchId,
       SpreadHdp: e.spreadHdp||null,
       SpreadOu: e.spreadOu||null,
-      NoOfHDP: e.noOfHDP,
+      NoOfHDP: e.noOfHDP||null,
       MaxbetHdp: e.maxbetHdp||null
     }));
     
