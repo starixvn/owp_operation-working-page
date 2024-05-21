@@ -235,13 +235,6 @@
     }
   }
 }
-.ticket-center {
-  margin: 1rem;
-  border-radius: 3px;
-  background: #fff;
-  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
-  position: relative;
-}
 
 @media (width<815px) {
   .multi-select-dropdown{
@@ -249,6 +242,11 @@
   }
 }
 
+@media(width<503px){
+  .search-text{
+    margin-top: 15px;
+  }
+}
 @media (width<675px) {
   .ticket-type-dropdown{
     margin-top: 15px;
@@ -731,7 +729,23 @@
   }
   .block-filter {
     max-width: 1550px;
-    
+    .show-info {
+      .mdi-icon{
+        cursor: pointer;
+        width: 23px;
+        margin: 0;
+        fill: #1e88e5;
+        display: inline;
+      }
+      p{
+      cursor: pointer;
+      display: inline;
+      margin: 0;
+      font-size: 13px;
+      color: #1e88e5;
+      font-weight: 700;
+      }
+  }
     .input-text-event,
     .input-text-ticketId {
       background-color: transparent;
@@ -778,37 +792,6 @@
   width: 80px;
 }
 
-//fix layout
-@media (min-width: 850px) and (max-width: 1099px) {
-  .app-body {
-    margin-top: 55px;
-  }
-  .sidebar {
-    height: 100vh;
-  }
-
-  .tickets-tab-header {
-    .block-filter {
-      .input-text {
-        min-width: 300px;
-      }
-    }
-  }
-  .create-tab-header {
-    .input-field {
-      min-width: 300px;
-    }
-  }
-  .block-filter {
-    .btn-right {
-      .filter-control-checkbox {
-        input[type='checkbox'] {
-          margin-left: 20px;
-        }
-      }
-    }
-  }
-}
 // fix scroll bar table
 .ScrollbarLayout_main.public_Scrollbar_main {
   z-index: 1 !important;
@@ -900,40 +883,6 @@
   min-height: 200px;
 }
 
-@media (min-width: 576px) {
-  .modal-dialog {
-    max-width: 600px;
-    margin: 1.75rem auto;
-  }
-}
-// pin message
-.action-cell {
-  text-align: center;
-  > span {
-    font-size: 16px;
-    margin: 0 4px;
-    color: #4f4f4f;
-    cursor: pointer;
-  }
-}
-.fixedDataTableRowLayout_main {
-  .fixedDataTableRowLayout_body {
-    .fixedDataTableCellGroupLayout_cellGroupWrapper {
-      .public_fixedDataTableCell_wrap3 {
-        position: relative;
-      }
-    }
-  }
-}
-.header-TicketID {
-  display: block;
-  span {
-    position: absolute;
-    color: #999999;
-    top: 5px;
-    left: 5px;
-  }
-}
 // tree check box
 .rc-tree-select-selection {
   border: none;

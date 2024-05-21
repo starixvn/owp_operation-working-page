@@ -1,5 +1,5 @@
 import { OWPPage, OWPHeader, OWPBody } from '../Shared/common/OWP/OPWPage';
-import Filter from './features/header/filter/Filter';
+import FilterWrapper from './features/header/filter/Filter';
 import { FunctionKeys } from '../Shared/Constants';
 import TicketList from './features/table/TicketList';
 
@@ -10,7 +10,7 @@ const SmallTicketCenterManagementNative = () => {
     <div className='small__ticket-center'>
       <OWPPage className='Event-Tickets'>
         <OWPHeader className='tickets-tab'>
-          <Filter />
+          <FilterWrapper />
         </OWPHeader>
         <OWPBody className='tickets-tab__body'>
           <TicketList/>

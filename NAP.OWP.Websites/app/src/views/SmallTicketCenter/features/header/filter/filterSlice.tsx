@@ -14,6 +14,7 @@ const filterSlice = createSlice({
   name: 'filterSlice',
   initialState: {
     loadingTicketTypeOptions: REQUEST_STATUS.pending,
+    ticketTypeOptionReady: false,
     entities:{
       multipleSelect:{
         ticketTypeSelected: [] as Array<string>,
@@ -46,6 +47,7 @@ const filterSlice = createSlice({
       })
       .addCase(getTicketTypeOption.fulfilled, (state, action: PayloadAction<TTicketTypeResponse>)=>{
         state.loadingTicketTypeOptions= REQUEST_STATUS.idle;
+        state.ticketTypeOptionReady= true;
         const { parents, children }=action.payload;
         const { parentOption, childrenOption, emptyOption } = buildTicketTypeFilter(parents, children);
         

@@ -51,5 +51,5 @@ export type TFilerParam={
   keyword: string,
   ticketTypeId: string,
   ticketStatuses: string,
-  marketKey: 1
+  marketKey: number
 }

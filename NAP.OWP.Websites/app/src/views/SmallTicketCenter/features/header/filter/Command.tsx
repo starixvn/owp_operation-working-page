@@ -8,11 +8,7 @@ const Command = () => {
   const dispatch= useAppDispatch();
   const handleSubmit=(event: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     event.preventDefault();
-    const {actorId,
-      marketKey,
-      fromDateFilter,
-      toDateFilter,
-      keyword,
+    const {
       ticketTypeId,
       ticketStatuses}= store.getState().filter.entities.filterInfo;
   
@@ -28,13 +24,7 @@ const Command = () => {
       return;
     }
 
-    dispatch(getEventTickets({actorId: 8,
-      marketKey,
-      fromDateFilter: Utils.formatDate(fromDateFilter),
-      toDateFilter: Utils.formatDate(toDateFilter),
-      keyword,
-      ticketTypeId,
-      ticketStatuses}));
+    dispatch(getEventTickets());
   };
 
   return (
