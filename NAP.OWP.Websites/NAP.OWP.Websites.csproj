@@ -474,6 +474,15 @@
     </Content>
     <Content Include="App_Data\Files\Readme.txt" />
     <Content Include="src\scss\images\feedback-icon.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\server-fd2a5d34.css" />
+    <Content Include="wwwroot\event-assignment-new\assets\js\main-c9ed362d.js" />
+    <Content Include="wwwroot\event-assignment-new\favicon.ico" />
+    <Content Include="wwwroot\event-assignment-new\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\event-picking\assets\ext\logo_none-232840bc.svg" />
@@ -593,8 +602,8 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_none-232840bc.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\live-game-list\assets\ext\server-c69ed0e4.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-77071bca.js" />
+    <Content Include="wwwroot\live-game-list\assets\ext\server-38f4e59f.css" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-7fefaabd.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\task-list\assets\ext\icon-feedback-57264197.svg" />
@@ -1243,15 +1252,6 @@
     <Content Include="wwwroot\day-shift-assignment\assets\js\main-2ea5f20a.js" />
     <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\day-shift-assignment\server.html" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\icon-feedback-57264197.svg" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\icon-search-4037a8fe.svg" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\logo_none-232840bc.svg" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\logo_text-c3062a52.svg" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\server-16b369fb.css" />
-    <Content Include="wwwroot\event-assignment-new\assets\js\main-c233dc94.js" />
-    <Content Include="wwwroot\event-assignment-new\favicon.ico" />
-    <Content Include="wwwroot\event-assignment-new\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\logo_none-232840bc.svg" />
@@ -3110,10 +3110,6 @@
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\day-shift-assignment\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\day-shift-assignment\server.cshtml" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\event-assignment-new\server.cshtml" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-assignment\assets\ext\OWP-a7443744.ttf" />
@@ -3219,10 +3215,6 @@
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\live-detail\server.cshtml" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\live-game-list\server.cshtml" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\event-picking\assets\ext\OWP-a7443744.ttf" />
@@ -3231,6 +3223,18 @@
     <Content Include="wwwroot\task-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\live-game-list\server.cshtml" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-assignment-new\server.cshtml" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\event-assignment-new\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

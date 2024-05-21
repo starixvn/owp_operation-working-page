@@ -18,7 +18,7 @@ const SearchEmployee: React.FC<SearchEmployeeProps> = ({
       const userFromCache = UserService.getUserFromCached();
       const userOptions = userFromCache.map((x: any) => ({
         value: x.UserId,
-        label: x.UserName
+        label: `${x.UserName} ${x.NickName ? `(${x.NickName})` : ''}`
       }));
       setOptions(userOptions);
     };
