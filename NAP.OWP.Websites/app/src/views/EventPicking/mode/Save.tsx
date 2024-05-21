@@ -11,12 +11,13 @@ const Save = ({ onSetMode }: { onSetMode: () => void }) => {
     const { entities } = store.getState().eventPickingTable;
     const eventModified = entities.filter(e => e.isModified || e.isReferenceLeagueManagement).map(e => ({
       InfoSiteMatchId: e.infoSiteMatchId,
-      SpreadHdp: e.spreadHdp,
-      SpreadOu: e.spreadOu,
+      SpreadHdp: e.spreadHdp||null,
+      SpreadOu: e.spreadOu||null,
       NoOfHDP: e.noOfHDP,
-      MaxbetHdp: e.maxbetHdp
+      MaxbetHdp: e.maxbetHdp||null
     }));
-    await dispatch(updateEventsThunk(eventModified));
+    
+    eventModified.length&&await dispatch(updateEventsThunk(eventModified));
     Spinner.hide();
     const { param } = store.getState().filter;
     await dispatch(getEventPickings(param));

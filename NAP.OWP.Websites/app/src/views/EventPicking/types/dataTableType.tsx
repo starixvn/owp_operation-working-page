@@ -7,10 +7,10 @@ type TResult = {
 
 type TUpdateEvents = Array<{
   InfoSiteMatchId: number,
-  SpreadHdp: number | undefined,
-  SpreadOu: number | undefined,
-  MaxbetHdp: number | undefined,
-  NoOfHDP: string | undefined
+  SpreadHdp: number | undefined| null,
+  SpreadOu: number | undefined| null,
+  MaxbetHdp: number | undefined|null,
+  NoOfHDP: string | undefined|null
 }>
 
 type TDataTable = {

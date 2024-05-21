@@ -52,7 +52,7 @@ const NoOfHdpEditableCell = ({
           newValue = v.target?.value;
         }}
       />
-      {(value === null|| value===undefined) && (
+      {!value && (
         <a className='mb__check' onClick={() => handleCheckButton(leagueName)}>
           Check
         </a>
