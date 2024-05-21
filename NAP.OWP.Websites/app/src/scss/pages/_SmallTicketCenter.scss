@@ -111,8 +111,6 @@
 }
 //filter
 .block-filter {
-  display: flex;
-  align-items: flex-end;
   .react-datepicker__input-container {
     input {
       background-color: transparent;
@@ -121,7 +119,6 @@
   .btn-right {
     padding: 10px 0px 0px 0px;
     .filter-control-checkbox {
-      display: flex;
       font-size: 1.4rem;
       color: #1e88e5;
       input[type='checkbox'] {
@@ -138,6 +135,7 @@
     .filter-control {
       flex: 0 1;
       display: flex;
+      flex-wrap: wrap;
       padding-top: 10px;
       position: relative;
       z-index: 4;
@@ -245,214 +243,62 @@
   position: relative;
 }
 
+@media (width<815px) {
+  .multi-select-dropdown{
+    margin-top: 15px;
+  }
+}
+
+@media (width<675px) {
+  .ticket-type-dropdown{
+    margin-top: 15px;
+  }
+}
 //main table
-.table-EventChecking {
-  padding: 0 10px;
+.table__content--wrapper{
+  margin-top: 20px;
 }
-.public_fixedDataTableCell_cellContent {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.fixedDataTableLayout_main {
-  .public_fixedDataTable_header {
-    .fixedDataTableCellGroupLayout_cellGroup {
-      .fixedDataTableCellLayout_main {
-        &:nth-child(1),
-        &:nth-child(2),
-        &:nth-child(4) {
-          .public_fixedDataTableCell_cellContent {
-            text-align: center;
-          }
-        }
-      }
-    }
-    .public_fixedDataTableCell_cellContent {
-      text-align: left;
-      position: relative;
-    }
-  }
-}
-.header-TicketType {
-  white-space: nowrap;
+.table__content{
   width: 100%;
-  max-width: 175px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.fixedDataTableRowLayout_body {
-  .fixedDataTableCellGroupLayout_cellGroupWrapper {
-    .public_fixedDataTableCell_main .fixedDataTableCellLayout_main {
-      display: flex;
-      align-items: center;
+  th{
+    padding: 8px;
+    text-align: center;
+    box-shadow: inset 1px -1px #c8ced3;
+    background-color: #f1f1f1;
+  }
+    td{
+      box-shadow: inset 1px -1px #c8ced3;
+      padding:8px;
     }
+  }
 
-    .fixedDataTableCellLayout_main {
-      border-bottom: 1px solid #d3d3d3;
-      &:nth-child(1),
-      &:nth-child(4),
-      &:nth-child(2) {
-        .fixedDataTableCellLayout_wrap1 {
-          margin: 0 auto;
-        }
+  .ticket__list--item{
+    padding:8px;
+    .match-info-cell {
+      .match-info-date {
+        font-weight: bold;
+        margin-right: 5px;
+        margin-left: 2px;
       }
-      .league-info-cell {
-        .league-Name {
-          display: block;
-          font-weight: bold;
-        }
+      .match-info-match-name {
+        font-weight: bold;
       }
-      .header-LastComment {
-        color: #444444;
-        display: block;
-        white-space: nowrap;
-        width: 100%;
-        max-width: 430px;
+      &.child-match {
+        margin-left: 3%;
+      }
+    }
+    
+    .new-add-info-cell {
+      .new-add-league-name {
+        font-weight: bold;
         overflow: hidden;
+        -o-text-overflow: ellipsis;
         text-overflow: ellipsis;
-        > * {
-          display: inline;
-        }
-        .comment-name {
-          font-weight: bold;
-          margin-right: 2px;
-        }
-        .comment-time {
-          color: #828282;
-          margin-right: 3px;
-        }
-        .comment-message {
-          .is-file {
-            &.not-available {
-              cursor: default;
-              color: #828282;
-              text-decoration: none;
-            }
-          }
-        }
-      }
-      .status-cell {
-        text-align: center;
-      }
-      span.status {
-        border-radius: 15px;
-        padding: 3px 7px;
-        color: #fff;
-        &.open {
-          background: #43a0f1;
-        }
-        &.closed {
-          background: #2fb159;
-        }
-        &.canceled {
-          background: #d73131;
-        }
-      }
-      .conversation-cell {
-        .public_fixedDataTableCell_cellContent {
-          max-width: 399px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .ticket-title-link {
-          line-height: 1.2;
-          display: inline-block;
-          > span {
-            width: 100%;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            max-width: 330px;
-            display: inline-block;
-          }
-        }
-      }
-      .ticket-id-cell {
-        text-align: center;
-      }
-      .last-comment-cell {
-        .public_fixedDataTableCell_cellContent {
-          max-width: 499px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-
-      .has-unread {
-        background-color: #ffea8f;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-      }
-      .cell {
-        margin: 0;
-        width: 100%;
-        height: 100%;
+        max-width: 535px;
       }
     }
   }
-}
 
-.sort-icon {
-  position: absolute;
-  top: 11px;
-  right: 5px;
-  width: 12px;
-  height: 12px;
-  cursor: pointer;
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    right: 0;
-    border-style: solid;
-  }
-  &:before {
-    top: 0;
-    border-color: transparent transparent #93a9aa transparent;
-    border-width: 0 3px 5px 3px;
-  }
-  &:after {
-    bottom: 0;
-    border-color: #93a9aa transparent transparent transparent;
-    border-width: 5px 3px 0 3px;
-  }
-  &.ORDER_ASC {
-    &:before {
-      border-color: transparent transparent #4b595c transparent;
-    }
-  }
-  &.ORDER_DESC {
-    &:after {
-      border-color: #4b595c transparent transparent transparent;
-    }
-  }
-}
-.match-info-cell {
-  .match-info-date {
-    font-weight: bold;
-    margin-right: 5px;
-    margin-left: 2px;
-  }
-  .match-info-match-name {
-    font-weight: bold;
-  }
-  &.child-match {
-    margin-left: 3%;
-  }
-}
-
-.new-add-info-cell {
-  .new-add-league-name {
-    font-weight: bold;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    max-width: 535px;
-  }
-}
 // icon inside table
 .mdi-icon {
   display: block;
@@ -877,7 +723,7 @@
   color: #828282;
 }
 //ticket page
-.tickets-tab__header {
+.tickets-tab-header {
   padding: 0 10px;
   margin-bottom: 13px;
   .filter-control.btn-block-add-new {
@@ -885,6 +731,7 @@
   }
   .block-filter {
     max-width: 1550px;
+    
     .input-text-event,
     .input-text-ticketId {
       background-color: transparent;

@@ -5,7 +5,10 @@ import { REQUEST_STATUS } from "../../../../Shared/Constants";
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { TTicketTypeOptions, TTicketTypeResponse, TUpdateFilterParams, TUpdateFilterTimeRange } from "../../../type";
 
-const { fromDateDefault, toDateDefault } = getDefaultDateRange();
+// TODO
+//const { fromDateDefault, toDateDefault } = getDefaultDateRange();
+
+const [fromDateDefault, toDateDefault] = [new Date('2024-4-21'),new Date('2024-5-21')];
 
 const filterSlice = createSlice({
   name: 'filterSlice',
@@ -50,7 +53,7 @@ const filterSlice = createSlice({
           i => i.value
         );
         state.entities.filterInfo.ticketTypeId=state.entities.multipleSelect.ticketTypeSelected.join(',');
-        state.entities.multipleSelect.ticketTypeOptions=[...parentOption, ...childrenOption, ...emptyOption]
+        state.entities.multipleSelect.ticketTypeOptions=[...parentOption, ...childrenOption, ...emptyOption];
       }).addCase(getTicketTypeOption.rejected, state=>{
         state.loadingTicketTypeOptions= REQUEST_STATUS.idle;
       });

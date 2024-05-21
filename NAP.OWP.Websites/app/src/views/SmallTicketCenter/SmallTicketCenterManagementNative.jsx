@@ -9,7 +9,7 @@ const SmallTicketCenterManagementNative = () => {
   return (
     <div className='small__ticket-center'>
       <OWPPage className='Event-Tickets'>
-        <OWPHeader className='tickets-tab__header'>
+        <OWPHeader className='tickets-tab'>
           <Filter />
         </OWPHeader>
         <OWPBody className='tickets-tab__body'>
