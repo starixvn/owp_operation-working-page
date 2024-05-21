@@ -2,10 +2,14 @@ import { OWPPage, OWPHeader, OWPBody } from '../Shared/common/OWP/OPWPage';
 import FilterWrapper from './features/header/filter/Filter';
 import { FunctionKeys } from '../Shared/Constants';
 import TicketList from './features/table/TicketList';
-
+import usePermission from '../Shared/customHook/usePermission';
+import Loading from '../components/Loading';
 
 const SmallTicketCenterManagementNative = () => {
- 
+  const { permission } = usePermission(FunctionKeys.TicketCenter, 'pagePolicy');
+  if (!permission.Username) {
+    return <Loading></Loading>;
+  }
   return (
     <div className='small__ticket-center'>
       <OWPPage className='Event-Tickets'>
@@ -13,7 +17,7 @@ const SmallTicketCenterManagementNative = () => {
           <FilterWrapper />
         </OWPHeader>
         <OWPBody className='tickets-tab__body'>
-          <TicketList/>
+          <TicketList />
         </OWPBody>
       </OWPPage>
     </div>

@@ -217,6 +217,10 @@ const openNewChattingTab = (actorId, ticketId, eventType) => {
   );
 };
 
+const openCurrentChattingTab = (actorId, ticketId, eventType) => {
+  window.location.href = `SmallChatting?actorId=${actorId}&eventType=${eventType}&ticketId=${ticketId}`;
+};
+
 const openNewSmallTicket = () => {
   const top = window.screenY + (window.innerHeight - 700) / 2;
   const left = window.screenX + (window.innerWidth - 500) / 2;
@@ -265,6 +269,7 @@ export {
   pushOrUpdateObject,
   filterDataTable,
   openNewChattingTab,
-  openNewSmallTicket
+  openNewSmallTicket,
+  openCurrentChattingTab
 };
 export default Utils;
