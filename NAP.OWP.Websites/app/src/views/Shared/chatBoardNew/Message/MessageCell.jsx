@@ -30,6 +30,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     createdDate,
     message,
     username,
+    extension,
     fileId,
     messageId,
     isSaved,
@@ -145,7 +146,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
       <>
         <div className='info-user'>
           <div className='name-user'>
-            {!isMyMessage && <>{username},</>} {getCreatedTime()}
+            {!isMyMessage && <>{username} ({extension}),</>} {getCreatedTime()}
           </div>
         </div>
         <div className='reaction-group'>
