@@ -12,6 +12,7 @@ import ReplyIcon from '../../../../assets/svg-element/ReplyIcon';
 import { ReactionBarSelector } from '@charkour/react-reactions';
 import { useState } from 'react';
 import GoodIcon from '../../../../assets/svg-element/GoodIcon';
+import Avatar from '@mui/material/Avatar';
 
 const url =
   process.env.NODE_ENV === 'development'
@@ -146,7 +147,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
       <>
         <div className='info-user'>
           <div className='name-user'>
-            {!isMyMessage && <>{username} ({extension}),</>} {getCreatedTime()}
+            {!isMyMessage && <>{username} {extension && ({extension})},</>} {getCreatedTime()}
           </div>
         </div>
         <div className='reaction-group'>
@@ -163,6 +164,9 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
           {getMessageContent()}
+          <a href='http://localhost:5000/image/js.jpg'>
+            <Avatar alt={username} src='http://localhost:5000/image/js.jpg'/>
+            </a> 
         </div>
       </>
     );
