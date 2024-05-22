@@ -5,12 +5,11 @@ import dayjs from 'dayjs';
 export const createModel = (eventModel: TFilter) => {
   return {
     EventDate: Utils.formatDate(eventModel.selectedDate),
-    Username: eventModel.userNameFilter || '',
+    Username: eventModel.userNames || '',
     MatchStatusIds: eventModel.selectedMatchStatus.map(x => x.value) || [],
     OffVRIds: eventModel.selectedOffVRs.map(x => x.value) || [],
     MatchType: eventModel.selectedMatchType.map(x => x.value).join(',') || [],
-    SyncLiveStatus: eventModel.selectedSyncLive.value,
-    ShowUnreadMessage: eventModel.showUnreadMessage
+    SyncLiveStatus: eventModel.selectedSyncLive.value
   };
 };
 
@@ -30,12 +29,16 @@ export const liveGameAssignmentUrl = (eventModel: TFilter) => {
 
 export const eventPickingOldUrl = (eventModel: TFilter) => {
   const { selectedDate } = eventModel;
-  return `/event-picking-old/sync-event-picking?date=${Utils.formatDate(selectedDate)}`;
+  return `/event-picking-old/sync-event-picking?date=${Utils.formatDate(
+    selectedDate
+  )}`;
 };
 
 export const micsMatchUrl = (eventModel: TFilter) => {
   const { selectedDate } = eventModel;
-  return `/event-picking-old/sync-event-picking?date=${Utils.formatDate(selectedDate)}`;
+  return `/event-picking-old/sync-event-picking?date=${Utils.formatDate(
+    selectedDate
+  )}`;
 };
 
 export const eventPickingListUrlNew = (eventModel: TFilter) => {

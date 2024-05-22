@@ -12,6 +12,7 @@ const filterSlice = createSlice({
   initialState: {
     filterState: {
       userIds: '',
+      userNames: '',
       selectedDate: buildDefaultFilterDate(),
       selectedMatchType: MATCH_TYPE_OPTION,
       selectedMatchStatus: [] as TOptions[],

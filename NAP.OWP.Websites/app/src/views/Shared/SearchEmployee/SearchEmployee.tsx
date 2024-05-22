@@ -16,10 +16,11 @@ const SearchEmployee: React.FC<SearchEmployeeProps> = ({
   useEffect(() => {
     const handleSetOptions = async () => {
       const userFromCache = await UserService.getUserFromCached();
-      const userOptions =
+      const userOptions: Option[] =
         userFromCache &&
         userFromCache.map((x: any) => ({
           value: x.UserId,
+          key: x.UserName,
           label: `${x.UserName} ${x.NickName ? `(${x.NickName})` : ''}`
         }));
       setOptions(userOptions);
