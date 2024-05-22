@@ -1,19 +1,23 @@
 import { updateFilterState } from './filterSlice';
 import { useAppDispatch } from '../app/hooks';
 import SearchEmployee from '../../Shared/SearchEmployee/SearchEmployee';
-type UserOption = {
-  value: number;
-  label: string;
-};
+import { Option } from '../../Shared/SearchEmployee/type';
 
 const UserSuggestionFilter = () => {
   const dispatch = useAppDispatch();
-  const handleSelectedUserIds = (selected: Array<UserOption>) => {
-    const value = selected.map(x => x.value).join();
+  const handleSelectedUserIds = (selected: Array<Option>) => {
+    const userIds = selected.map(x => x.value).join();
+    const userNames = selected.map(x => x.key).join();
     dispatch(
       updateFilterState({
         key: 'userIds',
-        value
+        value: userIds
+      })
+    );
+    dispatch(
+      updateFilterState({
+        key: 'userNames',
+        value: userNames
       })
     );
   };

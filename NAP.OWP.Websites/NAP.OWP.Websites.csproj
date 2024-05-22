@@ -480,7 +480,7 @@
     <Content Include="wwwroot\event-assignment-new\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\event-assignment-new\assets\ext\server-fd2a5d34.css" />
-    <Content Include="wwwroot\event-assignment-new\assets\js\main-05ffe1f3.js" />
+    <Content Include="wwwroot\event-assignment-new\assets\js\main-cad8f291.js" />
     <Content Include="wwwroot\event-assignment-new\favicon.ico" />
     <Content Include="wwwroot\event-assignment-new\server.html" />
     <Content Include="wwwroot\event-picking\assets\ext\icon-feedback-57264197.svg" />
@@ -603,7 +603,7 @@
     <Content Include="wwwroot\live-game-list\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\server-38f4e59f.css" />
-    <Content Include="wwwroot\live-game-list\assets\js\main-c6bec46c.js" />
+    <Content Include="wwwroot\live-game-list\assets\js\main-d66d35ce.js" />
     <Content Include="wwwroot\live-game-list\favicon.ico" />
     <Content Include="wwwroot\live-game-list\server.html" />
     <Content Include="wwwroot\task-list\assets\ext\icon-feedback-57264197.svg" />

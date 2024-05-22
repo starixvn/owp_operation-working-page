@@ -241,6 +241,7 @@ type TQueryPolicy = {
 type TFilter = {
   selectedDate: Date;
   userIds: string;
+  userNames: string;
   selectedMatchType: TOptions[];
   selectedMatchStatus: TOptions[];
   selectedSyncLive: TOptions;
