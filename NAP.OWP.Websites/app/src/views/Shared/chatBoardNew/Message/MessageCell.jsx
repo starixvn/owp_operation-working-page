@@ -9,6 +9,9 @@ import { setModelQuoteMessage } from '../../chatBoardNew/chatBoardSlice';
 import { useSelector } from 'react-redux';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import ReplyIcon from '../../../../assets/svg-element/ReplyIcon';
+import { ReactionBarSelector } from '@charkour/react-reactions';
+import { useState } from 'react';
+import GoodIcon from '../../../../assets/svg-element/GoodIcon';
 
 const url =
   process.env.NODE_ENV === 'development'
@@ -37,6 +40,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     imageFileName
   } = data;
   const dispatch = useStableDispatch();
+  const [isOpenReactionIcon, setIsOpenReactionIcon] = useState(false);
   const { permission } = useSelector(state => state[policy]);
   const { HasWrite } = permission;
   const { getCreatedTime, getMessageContent } = MessageContents({
@@ -89,6 +93,13 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
             <ReplyIcon handleOnClick={() => handleClickQuoteIcon()} />
           )}
         </span>
+        <span className='icon-react-message'>
+          <GoodIcon
+            width={17}
+            height={17}
+            handleOnClick={() => setIsOpenReactionIcon(true)}
+          />
+        </span>
         <UncontrolledTooltip placement='top' target={`name${messageId}`}>
           Click to save your message or it is deleted after 30 days
         </UncontrolledTooltip>
@@ -108,16 +119,45 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
             <ReplyIcon handleOnClick={() => handleClickQuoteIcon()} />
           )}
         </span>
+        <span className='icon-react-message'>
+          <GoodIcon
+            width={17}
+            height={17}
+            handleOnClick={() => setIsOpenReactionIcon(true)}
+          />
+        </span>
       </span>
     );
 
   if (message) {
+    const reactionIcon = [
+      { label: 'collaboration', node: <div>🤝</div>, key: 'collaboration' },
+      { label: 'love', node: <div>❤️</div>, key: 'heart' },
+      { label: 'like', node: <div>👍</div>, key: 'like' },
+      { label: 'ok', node: <div>👌</div>, key: 'ok' },
+      { label: 'checked', node: <div>✅</div>, key: 'check-green' }
+    ];
+    const handleOnSelectReactionIcon = key => {
+      setIsOpenReactionIcon(false);
+      console.log(key);
+    };
     return (
       <>
         <div className='info-user'>
           <div className='name-user'>
             {!isMyMessage && <>{username},</>} {getCreatedTime()}
           </div>
+        </div>
+        <div className='reaction-group'>
+          {isOpenReactionIcon && (
+            <div className='list-icon-reaction'>
+              <ReactionBarSelector
+                iconSize={20}
+                reactions={reactionIcon}
+                onSelect={handleOnSelectReactionIcon}
+              />
+            </div>
+          )}
         </div>
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}

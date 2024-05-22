@@ -102,6 +102,7 @@
     "build:small-ticket-center": "set NODE_APP=small-ticket-center & vite build"
   },
   "dependencies": {
+    "@charkour/react-reactions": "^0.11.0",
     "@coreui/coreui": "^4.2.6",
     "@coreui/react": "^4.6.0",
     "@devexpress/dx-react-core": "^2.7.3",

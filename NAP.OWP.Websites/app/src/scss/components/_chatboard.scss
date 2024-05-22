@@ -15,10 +15,12 @@
   z-index: 100;
   width: 555px;
   padding: 1rem 2rem 4rem;
+
   .css-art2ul-ValueContainer2 {
     padding: 2px 0px;
     font-size: 13px;
   }
+
   .css-hlgwow {
     padding: 2px 0px;
     font-size: 13px;
@@ -57,6 +59,7 @@
 
   .chat-box {
     position: relative;
+
     .icon-attachment {
       position: absolute;
       bottom: 11px;
@@ -65,6 +68,7 @@
       width: 16px;
       height: 16px;
     }
+
     .icon-send {
       cursor: pointer;
       position: absolute;
@@ -76,20 +80,24 @@
 
     .MuiFormControl-root {
       width: 100% !important;
+
       .MuiOutlinedInput-notchedOutline,
       .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
         border: 1px solid #bdbdbd !important;
       }
+
       .MuiInputBase-root {
         padding: 10px 30px 10px 0;
         border-radius: 0;
         letter-spacing: inherit;
+
         textarea {
           font-family: inherit;
           line-height: 17px;
           padding: 0 3px 0 30px;
           font-size: 13px;
           color: #5c6873;
+
           &::-webkit-scrollbar {
             width: 7.5px;
           }
@@ -108,6 +116,7 @@
       }
     }
   }
+
   .groups-suggestion {
     font-size: 18px !important;
     color: #459be7;
@@ -120,17 +129,21 @@
     flex-shrink: 0;
     user-select: none;
   }
+
   .selected-container .groups-suggestion {
     margin-left: 4px;
   }
+
   .chatBoard-Header {
     font-size: 15px;
     padding-right: 22px;
+
     .close-chat-board-popup {
       top: 5px;
       right: -5px;
     }
-    > * {
+
+    >* {
       margin-bottom: 5px;
     }
 
@@ -196,6 +209,7 @@
       padding-bottom: 8px;
       padding-top: 7px;
       word-break: break-all;
+
       a {
         display: inline-block;
       }
@@ -442,10 +456,12 @@
     flex-direction: column;
     padding: 0 0 155px 0;
   }
+
   .drop-create-ticket {
     height: 100px !important;
     padding: 0 !important;
   }
+
   .drop-zone-dragging {
     position: relative;
 
@@ -516,16 +532,19 @@
   margin-bottom: 5px;
   position: relative;
   z-index: 10;
+
   .show-info {
     display: flex;
     align-items: center;
     width: fit-content;
+
     .mdi-icon {
       cursor: pointer;
       width: 23px;
       margin: 0;
       fill: #1e88e5;
     }
+
     p {
       cursor: pointer;
       display: inline;
@@ -593,7 +612,7 @@
     position: relative;
     padding: 10px 0;
 
-    + .item {
+    +.item {
       border-top: 1px solid #d3d3d3;
     }
 
@@ -654,7 +673,7 @@
   .event-date {
     font-size: 1.2rem;
 
-    > span {
+    >span {
       margin-left: 10px;
     }
 
@@ -727,7 +746,7 @@
     width: 65px;
   }
 
-  > div {
+  >div {
     width: 100%;
     // margin-left: 10px;
   }
@@ -841,9 +860,10 @@
   .left-form {
     width: 70px;
   }
+
   .MuiFormControl-root {
     .MuiInputLabel-formControl {
-      + .MuiInput-underline {
+      +.MuiInput-underline {
         margin-top: 45px;
       }
     }
@@ -853,6 +873,7 @@
 // form create ticket
 .header-popup {
   padding-right: 10px;
+
   h1 {
     font-style: normal;
     font-weight: 700;
@@ -881,7 +902,7 @@
       margin-top: 0;
     }
 
-    label + .MuiInput-formControl {
+    label+.MuiInput-formControl {
       margin-top: 35px;
     }
 
@@ -1211,6 +1232,7 @@
   overflow-y: scroll;
   width: 515px;
   position: relative;
+
   .load-more {
     position: absolute;
     padding: 4px 10px;
@@ -1225,45 +1247,58 @@
     transform: translate(-50%, 0);
     z-index: 3;
     cursor: pointer;
+
     &:hover {
       box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
     }
   }
+
   &-100 {
     height: 100px;
   }
+
   &-200 {
     height: 200px;
   }
+
   &-220 {
     height: 220px;
   }
+
   &-240 {
     height: 240px;
   }
+
   &-320 {
     height: 320px;
   }
+
   &-400 {
     height: 400px;
   }
+
   &-550 {
     height: 550px;
   }
+
   &-700 {
     height: 700px;
   }
+
   &-750 {
     height: 750px;
   }
+
   &-900 {
     height: 900px;
   }
+
   ul {
     padding: 0;
     margin: 0;
     list-style: none;
   }
+
   .my-message {
     text-align: right;
   }
@@ -1272,6 +1307,7 @@
     padding-bottom: 2px;
 
     position: relative;
+
     a {
       display: inline-block;
     }
@@ -1430,34 +1466,43 @@
     }
   }
 }
+
 // log work
 .subtype-status {
   display: flex;
   justify-content: space-between;
+
   .subtype {
     width: 68%;
+
     .subtype-input {
       width: 100%;
     }
   }
+
   .status {
     align-items: center;
   }
+
   .input-field-select__control {
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.42);
     border-radius: 0;
   }
+
   .input-field-select__indicator-separator {
     opacity: 0;
   }
 }
+
 .log-work .box-comment #comment {
   height: 85px !important;
 }
+
 .log-work .css-t3ipsp-control {
   box-shadow: none !important;
 }
+
 .message-list .message-date {
   font-size: 12px;
   color: #dbddde;
@@ -1471,13 +1516,16 @@
   line-height: 0.1em;
   margin: 10px 0 20px;
 }
+
 .message-list .date-time-line span {
   background: #fff;
   padding: 0 10px;
   font-size: 11px;
   color: #7d8183;
 }
+
 .message-list .my-message .message-div {
+  height: fit-content;
   background: #dbf1ff;
   text-align: left;
   padding: 5px 10px;
@@ -1494,22 +1542,27 @@
   color: black;
   overflow-wrap: anywhere;
 }
+
 .quote-info {
   padding-left: 10px;
   padding-bottom: 5px;
   font-size: 11px;
   color: #7f7f7f;
 }
+
 .message-content {
   display: block;
   overflow-wrap: anywhere;
 }
+
 .have-quote {
   border-top: solid 0.5px #3b3b3b;
   padding-top: 5px;
   margin-top: 5px;
 }
+
 .message-list .others-user .message-div {
+  height: fit-content;
   background: #f2f6f9;
   padding: 5px 10px;
   text-align: left;
@@ -1524,13 +1577,24 @@
   display: flex;
   column-gap: 10px;
   justify-content: flex-end;
+
   .icon-hover-wrapper {
     display: none;
   }
+
   .icon-hover-wrapper-unsave {
     display: flex;
+
     .icon-reply-message {
       display: none;
+    }
+  }
+
+  .list-icon-reaction {
+    max-height: 20px;
+
+    div {
+      box-shadow: none !important;
     }
   }
 }
@@ -1539,8 +1603,10 @@
   .icon-hover-wrapper {
     display: flex;
   }
+
   .icon-hover-wrapper-unsave {
     display: flex;
+
     .icon-reply-message {
       display: flex;
     }
@@ -1553,27 +1619,43 @@
   column-gap: 10px;
   flex-direction: row-reverse;
   justify-content: start;
+
   .icon-hover-wrapper {
     display: none;
   }
+
   .icon-hover-wrapper-unsave {
     display: flex;
+
     .icon-reply-message {
       display: none;
     }
   }
+
+  .list-icon-reaction {
+    max-height: 20px;
+
+    div {
+      box-shadow: none !important;
+    }
+  }
 }
+
 .message-list .others-user .message-group:hover {
+
   .icon-hover-wrapper {
     display: flex;
   }
+
   .icon-hover-wrapper-unsave {
     display: flex;
+
     .icon-reply-message {
       display: flex;
     }
   }
 }
+
 .message-list .icon-save-message svg {
   display: block;
   width: 17px;
@@ -1587,6 +1669,13 @@
   padding-top: 3px;
   cursor: pointer;
 }
+
+.icon-react-message {
+  padding-left: 5px;
+  padding-top: 3px;
+  cursor: pointer;
+}
+
 .message-list .unsave-message svg {
   fill: #3bb54a;
 }
@@ -1620,19 +1709,23 @@
   background-color: #c2c2c2;
   border-radius: 10px;
 }
+
 .message-list .name-user {
   margin-bottom: 0 !important;
 }
+
 .message-list .info-user {
   margin-bottom: 0 !important;
 }
 
 .file-div {
   display: flex;
+
   .attach-icon {
     transform: rotate(45deg);
   }
 }
+
 .is-file {
   align-self: center !important;
 }
@@ -1645,6 +1738,7 @@
   background-color: rgba(0, 0, 0, 0.35);
   border-radius: 18px;
 }
+
 .quote-text-box {
   position: relative;
   border-top: 1px solid #bdbdbd;
@@ -1653,9 +1747,11 @@
   overflow-wrap: anywhere;
   padding-bottom: 5px;
 }
+
 .icon-wrapper {
   display: flex;
 }
+
 .icon-quote {
   width: 96%;
   display: flex;
@@ -1673,6 +1769,7 @@
   font-style: italic;
   color: black;
 }
+
 .quote-info-text-box {
   padding-left: 30px;
   padding-bottom: 5px;
@@ -1687,12 +1784,15 @@
 .image-responsive:hover {
   cursor: pointer !important;
 }
+
 .message-list .my-message .image-responsive {
   border-radius: 9px 9px 0px 9px;
 }
+
 .message-list .others-user .image-responsive {
   border-radius: 9px 9px 9px 0px;
 }
+
 .input-image {
   padding: 4px;
   position: relative;
@@ -1700,6 +1800,7 @@
   border-left: 1px solid #bdbdbd;
   border-right: 1px solid #bdbdbd;
 }
+
 .input-image img {
   width: 80px;
   height: 80px;
