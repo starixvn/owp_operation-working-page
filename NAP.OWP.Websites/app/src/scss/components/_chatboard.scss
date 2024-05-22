@@ -1589,14 +1589,6 @@
       display: none;
     }
   }
-
-  .list-icon-reaction {
-    max-height: 20px;
-
-    div {
-      box-shadow: none !important;
-    }
-  }
 }
 
 .message-list .my-message .message-group:hover {
@@ -1629,14 +1621,6 @@
 
     .icon-reply-message {
       display: none;
-    }
-  }
-
-  .list-icon-reaction {
-    max-height: 20px;
-
-    div {
-      box-shadow: none !important;
     }
   }
 }
@@ -1716,6 +1700,33 @@
 
 .message-list .info-user {
   margin-bottom: 0 !important;
+}
+
+.message-list {
+  .message-row.my-message {
+    .list-icon-reaction {
+      display: flex;
+      justify-content: flex-end;
+      max-height: 20px;
+
+      div {
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+.message-list {
+  .message-row.others-user {
+    .list-icon-reaction {
+
+      max-height: 20px;
+
+      div {
+        box-shadow: none !important;
+      }
+    }
+  }
 }
 
 .file-div {

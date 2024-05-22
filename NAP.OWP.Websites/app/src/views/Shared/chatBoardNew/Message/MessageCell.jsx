@@ -9,7 +9,7 @@ import { setModelQuoteMessage } from '../../chatBoardNew/chatBoardSlice';
 import { useSelector } from 'react-redux';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import ReplyIcon from '../../../../assets/svg-element/ReplyIcon';
-import { ReactionBarSelector } from '@charkour/react-reactions';
+import ReactionBar from './ReactionBar';
 import { useState } from 'react';
 import GoodIcon from '../../../../assets/svg-element/GoodIcon';
 import Avatar from '@mui/material/Avatar';
@@ -132,41 +132,28 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     );
 
   if (message) {
-    const reactionIcon = [
-      { label: 'collaboration', node: <div>🤝</div>, key: 'collaboration' },
-      { label: 'love', node: <div>❤️</div>, key: 'heart' },
-      { label: 'like', node: <div>👍</div>, key: 'like' },
-      { label: 'ok', node: <div>👌</div>, key: 'ok' },
-      { label: 'checked', node: <div>✅</div>, key: 'check-green' }
-    ];
-    const handleOnSelectReactionIcon = key => {
-      setIsOpenReactionIcon(false);
-      console.log(key);
-    };
     return (
       <>
         <div className='info-user'>
           <div className='name-user'>
-            {!isMyMessage && <>{username} {extension && ({extension})},</>} {getCreatedTime()}
+            {!isMyMessage && (
+              <>
+                {username} {extension && { extension }},
+              </>
+            )}{' '}
+            {getCreatedTime()}
           </div>
         </div>
-        <div className='reaction-group'>
-          {isOpenReactionIcon && (
-            <div className='list-icon-reaction'>
-              <ReactionBarSelector
-                iconSize={20}
-                reactions={reactionIcon}
-                onSelect={handleOnSelectReactionIcon}
-              />
-            </div>
-          )}
-        </div>
+        <ReactionBar
+          isOpenReactionIcon={isOpenReactionIcon}
+          setIsOpenReactionIcon={setIsOpenReactionIcon}
+        />
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
           {getMessageContent()}
           <a href='http://localhost:5000/image/js.jpg'>
-            <Avatar alt={username} src='http://localhost:5000/image/js.jpg'/>
-            </a> 
+            <Avatar alt={username} src='http://localhost:5000/image/js.jpg' />
+          </a>
         </div>
       </>
     );
