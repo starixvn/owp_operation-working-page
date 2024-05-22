@@ -93,10 +93,14 @@ const getMentionsUsers = keyword => {
 
 const getUseSuggesionFromCache = () => true;
 
-const getUserFromCached = () => {
+const getUserFromCached = async () => {
   const localStorageKey = 'localStorageKey_DataSourceLocalUsers';
   const localDataSource = localStorage.getItem(localStorageKey);
-  return localDataSource && JSON.parse(localDataSource);
+  if (localDataSource) {
+    return JSON.parse(localDataSource);
+  }
+  const data = await getAll();
+  return data.filter(x => !x.IsSecondAccount);
 };
 
 const UserService = {
