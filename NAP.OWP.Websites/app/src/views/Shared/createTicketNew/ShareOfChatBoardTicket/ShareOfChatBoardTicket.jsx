@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
-import { Input } from 'reactstrap';
+import Comment from './Comment';
 import { getValueRef } from '../../Utils';
 import useStableDispatch from '../../customHook/useStableDispatch';
 import RecipientsSelect from '../../recipientSelect/RecipientsSelect';
@@ -107,19 +107,8 @@ const ShareOfChatBoardTicket = props => {
         <div className='left-form'>
           <div className='label'>Comment:</div>
         </div>
-        <div className='right-form'>
-          <div className='box-textmessage'>
-            <Input
-              type='textarea'
-              id='comment'
-              innerRef={commentRef}
-              name='message'
-              className='input-field'
-              maxLength='200'
-              multiple
-            />
-          </div>
-        </div>
+      
+        <Comment ref={commentRef}/>
       </div>
       <Attachments
         selectedFiles={selectedFiles}
