@@ -1,7 +1,7 @@
 import { createRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { validExtension } from '../const/index.json';
-import { setMessage, setModelQuoteMessage } from '../chatBoardSlice';
+import { setMessage, setModelQuoteMessage, setIsBlinkTitle } from '../chatBoardSlice';
 import useStableDispatch from '../../customHook/useStableDispatch';
 import PropTypes from 'prop-types';
 import SendIcon from '@mui/icons-material/Send';
@@ -10,7 +10,7 @@ import { TextField } from '@mui/material';
 import AttachFileIcon from '../../../../assets/svg-element/AttachFileIcon';
 import QuoteIcon from '../../../../assets/svg-element/QuoteIcon';
 import { formatTime } from '../../DateTime/dateTimeHelper';
-import { setIsBlinkTitle } from '../chatBoardSlice';
+
 const InputMessage = ({ handleSendFile, handleSendMessage }) => {
   const dispatch = useStableDispatch();
   const inputFileRef = createRef();
@@ -82,7 +82,6 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
         )}
         {messageId && (
           <div className='quote-text-box'>
-            <>
               <div className='icon-wrapper'>
                 <div className='icon-quote'>
                   <QuoteIcon />
@@ -94,13 +93,11 @@ const InputMessage = ({ handleSendFile, handleSendMessage }) => {
                   />
                 </div>
               </div>
-
               <span className='quote-message-text-box'>{message}</span>
               <span className='quote-info-text-box'>
                 {username},{' '}
                 {formatTime(createdDate, 'minute', 'DD MMM YYYY hh:mm A')}
               </span>
-            </>
           </div>
         )}
 

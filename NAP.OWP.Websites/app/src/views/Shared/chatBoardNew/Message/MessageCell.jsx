@@ -151,9 +151,9 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
           {getMessageContent()}
-          <a href='http://localhost:5000/image/js.jpg'>
+          {!isMyMessage&& <a href='http://localhost:5000/image/js.jpg'>
             <Avatar alt={username} src='http://localhost:5000/image/js.jpg' />
-          </a>
+          </a>}
         </div>
       </>
     );
