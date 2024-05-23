@@ -648,6 +648,9 @@
   <data name="NotificationSetting" xml:space="preserve">
     <value>Notification Setting</value>
   </data>
+  <data name="AccountSetting" xml:space="preserve">
+    <value>Account Setting</value>
+  </data>
   <data name="DailyWorkingShiftManagement" xml:space="preserve">
     <value>Daily Working Shift Management</value>
   </data>

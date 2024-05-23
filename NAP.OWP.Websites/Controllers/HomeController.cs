@@ -104,6 +104,9 @@ namespace NAP.OWP.Websites.Controllers
         [Route("UserProfile/NotificationSetting")]
         public ActionResult NotificationSetting() => View("~/wwwroot/notification-setting/server.cshtml");
 
+        //[Route("UserProfile/AccountSetting")]
+        //public ActionResult NotificationSetting() => View("~/wwwroot/account-setting/server.cshtml");
+
         [Route("EventAssignment")]
         [NapAuth(FunctionKey = FunctionKeys.LiveGameAssignment, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> EventAssignment()

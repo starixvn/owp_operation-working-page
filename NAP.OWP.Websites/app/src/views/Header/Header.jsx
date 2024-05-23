@@ -130,6 +130,12 @@ class Header extends Component {
                       </DropdownItem>
                       <DropdownItem href={logoutLink}>
                         <span className='icon-logout'>
+                          <AccountIcon size={14} />
+                        </span>{' '}
+                        Account Setting
+                      </DropdownItem>
+                      <DropdownItem href={logoutLink}>
+                        <span className='icon-logout'>
                           <LogoutIcon size={14} />
                         </span>{' '}
                         Logout
