@@ -81,7 +81,7 @@ const TableHeader = () => {
           style={{ width: `${classNameCells.commentCell.width}` }}
           rowSpan={2}
           className='grey-header'>
-          <div className='header-table'>
+          <div className='header-table last-header'>
             <span>Comment</span>
             <FilterHeader columnKey={Comment as TColumnKey} />
           </div>
