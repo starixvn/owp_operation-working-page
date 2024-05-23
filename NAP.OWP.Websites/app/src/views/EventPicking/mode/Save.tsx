@@ -14,7 +14,8 @@ const Save = ({ onSetMode }: { onSetMode: () => void }) => {
       SpreadHdp: e.spreadHdp||null,
       SpreadOu: e.spreadOu||null,
       NoOfHDP: e.noOfHDP||null,
-      MaxbetHdp: e.maxbetHdp||null
+      MaxbetHdp: e.maxbetHdp||null,
+      LstNote: e.lstNote||null
     }));
     
     eventModified.length&&await dispatch(updateEventsThunk(eventModified));
