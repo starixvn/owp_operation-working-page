@@ -28,17 +28,18 @@ const quickMessageSlice = createSlice({
     },
     setEditModel: (state, action: PayloadAction<{ property: 'shortcut' | 'message', value: string }>) => {
       const { property, value } = action.payload;
-      state.editModel[property] = value;
+      state.editModel[property] = value.trim();
     },
     addQuickMessage: state => {
       if (state.editIndex === -1) {
+        state.editIndex = state.quickMessage.length;
         const newQuickMessage: TQuickMessage = {
           id: 0,
           shortcut: '',
           message: ''
         };
+        state.editModel = newQuickMessage;
         state.quickMessage = [...state.quickMessage, newQuickMessage];
-        state.editIndex = state.quickMessage.length - 1;
         state.isCreating = true;
       }
     },

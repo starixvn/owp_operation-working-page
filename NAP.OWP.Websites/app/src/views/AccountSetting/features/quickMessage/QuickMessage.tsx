@@ -40,7 +40,7 @@ const QuickMessage = () => {
           </tr>
         </thead>
         <tbody>
-          {quickMessage.length && quickMessage.map((message, index) => {
+          {quickMessage.length > 0 && quickMessage.map((message, index) => {
             const isEdit = editIndex === index;
             return (
               <tr key={index}>

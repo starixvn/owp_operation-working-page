@@ -3,25 +3,33 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { closeEditMode, setEditIndex } from '../slice/quickMessageSlice';
 import { deleteQuickMessageThunk, queryQuickMessageThunk, saveQuickMessageThunk } from '../slice/quickMessageThunk';
+import ToastrWrapper from '../../../../components/ToastrWrapper';
+import { isValidQuickMessage } from '../../../const/helper/helper';
 
 const Action = ({ isEdit, index }: { isEdit: boolean, index: number }) => {
-  console.log('render action');
   const dispatch = useAppDispatch();
   const editModel = useAppSelector(state => state.quickMessageSlice.editModel);
+  const quickMessage = useAppSelector(state => state.quickMessageSlice.quickMessage);
 
-  const handleOnSave = () => {
-    dispatch(saveQuickMessageThunk(editModel));
-    dispatch(closeEditMode());
-    dispatch(queryQuickMessageThunk());
+  const handleOnSave = async () => {
+    const messageError = isValidQuickMessage(editModel, quickMessage);
+    if (messageError) {
+      ToastrWrapper.showError(messageError);
+    }
+    else {
+      await dispatch(saveQuickMessageThunk(editModel));
+      dispatch(closeEditMode());
+      await dispatch(queryQuickMessageThunk());
+    }
   };
 
   const handleOnCancel = () => {
     dispatch(closeEditMode());
   };
 
-  const handleOnDelete = () => {
-    console.log(index);
-    dispatch(deleteQuickMessageThunk({ id: editModel.id }));
+  const handleOnDelete = async () => {
+    await dispatch(deleteQuickMessageThunk({ id: quickMessage[index].id }));
+    await dispatch(queryQuickMessageThunk());
   };
 
   const handleOnEdit = () => {

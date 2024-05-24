@@ -8,7 +8,6 @@ type ShortcutProps = {
 };
 
 const Shortcut = ({ shortcut, isEdit }: ShortcutProps) => {
-  console.log('render shortcut');
   const [inputValue, setInputValue] = useState<string>(shortcut?.replace('/', ''));
   const [isEmpty, setIsEmpty] = useState<boolean>(!shortcut.trim());
   const dispatch = useAppDispatch();
@@ -16,7 +15,7 @@ const Shortcut = ({ shortcut, isEdit }: ShortcutProps) => {
   const handleOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setIsEmpty(!value.trim());
-    dispatch(setEditModel({ property: 'shortcut', value: '/' + value }));
+    dispatch(setEditModel({ property: 'shortcut', value: '/' + value.trim() }));
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

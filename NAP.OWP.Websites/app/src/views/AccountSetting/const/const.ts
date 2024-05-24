@@ -30,11 +30,17 @@ const urlDeleteQuickMessage = createUrl(
   'QuickMessage/delete-quick-message'
 );
 
+const getUrlTicketFile = (imageName: string) =>
+  process.env.NODE_ENV === 'development'
+    ? `Tickets/${imageName}`
+    : `${window.netCoreRootUrl}/Tickets/${imageName}`;
+
 export {
   urlUploadFile,
   urlSaveProfileAvatar,
   urlGetProfileAvatar,
   urlGetQuickMessage,
   urlSaveQuickMessage,
-  urlDeleteQuickMessage
+  urlDeleteQuickMessage,
+  getUrlTicketFile
 };

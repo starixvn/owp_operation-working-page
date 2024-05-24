@@ -2,37 +2,51 @@ import axios from 'axios';
 import AccountIcon from 'mdi-react/AccountIcon';
 import { useEffect, useRef, useState } from 'react';
 import FileUploadIcon from '../../../../assets/svg-element/FileUploadIcon';
-import { post } from '../../../Shared/Service/Service';
-import { urlSaveProfileAvatar, urlUploadFile } from '../../const/const';
+import { get, post } from '../../../Shared/Service/Service';
+import { urlGetProfileAvatar, urlSaveProfileAvatar, urlUploadFile } from '../../const/const';
+import { getUrlTicketFile } from '../../../Shared/chatBoardNew/helper/chatBoardHelper';
+import ToastrWrapper from '../../../components/ToastrWrapper';
+import { isFileExceed5Mb } from '../../const/helper/helper';
 
 const ProfilePicture = () => {
-  const [source, setSource] = useState<string | null>('Tickets/2006_image_2024-04-22_17-27-03.png');
+  const [source, setSource] = useState<string | null>();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    //var fileName = axios.get()
-  });
-
-  const handleClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
+  const fetchProfileAvatar = async () => {
+    const { data } = await get({ url: urlGetProfileAvatar });
+    if (data) {
+      const imageUrl = getUrlTicketFile(data);
+      setSource(imageUrl);
     }
   };
-  const handleSubmit = async (event: React.ChangeEvent<HTMLInputElement>) => {
 
+  useEffect(() => {
+    fetchProfileAvatar();
+  }, []);
+
+  const handleClick = () => {
+    fileInputRef.current && fileInputRef.current.click();
+  };
+
+  const handleSubmit = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.currentTarget.files && event.currentTarget.files[0];
     if (file) {
-      const formData = new FormData();
-      formData.append('file', file, file.name);
+      if (!isFileExceed5Mb(file)) {
+        const formData = new FormData();
+        formData.append('file', file, file.name);
 
-      const { data } = await axios.post(urlUploadFile, formData);
-      const model = {
-        url: urlSaveProfileAvatar,
-        FileId: data
-      };
-      await post(model);
-
-    }
+        const { data } = await axios.post(urlUploadFile, formData);
+        const model = {
+          url: urlSaveProfileAvatar,
+          FileId: data
+        };
+        await post(model);
+        await fetchProfileAvatar();
+      }
+      else {
+        ToastrWrapper.showError('The file size can not exceed 5 MB. Please try another one');
+      }
+    };
   };
 
   return (
@@ -41,7 +55,7 @@ const ProfilePicture = () => {
       <div className='col'>
         <div className='img'>
           {source
-            ? <img src={source} />
+            ? <img src={source} alt='Avatar' />
             : <AccountIcon size={80} className='default-img' />
           }
         </div>
@@ -52,7 +66,7 @@ const ProfilePicture = () => {
             <FileUploadIcon />
           </button>
           <div>
-            PNG, JPEG under 15MB
+            PNG, JPG under 5MB
           </div>
         </div>
       </div>
