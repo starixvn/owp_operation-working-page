@@ -16,6 +16,9 @@ const ProfilePicture = () => {
     data && setImageName(data);
   };
 
+    }
+  };
+
   useEffect(() => {
     fetchProfileAvatar();
   }, []);
@@ -42,6 +45,10 @@ const ProfilePicture = () => {
       else {
         ToastrWrapper.showError('The file size can not exceed 5 MB. Please try another one');
       }
+      else {
+        ToastrWrapper.showError('The file size can not exceed 5 MB. Please try another one');
+      }
+    };
     };
   };
 
