@@ -13,7 +13,7 @@ import PptIcon from '../../../../assets/svg-element/PptIcon';
 import AttachFileIcon from '../../../../assets/svg-element/AttachFileIcon';
 import QuoteIcon from '../../../../assets/svg-element/QuoteIcon';
 import ImageDisplay from './ImageDisplay';
-
+import EmojiDisplay from './EmojiDisplay';
 const MessageContents = ({
   createdDate = '',
   fileId = '',
@@ -22,7 +22,8 @@ const MessageContents = ({
   quoteMessage = '',
   quoteUsername = '',
   quoteCreatedDate = '',
-  imageFileName
+  imageFileName,
+  messageReactIcons = []
 }) => {
   const getCreatedTime = () => formatTime(createdDate, 'minute', 'hh:mm A');
   const handleOnClick = () => {
@@ -101,7 +102,7 @@ const MessageContents = ({
 
   const getMessageContent = () => {
     return (
-      <>
+      <div>
         {!fileId && (
           <p className='message-div'>
             <Linkify properties={{ target: '_blank' }}>
@@ -119,7 +120,10 @@ const MessageContents = ({
             )}
           </div>
         )}
-      </>
+        <div className='icons'>
+          <EmojiDisplay></EmojiDisplay>
+        </div>
+      </div>
     );
   };
 

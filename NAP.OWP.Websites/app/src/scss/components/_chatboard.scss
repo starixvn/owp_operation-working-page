@@ -143,7 +143,7 @@
       right: -5px;
     }
 
-    >* {
+    > * {
       margin-bottom: 5px;
     }
 
@@ -612,7 +612,7 @@
     position: relative;
     padding: 10px 0;
 
-    +.item {
+    + .item {
       border-top: 1px solid #d3d3d3;
     }
 
@@ -673,7 +673,7 @@
   .event-date {
     font-size: 1.2rem;
 
-    >span {
+    > span {
       margin-left: 10px;
     }
 
@@ -746,7 +746,7 @@
     width: 65px;
   }
 
-  >div {
+  > div {
     width: 100%;
     // margin-left: 10px;
   }
@@ -863,7 +863,7 @@
 
   .MuiFormControl-root {
     .MuiInputLabel-formControl {
-      +.MuiInput-underline {
+      + .MuiInput-underline {
         margin-top: 45px;
       }
     }
@@ -902,7 +902,7 @@
       margin-top: 0;
     }
 
-    label+.MuiInput-formControl {
+    label + .MuiInput-formControl {
       margin-top: 35px;
     }
 
@@ -1626,7 +1626,6 @@
 }
 
 .message-list .others-user .message-group:hover {
-
   .icon-hover-wrapper {
     display: flex;
   }
@@ -1719,7 +1718,6 @@
 .message-list {
   .message-row.others-user {
     .list-icon-reaction {
-
       max-height: 20px;
 
       div {
@@ -1816,4 +1814,11 @@
   width: 80px;
   height: 80px;
   border-radius: 5px;
+}
+.message-group .icons {
+  display: flex;
+}
+
+.user-name-message-icon {
+  color: #fff;
 }

@@ -39,7 +39,8 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     quoteMessage,
     quoteUsername,
     quoteCreatedDate,
-    imageFileName
+    imageFileName,
+    messageReactIcons
   } = data;
   const dispatch = useStableDispatch();
   const [isOpenReactionIcon, setIsOpenReactionIcon] = useState(false);
@@ -53,7 +54,8 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     quoteMessage,
     quoteUsername,
     quoteCreatedDate,
-    imageFileName
+    imageFileName,
+    messageReactIcons
   });
 
   const handleSaveMessages = async value => {
@@ -151,9 +153,11 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
           {getMessageContent()}
-          {!isMyMessage&& <a href='http://localhost:5000/image/js.jpg'>
-            <Avatar alt={username} src='http://localhost:5000/image/js.jpg' />
-          </a>}
+          {!isMyMessage && (
+            <a href='http://localhost:5000/image/js.jpg'>
+              <Avatar alt={username} src='http://localhost:5000/image/js.jpg' />
+            </a>
+          )}
         </div>
       </>
     );

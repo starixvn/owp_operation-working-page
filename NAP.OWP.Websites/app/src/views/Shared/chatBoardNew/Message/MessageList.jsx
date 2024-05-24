@@ -84,36 +84,38 @@ const MessageList = ({ policy = 'policy', ticketId }) => {
       listRef.current.scrollHeight - listRef.current.scrollTop;
   };
 
-  return <>
-    <div className='message-list ' ref={listRef} onScroll={handleScroll}>
-      {canShowMoreMessage && (
-        <a className='load-more' onClick={handleLoadMoreMessage}>
-          Load more
-        </a>
-      )}{' '}
-      {Object.keys(messageGroupByDate).map((date, key) => (
-        <Fragment key={`${date}-${key}`}>
-          <div>
-            <h2 className='date-time-line'>
-              <span>
-                {new Date(date).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric'
-                })}
-              </span>
-            </h2>
-          </div>
+  return (
+    <>
+      <div className='message-list ' ref={listRef} onScroll={handleScroll}>
+        {canShowMoreMessage && (
+          <a className='load-more' onClick={handleLoadMoreMessage}>
+            Load more
+          </a>
+        )}{' '}
+        {Object.keys(messageGroupByDate).map((date, key) => (
+          <Fragment key={`${date}-${key}`}>
+            <div>
+              <h2 className='date-time-line'>
+                <span>
+                  {new Date(date).toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}
+                </span>
+              </h2>
+            </div>
 
-          <ul>
-            {messageGroupByDate[date].map((message, index) =>
-              renderMessageRow(message, index)
-            )}
-          </ul>
-        </Fragment>
-      ))}
-    </div>
-  </>;
+            <ul>
+              {messageGroupByDate[date].map((message, index) =>
+                renderMessageRow(message, index)
+              )}
+            </ul>
+          </Fragment>
+        ))}
+      </div>
+    </>
+  );
 };
 
 MessageList.propTypes = {
