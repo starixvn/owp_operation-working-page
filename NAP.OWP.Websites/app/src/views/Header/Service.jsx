@@ -42,6 +42,7 @@ const query = async title => {
     username: data.Username,
     logoutLink: Utils.resolveUrl(data.LogoutPath),
     notificationSetingLink: Utils.resolveUrl(data.NotificationSetingPath),
+    accountSettingPath: Utils.resolveUrl(data.AccountSettingPath),
     navigation: transformNavigation(data.Menus, title)
   };
 };

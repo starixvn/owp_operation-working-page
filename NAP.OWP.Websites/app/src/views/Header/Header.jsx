@@ -25,6 +25,7 @@ const propTypes = {
   username: PropTypes.string.isRequired,
   logoutLink: PropTypes.string.isRequired,
   notificationSetingLink: PropTypes.string.isRequired,
+  accountSettingLink: PropTypes.string.isRequired,
   quickSearchPolicy: PropTypes.object.isRequired
 };
 
@@ -69,6 +70,7 @@ class Header extends Component {
       username,
       logoutLink,
       notificationSetingLink,
+      accountSettingLink,
       quickSearchPolicy
     } = this.props;
     return (
@@ -128,7 +130,7 @@ class Header extends Component {
                         </span>{' '}
                         Notification Setting
                       </DropdownItem>
-                      <DropdownItem href={logoutLink}>
+                      <DropdownItem href={accountSettingLink}>
                         <span className='icon-logout'>
                           <AccountIcon size={14} />
                         </span>{' '}

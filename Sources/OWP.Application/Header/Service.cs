@@ -30,6 +30,7 @@
                 Username = session.Username,
                 LogoutPath = "/Auth/LogOut",
                 NotificationSetingPath = "/UserProfile/NotificationSetting",
+                AccountSettingPath = "/UserProfile/AccountSetting",
                 Menus = menus
             };
             return Task.FromResult(header);

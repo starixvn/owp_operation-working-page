@@ -10,6 +10,8 @@
 
         public string NotificationSetingPath { get; set; }
 
+        public string AccountSettingPath { get; set; }
+
         public List<Menu> Menus { get; set; }
     }
 }

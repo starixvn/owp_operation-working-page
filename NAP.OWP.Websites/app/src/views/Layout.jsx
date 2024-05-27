@@ -57,7 +57,13 @@ class Layout extends Component {
     }
 
     const { title, view, isUseTicketLayout = true } = this.props;
-    const { username, navigation, logoutLink, notificationSetingLink } = header;
+    const {
+      username,
+      navigation,
+      logoutLink,
+      notificationSetingLink,
+      accountSettingPath
+    } = header;
     navigation.items.forEach(element => {
       element.attributes = { title: element.name };
     });
@@ -69,6 +75,7 @@ class Layout extends Component {
             username={username}
             logoutLink={logoutLink}
             notificationSetingLink={notificationSetingLink}
+            accountSettingLink={accountSettingPath}
             quickSearchPolicy={quickSearchPolicy}
           />
           <div className='cd-cover-layer' />
