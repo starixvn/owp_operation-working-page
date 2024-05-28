@@ -6,10 +6,22 @@ const Comment = React.forwardRef((_, commentRef)=>{
   const [value, setValue]= useState();
   const [suggestion, setSuggestion] = useState();
   const [suggestionSource, setSuggestionSource] = useState();
+  const [begin, setBegin] = useState();
+  const [end, setEnd] = useState();
 
 const handleValueChange=event=>{
   const {target}= event;
-  const suggest= suggestionSource.find(v=>v.shortcut===target.value);
+  const {selectionStart, selectionEnd}= target;
+  const startIndex = selectionStart;
+  const endIndex = selectionEnd;
+  const previousSpaceIndex = target.value.lastIndexOf("/", startIndex - 1);
+  const nextSpaceIndex = target.value.indexOf(" ", endIndex );
+  const begin = previousSpaceIndex < 0 ? 0 : previousSpaceIndex + 1;
+  const end = nextSpaceIndex < 0 ? target.value.length : nextSpaceIndex;
+  const stringTarget = "/"+target.value.substring(begin, end);
+  const suggest= suggestionSource.find(v=>v.shortcut===stringTarget);
+  setBegin(begin);
+  setEnd(end);
   setSuggestion(suggest?.message);
   setValue(target.value);
 };
@@ -17,15 +29,16 @@ const handleValueChange=event=>{
 const handleKeyDown=e=>{
   if (e.key === "Enter" && suggestion)
     {
-      const newValue= value.replace(value, suggestion);
+      const newValue= value.substring(0, begin-1) + suggestion + value.substring(end);
+      setSuggestion();
       setValue(newValue);
-      event.preventDefault();
+      e.preventDefault();
     }
 };
 
   useEffect(()=>{
     (async ()=>{
-  const response= await axios.get('api-netcore/AccountSetting/get-quick-message');
+  const response= await axios.get('api-netcore/AccountSetting/QuickMessage/get-quick-message');
   setSuggestionSource(response.data);
   })();}, []);
 
@@ -47,6 +60,7 @@ const handleKeyDown=e=>{
               maxLength='200'
               onChange={handleValueChange}
               multiple
+              
               onKeyDown={handleKeyDown}
             />
           </div>
