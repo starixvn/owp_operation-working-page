@@ -1575,7 +1575,7 @@
 .message-list .my-message .message-group {
   white-space: pre-wrap;
   display: flex;
-  column-gap: 10px;
+  column-gap: 5px;
   justify-content: flex-end;
 
   .icon-hover-wrapper {
@@ -1608,7 +1608,7 @@
 .message-list .others-user .message-group {
   white-space: pre-wrap;
   display: flex;
-  column-gap: 10px;
+  column-gap: 5px;
   flex-direction: row-reverse;
   justify-content: start;
 

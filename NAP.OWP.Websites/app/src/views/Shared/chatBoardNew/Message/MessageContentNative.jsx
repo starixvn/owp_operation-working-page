@@ -14,6 +14,7 @@ import AttachFileIcon from '../../../../assets/svg-element/AttachFileIcon';
 import QuoteIcon from '../../../../assets/svg-element/QuoteIcon';
 import ImageDisplay from './ImageDisplay';
 import EmojiDisplay from './EmojiDisplay';
+
 const MessageContents = ({
   createdDate = '',
   fileId = '',
@@ -121,7 +122,7 @@ const MessageContents = ({
           </div>
         )}
         <div className='icons'>
-          <EmojiDisplay></EmojiDisplay>
+          <EmojiDisplay messageReactIcons={messageReactIcons}></EmojiDisplay>
         </div>
       </div>
     );

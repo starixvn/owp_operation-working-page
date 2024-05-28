@@ -13,6 +13,7 @@ import ReactionBar from './ReactionBar';
 import { useState } from 'react';
 import GoodIcon from '../../../../assets/svg-element/GoodIcon';
 import Avatar from '@mui/material/Avatar';
+import AvatarDisplay from '../../common/Avatar/AvatarDisplay';
 
 const url =
   process.env.NODE_ENV === 'development'
@@ -40,7 +41,8 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     quoteUsername,
     quoteCreatedDate,
     imageFileName,
-    messageReactIcons
+    messageReactIcons,
+    avatarFileName
   } = data;
   const dispatch = useStableDispatch();
   const [isOpenReactionIcon, setIsOpenReactionIcon] = useState(false);
@@ -153,16 +155,13 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
           {getMessageContent()}
-          {!isMyMessage && (
-            <a href='http://localhost:5000/image/js.jpg'>
-              <Avatar alt={username} src='http://localhost:5000/image/js.jpg' />
-            </a>
-          )}
+          {!isMyMessage && <AvatarDisplay imageFileName={avatarFileName} />}
         </div>
       </>
     );
   }
   return <div>No comments</div>;
 };
+
 MessageCell.propTypes = propTypes;
 export default MessageCell;

@@ -1,43 +1,47 @@
-import React from 'react';
 import IconEmoji from '../../../Shared/IconCustom/IconEmoji';
+import { ReactionIcon } from '../const/index.json';
 
-const EmojiDisplay = () => {
+const EmojiDisplay = ({ messageReactIcons }) => {
+  const result = groupByIconKey(messageReactIcons);
+  console.log(result);
+
   return (
     <>
-      <IconEmoji
-        iconKey='👍'
-        userReact={[
-          {
-            avatarLink:
-              'https://i.pinimg.com/736x/30/b5/49/30b54999b098050158ed13a1ecdcaab0.jpg',
-            userId: 8,
-            userName: ' manchester '
-          },
-          {
-            avatarLink:
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROWXBVkKKsTR80lsKhd092XBKI63nspJ8bptTd01qgFw&s',
-            userId: 8,
-            userName: ' city '
-          },
-          {
-            avatarLink:
-              'https://i.pinimg.com/736x/30/b5/49/30b54999b098050158ed13a1ecdcaab0.jpg',
-            userId: 8,
-            userName: ' liam '
-          }
-        ]}></IconEmoji>
-      <IconEmoji
-        iconKey='❤️'
-        userReact={[
-          {
-            avatarLink:
-              'https://i.pinimg.com/736x/30/b5/49/30b54999b098050158ed13a1ecdcaab0.jpg',
-            userId: 8,
-            userName: ' manchester '
-          }
-        ]}></IconEmoji>
+      {result.map(item => (
+        <IconEmoji
+          key={item.messageId}
+          iconKey={item.iconKey}
+          userReact={item.userReact}
+        />
+      ))}
     </>
   );
+};
+
+const groupByIconKey = icons => {
+  const grouped = icons.reduce((acc, icon) => {
+    if (!acc[icon.iconKey]) {
+      acc[icon.iconKey] = {
+        messageId: icon.messageId,
+        iconKey: ReactionIcon.find(x => x.label === icon.iconKey).node,
+        userReact: []
+      };
+    }
+
+    acc[icon.iconKey].userReact.push({
+      userId: icon.reactUserId,
+      userName: icon.reactUserName,
+      avatarLink: icon.reactAvatarName
+    });
+
+    return acc;
+  }, {});
+
+  return Object.values(grouped);
+};
+
+EmojiDisplay.propTypes = {
+  messageReactIcons: []
 };
 
 export default EmojiDisplay;

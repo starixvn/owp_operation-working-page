@@ -2,6 +2,7 @@ import { post } from '../Service/Service';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Axios from 'axios';
 import { URL, TICKET_TYPE } from './const/index.json';
+import { buildURL } from './helper/chatBoardHelper';
 
 const handleMessage = name =>
   createAsyncThunk(name, async model => {
@@ -180,6 +181,15 @@ const getTicketSubTypes = createAsyncThunk(
   }
 );
 
+const saveReactIconMessage = createAsyncThunk(
+  'saveReactIconMessage',
+  async model => {
+    const url = buildURL('add-message-icon');
+
+    await post(url, ...model);
+  }
+);
+
 export {
   getMessage,
   getModelByRowIndex,
@@ -191,5 +201,6 @@ export {
   updateTicketStatus,
   updateTicketSubType,
   getTicketSubTypes,
-  loadMoreMessageThunk
+  loadMoreMessageThunk,
+  saveReactIconMessage
 };

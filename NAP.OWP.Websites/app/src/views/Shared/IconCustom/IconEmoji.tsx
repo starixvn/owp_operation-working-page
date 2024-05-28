@@ -1,6 +1,6 @@
-import Avatar from '@mui/material/Avatar';
 import { uniqueId } from 'lodash';
 import ReactTooltip from 'react-tooltip';
+import AvatarDisplay from '../common/Avatar/AvatarDisplay';
 
 type UseReact = {
   userName: string;
@@ -20,11 +20,7 @@ const TableEmoji = (userReacts: UseReact[]) => (
       {userReacts?.map(x => (
         <tr key={uniqueId()}>
           <td>
-            <Avatar
-              sx={{ width: 24, height: 24 }}
-              alt={''}
-              src={x.avatarLink}
-            />
+            <AvatarDisplay imageFileName={x.avatarLink} size={20} />
           </td>
           <td className='user-name-message-icon'>{x.userName}</td>
         </tr>
@@ -44,7 +40,8 @@ const IconEmoji = ({ iconKey, userReact, messageId }: Props) => {
         id='custom-tooltip'
         place='top'
         effect='solid'
-        className='custom-tooltip'>
+        className='custom-tooltip'
+      >
         {TableEmoji(userReact)}
       </ReactTooltip>
     </div>

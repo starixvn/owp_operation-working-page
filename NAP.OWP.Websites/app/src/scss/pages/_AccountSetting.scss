@@ -20,24 +20,6 @@
   margin-bottom: 10px;
   .col {
     display: flex;
-    .img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background-color: #f1eded;
-      text-align: center;
-
-      .default-img {
-        color: #9fb0bc;
-      }
-
-      img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: contain;
-      }
-    }
   }
   .right {
     align-content: center;

@@ -83,6 +83,12 @@ const getUrlTicketFile = imageName =>
   process.env.NODE_ENV === 'development'
     ? `${URL.NET_CORE_TICKET_CENTER_FILE}/${imageName}`
     : `${window.netCoreRootUrl}/${URL.NET_CORE_TICKET_CENTER_FILE}/${imageName}`;
+
+const buildURL = urlName =>
+  process.env.NODE_ENV === 'development'
+    ? `${URL.NET_Core_TICKET_CENTER}/${urlName}`
+    : `${window.netCoreRootUrl}/${URL.NET_FW_TICKET_CENTER}/${urlName}`;
+
 export {
   getMessageList,
   buildMessageListClassName,
@@ -90,5 +96,6 @@ export {
   validateFileExtension,
   validateFileSize,
   getTicketTitle,
-  isImage
+  isImage,
+  buildURL
 };

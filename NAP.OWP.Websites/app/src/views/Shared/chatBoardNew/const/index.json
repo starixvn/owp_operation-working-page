@@ -72,5 +72,12 @@
     "Open": "Open",
     "Closed": "Closed",
     "Canceled": "Canceled"
-  }
+  },
+  "ReactionIcon": [
+    { "label": "love", "node": "❤️" },
+    { "label": "like", "node": "👍" },
+    { "label": "collaboration", "node": "🤝" },
+    { "label": "checked", "node": "✅" },
+    { "label": "ok", "node": "👌" }
+  ]
 }
