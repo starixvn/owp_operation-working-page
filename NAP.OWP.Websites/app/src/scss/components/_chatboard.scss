@@ -1702,27 +1702,24 @@
 }
 
 .message-list {
-  .message-row.my-message {
+  .message-row.my-message,
+  .message-row.others-user {
     .list-icon-reaction {
       display: flex;
       justify-content: flex-end;
       max-height: 20px;
-
-      div {
-        box-shadow: none !important;
+      margin-bottom: 0px;
+      > div {
+        background-color: hwb(0 14% 86%) !important;
+        border-radius: 10px !important;
+        height: 'fit-content';
       }
     }
   }
-}
-
-.message-list {
   .message-row.others-user {
     .list-icon-reaction {
-      max-height: 20px;
-
-      div {
-        box-shadow: none !important;
-      }
+      display: flex;
+      justify-content: flex-start !important;
     }
   }
 }
@@ -1821,4 +1818,29 @@
 
 .user-name-message-icon {
   color: #fff;
+}
+
+.icon-box {
+  display: flex;
+  flex-direction: row;
+  overflow: visible;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  border-color: transparent;
+  text-align: left;
+  border-width: 0px;
+  padding: 3px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+  border-radius: 12px;
+  cursor: pointer;
+  border-style: solid;
+  margin-top: -5px;
+  margin-right: 2px;
+}
+.custom-tooltip {
+  padding: 4px 4px 8px 4px !important;
+  table {
+    text-align: left;
+  }
 }

@@ -1,7 +1,7 @@
 import { ReactionBarSelector } from '@charkour/react-reactions';
 import useStableDispatch from '../../customHook/useStableDispatch';
 import { ReactionIcon } from '../const/index.json';
-import { saveReactIconMessage } from '../chatBoardThunkNative';
+import { updateReactIconMessage } from '../chatBoardThunkNative';
 
 type ReactionBarProps = {
   isOpenReactionIcon: boolean;
@@ -21,10 +21,10 @@ const ReactionBar = ({
     setIsOpenReactionIcon(false);
     const model = {
       messageId,
-      creatorId
+      creatorId,
+      iconKey: key
     };
-    dispatch(saveReactIconMessage(model));
-    console.log(key);
+    dispatch(updateReactIconMessage(model));
   };
 
   return (
@@ -32,13 +32,15 @@ const ReactionBar = ({
       {isOpenReactionIcon && (
         <div className='list-icon-reaction'>
           <ReactionBarSelector
-            iconSize={20}
+            iconSize={15}
             reactions={ReactionIcon}
             onSelect={handleOnSelectReactionIcon}
+            style={{ margin: 0 }}
           />
         </div>
       )}
     </>
   );
 };
+
 export default ReactionBar;

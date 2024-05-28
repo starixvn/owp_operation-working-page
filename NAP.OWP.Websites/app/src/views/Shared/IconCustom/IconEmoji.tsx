@@ -1,6 +1,10 @@
 import { uniqueId } from 'lodash';
+import { useSelector } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
+import { updateReactIconMessage } from '../chatBoardNew/chatBoardThunkNative';
+import { ReactionIcon } from "../chatBoardNew/const/index.json";
 import AvatarDisplay from '../common/Avatar/AvatarDisplay';
+import useStableDispatch from '../customHook/useStableDispatch';
 
 type UseReact = {
   userName: string;
@@ -9,35 +13,50 @@ type UseReact = {
 };
 
 type Props = {
-  messageId: number;
   iconKey: string;
   userReact: UseReact[];
+  messageId: number;
 };
 
-const TableEmoji = (userReacts: UseReact[]) => (
-  <table>
-    <tbody>
-      {userReacts?.map(x => (
-        <tr key={uniqueId()}>
-          <td>
-            <AvatarDisplay imageFileName={x.avatarLink} size={20} />
-          </td>
-          <td className='user-name-message-icon'>{x.userName}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-);
+const TableEmoji = (userReacts: UseReact[]) => {
+  return (
+    <table>
+      <tbody>
+        {userReacts?.map(x => (
+          <tr key={uniqueId()}>
+            <td>
+              <AvatarDisplay imageFileName={x.avatarLink} size={15} />
+            </td>
+            <td className='user-name-message-icon'>{x.userName}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
 const IconEmoji = ({ iconKey, userReact, messageId }: Props) => {
+  const dispatch = useStableDispatch();
+  const actorId = useSelector(state => state?.pagePolicy?.permission?.ActorId);
+
+  const uuidKey = `custom-tooltip-${uniqueId()}`;
+  const handleOnClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const model = {
+      messageId,
+      creatorId: actorId,
+      iconKey
+    };
+    dispatch(updateReactIconMessage(model));
+  };
+
   return (
     <div>
-      <div data-tip data-for='custom-tooltip'>
-        {iconKey}
+      <div data-tip data-for={uuidKey} onClick={handleOnClick} className='icon-box'>
+        {ReactionIcon.find(x => x.label === iconKey)?.node}
         {userReact.length > 1 && userReact.length}
       </div>
       <ReactTooltip
-        id='custom-tooltip'
+        id={uuidKey}
         place='top'
         effect='solid'
         className='custom-tooltip'

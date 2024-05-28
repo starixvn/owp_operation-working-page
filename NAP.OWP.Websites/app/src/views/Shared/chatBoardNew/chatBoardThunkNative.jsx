@@ -181,12 +181,13 @@ const getTicketSubTypes = createAsyncThunk(
   }
 );
 
-const saveReactIconMessage = createAsyncThunk(
-  'saveReactIconMessage',
+const updateReactIconMessage = createAsyncThunk(
+  'updateReactIconMessage',
   async model => {
-    const url = buildURL('add-message-icon');
+    const url = buildURL('update-message-icon');
 
-    await post(url, ...model);
+    const response = Axios.post(url, model);
+    return response.data;
   }
 );
 
@@ -202,5 +203,5 @@ export {
   updateTicketSubType,
   getTicketSubTypes,
   loadMoreMessageThunk,
-  saveReactIconMessage
+  updateReactIconMessage
 };

@@ -151,6 +151,8 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
         <ReactionBar
           isOpenReactionIcon={isOpenReactionIcon}
           setIsOpenReactionIcon={setIsOpenReactionIcon}
+          messageId={messageId}
+          creatorId={permission.ActorId}
         />
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}

@@ -1,17 +1,17 @@
 import IconEmoji from '../../../Shared/IconCustom/IconEmoji';
 import { ReactionIcon } from '../const/index.json';
 
-const EmojiDisplay = ({ messageReactIcons }) => {
+const EmojiDisplay = ({ messageReactIcons = [] }) => {
   const result = groupByIconKey(messageReactIcons);
-  console.log(result);
 
   return (
     <>
-      {result.map(item => (
+      {result.map((item, i) => (
         <IconEmoji
-          key={item.messageId}
+          key={i}
           iconKey={item.iconKey}
           userReact={item.userReact}
+          messageId={messageReactIcons[0].messageId}
         />
       ))}
     </>
@@ -23,7 +23,7 @@ const groupByIconKey = icons => {
     if (!acc[icon.iconKey]) {
       acc[icon.iconKey] = {
         messageId: icon.messageId,
-        iconKey: ReactionIcon.find(x => x.label === icon.iconKey).node,
+        iconKey: icon.iconKey,
         userReact: []
       };
     }
