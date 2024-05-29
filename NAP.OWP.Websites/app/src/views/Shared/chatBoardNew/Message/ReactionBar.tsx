@@ -8,12 +8,15 @@ type ReactionBarProps = {
   setIsOpenReactionIcon: (isOpen: boolean) => void;
   messageId: number;
   creatorId: number;
+  ticketId: number;
 };
 
 const ReactionBar = ({
   isOpenReactionIcon,
   setIsOpenReactionIcon,
-  messageId, creatorId
+  messageId,
+  creatorId,
+  ticketId
 }: ReactionBarProps) => {
   const dispatch = useStableDispatch();
 
@@ -22,7 +25,8 @@ const ReactionBar = ({
     const model = {
       messageId,
       creatorId,
-      iconKey: key
+      iconKey: key,
+      ticketId
     };
     dispatch(updateReactIconMessage(model));
   };

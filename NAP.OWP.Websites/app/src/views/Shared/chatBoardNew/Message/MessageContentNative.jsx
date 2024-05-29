@@ -24,7 +24,8 @@ const MessageContents = ({
   quoteUsername = '',
   quoteCreatedDate = '',
   imageFileName,
-  messageReactIcons = []
+  messageReactIcons = [],
+  ticketId = null
 }) => {
   const getCreatedTime = () => formatTime(createdDate, 'minute', 'hh:mm A');
   const handleOnClick = () => {
@@ -122,7 +123,9 @@ const MessageContents = ({
           </div>
         )}
         <div className='icons'>
-          <EmojiDisplay messageReactIcons={messageReactIcons}></EmojiDisplay>
+          <EmojiDisplay
+            messageReactIcons={messageReactIcons}
+            ticketId={ticketId}></EmojiDisplay>
         </div>
       </div>
     );

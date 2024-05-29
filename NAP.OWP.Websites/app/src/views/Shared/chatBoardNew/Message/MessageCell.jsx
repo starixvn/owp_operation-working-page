@@ -57,7 +57,8 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     quoteUsername,
     quoteCreatedDate,
     imageFileName,
-    messageReactIcons
+    messageReactIcons,
+    ticketId
   });
 
   const handleSaveMessages = async value => {
@@ -153,6 +154,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
           setIsOpenReactionIcon={setIsOpenReactionIcon}
           messageId={messageId}
           creatorId={permission.ActorId}
+          ticketId={ticketId}
         />
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}

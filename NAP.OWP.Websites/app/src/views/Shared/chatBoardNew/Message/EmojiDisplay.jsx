@@ -1,7 +1,6 @@
 import IconEmoji from '../../../Shared/IconCustom/IconEmoji';
-import { ReactionIcon } from '../const/index.json';
 
-const EmojiDisplay = ({ messageReactIcons = [] }) => {
+const EmojiDisplay = ({ messageReactIcons = [], ticketId }) => {
   const result = groupByIconKey(messageReactIcons);
 
   return (
@@ -12,6 +11,7 @@ const EmojiDisplay = ({ messageReactIcons = [] }) => {
           iconKey={item.iconKey}
           userReact={item.userReact}
           messageId={messageReactIcons[0].messageId}
+          ticketId={ticketId}
         />
       ))}
     </>
