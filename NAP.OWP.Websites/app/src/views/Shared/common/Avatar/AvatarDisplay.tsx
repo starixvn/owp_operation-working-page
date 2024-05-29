@@ -10,11 +10,15 @@ interface AvatarDisplayProps {
 
 const AvatarDisplay: React.FC<AvatarDisplayProps> = ({ imageFileName, size = 27 }) => {
   const imageUrl = getUrlTicketFile(imageFileName);
+  const handleClick = () => {
+    window.open(imageUrl);
+  };
 
   return (
-    <div>
+    <div >
       {imageFileName ? (
         <Avatar
+          onClick={handleClick}
           sx={{ width: size, height: size }}
           alt={'Avatar'}
           src={imageUrl}

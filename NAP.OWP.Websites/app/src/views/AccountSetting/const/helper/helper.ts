@@ -12,14 +12,11 @@ const isValidQuickMessage = (
   quickMessages: TQuickMessage[]
 ) => {
   const { shortcut, message, id } = editModel;
-  if (!shortcut.replace('/', '')) {
-    return 'Shortcut is empty';
-  }
-  if (!message) {
-    return 'Message is empty';
+  if (!shortcut.replace('/', '') || !message) {
+    return 'You must fill in all the text boxes';
   }
   if (quickMessages.some(m => m.shortcut === shortcut && m.id !== id)) {
-    return 'Shortcut is duplicate';
+    return 'This shortcut already exists';
   }
   return '';
 };
