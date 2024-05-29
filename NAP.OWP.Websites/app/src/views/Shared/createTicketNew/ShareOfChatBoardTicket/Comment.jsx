@@ -1,49 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Input } from 'reactstrap';
-import axios from 'axios';
+import '../../../../scss/pages/_InputMessage.scss';
+import useQueryMessageSuggestion from '../../customHook/useQueryMessageSuggestion';
+
+const SLASH='/';
 
 const Comment = React.forwardRef((_, commentRef)=>{
+  const suggestionSource= useQueryMessageSuggestion();
   const [value, setValue]= useState();
   const [suggestion, setSuggestion] = useState();
-  const [suggestionSource, setSuggestionSource] = useState();
-  const [begin, setBegin] = useState();
-  const [end, setEnd] = useState();
+  const [beginSubStringIndex, setBeginSubStringIndex] = useState();
+  const [endSubStringIndex, setEndSubStringIndex] = useState();
 
 const handleValueChange=event=>{
   const {target}= event;
   const {selectionStart, selectionEnd}= target;
-  const startIndex = selectionStart;
-  const endIndex = selectionEnd;
-  const previousSpaceIndex = target.value.lastIndexOf("/", startIndex - 1);
-  const nextSpaceIndex = target.value.indexOf(" ", endIndex );
-  const begin = previousSpaceIndex < 0 ? 0 : previousSpaceIndex + 1;
-  const end = nextSpaceIndex < 0 ? target.value.length : nextSpaceIndex;
-  const stringTarget = "/"+target.value.substring(begin, end);
+  const previousSlashIndex = target.value.lastIndexOf(SLASH, selectionStart - 1);
+  const nextSpaceIndex = target.value.indexOf(" ", selectionEnd );
+  const beginSubstringIndex = previousSlashIndex < 0 ? 0 : previousSlashIndex + 1;
+  const endSubstringIndex = nextSpaceIndex < 0 ? target.value.length : nextSpaceIndex;
+  const stringTarget = SLASH+target.value.substring(beginSubstringIndex, endSubstringIndex);
   const suggest= suggestionSource.find(v=>v.shortcut===stringTarget);
-  setBegin(begin);
-  setEnd(end);
+  setBeginSubStringIndex(beginSubstringIndex);
+  setEndSubStringIndex(endSubstringIndex);
   setSuggestion(suggest?.message);
   setValue(target.value);
 };
  
 const handleKeyDown=e=>{
   if (e.key === "Enter" && suggestion)
-    {
-      const newValue= value.substring(0, begin-1) + suggestion + value.substring(end);
+  {
+      const newValue= value.substring(0, beginSubStringIndex-1) + suggestion + value.substring(endSubStringIndex);
       setSuggestion();
       setValue(newValue);
       e.preventDefault();
-    }
+  }
 };
 
-  useEffect(()=>{
-    (async ()=>{
-  const response= await axios.get('api-netcore/AccountSetting/QuickMessage/get-quick-message');
-  setSuggestionSource(response.data);
-  })();}, []);
-
-
-  return (
+return (
     <div className='right-form'>
           {suggestion && <div className='suggestion__message'>
             <span>{suggestion}
@@ -60,7 +54,6 @@ const handleKeyDown=e=>{
               maxLength='200'
               onChange={handleValueChange}
               multiple
-              
               onKeyDown={handleKeyDown}
             />
           </div>
