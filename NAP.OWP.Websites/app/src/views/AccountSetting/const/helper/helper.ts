@@ -12,7 +12,7 @@ const isValidQuickMessage = (
   quickMessages: TQuickMessage[]
 ) => {
   const { shortcut, message, id } = editModel;
-  if (!shortcut) {
+  if (!shortcut.replace('/', '')) {
     return 'Shortcut is empty';
   }
   if (!message) {
