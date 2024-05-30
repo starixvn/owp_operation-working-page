@@ -378,5 +378,14 @@ namespace NAP.OWP.Websites.Controllers
         {
             return View("~/wwwroot/provider-verification/server.cshtml");
         }
+
+        [Route("SmallTicket")]
+        [NapAuth(FunctionKey = FunctionKeys.MyTickets, Policy = Constant.Policy.Read)]
+        public async Task<ActionResult> SmallTicketCenter()
+        {
+            var functionName = ConfigurationManager.AppSettings["SmallChatting"];
+            await accessCounter.UpdateCounter(functionName);
+            return View("~/wwwroot/small-ticket-center/server.cshtml");
+        }
     }
 }
