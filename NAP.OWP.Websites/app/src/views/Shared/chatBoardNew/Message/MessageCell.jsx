@@ -10,9 +10,8 @@ import { useSelector } from 'react-redux';
 import ToastrWrapper from '../../../components/ToastrWrapper';
 import ReplyIcon from '../../../../assets/svg-element/ReplyIcon';
 import ReactionBar from './ReactionBar';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import GoodIcon from '../../../../assets/svg-element/GoodIcon';
-import Avatar from '@mui/material/Avatar';
 import AvatarDisplay from '../../common/Avatar/AvatarDisplay';
 
 const url =
@@ -45,6 +44,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
     avatarFileName
   } = data;
   const dispatch = useStableDispatch();
+  const ref = useRef(null);
   const [isOpenReactionIcon, setIsOpenReactionIcon] = useState(false);
   const { permission } = useSelector(state => state[policy]);
   const { HasWrite } = permission;
@@ -104,7 +104,7 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
           <GoodIcon
             width={17}
             height={17}
-            handleOnClick={() => setIsOpenReactionIcon(true)}
+            handleOnClick={() => setIsOpenReactionIcon(!isOpenReactionIcon)}
           />
         </span>
         <UncontrolledTooltip placement='top' target={`name${messageId}`}>
@@ -130,15 +130,34 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
           <GoodIcon
             width={17}
             height={17}
-            handleOnClick={() => setIsOpenReactionIcon(true)}
+            handleOnClick={() => setIsOpenReactionIcon(!isOpenReactionIcon)}
           />
         </span>
       </span>
     );
 
   if (message) {
+    useEffect(() => {
+      const handleClickOutside = event => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setIsOpenReactionIcon(false);
+        }
+      };
+      document.addEventListener('click', handleClickOutside);
+
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }, [setIsOpenReactionIcon]);
     return (
-      <>
+      <div ref={ref}>
+        <ReactionBar
+          isOpenReactionIcon={isOpenReactionIcon}
+          setIsOpenReactionIcon={setIsOpenReactionIcon}
+          messageId={messageId}
+          creatorId={permission.ActorId}
+          ticketId={ticketId}
+        />
         <div className='info-user'>
           <div className='name-user'>
             {!isMyMessage && (
@@ -149,19 +168,13 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
             {getCreatedTime()}
           </div>
         </div>
-        <ReactionBar
-          isOpenReactionIcon={isOpenReactionIcon}
-          setIsOpenReactionIcon={setIsOpenReactionIcon}
-          messageId={messageId}
-          creatorId={permission.ActorId}
-          ticketId={ticketId}
-        />
+
         <div className='message-group' style={{ whiteSpace: 'pre-wrap' }}>
           {isSaved ? renderUnSaveIcon() : renderSaveIcon()}
           {getMessageContent()}
           {!isMyMessage && <AvatarDisplay imageFileName={avatarFileName} />}
         </div>
-      </>
+      </div>
     );
   }
   return <div>No comments</div>;

@@ -1,6 +1,5 @@
 import React from 'react';
 import IconEmoji from '../../../Shared/IconCustom/IconEmoji';
-
 import PropTypes from 'prop-types';
 
 const EmojiDisplay = ({ messageReactIcons = [], ticketId }) => {
