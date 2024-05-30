@@ -143,7 +143,7 @@
       right: -5px;
     }
 
-    >* {
+    > * {
       margin-bottom: 5px;
     }
 
@@ -612,7 +612,7 @@
     position: relative;
     padding: 10px 0;
 
-    +.item {
+    + .item {
       border-top: 1px solid #d3d3d3;
     }
 
@@ -673,7 +673,7 @@
   .event-date {
     font-size: 1.2rem;
 
-    >span {
+    > span {
       margin-left: 10px;
     }
 
@@ -746,7 +746,7 @@
     width: 65px;
   }
 
-  >div {
+  > div {
     width: 100%;
     // margin-left: 10px;
   }
@@ -863,7 +863,7 @@
 
   .MuiFormControl-root {
     .MuiInputLabel-formControl {
-      +.MuiInput-underline {
+      + .MuiInput-underline {
         margin-top: 45px;
       }
     }
@@ -902,7 +902,7 @@
       margin-top: 0;
     }
 
-    label+.MuiInput-formControl {
+    label + .MuiInput-formControl {
       margin-top: 35px;
     }
 
@@ -1702,7 +1702,6 @@
 }
 
 .message-list {
-
   .message-row.my-message,
   .message-row.others-user {
     .list-icon-reaction {
@@ -1711,7 +1710,7 @@
       max-height: 20px;
       margin-bottom: 0px;
 
-      >div {
+      > div {
         background-color: none !important;
         border-radius: 10px !important;
         height: 'fit-content';
@@ -1842,44 +1841,41 @@
   border-style: solid;
   margin-top: -5px;
   margin-right: 2px;
+  font-family: Arial !important;
 }
 
 .custom-tooltip {
+  margin-top: 0px !important;
   padding: 0px !important;
-  overflow: auto;
-  max-height: 100px;
-  overflow-y: auto;
-}
-
-.table-container::-webkit-scrollbar {
-  background-color: #222;
-  padding-left: 0px 3px !important;
-  width: 5px;
-}
-
-.table-container::-webkit-scrollbar-thumb {
-  background-color: #555454;
-  border-radius: 10px;
-}
-
-.react-table {
-  margin: 3px !important;
-  text-align: left;
-
-  .user-name-message-icon {
-    padding-left: 5px !important;
+  .table-container {
+    overflow: auto;
+    max-height: 100px;
+    overflow-y: auto;
+  }
+  .table-container::-webkit-scrollbar {
+    background-color: #222;
+    padding-left: 0px 3px !important;
+    width: 5px;
   }
 
-  td {
-    div {
-      margin: 0px !important;
+  .table-container::-webkit-scrollbar-thumb {
+    background-color: #555454;
+    border-radius: 10px;
+  }
+  .react-table {
+    margin: 3px !important;
+    text-align: left;
+    .user-name-message-icon {
+      padding-left: 5px !important;
+    }
+    td {
+      div {
+        margin: 0px !important;
+      }
     }
   }
 }
 
 .custom-tooltip::before {
   display: none !important;
-}
-.custom-tooltip {
-  margin-top: 0px !important;
 }
