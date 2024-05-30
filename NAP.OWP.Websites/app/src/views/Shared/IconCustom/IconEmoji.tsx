@@ -20,19 +20,128 @@ type Props = {
 };
 
 const TableEmoji = (userReacts: UseReact[]) => {
+  userReacts = [
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+    {
+      "userId": 8,
+      "userName": "sa",
+      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
+    },
+  ];
   return (
-    <table>
-      <tbody>
-        {userReacts?.map(x => (
-          <tr key={uniqueId()}>
-            <td>
-              <AvatarDisplay imageFileName={x.avatarLink} size={15} />
-            </td>
-            <td className='user-name-message-icon'>{x.userName}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className='table-container'>
+      <table className='react-table'>
+        <tbody>
+          {userReacts?.map(x => (
+            <tr key={uniqueId()}>
+              <td>
+                <AvatarDisplay imageFileName={x.avatarLink} size={15} />
+              </td>
+              <td className='user-name-message-icon'>{x.userName}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
@@ -42,7 +151,7 @@ const IconEmoji = ({ iconKey, userReact, messageId, ticketId }: Props) => {
 
   const uuidKey = `custom-tooltip-${uniqueId()}`;
   const handleOnClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    _: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     const model = {
       messageId,
@@ -62,14 +171,16 @@ const IconEmoji = ({ iconKey, userReact, messageId, ticketId }: Props) => {
         className='icon-box'>
         {ReactionIcon.find(x => x.label === iconKey)?.node}
         {userReact.length > 1 && userReact.length}
+        <ReactTooltip
+          event='click'
+          id={uuidKey}
+          place='top'
+          effect='solid'
+          className='custom-tooltip'>
+          {TableEmoji(userReact)}
+        </ReactTooltip>
       </div>
-      <ReactTooltip
-        id={uuidKey}
-        place='top'
-        effect='solid'
-        className='custom-tooltip'>
-        {TableEmoji(userReact)}
-      </ReactTooltip>
+
     </div>
   );
 };

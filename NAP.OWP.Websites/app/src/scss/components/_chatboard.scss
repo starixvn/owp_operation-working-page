@@ -1838,9 +1838,37 @@
   margin-top: -5px;
   margin-right: 2px;
 }
+
 .custom-tooltip {
-  padding: 4px 4px 8px 4px !important;
-  table {
-    text-align: left;
+  padding: 0px !important;
+  .table-container {
+    overflow: auto;
+    max-height: 100px;
+    overflow-y: auto;
   }
+  .table-container::-webkit-scrollbar {
+    background-color: #222;
+    padding-left: 0px 3px !important;
+    width: 5px;
+  }
+
+  .table-container::-webkit-scrollbar-thumb {
+    background-color: #555454;
+    border-radius: 10px;
+  }
+  .react-table {
+    margin: 3px !important;
+    text-align: left;
+    .user-name-message-icon {
+      padding-left: 5px !important;
+    }
+    td {
+      div {
+        margin: 0px !important;
+      }
+    }
+  }
+}
+.custom-tooltip::before {
+  display: none !important;
 }
