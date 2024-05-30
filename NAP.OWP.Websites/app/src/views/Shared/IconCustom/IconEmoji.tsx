@@ -20,113 +20,6 @@ type Props = {
 };
 
 const TableEmoji = (userReacts: UseReact[]) => {
-  userReacts = [
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-    {
-      "userId": 8,
-      "userName": "sa",
-      "avatarLink": "3002_image_2024-04-22_17-27-03.png"
-    },
-  ];
   return (
     <div className='table-container'>
       <table className='react-table'>
@@ -150,9 +43,7 @@ const IconEmoji = ({ iconKey, userReact, messageId, ticketId }: Props) => {
   const actorId = useSelector(state => state?.pagePolicy?.permission?.ActorId);
 
   const uuidKey = `custom-tooltip-${uniqueId()}`;
-  const handleOnClick = (
-    _: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOnClick = (_: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const model = {
       messageId,
       creatorId: actorId,
@@ -172,7 +63,7 @@ const IconEmoji = ({ iconKey, userReact, messageId, ticketId }: Props) => {
         {ReactionIcon.find(x => x.label === iconKey)?.node}
         {userReact.length > 1 && userReact.length}
         <ReactTooltip
-          event='click'
+          clickable={true}
           id={uuidKey}
           place='top'
           effect='solid'
@@ -180,7 +71,6 @@ const IconEmoji = ({ iconKey, userReact, messageId, ticketId }: Props) => {
           {TableEmoji(userReact)}
         </ReactTooltip>
       </div>
-
     </div>
   );
 };
