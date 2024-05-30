@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../Constants';
 import {
   saveMessage,
@@ -124,6 +124,22 @@ const chatBoardSlice = createSlice({
     },
     setIsBlinkTitle: (state, { payload: data }) => {
       state.isBlinkTitle = data;
+    },
+    updateMessageIconRealTime: (
+      state,
+      { payload: { messageReactIcon, action } }
+    ) => {
+      const msg = state.ticketDetail.messages.find(
+        msg => msg.messageId === messageReactIcon.messageId
+      );
+      msg.messageReactIcons =
+        action === 'Inserted'
+          ? [...msg.messageReactIcons, messageReactIcon]
+          : msg.messageReactIcons.filter(
+              x =>
+                x.iconKey !== messageReactIcon.iconKey ||
+                x.reactUserId !== messageReactIcon.reactUserId
+            );
     }
   },
   extraReducers: builder => {
@@ -183,7 +199,8 @@ const {
   setTicketStatus,
   updateSubTypeTicketDetailByTicketId,
   setIsDisplayCloseButton,
-  setIsBlinkTitle
+  setIsBlinkTitle,
+  updateMessageIconRealTime
 } = actions;
 
 export {
@@ -204,7 +221,8 @@ export {
   setTicketStatus,
   updateSubTypeTicketDetailByTicketId,
   setIsDisplayCloseButton,
-  setIsBlinkTitle
+  setIsBlinkTitle,
+  updateMessageIconRealTime
 };
 
 export default reducer;

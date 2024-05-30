@@ -4,9 +4,13 @@ import handleNewAddRecipient from './newAddRecipientHandler';
 import handleOpenTicketDetail from './handleOpenTicketDetail';
 import handleChangeTicketStatus from './changeStatusIncomeHandler';
 import changeSubTypeIncomeHandler from './changeSubTypeIncomeHandler';
-
+import changeMessageIconHandler from './changeMessageIconHandler';
 const useSignalRWrapper = () => {
   const handlers = [
+    {
+      method: 'NotifyUpdateReactIconMessage',
+      handler: changeMessageIconHandler
+    },
     {
       method: 'NotifyNewMessageIncome',
       handler: handleNewMessageIncome

@@ -2,11 +2,16 @@ import NetCoreSignalR from '../../../Shared/NetCoreSignalR/NetCoreSignalR';
 import { handleNewMessageIncome } from './newMessageIncomeHandler';
 import { handleNewAddRecipient } from './newAddRecipientHandler';
 import { handleOpenTicketDetail } from './openTicketDetailHandler';
+import { changeMessageIconHandler } from './changeMessageIconHandler';
 import handleChangeTicketStatus from './changeStatusIncomeHandler';
 import changeSubTypeIncomeHandler from './changeSubTypeIncomeHandler';
 
 const useSignalRWrapper = () => {
   const handlers = [
+    {
+      method: 'NotifyUpdateReactIconMessage',
+      handler: changeMessageIconHandler
+    },
     {
       method: 'NotifyNewMessageIncome',
       handler: handleNewMessageIncome

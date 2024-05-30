@@ -1,7 +1,8 @@
 import {
   setNewMessage,
   setTicketStatus,
-  updateSubTypeTicketDetailByTicketId
+  updateSubTypeTicketDetailByTicketId,
+  updateMessageIconRealTime
 } from '../../../Shared/chatBoardNew/chatBoardSlice';
 import store from '../../app/store';
 import {
@@ -82,6 +83,14 @@ const reloadOpenTicketHandler = (messageResponse, ticketId) => {
     store.dispatch(setNewMessage(messageResponse));
 };
 
+const changeMessageIconHandler = (messageReactIcon, action, ticketId) => {
+  const model = store.getState();
+  const { isOpenPopup, ticketDetail } = model.chatBoard;
+  ticketDetail.ticketId === ticketId &&
+    isOpenPopup &&
+    store.dispatch(updateMessageIconRealTime({ messageReactIcon, action }));
+};
+
 const reloadStatusOpenTicketHandler = async (ticketId, ticketStatus) => {
   const model = store.getState();
   const { isOpenPopup, ticketDetail } = model.chatBoard;
@@ -105,5 +114,6 @@ export {
   reloadPreMatch,
   reloadTicketCellInTable,
   reloadStatusOpenTicketHandler,
-  reloadSubTypeOpenTicketHandler
+  reloadSubTypeOpenTicketHandler,
+  changeMessageIconHandler
 };

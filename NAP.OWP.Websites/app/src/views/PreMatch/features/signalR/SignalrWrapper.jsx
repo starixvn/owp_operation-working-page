@@ -3,12 +3,17 @@ import {
   reloadPreMatch,
   reloadStatusOpenTicketHandler,
   reloadSubTypeOpenTicketHandler,
-  reloadTicketCellInTable
+  reloadTicketCellInTable,
+  changeMessageIconHandler
 } from './reloadPreMatchHandler';
 import { handleOpenTicketDetail } from './openTicketDetailHandler';
 
 const SignalRWrapper = () => {
   const handlers = [
+    {
+      method: 'NotifyUpdateReactIconMessage',
+      handler: changeMessageIconHandler
+    },
     {
       method: 'NotifyNewMessageIncome',
       handler: reloadPreMatch
