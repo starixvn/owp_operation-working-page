@@ -8,7 +8,6 @@ type ShortcutProps = {
 };
 
 const Message = ({ message, isEdit }: ShortcutProps) => {
-  console.log('render message');
   const [inputValue, setInputValue] = useState<string>(message);
   const [isEmpty, setIsEmpty] = useState<boolean>(!message.trim());
   const dispatch = useAppDispatch();

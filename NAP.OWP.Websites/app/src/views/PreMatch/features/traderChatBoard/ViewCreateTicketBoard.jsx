@@ -104,7 +104,6 @@ const ViewCreateTicketBoard = props => {
         url: urlRequestLeague
       };
     }
-    console.log(newAddModel);
     if (selectedRecipients.length === 0) {
       dispatchActionRecipient(selectedRecipients);
     } else {

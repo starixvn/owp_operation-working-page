@@ -29,7 +29,6 @@ const taskListSlice = createSlice({
   reducers: {
     setUserId: (state, action) => {
       state.userId = action.payload;
-      console.log(`UserId: ${state.userId}`);
     },
     setDataTable: (state, action) => {
       state.matches = action.payload;
@@ -40,9 +39,6 @@ const taskListSlice = createSlice({
       state.matches.forEach(item => {
         if (item.ParentMatchId === parentMatchId) {
           item.IsRead = buildIsReadValue(actorId, state.userId, item.IsRead);
-          console.log(`IsRead: ${item.IsRead}`);
-          console.log(`actorId: ${actorId}`);
-          console.log(`userId: ${state.userId}`);
           item.HasTicket = true;
         }
       });
