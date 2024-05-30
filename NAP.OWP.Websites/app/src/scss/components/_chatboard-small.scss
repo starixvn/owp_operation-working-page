@@ -1647,6 +1647,12 @@
   cursor: pointer;
 }
 
+.icon-react-message {
+  padding-left: 5px;
+  padding-top: 3px;
+  cursor: pointer;
+}
+
 .message-list .unsave-message svg {
   fill: #3bb54a;
 }
@@ -1709,7 +1715,9 @@
 
   .message-row.my-message {
     .list-icon-reaction {
-      padding-left: 370px !important;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }
@@ -1808,16 +1816,20 @@
     width: 100%;
   }
 }
+
 .header-filter {
   display: flex;
   justify-content: space-between;
+
   .show-info {
     float: right;
   }
+
   .filter-left :hover {
     cursor: pointer;
   }
 }
+
 .message-group .icons {
   display: flex;
 }
@@ -1844,8 +1856,10 @@
   margin-top: -5px;
   margin-right: 2px;
 }
+
 .custom-tooltip {
   padding: 4px 4px 8px 4px !important;
+
   table {
     text-align: left;
   }

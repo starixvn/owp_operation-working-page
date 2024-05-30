@@ -1721,7 +1721,9 @@
 
   .message-row.my-message {
     .list-icon-reaction {
-      padding-left: 370px !important;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }
