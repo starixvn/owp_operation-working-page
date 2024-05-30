@@ -8,7 +8,10 @@ const TicketList = () => {
   const actorId = useAppSelector(
     state => state?.pagePolicy?.permission?.ActorId
   );
-  const handleOnClick = (ticketId: number, ticketType: number) => {
+  const handleOnClick = (event, ticketId: number, ticketType: number) => {
+    if (event?.target?.className?.includes('icon-new-tab')) {
+      return;
+    }
     openCurrentChattingTab(actorId, ticketId, ticketType);
   };
   return (
@@ -23,15 +26,15 @@ const TicketList = () => {
           {ticketList.map((ticket, index) => (
             <tr className='ticket__list--item' key={index}>
               <td
-                onClick={() =>
-                  handleOnClick(ticket.ticketId, ticket.eventType)
+                onClick={event =>
+                  handleOnClick(event, ticket.ticketId, ticket.eventType)
                 }>
-                  <div className='cell'>
-                    {cellFactory(ticket)}
-                    <IconOpenNewTab
-                      ticketId={ticket.ticketId}
-                      eventType={ticket.eventType}></IconOpenNewTab>
-                  </div>
+                <div className='cell'>
+                  {cellFactory(ticket)}
+                  <IconOpenNewTab
+                    ticketId={ticket.ticketId}
+                    eventType={ticket.eventType}></IconOpenNewTab>
+                </div>
               </td>
             </tr>
           ))}
