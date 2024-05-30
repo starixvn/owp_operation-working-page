@@ -272,6 +272,9 @@
 
   .ticket__list--item{
     padding:8px;
+    &:hover{
+      background: #cef3fc !important;
+    }
     .cell{
       position: relative;
       .icon-new-tab{
