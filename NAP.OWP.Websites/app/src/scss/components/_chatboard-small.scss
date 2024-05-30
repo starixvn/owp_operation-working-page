@@ -1526,7 +1526,7 @@
   padding: 5px 10px;
   border-radius: 9px 9px 0px 9px;
   display: inline-block;
-  max-width: 85%;
+  max-width: 360px;
   margin-bottom: 0;
 }
 
@@ -1562,7 +1562,7 @@
   text-align: left;
   border-radius: 9px 9px 9px 0px;
   display: inline-block;
-  max-width: 85%;
+  max-width: 360px;
   margin-bottom: 0;
 }
 
@@ -1864,13 +1864,16 @@
     text-align: left;
   }
 }
+
 .custom-tooltip {
   padding: 0px !important;
+
   .table-container {
     overflow: auto;
     max-height: 100px;
     overflow-y: auto;
   }
+
   .table-container::-webkit-scrollbar {
     background-color: #222;
     padding-left: 0px 3px !important;
@@ -1881,12 +1884,15 @@
     background-color: #555454;
     border-radius: 10px;
   }
+
   .react-table {
     margin: 3px !important;
     text-align: left;
+
     .user-name-message-icon {
       padding-left: 5px !important;
     }
+
     td {
       div {
         margin: 0px !important;
@@ -1894,9 +1900,11 @@
     }
   }
 }
+
 .custom-tooltip::before {
   display: none !important;
 }
+
 .custom-tooltip {
   margin-top: 0px !important;
 }
