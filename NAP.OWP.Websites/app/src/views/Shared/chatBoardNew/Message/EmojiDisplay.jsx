@@ -1,4 +1,7 @@
+import React from 'react';
 import IconEmoji from '../../../Shared/IconCustom/IconEmoji';
+
+import PropTypes from 'prop-types';
 
 const EmojiDisplay = ({ messageReactIcons = [], ticketId }) => {
   const result = groupByIconKey(messageReactIcons);
@@ -41,7 +44,7 @@ const groupByIconKey = icons => {
 };
 
 EmojiDisplay.propTypes = {
-  messageReactIcons: []
+  messageReactIcons: PropTypes.array
 };
 
-export default EmojiDisplay;
+export default React.memo(EmojiDisplay);

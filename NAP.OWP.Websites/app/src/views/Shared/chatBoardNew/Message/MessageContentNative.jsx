@@ -124,7 +124,7 @@ const MessageContents = ({
         )}
         <div className='icons'>
           <EmojiDisplay
-            messageReactIcons={messageReactIcons}
+            messageReactIcons={messageReactIcons || []}
             ticketId={ticketId}></EmojiDisplay>
         </div>
       </div>
