@@ -29,7 +29,7 @@ const FilterWrapper=()=>{
 };
 
 const Filter = () => {
-  const [showFilter,setShowFilter]= useState(true);
+  const [showFilter,setShowFilter]= useState(false);
   const dispatch= useAppDispatch();
   
   useEffect(()=>{

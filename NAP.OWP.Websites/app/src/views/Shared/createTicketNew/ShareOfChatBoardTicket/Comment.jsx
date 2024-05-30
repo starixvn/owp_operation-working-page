@@ -27,6 +27,17 @@ const handleValueChange=event=>{
   setValue(target.value);
 };
  
+const handleClickSuggestMessage=()=>{
+  if(value
+    && beginSubStringIndex
+     && endSubStringIndex
+    && suggestion){
+      const newValue= value.substring(0, beginSubStringIndex-1) + suggestion + value.substring(endSubStringIndex);
+    setValue(newValue);
+  }
+  setSuggestion();
+};
+
 const handleKeyDown=e=>{
   if (e.key === "Enter" && suggestion)
   {
@@ -39,7 +50,9 @@ const handleKeyDown=e=>{
 
 return (
     <div className='right-form'>
-          {suggestion && <div className='suggestion__message'>
+          {suggestion && <div
+           onClick={handleClickSuggestMessage}
+            className='suggestion__message'>
             <span>{suggestion}
             </span>
           </div>}

@@ -5,10 +5,7 @@ import { REQUEST_STATUS } from "../../../../Shared/Constants";
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { TTicketTypeOptions, TTicketTypeResponse, TUpdateFilterParams, TUpdateFilterTimeRange } from "../../../type";
 
-// TODO
-//const { fromDateDefault, toDateDefault } = getDefaultDateRange();
-
-const [fromDateDefault, toDateDefault] = [new Date('2024-4-21'),new Date('2024-5-21')];
+const { fromDateDefault, toDateDefault } = getDefaultDateRange();
 
 const filterSlice = createSlice({
   name: 'filterSlice',
