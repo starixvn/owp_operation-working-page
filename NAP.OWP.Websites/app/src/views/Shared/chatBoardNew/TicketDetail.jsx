@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MessageList from './Message/MessageList';
 import InputMessage from './Message/InputMessage';
 import useStableDispatch from '../customHook/useStableDispatch';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useSelector } from 'react-redux';
 import {
   closePopup,
@@ -25,11 +26,12 @@ import {
   NET_FW_FILE_UPLOAD
 } from '../../Shared/Constants';
 import { updateTicketStatus } from './chatBoardThunkNative';
+import { backToSmallTicket } from '../../Shared/Utils';
 import isEqual from 'lodash.isequal';
 import TicketDetailInformation from './TicketDetailInformation';
 import { KeyboardArrowDownIcon, KeyboardArrowUpIcon } from 'mdi-react';
 
-const TicketDetail = ({ policy = 'policy' }) => {
+const TicketDetail = ({ policy = 'policy', isSmallBoard = false }) => {
   const dispatch = useStableDispatch();
   const { permission } = useSelector(state => state[policy]);
   const { HasWrite } = permission;
@@ -183,26 +185,35 @@ const TicketDetail = ({ policy = 'policy' }) => {
             <TicketDetailHeader {...ticketDetail} />
           </div>
         </div>
-        <div className='chatBoard-info'>
-          {isExpandInfo ? (
-            <>
-              <div className='show-info' onClick={() => setIsExpandInfo(false)}>
-                <KeyboardArrowUpIcon />
-                <p>Show less ticket information</p>
-              </div>
-              <TicketDetailInformation
-                policy={policy}
-                ticketSubTypeOptions={ticketSubTypeOptions}
-                permission={permission}
-                ticketDetail={ticketDetail}
-              />
-            </>
-          ) : (
-            <div className='show-info' onClick={() => setIsExpandInfo(true)}>
-              <KeyboardArrowDownIcon />
-              <p>Show more ticket information</p>
+        <div className='chatBoard-info header-filter'>
+          {isSmallBoard && (
+            <div className='filter-left' onClick={backToSmallTicket}>
+              <ArrowBackIcon fontSize='large'></ArrowBackIcon>
             </div>
           )}
+          <div className='filter-right'>
+            {isExpandInfo ? (
+              <>
+                <div
+                  className='show-info'
+                  onClick={() => setIsExpandInfo(false)}>
+                  <KeyboardArrowUpIcon />
+                  <p>Show less ticket information</p>
+                </div>
+                <TicketDetailInformation
+                  policy={policy}
+                  ticketSubTypeOptions={ticketSubTypeOptions}
+                  permission={permission}
+                  ticketDetail={ticketDetail}
+                />
+              </>
+            ) : (
+              <div className='show-info' onClick={() => setIsExpandInfo(true)}>
+                <KeyboardArrowDownIcon />
+                <p>Show more ticket information</p>
+              </div>
+            )}
+          </div>
         </div>
         <MessageList policy={policy} ticketId={ticketId} />
         {HasWrite && (
@@ -216,7 +227,8 @@ const TicketDetail = ({ policy = 'policy' }) => {
   );
 };
 TicketDetail.propTypes = {
-  policy: PropTypes.string
+  policy: PropTypes.string,
+  isSmallBoard: PropTypes.bool
 };
 
 export default TicketDetail;

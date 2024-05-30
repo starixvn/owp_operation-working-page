@@ -44,7 +44,7 @@ const SmallChatting = () => {
 
   return (
     <div className='popup-ChatBoard'>
-      <TicketDetailBoard />
+      <TicketDetailBoard isSmallBoard={true} />
       <BlinkDocumentTitle />
     </div>
   );

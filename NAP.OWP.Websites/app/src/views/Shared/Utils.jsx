@@ -231,6 +231,10 @@ const openNewSmallTicket = () => {
   );
 };
 
+const backToSmallTicket = () => {
+  window.location.href = `SmallTicket`;
+};
+
 const formatTime = date => dayjs(date).format('hh:ss A');
 
 const Utils = {
@@ -270,6 +274,7 @@ export {
   filterDataTable,
   openNewChattingTab,
   openNewSmallTicket,
+  backToSmallTicket,
   openCurrentChattingTab
 };
 export default Utils;
