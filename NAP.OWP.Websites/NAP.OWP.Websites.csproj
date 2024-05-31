@@ -618,6 +618,15 @@
     <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-901310c8.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
+    <Content Include="wwwroot\user-management\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\user-management\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\user-management\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\user-management\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\user-management\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\user-management\assets\ext\server-5877f129.css" />
+    <Content Include="wwwroot\user-management\assets\js\main-20f85cb7.js" />
+    <Content Include="wwwroot\user-management\favicon.ico" />
+    <Content Include="wwwroot\user-management\server.html" />
     <Content Include="wwwroot\welcome\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\welcome\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\welcome\assets\ext\logo_none-232840bc.svg" />
@@ -3086,15 +3095,6 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\js\main-1c5f7f08.js" />
     <Content Include="wwwroot\ticket-type-recipient\favicon.ico" />
     <Content Include="wwwroot\ticket-type-recipient\server.html" />
-    <Content Include="wwwroot\user-management\assets\ext\icon-feedback-57264197.svg" />
-    <Content Include="wwwroot\user-management\assets\ext\icon-search-4037a8fe.svg" />
-    <Content Include="wwwroot\user-management\assets\ext\logo_none-232840bc.svg" />
-    <Content Include="wwwroot\user-management\assets\ext\logo_text-c3062a52.svg" />
-    <Content Include="wwwroot\user-management\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\user-management\assets\ext\server-5877f129.css" />
-    <Content Include="wwwroot\user-management\assets\js\main-9a373b7b.js" />
-    <Content Include="wwwroot\user-management\favicon.ico" />
-    <Content Include="wwwroot\user-management\server.html" />
     <Content Include="wwwroot\web.config" />
     <Content Include="T4.FileManager.VisualStudio19.ttinclude" />
     <Content Include="T4.FileManager.VisualStudio.ttinclude" />
@@ -3199,10 +3199,6 @@
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\server.cshtml" />
-    <Content Include="wwwroot\user-management\assets\ext\OWP-7daa37ca.eot" />
-    <Content Include="wwwroot\user-management\assets\ext\OWP-a631227d.woff" />
-    <Content Include="wwwroot\user-management\assets\ext\OWP-a7443744.ttf" />
-    <Content Include="wwwroot\user-management\server.cshtml" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-7daa37ca.eot" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\other-sport\assets\ext\OWP-a7443744.ttf" />
@@ -3231,6 +3227,10 @@
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a631227d.woff" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\live-game-list\server.cshtml" />
+    <Content Include="wwwroot\user-management\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\user-management\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\user-management\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\user-management\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />

@@ -12,17 +12,8 @@ const LanguageCell = (props: {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const { options, updateValue } = store.getState();
-  const { languages } = options;
   const { rowIndex, dataSource, handleShowDropdown } = props;
-  const user = dataSource[rowIndex];
-  const languageValue =
-    user.languageId?.split(',').map(item => item.trim()) ?? [];
-  const [selectedLanguages, setSelectedLanguages] =
-    useState<string[]>(languageValue);
-  const languageLabel = languages
-    .filter(o => selectedLanguages?.some(id => parseInt(id) === o.value))
-    .map(x => x.label)
-    .join(',');
+  const { languageId, userId, sectionName, languages } = dataSource[rowIndex];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -43,19 +34,32 @@ const LanguageCell = (props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpenDropdown]);
 
-  const toggleLanguage = (language: string) => {
-    let newValue = [...selectedLanguages];
-    newValue = handleAddLanguageId(newValue, language);
-    updateUserInfo({
-      ColumnName: 'Language',
-      UserId: `${user.userId}`,
-      Value: newValue.join(',')
-    });
+  const toggleLanguage = async (language: string) => {
+    const prevSelectedValue =
+      languageId
+        ?.split(',')
+        .map(item => item.trim())
+        .filter(item => item.length > 0) ?? [];
+    const newValue = handleAddLanguageId(prevSelectedValue, language);
+
+    const langueLabel = options.languages.filter(
+      x => x.value?.toString() === language
+    )[0].label;
+    const prevSelectedLabel =
+      languages
+        ?.split(',')
+        .map(item => item.trim())
+        .filter(item => item.length > 0) ?? [];
+    const newLabel = handleAddLanguageId(prevSelectedLabel, langueLabel);
 
     updateValue(newValue.join(','), 'languageId', rowIndex);
-    setSelectedLanguages(prevSelected =>
-      handleAddLanguageId(prevSelected, language)
-    );
+    updateValue(newLabel.join(','), 'languages', rowIndex);
+
+    updateUserInfo({
+      ColumnName: 'Language',
+      UserId: `${userId}`,
+      Value: newValue.join(',')
+    });
   };
   const handleAddLanguageId = (prevSelected: Array<string>, language: string) =>
     prevSelected?.includes(language)
@@ -65,28 +69,28 @@ const LanguageCell = (props: {
   return (
     <>
       <div className='language-cell'>
-        <span className='language-label'>{languageLabel}</span>
+        <span className='language-label'>{languages}</span>
         <span
           className='language-dropdown-icon'
           onClick={() => setIsOpenDropdown(true)}>
           <DropdownIcon colorDropdown='#282d38' />
         </span>
       </div>
-      {isOpenDropdown && hasPermissionUser(user.sectionName) && (
+      {isOpenDropdown && hasPermissionUser(sectionName) && (
         <div ref={dropdownRef} className='dropdown-multi-language is-show'>
           <ul>
-            {languages.map(language => {
-              const languageValue = String(language.value);
+            {options.languages.map(language => {
+              const temp = language.value?.toString() ?? '';
               return (
                 <li key={language.label}>
                   <label>
                     <input
                       type='checkbox'
-                      value={language.value ?? 0}
-                      checked={selectedLanguages?.some(
-                        x => x.trim() === languageValue
-                      )}
-                      onChange={() => toggleLanguage(languageValue)}
+                      checked={languageId
+                        ?.split(',')
+                        .map(item => item.trim())
+                        .some(x => x.trim() === temp)}
+                      onChange={() => toggleLanguage(temp)}
                     />
                     {language.label}
                   </label>

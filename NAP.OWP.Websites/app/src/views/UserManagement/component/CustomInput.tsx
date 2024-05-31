@@ -1,3 +1,4 @@
+import { uniqueId } from 'lodash';
 import { KeyboardEvent, useRef } from 'react';
 
 type Props = {
@@ -7,7 +8,12 @@ type Props = {
   isError?: boolean;
 };
 
-const CustomInput = ({ value, handleOnBlur, disabled = false, isError = false }: Props) => {
+const CustomInput = ({
+  value,
+  handleOnBlur,
+  disabled = false,
+  isError = false
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -20,6 +26,7 @@ const CustomInput = ({ value, handleOnBlur, disabled = false, isError = false }:
   return (
     <div>
       <input
+        key={uniqueId()}
         type='text'
         defaultValue={value ?? ''}
         onBlur={e => handleOnBlur(e.target.value)}
