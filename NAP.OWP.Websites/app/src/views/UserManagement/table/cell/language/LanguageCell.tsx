@@ -35,14 +35,22 @@ const LanguageCell = (props: {
   }, [isOpenDropdown]);
 
   const toggleLanguage = async (language: string) => {
-    let newValue = languageId?.split(',').filter(item => item.length > 0) ?? [];
-    newValue = handleAddLanguageId(newValue, language);
+    const prevSelectedValue =
+      languageId
+        ?.split(',')
+        .map(item => item.trim())
+        .filter(item => item.length > 0) ?? [];
+    const newValue = handleAddLanguageId(prevSelectedValue, language);
 
     const langueLabel = options.languages.filter(
       x => x.value?.toString() === language
     )[0].label;
-    let newLabel = languages?.split(',').filter(item => item.length > 0) ?? [];
-    newLabel = handleAddLanguageId(newLabel, langueLabel);
+    const prevSelectedLabel =
+      languages
+        ?.split(',')
+        .map(item => item.trim())
+        .filter(item => item.length > 0) ?? [];
+    const newLabel = handleAddLanguageId(prevSelectedLabel, langueLabel);
 
     updateValue(newValue.join(','), 'languageId', rowIndex);
     updateValue(newLabel.join(','), 'languages', rowIndex);

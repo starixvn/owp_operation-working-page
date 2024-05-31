@@ -49,10 +49,10 @@ const dynamicCell = (
   cellModel: {
     dataSource: Array<TUserInfo>;
     columnKey: string;
-    handleShowTicket: (isOpen: boolean) => void;
+    onShowDropdownListOption: (isOpen: boolean) => void;
   }
 ) => {
-  const { columnKey, dataSource, handleShowTicket } = cellModel;
+  const { columnKey, dataSource, onShowDropdownListOption } = cellModel;
   switch (columnKey) {
     case No.columnKey:
       return <NoCell rowIndex={rowIndex} />;
@@ -74,7 +74,7 @@ const dynamicCell = (
       return (
         <LanguageCell
           rowIndex={rowIndex}
-          handleShowDropdown={handleShowTicket}
+          handleShowDropdown={onShowDropdownListOption}
           dataSource={dataSource}
         />
       );
@@ -100,7 +100,7 @@ const dynamicCell = (
       return <SecondAccountCell rowIndex={rowIndex} dataSource={dataSource} />;
     case Address.columnKey:
       return <AddressCell rowIndex={rowIndex} dataSource={dataSource} />;
-  };
+  }
 };
 
 export { dynamicCell };
