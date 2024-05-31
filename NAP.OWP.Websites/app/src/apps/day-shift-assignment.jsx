@@ -11,6 +11,5 @@ root.render(
   <Layout
     view={<AppDayShiftManagement />}
     title='DayShift Assignment'
-    isUseTicketLayout={false}
   />
 );

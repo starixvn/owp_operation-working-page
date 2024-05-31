@@ -6,7 +6,6 @@ import {
   reloadTicketCellInTable,
   changeMessageIconHandler
 } from './reloadPreMatchHandler';
-import { handleOpenTicketDetail } from './openTicketDetailHandler';
 
 const SignalRWrapper = () => {
   const handlers = [
@@ -21,10 +20,6 @@ const SignalRWrapper = () => {
     {
       method: 'NotifyNewAddRecipient',
       handler: reloadTicketCellInTable
-    },
-    {
-      method: 'NotifyUserOnClickToast',
-      handler: handleOpenTicketDetail
     },
     {
       method: 'NotifyChangeStatusIncome',
