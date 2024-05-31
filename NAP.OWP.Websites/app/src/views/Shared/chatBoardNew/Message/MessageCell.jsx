@@ -162,7 +162,10 @@ const MessageCell = ({ data, policy = 'policy', ticketId, isMyMessage }) => {
           <div className='name-user'>
             {!isMyMessage && (
               <>
-                {username} {extension && { extension }},
+                {extension?.length > 0
+                  ? `${username} (${extension})`
+                  : username}
+                {','}
               </>
             )}{' '}
             {getCreatedTime()}
