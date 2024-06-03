@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-
+import { isUndefined } from 'lodash';
 const checkAllFilterCondition = (filterModel, ticketInfo) => {
   return (
     checkFilterDate(filterModel, ticketInfo) &&
@@ -11,16 +11,15 @@ const checkAllFilterCondition = (filterModel, ticketInfo) => {
 
 const checkFilterDate = (filterModel, ticketInfo) => {
   const lastCommentDate = dayjs(ticketInfo.lastCommentDate);
-  const fromDateFilter = dayjs(filterModel.FromDateFilter);
-  let toDateFilter = dayjs(filterModel.ToDateFilter);
+  const fromDateFilter = dayjs(filterModel.fromDateFilter);
+  let toDateFilter = dayjs(filterModel.toDateFilter);
   toDateFilter = toDateFilter.endOf('day');
   return lastCommentDate >= fromDateFilter && lastCommentDate <= toDateFilter;
 };
 
 const checkFilterEvent = (filterModel, ticketInfo) => {
-  const { Keyword } = filterModel;
-
-  if (isUndefined(Keyword)) {
+  const { keyword } = filterModel;
+  if (isUndefined(keyword)) {
     return true;
   }
 
@@ -34,12 +33,12 @@ const checkFilterEvent = (filterModel, ticketInfo) => {
   ];
 
   return fieldsToCheck.some(field =>
-    ticketInfo[field]?.toLowerCase().includes(Keyword.toLowerCase())
+    ticketInfo[field]?.toLowerCase().includes(keyword.toLowerCase())
   );
 };
 
 const checkFilterTicketSubTypeId = (filterModel, ticketInfo) => {
-  const listSubTypeIdFilterModel = filterModel.TicketTypeId.split(',');
+  const listSubTypeIdFilterModel = filterModel.ticketTypeId.split(',');
   const ticketSubTypeId = `${ticketInfo.ticketType}-${
     ticketInfo.ticketSubTypeId || ''
   }`;
@@ -47,7 +46,7 @@ const checkFilterTicketSubTypeId = (filterModel, ticketInfo) => {
 };
 
 const checkFilterStatus = (filterModel, ticketInfo) => {
-  return filterModel.TicketStatuses.includes(ticketInfo.ticketStatus);
+  return filterModel.ticketStatuses.includes(ticketInfo.ticketStatus);
 };
 
 export { checkAllFilterCondition };

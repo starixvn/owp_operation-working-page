@@ -16,9 +16,9 @@ const ticketSlice = createSlice({
   reducers: {
     updateTicketItemIntoDataSource: {
       reducer: (state, action) => {
-        const { ticketInfo, filterModel } = action.payload;
+        const { ticketInfo, filterInfo } = action.payload;
         const ticketId = ticketInfo?.ticketId;
-        const isUpdate = checkAllFilterCondition(filterModel, ticketInfo);
+        const isUpdate = checkAllFilterCondition(filterInfo, ticketInfo);
         if (isUpdate) {
           const ticketIndex = state.entities.findIndex(
             e => e.ticketId === ticketId
