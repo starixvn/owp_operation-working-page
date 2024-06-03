@@ -69,7 +69,9 @@ const Comment = (props: TProps) => {
 
   const handleOnKeyPress = async (e: KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter' && !e.shiftKey){
-      onSendMessage(e);
+      !suggestion && onSendMessage(e);
+      suggestion && handleClickSuggestMessage();
+      e.preventDefault();
     }
   };
 
