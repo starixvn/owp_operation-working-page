@@ -1,11 +1,22 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { openNewSmallTicket } from '../Utils';
-
+import { UncontrolledTooltip } from 'reactstrap';
+import { useRef } from 'react';
 const IconOpenSmallTicket = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <span onClick={openNewSmallTicket} className='icon-small-ticket-tab'>
-      <OpenInNewIcon className='icon-small-ticket-tab'></OpenInNewIcon>
-    </span>
+    <>
+      <span
+        onClick={openNewSmallTicket}
+        ref={ref}
+        className='icon-small-ticket-tab'>
+        <OpenInNewIcon className='icon-small-ticket-tab'></OpenInNewIcon>
+      </span>
+      <UncontrolledTooltip placement='top' target={ref}>
+        open small ticket list
+      </UncontrolledTooltip>
+    </>
   );
 };
 

@@ -237,75 +237,79 @@
 }
 
 @media (width<815px) {
-  .multi-select-dropdown{
+  .multi-select-dropdown {
     margin-top: 15px;
   }
 }
 
-@media(width<503px){
-  .search-text{
+@media (width<503px) {
+  .search-text {
     margin-top: 15px;
   }
 }
 @media (width<675px) {
-  .ticket-type-dropdown{
+  .ticket-type-dropdown {
     margin-top: 15px;
   }
 }
 //main table
-.table__content--wrapper{
+.table__content--wrapper {
   margin-top: 20px;
 }
-.table__content{
+.table__content {
   width: 100%;
-  th{
+  th {
     padding: 8px;
     text-align: center;
     box-shadow: inset 1px -1px #c8ced3;
     background-color: #f1f1f1;
   }
-    td{
-      box-shadow: inset 1px -1px #c8ced3;
-      padding:8px;
+  td {
+    box-shadow: inset 1px -1px #c8ced3;
+    padding: 8px;
+  }
+}
+
+.ticket__list--item {
+  padding: 8px;
+  &:hover {
+    background: #cef3fc !important;
+  }
+  .cell {
+    position: relative;
+    .icon-new-tab {
+      position: absolute;
+      right: 0;
+    }
+    :hover {
+      cursor: pointer;
+      color: #1e88e5;
+    }
+  }
+  .match-info-cell {
+    .match-info-date {
+      font-weight: bold;
+      margin-right: 5px;
+      margin-left: 2px;
+    }
+    .match-info-match-name {
+      font-weight: bold;
+    }
+    &.child-match {
+      margin-left: 3%;
     }
   }
 
-  .ticket__list--item{
-    padding:8px;
-    &:hover{
-      background: #cef3fc !important;
-    }
-    .cell{
-      position: relative;
-      .icon-new-tab{
-        position: absolute;
-        right: 0;
-      }
-    }
-    .match-info-cell {
-      .match-info-date {
-        font-weight: bold;
-        margin-right: 5px;
-        margin-left: 2px;
-      }
-      .match-info-match-name {
-        font-weight: bold;
-      }
-      &.child-match {
-        margin-left: 3%;
-      }
-    }
-    
-    .new-add-info-cell {
-      .new-add-league-name {
-        font-weight: bold;
-        overflow: hidden;
-        -o-text-overflow: ellipsis;
-        text-overflow: ellipsis;
-        max-width: 535px;
-      }
+  .new-add-info-cell {
+    .new-add-league-name {
+      font-weight: bold;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      max-width: 535px;
     }
   }
+}
 
 // icon inside table
 .mdi-icon {
@@ -740,22 +744,22 @@
   .block-filter {
     max-width: 1550px;
     .show-info {
-      .mdi-icon{
+      .mdi-icon {
         cursor: pointer;
         width: 23px;
         margin: 0;
         fill: #1e88e5;
         display: inline;
       }
-      p{
-      cursor: pointer;
-      display: inline;
-      margin: 0;
-      font-size: 13px;
-      color: #1e88e5;
-      font-weight: 700;
+      p {
+        cursor: pointer;
+        display: inline;
+        margin: 0;
+        font-size: 13px;
+        color: #1e88e5;
+        font-weight: 700;
       }
-  }
+    }
     .input-text-event,
     .input-text-ticketId {
       background-color: transparent;
@@ -772,7 +776,7 @@
         border-color: #2684ff;
       }
     }
-    .rc-tree-select-selection{
+    .rc-tree-select-selection {
       background-color: transparent;
     }
   }

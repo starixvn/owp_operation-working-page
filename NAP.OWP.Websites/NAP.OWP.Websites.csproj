@@ -700,6 +700,22 @@
     <Content Include="wwwroot\provider-verification\assets\js\main-4d57189b.js" />
     <Content Include="wwwroot\provider-verification\favicon.ico" />
     <Content Include="wwwroot\provider-verification\server.html" />
+    <Content Include="wwwroot\small-ticket-center\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\small-ticket-center\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\small-ticket-center\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\small-ticket-center\assets\ext\server-0a4b076b.css" />
+    <Content Include="wwwroot\small-ticket-center\assets\js\main-f6f84c3d.js" />
+    <Content Include="wwwroot\small-ticket-center\favicon.ico" />
+    <Content Include="wwwroot\small-ticket-center\server.html" />
+    <Content Include="wwwroot\ticket-center\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\ticket-center\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-f12a3b25.svg" />
+    <Content Include="wwwroot\ticket-center\assets\ext\server-18446c39.css" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-9b05881f.js" />
+    <Content Include="wwwroot\ticket-center\favicon.ico" />
+    <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\welcome\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\welcome\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\welcome\assets\ext\logo_none-232840bc.svg" />
@@ -3176,15 +3192,9 @@
     <Content Include="wwwroot\task-list\assets\js\useSetRefreshModel-e88c1f90.js" />
     <Content Include="wwwroot\task-list\favicon.ico" />
     <Content Include="wwwroot\task-list\server.html" />
-    <Content Include="wwwroot\ticket-center\assets\ext\icon-feedback-57264197.svg" />
-    <Content Include="wwwroot\ticket-center\assets\ext\icon-search-4037a8fe.svg" />
-    <Content Include="wwwroot\ticket-center\assets\ext\logo_none-232840bc.svg" />
-    <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-ddc4337f.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-7573f4b6.css" />
     <Content Include="wwwroot\ticket-center\assets\js\main-486eb947.js" />
-    <Content Include="wwwroot\ticket-center\favicon.ico" />
-    <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\logo_none-232840bc.svg" />
@@ -3324,7 +3334,6 @@
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-99159c10.eot" />
     <Content Include="wwwroot\task-list\assets\ext\OWP-a7443744.ttf" />
     <Content Include="wwwroot\task-list\server.cshtml" />
-    <Content Include="wwwroot\ticket-center\server.cshtml" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-5ef02bbf.ttf" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-937406c3.woff" />
     <Content Include="wwwroot\ticket-type-recipient\assets\ext\OWP-99159c10.eot" />
@@ -3341,6 +3350,14 @@
     <Content Include="wwwroot\welcome\assets\ext\OWP-937406c3.woff" />
     <Content Include="wwwroot\welcome\assets\ext\OWP-99159c10.eot" />
     <Content Include="wwwroot\welcome\server.cshtml" />
+    <Content Include="wwwroot\small-ticket-center\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\small-ticket-center\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\small-ticket-center\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\small-ticket-center\server.cshtml" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-7daa37ca.eot" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a631227d.woff" />
+    <Content Include="wwwroot\ticket-center\assets\ext\OWP-a7443744.ttf" />
+    <Content Include="wwwroot\ticket-center\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
