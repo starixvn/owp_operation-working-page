@@ -21,7 +21,7 @@ const IconOpenNewTab = ({ ticketId, eventType }: Props) => {
         <OpenInNewIcon className='icon-new-tab'></OpenInNewIcon>
       </span>
       <UncontrolledTooltip placement='top' target={ref}>
-        open small tab chat (Alt + Click)
+        Open small ticket details
       </UncontrolledTooltip>
     </>
   );

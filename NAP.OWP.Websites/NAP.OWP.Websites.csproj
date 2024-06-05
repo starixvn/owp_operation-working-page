@@ -703,8 +703,8 @@
     <Content Include="wwwroot\small-ticket-center\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\small-ticket-center\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\small-ticket-center\assets\ext\OWP-f12a3b25.svg" />
-    <Content Include="wwwroot\small-ticket-center\assets\ext\server-0a4b076b.css" />
-    <Content Include="wwwroot\small-ticket-center\assets\js\main-f6f84c3d.js" />
+    <Content Include="wwwroot\small-ticket-center\assets\ext\server-bcbd144c.css" />
+    <Content Include="wwwroot\small-ticket-center\assets\js\main-419e618a.js" />
     <Content Include="wwwroot\small-ticket-center\favicon.ico" />
     <Content Include="wwwroot\small-ticket-center\server.html" />
     <Content Include="wwwroot\ticket-center\assets\ext\icon-feedback-57264197.svg" />
@@ -713,7 +713,7 @@
     <Content Include="wwwroot\ticket-center\assets\ext\logo_text-c3062a52.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\OWP-f12a3b25.svg" />
     <Content Include="wwwroot\ticket-center\assets\ext\server-18446c39.css" />
-    <Content Include="wwwroot\ticket-center\assets\js\main-9b05881f.js" />
+    <Content Include="wwwroot\ticket-center\assets\js\main-3542d0eb.js" />
     <Content Include="wwwroot\ticket-center\favicon.ico" />
     <Content Include="wwwroot\ticket-center\server.html" />
     <Content Include="wwwroot\welcome\assets\ext\icon-feedback-57264197.svg" />

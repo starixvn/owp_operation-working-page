@@ -14,7 +14,7 @@ const IconOpenSmallTicket = () => {
         <OpenInNewIcon className='icon-small-ticket-tab'></OpenInNewIcon>
       </span>
       <UncontrolledTooltip placement='top' target={ref}>
-        open small ticket list
+        Open small ticket list
       </UncontrolledTooltip>
     </>
   );
