@@ -1,14 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from '../../../Shared/Constants';
-import { getEventPickings } from './eventSliceThunkNative';
+import { editEventPickings, getEventPickings } from './eventSliceThunkNative';
 import updateNoOfferMatchThunk from '../updateNoOfferMatchThunkNative';
 import updateConfirmedThunk from '../updateConfirmedThunkNative';
 import {
   updateNoOfferMatch,
   updateConfirmedMatch,
   buildMultipleFilterDefault,
-  filterByKo,
-  filterByMb,
   executeFilterTable
 } from '../../helper/reducerHelper';
 import {
@@ -100,6 +98,29 @@ const EventPickingTableSlice = createSlice({
     },
     setPreviousNoOfferRow: (state, action) => {
       state.previousNoOfferIndex = action.payload;
+    },
+    setValueMaxbetSpread: (state, action: PayloadAction<{
+      key: 'maxbetHdp' | 'spreadOu' | 'spreadHdp',
+      infoSiteMatchId: number,
+      value: number | undefined
+    }>) => {
+      const { key, value, infoSiteMatchId } = action.payload;
+      const target = state.entities.find(s => s.infoSiteMatchId === infoSiteMatchId);
+      if (target) {
+        target.isModified = true;
+        target[key] = value;
+      }
+    },
+    setValueNoOfHdp: (state, action: PayloadAction<{
+      infoSiteMatchId: number,
+      value: string | undefined
+    }>) => {
+      const { value, infoSiteMatchId } = action.payload;
+      const target = state.entities.find(s => s.infoSiteMatchId === infoSiteMatchId);
+      if (target) {
+        target.noOfHDP = value;
+        target.isModified = true;
+      }
     }
   },
   extraReducers: builder => {
@@ -137,6 +158,27 @@ const EventPickingTableSlice = createSlice({
       })
       .addCase(getEventPickings.rejected, state => {
         state.loading = REQUEST_STATUS.idle;
+      })
+      .addCase(editEventPickings.pending, state => {
+        state.loading = REQUEST_STATUS.pending;
+      })
+      .addCase(editEventPickings.fulfilled, (state, { payload }) => {
+        const { matchesByDate, filteredMatches } = payload;
+        state.loading = REQUEST_STATUS.idle;
+        state.entitiesByDate = matchesByDate;
+        state.entitiesOriginal = filteredMatches;
+        state.entities = filterDataTable(
+          state.entitiesOriginal,
+          state.filterState,
+          filterByKeyword
+        );
+
+        state.multipleFilter = buildMultipleFilterDefault(state.entities);
+        state.isConfirmAll = state.entities?.every(x => x.isCheck);
+        state.isNoOfferAll = state.entities?.every(x => x.isNoOffer);
+      })
+      .addCase(editEventPickings.rejected, state => {
+        state.loading = REQUEST_STATUS.idle;
       });
   }
 });
@@ -147,7 +189,9 @@ const {
   setMultipleFilter,
   setColumnKeyValue,
   setValueFilter,
-  setPreviousNoOfferRow
+  setPreviousNoOfferRow,
+  setValueMaxbetSpread,
+  setValueNoOfHdp,
 } = actions;
 
 export {
@@ -156,6 +200,8 @@ export {
   setColumnKeyValue,
   setValueFilter,
   setPreviousNoOfferRow,
-  setMultipleFilter
+  setMultipleFilter,
+  setValueMaxbetSpread,
+  setValueNoOfHdp,
 };
 export default reducer;

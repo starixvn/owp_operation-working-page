@@ -15,7 +15,6 @@ const exportAndConfirmAllEvent = async exportCallback => {
     await store.dispatch(exportCallback(param));
     if (entities.length) {
       const infoSiteMatchIds = entities.map(element => element.infoSiteMatchId);
-      console.log(infoSiteMatchIds);
       await store.dispatch(
         updateConfirmedThunk({
           infoSiteMatchIds,

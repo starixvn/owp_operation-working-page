@@ -12,8 +12,14 @@ const buildUrl = (methodRoute: Required<string>) =>
     ? `${netCoreURL}/${methodRoute}`
     : `${window.netCoreRootUrl}/${netFwURL}/${methodRoute}`;
 
+const handleCheckButton = (leagueName: string) => {
+  const url = `LeagueManagement?leagueName=${leagueName}&isEqualLeague=true`;
+  window.open(url, '_blank');
+};
+
 export {
   maxDate,
   minDate,
-  buildUrl
+  buildUrl,
+  handleCheckButton
 };

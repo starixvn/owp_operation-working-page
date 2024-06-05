@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import EventPickingTableSlice from '../table/eventPickingTableSlice/reducer';
 import filterSlice from '../filterArea/slice/filterSlice';
+import modeSlice from '../mode/modeSlice';
 import sumProviderSlice from '../sumProvider/slice/sumProviderSlice';
 import createMultiplePolicySlice from '../../Shared/permission/multiplePolicySlice';
 
@@ -10,7 +11,8 @@ const store = configureStore({
     pagePolicy: createMultiplePolicySlice('pagePolicy'),
     turnOverMarginPolicy: createMultiplePolicySlice('turnOverMarginPolicy'),
     filter: filterSlice,
-    sumProvider: sumProviderSlice
+    sumProvider: sumProviderSlice,
+    mode: modeSlice
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({
     serializableCheck: false

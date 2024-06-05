@@ -5,6 +5,14 @@ type TResult = {
   filteredMatches: Array<TDataTable>;
 }
 
+type TUpdateEvents = Array<{
+  InfoSiteMatchId: number,
+  SpreadHdp: number | undefined| null,
+  SpreadOu: number | undefined| null,
+  MaxbetHdp: number | undefined|null,
+  NoOfHDP: string | undefined|null
+}>
+
 type TDataTable = {
   tV: string;
   ipTv: string;
@@ -13,11 +21,13 @@ type TDataTable = {
   eventDateTime: Required<Date>;
   leagueName: string;
   matchOffer: string;
-  noHDP: string;
   homeName: string;
   awayName: string;
-  maxBetHDP: string;
-  maxBetHDPNumber: number | null;
+  maxbetHdp: number | undefined;
+  maxBetHDPNumber: number | undefined;
+  noOfHDP: string | undefined;
+  spreadOu: number | undefined;
+  spreadHdp: number | undefined;
   isNoOffer: boolean;
   infoSiteMatchId: number;
   isChildMatch: boolean;
@@ -38,6 +48,8 @@ type TDataTable = {
   rowColor: string;
   turnoverPeriod: TTurnOverInfo[];
   marginPeriod: MarginInfo[];
+  isModified: boolean | undefined;
+  isReferenceLeagueManagement: boolean;
 };
 
 type TTurnOverInfo = {
@@ -109,5 +121,6 @@ export {
   TMultipleFilter,
   TColumnKey,
   TResult,
-  TMultipleColumnFilterOption
+  TMultipleColumnFilterOption,
+  TUpdateEvents
 };

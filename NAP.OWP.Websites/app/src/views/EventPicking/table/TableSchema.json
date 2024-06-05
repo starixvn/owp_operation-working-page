@@ -36,6 +36,21 @@
       "columnKey": "MB"
     },
     {
+      "headerName": "Spread HDP",
+      "size": 5,
+      "columnKey": "SpreadHDP"
+    },
+    {
+      "headerName": "Spread OU",
+      "size": 5,
+      "columnKey": "SpreadOU"
+    },
+    {
+      "headerName": "No. HDP",
+      "size": 7,
+      "columnKey": "NoHDP"
+    },
+    {
       "headerName": "TV/IPTV",
       "size": 10,
       "isFilter": true,
@@ -43,7 +58,7 @@
     },
     {
       "headerName": "Provider",
-      "size": 10,
+      "size": 8,
       "isFilter": true,
       "columnKey": "Provider"
     },
@@ -92,7 +107,7 @@
     },
     {
       "headerName": "League",
-      "size": 14,
+      "size": 10,
       "isFilter": true,
       "columnKey": "League"
     },
@@ -109,6 +124,21 @@
       "columnKey": "MB"
     },
     {
+      "headerName": "Spread HDP",
+      "size": 5,
+      "columnKey": "SpreadHDP"
+    },
+    {
+      "headerName": "Spread OU",
+      "size": 5,
+      "columnKey": "SpreadOU"
+    },
+    {
+      "headerName": "No. HDP",
+      "size": 7,
+      "columnKey": "NoHDP"
+    },
+    {
       "headerName": "TV/IPTV",
       "size": 8,
       "isFilter": true,
@@ -116,7 +146,7 @@
     },
     {
       "headerName": "Turnover",
-      "size": 11,
+      "size": 9,
       "columnKey": "TurnoverSort",
       "colSpan": 2
     },
@@ -127,19 +157,19 @@
     },
     {
       "headerName": "Provider",
-      "size": 10,
+      "size": 6,
       "isFilter": true,
       "columnKey": "Provider"
     },
     {
       "headerName": "Round",
-      "size": 10,
+      "size": 7,
       "isFilter": true,
       "columnKey": "Round"
     },
     {
       "headerName": "Remark",
-      "size": 10,
+      "size": 6,
       "isFilter": true,
       "columnKey": "Remark"
     },

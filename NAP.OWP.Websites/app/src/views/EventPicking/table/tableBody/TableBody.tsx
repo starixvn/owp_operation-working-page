@@ -13,9 +13,12 @@ import RemarkCell from '../Cell/RemarkCell';
 import RAndDUpdateCell from '../Cell/RAndDUpdateCell';
 import CheckedByLstCell from '../Cell/CheckedByLstCell';
 import ActionCell from '../Cell/ActionCell';
+import SpreadHdpCell from '../Cell/SpreadHdpCell';
+import SpreadOuCell from '../Cell/SpreadOuCell';
+import NoOfHdpCell from '../Cell/NoOfHdpCell';
 import { v4 as uuidv4 } from 'uuid';
 import { itemRowHeight } from '../TableSchema.json';
-import TDataTable, { TTurnOverInfo } from '../../types/dataTableType';
+import TDataTable from '../../types/dataTableType';
 import PropTypes from 'prop-types';
 import store from '../../app/store';
 
@@ -87,6 +90,21 @@ const TableBody = ({ data = [], displayStart = 0, displayEnd = 0 }) => {
               rowSpan={rowSpan}
               className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
               <MaxBetCell dataSource={data} rowIndex={i} />
+            </td>
+            <td
+              rowSpan={rowSpan}
+              className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
+              <SpreadHdpCell dataSource={data} rowIndex={i} />
+            </td>
+            <td
+              rowSpan={rowSpan}
+              className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
+              <SpreadOuCell dataSource={data} rowIndex={i} />
+            </td>
+            <td
+              rowSpan={rowSpan}
+              className={`${row.isNoOffer ? 'color-unselected' : ''}`}>
+              <NoOfHdpCell dataSource={data} rowIndex={i} />
             </td>
             <td rowSpan={rowSpan}>
               <IPTvStreamingCell dataSource={data} rowIndex={i} />

@@ -7,12 +7,14 @@ import CheckboxHeader from './CheckboxHeader';
 import store from '../../app/store';
 import MultipleFilterHeader from './MultipleFilterHeader';
 import { TColumnKey } from '../../types/dataTableType';
+import { VIEW } from '../../mode/mode.json';
 
 const TableHeader = () => {
   const {
     turnOverMarginPolicy: {
       permission: { HasRead }
-    }
+    },
+    mode: { mode }
   } = store.getState();
 
   return (
@@ -28,8 +30,9 @@ const TableHeader = () => {
             key={index}>
             <div className='header-table'>
               <span>{item.headerName}</span>
-              {item?.isFilter && <FilterHeader columnKey={item.columnKey} />}
-              {item?.isFilterMultiple && <MultipleFilterHeader columnKey={item.columnKey as TColumnKey} />}
+              {item?.isFilter && mode === VIEW && <FilterHeader columnKey={item.columnKey} />}
+              {item?.isFilterMultiple && mode === VIEW && <MultipleFilterHeader columnKey={item.columnKey as TColumnKey} />}
+
             </div>
             {item?.isCheckBox && (
               <CheckboxHeader

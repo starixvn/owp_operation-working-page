@@ -1,7 +1,7 @@
 import isEqual from 'lodash.isequal';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import NavigationBar from '../../Shared/NavigationBar/NavigationBar';
 import { queryPolicy } from '../actions/action';
@@ -12,22 +12,31 @@ import Maxbet from './maxbet/Maxbet';
 import MaxbetDetail from './maxbet/maxbetdetail/MaxbetDetail';
 import MaxbetSettingTab from './maxbetSetting/MaxbetSettingTab';
 import SpecialProduct from './SpecialProduct';
+import LeagueInfoManagement from './leagueInfo/LeagueInfoManagement';
 
 const MaxbetManagement = () => {
   const dispatch = useDispatch();
-  const [navigationId, setNavigationId] = useState(MaxbetConst.maxbetInfo.id);
+  const [navigationId, setNavigationId] = useState(MaxbetConst.leagueInfo.id);
   const maxbetUrl = buildMaxbetUrl();
   const model = useSelector(selectPolicy);
   const stableDispatch = useCallback(dispatch, [dispatch]);
+  const history = useHistory();
+
   useEffect(() => {
     stableDispatch(queryPolicy());
   }, [stableDispatch]);
 
   const navbarList = [
+    { ...MaxbetConst.leagueInfo },
     { ...MaxbetConst.maxbetInfo },
     { ...MaxbetConst.SpecialLiveProductInfo },
     { ...MaxbetConst.maxbetSetting }
   ];
+
+  const handleNavigation = id => {
+    history.push(maxbetUrl.maxbetGeneralUrl);
+    setNavigationId(id);
+  };
 
   if (model.policyPending) {
     return <Loading />;
@@ -35,10 +44,13 @@ const MaxbetManagement = () => {
   return (
     <>
       <NavigationBar
-        onUpdateNavigate={id => setNavigationId(id)}
+        onUpdateNavigate={id => handleNavigation(id)}
         navbarList={navbarList}
         activeTabId={navigationId}
       />
+      {isEqual(navigationId, MaxbetConst.leagueInfo.id) && (
+        <LeagueInfoManagement />
+      )}
       {isEqual(navigationId, MaxbetConst.maxbetInfo.id) && (
         <Switch>
           <Route

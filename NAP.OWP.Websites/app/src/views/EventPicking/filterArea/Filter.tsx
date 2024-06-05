@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import InfoIcon from '../../../assets/svg-element/InfoIcon';
 import store, { RootState } from '../app/store';
 import Command from './Command';
 import DateTimePicker from './DateTimePicker';
@@ -13,18 +12,18 @@ import SelectGame from './SelectGame';
 import UpdateType from './UpdateType';
 import { getLeagues, getUpdateTypes } from './slice/filterThunkNative';
 import Utils from '../../Shared/Utils';
-import ExportNative from './ExportNative';
-import UserGuideWrapper from '../userGuide/UserGuideWrapper';
 import TurnoverMargin from './TurnoverMargin';
-import SumProviderWrapper from '../sumProvider/SumProviderWrapper';
+import { VIEW } from '../mode/mode.json';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const { date } = useSelector((state: RootState) => state.filter.param);
-
-  const { turnOverMarginPolicy: {
-    permission: { HasRead }
-  } } = store.getState();
+  const {
+    turnOverMarginPolicy: {
+      permission: { HasRead }
+    },
+    mode: { mode }
+  } = useSelector((state: RootState) => state);
 
   useEffect(() => {
     dispatch(getLeagues(Utils.formatDate(date)));
@@ -34,9 +33,8 @@ const Filter = () => {
     dispatch(getUpdateTypes());
   }, [dispatch]);
 
-
   return (
-    <div className='filter-control'>
+    <>
       <DateTimePicker />
       <League />
       <SelectGame />
@@ -46,12 +44,8 @@ const Filter = () => {
       <MatchCategory />
       {HasRead && <TurnoverMargin />}
       <UpdateType />
-      <Command />
-      <ExportNative />
-      <InfoIcon />
-      <UserGuideWrapper />
-      <SumProviderWrapper />
-    </div>
+      {mode === VIEW && <Command />}
+    </>
   );
 };
 export default Filter;

@@ -7,7 +7,7 @@ type TFilterState = {
 
 type TFilterHeaderProps = {
   columnKey: string;
-  options: Option[],
+  options: Option[];
   model: any;
   handleClickFilterCallback: (value: string) => void;
   handleClearFilterCallback: () => void;
@@ -19,15 +19,23 @@ type MultipleFilterHeaderProps = {
   options?: Option[];
   selected?: Option[];
   isFilter?: boolean;
-  setOptions?: () => Option[],
-  setSelected?: () => Option[],
-  setIsFilter?: () => boolean,
+  setOptions?: () => Option[];
+  setSelected?: () => Option[];
+  setIsFilter?: () => boolean;
   onFilter: (selected: Option[]) => void;
   onClear: () => void;
 };
 
-type MultipleFilterPopupProps = Omit<MultipleFilterHeaderProps, 'columnKey' | 'isFilter' | 'getOptions'> & {
+type MultipleFilterPopupProps = Omit<
+  MultipleFilterHeaderProps,
+  'columnKey' | 'isFilter' | 'getOptions'
+> & {
   onClosedPopup: () => void;
 };
 
-export { TFilterState, TFilterHeaderProps, MultipleFilterPopupProps, MultipleFilterHeaderProps };
+export {
+  TFilterState,
+  TFilterHeaderProps,
+  MultipleFilterPopupProps,
+  MultipleFilterHeaderProps
+};

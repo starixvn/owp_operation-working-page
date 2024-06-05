@@ -1,16 +1,23 @@
-import { formatTime } from "../../Shared/DateTime/dateTimeHelper";
-import { TConfirmed } from "../types/confirmed";
-import TDataTable, { TFilterState, TMultipleFilter, TTableSlice } from "../types/dataTableType";
-import { TNoOfferMatch } from "../types/noOfferMatchType";
+import { formatTime } from '../../Shared/DateTime/dateTimeHelper';
+import { TConfirmed } from '../types/confirmed';
+import TDataTable, {
+  TMultipleFilter,
+  TTableSlice
+} from '../types/dataTableType';
+import { TNoOfferMatch } from '../types/noOfferMatchType';
 import { uniqBy } from 'lodash';
 import { COLUMN_KEY } from '../table/TableSchema.json';
-import { isEquals } from "immutability-helper";
-import { filterDataTable } from "../../Shared/Utils";
+import { isEquals } from 'immutability-helper';
+import { filterDataTable } from '../../Shared/Utils';
+import Utils from '../../Shared/Utils';
 
 const KO_TIME = COLUMN_KEY.KO_TIME;
 const MB = COLUMN_KEY.MB;
 
-const updateNoOfferMatch = (entities: TDataTable[], noOfferMatch: TNoOfferMatch[]) => {
+const updateNoOfferMatch = (
+  entities: TDataTable[],
+  noOfferMatch: TNoOfferMatch[]
+) => {
   entities.forEach(element => {
     const noOfferMatchTarget = noOfferMatch.find(
       x =>
@@ -24,12 +31,14 @@ const updateNoOfferMatch = (entities: TDataTable[], noOfferMatch: TNoOfferMatch[
   });
 };
 
-const updateConfirmedMatch = (entities: TDataTable[], confirmInfo: TConfirmed) => {
+const updateConfirmedMatch = (
+  entities: TDataTable[],
+  confirmInfo: TConfirmed
+) => {
   entities.forEach(element => {
-    if (confirmInfo.infoSiteMatchIds.some(
-      id =>
-        id === element.infoSiteMatchId
-    )) {
+    if (
+      confirmInfo.infoSiteMatchIds.some(id => id === element.infoSiteMatchId)
+    ) {
       element.isCheck = confirmInfo.confirmed;
     }
   });
@@ -37,22 +46,35 @@ const updateConfirmedMatch = (entities: TDataTable[], confirmInfo: TConfirmed) =
 
 const buildKoOptions = (entities: TDataTable[]) =>
   uniqBy(
-    [...entities].
-      sort((first, second) =>
-        Number(new Date(first.eventDateTime)) - Number(new Date(second.eventDateTime))
-      ).map(m => formatTime(m.eventDateTime, 'minute', 'hh:mm A'))
+    [...entities]
+      .sort(
+        (first, second) =>
+          Number(new Date(first.eventDateTime)) -
+          Number(new Date(second.eventDateTime))
+      )
+      .map(m => formatTime(m.eventDateTime, 'minute', 'hh:mm A'))
 
       .map(o => ({
         value: o,
         label: o ?? ''
-      })), i => i.value);
+      })),
+    i => i.value
+  );
 
-const buildMbOptions = (entities: TDataTable[]) => uniqBy(
-  [...entities].sort((first, second) => (first.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER) - (second.maxBetHDPNumber ?? Number.MAX_SAFE_INTEGER))
-    .map(o => ({
-      value: o.maxBetHDPNumber ?? null,
-      label: o.maxBetHDP ?? '(Blanks)'
-    })), i => i.value);
+const buildMbOptions = (entities: TDataTable[]) =>
+  uniqBy(
+    [...entities]
+      .sort(
+        (first, second) =>
+          (first.maxbetHdp ?? Number.MAX_SAFE_INTEGER) -
+          (second.maxbetHdp ?? Number.MAX_SAFE_INTEGER)
+      )
+      .map(o => ({
+        value: o.maxbetHdp || null,
+        label: Utils.convertThousandToK(o.maxbetHdp, true) || '(Blanks)'
+      })),
+    i => i.value
+  );
 
 const buildMultipleFilterDefault = (entities: TDataTable[]) => {
   const koTimeOptions = buildKoOptions(entities);
@@ -71,13 +93,30 @@ const buildMultipleFilterDefault = (entities: TDataTable[]) => {
   } as TMultipleFilter;
 };
 
-const filterByKo = (entities: TDataTable[], selectedValue: (number | string | null)[]) =>
-  entities.filter(e => selectedValue.some(s => s && isEquals(formatTime(e.eventDateTime, 'minute', 'hh:mm A'), s.toString())));
+const filterByKo = (
+  entities: TDataTable[],
+  selectedValue: (number | string | null)[]
+) =>
+  entities.filter(e =>
+    selectedValue.some(
+      s =>
+        s &&
+        isEquals(formatTime(e.eventDateTime, 'minute', 'hh:mm A'), s.toString())
+    )
+  );
 
-const filterByMb = (entities: TDataTable[], selectedValue: (number | string | null)[]) => entities.filter(e => selectedValue.some(s => e.maxBetHDPNumber === s));
+const filterByMb = (
+  entities: TDataTable[],
+  selectedValue: (number | string | null)[]
+) => entities.filter(e => selectedValue.some(s => e.maxbetHdp === s));
 
-
-const executeFilterTable = (state: TTableSlice, filterByKeyword: (arraySource: any, { keyword, columnKey }: { keyword?: undefined, columnKey?: undefined }) => any) => {
+const executeFilterTable = (
+  state: TTableSlice,
+  filterByKeyword: (
+    arraySource: any,
+    { keyword, columnKey }: { keyword?: undefined; columnKey?: undefined }
+  ) => any
+) => {
   state.entities = filterDataTable(
     state.entitiesOriginal,
     state.filterState,

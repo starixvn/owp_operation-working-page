@@ -52,6 +52,11 @@ input[type='checkbox'] {
     }
   }
 }
+
+input[type=checkbox]+span {
+  height: auto !important
+}
+
 .filter-popup {
   .btn-cancel {
     @include button-style(#fff, #a3a3a3);
@@ -63,6 +68,7 @@ input[type='checkbox'] {
     justify-content: flex-end;
   }
 }
+
 // --------------- Multiselect ------------------ //
 .filter-popup .rmsc.multi-select {
   padding-top: 20px;
@@ -108,7 +114,7 @@ input[type='checkbox'] {
     }
 
     .item-renderer {
-      input[type='checkbox'] + span {
+      input[type='checkbox']+span {
         &:after {
           left: 6px;
           top: 2px;
