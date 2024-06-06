@@ -182,15 +182,11 @@ const TicketDetail = ({ policy = 'policy', isSmallBoard = false }) => {
         <div className='chatBoard-Header'>
           {isDisplayCloseButton && renderCloseBtn()}
           <div className='ticket-header'>
-            <TicketDetailHeader {...ticketDetail} />
-          </div>
+            <TicketDetailHeader {...ticketDetail} isSmallBoard={isSmallBoard} />
+          </div> 
         </div>
         <div className='chatBoard-info header-filter'>
-          {isSmallBoard && (
-            <div className='filter-left' onClick={backToSmallTicket}>
-              <ArrowBackIcon fontSize='large'></ArrowBackIcon>
-            </div>
-          )}
+          
           <div className='filter-right'>
             {isExpandInfo ? (
               <>

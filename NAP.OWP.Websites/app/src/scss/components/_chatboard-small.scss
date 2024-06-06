@@ -656,6 +656,7 @@
 .ticket-header {
   .text-bold {
     font-weight: 700;
+    display: inline;
   }
 
   .kick-time {
@@ -688,8 +689,11 @@
   justify-content: space-between;
   margin-top: 10px;
   padding-right: 10px;
-  width: 40%;
+  flex-wrap: wrap;
 
+  div+div{
+    margin-left: 5px;
+  }
   .mg-l {
     margin-left: 20px;
   }
@@ -736,9 +740,6 @@
 }
 
 .recipient {
-  // display: flex;
-  margin: 10px 0 10px 0;
-
   label {
     width: 65px;
   }
@@ -1811,6 +1812,13 @@
   border-radius: 5px;
 }
 
+@media all and (max-width: 788px) {
+  .recipient{
+    margin-top: 10px;
+  }
+  /* CSS rules here for screens lower than 750px */
+  }
+
 @media screen and (max-width: 1220px) {
   .ticket-type {
     width: 100%;
@@ -1820,10 +1828,6 @@
 .header-filter {
   display: flex;
   justify-content: space-between;
-
-  .show-info {
-    float: right;
-  }
 
   .filter-left :hover {
     cursor: pointer;

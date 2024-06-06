@@ -89,7 +89,7 @@ const TicketDetailInformation = ({
         <div className='ticket-status'>
           <TicketStatus policy={policy} />
         </div>
-      </div>
+      
       <div className='recipient'>
         <label>
           Recipient:<span className='required'>*</span>
@@ -104,6 +104,7 @@ const TicketDetailInformation = ({
             hasWrite={HasWrite}
           />
         </div>
+      </div>
       </div>
     </>
   );
