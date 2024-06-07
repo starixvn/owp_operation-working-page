@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import MessageList from './Message/MessageList';
 import InputMessage from './Message/InputMessage';
 import useStableDispatch from '../customHook/useStableDispatch';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useSelector } from 'react-redux';
 import {
   closePopup,
@@ -182,7 +181,9 @@ const TicketDetail = ({ policy = 'policy', isSmallBoard = false }) => {
         <div className='chatBoard-Header'>
           {isDisplayCloseButton && renderCloseBtn()}
           <div className='ticket-header'>
-            <TicketDetailHeader {...ticketDetail} isSmallBoard={isSmallBoard} />
+            <TicketDetailHeader {...ticketDetail} 
+            isSmallBoard={isSmallBoard}
+            backToSmallTicket={backToSmallTicket} />
           </div> 
         </div>
         <div className='chatBoard-info header-filter'>

@@ -658,6 +658,9 @@
 }
 
 .ticket-header {
+  .back__icon:hover{
+    cursor:pointer;
+  }
   .text-bold {
     font-weight: bold;
   }

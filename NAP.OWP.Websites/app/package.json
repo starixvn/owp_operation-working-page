@@ -97,7 +97,7 @@
     "start:welcome": "set NODE_APP=welcome & vite",
     "build:welcome": "set NODE_APP=welcome & vite build",
     "start:provider-verification": "set NODE_APP=provider-verification & vite",
-    "build:provider-verification": "set NODE_APP=provider-verification & vite build"
+    "build:provider-verification": "set NODE_APP=provider-verification & vite build",
     "start:small-ticket-center": "set NODE_APP=small-ticket-center & vite",
     "build:small-ticket-center": "set NODE_APP=small-ticket-center & vite build",
     "start:account-setting": "set NODE_APP=account-setting & vite",
