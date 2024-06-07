@@ -30,6 +30,13 @@
 
         public string Agent { get; set; }
 
+        public string AgentEst { get; set; }
+
+        public string RemarkEst { get; set; }
+
+        public string RemarkBy { get; set; }
+
+
         public string OtherProvider { get; set; }
 
         public string Provider { get; set; }

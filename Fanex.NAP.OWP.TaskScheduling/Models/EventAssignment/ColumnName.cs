@@ -127,6 +127,15 @@
         [Description("Agent")]
         Agent,
 
+        [Description("Agent for EST")]
+        AgentEst,
+
+        [Description("Remark for EST")]
+        RemarkEst,
+
+        [Description("Remark By")]
+        RemarkBy,
+
         [Description("Reporter Phone")]
         ReporterPhone,
 

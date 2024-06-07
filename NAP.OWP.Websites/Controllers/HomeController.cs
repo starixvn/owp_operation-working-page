@@ -351,7 +351,7 @@ namespace NAP.OWP.Websites.Controllers
             return View("~/wwwroot/feedback/server.cshtml");
         }
 
-        [Route("UserManagement_New")]
+        [Route("UserManagement")]
         [NapAuth(FunctionKey = FunctionKeys.OWPEventManagement, Policy = Constant.Policy.Read)]
         public async Task<ActionResult> UserManagement()
         {
@@ -367,6 +367,13 @@ namespace NAP.OWP.Websites.Controllers
             var functionName = ConfigurationManager.AppSettings["SmallChatting"];
             await accessCounter.UpdateCounter(functionName);
             return View("~/wwwroot/small-chatting/server.cshtml");
+        }
+
+        [Route("ProviderVerification")]
+        [NapAuth(FunctionKey = FunctionKeys.ProviderVerification, Policy = Constant.Policy.Read)]
+        public async Task<ActionResult> ProviderVerification()
+        {
+            return View("~/wwwroot/provider-verification/server.cshtml");
         }
     }
 }

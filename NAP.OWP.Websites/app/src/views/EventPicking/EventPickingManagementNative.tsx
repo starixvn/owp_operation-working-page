@@ -37,7 +37,6 @@ const EventPickingManagementNative = () => {
             <SumProviderWrapper />
           </div>
         </OWPHeader>
-
         <OWPBody className='tickets-tab'>
           <EventPickingTable />
         </OWPBody>

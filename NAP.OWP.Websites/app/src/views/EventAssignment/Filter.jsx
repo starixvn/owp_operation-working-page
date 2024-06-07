@@ -46,12 +46,10 @@ class Filter extends PureComponent {
       userNameIsValid: true,
       isShowUnreadMessOnly: false
     };
-
     this.matchStatusOptions = [];
     this.offVRs = [];
     this.datePicker = createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSyncOffVR = this.handleSyncOffVR.bind(this);
     this.handleShowMessage = this.handleShowMessage.bind(this);
   }
 
@@ -149,17 +147,6 @@ class Filter extends PureComponent {
       !selectedOffVRIsValid &&
         ToastrWrapper.showError('Please select at least one OFF VR');
     }
-  }
-
-  handleSyncOffVR() {
-    ToastrWrapper.confirm(
-      'Are you sure to TURN OFF VR for ALL the matches containing OFF VR?'
-    ).then(async confirmResult => {
-      if (confirmResult.value) {
-        const model = { date: selectedDate };
-        await Service.syncOffVRs(model);
-      }
-    });
   }
 
   render() {

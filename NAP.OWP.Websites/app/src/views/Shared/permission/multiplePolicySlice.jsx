@@ -8,7 +8,9 @@ const createMultiplePolicySlice = (sliceName = 'policy') =>
     initialState: {
       permission: {
         Username: undefined,
-        HasRead: false
+        HasRead: false,
+        HasWrite: false,
+        ActorId: 0
       },
       loading: REQUEST_STATUS.idle,
       error: null

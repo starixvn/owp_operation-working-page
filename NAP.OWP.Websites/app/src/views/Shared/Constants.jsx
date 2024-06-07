@@ -128,7 +128,8 @@ export const FunctionKeys = {
   LiveGameList: 'LiveGameList',
   TimeRangeView: 'TimeRangeView',
   FullTimeView: 'FullTimeView',
-  ProviderArrangement: 'ProviderArrangement'
+  ProviderArrangement: 'ProviderArrangement',
+  ProviderVerification: 'ProviderVerification'
 };
 
 export const REQUEST_STATUS = {

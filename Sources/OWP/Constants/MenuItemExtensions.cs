@@ -17,7 +17,6 @@
                 { MenuItems.EventPickingNew, "icon-calendar-check" },
                 { MenuItems.LiveGameList, "icon-video" },
                 { MenuItems.UserManagement, "icon-account-multiple" },
-                { MenuItems.UserManagementNew, "icon-account-multiple" },
                 { MenuItems.AssignmentConfiguration, "icon-account-multiple" },
                 { MenuItems.WorkingShiftManagement, "icon-calendar-today" },
                 { MenuItems.LeagueManagement, "icon-book" },
@@ -38,6 +37,7 @@
                 { MenuItems.TicketTypeSettings, "icon-ticket-type-recipient" },
                 { MenuItems.OSLiveGameAssignment, "icon-event-checking" },
                 { MenuItems.OSBasketballMaxBet, "icon-event-checking" },
+                { MenuItems.ProviderVerification, "icon-provider-verification" }
             };
             return dictionary;
         }

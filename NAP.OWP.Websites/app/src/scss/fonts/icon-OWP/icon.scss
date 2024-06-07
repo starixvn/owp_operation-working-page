@@ -26,6 +26,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-provider-verification:before {
+  content: "\e920";
+}
+
 .icon-kpi:before {
   content: "\e91f" !important;
 }

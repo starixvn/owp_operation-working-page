@@ -12,8 +12,6 @@ const buildIsReadValue = (
   if (actorId !== userId) {
     return false;
   }
-
-  console.log(`isRead: ${isRead}`);
   return isNil(isRead) ? true : isRead;
 };
 

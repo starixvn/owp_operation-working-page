@@ -11,8 +11,11 @@ import {
   changeErrorRecipient,
   setSelectedRecipients,
   closePopupCreateTicketInLGA,
-  setDefaultRecipients
+  setDefaultRecipients,
+  setSubTypeSelected
 } from './createTicketBoardSliceNew';
+import { getRecipientDefaultBySubType } from './Helper/HelperCreateTicket';
+
 import {
   formatRecipientModel,
   saveFileToBackEnd,
@@ -21,15 +24,17 @@ import {
 import { urlRequestLiveIncident } from './const/const';
 import { TICKET_TYPE } from '../TicketCenterPrematch/const/const.json';
 import Loading from '../../components/Loading';
+import { TicketTypeRecipientEnum } from '../enum/TicketRecipientEnum';
 
 const { LIVE_INCIDENT } = TICKET_TYPE;
 
 const propTypes = {
-  creatorInfo: PropTypes.any
+  creatorInfo: PropTypes.any,
+  isProviderVerification: PropTypes.bool
 };
 
 const CreateTicketLGAView = props => {
-  const { creatorInfo } = props;
+  const { creatorInfo, isProviderVerification = false } = props;
   const dispatch = useStableDispatch();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const { modelByRowIndex } = useSelector(state => state.chatBoard);
@@ -37,7 +42,7 @@ const CreateTicketLGAView = props => {
     selectedRecipients,
     subTypeSelected,
     isOpenCreateTicketInLGA,
-    typeTicketText
+    defaultRecipients
   } = useSelector(state => state.createTicketBoard);
 
   const { OWPMatchId, League, Home, Away, EventDateTime } = modelByRowIndex;
@@ -51,7 +56,15 @@ const CreateTicketLGAView = props => {
     const model = {
       owpMatchId: OWPMatchId
     };
-    const recipientLGA = await Service.queryAssigneesByOwpMatchId(model);
+    let recipientLGA = [];
+    if (
+      OWPMatchId &&
+      selectedRecipients.some(
+        x => x.recipientType === TicketTypeRecipientEnum.Assignee
+      )
+    ) {
+      recipientLGA = await Service.queryAssigneesByOwpMatchId(model);
+    }
     const selected = selectedRecipients.concat(recipientLGA);
     const reformattedArray = formatRecipientModel(selected, creatorInfo);
     const resultSaveFile =
@@ -95,6 +108,18 @@ const CreateTicketLGAView = props => {
   useEffect(() => {
     creatorInfo.userName && dispatch(setDefaultRecipients([creatorInfo]));
   }, [creatorInfo, dispatch]);
+
+  useEffect(() => {
+    (async () => {
+      if (isProviderVerification) {
+        dispatch(
+          setSubTypeSelected([{ value: 27, label: 'Provider Checking' }])
+        );
+        const recipient = await getRecipientDefaultBySubType(27);
+        dispatch(setSelectedRecipients(recipient.concat(defaultRecipients)));
+      }
+    })();
+  }, [modelByRowIndex]);
 
   if (!creatorInfo.userName) {
     return <Loading />;
