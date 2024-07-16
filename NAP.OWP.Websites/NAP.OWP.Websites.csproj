@@ -535,11 +535,13 @@
     <Content Include="wwwroot\images\Flags\FC24\Girona %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Granada CF %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Inter Milan %28V%29.jpg" />
+    <Content Include="wwwroot\images\Flags\FC24\Ipswich Town %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Juventus %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Las Palmas %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Latium %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Le Havre %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Lecce %28V%29.jpg" />
+    <Content Include="wwwroot\images\Flags\FC24\Leicester City %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Lille OSC %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Liverpool %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Lorient %28V%29.jpg" />
@@ -571,6 +573,7 @@
     <Content Include="wwwroot\images\Flags\FC24\SC Freiburg %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Sevilla %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Sheffield United %28V%29.jpg" />
+    <Content Include="wwwroot\images\Flags\FC24\Southampton %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Stade Brestois %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Stade Rennais %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\SV Darmstadt 98 %28V%29.jpg" />
