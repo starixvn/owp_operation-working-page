@@ -501,6 +501,15 @@
     <Content Include="wwwroot\day-shift-assignment\assets\js\main-f8e90370.js" />
     <Content Include="wwwroot\day-shift-assignment\favicon.ico" />
     <Content Include="wwwroot\day-shift-assignment\server.html" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\logo_none-232840bc.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\logo_text-c3062a52.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-ddc4337f.svg" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\server-7185e563.css" />
+    <Content Include="wwwroot\event-assignment-new\assets\js\main-d178339f.js" />
+    <Content Include="wwwroot\event-assignment-new\favicon.ico" />
+    <Content Include="wwwroot\event-assignment-new\server.html" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\event-assignment\assets\ext\logo_none-232840bc.svg" />
@@ -3234,6 +3243,10 @@
     <Content Include="wwwroot\live-detail\assets\ext\OWP-937406c3.woff" />
     <Content Include="wwwroot\live-detail\assets\ext\OWP-99159c10.eot" />
     <Content Include="wwwroot\live-detail\server.cshtml" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-5ef02bbf.ttf" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-937406c3.woff" />
+    <Content Include="wwwroot\event-assignment-new\assets\ext\OWP-99159c10.eot" />
+    <Content Include="wwwroot\event-assignment-new\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
