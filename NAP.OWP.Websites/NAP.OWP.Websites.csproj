@@ -581,11 +581,13 @@
     <Content Include="wwwroot\images\Flags\FC24\Girona %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Granada CF %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Inter Milan %28V%29.jpg" />
+    <Content Include="wwwroot\images\Flags\FC24\Ipswich Town %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Juventus %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Las Palmas %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Latium %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Le Havre %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Lecce %28V%29.jpg" />
+    <Content Include="wwwroot\images\Flags\FC24\Leicester City %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Lille OSC %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Liverpool %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Lorient %28V%29.jpg" />
@@ -617,6 +619,7 @@
     <Content Include="wwwroot\images\Flags\FC24\SC Freiburg %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Sevilla %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Sheffield United %28V%29.jpg" />
+    <Content Include="wwwroot\images\Flags\FC24\Southampton %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Stade Brestois %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Stade Rennais %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\SV Darmstadt 98 %28V%29.jpg" />
@@ -636,6 +639,13 @@
     <Content Include="wwwroot\images\Flags\FC24\Villarreal CF %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\West Ham United %28V%29.jpg" />
     <Content Include="wwwroot\images\Flags\FC24\Wolverhampton Wanderers %28V%29.jpg" />
+    <Content Include="wwwroot\live-detail\assets\ext\icon-feedback-57264197.svg" />
+    <Content Include="wwwroot\live-detail\assets\ext\icon-search-4037a8fe.svg" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-ddc4337f.svg" />
+    <Content Include="wwwroot\live-detail\assets\ext\server-6f6e62e0.css" />
+    <Content Include="wwwroot\live-detail\assets\js\main-1e9cf286.js" />
+    <Content Include="wwwroot\live-detail\favicon.ico" />
+    <Content Include="wwwroot\live-detail\server.html" />
     <Content Include="wwwroot\provider-verification\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\provider-verification\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\provider-verification\assets\ext\logo_none-232840bc.svg" />
@@ -2879,13 +2889,6 @@
     <Content Include="wwwroot\league-management\assets\js\TeamInfo-02e4efdd.js" />
     <Content Include="wwwroot\league-management\favicon.ico" />
     <Content Include="wwwroot\league-management\server.html" />
-    <Content Include="wwwroot\live-detail\assets\ext\icon-feedback-57264197.svg" />
-    <Content Include="wwwroot\live-detail\assets\ext\icon-search-4037a8fe.svg" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-ddc4337f.svg" />
-    <Content Include="wwwroot\live-detail\assets\ext\server-6f6e62e0.css" />
-    <Content Include="wwwroot\live-detail\assets\js\main-e9ab7996.js" />
-    <Content Include="wwwroot\live-detail\favicon.ico" />
-    <Content Include="wwwroot\live-detail\server.html" />
     <Content Include="wwwroot\live-game-list\assets\ext\icon-feedback-57264197.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\icon-search-4037a8fe.svg" />
     <Content Include="wwwroot\live-game-list\assets\ext\logo_none-232840bc.svg" />
@@ -3138,10 +3141,6 @@
     <Content Include="wwwroot\league-management\assets\ext\OWP-937406c3.woff" />
     <Content Include="wwwroot\league-management\assets\ext\OWP-99159c10.eot" />
     <Content Include="wwwroot\league-management\server.cshtml" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-5ef02bbf.ttf" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-937406c3.woff" />
-    <Content Include="wwwroot\live-detail\assets\ext\OWP-99159c10.eot" />
-    <Content Include="wwwroot\live-detail\server.cshtml" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-5ef02bbf.ttf" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-937406c3.woff" />
     <Content Include="wwwroot\live-game-list\assets\ext\OWP-99159c10.eot" />
@@ -3231,6 +3230,10 @@
     <Content Include="wwwroot\welcome\assets\ext\OWP-937406c3.woff" />
     <Content Include="wwwroot\welcome\assets\ext\OWP-99159c10.eot" />
     <Content Include="wwwroot\welcome\server.cshtml" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-5ef02bbf.ttf" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-937406c3.woff" />
+    <Content Include="wwwroot\live-detail\assets\ext\OWP-99159c10.eot" />
+    <Content Include="wwwroot\live-detail\server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\MessageMachine\ExcelTemplates\" />
